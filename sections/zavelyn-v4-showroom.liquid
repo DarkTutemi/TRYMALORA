@@ -15,7 +15,7 @@
 {% assign shelf_style = section.settings.shelf_style | default: 'wood' %}
 {% if collection.handle contains 'tool' or collection.handle contains 'power' %}
   {% assign shelf_style = 'metal' %}
-{% elsif collection.handle contains 'handpan' or collection.handle contains 'drum' or collection.handle contains 'sound' %}
+{% elsif collection.handle contains 'handpan' or collection.handle contains 'drum' or collection.handle contains 'sound' or collection.handle contains 'interactive' or collection.handle contains 'toy' %}
   {% assign shelf_style = 'tech' %}
 {% elsif collection.handle contains 'wellness' or collection.handle contains 'denture' or collection.handle contains 'batana' %}
   {% assign shelf_style = 'boutique' %}
@@ -31,7 +31,7 @@
       <div class="zv-showroom-title-row">
         <div>
           <div class="zv-showroom-eyebrow">
-            <span>🏛️ ZAVELYN RETAIL ENVIRONMENT</span>
+            <span>🏛️ TRYMALORA RETAIL ENVIRONMENT</span>
             <span>&middot;</span>
             <span class="zv-shelf-style-badge">{{ shelf_style | capitalize }} Department</span>
           </div>
@@ -437,9 +437,62 @@
           {% endfor %}
 
         {% else %}
-          <div style="text-align: center; padding: 72px 0; color: var(--zv-muted);">
-            <h3>No products found in this showroom department.</h3>
-            <p>Please browse our other store departments or return to the main hall.</p>
+          <!-- FLAGSHIP SHOWROOM DISPLAY (SHOWCASE NEW ARRIVALS) -->
+          <div class="zv-shelf-tier" data-tier-index="0" data-tier-count="1">
+            <div class="zv-fixture-lightbar" aria-hidden="true">
+              <div class="zv-spotlight-beam" style="left: 50%;"></div>
+            </div>
+
+            <div class="zv-shelf-stage">
+              <div class="zv-continuous-wooden-shelf zv-shelf-desktop-only" aria-hidden="true">
+                <div class="zv-wood-top-surface">
+                  <div class="zv-wood-grain-texture"></div>
+                  <div class="zv-wood-top-highlight"></div>
+                </div>
+                <div class="zv-wood-front-fascia">
+                  <div class="zv-wood-bevel-edge"></div>
+                  <div class="zv-wood-front-grain"></div>
+                  <div class="zv-wood-bottom-bevel"></div>
+                </div>
+                <div class="zv-wood-under-shadow"></div>
+              </div>
+
+              <div class="zv-shelf-columns-grid zv-grid--1" style="display: flex; justify-content: center;">
+                <div class="zv-shelf-column" style="max-width: 380px; width: 100%;">
+                  <div class="zv-showroom-view-wrap">
+                    <article class="zv-shelf-item" tabindex="0" role="button">
+                      <div class="zv-merch-display" style="--shadow-w: 80%; --shadow-op: 60%; --shadow-h: 14px; text-align: center;">
+                        <img 
+                          src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173020_6c8c1c4cf7d711cdd5a4d6aa91290eb2_e583f568-e0e8-4c22-9785-6dc4d0eb727b.jpg" 
+                          alt="Kids Infrared Battle Blaster Set with Target Projector" 
+                          class="zv-merch-img"
+                          style="max-height: 240px; object-fit: contain; margin: 0 auto;"
+                        >
+                        <div class="zv-contact-shadow" aria-hidden="true"></div>
+                      </div>
+                      <div class="zv-channel-tag">
+                        <div class="zv-channel-tag-inner">
+                          <div class="zv-tag-top">
+                            <span class="zv-tag-sku">SKU: TM-IBB-01</span>
+                            <span class="zv-tag-rating">★ 4.9 (NEW ARRIVAL)</span>
+                          </div>
+                          <div class="zv-tag-title">Kids Infrared Battle Blaster Set with Target Projector</div>
+                          <div class="zv-tag-price-row">
+                            <div class="zv-tag-price-block">
+                              <span class="zv-tag-price">$99.99</span>
+                              <span class="zv-tag-curr">USD</span>
+                            </div>
+                            <button type="button" class="zv-tag-inspect-btn" onclick="zvShowroomDirectAddToCart('67297621934451', this)">
+                              <span>ADD TO CART</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         {% endif %}
 

@@ -1,0 +1,89 @@
+{% comment %}
+  TRYMALORA - PRODUCT FAQ ACCORDION
+  Accessible, clean product FAQ addressing customer questions, battery details, and guarantees.
+{% endcomment %}
+
+{{ 'zavelyn-v4-tokens.css' | asset_url | stylesheet_tag }}
+
+<section class="tm-faq-section" style="padding: 64px 0; background: #FFFFFF; border-top: 1px solid var(--zv-border, #E5E7EB);">
+  <div class="zv-container" style="max-width: 860px; margin: 0 auto; padding: 0 20px;">
+    
+    <div style="text-align: center; max-width: 680px; margin: 0 auto 40px;">
+      <span class="zv-badge zv-badge-forest" style="display: inline-block; padding: 5px 14px; border-radius: 999px; background: var(--zv-primary, #17352B); color: #FFFFFF; font-size: 11.5px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 12px;">
+        COMMON QUESTIONS
+      </span>
+      <h2 style="font-family: var(--zv-font-heading, sans-serif); font-size: 32px; font-weight: 800; color: var(--zv-heading, #111827); line-height: 1.2; margin: 0 0 12px;">
+        Frequently Asked Questions
+      </h2>
+      <p style="font-size: 15.5px; line-height: 1.6; color: var(--zv-body, #4B5563); margin: 0;">
+        Everything you need to know about safety, multiplayer rules, battery operation, and shipping.
+      </p>
+    </div>
+
+    <!-- FAQ Accordion List -->
+    <div class="tm-faq-accordion" style="display: flex; flex-direction: column; gap: 14px;">
+      
+      <details style="background: var(--zv-surface-muted, #F8F9F8); border: 1.5px solid var(--zv-border, #E5E7EB); border-radius: 12px; padding: 18px 22px; cursor: pointer;" open>
+        <summary style="font-weight: 800; font-size: 16px; color: var(--zv-heading, #111827); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+          <span>Is the infrared beam safe for children and eyes?</span>
+          <span style="font-size: 18px; color: var(--zv-primary, #17352B);">▾</span>
+        </summary>
+        <div style="font-size: 14.5px; line-height: 1.6; color: var(--zv-body, #4B5563); margin-top: 12px; border-top: 1px solid var(--zv-border, #E5E7EB); padding-top: 12px;">
+          Yes. The set utilizes invisible, optical infrared light emission—the exact same safe technology used in standard home television remote controls. There are no hazardous high-powered laser beams and zero physical dart or projectile risks, making it safe for indoor family play.
+        </div>
+      </details>
+
+      <details style="background: var(--zv-surface-muted, #F8F9F8); border: 1.5px solid var(--zv-border, #E5E7EB); border-radius: 12px; padding: 18px 22px; cursor: pointer;">
+        <summary style="font-weight: 800; font-size: 16px; color: var(--zv-heading, #111827); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+          <span>What batteries are required and are they included?</span>
+          <span style="font-size: 18px; color: var(--zv-primary, #17352B);">▾</span>
+        </summary>
+        <div style="font-size: 14.5px; line-height: 1.6; color: var(--zv-body, #4B5563); margin-top: 12px; border-top: 1px solid var(--zv-border, #E5E7EB); padding-top: 12px;">
+          Batteries are not included in the standard retail package. The 2 blasters require a total of 4 × 1.5V AAA batteries (2 per blaster), and the target projector requires 3 × 1.5V AA batteries. We recommend fresh alkaline batteries for optimal sensor range and bright target projection.
+        </div>
+      </details>
+
+      <details style="background: var(--zv-surface-muted, #F8F9F8); border: 1.5px solid var(--zv-border, #E5E7EB); border-radius: 12px; padding: 18px 22px; cursor: pointer;">
+        <summary style="font-weight: 800; font-size: 16px; color: var(--zv-heading, #111827); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+          <span>Can more than 2 players battle together?</span>
+          <span style="font-size: 18px; color: var(--zv-primary, #17352B);">▾</span>
+        </summary>
+        <div style="font-size: 14.5px; line-height: 1.6; color: var(--zv-body, #4B5563); margin-top: 12px; border-top: 1px solid var(--zv-border, #E5E7EB); padding-top: 12px;">
+          Yes! By purchasing the 2-pack (4 blasters) or 3-pack (6 blasters) bundle offers, you can sync unlimited blasters together across 4 selectable team channels (Blue, Red, Green, White). Teammates on the same color cannot damage each other, enabling structured tactical group battles.
+        </div>
+      </details>
+
+      <details style="background: var(--zv-surface-muted, #F8F9F8); border: 1.5px solid var(--zv-border, #E5E7EB); border-radius: 12px; padding: 18px 22px; cursor: pointer;">
+        <summary style="font-weight: 800; font-size: 16px; color: var(--zv-heading, #111827); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+          <span>How does the wall-target projector operate?</span>
+          <span style="font-size: 18px; color: var(--zv-body, #4B5563); margin-top: 12px; border-top: 1px solid var(--zv-border, #E5E7EB); padding-top: 12px;">
+          Set the projector on a flat surface like a coffee table or floor facing a light-colored wall or ceiling in a slightly dimmed room. Turn it on, and it will animate moving target discs. Players aim and fire at the projected images—hits register with distinct sound effects and scored impacts.
+        </div>
+      </details>
+
+      <details style="background: var(--zv-surface-muted, #F8F9F8); border: 1.5px solid var(--zv-border, #E5E7EB); border-radius: 12px; padding: 18px 22px; cursor: pointer;">
+        <summary style="font-weight: 800; font-size: 16px; color: var(--zv-heading, #111827); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+          <span>What is your dispatch timeline and return policy?</span>
+          <span style="font-size: 18px; color: var(--zv-primary, #17352B);">▾</span>
+        </summary>
+        <div style="font-size: 14.5px; line-height: 1.6; color: var(--zv-body, #4B5563); margin-top: 12px; border-top: 1px solid var(--zv-border, #E5E7EB); padding-top: 12px;">
+          All orders are dispatched from our regional US facilities within 24–48 business hours with full carrier tracking provided via email. We stand behind every set with a 30-day money-back guarantee for unopened items in their original packaging.
+        </div>
+      </details>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trymalora Product FAQ",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Trymalora Product FAQ"
+    }
+  ]
+}
+{% endschema %}

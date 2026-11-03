@@ -34,6 +34,15 @@
     let basePriceCents = parseInt(buyBox.getAttribute('data-initial-price'), 10) || 0;
     let baseCompareCents = parseInt(buyBox.getAttribute('data-initial-compare'), 10) || 0;
 
+    const initialSelectedCard = buyBox.querySelector('.zv-bundle-card.selected');
+    if (initialSelectedCard) {
+      const initialVariantId = initialSelectedCard.getAttribute('data-variant-id');
+      if (initialVariantId) {
+        activeVariantId = initialVariantId;
+        activeQty = 1;
+      }
+    }
+
     function formatMoney(cents) {
       return (cents / 100).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
     }
@@ -143,16 +152,15 @@
         this.classList.add('selected');
 
         const tierQty = parseInt(this.getAttribute('data-qty'), 10) || 1;
+        const tierLevel = parseInt(this.getAttribute('data-tier-level') || this.getAttribute('data-qty'), 10) || 1;
         const mappedVariantId = this.getAttribute('data-variant-id');
         const cardPriceCents = parseInt(this.getAttribute('data-price-cents'), 10);
         const cardCompareCents = parseInt(this.getAttribute('data-compare-cents'), 10);
 
         if (mappedVariantId) {
-          // Native bundle variant (e.g. Storage Bins 6-pack, Dentures 3-pack)
           activeVariantId = mappedVariantId;
           activeQty = 1;
         } else {
-          // Multiplier on base variant
           activeQty = tierQty;
         }
 
@@ -178,35 +186,33 @@
           }
         }
 
-        // Update Gift Unlock Progression Bar
-        updateGiftProgression(tierQty);
+        // Update Gift / Shipping Unlock Progression Bar
+        updateGiftProgression(tierLevel);
       });
     });
 
-    function updateGiftProgression(qty) {
+    function updateGiftProgression(tierLevel) {
       if (!giftUnlockBox) return;
+      const iconEl = document.getElementById('zvGiftIcon');
 
-      if (qty >= 3) {
+      if (tierLevel >= 3) {
         giftUnlockBox.classList.add('unlocked');
-        if (giftStatusBadge) {
-          giftStatusBadge.textContent = 'UNLOCKED';
-        }
-        if (giftTitle) giftTitle.textContent = '🎁 FREE Mystery Gift & Priority Shipping';
-        if (giftSub) giftSub.textContent = 'You unlocked the maximum tier bundle perks!';
-      } else if (qty === 2) {
+        if (giftStatusBadge) giftStatusBadge.textContent = 'UNLOCKED';
+        if (iconEl) iconEl.textContent = '⚡';
+        if (giftTitle) giftTitle.textContent = '⚡ FREE Tracked Shipping & VIP Priority Dispatch';
+        if (giftSub) giftSub.textContent = 'Maximum savings unlocked · Insured US carrier transit';
+      } else if (tierLevel === 2) {
         giftUnlockBox.classList.add('unlocked');
-        if (giftStatusBadge) {
-          giftStatusBadge.textContent = 'UNLOCKED';
-        }
-        if (giftTitle) giftTitle.textContent = '🚚 FREE Tracked US Shipping Unlocked';
-        if (giftSub) giftSub.textContent = 'Order 3 to also unlock a Free Mystery Gift!';
+        if (giftStatusBadge) giftStatusBadge.textContent = 'UNLOCKED';
+        if (iconEl) iconEl.textContent = '🚚';
+        if (giftTitle) giftTitle.textContent = '🚚 FREE Tracked Doorstep US Shipping Unlocked';
+        if (giftSub) giftSub.textContent = 'Select 3 Sets for VIP Priority Dispatch!';
       } else {
         giftUnlockBox.classList.remove('unlocked');
-        if (giftStatusBadge) {
-          giftStatusBadge.textContent = 'LOCKED';
-        }
-        if (giftTitle) giftTitle.textContent = 'Add 1 More to Unlock FREE US Shipping';
-        if (giftSub) giftSub.textContent = 'Orders over $49 qualify for fast tracked delivery';
+        if (giftStatusBadge) giftStatusBadge.textContent = 'STANDARD';
+        if (iconEl) iconEl.textContent = '📦';
+        if (giftTitle) giftTitle.textContent = 'Standard US Direct Shipping';
+        if (giftSub) giftSub.textContent = 'Orders of 2+ sets qualify for FREE tracked doorstep delivery';
       }
     }
 

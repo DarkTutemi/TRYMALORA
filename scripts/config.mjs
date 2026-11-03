@@ -23,12 +23,38 @@ export const CLIENT_SECRET = process.env.SHOPIFY_CLIENT_SECRET || process.env.SH
 export const THEME_ID = process.env.SHOPIFY_THEME_ID || process.env.THEME_ID || '';
 export const API_VERSION = process.env.SHOPIFY_API_VERSION || '2026-10';
 
+export function getCliToken(shopDomain = SHOP) {
+  try {
+    const configPath = 'C:/Users/Admin/AppData/Roaming/shopify-cli-kit-nodejs/Config/config.json';
+    if (fs.existsSync(configPath)) {
+      const data = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+      const session = typeof data.sessionStore === 'string' ? JSON.parse(data.sessionStore) : data.sessionStore;
+      const accounts = session['accounts.shopify.com'];
+      for (const accountId in accounts) {
+        const apps = accounts[accountId]?.applications || {};
+        for (const appKey in apps) {
+          if (appKey.startsWith(shopDomain) && apps[appKey].accessToken) {
+            return apps[appKey].accessToken;
+          }
+        }
+      }
+    }
+  } catch (e) {
+    // ignore
+  }
+  return null;
+}
+
 export async function getAccessToken() {
   if (process.env.SHOPIFY_ACCESS_TOKEN) {
     return process.env.SHOPIFY_ACCESS_TOKEN;
   }
+  const cliToken = getCliToken();
+  if (cliToken) {
+    return cliToken;
+  }
   if (!CLIENT_ID || !CLIENT_SECRET) {
-    throw new Error('Missing SHOPIFY_CLIENT_ID or SHOPIFY_CLIENT_SECRET in .env');
+    throw new Error('Missing SHOPIFY_CLIENT_ID or SHOPIFY_CLIENT_SECRET or CLI session');
   }
   const tRes = await fetch(`https://${SHOP}/admin/oauth/access_token`, {
     method: 'POST',
@@ -45,3 +71,23 @@ export async function getAccessToken() {
   }
   return data.access_token;
 }
+
+export async function adminGraphql(query, variables = {}) {
+  const token = await getAccessToken();
+  const url = `https://${SHOP}/admin/api/${API_VERSION}/graphql.json`;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({ query, variables })
+  });
+  const json = await res.json();
+  if (json.errors) {
+    console.error('GraphQL Errors:', JSON.stringify(json.errors, null, 2));
+    throw new Error(`GraphQL failed: ${json.errors[0]?.message || 'Unknown error'}`);
+  }
+  return json.data;
+}
+

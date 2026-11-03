@@ -1,24 +1,53 @@
 {% comment %}
-  ZAVELYN IMMERSIVE COMMERCE THEME V4.0
+  TRYMALORA IMMERSIVE COMMERCE THEME V4.0
   CRO BUY BOX HERO & BUNDLE ENGINE (INSPIRED BY SHOPSIDEK T01)
 {% endcomment %}
 
 {{ 'zavelyn-v4-tokens.css' | asset_url | stylesheet_tag }}
 {{ 'zavelyn-v4-pdp.css' | asset_url | stylesheet_tag }}
 
-{% assign current_variant = product.selected_or_first_available_variant %}
-{% assign has_compare = false %}
-{% if current_variant.compare_at_price > current_variant.price %}
-  {% assign has_compare = true %}
-  {% assign save_pct = current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round %}
+{% assign is_bundle_variant_product = false %}
+{% assign variant_tier_1 = nil %}
+{% assign variant_tier_2 = nil %}
+{% assign variant_tier_3 = nil %}
+
+{% if product.variants.size > 0 %}
+  {% for v in product.variants %}
+    {% assign t_title = v.title | downcase %}
+    {% if t_title contains '1 set' or t_title contains 'starter' or t_title contains 'single' %}
+      {% assign variant_tier_1 = v %}
+      {% assign is_bundle_variant_product = true %}
+    {% elsif t_title contains '2 set' or t_title contains 'duo' or t_title contains 'double' %}
+      {% assign variant_tier_2 = v %}
+      {% assign is_bundle_variant_product = true %}
+    {% elsif t_title contains '3 set' or t_title contains 'family' or t_title contains 'triple' or t_title contains 'arena' %}
+      {% assign variant_tier_3 = v %}
+      {% assign is_bundle_variant_product = true %}
+    {% endif %}
+  {% endfor %}
 {% endif %}
+
+{% assign prod_title = product.title | default: "Kids Infrared Battle Blaster Set with Target Projector" %}
+{% assign prod_desc = product.description | default: "Transform any living space into an energetic, screen-free action arena. The Kids Infrared Battle Blaster Set combines interactive wall-target projection with tactical multiplayer team battle modes, featuring responsive sound effects, hit-sensing LED health meters, and safe optical infrared play." %}
+
+{% assign t1_id = variant_tier_1.id | default: "67297621934451" %}
+{% assign t1_price = variant_tier_1.price | default: 9999 %}
+{% assign t2_id = variant_tier_2.id | default: "67297622131059" %}
+{% assign t2_price = variant_tier_2.price | default: 16999 %}
+{% assign t3_id = variant_tier_3.id | default: "67297622163827" %}
+{% assign t3_price = variant_tier_3.price | default: 22999 %}
+
+{% assign t2_savings = t1_price | times: 2 | minus: t2_price %}
+{% assign t3_savings = t1_price | times: 3 | minus: t3_price %}
+
+{% assign current_variant = variant_tier_3 | default: product.selected_or_first_available_variant %}
 
 <section 
   class="zv-pdp-hero" 
   id="zvBuyBox"
-  data-initial-variant-id="{{ current_variant.id }}"
-  data-initial-price="{{ current_variant.price }}"
-  data-initial-compare="{{ current_variant.compare_at_price | default: current_variant.price }}"
+  data-initial-variant-id="{{ t3_id }}"
+  data-initial-price="{{ t3_price }}"
+  data-initial-compare="{{ t1_price | times: 3 }}"
 >
   <div class="zv-container">
     <div class="zv-pdp-grid">
@@ -26,134 +55,108 @@
       <!-- LEFT COLUMN: STICKY PRODUCT GALLERY -->
       <div class="zv-pdp-gallery-col">
         <div class="zv-pdp-main-media">
-          {% if has_compare %}
-            <span class="zv-pdp-save-badge" id="zvPriceSavings">SAVE {{ save_pct }}%</span>
-          {% endif %}
+          <span class="zv-pdp-save-badge" id="zvPriceSavings">SAVE {{ t3_savings | money }}</span>
 
           {% if product.featured_image %}
             <img 
               id="zvMainImg" 
               src="{{ product.featured_image | image_url: width: 900 }}" 
-              alt="{{ product.title | escape }}" 
+              alt="{{ prod_title | escape }}" 
               class="zv-pdp-main-img"
               width="600"
               height="600"
               loading="eager"
             >
           {% else %}
-            {{ 'product-1' | placeholder_svg_tag: 'zv-pdp-main-img' }}
+            <img 
+              id="zvMainImg" 
+              src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173020_6c8c1c4cf7d711cdd5a4d6aa91290eb2_e583f568-e0e8-4c22-9785-6dc4d0eb727b.jpg" 
+              alt="{{ prod_title | escape }}" 
+              class="zv-pdp-main-img"
+              width="600"
+              height="600"
+              loading="eager"
+            >
           {% endif %}
         </div>
 
         <!-- Thumbnails -->
-        {% if product.images.size > 1 %}
-          <div class="zv-pdp-thumbs">
-            {% for img in product.images limit: 6 %}
+        <div class="zv-pdp-thumbs">
+          {% if product.images.size > 1 %}
+            {% for img in product.images limit: 8 %}
               <div class="zv-pdp-thumb {% if forloop.first %}active{% endif %}" data-src="{{ img | image_url: width: 900 }}">
                 <img src="{{ img | image_url: width: 140 }}" alt="{{ img.alt | escape }}" loading="lazy">
               </div>
             {% endfor %}
-          </div>
-        {% endif %}
+          {% else %}
+            <div class="zv-pdp-thumb active" data-src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173020_6c8c1c4cf7d711cdd5a4d6aa91290eb2_e583f568-e0e8-4c22-9785-6dc4d0eb727b.jpg">
+              <img src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173020_6c8c1c4cf7d711cdd5a4d6aa91290eb2_e583f568-e0e8-4c22-9785-6dc4d0eb727b.jpg" alt="Target Projector and Blasters" loading="lazy">
+            </div>
+            <div class="zv-pdp-thumb" data-src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173020_95469ec9ffbf4d73ac184b9e30d7d3ee_356f56e5-46d7-4421-8be1-d7f82d6241f0.png">
+              <img src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173020_95469ec9ffbf4d73ac184b9e30d7d3ee_356f56e5-46d7-4421-8be1-d7f82d6241f0.png" alt="Dynamic Target Training" loading="lazy">
+            </div>
+            <div class="zv-pdp-thumb" data-src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173020_94e0edf9f1023e1489161d1b3218329e_57ef72a8-8ded-4354-b4fd-8dfd4995b2d2.png">
+              <img src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173020_94e0edf9f1023e1489161d1b3218329e_57ef72a8-8ded-4354-b4fd-8dfd4995b2d2.png" alt="Multiplayer Battle Mode" loading="lazy">
+            </div>
+            <div class="zv-pdp-thumb" data-src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173021_e96c06fafc655ed1c5a79a0092569a05_bad627ce-b9fb-4776-a2d7-d7b05627f978.png">
+              <img src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173021_e96c06fafc655ed1c5a79a0092569a05_bad627ce-b9fb-4776-a2d7-d7b05627f978.png" alt="Tactical Blaster Details" loading="lazy">
+            </div>
+            <div class="zv-pdp-thumb" data-src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173021_862c2dbbf724bdf5df0e5e1d41358221_bf119adc-cdd4-4354-9562-5d9331655a01.jpg">
+              <img src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173021_862c2dbbf724bdf5df0e5e1d41358221_bf119adc-cdd4-4354-9562-5d9331655a01.jpg" alt="Indoor Action Arena" loading="lazy">
+            </div>
+            <div class="zv-pdp-thumb" data-src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173021_2ea8000740ee44a3bd5efaf5393b4a39_9a3d2c37-afea-4c82-9305-1162ca8663bf.jpg">
+              <img src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173021_2ea8000740ee44a3bd5efaf5393b4a39_9a3d2c37-afea-4c82-9305-1162ca8663bf.jpg" alt="Three Step Setup" loading="lazy">
+            </div>
+          {% endif %}
+        </div>
       </div>
 
       <!-- RIGHT COLUMN: CRO BUY BOX INFO & BUNDLE ENGINE -->
       <div class="zv-pdp-info-col">
         <div class="zv-pdp-eyebrow">
-          <span>🏛️ ZAVELYN INNOVATIONS &middot; US DIRECT</span>
+          <span>🏛️ TRYMALORA INNOVATIONS &middot; US DIRECT DISPATCH</span>
         </div>
 
-        <h1 class="zv-pdp-title">{{ product.title }}</h1>
+        <h1 class="zv-pdp-title">{{ prod_title }}</h1>
 
         <!-- Star Rating -->
         <div class="zv-pdp-rating-row">
           <span class="zv-stars">★★★★★</span>
           <span>4.9 / 5.0</span>
           <span>&middot;</span>
-          <span>3,400+ Verified US Reviews</span>
+          <span>Verified Direct Purchase</span>
         </div>
 
         <!-- Price Hero -->
         <div class="zv-pdp-price-hero">
-          <span class="zv-price-active" id="zvPriceActive">{{ current_variant.price | money }}</span>
-          {% if has_compare %}
-            <span class="zv-price-compare" id="zvPriceCompare">{{ current_variant.compare_at_price | money }}</span>
-          {% endif %}
+          <span class="zv-price-active" id="zvPriceActive">{{ t3_price | money }}</span>
+          <span class="zv-price-compare" id="zvPriceCompare">{{ t1_price | times: 3 | money }}</span>
         </div>
 
         <!-- Lead Description -->
         <div class="zv-pdp-lead">
-          {{ product.description | strip_html | truncatewords: 35 | default: "Engineered with industrial precision and built for long-term daily performance. Backed by our ironclad 30-day money-back guarantee." }}
+          {{ prod_desc | strip_html | truncatewords: 35 }}
         </div>
 
         <!-- Key Verified Benefits -->
         <ul class="zv-pdp-benefits">
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span>Precision-Engineered Heavy-Duty Construction</span>
+            <span>Safe Invisible Optical Infrared Sensor (Zero Laser Hazard)</span>
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span>Fast 24–48h Dispatch from Regional US Hubs</span>
+            <span>Solo Wall-Target Projection &amp; 4-Team Battle Modes</span>
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span>Free Tracked Doorstep Delivery on Orders Over $49</span>
+            <span>Fast 24–48h Dispatch from Regional US Warehouses</span>
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            <span>Risk-Free 30-Day In-Home Trial with Effortless Returns</span>
+            <span>Risk-Free 30-Day Money-Back Guarantee</span>
           </li>
         </ul>
-
-        <!-- ADAPTIVE VARIANT SELECTOR (IF MULTIPLE VARIANTS EXIST) -->
-        {% if product.variants.size > 1 %}
-          <div class="zv-variant-selector-wrap" id="zvVariantSelectorWrap" style="margin: 20px 0 16px;">
-            <div style="font-size: 12.5px; font-weight: 800; letter-spacing: 0.8px; color: var(--zv-heading); text-transform: uppercase; margin-bottom: 8px;">
-              SELECT OPTION: <span id="zvSelectedVariantLabel" style="color: var(--zv-primary); font-weight: 700;">{{ current_variant.title }}</span>
-            </div>
-
-            {% if product.variants.size <= 4 %}
-              <!-- Adaptive Pill Buttons for <= 4 Variants -->
-              <div class="zv-variant-pills-row" style="display: flex; flex-wrap: wrap; gap: 8px;">
-                {% for variant in product.variants %}
-                  <button 
-                    type="button" 
-                    class="zv-variant-pill-btn {% if variant.id == current_variant.id %}active{% endif %}"
-                    data-variant-id="{{ variant.id }}"
-                    data-variant-price="{{ variant.price }}"
-                    data-variant-compare="{{ variant.compare_at_price | default: variant.price }}"
-                    data-variant-title="{{ variant.title | escape }}"
-                    {% if variant.featured_image %}data-variant-img="{{ variant.featured_image | image_url: width: 900 }}"{% endif %}
-                    style="padding: 10px 16px; border-radius: 8px; border: 1.5px solid {% if variant.id == current_variant.id %}var(--zv-primary){% else %}var(--zv-border){% endif %}; background: {% if variant.id == current_variant.id %}var(--zv-primary){% else %}#FFFFFF{% endif %}; color: {% if variant.id == current_variant.id %}#FFFFFF{% else %}var(--zv-heading){% endif %}; font-size: 13.5px; font-weight: 700; cursor: pointer; transition: all 0.2s ease;"
-                  >
-                    {{ variant.title }}
-                  </button>
-                {% endfor %}
-              </div>
-            {% else %}
-              <!-- Adaptive Custom Dropdown for > 4 Variants (Prevents Vertical Blowout) -->
-              <select 
-                class="zv-variant-select-dropdown" 
-                id="zvVariantDropdown"
-                style="width: 100%; padding: 12px 14px; font-size: 14px; font-weight: 700; color: var(--zv-heading); background: #FFFFFF; border: 1.5px solid var(--zv-primary); border-radius: 8px; cursor: pointer; outline: none;"
-              >
-                {% for variant in product.variants %}
-                  <option 
-                    value="{{ variant.id }}"
-                    {% if variant.id == current_variant.id %}selected{% endif %}
-                    data-variant-price="{{ variant.price }}"
-                    data-variant-compare="{{ variant.compare_at_price | default: variant.price }}"
-                    data-variant-title="{{ variant.title | escape }}"
-                    {% if variant.featured_image %}data-variant-img="{{ variant.featured_image | image_url: width: 900 }}"{% endif %}
-                  >
-                    {{ variant.title }} — {{ variant.price | money }}
-                  </option>
-                {% endfor %}
-              </select>
-            {% endif %}
-          </div>
-        {% endif %}
 
         <!-- TIERED BUNDLE SELECTOR (KACHING / SHOPSIDEK T01 PATTERN) -->
         <div class="zv-bundle-box">
@@ -166,81 +169,87 @@
           </div>
 
           <div class="zv-bundle-cards">
-            <!-- TIER 3: BUY 3 (BEST VALUE - DEFAULT SELECTED) -->
+            <!-- TIER 3: 3 SETS (BEST VALUE - DEFAULT SELECTED) -->
             <div 
               class="zv-bundle-card selected" 
-              data-qty="3"
-              data-price-cents="{{ current_variant.price | times: 3 }}"
-              data-compare-cents="{{ current_variant.compare_at_price | default: current_variant.price | times: 3 }}"
+              data-qty="1"
+              data-variant-id="{{ t3_id }}"
+              data-price-cents="{{ t3_price }}"
+              data-compare-cents="{{ t1_price | times: 3 }}"
+              data-tier-level="3"
             >
-              <span class="zv-bundle-card-badge lime">👑 BEST VALUE &middot; FREE SHIPPING &middot; EXTRA 20% OFF</span>
+              <span class="zv-bundle-card-badge lime">👑 BEST VALUE &middot; FREE SHIPPING &middot; SAVE {{ t3_savings | money }}</span>
               <div class="zv-bundle-card-body">
                 <div class="zv-bundle-card-left">
                   <div class="zv-bundle-radio"></div>
                   <div class="zv-bundle-card-info">
-                    <span class="zv-bundle-card-name">Buy 3 (Full Complete Set)</span>
-                    <span class="zv-bundle-card-sub">Best Value &middot; Most Comprehensive Kit</span>
+                    <span class="zv-bundle-card-name">3 Sets (Family Arena Pack)</span>
+                    <span class="zv-bundle-card-sub">6 Blasters + 3 Projectors &middot; Full Arena</span>
                   </div>
                 </div>
                 <div class="zv-bundle-card-pricing">
-                  <span class="zv-bundle-card-total">{{ current_variant.price | times: 3 | money }}</span>
-                  <span class="zv-bundle-card-unit">Best Per-Unit Price</span>
+                  <span class="zv-bundle-card-total">{{ t3_price | money }}</span>
+                  <span class="zv-bundle-card-unit">{{ t3_price | divided_by: 3 | money }} / set</span>
                 </div>
               </div>
             </div>
 
-            <!-- TIER 2: BUY 2 (MOST POPULAR) -->
-            <div 
-              class="zv-bundle-card" 
-              data-qty="2"
-              data-price-cents="{{ current_variant.price | times: 2 }}"
-              data-compare-cents="{{ current_variant.compare_at_price | default: current_variant.price | times: 2 }}"
-            >
-              <span class="zv-bundle-card-badge">🔥 MOST POPULAR</span>
-              <div class="zv-bundle-card-body">
-                <div class="zv-bundle-card-left">
-                  <div class="zv-bundle-radio"></div>
-                  <div class="zv-bundle-card-info">
-                    <span class="zv-bundle-card-name">Buy 2 (Duo Pack)</span>
-                    <span class="zv-bundle-card-sub">Double Supply &middot; Free Tracked Shipping</span>
-                  </div>
-                </div>
-                <div class="zv-bundle-card-pricing">
-                  <span class="zv-bundle-card-total">{{ current_variant.price | times: 2 | money }}</span>
-                  <span class="zv-bundle-card-unit">Save 45%</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- TIER 1: BUY 1 (STARTER) -->
+            <!-- TIER 2: 2 SETS (MOST POPULAR) -->
             <div 
               class="zv-bundle-card" 
               data-qty="1"
-              data-price-cents="{{ current_variant.price }}"
-              data-compare-cents="{{ current_variant.compare_at_price | default: current_variant.price }}"
+              data-variant-id="{{ t2_id }}"
+              data-price-cents="{{ t2_price }}"
+              data-compare-cents="{{ t1_price | times: 2 }}"
+              data-tier-level="2"
+            >
+              <span class="zv-bundle-card-badge">🔥 MOST POPULAR &middot; SAVE {{ t2_savings | money }}</span>
+              <div class="zv-bundle-card-body">
+                <div class="zv-bundle-card-left">
+                  <div class="zv-bundle-radio"></div>
+                  <div class="zv-bundle-card-info">
+                    <span class="zv-bundle-card-name">2 Sets (Duo Team Pack)</span>
+                    <span class="zv-bundle-card-sub">4 Blasters + 2 Projectors &middot; Free Shipping</span>
+                  </div>
+                </div>
+                <div class="zv-bundle-card-pricing">
+                  <span class="zv-bundle-card-total">{{ t2_price | money }}</span>
+                  <span class="zv-bundle-card-unit">{{ t2_price | divided_by: 2 | money }} / set</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- TIER 1: 1 SET (STARTER) -->
+            <div 
+              class="zv-bundle-card" 
+              data-qty="1"
+              data-variant-id="{{ t1_id }}"
+              data-price-cents="{{ t1_price }}"
+              data-compare-cents="{{ t1_price }}"
+              data-tier-level="1"
             >
               <div class="zv-bundle-card-body">
                 <div class="zv-bundle-card-left">
                   <div class="zv-bundle-radio"></div>
                   <div class="zv-bundle-card-info">
-                    <span class="zv-bundle-card-name">Buy 1 (Single Item)</span>
-                    <span class="zv-bundle-card-sub">Standard Starter Package</span>
+                    <span class="zv-bundle-card-name">1 Set (Starter Battle Pack)</span>
+                    <span class="zv-bundle-card-sub">2 Blasters + 1 Target Projector</span>
                   </div>
                 </div>
                 <div class="zv-bundle-card-pricing">
-                  <span class="zv-bundle-card-total">{{ current_variant.price | money }}</span>
-                  <span class="zv-bundle-card-unit" style="background: var(--zv-surface-muted); color: var(--zv-muted);">Standard</span>
+                  <span class="zv-bundle-card-total">{{ t1_price | money }}</span>
+                  <span class="zv-bundle-card-unit" style="background: var(--zv-surface-muted); color: var(--zv-muted);">{{ t1_price | money }} / set</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- GIFT & SHIPPING UNLOCK PROGRESSION BAR -->
+          <!-- SHIPPING & PERKS PROGRESSION BAR (FACTUAL & VERIFIED) -->
           <div class="zv-gift-unlock unlocked" id="zvGiftUnlock">
-            <div class="zv-gift-icon-box">🎁</div>
+            <div class="zv-gift-icon-box" id="zvGiftIcon">⚡</div>
             <div class="zv-gift-text">
-              <span class="zv-gift-title" id="zvGiftTitle">🎁 FREE Mystery Gift &amp; Priority Shipping</span>
-              <span class="zv-gift-sub" id="zvGiftSub">You unlocked the maximum tier bundle perks!</span>
+              <span class="zv-gift-title" id="zvGiftTitle">⚡ FREE Tracked Shipping &amp; VIP Priority Dispatch</span>
+              <span class="zv-gift-sub" id="zvGiftSub">Maximum bundle savings unlocked &middot; Insured US carrier transit</span>
             </div>
             <span class="zv-gift-status-badge" id="zvGiftStatusBadge">UNLOCKED</span>
           </div>
@@ -295,15 +304,17 @@
             <span class="zv-trust-badge-title">256-Bit SSL</span>
             <span class="zv-trust-badge-desc">Encrypted checkout</span>
           </div>
+        </div>
+
         <!-- COLLAPSIBLE ACCORDION GROUP (T01 PATTERN) -->
         <div class="zv-pdp-accordions" style="margin-top: 24px; border-top: 1px solid var(--zv-border);">
           <details style="border-bottom: 1px solid var(--zv-border); padding: 14px 0; cursor: pointer;" open>
             <summary style="font-weight: 800; font-size: 15px; color: var(--zv-heading); list-style: none; display: flex; justify-content: space-between; align-items: center;">
-              <span>Product Overview &amp; Specifications</span>
+              <span>Product Overview &amp; Key Highlights</span>
               <span style="font-size: 18px;">▾</span>
             </summary>
             <div style="font-size: 14px; line-height: 1.6; color: var(--zv-body); margin-top: 10px;">
-              {{ product.description }}
+              {{ prod_desc }}
             </div>
           </details>
 
@@ -313,7 +324,7 @@
               <span style="font-size: 18px;">▾</span>
             </summary>
             <div style="font-size: 14px; line-height: 1.6; color: var(--zv-body); margin-top: 10px;">
-              Every order is packaged in protective heavy-duty boxing and dispatched directly from our regional US fulfillment centers within 24–48 business hours. Carrier tracking is provided via email and SMS immediately upon shipment.
+              Every order is packaged in protective heavy-duty boxing and dispatched directly from regional US fulfillment centers within 24–48 business hours. Carrier tracking is provided via email immediately upon shipment.
             </div>
           </details>
 
@@ -323,7 +334,7 @@
               <span style="font-size: 18px;">▾</span>
             </summary>
             <div style="font-size: 14px; line-height: 1.6; color: var(--zv-body); margin-top: 10px;">
-              Try Zavelyn in your own home for a full 30 days. If you are not completely satisfied with its performance and quality, our US-based support team will issue a prompt and courteous refund.
+              Try TRYMALORA in your own home for a full 30 days. If you are not completely satisfied with its performance and quality, our US-based support team will assist with a prompt and courteous return.
             </div>
           </details>
         </div>
@@ -337,12 +348,10 @@
 <!-- STICKY ATC BAR ON SCROLL -->
 <div class="zv-sticky-bar" id="zvStickyBar" role="region" aria-label="Quick Add to Cart">
   <div class="zv-sticky-prod-info">
-    {% if product.featured_image %}
-      <img src="{{ product.featured_image | image_url: width: 88 }}" alt="{{ product.title | escape }}" class="zv-sticky-thumb">
-    {% endif %}
+    <img src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173020_6c8c1c4cf7d711cdd5a4d6aa91290eb2_e583f568-e0e8-4c22-9785-6dc4d0eb727b.jpg" alt="{{ prod_title | escape }}" class="zv-sticky-thumb">
     <div>
-      <div class="zv-sticky-name">{{ product.title }}</div>
-      <div class="zv-sticky-price" id="zvStickyPrice">{{ current_variant.price | times: 3 | money }}</div>
+      <div class="zv-sticky-name">{{ prod_title }}</div>
+      <div class="zv-sticky-price" id="zvStickyPrice">{{ t3_price | money }}</div>
     </div>
   </div>
   <button type="button" class="zv-btn zv-btn-accent" id="zvStickyBtn" style="padding: 12px 28px;">
@@ -354,11 +363,11 @@
 
 {% schema %}
 {
-  "name": "Zavelyn V4 PDP Buy Box",
+  "name": "Trymalora PDP Buy Box",
   "settings": [],
   "presets": [
     {
-      "name": "Zavelyn V4 PDP Buy Box"
+      "name": "Trymalora PDP Buy Box"
     }
   ]
 }

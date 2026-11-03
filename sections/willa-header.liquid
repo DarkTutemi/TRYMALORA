@@ -30,10 +30,9 @@
       {% endfor %}
       {% if nav_count == 0 %}
         <a href="/">Home</a>
-        <a href="/collections/best-sellers">Best Sellers</a>
-        <a href="/collections/fence-and-farm">Fence &amp; Farm</a>
-        <a href="/collections/power-tools">Power Tools</a>
-        <a href="/collections/garden-and-outdoor">Garden &amp; Outdoor</a>
+        <a href="/collections/interactive-toys">Interactive Toys</a>
+        <a href="/collections/all?view=showroom">2.5D Showroom</a>
+        <a href="/collections/all">All Products</a>
         <a href="/pages/track-order">Track Order</a>
       {% endif %}
     </nav>
@@ -41,8 +40,8 @@
     <!-- Brand Logo (Center) -->
     <div class="willa-logo-wrap">
       <a href="/" class="willa-logo-link">
-        <span class="willa-logo-icon">🌿</span>
-        <span class="willa-logo-text">{{ section.settings.logo_text | default: 'ZAVELYN' }}<sup class="willa-reg">®</sup></span>
+        <span class="willa-logo-icon">✨</span>
+        <span class="willa-logo-text">{{ section.settings.logo_text | default: 'TRYMALORA' }}<sup class="willa-reg">®</sup></span>
       </a>
     </div>
 
@@ -64,8 +63,8 @@
 <div class="willa-nav-drawer" id="willaNavDrawer">
   <div class="willa-drawer-header">
     <div class="willa-drawer-logo">
-      <span>🌿</span>
-      <strong>{{ section.settings.logo_text | default: 'ZAVELYN' }}<sup class="willa-reg">®</sup></strong>
+      <span>✨</span>
+      <strong>{{ section.settings.logo_text | default: 'TRYMALORA' }}<sup class="willa-reg">®</sup></strong>
     </div>
     <button type="button" class="willa-drawer-close" onclick="toggleWillaDrawer()" aria-label="Close menu">&times;</button>
   </div>
@@ -87,12 +86,9 @@
       {% endfor %}
       {% if drawer_count == 0 %}
         <li><a href="/"><span class="menu-icon">🏠</span> Home</a></li>
-        <li><a href="/collections/best-sellers"><span class="menu-icon">🌟</span> Best Sellers <span class="hot-badge">HOT</span></a></li>
-        <li><a href="/collections/fence-and-farm"><span class="menu-icon">🌾</span> Fence &amp; Farm Repair</a></li>
-        <li><a href="/collections/power-tools"><span class="menu-icon">⚡</span> Power &amp; Precision Tools</a></li>
-        <li><a href="/collections/garden-and-outdoor"><span class="menu-icon">🌿</span> Lawn, Garden &amp; Outdoor</a></li>
-        <li><a href="/collections/home-and-workshop"><span class="menu-icon">🛠️</span> Home &amp; Workshop Solutions</a></li>
-        <li><a href="/collections/all-products"><span class="menu-icon">🔍</span> Shop All Products</a></li>
+        <li><a href="/collections/interactive-toys"><span class="menu-icon">🎯</span> Interactive Toys <span class="hot-badge">NEW</span></a></li>
+        <li><a href="/collections/all?view=showroom"><span class="menu-icon">🏛️</span> 2.5D Showroom</a></li>
+        <li><a href="/collections/all"><span class="menu-icon">🛍️</span> Shop All Products</a></li>
         <li class="divider"></li>
         <li><a href="/pages/track-order"><span class="menu-icon">📦</span> Track Order</a></li>
         <li><a href="/policies/shipping-policy"><span class="menu-icon">🚚</span> Shipping &amp; Delivery</a></li>

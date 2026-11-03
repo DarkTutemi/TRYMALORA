@@ -9,19 +9,30 @@
           "type": "nav_link",
           "settings": {
             "title": "Home",
-            "link": "\/",
+            "link": "/",
             "icon": "🏠",
             "show_desktop": true,
             "show_mobile": true
           }
         },
-        "nav_best": {
+        "nav_toys": {
           "type": "nav_link",
           "settings": {
-            "title": "Best Sellers",
-            "link": "\/collections\/best-sellers",
-            "icon": "🌟",
-            "badge": "HOT",
+            "title": "Interactive Toys",
+            "link": "/collections/interactive-toys",
+            "icon": "🎯",
+            "badge": "NEW",
+            "show_desktop": true,
+            "show_mobile": true
+          }
+        },
+        "nav_showroom": {
+          "type": "nav_link",
+          "settings": {
+            "title": "2.5D Showroom",
+            "link": "/collections/all?view=showroom",
+            "icon": "🏛️",
+            "badge": "3D",
             "show_desktop": true,
             "show_mobile": true
           }
@@ -30,70 +41,9 @@
           "type": "nav_link",
           "settings": {
             "title": "All Products",
-            "link": "\/collections\/all-products",
+            "link": "/collections/all",
             "icon": "🛍️",
             "show_desktop": true,
-            "show_mobile": true
-          }
-        },
-        "nav_deals": {
-          "type": "nav_link",
-          "settings": {
-            "title": "Deals of the Day",
-            "link": "\/collections\/deals-of-the-day",
-            "icon": "⚡",
-            "badge": "SALE",
-            "show_desktop": true,
-            "show_mobile": true
-          }
-        },
-        "nav_handpans": {
-          "type": "nav_link",
-          "settings": {
-            "title": "Handpans",
-            "link": "\/collections\/zavelyn-handpans",
-            "icon": "🎵",
-            "show_desktop": true,
-            "show_mobile": true
-          }
-        },
-        "nav_power": {
-          "type": "nav_link",
-          "settings": {
-            "title": "Power & Tools",
-            "link": "\/collections\/power-tools",
-            "icon": "⚡",
-            "show_desktop": true,
-            "show_mobile": true
-          }
-        },
-        "nav_fence": {
-          "type": "nav_link",
-          "settings": {
-            "title": "Fence & Farm",
-            "link": "\/collections\/fence-and-farm",
-            "icon": "🌾",
-            "show_desktop": true,
-            "show_mobile": true
-          }
-        },
-        "nav_garden": {
-          "type": "nav_link",
-          "settings": {
-            "title": "Garden & Outdoor",
-            "link": "\/collections\/garden-and-outdoor",
-            "icon": "🌿",
-            "show_desktop": false,
-            "show_mobile": true
-          }
-        },
-        "nav_workshop": {
-          "type": "nav_link",
-          "settings": {
-            "title": "Home & Workshop",
-            "link": "\/collections\/home-and-workshop",
-            "icon": "🛠️",
-            "show_desktop": false,
             "show_mobile": true
           }
         },
@@ -101,7 +51,7 @@
           "type": "nav_link",
           "settings": {
             "title": "Track Order",
-            "link": "\/pages\/track-order",
+            "link": "/pages/track-order",
             "icon": "📦",
             "show_desktop": true,
             "show_mobile": true
@@ -110,20 +60,15 @@
       },
       "block_order": [
         "nav_home",
-        "nav_best",
+        "nav_toys",
+        "nav_showroom",
         "nav_all",
-        "nav_deals",
-        "nav_handpans",
-        "nav_power",
-        "nav_fence",
-        "nav_garden",
-        "nav_workshop",
         "nav_track"
       ],
       "settings": {
-        "logo_text": "ZAVELYN",
-        "announcement_desktop": "★ FREE US SHIPPING OVER $49 · 100% SATISFACTION GUARANTEED · 30-DAY MONEY-BACK GUARANTEE ★",
-        "announcement_mobile": "★ FREE US SHIPPING OVER $49 · 30-DAY MONEY-BACK GUARANTEE ★"
+        "logo_text": "TRYMALORA",
+        "announcement_desktop": "★ FREE US SHIPPING OVER $49 · 100% SATISFACTION GUARANTEED · 30-DAY RETURN POLICY ★",
+        "announcement_mobile": "★ FREE US SHIPPING OVER $49 · 30-DAY RETURN POLICY ★"
       }
     }
   },

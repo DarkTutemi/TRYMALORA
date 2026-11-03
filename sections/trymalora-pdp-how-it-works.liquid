@@ -1,0 +1,121 @@
+{% comment %}
+  TRYMALORA - HOW IT WORKS & GAME MODES
+  Step-by-step game mechanics: Target Projection mode vs Multiplayer Team Battle
+{% endcomment %}
+
+{{ 'zavelyn-v4-tokens.css' | asset_url | stylesheet_tag }}
+
+<section class="tm-how-it-works-section" style="padding: 64px 0; background: #FFFFFF;">
+  <div class="zv-container" style="max-width: 1120px; margin: 0 auto; padding: 0 20px;">
+    
+    <div style="text-align: center; max-width: 720px; margin: 0 auto 48px;">
+      <span class="zv-badge zv-badge-forest" style="display: inline-block; padding: 5px 14px; border-radius: 999px; background: var(--zv-primary, #17352B); color: #FFFFFF; font-size: 11.5px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 12px;">
+        INTERACTIVE GAMEPLAY
+      </span>
+      <h2 style="font-family: var(--zv-font-heading, sans-serif); font-size: 32px; font-weight: 800; color: var(--zv-heading, #111827); line-height: 1.2; margin: 0 0 12px;">
+        Dual Play Modes: Target Practice &amp; Team Battle
+      </h2>
+      <p style="font-size: 15.5px; line-height: 1.6; color: var(--zv-body, #4B5563); margin: 0;">
+        Fast setup allows solo players to sharpen their aim against dynamic wall projections, or groups to engage in exciting tactical team arena battles.
+      </p>
+    </div>
+
+    <!-- 2 Column Feature Breakdown -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-bottom: 48px;">
+      
+      <!-- Mode 1: Target Projection -->
+      <div style="background: var(--zv-surface-muted, #F8F9F8); border: 1.5px solid var(--zv-border, #E5E7EB); border-radius: 16px; padding: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+        <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 800; color: var(--zv-primary, #17352B); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">
+          <span>🎯 MODE A &middot; SOLO &amp; CO-OP</span>
+        </div>
+        <h3 style="font-size: 22px; font-weight: 800; color: var(--zv-heading, #111827); margin: 0 0 12px;">
+          Dynamic Wall-Target Projection
+        </h3>
+        <p style="font-size: 14.5px; line-height: 1.6; color: var(--zv-body, #4B5563); margin: 0 0 20px;">
+          Position the projector facing any light-colored wall or ceiling in a dimmed room. Turn it on, and it will animate roving UFO and target graphics across the room.
+        </p>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px; font-weight: 600; color: var(--zv-heading, #111827);">
+          <li style="display: flex; align-items: center; gap: 10px;">
+            <span style="color: #10B981; font-weight: 800;">✓</span>
+            <span>Adjustable 180° lens angle for walls or ceilings</span>
+          </li>
+          <li style="display: flex; align-items: center; gap: 10px;">
+            <span style="color: #10B981; font-weight: 800;">✓</span>
+            <span>Real-time audio feedback when a target is struck</span>
+          </li>
+          <li style="display: flex; align-items: center; gap: 10px;">
+            <span style="color: #10B981; font-weight: 800;">✓</span>
+            <span>Promotes hand-eye coordination &amp; active movement</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Mode 2: Team Battle -->
+      <div style="background: var(--zv-surface-muted, #F8F9F8); border: 1.5px solid var(--zv-border, #E5E7EB); border-radius: 16px; padding: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+        <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 800; color: #DC2626; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">
+          <span>⚡ MODE B &middot; MULTIPLAYER</span>
+        </div>
+        <h3 style="font-size: 22px; font-weight: 800; color: var(--zv-heading, #111827); margin: 0 0 12px;">
+          Tactical Multi-Team Battle Arena
+        </h3>
+        <p style="font-size: 14.5px; line-height: 1.6; color: var(--zv-body, #4B5563); margin: 0 0 20px;">
+          Switch team colors directly on each blaster. Players can battle head-to-head or form teams with unlimited synchronized blasters within range.
+        </p>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px; font-weight: 600; color: var(--zv-heading, #111827);">
+          <li style="display: flex; align-items: center; gap: 10px;">
+            <span style="color: #10B981; font-weight: 800;">✓</span>
+            <span>4 Distinct Team Colors (Blue, Red, Green, White)</span>
+          </li>
+          <li style="display: flex; align-items: center; gap: 10px;">
+            <span style="color: #10B981; font-weight: 800;">✓</span>
+            <span>Integrated vibration motor triggers when tagged</span>
+          </li>
+          <li style="display: flex; align-items: center; gap: 10px;">
+            <span style="color: #10B981; font-weight: 800;">✓</span>
+            <span>LED life meters display remaining health accurately</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- 3-Step Setup Flow -->
+    <div style="background: var(--zv-primary, #17352B); border-radius: 16px; padding: 36px 28px; color: #FFFFFF;">
+      <div style="text-align: center; margin-bottom: 28px;">
+        <h3 style="font-size: 22px; font-weight: 800; margin: 0 0 6px;">3-Step Quick Start</h3>
+        <p style="font-size: 14px; color: rgba(255,255,255,0.8); margin: 0;">No complex apps, pairing codes, or WiFi required.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; text-align: center;">
+        <div>
+          <div style="width: 44px; height: 44px; line-height: 44px; border-radius: 50%; background: var(--zv-accent, #BCE76A); color: #111827; font-weight: 900; font-size: 18px; margin: 0 auto 14px;">1</div>
+          <h4 style="font-size: 16px; font-weight: 700; margin: 0 0 6px;">Insert Batteries</h4>
+          <p style="font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.75); margin: 0;">Install 2x AAA batteries into each blaster and 3x AA batteries into the projector.</p>
+        </div>
+        <div>
+          <div style="width: 44px; height: 44px; line-height: 44px; border-radius: 50%; background: var(--zv-accent, #BCE76A); color: #111827; font-weight: 900; font-size: 18px; margin: 0 auto 14px;">2</div>
+          <h4 style="font-size: 16px; font-weight: 700; margin: 0 0 6px;">Choose Your Mode</h4>
+          <p style="font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.75); margin: 0;">Turn on the projector for wall target drills, or select your blaster team color for PvP.</p>
+        </div>
+        <div>
+          <div style="width: 44px; height: 44px; line-height: 44px; border-radius: 50%; background: var(--zv-accent, #BCE76A); color: #111827; font-weight: 900; font-size: 18px; margin: 0 auto 14px;">3</div>
+          <h4 style="font-size: 16px; font-weight: 700; margin: 0 0 6px;">Commence Battle</h4>
+          <p style="font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.75); margin: 0;">Aim, pull the trigger, and enjoy tactile feedback, laser sound effects, and LED tracking.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trymalora How It Works",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Trymalora How It Works"
+    }
+  ]
+}
+{% endschema %}
