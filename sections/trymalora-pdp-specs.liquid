@@ -1,63 +1,173 @@
 {% comment %}
-  TRYMALORA - TECHNICAL SPECIFICATIONS & SAFETY SECTION
-  Factual technical parameters and compliance details.
+  TRYMALORA - TECHNICAL SPECIFICATIONS & COMPLIANCE (TASKS 14 & 15)
+  Refined editorial specifications table matching ShopSideK T01 styling.
 {% endcomment %}
 
-{{ 'zavelyn-v4-tokens.css' | asset_url | stylesheet_tag }}
+<style>
+  .tm-specs-section {
+    padding: 72px 0;
+    background: var(--zv-pdp-bg, #FFF8F5);
+    border-top: 1px solid var(--zv-pdp-line, #EAD7DD);
+    font-family: var(--zv-font-body, 'Inter', system-ui, sans-serif);
+    color: var(--zv-pdp-text, #2B1B24);
+  }
 
-<section class="tm-specs-section" style="padding: 60px 0; background: var(--zv-surface-muted, #F8F9F8); border-top: 1px solid var(--zv-border, #E5E7EB);">
-  <div class="zv-container" style="max-width: 980px; margin: 0 auto; padding: 0 20px;">
-    
-    <div style="text-align: center; max-width: 680px; margin: 0 auto 36px;">
-      <span class="zv-badge zv-badge-forest" style="display: inline-block; padding: 5px 14px; border-radius: 999px; background: var(--zv-primary, #17352B); color: #FFFFFF; font-size: 11.5px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 12px;">
-        ENGINEERED FOR SAFE PLAY
+  .tm-specs-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 48px;
+  }
+
+  .tm-specs-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: var(--zv-radius-full, 9999px);
+    background: var(--zv-pdp-tint, #F8E4EB);
+    color: var(--zv-pdp-accent, #B0476E);
+    border: 1px solid var(--zv-pdp-line, #EAD7DD);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .tm-specs-title {
+    font-family: var(--zv-font-heading, 'Fraunces', Georgia, serif);
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--zv-pdp-heading, #2B1B24);
+    line-height: 1.18;
+    letter-spacing: -0.6px;
+    margin: 0 0 12px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .tm-specs-title {
+      font-size: 38px;
+    }
+  }
+
+  .tm-specs-subtitle {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--zv-pdp-body, #4A3841);
+    margin: 0;
+  }
+
+  .tm-specs-card {
+    background: #FFFFFF;
+    border: 1px solid var(--zv-pdp-line, #EAD7DD);
+    border-radius: var(--zv-radius-lg, 16px);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(43, 27, 36, 0.04);
+  }
+
+  .tm-specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .tm-specs-table tr {
+    border-bottom: 1px solid var(--zv-pdp-line, #EAD7DD);
+  }
+
+  .tm-specs-table tr:last-child {
+    border-bottom: none;
+  }
+
+  .tm-specs-label {
+    padding: 16px 24px;
+    font-weight: 700;
+    color: var(--zv-pdp-heading, #2B1B24);
+    width: 36%;
+    background: var(--zv-pdp-surface, #FBEDE8);
+    vertical-align: top;
+  }
+
+  .tm-specs-val {
+    padding: 16px 24px;
+    color: var(--zv-pdp-body, #4A3841);
+    line-height: 1.55;
+  }
+
+  @media screen and (max-width: 600px) {
+    .tm-specs-table, .tm-specs-table tbody, .tm-specs-table tr, .tm-specs-table td {
+      display: block;
+      width: 100%;
+    }
+    .tm-specs-label {
+      padding: 14px 18px 6px;
+      background: #FFFFFF;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--zv-pdp-accent, #B0476E);
+    }
+    .tm-specs-val {
+      padding: 0 18px 14px;
+    }
+  }
+</style>
+
+<section class="tm-specs-section" id="tmProductSpecs">
+  <div class="zv-container" style="max-width: 960px; margin: 0 auto; padding: 0 24px;">
+
+    <!-- Section Header -->
+    <div class="tm-specs-header">
+      <span class="tm-specs-chip">
+        ✦ HARDWARE &amp; SAFETY SPECIFICATIONS
       </span>
-      <h2 style="font-family: var(--zv-font-heading, sans-serif); font-size: 32px; font-weight: 800; color: var(--zv-heading, #111827); line-height: 1.2; margin: 0 0 12px;">
-        Technical Specifications
+      <h2 class="tm-specs-title">
+        Technical Details &amp; Build Quality
       </h2>
-      <p style="font-size: 15.5px; line-height: 1.6; color: var(--zv-body, #4B5563); margin: 0;">
-        Factual parameters, component materials, and optical safety information.
+      <p class="tm-specs-subtitle">
+        Engineered for safe family play with certified infrared optical light, impact-resistant materials, and tactile haptic feedback.
       </p>
     </div>
 
-    <!-- Specs Table Card -->
-    <div style="background: #FFFFFF; border: 1.5px solid var(--zv-border, #E5E7EB); border-radius: 16px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.04);">
-      <table style="width: 100%; border-collapse: collapse; font-size: 14.5px;">
+    <!-- Table Card -->
+    <div class="tm-specs-card">
+      <table class="tm-specs-table">
         <tbody>
-          <tr style="border-bottom: 1px solid var(--zv-border, #E5E7EB);">
-            <td style="padding: 16px 24px; font-weight: 800; color: var(--zv-heading, #111827); width: 38%; background: #FAFBF9;">Optical Technology</td>
-            <td style="padding: 16px 24px; color: var(--zv-body, #4B5563);">Invisible Optical Infrared Sensor (Eye-safe; no high-power lasers; zero physical projectiles)</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--zv-border, #E5E7EB);">
-            <td style="padding: 16px 24px; font-weight: 800; color: var(--zv-heading, #111827); background: #FAFBF9;">Recommended Age</td>
-            <td style="padding: 16px 24px; color: var(--zv-body, #4B5563);">6+ Years (Children, Teens &amp; Family Play)</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--zv-border, #E5E7EB);">
-            <td style="padding: 16px 24px; font-weight: 800; color: var(--zv-heading, #111827); background: #FAFBF9;">Effective Indoor Range</td>
-            <td style="padding: 16px 24px; color: var(--zv-body, #4B5563);">Up to 15–30 feet (optimal performance in dim to moderate ambient lighting)</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--zv-border, #E5E7EB);">
-            <td style="padding: 16px 24px; font-weight: 800; color: var(--zv-heading, #111827); background: #FAFBF9;">Hardware Material</td>
-            <td style="padding: 16px 24px; color: var(--zv-body, #4B5563);">Impact-Resistant, Non-Toxic ABS Thermoplastic with rounded ergonomic grips</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--zv-border, #E5E7EB);">
-            <td style="padding: 16px 24px; font-weight: 800; color: var(--zv-heading, #111827); background: #FAFBF9;">Battery Requirements</td>
-            <td style="padding: 16px 24px; color: var(--zv-body, #4B5563);">
-              <strong>Blasters:</strong> 4 × 1.5V AAA (2 per blaster) &middot; <strong>Projector:</strong> 3 × 1.5V AA<br>
-              <span style="font-size: 13px; color: #92400E; font-weight: 600;">(Batteries not included in retail package)</span>
-            </td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--zv-border, #E5E7EB);">
-            <td style="padding: 16px 24px; font-weight: 800; color: var(--zv-heading, #111827); background: #FAFBF9;">Multiplayer Channels</td>
-            <td style="padding: 16px 24px; color: var(--zv-body, #4B5563);">4 Selectable Team Colors (Blue, Red, Green, White) with unlimited players per channel</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--zv-border, #E5E7EB);">
-            <td style="padding: 16px 24px; font-weight: 800; color: var(--zv-heading, #111827); background: #FAFBF9;">Sensory Feedback</td>
-            <td style="padding: 16px 24px; color: var(--zv-body, #4B5563);">Dynamic acoustic blaster sounds, hit-sensing vibration motors &amp; real-time LED health bars</td>
+          <tr>
+            <td class="tm-specs-label">Optical Safety Tech</td>
+            <td class="tm-specs-val">Certified Eye-Safe Optical Infrared (Invisible beam, zero high-powered lasers, zero physical darts or projectiles).</td>
           </tr>
           <tr>
-            <td style="padding: 16px 24px; font-weight: 800; color: var(--zv-heading, #111827); background: #FAFBF9;">Projector Articulation</td>
-            <td style="padding: 16px 24px; color: var(--zv-body, #4B5563);">180° variable elevation lens for wall, ceiling, and corridor gaming surfaces</td>
+            <td class="tm-specs-label">Recommended Age</td>
+            <td class="tm-specs-val">6+ Years (Children, teenagers, and multi-generation family gatherings).</td>
+          </tr>
+          <tr>
+            <td class="tm-specs-label">Effective Range</td>
+            <td class="tm-specs-val">Up to 15–30 feet indoors (operates best in dim to moderate ambient indoor light).</td>
+          </tr>
+          <tr>
+            <td class="tm-specs-label">Housing Materials</td>
+            <td class="tm-specs-val">Impact-resistant, BPA-free ABS thermoplastic with rounded child-safe contours.</td>
+          </tr>
+          <tr>
+            <td class="tm-specs-label">Battery Requirements</td>
+            <td class="tm-specs-val">
+              <strong>Blasters:</strong> 4 × 1.5V AAA (2 per blaster)<br>
+              <strong>Projector:</strong> 3 × 1.5V AA<br>
+              <span style="font-size: 12.5px; color: #9A3412; font-weight: 600;">(Batteries sold separately; alkaline recommended)</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="tm-specs-label">Multiplayer Channels</td>
+            <td class="tm-specs-val">4 Selectable Team Frequencies (Blue, Red, Green, White) with unlimited players per channel.</td>
+          </tr>
+          <tr>
+            <td class="tm-specs-label">Sensory Feedback</td>
+            <td class="tm-specs-val">Acoustic battle sound effects, internal recoil vibration motor &amp; 3-light LED health meters.</td>
+          </tr>
+          <tr>
+            <td class="tm-specs-label">Projector Articulation</td>
+            <td class="tm-specs-val">180° variable elevation lens allowing wall, ceiling, and corridor projection.</td>
           </tr>
         </tbody>
       </table>

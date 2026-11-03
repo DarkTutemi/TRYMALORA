@@ -46,15 +46,17 @@
     function updateCtaLabels(priceCents) {
       currentPriceCents = priceCents;
       const formatted = formatMoney(priceCents);
-      if (claimBtnLabel) {
-        claimBtnLabel.textContent = 'ADD TO CART · ' + formatted;
+      const claimLabel = document.getElementById('zvBtnClaimLabel');
+      if (claimLabel) {
+        claimLabel.textContent = 'ADD TO CART · ' + formatted;
       } else if (claimBtn) {
-        claimBtn.innerHTML = '<span>ADD TO CART · ' + formatted + '</span>';
+        claimBtn.innerHTML = '<span class="zv-atc-main" id="zvBtnClaimLabel">ADD TO CART · ' + formatted + '</span><span class="zv-atc-sub">30-DAY MONEY-BACK GUARANTEE</span>';
       }
-      if (stickyBtnLabel) {
-        stickyBtnLabel.textContent = 'ADD TO CART · ' + formatted;
+      const stickyLabel = document.getElementById('zvStickyBtnLabel');
+      if (stickyLabel) {
+        stickyLabel.textContent = 'ADD TO CART · ' + formatted;
       } else if (stickyBtn) {
-        stickyBtn.innerHTML = '<span>ADD TO CART · ' + formatted + '</span>';
+        stickyBtn.innerHTML = '<span class="zv-atc-main" id="zvStickyBtnLabel">ADD TO CART · ' + formatted + '</span>';
       }
     }
 
@@ -253,7 +255,12 @@
       const originalHtml = btn ? btn.innerHTML : '';
       if (btn) {
         btn.disabled = true;
-        btn.innerHTML = goToCheckout ? '<span>PROCEEDING...</span>' : '<span>ADDING TO CART...</span>';
+        const claimLabel = document.getElementById('zvBtnClaimLabel');
+        if (btn === claimBtn && claimLabel) {
+          claimLabel.textContent = 'ADDING TO CART...';
+        } else {
+          btn.innerHTML = goToCheckout ? '<span>PROCEEDING...</span>' : '<span>ADDING TO CART...</span>';
+        }
       }
 
       try {

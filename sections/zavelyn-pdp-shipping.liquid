@@ -1,147 +1,187 @@
-{% schema %}
-{
-  "name": "Doorstep Delivery & Track",
-  "settings": [
-    {
-      "type": "text",
-      "id": "badge_text",
-      "label": "Badge Text",
-      "default": "FAST & INSURED TRACKED US DELIVERY"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Doorstep Delivery Guarantee & Real-Time Tracking"
-    },
-    {
-      "type": "textarea",
-      "id": "subheading",
-      "label": "Description",
-      "default": "Every TRYMALORA order is cushioned in heavy-duty protective packaging, inspected for quality, and dispatched from regional US warehouses within 24–48 business hours. We partner directly with USPS, FedEx, and DHL Express to guarantee rapid, dependable doorstep transit."
-    },
-    {
-      "type": "header",
-      "content": "Section Images"
-    },
-    {
-      "type": "image_picker",
-      "id": "shipping_img_1",
-      "label": "Image 1 (Packaging / Inspection)"
-    },
-    {
-      "type": "text",
-      "id": "shipping_img_1_url",
-      "label": "Image 1 Default URL",
-      "default": "https://cdn.shopify.com/s/files/1/0826/2483/9865/files/5555.webp?v=1792856415"
-    },
-    {
-      "type": "image_picker",
-      "id": "shipping_img_2",
-      "label": "Image 2 (Handover / Tracking Scan)"
-    },
-    {
-      "type": "text",
-      "id": "shipping_img_2_url",
-      "label": "Image 2 Default URL",
-      "default": "https://cdn.shopify.com/s/files/1/0826/2483/9865/files/44444.webp?v=1792856415"
-    },
-    {
-      "type": "header",
-      "content": "Trust Card 1"
-    },
-    {
-      "type": "text",
-      "id": "card1_icon",
-      "label": "Card 1 Icon",
-      "default": "⏱️"
-    },
-    {
-      "type": "text",
-      "id": "card1_title",
-      "label": "Card 1 Title",
-      "default": "24–48h Dispatch"
-    },
-    {
-      "type": "text",
-      "id": "card1_desc",
-      "label": "Card 1 Description",
-      "default": "Rapid order processing from regional US fulfillment hubs."
-    },
-    {
-      "type": "header",
-      "content": "Trust Card 2"
-    },
-    {
-      "type": "text",
-      "id": "card2_icon",
-      "label": "Card 2 Icon",
-      "default": "📦"
-    },
-    {
-      "type": "text",
-      "id": "card2_title",
-      "label": "Card 2 Title",
-      "default": "Insured Transit"
-    },
-    {
-      "type": "text",
-      "id": "card2_desc",
-      "label": "Card 2 Description",
-      "default": "Full protection against lost, stolen, or damaged parcels."
-    },
-    {
-      "type": "header",
-      "content": "Trust Card 3"
-    },
-    {
-      "type": "text",
-      "id": "card3_icon",
-      "label": "Card 3 Icon",
-      "default": "🔍"
-    },
-    {
-      "type": "text",
-      "id": "card3_title",
-      "label": "Card 3 Title",
-      "default": "Tracking Updates"
-    },
-    {
-      "type": "text",
-      "id": "card3_desc",
-      "label": "Card 3 Description",
-      "default": "Instant carrier tracking notifications via SMS and email."
-    },
-    {
-      "type": "header",
-      "content": "Trust Card 4"
-    },
-    {
-      "type": "text",
-      "id": "card4_icon",
-      "label": "Card 4 Icon",
-      "default": "🛡️"
-    },
-    {
-      "type": "text",
-      "id": "card4_title",
-      "label": "Card 4 Title",
-      "default": "Money-Back Guarantee"
-    },
-    {
-      "type": "text",
-      "id": "card4_desc",
-      "label": "Card 4 Description",
-      "default": "Risk-free 30-day money-back guarantee with zero hassle."
+{% comment %}
+  TRYMALORA - DOORSTEP DELIVERY & SHIPPING GUARANTEE
+  Refined to match ShopSideK T01 warm blush/plum styling.
+  Factual 24-48h dispatch, insured transit, and 30-day money-back guarantee.
+{% endcomment %}
+
+<style>
+  .zv-delivery-section {
+    padding: 72px 0;
+    background-color: var(--zv-pdp-bg, #FFF8F5);
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--zv-pdp-line, #EAD7DD);
+    font-family: var(--zv-font-body, 'Inter', system-ui, sans-serif);
+    color: var(--zv-pdp-text, #2B1B24);
+  }
+
+  @media (min-width: 993px) {
+    .zv-delivery-layout {
+      display: grid;
+      grid-template-columns: 4.5fr 5.5fr;
+      grid-template-areas:
+        "media header"
+        "media cards";
+      column-gap: 52px;
+      row-gap: 28px;
+      align-items: center;
     }
-  ],
-  "presets": [
-    {
-      "name": "Doorstep Delivery & Track"
+    .zv-delivery-media-col {
+      grid-area: media;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
-  ]
-}
-{% endschema %}
+    .zv-delivery-header {
+      grid-area: header;
+      margin-bottom: 0;
+    }
+    .zv-delivery-cards-grid {
+      grid-area: cards;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  }
+
+  .zv-delivery-img-wrap {
+    width: 100%;
+    border-radius: var(--zv-radius-md, 12px);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(43, 27, 36, 0.05);
+    background: #FFFFFF;
+    border: 1px solid var(--zv-pdp-line, #EAD7DD);
+  }
+
+  .zv-delivery-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+  }
+
+  .zv-delivery-img-wrap:hover .zv-delivery-img {
+    transform: scale(1.02);
+  }
+
+  .zv-delivery-header {
+    margin-bottom: 24px;
+  }
+
+  .zv-delivery-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: var(--zv-radius-full, 9999px);
+    background: var(--zv-pdp-tint, #F8E4EB);
+    color: var(--zv-pdp-accent, #B0476E);
+    border: 1px solid var(--zv-pdp-line, #EAD7DD);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .zv-delivery-title {
+    font-family: var(--zv-font-heading, 'Fraunces', Georgia, serif);
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: var(--zv-pdp-heading, #2B1B24);
+    letter-spacing: -0.5px;
+    margin: 0 0 14px;
+  }
+
+  @media (min-width: 768px) {
+    .zv-delivery-title {
+      font-size: 36px;
+    }
+  }
+
+  .zv-delivery-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--zv-pdp-body, #4A3841);
+    margin: 0;
+  }
+
+  .zv-trust-card {
+    background: #FFFFFF;
+    border: 1px solid var(--zv-pdp-line, #EAD7DD);
+    border-radius: var(--zv-radius-md, 12px);
+    padding: 18px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    box-shadow: 0 2px 10px rgba(43, 27, 36, 0.03);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .zv-trust-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--zv-pdp-accent, #B0476E);
+    box-shadow: 0 6px 20px rgba(43, 27, 36, 0.06);
+  }
+
+  .zv-trust-card-icon {
+    font-size: 20px;
+    line-height: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--zv-pdp-surface, #FBEDE8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--zv-pdp-accent, #B0476E);
+  }
+
+  .zv-trust-card-body {
+    flex: 1;
+  }
+
+  .zv-trust-card-title {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--zv-pdp-heading, #2B1B24);
+    margin: 0 0 4px;
+    line-height: 1.3;
+  }
+
+  .zv-trust-card-desc {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--zv-pdp-body, #4A3841);
+    margin: 0;
+  }
+
+  @media (max-width: 992px) {
+    .zv-delivery-section {
+      padding: 56px 0;
+    }
+    .zv-delivery-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .zv-delivery-header {
+      order: 1;
+    }
+    .zv-delivery-media-col {
+      order: 2;
+    }
+    .zv-delivery-cards-grid {
+      order: 3;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+</style>
 
 {%- assign img1_src = section.settings.shipping_img_1_url | default: 'https://cdn.shopify.com/s/files/1/0826/2483/9865/files/5555.webp?v=1792856415' -%}
 {%- if section.settings.shipping_img_1 != blank -%}
@@ -154,17 +194,17 @@
 {%- endif -%}
 
 <section class="zv-delivery-section" id="zv-doorstep-delivery">
-  <div class="zv-container">
+  <div class="zv-container" style="max-width: 1140px; margin: 0 auto; padding: 0 24px;">
     <div class="zv-delivery-layout">
       
       <!-- DESKTOP RIGHT (Top) / MOBILE 1ST: Header info -->
       <div class="zv-delivery-header">
-        <span class="zv-badge zv-badge-lime">
-          <span class="zv-badge-icon">🚚</span> {{ section.settings.badge_text | default: 'FAST &amp; INSURED TRACKED US DELIVERY' }}
+        <span class="zv-delivery-chip">
+          ✦ {{ section.settings.badge_text | default: 'FAST &amp; INSURED TRACKED US DELIVERY' }}
         </span>
         <h2 class="zv-delivery-title">{{ section.settings.heading | default: 'Doorstep Delivery Guarantee &amp; Real-Time Tracking' }}</h2>
         <p class="zv-delivery-desc">
-          {{ section.settings.subheading | default: 'Every Zavelyn order is cushioned in heavy-duty protective packaging, inspected for quality, and dispatched from regional US warehouses within 24–48 business hours. We partner directly with USPS, FedEx, and DHL Express to guarantee rapid, dependable doorstep transit.' }}
+          {{ section.settings.subheading | default: 'Every TRYMALORA order is cushioned in reinforced protective packaging, inspected for quality, and dispatched from regional US warehouses within 24–48 business hours. We partner directly with USPS, FedEx, and UPS to guarantee rapid, dependable doorstep transit.' }}
         </p>
       </div>
 
@@ -173,7 +213,7 @@
         <div class="zv-delivery-img-wrap">
           <img 
             src="{{ img1_src }}" 
-            alt="Zavelyn Order Quality Inspection and Protective Packaging" 
+            alt="TRYMALORA Order Quality Inspection and Protective Packaging" 
             width="600" 
             height="403"
             loading="lazy"
@@ -195,7 +235,7 @@
       <!-- DESKTOP RIGHT (Bottom) / MOBILE 3RD: 4 Trust Benefit Cards -->
       <div class="zv-delivery-cards-grid">
         <div class="zv-trust-card">
-          <div class="zv-trust-card-icon">{{ section.settings.card1_icon | default: '⏱️' }}</div>
+          <div class="zv-trust-card-icon">⏱️</div>
           <div class="zv-trust-card-body">
             <h3 class="zv-trust-card-title">{{ section.settings.card1_title | default: '24–48h Dispatch' }}</h3>
             <p class="zv-trust-card-desc">{{ section.settings.card1_desc | default: 'Rapid order processing from regional US fulfillment hubs.' }}</p>
@@ -203,26 +243,26 @@
         </div>
 
         <div class="zv-trust-card">
-          <div class="zv-trust-card-icon">{{ section.settings.card2_icon | default: '📦' }}</div>
+          <div class="zv-trust-card-icon">📦</div>
           <div class="zv-trust-card-body">
             <h3 class="zv-trust-card-title">{{ section.settings.card2_title | default: 'Insured Transit' }}</h3>
-            <p class="zv-trust-card-desc">{{ section.settings.card2_desc | default: 'Full protection against lost, stolen, or damaged parcels.' }}</p>
+            <p class="zv-trust-card-desc">{{ section.settings.card2_desc | default: 'Full carrier protection against lost, stolen, or damaged parcels.' }}</p>
           </div>
         </div>
 
         <div class="zv-trust-card">
-          <div class="zv-trust-card-icon">{{ section.settings.card3_icon | default: '🔍' }}</div>
+          <div class="zv-trust-card-icon">🔍</div>
           <div class="zv-trust-card-body">
             <h3 class="zv-trust-card-title">{{ section.settings.card3_title | default: 'Tracking Updates' }}</h3>
-            <p class="zv-trust-card-desc">{{ section.settings.card3_desc | default: 'Instant carrier tracking notifications via SMS and email.' }}</p>
+            <p class="zv-trust-card-desc">{{ section.settings.card3_desc | default: 'Instant live tracking notifications via SMS and email dispatch.' }}</p>
           </div>
         </div>
 
         <div class="zv-trust-card">
-          <div class="zv-trust-card-icon">{{ section.settings.card4_icon | default: '🛡️' }}</div>
+          <div class="zv-trust-card-icon">🛡️</div>
           <div class="zv-trust-card-body">
-            <h3 class="zv-trust-card-title">{{ section.settings.card4_title | default: 'Money-Back Guarantee' }}</h3>
-            <p class="zv-trust-card-desc">{{ section.settings.card4_desc | default: 'Risk-free 60-day money-back guarantee with zero hassle.' }}</p>
+            <h3 class="zv-trust-card-title">{{ section.settings.card4_title | default: '30-Day Guarantee' }}</h3>
+            <p class="zv-trust-card-desc">{{ section.settings.card4_desc | default: 'Risk-free 30-day money-back guarantee with effortless returns.' }}</p>
           </div>
         </div>
       </div>
@@ -230,3 +270,94 @@
     </div>
   </div>
 </section>
+
+{% schema %}
+{
+  "name": "Doorstep Delivery & Track",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "FAST & INSURED TRACKED US DELIVERY"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Doorstep Delivery Guarantee & Real-Time Tracking"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Description",
+      "default": "Every TRYMALORA order is cushioned in reinforced protective packaging, inspected for quality, and dispatched from regional US warehouses within 24–48 business hours. We partner directly with USPS, FedEx, and UPS to guarantee rapid, dependable doorstep transit."
+    },
+    {
+      "type": "text",
+      "id": "shipping_img_1_url",
+      "label": "Image 1 Default URL",
+      "default": "https://cdn.shopify.com/s/files/1/0826/2483/9865/files/5555.webp?v=1792856415"
+    },
+    {
+      "type": "text",
+      "id": "shipping_img_2_url",
+      "label": "Image 2 Default URL",
+      "default": "https://cdn.shopify.com/s/files/1/0826/2483/9865/files/44444.webp?v=1792856415"
+    },
+    {
+      "type": "text",
+      "id": "card1_title",
+      "label": "Card 1 Title",
+      "default": "24–48h Dispatch"
+    },
+    {
+      "type": "text",
+      "id": "card1_desc",
+      "label": "Card 1 Description",
+      "default": "Rapid order processing from regional US fulfillment hubs."
+    },
+    {
+      "type": "text",
+      "id": "card2_title",
+      "label": "Card 2 Title",
+      "default": "Insured Transit"
+    },
+    {
+      "type": "text",
+      "id": "card2_desc",
+      "label": "Card 2 Description",
+      "default": "Full carrier protection against lost, stolen, or damaged parcels."
+    },
+    {
+      "type": "text",
+      "id": "card3_title",
+      "label": "Card 3 Title",
+      "default": "Tracking Updates"
+    },
+    {
+      "type": "text",
+      "id": "card3_desc",
+      "label": "Card 3 Description",
+      "default": "Instant live tracking notifications via SMS and email dispatch."
+    },
+    {
+      "type": "text",
+      "id": "card4_title",
+      "label": "Card 4 Title",
+      "default": "30-Day Guarantee"
+    },
+    {
+      "type": "text",
+      "id": "card4_desc",
+      "label": "Card 4 Description",
+      "default": "Risk-free 30-day money-back guarantee with effortless returns."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Doorstep Delivery & Track"
+    }
+  ]
+}
+{% endschema %}

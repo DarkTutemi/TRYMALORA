@@ -97,27 +97,27 @@
     </ul>
 
     <div class="willa-drawer-promo">
-      <div class="promo-tag">{{ section.settings.promo_tag | default: 'LIMITED SPECIAL' }}</div>
-      <h4>{{ section.settings.promo_title | default: 'Spring Tool & Repair Sale' }}</h4>
-      <p>{{ section.settings.promo_desc | default: 'Save up to 50% OFF on our best-selling Zavelyn farm & workshop innovations.' }}</p>
-      <a href="{{ section.settings.promo_btn_link | default: '/collections/best-sellers' }}" class="willa-btn-primary" style="padding: 10px 18px; font-size: 13px;">{{ section.settings.promo_btn_text | default: 'SHOP 50% OFF NOW' }}</a>
+      <div class="promo-tag">{{ section.settings.promo_tag | default: 'FEATURED RELEASE' }}</div>
+      <h4>{{ section.settings.promo_title | default: 'Infrared Laser Battle Set' }}</h4>
+      <p>{{ section.settings.promo_desc | default: 'Screen-free family entertainment with dynamic wall target projections and multiplayer battle arena.' }}</p>
+      <a href="{{ section.settings.promo_btn_link | default: '/collections/all?view=product-v2' }}" class="willa-btn-primary" style="padding: 10px 18px; font-size: 13px;">{{ section.settings.promo_btn_text | default: 'EXPLORE PRODUCT V2' }}</a>
     </div>
   </div>
 
   <div class="willa-drawer-footer">
-    <p>Need help? Contact support: <br><strong>support@tryzavelyn.com</strong></p>
+    <p>Need help? Contact support: <br><strong>support@trymalora.com</strong></p>
   </div>
 </div>
 
 <style>
   .willa-announcement-bar {
-    background-color: #3b2b2f;
+    background-color: #2B1B24;
     color: #ffffff;
-    font-size: 12px;
+    font-size: 11.5px;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
     text-transform: uppercase;
-    padding: 8px 0;
+    padding: 9px 0;
     text-align: center;
   }
   .willa-announcement-inner {
@@ -142,8 +142,8 @@
     top: 0;
     left: 0;
     right: 0;
-    background-color: #faf7f4;
-    border-bottom: 1px solid #e7e4df;
+    background-color: var(--zv-pdp-bg, #FFF8F5);
+    border-bottom: 1px solid var(--zv-pdp-line, #EAD7DD);
     z-index: 1000;
     transition: box-shadow 0.25s ease;
   }
@@ -161,7 +161,7 @@
   .willa-menu-btn {
     background: none;
     border: none;
-    color: #231f20;
+    color: #2B1B24;
     cursor: pointer;
     padding: 8px;
     display: flex;
@@ -179,14 +179,14 @@
     white-space: nowrap;
   }
   .willa-desktop-nav a {
-    color: #231f20;
+    color: #2B1B24;
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
     transition: color 0.2s;
   }
   .willa-desktop-nav a:hover {
-    color: #8a2c13;
+    color: #B0476E;
   }
 
   .willa-logo-wrap {
@@ -198,21 +198,21 @@
     align-items: center;
     gap: 6px;
     text-decoration: none;
-    color: #231f20;
+    color: #2B1B24;
   }
   .willa-logo-icon { font-size: 20px; }
   .willa-logo-text {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 24px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    color: #231f20;
+    font-family: var(--zv-font-heading, 'Fraunces', Georgia, serif);
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+    color: #2B1B24;
   }
   .willa-reg {
     font-size: 11px;
     vertical-align: super;
     line-height: 0;
-    color: #8a2c13;
+    color: #B0476E;
     font-weight: 700;
     margin-left: 1px;
   }
@@ -225,7 +225,7 @@
   .willa-action-icon, .willa-cart-btn {
     background: none;
     border: none;
-    color: #231f20;
+    color: #2B1B24;
     cursor: pointer;
     padding: 6px;
     display: flex;
@@ -236,13 +236,13 @@
     transition: color 0.2s;
   }
   .willa-action-icon:hover, .willa-cart-btn:hover {
-    color: #8a2c13;
+    color: #B0476E;
   }
   .willa-cart-count {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: #8a2c13;
+    background-color: #6B1E46;
     color: #ffffff;
     font-size: 11px;
     font-weight: 700;

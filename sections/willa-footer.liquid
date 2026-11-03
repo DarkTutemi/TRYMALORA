@@ -4,14 +4,14 @@
     <div class="willa-footer-top">
       <div class="willa-footer-brand-col">
         <div class="willa-footer-logo">
-          <span>🌿</span>
-          <span class="willa-serif">{{ section.settings.logo_text | default: 'ZAVELYN' }}<sup class="willa-reg">®</sup></span>
+          <span>✨</span>
+          <span class="willa-serif">{{ section.settings.logo_text | default: 'TRYMALORA' }}<sup class="willa-reg">®</sup></span>
         </div>
         <p class="willa-footer-about">
-          {{ section.settings.about_text | default: 'Engineered for performance and durability. We bring specialized farm repair solutions, precision crafting tools, and outdoor essentials directly to hardworking homeowners.' }}
+          {{ section.settings.about_text | default: 'Engineered for active family play, dynamic target projection, and screen-free entertainment. Bringing interactive laser battle arenas directly to your home.' }}
         </p>
         <div class="willa-footer-contact">
-          <p>Email: <strong>{{ section.settings.support_email | default: 'support@tryzavelyn.com' }}</strong></p>
+          <p>Email: <strong>{{ section.settings.support_email | default: 'support@trymalora.com' }}</strong></p>
           <p>Customer Support: {{ section.settings.support_hours | default: 'Monday – Sunday, 9am – 6pm EST' }}</p>
         </div>
       </div>
@@ -20,12 +20,11 @@
       <div class="willa-footer-links-col">
         <h4>Shop Collections</h4>
         <ul>
-          <li><a href="/collections/best-sellers">★ Best Sellers</a></li>
-          <li><a href="/collections/fence-and-farm">Fence &amp; Farm Repair</a></li>
-          <li><a href="/collections/power-tools">Power &amp; Precision Tools</a></li>
-          <li><a href="/collections/garden-and-outdoor">Lawn, Garden &amp; Outdoor</a></li>
-          <li><a href="/collections/home-and-workshop">Home &amp; Workshop</a></li>
-          <li><a href="/collections/all-products">Shop All Products</a></li>
+          <li><a href="/collections/all?view=product-v2">★ Infrared Laser Battle Set</a></li>
+          <li><a href="/collections/interactive-toys">Interactive Toys</a></li>
+          <li><a href="/collections/all?view=showroom">2.5D Showroom</a></li>
+          <li><a href="/collections/all">Shop All Products</a></li>
+          <li><a href="/pages/track-order">Track Your Order</a></li>
         </ul>
       </div>
 
@@ -35,7 +34,7 @@
         <ul>
           <li><a href="/pages/track-order">Track Your Order</a></li>
           <li><a href="/policies/shipping-policy">Shipping Policy</a></li>
-          <li><a href="/policies/refund-policy">Refund &amp; Return Policy</a></li>
+          <li><a href="/policies/refund-policy">30-Day Money-Back Guarantee</a></li>
           <li><a href="/policies/privacy-policy">Privacy Policy</a></li>
           <li><a href="/policies/terms-of-service">Terms of Service</a></li>
         </ul>
@@ -43,9 +42,9 @@
 
       <!-- Newsletter -->
       <div class="willa-footer-newsletter-col">
-        <h4>{{ section.settings.newsletter_title | default: 'Join the Zavelyn Community' }}</h4>
-        <p>{{ section.settings.newsletter_desc | default: 'Subscribe for exclusive 50% seasonal discounts, farm tips, and early access to new tool releases.' }}</p>
-        <form class="willa-newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Zavelyn!');">
+        <h4>{{ section.settings.newsletter_title | default: 'Join the TRYMALORA Community' }}</h4>
+        <p>{{ section.settings.newsletter_desc | default: 'Subscribe for exclusive product drops, game tips, and early access to new interactive toy releases.' }}</p>
+        <form class="willa-newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to TRYMALORA!');">
           <input type="email" placeholder="Enter your email address" required>
           <button type="submit" class="willa-btn-primary" style="padding: 12px 20px; font-size: 13px;">{{ section.settings.newsletter_btn_text | default: 'JOIN' }}</button>
         </form>
@@ -58,7 +57,7 @@
     <!-- Bottom Footer: Copyright & Payment Badges -->
     <div class="willa-footer-bottom">
       <div class="willa-copyright">
-        &copy; {{ 'now' | date: '%Y' }} {{ section.settings.copyright_text | default: 'Zavelyn Inc. All rights reserved.' }}
+        &copy; {{ 'now' | date: '%Y' }} TRYMALORA Inc. All rights reserved.
       </div>
       <div class="willa-payment-icons">
         <span>VISA</span>
