@@ -242,10 +242,19 @@
                 {% endif %}
               {% endunless %}
 
-              {% comment %} Approved Presets (Space Heater & Dough Mixer) if not overridden or reset {% endcomment %}
+              {% comment %} Approved Presets (Infrared Battle Set, Space Heater & Dough Mixer) if not overridden or reset {% endcomment %}
               {% unless is_reset %}
                 {% if showroom_img_url == blank %}
-                  {% if product.handle == 'sakerplus®-1500w-flame-effect-oscillating-space-heater' %}
+                  {% if product.handle contains 'infrared' or product.handle contains 'battle' or product.handle contains 'laser' or product.title contains 'Laser' or product.title contains 'Infrared' %}
+                    {% assign is_cutout = true %}
+                    {% assign showroom_img_url = 'infrared-battle-set-cutout.png' | asset_url %}
+                    {% if showroom_img_url == blank or showroom_img_url contains 'no-image' %}
+                      {% assign showroom_img_url = 'https://cdn.shopify.com/s/files/1/1032/4541/4771/files/photo_2026-11-03_04-05-43.jpg?v=1793703987' %}
+                    {% endif %}
+                    {% assign shadow_width = 82 %}
+                    {% assign shadow_opacity = 0.85 %}
+                    {% assign shadow_softness = 14 %}
+                  {% elsif product.handle == 'sakerplus®-1500w-flame-effect-oscillating-space-heater' %}
                     {% assign is_cutout = true %}
                     {% assign showroom_img_url = 'zavelyn-cutout-space-heater.png' | asset_url %}
                     {% assign shadow_width = 70 %}
@@ -525,8 +534,8 @@
               }
               {% endcapture %}
 
-              <div class="zv-shelf-columns-grid zv-grid--1" style="display: flex; justify-content: center;">
-                <div class="zv-shelf-column" style="max-width: 360px; width: 100%;">
+              <div class="zv-shelf-columns-grid zv-grid--1">
+                <div class="zv-shelf-column">
                   <div class="zv-showroom-view-wrap">
                     
                     <!-- 1. Real Product Cutout Standing on Shelf -->
