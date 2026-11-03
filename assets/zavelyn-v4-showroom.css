@@ -726,6 +726,11 @@
     display: none !important;
   }
 
+  .zv-shelf-desktop-only.zv-shelf-force-show {
+    display: block !important;
+    top: 275px !important;
+  }
+
   .zv-shelf-columns-grid {
     display: block;
     width: 100%;
@@ -810,8 +815,8 @@
 .zv-merch-display {
   position: relative;
   width: 100%;
-  height: 290px;
-  max-width: 280px;
+  height: 275px;
+  max-width: 320px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -828,8 +833,7 @@
   justify-content: center;
   z-index: 2;
   transform-origin: bottom center;
-  transform: scale(var(--scale-d, 1)) translate(var(--trans-x, 0px), var(--trans-y, 0px));
-  transition: transform 0.25s ease;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media screen and (max-width: 1023px) {
@@ -839,15 +843,20 @@
 }
 
 .zv-cutout-img {
-  max-width: 96%;
-  max-height: 98%;
+  max-width: 95%;
+  max-height: 250px;
+  width: auto;
+  height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.42));
-  transition: transform 0.28s ease;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.18));
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), filter 0.28s ease;
+  display: block;
+  margin: 0 auto;
 }
 
 .zv-shelf-item:hover .zv-cutout-img {
-  transform: scale(1.05);
+  transform: translateY(-4px) scale(1.03);
+  filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.26));
 }
 
 /* Restrained Fallback Presentation for Non-Cutout Items */
@@ -885,152 +894,208 @@
   transform: scale(1.06);
 }
 
-/* Realistic Ground Contact & Ambient Shadow Discs */
+/* 2-Layer Realistic Ground Contact Shadow Discs */
 .zv-shelf-contact-shadow {
   position: absolute;
   bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
-  width: var(--shadow-w, 68%);
-  height: 12px;
-  background: radial-gradient(ellipse at center, rgba(35, 18, 8, var(--shadow-op, 0.70)) 0%, rgba(35, 18, 8, 0) 70%);
+  width: var(--shadow-w, 82%);
+  height: 14px;
+  background: radial-gradient(ellipse at center, rgba(15, 8, 4, var(--shadow-op, 0.82)) 0%, rgba(20, 10, 5, 0.45) 45%, transparent 75%);
   border-radius: 50%;
   z-index: 1;
   pointer-events: none;
+  filter: blur(1.5px);
   transition: transform 0.28s ease, opacity 0.28s ease;
 }
 
 .zv-shelf-ambient-shadow {
   position: absolute;
-  bottom: -4px;
+  bottom: -6px;
   left: 50%;
   transform: translateX(-50%);
-  width: 85%;
-  height: 20px;
-  background: radial-gradient(ellipse at center, rgba(35, 18, 8, 0.28) 0%, rgba(35, 18, 8, 0) 75%);
+  width: 92%;
+  height: 24px;
+  background: radial-gradient(ellipse at center, rgba(35, 18, 8, 0.28) 0%, transparent 70%);
   border-radius: 50%;
   z-index: 0;
   pointer-events: none;
+  filter: blur(4px);
 }
 
 .zv-shelf-item:hover .zv-shelf-contact-shadow {
-  transform: translateX(-50%) scale(0.92);
-  opacity: 0.85;
+  transform: translateX(-50%) scale(0.94);
+  opacity: 0.95;
 }
 
 /* ==========================================================================
-   AUTHENTIC SHELF-EDGE PRICE TAG (Matches Merchant Reference Image)
+   AUTHENTIC RETAIL SHELF-EDGE PRICE TAG (OPTION A: FASCIA CLIP TAG)
    ========================================================================== */
 .zv-shelf-clip-tag {
   position: relative;
-  z-index: 6;
+  z-index: 12;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 240px;
+  max-width: 220px;
   cursor: pointer;
   outline: none;
-  margin-top: 10px; /* Positions clip right over the front wooden fascia */
-  transition: transform 0.22s ease;
+  margin-top: -6px; /* Clips onto the top of the wooden front fascia rail */
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .zv-shelf-clip-tag:hover,
-.zv-shelf-clip-tag:focus-visible {
+.zv-shelf-clip-tag:focus-visible,
+.zv-shelf-item:hover + .zv-shelf-clip-tag {
   transform: translateY(-2px);
 }
 
-/* Physical Clip Bracket Hooking over Front Shelf Edge */
+/* Physical Metallic Clip Bracket */
 .zv-tag-clip-bracket {
-  width: 38px;
-  height: 11px;
-  background: linear-gradient(180deg, #FFFFFF 0%, #D4D8DC 100%);
+  width: 44px;
+  height: 12px;
+  background: linear-gradient(180deg, #F8FAFC 0%, #E2E8F0 45%, #CBD5E1 100%);
   border-radius: 4px 4px 0 0;
-  border: 1px solid rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(0, 0, 0, 0.22);
   border-bottom: none;
-  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.15), inset 0 1px 1px #FFFFFF;
   margin-bottom: -1px;
   position: relative;
   z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.zv-tag-clip-bracket::after {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 6px;
-  right: 6px;
-  height: 1.5px;
-  background: rgba(0, 0, 0, 0.15);
-  border-radius: 1px;
+.zv-clip-rivet {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #64748B;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
-/* White Price Card Hanging from Shelf Edge */
+/* Retail Price Label Card Plate */
 .zv-tag-card {
   width: 100%;
   background: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid #D1D5DB;
   border-radius: 8px;
-  padding: 10px 14px;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.06);
+  padding: 10px 14px 10px;
+  box-shadow: 0 8px 18px -2px rgba(0, 0, 0, 0.14), 0 3px 6px -1px rgba(0, 0, 0, 0.08);
   transition: all 0.22s ease;
   position: relative;
   z-index: 2;
+  box-sizing: border-box;
 }
 
 .zv-shelf-clip-tag:hover .zv-tag-card,
 .zv-shelf-item:hover + .zv-shelf-clip-tag .zv-tag-card {
-  border-color: var(--zv-primary, #17352B);
-  box-shadow: 0 12px 24px rgba(23, 53, 43, 0.16), 0 4px 8px rgba(0, 0, 0, 0.08);
+  border-color: #17352B;
+  box-shadow: 0 12px 24px -2px rgba(23, 53, 43, 0.20), 0 4px 8px -1px rgba(0, 0, 0, 0.10);
+}
+
+.zv-tag-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.zv-tag-dept {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #6B7280;
+}
+
+.zv-tag-badge {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: #DCFCE7;
+  color: #15803D;
+}
+
+.zv-tag-badge.sale {
+  background: #FEE2E2;
+  color: #B91C1C;
 }
 
 .zv-tag-title {
   font-family: var(--zv-font-heading, 'Plus Jakarta Sans', sans-serif);
   font-size: 13.5px;
-  font-weight: 700;
-  color: #18181B;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.2px;
+  line-height: 1.25;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
-  line-height: 1.25;
-  margin-bottom: 5px;
+  margin: 0 0 6px;
 }
 
-.zv-tag-pricing {
+.zv-tag-pricing-row {
   display: flex;
   align-items: baseline;
+  justify-content: space-between;
   gap: 8px;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed #E5E7EB;
+}
+
+.zv-tag-price-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
 }
 
 .zv-tag-price-curr {
-  font-size: 16px;
-  font-weight: 800;
-  color: #0F5132;
+  font-family: var(--zv-font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 19px;
+  font-weight: 900;
+  color: #17352B;
+  letter-spacing: -0.5px;
+  line-height: 1;
 }
 
-.zv-tag-price-old {
-  font-size: 12.5px;
-  color: #9CA3AF;
-  text-decoration: line-through;
-  font-weight: 500;
+.zv-tag-unit {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #6B7280;
+  text-transform: uppercase;
 }
 
-.zv-tag-save-badge {
+.zv-tag-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.zv-tag-stars {
+  font-size: 11px;
+  color: #F59E0B;
+  letter-spacing: 0.5px;
+}
+
+.zv-tag-rating-val {
   font-size: 11px;
   font-weight: 800;
-  color: #15803D;
-  background: #DCFCE7;
-  padding: 2px 6px;
-  border-radius: 4px;
-  letter-spacing: -0.2px;
+  color: #374151;
 }
 
 .zv-tag-action-row {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .zv-tag-action-hint {
@@ -1039,6 +1104,12 @@
   letter-spacing: 0.6px;
   color: #4B5563;
   text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.zv-shelf-clip-tag:hover .zv-tag-action-hint,
+.zv-shelf-item:hover + .zv-shelf-clip-tag .zv-tag-action-hint {
+  color: #17352B;
 }
 
 /* Mobile Viewport Adjustments (< 768px) */
@@ -1048,11 +1119,15 @@
   }
 
   .zv-merch-display {
-    height: 190px;
+    height: 180px;
+  }
+
+  .zv-cutout-img {
+    max-height: 160px;
   }
 
   .zv-continuous-wooden-shelf {
-    top: 184px;
+    top: 180px;
   }
 
   .zv-wood-top-surface {
@@ -1063,8 +1138,18 @@
     height: 28px;
   }
 
+  .zv-shelf-clip-tag {
+    max-width: 175px;
+    margin-top: -4px;
+  }
+
+  .zv-tag-clip-bracket {
+    width: 36px;
+    height: 10px;
+  }
+
   .zv-tag-card {
-    padding: 8px 10px;
+    padding: 8px 10px 8px;
   }
 
   .zv-tag-title {
@@ -1072,12 +1157,17 @@
   }
 
   .zv-tag-price-curr {
-    font-size: 14px;
+    font-size: 16px;
   }
 
-  .zv-tag-price-old {
-    font-size: 11px;
+  .zv-tag-unit {
+    font-size: 9.5px;
   }
+
+  .zv-tag-stars, .zv-tag-rating-val {
+    font-size: 10px;
+  }
+}
 
   .zv-tag-save-badge {
     font-size: 10px;
@@ -1089,6 +1179,7 @@
    6. POSITIONAL ZOOM: SPATIAL PRODUCT INSPECTION BAY (DESKTOP)
    ========================================================================== */
 .zv-spatial-inspect-bay {
+  display: none !important;
   position: fixed;
   inset: 0;
   z-index: 99990;
@@ -1098,6 +1189,7 @@
 }
 
 .zv-spatial-inspect-bay.active {
+  display: block !important;
   pointer-events: auto;
   opacity: 1;
 }
@@ -1139,7 +1231,7 @@
   max-width: 96%;
   max-height: 96%;
   object-fit: contain;
-  filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.45));
+  mix-blend-mode: multiply;
   position: relative;
   z-index: 3;
 }
@@ -1179,7 +1271,8 @@
   border-radius: var(--zv-radius-xl, 20px);
   padding: 24px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-  pointer-events: auto;
+  pointer-events: none;
+  opacity: 0;
   display: flex;
   flex-direction: column;
   transition: opacity 0.32s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);

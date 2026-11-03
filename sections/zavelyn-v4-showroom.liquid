@@ -317,13 +317,13 @@
                           alt="{{ product.title | escape }}" 
                           loading="lazy" 
                           class="zv-merch-img zv-cutout-img"
-                          width="260"
-                          height="260"
+                          width="320"
+                          height="240"
                         >
                       </div>
                       {% if enable_contact_shadow %}
-                        <div class="zv-shelf-contact-shadow"></div>
-                        <div class="zv-shelf-ambient-shadow"></div>
+                        <div class="zv-shelf-contact-shadow" aria-hidden="true"></div>
+                        <div class="zv-shelf-ambient-shadow" aria-hidden="true"></div>
                       {% endif %}
                     {% else %}
                       <div class="zv-fallback-container">
@@ -345,29 +345,50 @@
                   </div>
                 </article>
 
-                <!-- Shelf-Edge Price Tag hanging directly from the front edge of the shelf! -->
+                <!-- Shelf-Edge Retail Price Tag (Option A: Attached to Fascia Rail) -->
+                {% assign display_short_title = product.title %}
+                {% assign t_low = product.title | downcase %}
+                {% if t_low contains 'infrared' or t_low contains 'battle' or t_low contains 'laser' %}
+                  {% assign display_short_title = "Infrared Battle Set" %}
+                {% elsif product.title.size > 24 %}
+                  {% assign display_short_title = product.title | truncatewords: 3, "" %}
+                {% endif %}
+
                 <div 
                   class="zv-shelf-clip-tag" 
                   data-product-id="{{ product.id }}"
                   data-product-json="{{ safe_product_json | escape }}"
                   tabindex="0"
                   role="button"
-                  aria-label="Inspect {{ product.title | escape }} - {{ current_variant.price | money }}"
+                  aria-label="Inspect {{ display_short_title | escape }} - {{ current_variant.price | money }}"
                 >
-                  <div class="zv-tag-clip-bracket" aria-hidden="true"></div>
+                  <div class="zv-tag-clip-bracket" aria-hidden="true">
+                    <div class="zv-clip-rivet"></div>
+                  </div>
                   <div class="zv-tag-card">
-                    <div class="zv-tag-title" title="{{ product.title | escape }}">
-                      {{ product.title }}
-                    </div>
-                    <div class="zv-tag-pricing">
-                      <span class="zv-tag-price-curr">{{ current_variant.price | money }}</span>
+                    <div class="zv-tag-meta-row">
+                      <span class="zv-tag-dept">TRYMALORA</span>
                       {% if has_compare %}
-                        <span class="zv-tag-price-old">{{ current_variant.compare_at_price | money }}</span>
-                        <span class="zv-tag-save-badge">-{{ save_percent }}%</span>
+                        <span class="zv-tag-badge sale">-{{ save_percent }}%</span>
+                      {% else %}
+                        <span class="zv-tag-badge">TOP PICK</span>
                       {% endif %}
                     </div>
+                    <div class="zv-tag-title" title="{{ display_short_title | escape }}">
+                      {{ display_short_title }}
+                    </div>
+                    <div class="zv-tag-pricing-row">
+                      <div class="zv-tag-price-wrap">
+                        <span class="zv-tag-price-curr">{{ current_variant.price | money }}</span>
+                        <span class="zv-tag-unit">USD</span>
+                      </div>
+                      <div class="zv-tag-rating">
+                        <span class="zv-tag-stars">★★★★★</span>
+                        <span class="zv-tag-rating-val">4.9</span>
+                      </div>
+                    </div>
                     <div class="zv-tag-action-row">
-                      <span class="zv-tag-action-hint">PULL SHELF ⚡</span>
+                      <span class="zv-tag-action-hint">Quick Look &middot; Inspect ⚡</span>
                     </div>
                   </div>
                 </div>
@@ -437,14 +458,15 @@
           {% endfor %}
 
         {% else %}
-          <!-- FLAGSHIP SHOWROOM DISPLAY (SHOWCASE NEW ARRIVALS) -->
+          <!-- FLAGSHIP SHOWROOM DISPLAY (SHOWCASE REAL PRODUCT CUTOUT & RETAIL TAG) -->
           <div class="zv-shelf-tier" data-tier-index="0" data-tier-count="1">
             <div class="zv-fixture-lightbar" aria-hidden="true">
               <div class="zv-spotlight-beam" style="left: 50%;"></div>
             </div>
 
             <div class="zv-shelf-stage">
-              <div class="zv-continuous-wooden-shelf zv-shelf-desktop-only" aria-hidden="true">
+              <!-- Continuous Wooden Shelf Plank -->
+              <div class="zv-continuous-wooden-shelf zv-shelf-desktop-only zv-shelf-force-show" aria-hidden="true">
                 <div class="zv-wood-top-surface">
                   <div class="zv-wood-grain-texture"></div>
                   <div class="zv-wood-top-highlight"></div>
@@ -457,38 +479,122 @@
                 <div class="zv-wood-under-shadow"></div>
               </div>
 
+              {% assign flagship_img = "infrared-battle-set-cutout.png" | asset_url %}
+              {% if flagship_img == blank or flagship_img contains 'no-image' %}
+                {% assign flagship_img = "https://cdn.shopify.com/s/files/1/1032/4541/4771/files/photo_2026-11-03_04-05-43.jpg?v=1793703987" %}
+              {% endif %}
+              {% assign flagship_title = "Infrared Battle Set" %}
+              {% assign flagship_price = "$99.99" %}
+              {% assign flagship_url = "/collections/all?view=product-v2" %}
+
+              {% capture flagship_product_json %}
+              {
+                "id": 15635841057139,
+                "title": "Infrared Battle Set",
+                "handle": "kids-infrared-laser-battle-toy-gun-set-with-2-mini-pistols-and-1-projector-featuring-sound-and-light",
+                "url": "/collections/all?view=product-v2",
+                "featured_image": "{{ flagship_img }}",
+                "variants": [
+                  {
+                    "id": 67297621934451,
+                    "title": "1 Set",
+                    "price": 9999,
+                    "compare_at_price": 9999,
+                    "available": true,
+                    "featured_image": "{{ flagship_img }}"
+                  },
+                  {
+                    "id": 67297622131059,
+                    "title": "2 Sets",
+                    "price": 16999,
+                    "compare_at_price": 19998,
+                    "available": true,
+                    "featured_image": "{{ flagship_img }}"
+                  },
+                  {
+                    "id": 67297622163827,
+                    "title": "3 Sets",
+                    "price": 22999,
+                    "compare_at_price": 29997,
+                    "available": true,
+                    "featured_image": "{{ flagship_img }}"
+                  }
+                ]
+              }
+              {% endcapture %}
+
               <div class="zv-shelf-columns-grid zv-grid--1" style="display: flex; justify-content: center;">
-                <div class="zv-shelf-column" style="max-width: 380px; width: 100%;">
+                <div class="zv-shelf-column" style="max-width: 360px; width: 100%;">
                   <div class="zv-showroom-view-wrap">
-                    <article class="zv-shelf-item" tabindex="0" role="button">
-                      <div class="zv-merch-display" style="--shadow-w: 80%; --shadow-op: 60%; --shadow-h: 14px; text-align: center;">
-                        <img 
-                          src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173020_6c8c1c4cf7d711cdd5a4d6aa91290eb2_e583f568-e0e8-4c22-9785-6dc4d0eb727b.jpg" 
-                          alt="Kids Infrared Battle Blaster Set with Target Projector" 
-                          class="zv-merch-img"
-                          style="max-height: 240px; object-fit: contain; margin: 0 auto;"
-                        >
-                        <div class="zv-contact-shadow" aria-hidden="true"></div>
-                      </div>
-                      <div class="zv-channel-tag">
-                        <div class="zv-channel-tag-inner">
-                          <div class="zv-tag-top">
-                            <span class="zv-tag-sku">SKU: TM-IBB-01</span>
-                            <span class="zv-tag-rating">★ 4.9 (NEW ARRIVAL)</span>
-                          </div>
-                          <div class="zv-tag-title">Kids Infrared Battle Blaster Set with Target Projector</div>
-                          <div class="zv-tag-price-row">
-                            <div class="zv-tag-price-block">
-                              <span class="zv-tag-price">$99.99</span>
-                              <span class="zv-tag-curr">USD</span>
-                            </div>
-                            <button type="button" class="zv-tag-inspect-btn" onclick="zvShowroomDirectAddToCart('67297621934451', this)">
-                              <span>ADD TO CART</span>
-                            </button>
-                          </div>
+                    
+                    <!-- 1. Real Product Cutout Standing on Shelf -->
+                    <article 
+                      class="zv-shelf-item" 
+                      data-product-id="15635841057139"
+                      data-product-handle="kids-infrared-laser-battle-toy-gun-set-with-2-mini-pistols-and-1-projector-featuring-sound-and-light"
+                      data-product-url="{{ flagship_url }}"
+                      data-product-json="{{ flagship_product_json | escape }}"
+                      data-cutout-src="{{ flagship_img }}"
+                      tabindex="0" 
+                      role="button"
+                      aria-label="{{ flagship_title }} - {{ flagship_price }}"
+                    >
+                      <div class="zv-merch-display" style="--shadow-w: 82%; --shadow-op: 0.78; --shadow-h: 14px;">
+                        <div class="zv-cutout-container">
+                          <img 
+                            src="{{ flagship_img }}" 
+                            alt="{{ flagship_title | escape }}" 
+                            class="zv-merch-img zv-cutout-img"
+                            loading="eager"
+                            width="340"
+                            height="250"
+                          >
                         </div>
+                        <!-- Realistic 2-Layer Contact & Ambient Shadow -->
+                        <div class="zv-shelf-contact-shadow" aria-hidden="true"></div>
+                        <div class="zv-shelf-ambient-shadow" aria-hidden="true"></div>
                       </div>
                     </article>
+
+                    <!-- 2. Shelf-Edge Retail Price Tag (Option A: Attached to Fascia Rail) -->
+                    <div 
+                      class="zv-shelf-clip-tag" 
+                      data-product-id="15635841057139"
+                      data-product-json="{{ flagship_product_json | escape }}"
+                      tabindex="0"
+                      role="button"
+                      aria-label="Inspect {{ flagship_title }} - {{ flagship_price }}"
+                    >
+                      <!-- Metallic Clip Bracket Hooking over Front Shelf Edge -->
+                      <div class="zv-tag-clip-bracket" aria-hidden="true">
+                        <div class="zv-clip-rivet"></div>
+                      </div>
+
+                      <!-- Retail Price Tag Plate -->
+                      <div class="zv-tag-card">
+                        <div class="zv-tag-meta-row">
+                          <span class="zv-tag-dept">TRYMALORA</span>
+                          <span class="zv-tag-badge">TOP PICK</span>
+                        </div>
+                        <div class="zv-tag-title" title="{{ flagship_title }}">
+                          {{ flagship_title }}
+                        </div>
+                        <div class="zv-tag-pricing-row">
+                          <div class="zv-tag-price-wrap">
+                            <span class="zv-tag-price-curr">{{ flagship_price }}</span>
+                            <span class="zv-tag-unit">USD</span>
+                          </div>
+                          <div class="zv-tag-rating">
+                            <span class="zv-tag-stars">★★★★★</span>
+                            <span class="zv-tag-rating-val">4.9</span>
+                          </div>
+                        </div>
+                        <div class="zv-tag-action-row">
+                          <span class="zv-tag-action-hint">Quick Look &middot; Inspect ⚡</span>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </div>
