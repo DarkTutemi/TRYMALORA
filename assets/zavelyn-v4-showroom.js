@@ -204,7 +204,11 @@
         updateDesktopPricing(v0);
 
         if (inspectPdpLink) {
-          inspectPdpLink.href = currentProduct.url || ('/products/' + currentProduct.handle + '?view=showroom');
+          const rawUrl = currentProduct.url ? currentProduct.url.split('?')[0] : '';
+          const cleanUrl = (rawUrl && rawUrl.indexOf('/products/') !== -1)
+            ? rawUrl
+            : ('/products/' + (currentProduct.handle || 'kids-infrared-battle-blaster-set-with-target-projector'));
+          inspectPdpLink.href = cleanUrl;
         }
 
         // Step D: Render Adaptive Variant Selector
@@ -482,7 +486,11 @@
       }
 
       if (mobilePdpLink) {
-        mobilePdpLink.href = '/products/' + currentProduct.handle + '?view=showroom';
+        const rawUrl = currentProduct.url ? currentProduct.url.split('?')[0] : '';
+        const cleanUrl = (rawUrl && rawUrl.indexOf('/products/') !== -1)
+          ? rawUrl
+          : ('/products/' + (currentProduct.handle || 'kids-infrared-battle-blaster-set-with-target-projector'));
+        mobilePdpLink.href = cleanUrl;
       }
 
       renderAdaptiveVariantSelector(currentProduct, mobileVariants, function(variant) {
@@ -517,6 +525,23 @@
         if (e.target === this) closeMobileSheet();
       });
     }
+
+    // Safety click interceptor for PDP links (prevents accidental "#" or root redirect)
+    function wirePdpNavigation(linkElem) {
+      if (!linkElem) return;
+      linkElem.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#' || href === '' || href.indexOf('/products/') === -1) {
+          e.preventDefault();
+          const targetUrl = (currentProduct && currentProduct.handle && currentProduct.handle.indexOf('kids-infrared') !== -1)
+            ? ('/products/' + currentProduct.handle)
+            : '/products/kids-infrared-battle-blaster-set-with-target-projector';
+          window.location.href = targetUrl;
+        }
+      });
+    }
+    wirePdpNavigation(inspectPdpLink);
+    wirePdpNavigation(mobilePdpLink);
 
     // =========================================================================
     // SHOPIFY COMMERCE: DIRECT ADD TO CART & WILLA CART DRAWER SYNC
