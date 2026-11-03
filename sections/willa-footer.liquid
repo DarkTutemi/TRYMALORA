@@ -20,9 +20,7 @@
       <div class="willa-footer-links-col">
         <h4>Shop Collections</h4>
         <ul>
-          <li><a href="/collections/all?view=product-v2">★ Infrared Laser Battle Set</a></li>
-          <li><a href="/collections/interactive-toys">Interactive Toys</a></li>
-          <li><a href="/collections/all?view=showroom">2.5D Showroom</a></li>
+          <li><a href="/products/kids-infrared-battle-blaster-set-with-target-projector">★ Infrared Laser Battle Set</a></li>
           <li><a href="/collections/all">Shop All Products</a></li>
           <li><a href="/pages/track-order">Track Your Order</a></li>
         </ul>
@@ -72,12 +70,22 @@
 </footer>
 
 <style>
+  .willa-container {
+    width: 100%;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(20px, 3vw, 36px);
+    padding-right: clamp(20px, 3vw, 36px);
+    box-sizing: border-box;
+  }
+
   .willa-footer-wrap {
-    background-color: #3b2b2f;
+    background-color: #241820;
     color: #f7f4ee;
     padding-top: 60px;
     padding-bottom: 30px;
-    border-top: 1px solid #4a383d;
+    border-top: 1px solid #3B2834;
   }
   .willa-footer-top {
     display: grid;
@@ -85,6 +93,18 @@
     gap: 40px;
     padding-bottom: 40px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  @media (max-width: 991px) {
+    .willa-footer-top {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+  }
+  @media (max-width: 640px) {
+    .willa-footer-top {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
   }
 
   .willa-footer-logo {
@@ -227,19 +247,19 @@
       "type": "text",
       "id": "logo_text",
       "label": "Brand Logo Text",
-      "default": "ZAVELYN"
+      "default": "TRYMALORA"
     },
     {
       "type": "textarea",
       "id": "about_text",
       "label": "About Brand Description",
-      "default": "Engineered for performance and durability. We bring specialized farm repair solutions, precision crafting tools, and outdoor essentials directly to hardworking homeowners."
+      "default": "Engineered for active family play, dynamic target projections, and screen-free entertainment. Bringing interactive laser arenas directly to your home."
     },
     {
       "type": "text",
       "id": "support_email",
       "label": "Support Email Address",
-      "default": "support@tryzavelyn.com"
+      "default": "support@trymalora.com"
     },
     {
       "type": "text",
@@ -255,13 +275,13 @@
       "type": "text",
       "id": "newsletter_title",
       "label": "Newsletter Title",
-      "default": "Join the Zavelyn Community"
+      "default": "Join the TRYMALORA Community"
     },
     {
       "type": "textarea",
       "id": "newsletter_desc",
       "label": "Newsletter Description",
-      "default": "Subscribe for exclusive 50% seasonal discounts, farm tips, and early access to new tool releases."
+      "default": "Subscribe for exclusive product drops, game tips, and early access to new interactive toy releases."
     },
     {
       "type": "text",

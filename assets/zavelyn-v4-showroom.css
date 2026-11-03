@@ -702,21 +702,22 @@
   margin: 0 auto;
 }
 
-/* 1 Product Row - Centered Featured Display */
+/* 1 Product Row - Centered within Retail Shelf Slot (Slot 1 matching user mockup) */
 .zv-grid--1 {
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, 1fr);
   width: 100%;
-  max-width: 1240px;
+  max-width: 1100px;
   margin: 0 auto;
+  gap: 28px;
+}
+
+.zv-grid--1 .zv-shelf-column {
+  grid-column: 1;
 }
 
 .zv-grid--1 .zv-shelf-item {
-  max-width: 380px;
+  max-width: 300px;
   margin: 0 auto;
-}
-
-.zv-grid--1 .zv-shelf-clip-tag {
-  left: 48px;
 }
 
 /* 3. Mobile / Tablet Responsive Override (< 1024px) */
@@ -765,21 +766,20 @@
     align-items: flex-end;
   }
 
-  /* Incomplete Mobile Row (1 Product Remaining): Center horizontally */
+  /* Incomplete Mobile Row (1 Product Remaining): Slot 1 on shelf */
   .zv-pair--1 .zv-pair-products {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
+    gap: 12px;
+  }
+
+  .zv-pair--1 .zv-shelf-column {
+    grid-column: 1;
   }
 
   .zv-pair--1 .zv-shelf-item {
-    max-width: 250px;
+    max-width: 200px;
     margin: 0 auto;
-  }
-
-  .zv-pair--1 .zv-shelf-clip-tag {
-    left: 12px;
   }
 }
 
@@ -961,13 +961,14 @@
 .zv-shelf-clip-tag {
   position: absolute;
   top: var(--zv-tag-top-y);
-  left: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 12;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   width: auto;
-  max-width: 180px;
+  max-width: 190px;
   cursor: pointer;
   outline: none;
   transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
@@ -976,20 +977,19 @@
 .zv-shelf-clip-tag:hover,
 .zv-shelf-clip-tag:focus-visible,
 .zv-shelf-item:hover ~ .zv-shelf-clip-tag {
-  transform: translateY(-2px);
+  transform: translate(-50%, -2px);
 }
 
 /* Physical Metallic Clip Bracket */
 .zv-tag-clip-bracket {
   width: 32px;
   height: 10px;
-  margin-left: 14px;
+  margin: 0 auto -1px auto;
   background: linear-gradient(180deg, #FFFFFF 0%, #ECE8E5 50%, #D8D2CD 100%);
   border-radius: 3px 3px 0 0;
   border: 1px solid rgba(43, 27, 36, 0.22);
   border-bottom: none;
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.15), inset 0 1px 1px #FFFFFF;
-  margin-bottom: -1px;
   position: relative;
   z-index: 3;
   display: flex;
@@ -1153,14 +1153,21 @@
   }
 
   .zv-shelf-clip-tag {
-    max-width: 130px;
-    left: 4px;
+    max-width: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .zv-shelf-clip-tag:hover,
+  .zv-shelf-clip-tag:focus-visible,
+  .zv-shelf-item:hover ~ .zv-shelf-clip-tag {
+    transform: translate(-50%, -2px);
   }
 
   .zv-tag-clip-bracket {
     width: 24px;
     height: 7px;
-    margin-left: 8px;
+    margin: 0 auto;
   }
 
   .zv-tag-card {

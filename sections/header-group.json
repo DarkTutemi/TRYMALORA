@@ -15,28 +15,6 @@
             "show_mobile": true
           }
         },
-        "nav_toys": {
-          "type": "nav_link",
-          "settings": {
-            "title": "Interactive Toys",
-            "link": "/collections/interactive-toys",
-            "icon": "🎯",
-            "badge": "NEW",
-            "show_desktop": true,
-            "show_mobile": true
-          }
-        },
-        "nav_showroom": {
-          "type": "nav_link",
-          "settings": {
-            "title": "2.5D Showroom",
-            "link": "/collections/all?view=showroom",
-            "icon": "🏛️",
-            "badge": "3D",
-            "show_desktop": true,
-            "show_mobile": true
-          }
-        },
         "nav_all": {
           "type": "nav_link",
           "settings": {
@@ -60,15 +38,18 @@
       },
       "block_order": [
         "nav_home",
-        "nav_toys",
-        "nav_showroom",
         "nav_all",
         "nav_track"
       ],
       "settings": {
         "logo_text": "TRYMALORA",
         "announcement_desktop": "★ FREE US SHIPPING OVER $49 · 100% SATISFACTION GUARANTEED · 30-DAY RETURN POLICY ★",
-        "announcement_mobile": "★ FREE US SHIPPING OVER $49 · 30-DAY RETURN POLICY ★"
+        "announcement_mobile": "★ FREE US SHIPPING OVER $49 · 30-DAY RETURN POLICY ★",
+        "promo_tag": "FEATURED RELEASE",
+        "promo_title": "Infrared Laser Battle Set",
+        "promo_desc": "Screen-free family entertainment with dynamic wall target projections and multiplayer battle arena.",
+        "promo_btn_text": "SHOP BATTLE SET ➔",
+        "promo_btn_link": "/products/kids-infrared-battle-blaster-set-with-target-projector"
       }
     }
   },

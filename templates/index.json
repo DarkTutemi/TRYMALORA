@@ -3,16 +3,16 @@
     "top_banner": {
       "type": "zavelyn-top-banner",
       "settings": {
-        "badge_text": "SHOWROOM V4.0",
-        "main_text": "EXPLORE 2.5D RETAIL SHOWROOMS · FREE US SHIPPING OVER $49",
-        "timer_end": "Live Now"
+        "badge_text": "FLASH SALE",
+        "main_text": "FREE EXPRESS US SHIPPING OVER $49 · 30-DAY SATISFACTION GUARANTEE",
+        "timer_end": "Ends Tonight"
       }
     },
     "hero": {
       "type": "zavelyn-v4-hero",
       "settings": {
-        "heading": "Step Inside America's Most Innovative Home & Lifestyle Showrooms",
-        "subheading": "Browse realistic 2.5D physical product shelves, inspect craftsmanship with interactive 360 zooms, and shop uncompromised quality with 30-day money-back protection."
+        "heading": "Innovative Interactive Toys & Modern Family Essentials",
+        "subheading": "Engineered for active screen-free play, dynamic target projections, and unforgettable family battles. Backed by 30-day money-back guarantee."
       }
     },
     "stores": {
@@ -26,16 +26,16 @@
     "bestsellers": {
       "type": "zavelyn-bestsellers",
       "settings": {
-        "heading": "Popular Zavelyn Best Sellers",
-        "subhead": "Real customer favorites engineered for reliability, durability, and time-saving efficiency.",
-        "collection": "best-sellers"
+        "heading": "Featured Best Sellers",
+        "subhead": "Real customer favorites engineered for active play, durability, and family entertainment.",
+        "collection": "all"
       }
     },
     "pain_solution": {
       "type": "zavelyn-pain-solution",
       "settings": {
-        "heading": "Stop Buying Tools That Break.<br><span>Let Zavelyn Take Over.<\/span>",
-        "subhead": "You don't need another brittle gadget lying dead in your workshop. You need heavy-duty precision engineered to handle real-world tasks effortlessly."
+        "heading": "Less Screen Addiction.<br><span>More Active Family Play.</span>",
+        "subhead": "Replace mindless scrolling with real-world movement, teamwork, and exciting multiplayer competitions right in your living room."
       }
     },
     "comparison": {

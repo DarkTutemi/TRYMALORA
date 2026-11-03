@@ -214,6 +214,16 @@ hr {
   margin-inline: auto;
 }
 
+.willa-container {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(16px, 3vw, 32px);
+  padding-right: clamp(16px, 3vw, 32px);
+  box-sizing: border-box;
+}
+
 .page-width--narrow {
   width: min(100% - 2 * var(--space-md), 42rem);
   margin-inline: auto;

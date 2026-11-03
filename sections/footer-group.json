@@ -4,7 +4,14 @@
   "sections": {
     "willa-footer": {
       "type": "willa-footer",
-      "settings": {}
+      "settings": {
+        "logo_text": "TRYMALORA",
+        "about_text": "Engineered for active family play, dynamic target projections, and screen-free entertainment. Bringing interactive laser arenas directly to your home.",
+        "support_email": "support@trymalora.com",
+        "support_hours": "Monday – Sunday, 9am – 6pm EST",
+        "newsletter_title": "Join the TRYMALORA Community",
+        "newsletter_desc": "Subscribe for exclusive product drops, game tips, and early access to new interactive toy releases."
+      }
     }
   },
   "order": [

@@ -14,12 +14,21 @@
 <!-- Header -->
 <header class="willa-header-wrap" id="willaHeader">
   <div class="willa-container willa-header-inner">
-    <!-- Mobile Hamburger Toggle -->
-    <button type="button" class="willa-menu-btn" onclick="toggleWillaDrawer()" aria-label="Open menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-    </button>
+    <!-- Left: Mobile Menu Toggle & Brand Logo -->
+    <div class="willa-header-left">
+      <button type="button" class="willa-menu-btn" onclick="toggleWillaDrawer()" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
 
-    <!-- Desktop Nav Links (Left) -->
+      <div class="willa-logo-wrap">
+        <a href="/" class="willa-logo-link">
+          <span class="willa-logo-icon">✨</span>
+          <span class="willa-logo-text">{{ section.settings.logo_text | default: 'TRYMALORA' }}<sup class="willa-reg">®</sup></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Center: Desktop Nav Links -->
     <nav class="willa-desktop-nav desktop-only">
       {% assign nav_count = 0 %}
       {% for block in section.blocks %}
@@ -30,20 +39,10 @@
       {% endfor %}
       {% if nav_count == 0 %}
         <a href="/">Home</a>
-        <a href="/collections/interactive-toys">Interactive Toys</a>
-        <a href="/collections/all?view=showroom">2.5D Showroom</a>
         <a href="/collections/all">All Products</a>
         <a href="/pages/track-order">Track Order</a>
       {% endif %}
     </nav>
-
-    <!-- Brand Logo (Center) -->
-    <div class="willa-logo-wrap">
-      <a href="/" class="willa-logo-link">
-        <span class="willa-logo-icon">✨</span>
-        <span class="willa-logo-text">{{ section.settings.logo_text | default: 'TRYMALORA' }}<sup class="willa-reg">®</sup></span>
-      </a>
-    </div>
 
     <!-- Right Icons: Search & Cart -->
     <div class="willa-header-actions">
@@ -86,8 +85,6 @@
       {% endfor %}
       {% if drawer_count == 0 %}
         <li><a href="/"><span class="menu-icon">🏠</span> Home</a></li>
-        <li><a href="/collections/interactive-toys"><span class="menu-icon">🎯</span> Interactive Toys <span class="hot-badge">NEW</span></a></li>
-        <li><a href="/collections/all?view=showroom"><span class="menu-icon">🏛️</span> 2.5D Showroom</a></li>
         <li><a href="/collections/all"><span class="menu-icon">🛍️</span> Shop All Products</a></li>
         <li class="divider"></li>
         <li><a href="/pages/track-order"><span class="menu-icon">📦</span> Track Order</a></li>
@@ -100,7 +97,7 @@
       <div class="promo-tag">{{ section.settings.promo_tag | default: 'FEATURED RELEASE' }}</div>
       <h4>{{ section.settings.promo_title | default: 'Infrared Laser Battle Set' }}</h4>
       <p>{{ section.settings.promo_desc | default: 'Screen-free family entertainment with dynamic wall target projections and multiplayer battle arena.' }}</p>
-      <a href="{{ section.settings.promo_btn_link | default: '/collections/all?view=product-v2' }}" class="willa-btn-primary" style="padding: 10px 18px; font-size: 13px;">{{ section.settings.promo_btn_text | default: 'EXPLORE PRODUCT V2' }}</a>
+      <a href="{{ section.settings.promo_btn_link | default: '/products/kids-infrared-battle-blaster-set-with-target-projector' }}" class="willa-btn-primary" style="padding: 10px 18px; font-size: 13px;">{{ section.settings.promo_btn_text | default: 'SHOP BATTLE SET' }}</a>
     </div>
   </div>
 
@@ -137,6 +134,16 @@
     .willa-announcement-inner { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   }
 
+  .willa-container {
+    width: 100%;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(16px, 3vw, 32px);
+    padding-right: clamp(16px, 3vw, 32px);
+    box-sizing: border-box;
+  }
+
   .willa-header-wrap {
     position: sticky;
     top: 0;
@@ -152,6 +159,12 @@
     align-items: center;
     justify-content: space-between;
     height: 64px;
+    gap: 20px;
+  }
+  .willa-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
   @media (max-width: 640px) {
     .willa-header-inner { height: 54px; }
@@ -466,25 +479,25 @@
       "type": "text",
       "id": "promo_tag",
       "label": "Promo Tag",
-      "default": "LIMITED SPECIAL"
+      "default": "FEATURED RELEASE"
     },
     {
       "type": "text",
       "id": "promo_title",
       "label": "Promo Title",
-      "default": "Spring Tool & Repair Sale"
+      "default": "Infrared Laser Battle Set"
     },
     {
       "type": "textarea",
       "id": "promo_desc",
       "label": "Promo Description",
-      "default": "Save up to 50% OFF on our best-selling Zavelyn farm & workshop innovations."
+      "default": "Screen-free family entertainment with dynamic wall target projections and multiplayer battle arena."
     },
     {
       "type": "text",
       "id": "promo_btn_text",
       "label": "Promo Button Text",
-      "default": "SHOP 50% OFF NOW"
+      "default": "SHOP BATTLE SET ➔"
     },
     {
       "type": "url",
