@@ -1,59 +1,51 @@
 {
   "sections": {
-    "top_banner": {
-      "type": "zavelyn-top-banner",
-      "settings": {
-        "badge_text": "SHOWROOM V4.0",
-        "main_text": "EXPLORE 2.5D RETAIL SHOWROOMS · FREE US SHIPPING OVER $49",
-        "timer_end": "Live Now"
-      }
-    },
     "hero": {
       "type": "zavelyn-v4-hero",
       "settings": {
-        "heading": "Step Inside America's Most Innovative Home & Lifestyle Showrooms",
-        "subheading": "Browse realistic 2.5D physical product shelves, inspect craftsmanship with interactive 360 zooms, and shop uncompromised quality with 30-day money-back protection."
+        "heading": "Innovative Interactive Toys & Modern Family Essentials",
+        "subheading": "Engineered for active screen-free play, dynamic target projections, and unforgettable family battles. Backed by 30-day money-back guarantee."
       }
     },
-    "stores": {
-      "type": "zavelyn-v4-stores",
-      "settings": {}
-    },
-    "ticker": {
-      "type": "zavelyn-ticker",
-      "settings": {}
-    },
-    "bestsellers": {
-      "type": "zavelyn-bestsellers",
+    "featured_products": {
+      "type": "trymalora-featured-products",
       "settings": {
-        "heading": "Popular Zavelyn Best Sellers",
-        "subhead": "Real customer favorites engineered for reliability, durability, and time-saving efficiency.",
-        "collection": "best-sellers"
+        "pill_text": "FEATURED RELEASES",
+        "heading": "Interactive Toys & Active Play",
+        "subhead": "Engineered for screen-free physical battles, wall target practice, and unforgettable family tournaments.",
+        "collection": "frontpage"
       }
     },
-    "pain_solution": {
-      "type": "zavelyn-pain-solution",
+    "brand_values": {
+      "type": "willa-facts",
       "settings": {
-        "heading": "Stop Buying Tools That Break.<br><span>Let Zavelyn Take Over.<\/span>",
-        "subhead": "You don't need another brittle gadget lying dead in your workshop. You need heavy-duty precision engineered to handle real-world tasks effortlessly."
+        "pill_text": "THE TRYMALORA DIFFERENCE",
+        "heading": "Engineered for Active Family Play",
+        "subtitle": "Screen-free excitement, durable impact-resistant design, and eye-safe technology built for hours of active fun."
       }
     },
     "comparison": {
-      "type": "zavelyn-comparison-elixir",
-      "settings": {}
+      "type": "willa-comparison",
+      "settings": {
+        "pill_text": "HEAD-TO-HEAD COMPARISON",
+        "heading": "Why Trymalora Outperforms the Rest",
+        "brand_col_title": "Trymalora Original",
+        "competitor_col_title": "Generic Alternatives"
+      }
     },
     "faq": {
-      "type": "zavelyn-faq-elixir",
-      "settings": {}
+      "type": "willa-faq",
+      "settings": {
+        "pill_text": "GOT QUESTIONS?",
+        "heading": "Frequently Asked Questions",
+        "subtitle": "Everything you need to know about our products, shipping, and guarantees."
+      }
     }
   },
   "order": [
-    "top_banner",
     "hero",
-    "stores",
-    "ticker",
-    "bestsellers",
-    "pain_solution",
+    "featured_products",
+    "brand_values",
     "comparison",
     "faq"
   ]

@@ -248,9 +248,6 @@
                   {% if product.handle contains 'infrared' or product.handle contains 'battle' or product.handle contains 'laser' or product.title contains 'Laser' or product.title contains 'Infrared' %}
                     {% assign is_cutout = true %}
                     {% assign showroom_img_url = 'infrared-battle-set-cutout.png' | asset_url %}
-                    {% if showroom_img_url == blank or showroom_img_url contains 'no-image' %}
-                      {% assign showroom_img_url = 'https://cdn.shopify.com/s/files/1/1032/4541/4771/files/photo_2026-11-03_04-05-43.jpg?v=1793703987' %}
-                    {% endif %}
                     {% assign shadow_width = 82 %}
                     {% assign shadow_opacity = 0.85 %}
                     {% assign shadow_softness = 14 %}
@@ -490,10 +487,7 @@
                 <div class="zv-wood-under-shadow"></div>
               </div>
 
-              {% assign flagship_img = "infrared-battle-set-cutout.png" | asset_url %}
-              {% if flagship_img == blank or flagship_img contains 'no-image' %}
-                {% assign flagship_img = "https://cdn.shopify.com/s/files/1/1032/4541/4771/files/photo_2026-11-03_04-05-43.jpg?v=1793703987" %}
-              {% endif %}
+              {% assign flagship_img = "https://cdn.shopify.com/s/files/1/1032/4541/4771/files/photo_2026-11-03_04-05-43.jpg?v=1793703987" %}
               {% assign flagship_title = "Infrared Laser Battle Set" %}
               {% assign flagship_price = "$129.00" %}
               {% assign flagship_url = "/products/kids-infrared-battle-blaster-set-with-target-projector" %}

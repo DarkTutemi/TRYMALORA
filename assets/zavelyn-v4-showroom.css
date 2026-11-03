@@ -702,22 +702,29 @@
   margin: 0 auto;
 }
 
-/* 1 Product Row - Centered within Retail Shelf Slot (Slot 1 matching user mockup) */
+/* 1 Product Row - Centered within Retail Shelf Slot (Matching User Acceptance Mockup) */
 .zv-grid--1 {
-  grid-template-columns: repeat(3, 1fr);
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-end !important;
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  gap: 28px;
 }
 
 .zv-grid--1 .zv-shelf-column {
-  grid-column: 1;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
 .zv-grid--1 .zv-shelf-item {
-  max-width: 300px;
+  max-width: 480px;
   margin: 0 auto;
+}
+
+.zv-shelf-tier[data-tier-count="1"] {
+  --zv-prod-h: 310px;
 }
 
 /* 3. Mobile / Tablet Responsive Override (< 1024px) */
@@ -766,20 +773,27 @@
     align-items: flex-end;
   }
 
-  /* Incomplete Mobile Row (1 Product Remaining): Slot 1 on shelf */
+  /* 1 Product on Mobile Shelf: Centered on shelf */
   .zv-pair--1 .zv-pair-products {
-    grid-template-columns: repeat(2, 1fr);
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
     width: 100%;
-    gap: 12px;
   }
 
   .zv-pair--1 .zv-shelf-column {
-    grid-column: 1;
+    width: 100%;
+    max-width: 330px;
+    margin: 0 auto;
   }
 
   .zv-pair--1 .zv-shelf-item {
-    max-width: 200px;
+    max-width: 300px;
     margin: 0 auto;
+  }
+
+  .zv-shelf-tier[data-tier-count="1"] {
+    --zv-prod-h: 210px;
   }
 }
 
@@ -874,6 +888,7 @@
   object-fit: contain;
   object-position: bottom center;
   transform: translateY(var(--zv-cutout-offset, 14px));
+  mix-blend-mode: multiply;
   filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.22));
   transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), filter 0.28s ease;
   display: block;

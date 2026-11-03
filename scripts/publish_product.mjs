@@ -1,6 +1,6 @@
 import { adminGraphql } from './config.mjs';
 
-async function publish() {
+async function updateProduct() {
   const mutation = `
     mutation productUpdate($input: ProductInput!) {
       productUpdate(input: $input) {
@@ -8,6 +8,7 @@ async function publish() {
           id
           title
           status
+          publishedAt
         }
         userErrors {
           field
@@ -22,7 +23,7 @@ async function publish() {
       status: 'ACTIVE'
     }
   });
-  console.log(JSON.stringify(res, null, 2));
+  console.log('productUpdate Result:', JSON.stringify(res, null, 2));
 }
 
-publish().catch(console.error);
+updateProduct().catch(console.error);
