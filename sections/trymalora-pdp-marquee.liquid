@@ -1,0 +1,156 @@
+{% comment %}
+  TRYMALORA - HORIZONTAL SCROLLING MARQUEE
+  Seamless, CSS transform-based looping strip with factual benefit statements.
+  Supports prefers-reduced-motion and responsive mobile displays.
+{% endcomment %}
+
+<style>
+  .tm-marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    background: {{ section.settings.bg_color | default: "#24131C" }};
+    color: {{ section.settings.text_color | default: "#FFFFFF" }};
+    padding: 14px 0;
+    position: relative;
+    user-select: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .tm-marquee-track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    animation: tmMarqueeScroll 28s linear infinite;
+  }
+
+  .tm-marquee-wrapper:hover .tm-marquee-track {
+    animation-play-state: paused;
+  }
+
+  .tm-marquee-group {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    padding-right: 36px;
+    flex-shrink: 0;
+  }
+
+  .tm-marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--zv-font-heading, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+    font-size: 13.5px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .tm-marquee-item .tm-separator {
+    color: {{ section.settings.accent_color | default: "#BCE76A" }};
+    font-size: 14px;
+    display: inline-block;
+  }
+
+  @keyframes tmMarqueeScroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tm-marquee-track {
+      animation: none;
+      transform: none;
+      overflow-x: auto;
+      width: 100%;
+      justify-content: center;
+      padding: 0 16px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .tm-marquee-wrapper {
+      padding: 11px 0;
+    }
+    .tm-marquee-group {
+      gap: 24px;
+      padding-right: 24px;
+    }
+    .tm-marquee-item {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      gap: 8px;
+    }
+  }
+</style>
+
+<div class="tm-marquee-wrapper" role="region" aria-label="Feature Highlights">
+  <div class="tm-marquee-track">
+    <!-- Duplicate group twice for infinite seamless loop -->
+    {% for i in (1..2) %}
+      <div class="tm-marquee-group" aria-hidden="{% if forloop.index == 2 %}true{% else %}false{% endif %}">
+        <span class="tm-marquee-item">
+          <span>INTERACTIVE PLAY</span>
+          <span class="tm-separator">✦</span>
+        </span>
+        <span class="tm-marquee-item">
+          <span>PROJECTED TARGETS</span>
+          <span class="tm-separator">✦</span>
+        </span>
+        <span class="tm-marquee-item">
+          <span>SOUND &amp; LIGHT EFFECTS</span>
+          <span class="tm-separator">✦</span>
+        </span>
+        <span class="tm-marquee-item">
+          <span>FAMILY GAME TIME</span>
+          <span class="tm-separator">✦</span>
+        </span>
+        <span class="tm-marquee-item">
+          <span>EYE-SAFE INFRARED</span>
+          <span class="tm-separator">✦</span>
+        </span>
+        <span class="tm-marquee-item">
+          <span>TACTICAL VIBRATION FEEDBACK</span>
+          <span class="tm-separator">✦</span>
+        </span>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trymalora PDP Marquee",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#24131C"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Star Accent Color",
+      "default": "#BCE76A"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trymalora PDP Marquee"
+    }
+  ]
+}
+{% endschema %}

@@ -4,6 +4,10 @@
       "type": "zavelyn-v4-pdp-main",
       "settings": {}
     },
+    "marquee": {
+      "type": "trymalora-pdp-marquee",
+      "settings": {}
+    },
     "package": {
       "type": "trymalora-pdp-package",
       "settings": {}
@@ -12,8 +16,8 @@
       "type": "trymalora-pdp-how-it-works",
       "settings": {}
     },
-    "story": {
-      "type": "zavelyn-v4-pdp-story",
+    "description": {
+      "type": "trymalora-pdp-description",
       "settings": {}
     },
     "specs": {
@@ -31,9 +35,10 @@
   },
   "order": [
     "main",
+    "marquee",
     "package",
     "how_it_works",
-    "story",
+    "description",
     "specs",
     "faq",
     "shipping"

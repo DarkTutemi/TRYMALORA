@@ -431,18 +431,18 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .zv-btn-claim {
-  background: var(--zv-accent);
-  color: var(--zv-accent-dark);
+  background: #5C1D3E;
+  color: #FFFFFF;
   font-size: 16px;
-  font-weight: 900;
-  letter-spacing: 0.4px;
-  padding: 18px 24px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  padding: 17px 24px;
   border-radius: var(--zv-radius-md);
-  box-shadow: 0 10px 24px -6px rgba(188, 231, 106, 0.6);
+  box-shadow: 0 8px 24px -4px rgba(92, 29, 62, 0.4);
   border: none;
   cursor: pointer;
   display: flex;
@@ -453,16 +453,49 @@
 }
 
 .zv-btn-claim:hover {
-  background: var(--zv-accent-hover);
+  background: #73244E;
   transform: translateY(-2px);
-  box-shadow: 0 14px 28px -6px rgba(188, 231, 106, 0.7);
+  box-shadow: 0 12px 28px -4px rgba(92, 29, 62, 0.5);
+}
+
+.zv-btn-claim:active {
+  background: #42122C;
+  transform: translateY(1px);
+}
+
+.zv-btn-claim:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.zv-btn-plum {
+  background: #5C1D3E !important;
+  color: #FFFFFF !important;
+}
+
+.zv-cta-guarantee {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--zv-body);
+  margin: -2px 0 2px;
+}
+
+.zv-cta-guarantee svg {
+  color: var(--zv-ok);
+  flex-shrink: 0;
 }
 
 .zv-btn-buynow {
-  background: var(--zv-primary);
+  background: #17352B;
   color: #FFFFFF;
   font-size: 14.5px;
   font-weight: 800;
+  letter-spacing: 0.5px;
   padding: 14px 24px;
   border-radius: var(--zv-radius-md);
   border: none;
@@ -475,15 +508,57 @@
 }
 
 .zv-btn-buynow:hover {
-  background: var(--zv-primary-hover);
+  background: #0E241C;
 }
 
-/* Delivery Progress Stepper */
+/* Payment Icons Row */
+.zv-payment-methods {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 0 16px;
+  border-bottom: 1px solid var(--zv-border);
+  margin-bottom: 18px;
+}
+
+.zv-payment-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--zv-muted);
+}
+
+.zv-payment-icons {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.zv-payment-icon-item {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+}
+
+.zv-payment-svg {
+  height: 22px;
+  width: auto;
+  max-width: 38px;
+}
+
+/* Delivery Progress Stepper (Task 6: 3 Steps Without Subtitles) */
 .zv-delivery-stepper {
   background: var(--zv-bg);
   border: 1px solid var(--zv-border);
   border-radius: var(--zv-radius-md);
-  padding: 14px 18px;
+  padding: 12px 16px;
   margin-bottom: 20px;
 }
 
@@ -497,9 +572,9 @@
 .zv-stepper-row::before {
   content: "";
   position: absolute;
-  top: 14px;
-  left: 20%;
-  right: 20%;
+  top: 13px;
+  left: 18%;
+  right: 18%;
   height: 2px;
   background: var(--zv-border);
   z-index: 1;
@@ -515,15 +590,15 @@
 }
 
 .zv-step-dot {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   background: #FFFFFF;
   border: 2px solid var(--zv-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   color: var(--zv-muted);
 }
@@ -535,48 +610,119 @@
 }
 
 .zv-step-label {
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--zv-heading);
 }
 
-.zv-step-sub {
-  font-size: 10.5px;
-  color: var(--zv-muted);
+/* Minimalist Buy Box FAQ Accordion (Task 7) */
+.zv-pdp-accordions {
+  border-top: 1px solid var(--zv-border);
+  margin-top: 6px;
 }
 
-/* Trust Strip */
-.zv-trust-badges-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  padding-top: 16px;
+.zv-faq-item {
+  border-bottom: 1px solid var(--zv-border);
+}
+
+.zv-faq-summary {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--zv-heading);
+  cursor: pointer;
+  user-select: none;
+}
+
+.zv-faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+.zv-faq-icon {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.zv-faq-icon::before,
+.zv-faq-icon::after {
+  content: "";
+  position: absolute;
+  background-color: var(--zv-heading);
+  transition: transform var(--zv-transition-fast), opacity var(--zv-transition-fast);
+}
+
+.zv-faq-icon::before {
+  top: 6px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.zv-faq-icon::after {
+  top: 0;
+  bottom: 0;
+  left: 6px;
+  width: 2px;
+  border-radius: 1px;
+}
+
+.zv-faq-item[open] .zv-faq-icon::after {
+  transform: rotate(90deg);
+  opacity: 0;
+}
+
+.zv-faq-body {
+  padding: 0 0 16px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--zv-body);
+}
+
+/* Rich Description Section */
+.tm-product-description-section {
+  padding: 48px 0;
+  background: #FFFFFF;
   border-top: 1px solid var(--zv-border);
 }
 
-.zv-trust-badge-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 4px;
+.tm-description-rte {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--zv-body);
 }
 
-.zv-trust-badge-item svg {
-  width: 22px;
-  height: 22px;
-  color: var(--zv-primary);
-}
-
-.zv-trust-badge-title {
-  font-size: 12px;
+.tm-description-rte h2,
+.tm-description-rte h3 {
+  font-family: var(--zv-font-heading);
   font-weight: 800;
   color: var(--zv-heading);
+  margin: 32px 0 12px;
+  line-height: 1.25;
 }
 
-.zv-trust-badge-desc {
-  font-size: 11px;
-  color: var(--zv-muted);
+.tm-description-rte h2 {
+  font-size: 26px;
+}
+
+.tm-description-rte h3 {
+  font-size: 20px;
+}
+
+.tm-description-rte img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 24px auto;
+  border-radius: var(--zv-radius-md);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
 }
 
 /* ==========================================================================
