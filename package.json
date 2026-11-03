@@ -1,0 +1,27 @@
+{
+  "name": "trymalora-theme",
+  "version": "1.0.0",
+  "description": "Trymalora Theme - Immersive Retail Showroom V4 & High-Converting PDP",
+  "type": "module",
+  "scripts": {
+    "dev": "shopify theme dev --store ikwh1h-fx.myshopify.com --store-password lompea",
+    "push": "shopify theme push --store ikwh1h-fx.myshopify.com --unpublished",
+    "pull": "shopify theme pull --store ikwh1h-fx.myshopify.com",
+    "check": "shopify theme check",
+    "ecc:eval": "node .agents/skills/clone-shopify/scripts/post-clone-eval.mjs .",
+    "eval": "node .agents/skills/clone-shopify/scripts/post-clone-eval.mjs .",
+    "qa:multi-product": "node .agents/skills/clone-shopify/scripts/multi-product-qa.mjs",
+    "theme:list": "node scripts/query_themes.mjs",
+    "theme:create-draft": "node scripts/create_draft_theme.mjs",
+    "theme:deploy": "node scripts/deploy_theme.mjs"
+  },
+  "keywords": [
+    "shopify",
+    "theme",
+    "trymalora",
+    "showroom",
+    "cli"
+  ],
+  "author": "Antigravity Pair",
+  "license": "ISC"
+}
