@@ -131,10 +131,11 @@
   flex-direction: column;
 }
 
-/* 1. Review Rating Row (ABOVE Title) */
+/* 1. Review Rating Row (ABOVE Title - Trustpilot Verified Style) */
 .zv-pdp-rating-row {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
   font-size: 13.5px;
   font-weight: 600;
@@ -142,6 +143,56 @@
   text-decoration: none;
   margin-bottom: 12px;
   line-height: 1;
+  transition: opacity 0.2s ease;
+}
+
+.zv-pdp-rating-row:hover {
+  opacity: 0.85;
+}
+
+.zv-tp-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #191919;
+  font-weight: 700;
+  font-size: 13.5px;
+}
+
+.zv-tp-star-boxes {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5px;
+}
+
+.zv-tp-star-box {
+  background: #00B67A;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(0, 182, 122, 0.2);
+}
+
+.zv-tp-star-box svg {
+  width: 13px;
+  height: 13px;
+}
+
+.zv-tp-score {
+  color: #191919;
+  font-weight: 700;
+}
+
+.zv-tp-sep {
+  color: #B5A8AF;
+}
+
+.zv-tp-count {
+  color: var(--zv-pdp-muted, #7A6670);
 }
 
 .zv-stars {

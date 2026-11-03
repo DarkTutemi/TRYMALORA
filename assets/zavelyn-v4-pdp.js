@@ -65,12 +65,27 @@
     if (initialSelectedCard) {
       const initialVariantId = initialSelectedCard.getAttribute('data-variant-id');
       const initialPrice = parseInt(initialSelectedCard.getAttribute('data-price-cents'), 10);
+      const initialCompare = parseInt(initialSelectedCard.getAttribute('data-compare-cents'), 10);
       if (initialVariantId) activeVariantId = initialVariantId;
       if (initialPrice) {
         basePriceCents = initialPrice;
+        if (priceActiveEl) priceActiveEl.textContent = formatMoney(initialPrice);
+        if (stickyPrice) stickyPrice.textContent = formatMoney(initialPrice);
         updateCtaLabels(initialPrice);
       } else {
         updateCtaLabels(basePriceCents);
+      }
+      if (initialCompare && priceCompareEl) {
+        if (initialCompare > initialPrice) {
+          priceCompareEl.textContent = formatMoney(initialCompare);
+          priceCompareEl.style.display = 'inline';
+          if (priceSavingsEl) {
+            const saveDiff = initialCompare - initialPrice;
+            const pct = Math.round((saveDiff * 100) / initialCompare);
+            priceSavingsEl.textContent = 'SAVE ' + formatMoney(saveDiff) + ' (' + pct + '% OFF)';
+            priceSavingsEl.style.display = 'inline';
+          }
+        }
       }
     } else {
       updateCtaLabels(basePriceCents);
@@ -208,7 +223,8 @@
             priceCompareEl.style.display = 'inline';
             if (priceSavingsEl) {
               const saveDiff = comparePrice - currentPrice;
-              priceSavingsEl.textContent = 'SAVE ' + formatMoney(saveDiff);
+              const pct = Math.round((saveDiff * 100) / comparePrice);
+              priceSavingsEl.textContent = 'SAVE ' + formatMoney(saveDiff) + ' (' + pct + '% OFF)';
               priceSavingsEl.style.display = 'inline';
             }
           } else {

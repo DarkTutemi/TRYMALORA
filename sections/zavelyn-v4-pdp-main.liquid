@@ -30,14 +30,18 @@
 {% assign prod_hero_desc = "Turn ordinary playtime into an interactive adventure with infrared battles, projected targets, and exciting sound effects." %}
 
 {% assign t1_id = variant_tier_1.id | default: "67297621934451" %}
-{% assign t1_price = variant_tier_1.price | default: 9999 %}
+{% assign t1_price = variant_tier_1.price | default: 12900 %}
+{% assign t1_compare = variant_tier_1.compare_at_price | default: 25800 %}
 {% assign t2_id = variant_tier_2.id | default: "67297622131059" %}
-{% assign t2_price = variant_tier_2.price | default: 16999 %}
+{% assign t2_price = variant_tier_2.price | default: 24510 %}
+{% assign t2_compare = 51600 %}
 {% assign t3_id = variant_tier_3.id | default: "67297622163827" %}
-{% assign t3_price = variant_tier_3.price | default: 22999 %}
+{% assign t3_price = variant_tier_3.price | default: 32895 %}
+{% assign t3_compare = 77400 %}
 
-{% assign t2_savings = t1_price | times: 2 | minus: t2_price %}
-{% assign t3_savings = t1_price | times: 3 | minus: t3_price %}
+{% assign t1_savings = t1_compare | minus: t1_price %}
+{% assign t2_savings = t2_compare | minus: t2_price %}
+{% assign t3_savings = t3_compare | minus: t3_price %}
 
 {% assign base_price_dollars = t1_price | divided_by: 100.0 %}
 {% assign threshold_setting = section.settings.merchandising_threshold | default: 50 %}
@@ -60,7 +64,7 @@
   id="zvBuyBox"
   data-initial-variant-id="{{ t1_id }}"
   data-initial-price="{{ t1_price }}"
-  data-initial-compare="{{ t1_price }}"
+  data-initial-compare="{{ t1_compare }}"
 >
   <div class="zv-container" style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
     <div class="zv-pdp-grid">
@@ -127,13 +131,25 @@
       <!-- RIGHT COLUMN: BUY BOX (SHOPSIDEK T01 EDITORIAL FLOW) -->
       <div class="zv-pdp-info-col">
 
-        <!-- 1. Review Rating Row (ABOVE product title) -->
+        <!-- 1. Trustpilot Verified Review Rating Row (ABOVE product title) -->
         {% if section.settings.show_rating %}
-          <a class="zv-pdp-rating-row" href="#tmFaqSection" aria-label="Customer Rating">
-            <span class="zv-stars">★★★★★</span>
-            <span><strong>{{ section.settings.rating_score | default: "4.9" }}</strong> / 5.0</span>
-            <span>&middot;</span>
-            <span>({{ section.settings.rating_count | default: "2,418" }} {{ section.settings.rating_label | default: "verified reviews" }})</span>
+          <a class="zv-pdp-rating-row zv-trustpilot-row" href="#tmFaqSection" aria-label="Trustpilot Rating">
+            <span class="zv-tp-brand">
+              <svg class="zv-tp-icon" viewBox="0 0 24 24" fill="#00B67A" width="16" height="16" aria-hidden="true">
+                <path d="M12 2l2.9 8.2H23l-6.5 5 2.5 8-7-4.9-7 4.9 2.5-8L1 10.2h8.1z"/>
+              </svg>
+              <span class="zv-tp-name">Trustpilot</span>
+            </span>
+            <div class="zv-tp-star-boxes" aria-label="5 out of 5 stars">
+              <span class="zv-tp-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.4 6.5H19l-5.3 4 2 6.5-5.7-4.2-5.7 4.2 2-6.5-5.3-4h6.6z"/></svg></span>
+              <span class="zv-tp-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.4 6.5H19l-5.3 4 2 6.5-5.7-4.2-5.7 4.2 2-6.5-5.3-4h6.6z"/></svg></span>
+              <span class="zv-tp-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.4 6.5H19l-5.3 4 2 6.5-5.7-4.2-5.7 4.2 2-6.5-5.3-4h6.6z"/></svg></span>
+              <span class="zv-tp-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.4 6.5H19l-5.3 4 2 6.5-5.7-4.2-5.7 4.2 2-6.5-5.3-4h6.6z"/></svg></span>
+              <span class="zv-tp-star-box"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.4 6.5H19l-5.3 4 2 6.5-5.7-4.2-5.7 4.2 2-6.5-5.3-4h6.6z"/></svg></span>
+            </div>
+            <span class="zv-tp-score"><strong>{{ section.settings.rating_score | default: "4.9" }}</strong> / 5.0</span>
+            <span class="zv-tp-sep">&middot;</span>
+            <span class="zv-tp-count">({{ section.settings.rating_count | default: "2,418" }} {{ section.settings.rating_label | default: "verified reviews" }})</span>
           </a>
         {% endif %}
 
@@ -191,8 +207,8 @@
         <!-- 6. Bold Price Hero Row -->
         <div class="zv-pdp-price-hero">
           <b class="zv-price-active" id="zvPriceActive">{{ t1_price | money }}</b>
-          <s class="zv-price-compare" id="zvPriceCompare" style="display: none;">{{ t1_price | money }}</s>
-          <span class="zv-price-save-pill" id="zvPriceSavings" style="display: none;">SAVE $0</span>
+          <s class="zv-price-compare" id="zvPriceCompare">{{ t1_compare | money }}</s>
+          <span class="zv-price-save-pill" id="zvPriceSavings">SAVE {{ t1_savings | money }} (50% OFF)</span>
         </div>
 
         <!-- 7. TIERED BUNDLE SELECTOR (KACHING / SHOPSIDEK T01 STYLE) -->
@@ -213,7 +229,7 @@
                 data-qty="1"
                 data-variant-id="{{ t1_id }}"
                 data-price-cents="{{ t1_price }}"
-                data-compare-cents="{{ t1_price }}"
+                data-compare-cents="{{ t1_compare }}"
                 data-tier-level="1"
               >
                 <div class="zv-bundle-card-body">
@@ -221,7 +237,7 @@
                     <div class="zv-bundle-radio"></div>
                     <div class="zv-bundle-card-info">
                       <div class="zv-bundle-card-name">1 Set <small style="font-weight: 600; color: var(--zv-pdp-muted);">(Starter Pack)</small></div>
-                      <div class="zv-bundle-card-sub">2 Blasters + 1 Target Projector</div>
+                      <div class="zv-bundle-card-sub">2 Blasters + 1 Target Projector &middot; 50% OFF</div>
                     </div>
                   </div>
                   <div class="zv-bundle-card-pricing">
@@ -237,25 +253,22 @@
                 data-qty="1"
                 data-variant-id="{{ t2_id }}"
                 data-price-cents="{{ t2_price }}"
-                data-compare-cents="{{ t1_price | times: 2 }}"
+                data-compare-cents="{{ t2_compare }}"
                 data-tier-level="2"
               >
-                <span class="zv-bundle-card-badge">🔥 MOST POPULAR &middot; SAVE {{ t2_savings | money }}</span>
+                <span class="zv-bundle-card-badge">🔥 MOST POPULAR &middot; EXTRA 5% OFF &middot; SAVE {{ t2_savings | money }}</span>
                 <div class="zv-bundle-card-body">
                   <div class="zv-bundle-card-left">
                     <div class="zv-bundle-radio"></div>
                     <div class="zv-bundle-card-info">
                       <div class="zv-bundle-card-name">2 Sets <small style="font-weight: 600; color: var(--zv-pdp-muted);">(Arena Pack)</small></div>
-                      <div class="zv-bundle-card-sub">4 Blasters + 2 Projectors &middot; Free US Shipping</div>
+                      <div class="zv-bundle-card-sub">4 Blasters + 2 Projectors &middot; Extra 5% OFF &middot; Free US Shipping</div>
                     </div>
                   </div>
                   <div class="zv-bundle-card-pricing">
                     <div class="zv-bundle-card-total">{{ t2_price | money }}</div>
                     <div class="zv-bundle-card-unit">{{ t2_price | divided_by: 2 | money }} / set</div>
                   </div>
-                </div>
-                <div class="zv-bundle-bonus-gift">
-                  <span>🎁 Free Bonus: 2 Extra Target Slide Discs + FREE Tracked US Shipping</span>
                 </div>
               </div>
 
@@ -265,16 +278,16 @@
                 data-qty="1"
                 data-variant-id="{{ t3_id }}"
                 data-price-cents="{{ t3_price }}"
-                data-compare-cents="{{ t1_price | times: 3 }}"
+                data-compare-cents="{{ t3_compare }}"
                 data-tier-level="3"
               >
-                <span class="zv-bundle-card-badge alt">👑 BEST VALUE &middot; SAVE {{ t3_savings | money }}</span>
+                <span class="zv-bundle-card-badge alt">👑 BEST VALUE &middot; EXTRA 15% OFF &middot; SAVE {{ t3_savings | money }}</span>
                 <div class="zv-bundle-card-body">
                   <div class="zv-bundle-card-left">
                     <div class="zv-bundle-radio"></div>
                     <div class="zv-bundle-card-info">
                       <div class="zv-bundle-card-name">3 Sets <small style="font-weight: 600; color: var(--zv-pdp-muted);">(Tournament Pack)</small></div>
-                      <div class="zv-bundle-card-sub">6 Blasters + 3 Projectors &middot; Free US Shipping</div>
+                      <div class="zv-bundle-card-sub">6 Blasters + 3 Projectors &middot; Extra 15% OFF &middot; Free US Shipping</div>
                     </div>
                   </div>
                   <div class="zv-bundle-card-pricing">
@@ -283,7 +296,7 @@
                   </div>
                 </div>
                 <div class="zv-bundle-bonus-gift">
-                  <span>👑 VIP Bonus: 4 Extra Discs + Priority VIP Dispatch + FREE US Shipping</span>
+                  <span>🎟️ VIP Bonus: $20 OFF coupon on next order over $100 + FREE US Shipping</span>
                 </div>
               </div>
 
@@ -294,16 +307,16 @@
                 data-qty="1"
                 data-variant-id="{{ t3_id }}"
                 data-price-cents="{{ t3_price }}"
-                data-compare-cents="{{ t1_price | times: 3 }}"
+                data-compare-cents="{{ t3_compare }}"
                 data-tier-level="3"
               >
-                <span class="zv-bundle-card-badge alt">👑 BEST VALUE &middot; SAVE {{ t3_savings | money }}</span>
+                <span class="zv-bundle-card-badge alt">👑 BEST VALUE &middot; EXTRA 15% OFF &middot; SAVE {{ t3_savings | money }}</span>
                 <div class="zv-bundle-card-body">
                   <div class="zv-bundle-card-left">
                     <div class="zv-bundle-radio"></div>
                     <div class="zv-bundle-card-info">
                       <div class="zv-bundle-card-name">3 Sets</div>
-                      <div class="zv-bundle-card-sub">6 Blasters + 3 Projectors &middot; Free US Shipping</div>
+                      <div class="zv-bundle-card-sub">6 Blasters + 3 Projectors &middot; Extra 15% OFF &middot; Free US Shipping</div>
                     </div>
                   </div>
                   <div class="zv-bundle-card-pricing">
@@ -312,7 +325,7 @@
                   </div>
                 </div>
                 <div class="zv-bundle-bonus-gift">
-                  <span>👑 VIP Bonus: 4 Extra Discs + Priority VIP Dispatch + FREE US Shipping</span>
+                  <span>🎟️ VIP Bonus: $20 OFF coupon on next order over $100 + FREE US Shipping</span>
                 </div>
               </div>
 
@@ -321,25 +334,22 @@
                 data-qty="1"
                 data-variant-id="{{ t2_id }}"
                 data-price-cents="{{ t2_price }}"
-                data-compare-cents="{{ t1_price | times: 2 }}"
+                data-compare-cents="{{ t2_compare }}"
                 data-tier-level="2"
               >
-                <span class="zv-bundle-card-badge">🔥 MOST POPULAR &middot; SAVE {{ t2_savings | money }}</span>
+                <span class="zv-bundle-card-badge">🔥 MOST POPULAR &middot; EXTRA 5% OFF &middot; SAVE {{ t2_savings | money }}</span>
                 <div class="zv-bundle-card-body">
                   <div class="zv-bundle-card-left">
                     <div class="zv-bundle-radio"></div>
                     <div class="zv-bundle-card-info">
                       <div class="zv-bundle-card-name">2 Sets</div>
-                      <div class="zv-bundle-card-sub">4 Blasters + 2 Projectors &middot; Free US Shipping</div>
+                      <div class="zv-bundle-card-sub">4 Blasters + 2 Projectors &middot; Extra 5% OFF &middot; Free US Shipping</div>
                     </div>
                   </div>
                   <div class="zv-bundle-card-pricing">
                     <div class="zv-bundle-card-total">{{ t2_price | money }}</div>
                     <div class="zv-bundle-card-unit">{{ t2_price | divided_by: 2 | money }} / set</div>
                   </div>
-                </div>
-                <div class="zv-bundle-bonus-gift">
-                  <span>🎁 Free Bonus: 2 Extra Target Slide Discs + FREE Tracked US Shipping</span>
                 </div>
               </div>
 
@@ -348,7 +358,7 @@
                 data-qty="1"
                 data-variant-id="{{ t1_id }}"
                 data-price-cents="{{ t1_price }}"
-                data-compare-cents="{{ t1_price }}"
+                data-compare-cents="{{ t1_compare }}"
                 data-tier-level="1"
               >
                 <div class="zv-bundle-card-body">
@@ -356,7 +366,7 @@
                     <div class="zv-bundle-radio"></div>
                     <div class="zv-bundle-card-info">
                       <div class="zv-bundle-card-name">1 Set</div>
-                      <div class="zv-bundle-card-sub">2 Blasters + 1 Target Projector</div>
+                      <div class="zv-bundle-card-sub">2 Blasters + 1 Target Projector &middot; 50% OFF</div>
                     </div>
                   </div>
                   <div class="zv-bundle-card-pricing">
@@ -462,7 +472,7 @@
               <span class="zv-acc-ic" aria-hidden="true">+</span>
             </summary>
             <div class="zv-acc-body">
-              Each 1 Set includes 2 Tactical Blasters, 1 Dynamic Target Projector, target slide discs, and an illustrated quickstart manual. 2 Sets include 4 Blasters and 2 Projectors. 3 Sets include 6 Blasters and 3 Projectors. (Requires 4× AAA batteries for blasters and 3× AA for projector; batteries not included).
+              Each 1 Set includes 2 Tactical Blasters, 1 Dynamic Target Projector, target slide discs, and an illustrated quickstart manual. 2 Sets include 4 Blasters and 2 Projectors. 3 Sets include 6 Blasters and 3 Projectors.
             </div>
           </details>
 

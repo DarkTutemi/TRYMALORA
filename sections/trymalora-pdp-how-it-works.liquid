@@ -212,9 +212,11 @@
 
   .tm-setup-sub {
     font-size: 14px;
-    text-align: center;
+    text-align: center !important;
     color: var(--zv-pdp-muted, #7A6670);
-    margin: 0 0 32px;
+    margin: 0 auto 32px auto !important;
+    max-width: 600px;
+    display: block;
   }
 
   .tm-setup-grid {
@@ -222,6 +224,22 @@
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 24px;
     text-align: center;
+  }
+
+  .tm-setup-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tm-setup-icon img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
   }
 
   .tm-setup-num {
@@ -274,14 +292,17 @@
       <div class="tm-story-row">
         <div class="tm-story-media">
           <span class="tm-story-badge">Solo &amp; Co-op Arcade Mode</span>
-          <img 
-            src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173020_95469ec9ffbf4d73ac184b9e30d7d3ee_356f56e5-46d7-4421-8be1-d7f82d6241f0.png" 
-            alt="Dynamic Wall Target Projection" 
-            class="tm-story-img"
-            width="600"
-            height="450"
-            loading="lazy"
-          >
+          <video 
+            src="https://cdn.shopify.com/videos/c/o/v/cdc0dde4a907461cba0446744aed37e6.mp4" 
+            class="tm-story-img tm-story-video"
+            autoplay 
+            loop 
+            muted 
+            playsinline
+            controls
+            preload="metadata"
+            style="width: 100%; height: auto; border-radius: 12px; display: block; object-fit: cover;"
+          ></video>
         </div>
         <div class="tm-story-content">
           <span class="tm-story-eyebrow">MODE A &middot; PRECISION TARGET PRACTICE</span>
@@ -313,7 +334,7 @@
         <div class="tm-story-media">
           <span class="tm-story-badge">Multiplayer Team Mode</span>
           <img 
-            src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173020_94e0edf9f1023e1489161d1b3218329e_57ef72a8-8ded-4354-b4fd-8dfd4995b2d2.png" 
+            src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/b2.webp?v=1793726274" 
             alt="Multiplayer Tactical Battle Mode" 
             class="tm-story-img"
             width="600"
@@ -351,21 +372,27 @@
     <!-- 3-Step Setup Ribbon -->
     <div class="tm-setup-band">
       <h3 class="tm-setup-title">3-Step Effortless Setup</h3>
-      <p class="tm-setup-sub">No complex smartphone apps, pairing codes, or Bluetooth syncing required.</p>
+      <p class="tm-setup-sub" style="text-align: center; margin: 0 auto 32px auto;">No complex smartphone apps, pairing codes, or Bluetooth syncing required.</p>
       
       <div class="tm-setup-grid">
-        <div>
-          <div class="tm-setup-num">1</div>
+        <div class="tm-setup-card">
+          <div class="tm-setup-icon">
+            <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/ic1.webp?v=1793726063" alt="Insert Batteries" width="64" height="64" loading="lazy">
+          </div>
           <div class="tm-setup-step-title">Insert Batteries</div>
-          <p class="tm-setup-step-desc">Load 2× AAA batteries into each blaster and 3× AA batteries into the projector base.</p>
+          <p class="tm-setup-step-desc">Adjust the projector focus, aim at your targets and start playing!</p>
         </div>
-        <div>
-          <div class="tm-setup-num">2</div>
+        <div class="tm-setup-card">
+          <div class="tm-setup-icon">
+            <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/ic2.webp?v=1793726063" alt="Choose Your Play Mode" width="64" height="64" loading="lazy">
+          </div>
           <div class="tm-setup-step-title">Choose Your Play Mode</div>
           <p class="tm-setup-step-desc">Turn on the projector for wall target drills, or select your team color channel for PvP.</p>
         </div>
-        <div>
-          <div class="tm-setup-num">3</div>
+        <div class="tm-setup-card">
+          <div class="tm-setup-icon">
+            <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/ic3.webp?v=1793726063" alt="Power On & Battle" width="64" height="64" loading="lazy">
+          </div>
           <div class="tm-setup-step-title">Power On &amp; Battle</div>
           <p class="tm-setup-step-desc">Switch on, take aim, and engage in high-energy interactive indoor battles.</p>
         </div>
