@@ -5,7 +5,7 @@
 
 {{ 'zavelyn-v4-tokens.css' | asset_url | stylesheet_tag }}
 
-<section class="zv-hero-section" style="background: linear-gradient(180deg, #3D1027 0%, #2B1B24 100%); color: #FFFFFF; padding: 72px 0 88px; position: relative; overflow: hidden;">
+<section class="zv-hero-section">
   <!-- Atmospheric Background Ambient Glow -->
   <div style="position: absolute; top: -120px; right: -120px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(176, 71, 110, 0.2) 0%, rgba(43, 27, 36, 0) 70%); pointer-events: none;"></div>
   
@@ -15,7 +15,7 @@
         ✨ TRYMALORA OFFICIAL STORE · VERIFIED QUALITY
       </div>
 
-      <h1 style="font-family: var(--zv-font-heading); font-size: clamp(28px, 4vw, 42px); line-height: 1.15; font-weight: 800; letter-spacing: -0.8px; margin: 0 0 20px; color: #FFFFFF;">
+      <h1 style="font-family: var(--zv-font-heading, 'Fraunces', Georgia, serif); font-size: clamp(28px, 4vw, 42px); line-height: 1.15; font-weight: 800; letter-spacing: -0.8px; margin: 0 0 20px; color: #FFFFFF;">
         {{ section.settings.heading | default: "Innovative Interactive Toys & Modern Family Essentials" }}
       </h1>
 
@@ -24,10 +24,10 @@
       </p>
 
       <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-bottom: 48px;">
-        <a href="/products/kids-infrared-battle-blaster-set-with-target-projector" class="zv-btn zv-btn-accent" style="padding: 18px 36px; font-size: 16px; background-color: #6B1E46; border-color: #6B1E46; color: #ffffff;">
+        <a href="/products/kids-infrared-battle-blaster-set-with-target-projector" class="zv-hero-btn-primary">
           <span>SHOP FEATURED RELEASE ➔</span>
         </a>
-        <a href="/collections/all" class="zv-btn zv-btn-outline" style="border-color: rgba(255, 255, 255, 0.4); color: #FFFFFF; padding: 18px 36px;">
+        <a href="/collections/all" class="zv-hero-btn-secondary">
           <span>BROWSE ALL PRODUCTS</span>
         </a>
       </div>
@@ -35,21 +35,86 @@
       <!-- Trust Badges Strip -->
       <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 32px; padding-top: 28px; border-top: 1px solid rgba(255, 255, 255, 0.12); font-size: 13.5px; font-weight: 700; color: #C9D6CE;">
         <div style="display: flex; align-items: center; gap: 8px;">
-          <span style="color: var(--zv-accent);">✓</span> Free US Delivery Over $49
+          <span style="color: #FBEDE8;">✓</span> Free US Delivery Over $49
         </div>
         <div style="display: flex; align-items: center; gap: 8px;">
-          <span style="color: var(--zv-accent);">✓</span> 30-Day Money-Back Guarantee
+          <span style="color: #FBEDE8;">✓</span> 30-Day Money-Back Guarantee
         </div>
         <div style="display: flex; align-items: center; gap: 8px;">
-          <span style="color: var(--zv-accent);">✓</span> 24–48h US Warehouse Dispatch
+          <span style="color: #FBEDE8;">✓</span> 24–48h US Warehouse Dispatch
         </div>
         <div style="display: flex; align-items: center; gap: 8px;">
-          <span style="color: var(--zv-accent);">✓</span> 256-Bit SSL Encrypted Checkout
+          <span style="color: #FBEDE8;">✓</span> 256-Bit SSL Encrypted Checkout
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .zv-hero-section {
+    background: linear-gradient(180deg, #3D1027 0%, #2B1B24 100%);
+    color: #FFFFFF;
+    padding: 72px 0 88px;
+    position: relative;
+    overflow: hidden;
+  }
+  .zv-hero-section .zv-container {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 3vw, 32px);
+    box-sizing: border-box;
+  }
+  .zv-hero-btn-primary {
+    background-color: #6B1E46;
+    border: 1px solid #B0476E;
+    color: #FFFFFF;
+    padding: 16px 36px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-radius: 12px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 18px rgba(107, 30, 70, 0.4);
+  }
+  .zv-hero-btn-primary:hover {
+    background-color: #852657;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(107, 30, 70, 0.5);
+    color: #FFFFFF;
+  }
+  .zv-hero-btn-secondary {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #FFFFFF;
+    padding: 16px 36px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-radius: 12px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+  .zv-hero-btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+    border-color: #FFFFFF;
+    transform: translateY(-2px);
+    color: #FFFFFF;
+  }
+  @media (max-width: 640px) {
+    .zv-hero-section {
+      padding: 48px 0 60px;
+    }
+  }
+</style>
 
 {% schema %}
 {

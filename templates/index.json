@@ -1,13 +1,5 @@
 {
   "sections": {
-    "top_banner": {
-      "type": "zavelyn-top-banner",
-      "settings": {
-        "badge_text": "FLASH SALE",
-        "main_text": "FREE EXPRESS US SHIPPING OVER $49 · 30-DAY SATISFACTION GUARANTEE",
-        "timer_end": "Ends Tonight"
-      }
-    },
     "hero": {
       "type": "zavelyn-v4-hero",
       "settings": {
@@ -15,45 +7,45 @@
         "subheading": "Engineered for active screen-free play, dynamic target projections, and unforgettable family battles. Backed by 30-day money-back guarantee."
       }
     },
-    "stores": {
-      "type": "zavelyn-v4-stores",
-      "settings": {}
-    },
-    "ticker": {
-      "type": "zavelyn-ticker",
-      "settings": {}
-    },
-    "bestsellers": {
-      "type": "zavelyn-bestsellers",
+    "featured_products": {
+      "type": "trymalora-featured-products",
       "settings": {
-        "heading": "Featured Best Sellers",
-        "subhead": "Real customer favorites engineered for active play, durability, and family entertainment.",
-        "collection": "all"
+        "pill_text": "FEATURED RELEASES",
+        "heading": "Interactive Toys & Active Play",
+        "subhead": "Engineered for screen-free physical battles, wall target practice, and unforgettable family tournaments.",
+        "collection": "frontpage"
       }
     },
-    "pain_solution": {
-      "type": "zavelyn-pain-solution",
+    "brand_values": {
+      "type": "willa-facts",
       "settings": {
-        "heading": "Less Screen Addiction.<br><span>More Active Family Play.</span>",
-        "subhead": "Replace mindless scrolling with real-world movement, teamwork, and exciting multiplayer competitions right in your living room."
+        "pill_text": "THE TRYMALORA DIFFERENCE",
+        "heading": "Engineered for Active Family Play",
+        "subtitle": "Screen-free excitement, durable impact-resistant design, and eye-safe technology built for hours of active fun."
       }
     },
     "comparison": {
-      "type": "zavelyn-comparison-elixir",
-      "settings": {}
+      "type": "willa-comparison",
+      "settings": {
+        "pill_text": "HEAD-TO-HEAD COMPARISON",
+        "heading": "Why Trymalora Outperforms the Rest",
+        "brand_col_title": "Trymalora Original",
+        "competitor_col_title": "Generic Alternatives"
+      }
     },
     "faq": {
-      "type": "zavelyn-faq-elixir",
-      "settings": {}
+      "type": "willa-faq",
+      "settings": {
+        "pill_text": "GOT QUESTIONS?",
+        "heading": "Frequently Asked Questions",
+        "subtitle": "Everything you need to know about our products, shipping, and guarantees."
+      }
     }
   },
   "order": [
-    "top_banner",
     "hero",
-    "stores",
-    "ticker",
-    "bestsellers",
-    "pain_solution",
+    "featured_products",
+    "brand_values",
     "comparison",
     "faq"
   ]
