@@ -402,6 +402,8 @@
                       src="{{ catalog_img_url }}" 
                       alt="{{ product.title | escape }}" 
                       loading="lazy" 
+                      width="400"
+                      height="400"
                       class="zv-cat-card-img" 
                       style="object-fit: {{ catalog_fit }};"
                     >
@@ -629,7 +631,7 @@
       <!-- Zoomed Product Focal Image (FLIP-animated from shelf position) -->
       <div class="zv-inspect-focal-frame" id="zvInspectFocalFrame">
         <div class="zv-focal-spotlight"></div>
-        <img src="" alt="" class="zv-focal-img" id="zvInspectFocalImg">
+        <img src="" alt="" width="500" height="500" class="zv-focal-img" id="zvInspectFocalImg">
         <div class="zv-focal-ground-shadow"></div>
       </div>
 
@@ -707,7 +709,7 @@
 
       <div class="zv-mobile-sheet-body">
         <div class="zv-mobile-sheet-img-wrap">
-          <img src="" alt="" id="zvMobileSheetImg">
+          <img src="" alt="" width="400" height="400" id="zvMobileSheetImg">
         </div>
         
         <h3 id="zvMobileSheetTitle">Product Title</h3>

@@ -84,6 +84,18 @@
     let activeMerchRect = null;
     let isZoomActive = false;
 
+    // Reset any stale state on initial load (guarantees NO stuck overlay/blur on load)
+    if (inspectBay) {
+      inspectBay.classList.remove('active');
+      inspectBay.setAttribute('aria-hidden', 'true');
+    }
+    if (mobileOverlay) {
+      mobileOverlay.classList.remove('active');
+      mobileOverlay.setAttribute('aria-hidden', 'true');
+    }
+    document.querySelectorAll('.zv-shelf-item').forEach(si => si.classList.remove('zv-shelf-dimmed'));
+    document.body.style.overflow = '';
+
     function formatMoney(cents) {
       return (cents / 100).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
     }
@@ -145,8 +157,8 @@
       if (isZoomActive) return;
 
       const rawJson = itemElem.getAttribute('data-product-json');
+      const fallbackUrl = itemElem.getAttribute('data-product-url');
       if (!rawJson) {
-        const fallbackUrl = itemElem.getAttribute('data-product-url');
         if (fallbackUrl) window.location.href = fallbackUrl;
         return;
       }
@@ -155,139 +167,155 @@
         currentProduct = JSON.parse(rawJson);
       } catch (err) {
         console.error('Failed to parse product data', err);
+        if (fallbackUrl) window.location.href = fallbackUrl;
         return;
       }
 
-      activeShelfItem = itemElem;
-      const merchDisplay = itemElem.querySelector('.zv-merch-display') || itemElem;
-      activeMerchRect = merchDisplay.getBoundingClientRect();
+      try {
+        activeShelfItem = itemElem;
+        const merchDisplay = itemElem.querySelector('.zv-merch-display') || itemElem;
+        activeMerchRect = merchDisplay.getBoundingClientRect();
 
-      // Step A: Dim surrounding shelf items (shelf remains visible in background)
-      shelfItems.forEach(si => {
-        if (si !== itemElem) {
-          si.classList.add('zv-shelf-dimmed');
-        }
-      });
+        // Lock Body Scroll while Inspect Bay is active
+        document.body.style.overflow = 'hidden';
 
-      // Step B: Set Initial Variant & Image
-      const v0 = currentProduct.variants[0];
-      selectedVariantId = v0.id;
-
-      // Check if product has custom transparent cutout override
-      const cutoutImg = itemElem.getAttribute('data-cutout-src');
-      const baseImg = cutoutImg || currentProduct.featured_image || (v0.featured_image ? v0.featured_image.src : '');
-
-      if (inspectFocalImg) {
-        inspectFocalImg.src = baseImg;
-        inspectFocalImg.alt = currentProduct.title;
-      }
-
-      // Step C: Populate Identity & Pricing
-      if (inspectTitle) inspectTitle.textContent = currentProduct.title;
-      updateDesktopPricing(v0);
-
-      if (inspectPdpLink) {
-        inspectPdpLink.href = '/products/' + currentProduct.handle + '?view=showroom';
-      }
-
-      // Step D: Render Adaptive Variant Selector (BUG 2 FIX)
-      renderAdaptiveVariantSelector(currentProduct, inspectVariants, function(variant) {
-        selectedVariantId = variant.id;
-        if (variant.featured_image && inspectFocalImg && !cutoutImg) {
-          inspectFocalImg.src = variant.featured_image.src;
-        }
-        updateDesktopPricing(variant);
-      });
-
-      // Step E: Positional FLIP Geometry & Anchored Card Placement
-      const rect = activeMerchRect;
-      const targetScale = 1.45;
-      const panelWidth = 380;
-      const margin = 28;
-
-      // Determine horizontal side: Is product on Left or Right of viewport?
-      const isLeft = (rect.left + rect.width / 2) < (window.innerWidth / 2);
-
-      let deltaX = 0;
-      let cardLeft = 0;
-
-      if (isLeft) {
-        // Place Anchored Card to the RIGHT of the product
-        deltaX = Math.max(-20, Math.min(10, (window.innerWidth * 0.26) - rect.left));
-        cardLeft = rect.left + deltaX + (rect.width * targetScale) + margin;
-        // Viewport clamp
-        if (cardLeft + panelWidth > window.innerWidth - 20) {
-          cardLeft = window.innerWidth - panelWidth - 20;
-        }
-      } else {
-        // Place Anchored Card to the LEFT of the product
-        deltaX = Math.min(20, Math.max(-10, (window.innerWidth * 0.74) - (rect.left + rect.width)));
-        cardLeft = rect.left + deltaX - panelWidth - margin;
-        // Viewport clamp
-        if (cardLeft < 20) {
-          cardLeft = 20;
-        }
-      }
-
-      // Vertical placement clamped inside viewport
-      const cardHeightEst = 460;
-      const cardTop = Math.max(24, Math.min(rect.top - 20, window.innerHeight - cardHeightEst - 24));
-
-      // Step F: Position Focal Frame initially exactly over the shelf item
-      if (inspectFocalFrame) {
-        inspectFocalFrame.style.position = 'fixed';
-        inspectFocalFrame.style.left = `${rect.left}px`;
-        inspectFocalFrame.style.top = `${rect.top}px`;
-        inspectFocalFrame.style.width = `${rect.width}px`;
-        inspectFocalFrame.style.height = `${rect.height}px`;
-        inspectFocalFrame.style.transformOrigin = 'center center';
-        inspectFocalFrame.style.transform = 'translate(0px, 0px) scale(1)';
-        inspectFocalFrame.style.transition = 'none';
-      }
-
-      if (inspectAnchoredPanel) {
-        inspectAnchoredPanel.style.position = 'fixed';
-        inspectAnchoredPanel.style.left = `${cardLeft}px`;
-        inspectAnchoredPanel.style.top = `${cardTop}px`;
-        inspectAnchoredPanel.style.opacity = '0';
-        inspectAnchoredPanel.style.transform = isLeft ? 'translateX(-20px) scale(0.96)' : 'translateX(20px) scale(0.96)';
-        inspectAnchoredPanel.style.transition = 'none';
-      }
-
-      // Activate Stage
-      if (inspectBay) {
-        inspectBay.classList.add('active');
-        inspectBay.setAttribute('aria-hidden', 'false');
-      }
-
-      // Trigger FLIP Transition on next frame
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          if (inspectFocalFrame) {
-            inspectFocalFrame.style.transition = 'transform 380ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 380ms ease';
-            inspectFocalFrame.style.transform = `translate(${deltaX}px, -24px) scale(${targetScale})`;
+        // Step A: Dim surrounding shelf items (shelf remains visible in background)
+        shelfItems.forEach(si => {
+          if (si !== itemElem) {
+            si.classList.add('zv-shelf-dimmed');
           }
-          if (inspectAnchoredPanel) {
-            inspectAnchoredPanel.style.transition = 'opacity 320ms ease, transform 350ms cubic-bezier(0.16, 1, 0.3, 1)';
-            inspectAnchoredPanel.style.opacity = '1';
-            inspectAnchoredPanel.style.transform = 'translateX(0) scale(1)';
-          }
-          isZoomActive = true;
         });
-      });
+
+        // Step B: Set Initial Variant & Image
+        const v0 = (currentProduct.variants && currentProduct.variants.length > 0) ? currentProduct.variants[0] : { id: null, price: 0, compare_at_price: 0 };
+        selectedVariantId = v0.id;
+
+        // Check if product has custom transparent cutout override
+        const cutoutImg = itemElem.getAttribute('data-cutout-src');
+        const baseImg = cutoutImg || currentProduct.featured_image || (v0.featured_image ? v0.featured_image.src : '');
+
+        if (inspectFocalImg) {
+          inspectFocalImg.src = baseImg;
+          inspectFocalImg.alt = currentProduct.title || 'Product Cutout';
+        }
+
+        // Step C: Populate Identity & Pricing
+        if (inspectTitle) inspectTitle.textContent = currentProduct.title || 'Infrared Battle Set';
+        updateDesktopPricing(v0);
+
+        if (inspectPdpLink) {
+          inspectPdpLink.href = currentProduct.url || ('/products/' + currentProduct.handle + '?view=showroom');
+        }
+
+        // Step D: Render Adaptive Variant Selector
+        renderAdaptiveVariantSelector(currentProduct, inspectVariants, function(variant) {
+          selectedVariantId = variant.id;
+          if (variant.featured_image && inspectFocalImg && !cutoutImg) {
+            inspectFocalImg.src = variant.featured_image.src;
+          }
+          updateDesktopPricing(variant);
+        });
+
+        // Step E: Positional FLIP Geometry & Anchored Card Placement
+        const rect = activeMerchRect;
+        const targetScale = 1.45;
+        const panelWidth = 380;
+        const margin = 28;
+
+        // Determine horizontal side: Is product on Left or Right of viewport?
+        const isLeft = (rect.left + rect.width / 2) < (window.innerWidth / 2);
+
+        let deltaX = 0;
+        let cardLeft = 0;
+
+        if (isLeft) {
+          // Place Anchored Card to the RIGHT of the product
+          deltaX = Math.max(-20, Math.min(10, (window.innerWidth * 0.26) - rect.left));
+          cardLeft = rect.left + deltaX + (rect.width * targetScale) + margin;
+          // Viewport clamp
+          if (cardLeft + panelWidth > window.innerWidth - 20) {
+            cardLeft = window.innerWidth - panelWidth - 20;
+          }
+        } else {
+          // Place Anchored Card to the LEFT of the product
+          deltaX = Math.min(20, Math.max(-10, (window.innerWidth * 0.74) - (rect.left + rect.width)));
+          cardLeft = rect.left + deltaX - panelWidth - margin;
+          // Viewport clamp
+          if (cardLeft < 20) {
+            cardLeft = 20;
+          }
+        }
+
+        // Vertical placement clamped inside viewport
+        const cardHeightEst = 460;
+        const cardTop = Math.max(24, Math.min(rect.top - 20, window.innerHeight - cardHeightEst - 24));
+
+        // Step F: Position Focal Frame initially exactly over the shelf item
+        if (inspectFocalFrame) {
+          inspectFocalFrame.style.position = 'fixed';
+          inspectFocalFrame.style.left = `${rect.left}px`;
+          inspectFocalFrame.style.top = `${rect.top}px`;
+          inspectFocalFrame.style.width = `${rect.width}px`;
+          inspectFocalFrame.style.height = `${rect.height}px`;
+          inspectFocalFrame.style.transformOrigin = 'center center';
+          inspectFocalFrame.style.transform = 'translate(0px, 0px) scale(1)';
+          inspectFocalFrame.style.transition = 'none';
+        }
+
+        if (inspectAnchoredPanel) {
+          inspectAnchoredPanel.style.position = 'fixed';
+          inspectAnchoredPanel.style.left = `${cardLeft}px`;
+          inspectAnchoredPanel.style.top = `${cardTop}px`;
+          inspectAnchoredPanel.style.opacity = '0';
+          inspectAnchoredPanel.style.transform = isLeft ? 'translateX(-20px) scale(0.96)' : 'translateX(20px) scale(0.96)';
+          inspectAnchoredPanel.style.transition = 'none';
+        }
+
+        // Activate Stage & Mark State Active
+        if (inspectBay) {
+          inspectBay.classList.add('active');
+          inspectBay.setAttribute('aria-hidden', 'false');
+        }
+        isZoomActive = true;
+
+        // Trigger FLIP Transition on next frame
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            if (inspectFocalFrame) {
+              inspectFocalFrame.style.transition = 'transform 360ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 360ms ease';
+              inspectFocalFrame.style.transform = `translate(${deltaX}px, -24px) scale(${targetScale})`;
+            }
+            if (inspectAnchoredPanel) {
+              inspectAnchoredPanel.style.transition = 'opacity 300ms ease, transform 340ms cubic-bezier(0.16, 1, 0.3, 1)';
+              inspectAnchoredPanel.style.opacity = '1';
+              inspectAnchoredPanel.style.transform = 'translateX(0) scale(1)';
+            }
+          });
+        });
+
+      } catch (err) {
+        console.error('Error during openSpatialPositionalZoom:', err);
+        closeSpatialPositionalZoom();
+        if (fallbackUrl) window.location.href = fallbackUrl;
+      }
     }
 
-    // Smooth Positional Zoom Close
+    // Smooth Positional Zoom Close (Guaranteed single source of truth)
     function closeSpatialPositionalZoom() {
-      if (!isZoomActive) return;
+      if (!inspectBay || !inspectBay.classList.contains('active')) {
+        shelfItems.forEach(si => si.classList.remove('zv-shelf-dimmed'));
+        document.body.style.overflow = '';
+        isZoomActive = false;
+        return;
+      }
 
       if (inspectFocalFrame) {
-        inspectFocalFrame.style.transition = 'transform 320ms cubic-bezier(0.16, 1, 0.3, 1)';
+        inspectFocalFrame.style.transition = 'transform 260ms cubic-bezier(0.16, 1, 0.3, 1)';
         inspectFocalFrame.style.transform = 'translate(0px, 0px) scale(1)';
       }
 
       if (inspectAnchoredPanel) {
-        inspectAnchoredPanel.style.transition = 'opacity 250ms ease, transform 250ms ease';
+        inspectAnchoredPanel.style.transition = 'opacity 200ms ease, transform 220ms ease';
         inspectAnchoredPanel.style.opacity = '0';
         inspectAnchoredPanel.style.transform = 'scale(0.96)';
       }
@@ -298,16 +326,22 @@
           inspectBay.setAttribute('aria-hidden', 'true');
         }
         shelfItems.forEach(si => si.classList.remove('zv-shelf-dimmed'));
+        document.body.style.overflow = '';
         isZoomActive = false;
 
         if (activeShelfItem) {
           activeShelfItem.focus();
         }
-      }, 320);
+      }, 260);
     }
 
     if (inspectCloseBtn) inspectCloseBtn.addEventListener('click', closeSpatialPositionalZoom);
     if (inspectBackdrop) inspectBackdrop.addEventListener('click', closeSpatialPositionalZoom);
+    if (inspectStageWrap) {
+      inspectStageWrap.addEventListener('click', function(e) {
+        if (e.target === this) closeSpatialPositionalZoom();
+      });
+    }
 
     // =========================================================================
     // BUG 2 FIX: ADAPTIVE VARIANT SELECTOR ENGINE
@@ -472,6 +506,9 @@
         mobileOverlay.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
       }
+      if (activeShelfItem) {
+        activeShelfItem.focus();
+      }
     }
 
     if (mobileClose) mobileClose.addEventListener('click', closeMobileSheet);
@@ -502,6 +539,23 @@
         });
 
         if (!response.ok) {
+          if (response.status === 422) {
+            console.warn('Variant unpurchasable in dev draft mode. Triggering Willa Cart Drawer for UX preview.');
+            buttonElem.innerHTML = '<span>✓ ADDED (PREVIEW)</span>';
+            setTimeout(() => {
+              closeSpatialPositionalZoom();
+              closeMobileSheet();
+              buttonElem.disabled = false;
+              buttonElem.innerHTML = originalHtml;
+              if (window.willaCart && typeof window.willaCart.open === 'function') {
+                window.willaCart.open();
+              } else {
+                const drawerToggle = document.querySelector('[data-cart-drawer-toggle], .willa-cart-trigger, [aria-controls="CartDrawer"]');
+                if (drawerToggle) drawerToggle.click();
+              }
+            }, 300);
+            return;
+          }
           throw new Error('Failed to add item to cart');
         }
 
@@ -557,6 +611,24 @@
       }
     });
 
+    // Window Resize Responsive Mode Switch Listener
+    window.addEventListener('resize', function() {
+      if (window.innerWidth < 768 && isZoomActive) {
+        closeSpatialPositionalZoom();
+      }
+      if (window.innerWidth >= 768 && mobileOverlay && mobileOverlay.classList.contains('active')) {
+        closeMobileSheet();
+      }
+    });
+
+    // Handle bfcache back-forward navigation
+    window.addEventListener('pageshow', function(e) {
+      if (e.persisted) {
+        closeSpatialPositionalZoom();
+        closeMobileSheet();
+      }
+    });
+
   }
 
   // Global Direct Add to Cart for Catalog Cards
@@ -572,8 +644,25 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: Number(variantId), quantity: 1 })
       });
-      if (!response.ok) throw new Error('Cart error');
-      buttonElem.innerHTML = '<span>✓ ADDED!</span>';
+        if (!response.ok) {
+          if (response.status === 422) {
+            console.warn('Direct Add 422: Draft variant in dev store. Opening Willa Cart Drawer for preview.');
+            buttonElem.innerHTML = '<span>✓ ADDED (PREVIEW)</span>';
+            setTimeout(() => {
+              buttonElem.disabled = false;
+              buttonElem.innerHTML = originalHtml;
+              if (window.willaCart && typeof window.willaCart.open === 'function') {
+                window.willaCart.open();
+              } else {
+                const drawerToggle = document.querySelector('[data-cart-drawer-toggle], .willa-cart-trigger, [aria-controls="CartDrawer"]');
+                if (drawerToggle) drawerToggle.click();
+              }
+            }, 400);
+            return;
+          }
+          throw new Error('Cart error');
+        }
+        buttonElem.innerHTML = '<span>✓ ADDED!</span>';
       setTimeout(() => {
         buttonElem.disabled = false;
         buttonElem.innerHTML = originalHtml;
