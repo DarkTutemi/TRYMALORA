@@ -1,0 +1,17 @@
+{
+  "kind": "ultra_legacy_pdp_source_baseline",
+  "note": "Source-file digest only; actual live Shopify PDP equivalence requires independent verification.",
+  "captured_at_utc": "2026-11-14T04:06:10.535009+00:00",
+  "files": {
+    "templates/product.json": "20d4ecfc1047120a1cda993ca027453882a3816dd7d3996c4a6920943b5e9185",
+    "templates/product.v2.json": "20d4ecfc1047120a1cda993ca027453882a3816dd7d3996c4a6920943b5e9185",
+    "sections/zavelyn-v4-pdp-main.liquid": "0458532f140781a1488e1504d2643ec9e98ccf333933ff683973126e9f960cef",
+    "sections/trymalora-pdp-marquee.liquid": "676ef16a3ef60db34b85bb1b51d652b4ca67877fcc5d6d43b37f9711a696e440",
+    "sections/trymalora-pdp-package.liquid": "8487952cbce611900558c05df0edb452fedf42cef6c6290eb1d759d2d6118801",
+    "sections/trymalora-pdp-how-it-works.liquid": "e1ce53dc00b783b1b834aff817520005232ecffa3fb078811a1cc95252829d3e",
+    "sections/trymalora-pdp-faq.liquid": "9be08d95c6beee572e4b1597b62b315834bd06038b8e1565e976876de945ca82",
+    "sections/trymalora-pdp-reviews.liquid": "a07e4c3e5aaa7e791a58b83f74e080512de2c9434e2c9383171ed723be22f61a",
+    "assets/zavelyn-v4-pdp.js": "42342a59ccecb2f91c38269604e8e9adbe95cefcd68ecf2eba5ddd86b071c223",
+    "assets/zavelyn-v4-pdp.css": "eb60fd93384571546742b7e54b4127ed68261add357dc3e0842a50c525bd630d"
+  }
+}
