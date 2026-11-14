@@ -1,12 +1,13 @@
 <section class="uo-pillars-section" id="ultra-technology">
   <div class="uo-wrap">
     <div class="uo-pillars-header">
-      <h2 class="uo-heading-serif uo-pillars-title">{{ section.settings.title }}</h2>
-      <p class="uo-pillars-subhead">{{ section.settings.subhead }}</p>
+      <span class="uo-eyebrow">{{ section.settings.eyebrow | default: 'ENGINEERING INNOVATION' }}</span>
+      <h2 class="uo-heading-serif uo-pillars-title">{{ section.settings.title | default: 'The Seven Pillars of ULTRA OVERNIGHT™' }}</h2>
+      <p class="uo-pillars-subhead">{{ section.settings.subhead | default: 'Thoughtfully engineered for overnight protection, lasting comfort, and real peace of mind.' }}</p>
     </div>
 
     <div class="uo-pillars-grid">
-      <!-- Pillar 1 -->
+      <!-- Pillar 1: VelaLock™ Core -->
       <div class="uo-pillar-card">
         <div class="uo-pillar-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -14,22 +15,24 @@
             <rect x="9" y="11" width="6" height="5" rx="1"></rect>
           </svg>
         </div>
-        <div class="uo-pillar-name">Ultra-Lock Core</div>
-        <p class="uo-pillar-desc">Quickly absorbs and locks in heavy flow.</p>
+        <div class="uo-pillar-name">VelaLock™ Core</div>
+        <div class="uo-pillar-benefit">Rapid Heavy-Flow Lock</div>
+        <p class="uo-pillar-desc">Multi-layered capillary matrix captures fluid instantly and locks it deep within the interior reservoir to prevent backflow during deep sleep.</p>
       </div>
 
-      <!-- Pillar 2 -->
+      <!-- Pillar 2: SpineHalo™ Shield -->
       <div class="uo-pillar-card">
         <div class="uo-pillar-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 4h16c0 6-3 12-8 16-5-4-8-10-8-16z"></path>
           </svg>
         </div>
-        <div class="uo-pillar-name">Full-Spine Shield</div>
-        <p class="uo-pillar-desc">Extended front-to-back coverage for all-night security.</p>
+        <div class="uo-pillar-name">SpineHalo™ Shield</div>
+        <div class="uo-pillar-benefit">True Front-to-Back Coverage</div>
+        <p class="uo-pillar-desc">Continuous absorbent shield spans from the pelvic line across the full seat to the top of the waistband, keeping sheets secure all night.</p>
       </div>
 
-      <!-- Pillar 3 -->
+      <!-- Pillar 3: SeraSeal™ Contour -->
       <div class="uo-pillar-card">
         <div class="uo-pillar-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -37,11 +40,12 @@
             <path d="M6 8l4 4-4 4"></path>
           </svg>
         </div>
-        <div class="uo-pillar-name">SideSeal Guard</div>
-        <p class="uo-pillar-desc">Helps prevent side leaks, even when you move.</p>
+        <div class="uo-pillar-name">SeraSeal™ Contour</div>
+        <div class="uo-pillar-benefit">Adaptive Side Leak Barrier</div>
+        <p class="uo-pillar-desc">Anatomically contoured leg openings with double-stitch channeling that flex with restless tossing, turning, and side-sleeping positions.</p>
       </div>
 
-      <!-- Pillar 4 -->
+      <!-- Pillar 4: AeriDry™ Touch -->
       <div class="uo-pillar-card">
         <div class="uo-pillar-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -49,11 +53,12 @@
             <polyline points="5 12 12 5 19 12"></polyline>
           </svg>
         </div>
-        <div class="uo-pillar-name">DryTouch</div>
-        <p class="uo-pillar-desc">Pulls moisture away to keep you feeling dry and comfortable.</p>
+        <div class="uo-pillar-name">AeriDry™ Touch</div>
+        <div class="uo-pillar-benefit">Fast Moisture-Wicking Comfort</div>
+        <p class="uo-pillar-desc">Hypoallergenic micro-honeycomb top weave pulls dampness away from intimate skin in seconds, keeping you dry and friction-free.</p>
       </div>
 
-      <!-- Pillar 5 -->
+      <!-- Pillar 5: OdorVeil™ -->
       <div class="uo-pillar-card">
         <div class="uo-pillar-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -61,22 +66,24 @@
             <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
           </svg>
         </div>
-        <div class="uo-pillar-name">Odor Control</div>
-        <p class="uo-pillar-desc">Helps keep you feeling fresh and confident.</p>
+        <div class="uo-pillar-name">OdorVeil™</div>
+        <div class="uo-pillar-benefit">Natural Odor Neutralization</div>
+        <p class="uo-pillar-desc">Breathable non-toxic mineral infusion neutralizes moisture-related odors naturally without synthetic perfumes or skin irritants.</p>
       </div>
 
-      <!-- Pillar 6 -->
+      <!-- Pillar 6: CloudFlex™ Knit -->
       <div class="uo-pillar-card">
         <div class="uo-pillar-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
           </svg>
         </div>
-        <div class="uo-pillar-name">CloudFlex</div>
-        <p class="uo-pillar-desc">Soft, breathable, and flexible for all-night comfort.</p>
+        <div class="uo-pillar-name">CloudFlex™ Knit</div>
+        <div class="uo-pillar-benefit">Buttery Second-Skin Softness</div>
+        <p class="uo-pillar-desc">Ultra-fine modal and elastane weave delivers gentle 4-way stretch, offering a feather-light hug without rolling, digging, or bulk.</p>
       </div>
 
-      <!-- Pillar 7 -->
+      <!-- Pillar 7: WashGuard™ -->
       <div class="uo-pillar-card">
         <div class="uo-pillar-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -85,8 +92,9 @@
             <circle cx="6" cy="6" r="1"></circle>
           </svg>
         </div>
-        <div class="uo-pillar-name">WashGuard</div>
-        <p class="uo-pillar-desc">Durable and reusable, wash after wash.</p>
+        <div class="uo-pillar-name">WashGuard™</div>
+        <div class="uo-pillar-benefit">Long-Lasting Reusability</div>
+        <p class="uo-pillar-desc">Reinforced bonded laminations engineered to withstand cold machine washing and repeated nighttime cycles without losing softness.</p>
       </div>
     </div>
   </div>
@@ -96,6 +104,12 @@
 {
   "name": "Ultra Seven Pillars",
   "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "ENGINEERING INNOVATION"
+    },
     {
       "type": "text",
       "id": "title",
@@ -116,4 +130,3 @@
   ]
 }
 {% endschema %}
-

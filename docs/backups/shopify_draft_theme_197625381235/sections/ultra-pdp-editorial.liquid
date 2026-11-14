@@ -1,0 +1,61 @@
+<section class="uo-pdp-editorial" aria-labelledby="uo-editorial-heading">
+  <div class="uo-wrap">
+    <div class="uo-pdp-editorial-layout">
+      <div class="uo-pdp-editorial-copy">
+        <p class="uo-pdp-editorial-kicker">{{ section.settings.eyebrow | escape }}</p>
+        <h2 class="uo-heading-serif" id="uo-editorial-heading">{{ section.settings.heading | escape }}</h2>
+        <p class="uo-pdp-editorial-lead">{{ section.settings.description | escape }}</p>
+        <div class="uo-pdp-editorial-features">
+          {% for block in section.blocks %}
+            {% if block.type == 'benefit' %}
+              <article class="uo-pdp-editorial-feature" {{ block.shopify_attributes }}>
+                <span class="uo-pdp-feature-mark" aria-hidden="true">✦</span>
+                <div>
+                  <h3>{{ block.settings.title | escape }}</h3>
+                  <p>{{ block.settings.body | escape }}</p>
+                </div>
+              </article>
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% if section.settings.link != blank %}
+          <a class="uo-pdp-editorial-link" href="{{ section.settings.link }}">{{ section.settings.link_text | escape }} <span aria-hidden="true">↗</span></a>
+        {% endif %}
+      </div>
+      <div class="uo-pdp-editorial-visual">
+        {% if section.settings.image != blank %}
+          {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '360,540,720,960,1200', class: 'uo-pdp-editorial-image' }}
+        {% else %}
+          <img class="uo-pdp-editorial-image" src="{{ 'ultra-5-layers-exploded.png' | asset_url }}" alt="Concept illustration of a five-layer protective fabric system" loading="lazy" width="600" height="600">
+        {% endif %}
+        <div class="uo-pdp-editorial-caption">{{ section.settings.caption | escape }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Ultra PDP Story",
+  "settings": [
+    {"type":"text","id":"eyebrow","label":"Small heading","default":"BEHIND THE DESIGN"},
+    {"type":"text","id":"heading","label":"Heading","default":"Thoughtful protection, from front to back."},
+    {"type":"textarea","id":"description","label":"Description","default":"A considered approach to overnight comfort, designed around extended coverage and the natural ways we move in our sleep."},
+    {"type":"image_picker","id":"image","label":"Editorial image"},
+    {"type":"text","id":"caption","label":"Image caption","default":"Five-layer concept illustration · final construction pending testing"},
+    {"type":"text","id":"link_text","label":"Link text","default":"Explore how it works"},
+    {"type":"url","id":"link","label":"Link destination"}
+  ],
+  "blocks":[
+    {"type":"benefit","name":"Design benefit","settings":[
+      {"type":"text","id":"title","label":"Title","default":"Extended coverage"},
+      {"type":"textarea","id":"body","label":"Description","default":"A front-to-rear protection concept designed for nighttime movement."}
+    ]}
+  ],
+  "max_blocks":5,
+  "presets":[{"name":"Ultra PDP Story","blocks":[
+    {"type":"benefit","settings":{"title":"Full-Spine Coverage","body":"Designed to extend protection beyond the usual central gusset."}},
+    {"type":"benefit","settings":{"title":"SideSeal Contour","body":"Thoughtful leg-edge construction intended to help manage side leakage."}},
+    {"type":"benefit","settings":{"title":"DryTouch Comfort","body":"A moisture-management design focused on a comfortable skin-facing feel."}}
+  ]}]
+}
+{% endschema %}

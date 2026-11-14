@@ -1,41 +1,108 @@
-<section class="uo-tabs-section">
+<section class="uo-tabs-section" id="ultra-product-tabs">
   <div class="uo-wrap">
-    <!-- Tab Nav -->
-    <div class="uo-tabs-nav">
-      <button type="button" class="uo-tab-btn is-active" data-tab-target="tab-how-it-works">
+    <div class="uo-tabs-header">
+      <span class="uo-eyebrow">{{ section.settings.eyebrow | default: 'IN-DEPTH SPECIFICATIONS' }}</span>
+      <h2 class="uo-heading-serif uo-tabs-main-title">{{ section.settings.title | default: 'Product Details & Guidance' }}</h2>
+    </div>
+
+    <!-- Tab Nav with accessible ARIA -->
+    <div class="uo-tabs-nav" role="tablist" aria-label="Product Information Tabs">
+      <button 
+        type="button" 
+        class="uo-tab-btn is-active" 
+        data-tab-target="tab-how-it-works"
+        role="tab"
+        id="tab-btn-how-it-works"
+        aria-selected="true"
+        aria-controls="tab-how-it-works"
+      >
         How It Works
       </button>
-      <button type="button" class="uo-tab-btn" data-tab-target="tab-how-to-use">
+      <button 
+        type="button" 
+        class="uo-tab-btn" 
+        data-tab-target="tab-how-to-use"
+        role="tab"
+        id="tab-btn-how-to-use"
+        aria-selected="false"
+        aria-controls="tab-how-to-use"
+      >
         How To Use
       </button>
-      <button type="button" class="uo-tab-btn" data-tab-target="tab-care-washing">
-        Care & Washing
+      <button 
+        type="button" 
+        class="uo-tab-btn" 
+        data-tab-target="tab-care-washing"
+        role="tab"
+        id="tab-btn-care-washing"
+        aria-selected="false"
+        aria-controls="tab-care-washing"
+      >
+        Care &amp; Washing
       </button>
-      <button type="button" class="uo-tab-btn" data-tab-target="tab-fit-sizing">
-        Fit & Sizing
+      <button 
+        type="button" 
+        class="uo-tab-btn" 
+        data-tab-target="tab-fit-sizing"
+        role="tab"
+        id="tab-btn-fit-sizing"
+        aria-selected="false"
+        aria-controls="tab-fit-sizing"
+      >
+        Fit &amp; Sizing
       </button>
     </div>
 
     <!-- Tab 1: How It Works -->
-    <div class="uo-tab-panel is-active" id="tab-how-it-works">
-      The FULL-SPINE ULTRA OVERNIGHT™ uses a 5-layer design and extended back coverage to absorb your flow, lock in moisture, and help prevent leaks throughout the night. The result is secure, comfortable protection made for heavy-flow nights.
+    <div 
+      class="uo-tab-panel is-active" 
+      id="tab-how-it-works" 
+      role="tabpanel" 
+      aria-labelledby="tab-btn-how-it-works"
+    >
+      <div class="uo-tab-content-inner">
+        <h3 class="uo-tab-panel-title">Five-Layer Fluid Security &amp; Extended Shielding</h3>
+        <p>{{ section.settings.tab_how_it_works | default: 'The FULL-SPINE ULTRA OVERNIGHT™ pairs an innovative NOCTÉRA-5™ layered textile system with continuous front-to-rear coverage. A micro-honeycomb top layer wicks liquid into a concentrated core, while an impermeable yet breathable barrier prevents nighttime transfer to bedding. Ergonomic side contours help shield against edge leaks as your body moves naturally during sleep.' }}</p>
+      </div>
     </div>
 
     <!-- Tab 2: How To Use -->
-    <div class="uo-tab-panel" id="tab-how-to-use">
-      Wear FULL-SPINE ULTRA OVERNIGHT™ just like regular underwear before going to bed. No pads, tampons, or extra backup needed on normal-to-heavy nights. The snug, flexible waistband keeps everything securely aligned with your body throughout all sleeping positions.
+    <div 
+      class="uo-tab-panel" 
+      id="tab-how-to-use" 
+      role="tabpanel" 
+      aria-labelledby="tab-btn-how-to-use"
+    >
+      <div class="uo-tab-content-inner">
+        <h3 class="uo-tab-panel-title">Bedtime Preparation &amp; Daily Wear Routine</h3>
+        <p>{{ section.settings.tab_how_to_use | default: 'Slip on FULL-SPINE ULTRA OVERNIGHT™ before going to sleep, exactly like standard underwear. Designed specifically for heavy-flow nights, it delivers standalone comfort or can be paired with your preferred routine on exceptionally heavy cycle days. Ensure the waistband sits comfortably at your natural waist without tension.' }}</p>
+      </div>
     </div>
 
     <!-- Tab 3: Care & Washing -->
-    <div class="uo-tab-panel" id="tab-care-washing">
-      1. Rinse in cold tap water immediately after waking until water runs clear.<br>
-      2. Machine wash cold on gentle cycle with standard mild detergent (no fabric softeners or bleach).<br>
-      3. Hang dry in shade or lay flat. Tumble dry on low if necessary. Engineered for repeated wash cycles when cared for as directed.
+    <div 
+      class="uo-tab-panel" 
+      id="tab-care-washing" 
+      role="tabpanel" 
+      aria-labelledby="tab-btn-care-washing"
+    >
+      <div class="uo-tab-content-inner">
+        <h3 class="uo-tab-panel-title">Preserving Absorbency &amp; Fabric Longevity</h3>
+        <p>{{ section.settings.tab_care_washing | default: '1. Rinse thoroughly in cold running water upon waking until the water runs clear. 2. Machine wash on cold gentle cycle using standard mild liquid detergent. 3. Hang dry in a well-ventilated area or lay flat. Strictly avoid bleach, chemical stain removers, fabric softeners, or high-heat tumble dryers to protect technical membrane integrity.' }}</p>
+      </div>
     </div>
 
     <!-- Tab 4: Fit & Sizing -->
-    <div class="uo-tab-panel" id="tab-fit-sizing">
-      True to standard US intimate apparel sizing. If you are in between sizes or prefer a slightly more relaxed bedtime fit, we recommend ordering one size up for optimal overnight breathability and comfort.
+    <div 
+      class="uo-tab-panel" 
+      id="tab-fit-sizing" 
+      role="tabpanel" 
+      aria-labelledby="tab-btn-fit-sizing"
+    >
+      <div class="uo-tab-content-inner">
+        <h3 class="uo-tab-panel-title">Finding Your Ideal Restful Night Size</h3>
+        <p>{{ section.settings.tab_fit_sizing | default: 'Available in 8 development sizes ranging from XS to 4XL. For restful sleep without constriction, select your normal underwear size based on your hip measurement. If you prefer a looser, gentle bedtime fit or measure between sizes, we recommend sizing up. Factory-validated dimensional specs will accompany the final commercial release.' }}</p>
+      </div>
     </div>
   </div>
 </section>
@@ -43,7 +110,44 @@
 {% schema %}
 {
   "name": "Ultra PDP Tabs",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "IN-DEPTH SPECIFICATIONS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Product Details & Guidance"
+    },
+    {
+      "type": "textarea",
+      "id": "tab_how_it_works",
+      "label": "How It Works Content",
+      "default": "The FULL-SPINE ULTRA OVERNIGHT™ pairs an innovative NOCTÉRA-5™ layered textile system with continuous front-to-rear coverage. A micro-honeycomb top layer wicks liquid into a concentrated core, while an impermeable yet breathable barrier prevents nighttime transfer to bedding. Ergonomic side contours help shield against edge leaks as your body moves naturally during sleep."
+    },
+    {
+      "type": "textarea",
+      "id": "tab_how_to_use",
+      "label": "How To Use Content",
+      "default": "Slip on FULL-SPINE ULTRA OVERNIGHT™ before going to sleep, exactly like standard underwear. Designed specifically for heavy-flow nights, it delivers standalone comfort or can be paired with your preferred routine on exceptionally heavy cycle days. Ensure the waistband sits comfortably at your natural waist without tension."
+    },
+    {
+      "type": "textarea",
+      "id": "tab_care_washing",
+      "label": "Care & Washing Content",
+      "default": "1. Rinse thoroughly in cold running water upon waking until the water runs clear. 2. Machine wash on cold gentle cycle using standard mild liquid detergent. 3. Hang dry in a well-ventilated area or lay flat. Strictly avoid bleach, chemical stain removers, fabric softeners, or high-heat tumble dryers to protect technical membrane integrity."
+    },
+    {
+      "type": "textarea",
+      "id": "tab_fit_sizing",
+      "label": "Fit & Sizing Content",
+      "default": "Available in 8 development sizes ranging from XS to 4XL. For restful sleep without constriction, select your normal underwear size based on your hip measurement. If you prefer a looser, gentle bedtime fit or measure between sizes, we recommend sizing up. Factory-validated dimensional specs will accompany the final commercial release."
+    }
+  ],
   "presets": [
     {
       "name": "Ultra PDP Tabs"
@@ -51,4 +155,3 @@
   ]
 }
 {% endschema %}
-

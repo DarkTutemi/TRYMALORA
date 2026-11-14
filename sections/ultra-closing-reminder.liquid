@@ -1,0 +1,93 @@
+<section class="uo-closing-section" id="ultra-closing-reminder">
+  <div class="uo-wrap">
+    <div class="uo-closing-card">
+      <div class="uo-closing-grid">
+        <!-- Visual Left -->
+        <div class="uo-closing-visual">
+          <img 
+            src="{{ 'ultra-pdp-main.jpg' | asset_url }}" 
+            alt="FULL-SPINE ULTRA OVERNIGHT™ Final Reminder" 
+            class="uo-closing-image"
+            width="480"
+            height="480"
+            loading="lazy"
+          >
+          <span class="uo-gallery-badge">PRE-LAUNCH PREVIEW</span>
+        </div>
+
+        <!-- Content Right -->
+        <div class="uo-closing-content">
+          <span class="uo-eyebrow">{{ section.settings.eyebrow | default: 'RESTFUL NIGHTS AWAIT' }}</span>
+          <h2 class="uo-heading-serif uo-closing-title">{{ section.settings.title | default: 'Full-Spine Protection for Deeper, Worry-Free Sleep.' }}</h2>
+          <p class="uo-closing-desc">{{ section.settings.description | default: 'Experience thoughtfully engineered coverage from front to back, five-layer fluid security, and CloudFlex™ comfort crafted for every sleeping position.' }}</p>
+
+          <div class="uo-closing-highlights">
+            <div class="uo-closing-hl-item">
+              <span class="uo-hl-check">✓</span>
+              <span>Extended Full-Spine™ coverage front-to-back</span>
+            </div>
+            <div class="uo-closing-hl-item">
+              <span class="uo-hl-check">✓</span>
+              <span>NOCTÉRA-5™ 5-layer fluid management concept</span>
+            </div>
+            <div class="uo-closing-hl-item">
+              <span class="uo-hl-check">✓</span>
+              <span>CloudFlex™ ultra-soft breathable modal knit</span>
+            </div>
+            <div class="uo-closing-hl-item">
+              <span class="uo-hl-check">✓</span>
+              <span>8 inclusive sizes (XS–4XL) &amp; 2 timeless colorways</span>
+            </div>
+          </div>
+
+          <div class="uo-closing-action-wrap">
+            <button type="button" class="uo-btn-primary uo-closing-cta-btn" onclick="scrollToUoBuyBox()">
+              {{ section.settings.cta_text | default: 'COMING SOON — VIEW OPTIONS' }}
+            </button>
+            <div class="uo-closing-note">
+              🔒 Pre-launch preview. Pricing &amp; stock will be activated upon official release.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ultra Closing Reminder",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "RESTFUL NIGHTS AWAIT"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Full-Spine Protection for Deeper, Worry-Free Sleep."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Experience thoughtfully engineered coverage from front to back, five-layer fluid security, and CloudFlex™ comfort crafted for every sleeping position."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button Text",
+      "default": "COMING SOON — VIEW OPTIONS"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ultra Closing Reminder"
+    }
+  ]
+}
+{% endschema %}
+

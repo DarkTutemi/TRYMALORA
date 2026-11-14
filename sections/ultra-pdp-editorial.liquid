@@ -1,0 +1,177 @@
+<section class="uo-pdp-editorial" aria-labelledby="uo-editorial-heading" id="ultra-protection-story">
+  <div class="uo-wrap">
+    <div class="uo-pdp-editorial-layout">
+      <div class="uo-pdp-editorial-copy">
+        <p class="uo-pdp-editorial-kicker">{{ section.settings.eyebrow | default: 'ENGINEERED ARCHITECTURE' | escape }}</p>
+        <h2 class="uo-heading-serif" id="uo-editorial-heading">{{ section.settings.heading | default: 'Protection Designed Beyond the Ordinary Gusset.' | escape }}</h2>
+        <p class="uo-pdp-editorial-lead">{{ section.settings.description | default: 'Traditional period underwear relies on a small central gusset that shifts when you toss, turn, or sleep on your side. FULL-SPINE ULTRA OVERNIGHT™ is engineered with continuous front-to-back protective shielding and ergonomic side contours designed to move naturally with your body all night long.' | escape }}</p>
+        
+        <div class="uo-pdp-editorial-features">
+          {%- if section.blocks.size > 0 -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'benefit' -%}
+                <article class="uo-pdp-editorial-feature" {{ block.shopify_attributes }}>
+                  <span class="uo-pdp-feature-mark" aria-hidden="true">✦</span>
+                  <div>
+                    <h3>{{ block.settings.title | escape }}</h3>
+                    <p>{{ block.settings.body | escape }}</p>
+                  </div>
+                </article>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- else -%}
+            <!-- 4 Default Verified Coverage Features -->
+            <article class="uo-pdp-editorial-feature">
+              <span class="uo-pdp-feature-mark" aria-hidden="true">✦</span>
+              <div>
+                <h3>Front Shield Coverage</h3>
+                <p>Absorbent barrier extends upward past the pelvic zone to protect during restless stomach sleeping and forward shifts.</p>
+              </div>
+            </article>
+
+            <article class="uo-pdp-editorial-feature">
+              <span class="uo-pdp-feature-mark" aria-hidden="true">✦</span>
+              <div>
+                <h3>Central High-Flow Core</h3>
+                <p>Concentrated high-absorbency core rapidly pulls in liquid and locks it deep inside to prevent wet skin contact.</p>
+              </div>
+            </article>
+
+            <article class="uo-pdp-editorial-feature">
+              <span class="uo-pdp-feature-mark" aria-hidden="true">✦</span>
+              <div>
+                <h3>Extended Rear Full-Spine™ Coverage</h3>
+                <p>Continuous protective barrier runs across the full rear seat all the way up to the waistband, guarding against nighttime back leaks.</p>
+              </div>
+            </article>
+
+            <article class="uo-pdp-editorial-feature">
+              <span class="uo-pdp-feature-mark" aria-hidden="true">✦</span>
+              <div>
+                <h3>SideSeal™ Contoured Leg Edges</h3>
+                <p>Ergonomic leg openings contour smoothly to your thighs to help manage lateral migration as you curl up or sleep on your side.</p>
+              </div>
+            </article>
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.link != blank -%}
+          <a class="uo-pdp-editorial-link" href="{{ section.settings.link }}">{{ section.settings.link_text | escape }} <span aria-hidden="true">↗</span></a>
+        {%- endif -%}
+      </div>
+
+      <div class="uo-pdp-editorial-visual">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '360,540,720,960,1200', class: 'uo-pdp-editorial-image' }}
+        {%- else -%}
+          <img class="uo-pdp-editorial-image" src="{{ 'ultra-5-layers-cutaway.png' | asset_url }}" alt="FULL-SPINE ULTRA OVERNIGHT™ Continuous Protection Concept" loading="lazy" width="600" height="400">
+        {%- endif -%}
+        <div class="uo-pdp-editorial-caption">{{ section.settings.caption | default: 'Full-Spine™ coverage concept illustration · preliminary factory design' | escape }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ultra PDP Story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small heading",
+      "default": "ENGINEERED ARCHITECTURE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Protection Designed Beyond the Ordinary Gusset."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Traditional period underwear relies on a small central gusset that shifts when you toss, turn, or sleep on your side. FULL-SPINE ULTRA OVERNIGHT™ is engineered with continuous front-to-back protective shielding and ergonomic side contours designed to move naturally with your body all night long."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Editorial image"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Image caption",
+      "default": "Full-Spine™ coverage concept illustration · preliminary factory design"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text",
+      "default": "Explore how it works"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link destination"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Design benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Extended coverage"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Description",
+          "default": "A front-to-rear protection concept designed for nighttime movement."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Ultra PDP Story",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Front Shield Coverage",
+            "body": "Absorbent barrier extends upward past the pelvic zone to protect during restless stomach sleeping and forward shifts."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Central High-Flow Core",
+            "body": "Concentrated high-absorbency core rapidly pulls in liquid and locks it deep inside to prevent wet skin contact."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Extended Rear Full-Spine™ Coverage",
+            "body": "Continuous protective barrier runs across the full rear seat all the way up to the waistband, guarding against nighttime back leaks."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "SideSeal™ Contoured Leg Edges",
+            "body": "Ergonomic leg openings contour smoothly to your thighs to help manage lateral migration as you curl up or sleep on your side."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

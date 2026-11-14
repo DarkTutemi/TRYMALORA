@@ -1,0 +1,77 @@
+{
+  "sections": {
+    "main": {
+      "type": "ultra-product-main",
+      "settings": {}
+    },
+    "benefits": {
+      "type": "ultra-benefit-strip",
+      "settings": {}
+    },
+    "layers": {
+      "type": "ultra-five-layers",
+      "settings": {
+        "title": "5 Layers of Overnight Protection",
+        "description": "A five-layer protection concept designed for overnight comfort. Final materials and performance are pending sample validation."
+      }
+    },
+    "tabs": {
+      "type": "ultra-pdp-tabs",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "ultra-reviews",
+      "settings": {
+        "title": "Thoughtfully Engineered For Restful Nights",
+        "subhead": "Designed with care and attention to nighttime comfort. Factory sample validation is still in progress."
+      }
+    },
+    "faq": {
+      "type": "ultra-faq",
+      "settings": {
+        "title": "Frequently Asked Questions"
+      }
+    },
+    "editorial": {
+      "type": "ultra-pdp-editorial",
+      "settings": {},
+      "blocks": {
+        "front": {
+          "type": "benefit",
+          "settings": {
+            "title": "Full-Spine Coverage",
+            "body": "Designed to extend protection beyond the usual central gusset."
+          }
+        },
+        "side": {
+          "type": "benefit",
+          "settings": {
+            "title": "SideSeal Contour",
+            "body": "Thoughtful leg-edge construction intended to help manage side leakage."
+          }
+        },
+        "comfort": {
+          "type": "benefit",
+          "settings": {
+            "title": "DryTouch Comfort",
+            "body": "A moisture-management design focused on a comfortable skin-facing feel."
+          }
+        }
+      },
+      "block_order": [
+        "front",
+        "side",
+        "comfort"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "editorial",
+    "benefits",
+    "layers",
+    "tabs",
+    "reviews",
+    "faq"
+  ]
+}

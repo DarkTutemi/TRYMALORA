@@ -1,0 +1,119 @@
+<section class="uo-pillars-section" id="ultra-technology">
+  <div class="uo-wrap">
+    <div class="uo-pillars-header">
+      <h2 class="uo-heading-serif uo-pillars-title">{{ section.settings.title }}</h2>
+      <p class="uo-pillars-subhead">{{ section.settings.subhead }}</p>
+    </div>
+
+    <div class="uo-pillars-grid">
+      <!-- Pillar 1 -->
+      <div class="uo-pillar-card">
+        <div class="uo-pillar-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+            <rect x="9" y="11" width="6" height="5" rx="1"></rect>
+          </svg>
+        </div>
+        <div class="uo-pillar-name">Ultra-Lock Core</div>
+        <p class="uo-pillar-desc">Quickly absorbs and locks in heavy flow.</p>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div class="uo-pillar-card">
+        <div class="uo-pillar-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c0 6-3 12-8 16-5-4-8-10-8-16z"></path>
+          </svg>
+        </div>
+        <div class="uo-pillar-name">Full-Spine Shield</div>
+        <p class="uo-pillar-desc">Extended front-to-back coverage for all-night security.</p>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div class="uo-pillar-card">
+        <div class="uo-pillar-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8l-4 4 4 4"></path>
+            <path d="M6 8l4 4-4 4"></path>
+          </svg>
+        </div>
+        <div class="uo-pillar-name">SideSeal Guard</div>
+        <p class="uo-pillar-desc">Helps prevent side leaks, even when you move.</p>
+      </div>
+
+      <!-- Pillar 4 -->
+      <div class="uo-pillar-card">
+        <div class="uo-pillar-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+          </svg>
+        </div>
+        <div class="uo-pillar-name">DryTouch</div>
+        <p class="uo-pillar-desc">Pulls moisture away to keep you feeling dry and comfortable.</p>
+      </div>
+
+      <!-- Pillar 5 -->
+      <div class="uo-pillar-card">
+        <div class="uo-pillar-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+          </svg>
+        </div>
+        <div class="uo-pillar-name">Odor Control</div>
+        <p class="uo-pillar-desc">Helps keep you feeling fresh and confident.</p>
+      </div>
+
+      <!-- Pillar 6 -->
+      <div class="uo-pillar-card">
+        <div class="uo-pillar-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+          </svg>
+        </div>
+        <div class="uo-pillar-name">CloudFlex</div>
+        <p class="uo-pillar-desc">Soft, breathable, and flexible for all-night comfort.</p>
+      </div>
+
+      <!-- Pillar 7 -->
+      <div class="uo-pillar-card">
+        <div class="uo-pillar-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="3"></rect>
+            <circle cx="12" cy="13" r="5"></circle>
+            <circle cx="6" cy="6" r="1"></circle>
+          </svg>
+        </div>
+        <div class="uo-pillar-name">WashGuard</div>
+        <p class="uo-pillar-desc">Durable and reusable, wash after wash.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ultra Seven Pillars",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "The Seven Pillars of ULTRA OVERNIGHT™"
+    },
+    {
+      "type": "text",
+      "id": "subhead",
+      "label": "Subheadline",
+      "default": "Thoughtfully engineered for overnight protection, lasting comfort, and real peace of mind."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ultra Seven Pillars"
+    }
+  ]
+}
+{% endschema %}
+
