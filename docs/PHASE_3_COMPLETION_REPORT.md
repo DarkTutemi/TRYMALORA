@@ -121,5 +121,5 @@
 
 ## 4. PREVIEW URL
 - **Local Dev Server:** `http://127.0.0.1:9292/collections/all?view=product-v2`  
-- **Store URL:** `https://ikwh1h-fx.myshopify.com/` (Mật khẩu: `lompea`)
+- **Store URL:** `https://ikwh1h-fx.myshopify.com/` (Mật khẩu: `[STOREFRONT_PASSWORD_REDACTED]`)
 - **Theme ID:** `197111906675`

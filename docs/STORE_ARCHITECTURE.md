@@ -202,7 +202,7 @@ Components interact asynchronously using standard browser `CustomEvent` instance
 1. **Tooling & CLI**:
    - Built and operated with **Shopify CLI** (`@shopify/cli`).
    - Package scripts configured in [`package.json`](file:///c:/Users/Admin/Desktop/TRYMALORA/package.json):
-     - `npm run dev`: Boots local dev server with hot reload on port `9292` connecting to `ikwh1h-fx.myshopify.com` with password `lompea`.
+     - `npm run dev`: Boots local dev server with hot reload on port `9292` connecting to `ikwh1h-fx.myshopify.com` with password `[STOREFRONT_PASSWORD_REDACTED]`.
      - `npm run push`: Deploys theme assets to Shopify Draft theme.
      - `npm run ecc:eval`: Runs automated ECC visual/code quality harness.
 2. **External Libraries**:

@@ -1,87 +1,62 @@
 <section class="uo-reviews-section">
   <div class="uo-wrap">
-    <div class="uo-reviews-grid">
-      <!-- Left Column -->
-      <div class="uo-reviews-intro">
-        <h2 class="uo-heading-serif">{{ section.settings.title }}</h2>
-        <div class="uo-star-row">
-          ★★★★★
-        </div>
-        <p>{{ section.settings.subhead }}</p>
+    {%- if section.settings.enable_review_app and section.settings.review_app_snippet != blank -%}
+      <div class="uo-reviews-app-container">
+        <h2 class="uo-heading-serif" style="text-align:center;margin-bottom:24px;">{{ section.settings.title }}</h2>
+        {{ section.settings.review_app_snippet }}
       </div>
-
-      <!-- Right 3 Review Cards -->
-      <div class="uo-reviews-cards">
-        <!-- Review 1 -->
-        <div class="uo-review-card">
-          <div>
-            <div class="uo-review-stars">★★★★★</div>
-            <div class="uo-review-quote">“Finally, no more midnight sheet changes!”</div>
-            <div class="uo-review-body">
-              The coverage is amazing and it actually keeps me dry all night. I can sleep through my heavy days without worry now.
-            </div>
-          </div>
-          <div class="uo-reviewer-info">
-            <img src="{{ 'ultra-avatar-emily.jpg' | asset_url }}" alt="Emily R." class="uo-reviewer-avatar">
-            <div class="uo-reviewer-meta">
-              <span class="uo-reviewer-name">Emily R.</span>
-              <span class="uo-reviewer-badge">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Verified Buyer
-              </span>
-            </div>
-          </div>
+    {%- else -%}
+      <div class="uo-reviews-grid">
+        <!-- Left Column: Intro -->
+        <div class="uo-reviews-intro">
+          <span class="uo-eyebrow" style="display:inline-block;margin-bottom:8px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--uo-plum);">CRAFTSMANSHIP & DESIGN</span>
+          <h2 class="uo-heading-serif">{{ section.settings.title }}</h2>
+          <p>{{ section.settings.subhead }}</p>
         </div>
 
-        <!-- Review 2 -->
-        <div class="uo-review-card">
-          <div>
-            <div class="uo-review-stars">★★★★★</div>
-            <div class="uo-review-quote">“Perfect for side sleepers.”</div>
-            <div class="uo-review-body">
-              I'm a side sleeper and usually always had leaks with other period underwear. This one stays in place and gives me real peace of mind.
+        <!-- Right: 3 Product Standards Cards -->
+        <div class="uo-reviews-cards">
+          <!-- Standard 1 -->
+          <div class="uo-review-card">
+            <div>
+              <div class="uo-review-quote" style="color:var(--uo-plum);font-size:14.5px;margin-bottom:8px;">Full-Spine™ Architecture</div>
+              <div class="uo-review-body">
+                Continuous front-to-back coverage with ergonomic side contours engineered to stay securely in place as you move or change sleeping positions.
+              </div>
+            </div>
+            <div class="uo-reviewer-info" style="margin-top:16px;border-top:1px solid #F0E6EA;padding-top:12px;">
+              <span style="font-size:11.5px;font-weight:700;color:var(--uo-charcoal);text-transform:uppercase;letter-spacing:0.06em;">Design Standard 01</span>
             </div>
           </div>
-          <div class="uo-reviewer-info">
-            <img src="{{ 'ultra-avatar-nicole.jpg' | asset_url }}" alt="Nicole M." class="uo-reviewer-avatar">
-            <div class="uo-reviewer-meta">
-              <span class="uo-reviewer-name">Nicole M.</span>
-              <span class="uo-reviewer-badge">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Verified Buyer
-              </span>
-            </div>
-          </div>
-        </div>
 
-        <!-- Review 3 -->
-        <div class="uo-review-card">
-          <div>
-            <div class="uo-review-stars">★★★★★</div>
-            <div class="uo-review-quote">“So comfortable and reliable.”</div>
-            <div class="uo-review-body">
-              It feels soft, fits beautifully, and handles my heaviest nights with no issues. I've already ordered a second set!
+          <!-- Standard 2 -->
+          <div class="uo-review-card">
+            <div>
+              <div class="uo-review-quote" style="color:var(--uo-plum);font-size:14.5px;margin-bottom:8px;">CloudFlex™ Soft Touch</div>
+              <div class="uo-review-body">
+                Breathable micro-modal knits provide whisper-quiet support without stiffness, rustling noise, or unnecessary bulk under bedtime sleepwear.
+              </div>
+            </div>
+            <div class="uo-reviewer-info" style="margin-top:16px;border-top:1px solid #F0E6EA;padding-top:12px;">
+              <span style="font-size:11.5px;font-weight:700;color:var(--uo-charcoal);text-transform:uppercase;letter-spacing:0.06em;">Sensory Standard 02</span>
             </div>
           </div>
-          <div class="uo-reviewer-info">
-            <img src="{{ 'ultra-avatar-jasmine.jpg' | asset_url }}" alt="Jasmine T." class="uo-reviewer-avatar">
-            <div class="uo-reviewer-meta">
-              <span class="uo-reviewer-name">Jasmine T.</span>
-              <span class="uo-reviewer-badge">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Verified Buyer
-              </span>
+
+          <!-- Standard 3 -->
+          <div class="uo-review-card">
+            <div>
+              <div class="uo-review-quote" style="color:var(--uo-plum);font-size:14.5px;margin-bottom:8px;">WashGuard™ Durability</div>
+              <div class="uo-review-body">
+                Thoughtfully crafted to be cold rinsed, machine washed, and reused night after night, reducing single-use waste while retaining gentle elasticity.
+              </div>
+            </div>
+            <div class="uo-reviewer-info" style="margin-top:16px;border-top:1px solid #F0E6EA;padding-top:12px;">
+              <span style="font-size:11.5px;font-weight:700;color:var(--uo-charcoal);text-transform:uppercase;letter-spacing:0.06em;">Longevity Standard 03</span>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    {%- endif -%}
   </div>
 </section>
 
@@ -93,13 +68,25 @@
       "type": "text",
       "id": "title",
       "label": "Heading",
-      "default": "Loved by Women Who Sleep Deeper"
+      "default": "Thoughtfully Engineered For Restful Nights"
     },
     {
       "type": "text",
       "id": "subhead",
       "label": "Subhead",
-      "default": "Real experiences from women who trust ULTRA OVERNIGHT™ for their heaviest nights."
+      "default": "Designed with purpose, tested for comfort, and crafted for women seeking uninterrupted sleep."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_review_app",
+      "label": "Enable 3rd-Party Review App Embed",
+      "default": false,
+      "info": "Check when authentic reviews are collected via Judge.me, Loox, or Shopify Reviews"
+    },
+    {
+      "type": "liquid",
+      "id": "review_app_snippet",
+      "label": "Review App Liquid / HTML Snippet"
     }
   ],
   "presets": [
@@ -109,4 +96,3 @@
   ]
 }
 {% endschema %}
-

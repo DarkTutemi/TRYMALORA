@@ -85,10 +85,91 @@ function initPdpBuyBox() {
   const qtyMinus = document.querySelector('.uo-qty-minus');
   const qtyPlus = document.querySelector('.uo-qty-plus');
   const qtyVal = document.querySelector('.uo-qty-val');
+  const errorMsg = document.querySelector('.uo-pdp-error-msg');
+  const optionPills = document.querySelectorAll('.uo-option-pill');
 
   let currentPrice = 78.00; // default 3 pairs
   let currentQty = 1;
   let currentTier = '3-pairs';
+  let currentPackQty = 3;
+
+  // Selected tier initialization
+  const initialTier = document.querySelector('.uo-tier-card.is-selected');
+  if (initialTier) {
+    currentPrice = parseFloat(initialTier.getAttribute('data-tier-price') || '78.00');
+    currentTier = initialTier.getAttribute('data-tier') || '3-pairs';
+    currentPackQty = parseInt(initialTier.getAttribute('data-pack-qty') || '3', 10);
+  }
+
+  // Parse variants data if embedded
+  const variantsDataEl = document.getElementById('uo-product-variants-json');
+  let variantsData = [];
+  if (variantsDataEl) {
+    try {
+      variantsData = JSON.parse(variantsDataEl.textContent);
+    } catch (e) {
+      console.warn('Could not parse variant data:', e);
+    }
+  }
+
+  // Option Pills (e.g. Size or Color)
+  if (optionPills.length > 0) {
+    optionPills.forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        const group = this.closest('.uo-option-group');
+        if (!group) return;
+        group.querySelectorAll('.uo-option-pill').forEach(function (p) {
+          p.classList.remove('is-active');
+          p.style.backgroundColor = '#ffffff';
+          p.style.color = 'var(--uo-charcoal)';
+          p.style.borderColor = '#D9CCD0';
+        });
+        this.classList.add('is-active');
+        this.style.backgroundColor = 'var(--uo-plum)';
+        this.style.color = '#ffffff';
+        this.style.borderColor = 'var(--uo-plum)';
+
+        const valLabel = group.querySelector('.uo-option-selected-label');
+        if (valLabel) {
+          valLabel.textContent = this.getAttribute('data-option-value');
+        }
+
+        // Match selected options against variantsData
+        if (variantsData.length > 0) {
+          const selectedValues = Array.from(document.querySelectorAll('.uo-option-group')).map(function (g) {
+            const active = g.querySelector('.uo-option-pill.is-active');
+            return active ? active.getAttribute('data-option-value') : null;
+          });
+
+          const matchedVariant = variantsData.find(function (v) {
+            return selectedValues.every(function (val, idx) {
+              return !val || v.options[idx] === val;
+            });
+          });
+
+          if (matchedVariant) {
+            // Update variant ID on cards
+            tierCards.forEach(function (c) {
+              c.setAttribute('data-variant-id', matchedVariant.id);
+            });
+
+            // Update button availability
+            if (atcBtn && atcBtn.getAttribute('data-has-product') === 'true') {
+              if (matchedVariant.available) {
+                atcBtn.disabled = false;
+                atcBtn.innerHTML = 'ADD TO CART ➔';
+                atcBtn.classList.remove('uo-btn-disabled');
+              } else {
+                atcBtn.disabled = true;
+                atcBtn.innerHTML = 'SOLD OUT';
+                atcBtn.classList.add('uo-btn-disabled');
+              }
+            }
+          }
+        }
+      });
+    });
+  }
 
   // Tier selection
   tierCards.forEach(function (card) {
@@ -99,6 +180,7 @@ function initPdpBuyBox() {
       const price = parseFloat(this.getAttribute('data-tier-price') || '78.00');
       currentPrice = price;
       currentTier = this.getAttribute('data-tier') || '3-pairs';
+      currentPackQty = parseInt(this.getAttribute('data-pack-qty') || '1', 10);
 
       updatePrice();
     });
@@ -135,30 +217,36 @@ function initPdpBuyBox() {
   if (atcBtn) {
     atcBtn.addEventListener('click', async function (e) {
       e.preventDefault();
+      if (errorMsg) {
+        errorMsg.style.display = 'none';
+        errorMsg.textContent = '';
+      }
+
+      const hasProduct = atcBtn.getAttribute('data-has-product') === 'true';
+      const activeCard = document.querySelector('.uo-tier-card.is-selected');
+      const variantId = activeCard ? activeCard.getAttribute('data-variant-id') : null;
+
+      // Graceful product-unavailable state if product is not yet created in Admin
+      if (!hasProduct || !variantId || variantId === 'null' || variantId === '') {
+        if (errorMsg) {
+          errorMsg.textContent = 'Commercial product data is awaiting setup in Shopify Admin. Adding to cart is disabled in preview mode.';
+          errorMsg.style.display = 'block';
+        }
+        return;
+      }
+
+      const tierName = activeCard ? activeCard.querySelector('.uo-tier-name').textContent.trim() : '3 Pairs';
       const originalText = atcBtn.innerHTML;
       atcBtn.disabled = true;
       atcBtn.innerHTML = 'Adding to Bag...';
 
-      // Find selected tier card
-      const activeCard = document.querySelector('.uo-tier-card.is-selected');
-      const tierName = activeCard ? activeCard.querySelector('.uo-tier-name').textContent.trim() : '3 Pairs';
-      const variantId = activeCard ? activeCard.getAttribute('data-variant-id') : null;
-
       try {
-        // If an actual variant ID exists, use it; otherwise use custom line item or fallback
-        const payload = variantId ? {
-          id: variantId,
-          quantity: currentQty,
+        const payload = {
+          id: parseInt(variantId, 10),
+          quantity: currentPackQty * currentQty,
           properties: {
-            'Tier': tierName,
+            'Pack': tierName,
             'Brand': 'ULTRA OVERNIGHT™'
-          }
-        } : {
-          // Fallback to first available product in cart or fetch /cart.js
-          quantity: currentQty,
-          properties: {
-            'Product': 'FULL-SPINE ULTRA OVERNIGHT™',
-            'Tier': tierName
           }
         };
 
@@ -169,22 +257,27 @@ function initPdpBuyBox() {
         });
 
         if (res.ok) {
-          // Open cart drawer if available
+          if (typeof window.willaRefreshCart === 'function') {
+            await window.willaRefreshCart();
+          }
           if (typeof window.openWillaCart === 'function') {
             window.openWillaCart();
           } else {
             window.location.href = '/cart';
           }
         } else {
-          // In draft preview where product variant may not yet be published
-          if (typeof window.openWillaCart === 'function') {
-            window.openWillaCart();
+          const errData = await res.json().catch(function () { return {}; });
+          const message = errData.description || errData.message || 'Could not add to bag. Please try again.';
+          if (errorMsg) {
+            errorMsg.textContent = message;
+            errorMsg.style.display = 'block';
           }
         }
       } catch (err) {
-        console.warn('Cart addition handled gracefully:', err);
-        if (typeof window.openWillaCart === 'function') {
-          window.openWillaCart();
+        console.error('Cart add error:', err);
+        if (errorMsg) {
+          errorMsg.textContent = 'A network error occurred while adding to cart.';
+          errorMsg.style.display = 'block';
         }
       } finally {
         atcBtn.disabled = false;

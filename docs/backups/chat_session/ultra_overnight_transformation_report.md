@@ -1,9 +1,9 @@
 # ULTRA OVERNIGHT™ — Complete Storefront Transformation Report
 
-**Theme ID:** `197625381235` (Unpublished Draft Theme: `ULTRA OVERNIGHT — PREMIUM FEMININE V1 — DRAFT`)  
+**Theme ID:** `[SHOPIFY_THEME_ID_REDACTED]` (Unpublished Draft Theme: `ULTRA OVERNIGHT — PREMIUM FEMININE V1 — DRAFT`)  
 **Live Theme ID:** `197144805747` (**100% UNTOUCHED**)  
-**Preview Link:** [https://ikwh1h-fx.myshopify.com/?preview_theme_id=197625381235](https://ikwh1h-fx.myshopify.com/?preview_theme_id=197625381235)  
-**Theme Editor:** [https://admin.shopify.com/store/ikwh1h-fx/themes/197625381235/editor](https://admin.shopify.com/store/ikwh1h-fx/themes/197625381235/editor)  
+**Preview Link:** [https://ikwh1h-fx.myshopify.com/?preview_theme_id=[SHOPIFY_THEME_ID_REDACTED]](https://ikwh1h-fx.myshopify.com/?preview_theme_id=[SHOPIFY_THEME_ID_REDACTED])  
+**Theme Editor:** [https://admin.shopify.com/store/ikwh1h-fx/themes/[SHOPIFY_THEME_ID_REDACTED]/editor](https://admin.shopify.com/store/ikwh1h-fx/themes/[SHOPIFY_THEME_ID_REDACTED]/editor)  
 **Git Branch:** `feat/ultra-overnight-premium-storefront`  
 **Git Commit SHA:** `8756c0d75b7de76eb4a617f80b42c7f8c4728824`  
 
@@ -120,7 +120,7 @@ All visual assets were extracted directly from the user's approved reference moc
 
 ```
 [x] Fully Implemented & Tested (Theme Code, CSS, JS, Sections, Templates, Navigation, Cart Isolation)
-[x] Deployed & Live on Draft Theme 197625381235
+[x] Deployed & Live on Draft Theme [SHOPIFY_THEME_ID_REDACTED]
 [x] Verified with Real Headless Chrome & Full Screenshot Artifacts
 [x] Legacy Meta/TikTok Ad Product Pages 100% Preserved
 [ ] Pending Shopify Admin Data (Creating the live product "FULL-SPINE ULTRA OVERNIGHT™" and pages in Admin)
@@ -131,4 +131,4 @@ All visual assets were extracted directly from the user's approved reference moc
 ### Steps to Activate in Shopify Admin (When Ready):
 1. **Products > Add product:** Title `FULL-SPINE ULTRA OVERNIGHT™`, Handle `full-spine-ultra-overnight`, Theme template `ultra-overnight`.
 2. **Online Store > Pages:** Create `About Us` (template `about-us`), `Track Order` (template `track-order`), `FAQ` (template `faq`).
-3. **Publishing:** The Draft Theme (`197625381235`) can be previewed, edited, and published with zero downtime whenever the owner approves.
+3. **Publishing:** The Draft Theme (`[SHOPIFY_THEME_ID_REDACTED]`) can be previewed, edited, and published with zero downtime whenever the owner approves.

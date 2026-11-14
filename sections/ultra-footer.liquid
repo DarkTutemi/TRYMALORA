@@ -53,10 +53,32 @@
       <div class="uo-footer-col">
         <h4>Stay in the Loop</h4>
         <p class="uo-newsletter-text">Get product updates, special offers, and wellness tips.</p>
-        <form class="uo-newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to ULTRA OVERNIGHT!');">
-          <input type="email" placeholder="Enter your email" class="uo-newsletter-input" required aria-label="Email address for newsletter">
-          <button type="submit" class="uo-newsletter-btn" aria-label="Subscribe">➔</button>
-        </form>
+        {%- form 'customer', class: 'uo-newsletter-form', id: 'uoFooterNewsletter' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter,ultra-overnight">
+          {%- if form.posted_successfully? -%}
+            <div class="uo-newsletter-success" style="color: #ffffff; background: rgba(255,255,255,0.18); padding: 8px 12px; border-radius: 4px; font-size: 13px; font-family: var(--uo-font-sans); margin-top: 6px;">
+              ✓ Thank you for subscribing to ULTRA OVERNIGHT™!
+            </div>
+          {%- else -%}
+            {%- if form.errors -%}
+              <div class="uo-newsletter-error" style="color: #ffcccc; font-size: 12px; margin-bottom: 6px; font-family: var(--uo-font-sans);">
+                {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+              </div>
+            {%- endif -%}
+            <div style="display:flex;width:100%;position:relative;">
+              <input 
+                type="email" 
+                name="contact[email]" 
+                placeholder="Enter your email" 
+                class="uo-newsletter-input" 
+                required 
+                aria-label="Email address for newsletter"
+                value="{% if customer %}{{ customer.email }}{% endif %}"
+              >
+              <button type="submit" class="uo-newsletter-btn" aria-label="Subscribe">➔</button>
+            </div>
+          {%- endif -%}
+        {%- endform -%}
         <div class="uo-social-links">
           <!-- Instagram -->
           <a href="#" aria-label="Instagram">

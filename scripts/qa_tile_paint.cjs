@@ -15,7 +15,7 @@ async function run() {
   await page.goto('https://ikwh1h-fx.myshopify.com/password', { waitUntil: 'networkidle2' });
   const pwInput = await page.$('input[type="password"]');
   if (pwInput) {
-    await page.type('input[type="password"]', 'lompea');
+    await page.type('input[type="password"]', (process.env.SHOPIFY_FLAG_STORE_PASSWORD || ''));
     await Promise.all([
       page.waitForNavigation({ waitUntil: 'networkidle2' }),
       page.keyboard.press('Enter')

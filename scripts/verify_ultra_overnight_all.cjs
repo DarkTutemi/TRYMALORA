@@ -9,6 +9,21 @@ const artifactsDir = 'C:\\Users\\Admin\\.gemini\\antigravity\\brain\\d284d670-0c
 const DRAFT_THEME_ID = '197625381235';
 const DOMAIN = 'ikwh1h-fx.myshopify.com';
 
+// Load environment variables from .env
+const envPath = path.resolve(process.cwd(), '.env');
+if (fs.existsSync(envPath)) {
+  const lines = fs.readFileSync(envPath, 'utf8').split('\n');
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const [key, ...rest] = trimmed.split('=');
+    if (key && !process.env[key.trim()]) {
+      process.env[key.trim()] = rest.join('=').trim().replace(/^['"]|['"]$/g, '');
+    }
+  }
+}
+const STORE_PASSWORD = process.env.SHOPIFY_FLAG_STORE_PASSWORD || process.env.STOREFRONT_PASSWORD || '';
+
 function getWsUrl(port) {
   return new Promise((resolve, reject) => {
     let retries = 0;
@@ -106,7 +121,7 @@ function getWsUrl(port) {
     expression: `
       const pw = document.querySelector('input[type="password"]');
       if (pw) {
-        pw.value = 'lompea';
+        pw.value = ${JSON.stringify(STORE_PASSWORD)};
         const form = pw.closest('form');
         if (form) form.submit();
       }
@@ -130,10 +145,13 @@ function getWsUrl(port) {
           pillarsCount: document.querySelectorAll('.uo-pillar-card').length,
           has5Layers: document.querySelector('.uo-layers-section') !== null,
           comfortCardsCount: document.querySelectorAll('.uo-comfort-card').length,
-          reviewsCount: document.querySelectorAll('.uo-review-card').length,
+          standardsCardsCount: document.querySelectorAll('.uo-review-card').length,
           faqItemsCount: document.querySelectorAll('.uo-faq-item').length,
           hasFooter: document.querySelector('.uo-footer') !== null,
-          hasLegacyFeatured: document.querySelector('.trymalora-featured-products') !== null
+          hasLegacyFeatured: document.querySelector('.trymalora-featured-products') !== null,
+          hasSearchIconInHeader: document.querySelector('.uo-header-wrap a[href="/search"]') !== null,
+          hasFakeEmilyReview: document.body.textContent.includes('Emily R.'),
+          hasFakeReviewCount: document.body.textContent.includes('2,846 reviews')
         };
       })()
     `,
@@ -164,6 +182,9 @@ function getWsUrl(port) {
           tiersCount: document.querySelectorAll('.uo-tier-card').length,
           selectedTier: document.querySelector('.uo-tier-card.is-selected .uo-tier-name')?.textContent?.trim(),
           hasAtcBtn: document.querySelector('.uo-pdp-atc-btn') !== null,
+          isAtcDisabled: document.querySelector('.uo-pdp-atc-btn')?.disabled === true,
+          hasAdminSetupNotice: document.querySelector('.uo-admin-setup-notice') !== null,
+          hasFakeReviewCount: document.body.textContent.includes('2,846 reviews'),
           tabsCount: document.querySelectorAll('.uo-tab-btn').length,
           has5Layers: document.querySelector('.uo-layers-section') !== null
         };
@@ -219,12 +240,28 @@ function getWsUrl(port) {
   console.log('\n--- STEP 7: Verifying Track Order Page ---');
   await send('Page.navigate', { url: `https://${DOMAIN}/pages/track-order?preview_theme_id=${DRAFT_THEME_ID}` });
   await new Promise(r => setTimeout(r, 3500));
+  
+  // Submit track order form to verify honest guidance and NO fake carrier result
+  await send('Runtime.evaluate', {
+    expression: `
+      const ord = document.getElementById('uoOrderNum');
+      const eml = document.getElementById('uoEmail');
+      if (ord) ord.value = '#1042';
+      if (eml) eml.value = 'customer@example.com';
+      const form = document.getElementById('uoTrackLookupForm');
+      if (form) form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+    `
+  });
+  await new Promise(r => setTimeout(r, 800));
+
   const trackData = await send('Runtime.evaluate', {
     expression: `
       (() => {
         return {
           heroTitle: document.querySelector('.uo-page-hero-title')?.textContent?.trim(),
-          hasTrackForm: document.querySelector('.uo-track-form') !== null
+          hasTrackForm: document.querySelector('.uo-track-form') !== null,
+          guidanceBoxVisible: document.getElementById('uoTrackGuidance')?.style.display !== 'none',
+          hasFakeCarrierStatus: document.body.textContent.includes('In Transit with Express Carrier')
         };
       })()
     `,
@@ -232,6 +269,27 @@ function getWsUrl(port) {
   });
   console.log('Track Order Evaluation:', JSON.stringify(getVal(trackData), null, 2));
   await takeScreenshot('qa_ultra_track_order.png');
+
+  // 7B. CONTACT US PAGE
+  console.log('\n--- STEP 7B: Verifying Contact Us Page ---');
+  await send('Page.navigate', { url: `https://${DOMAIN}/pages/contact?preview_theme_id=${DRAFT_THEME_ID}` });
+  await new Promise(r => setTimeout(r, 3500));
+  const contactData = await send('Runtime.evaluate', {
+    expression: `
+      (() => {
+        return {
+          heroTitle: document.querySelector('.uo-page-hero-title')?.textContent?.trim(),
+          hasShopifyContactForm: document.querySelector('form[action*=\"/contact\"]') !== null,
+          hasNameInput: document.querySelector('input[name=\"contact[name]\"]') !== null,
+          hasEmailInput: document.querySelector('input[name=\"contact[email]\"]') !== null,
+          hasBodyInput: document.querySelector('textarea[name=\"contact[body]\"]') !== null
+        };
+      })()
+    `,
+    returnByValue: true
+  });
+  console.log('Contact Us Evaluation:', JSON.stringify(getVal(contactData), null, 2));
+  await takeScreenshot('qa_ultra_contact.png');
 
   // 8. FAQ PAGE
   console.log('\n--- STEP 8: Verifying FAQ Page ---');
@@ -263,9 +321,12 @@ function getWsUrl(port) {
     expression: `
       (() => {
         const drawer = document.getElementById('willaCartDrawer');
+        const emptyLink = document.querySelector('.willa-empty-cart a')?.getAttribute('href');
         return {
           isOpen: drawer?.classList?.contains('is-open'),
           emptyText: document.querySelector('.willa-empty-cart p')?.textContent?.trim(),
+          emptyCartHref: emptyLink,
+          leaksCollectionsAll: emptyLink === '/collections/all',
           shippingText: document.getElementById('willaShippingText')?.textContent?.trim()
         };
       })()

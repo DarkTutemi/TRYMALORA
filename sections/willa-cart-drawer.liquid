@@ -5,6 +5,9 @@
     assign is_legacy_product = true
   endif
 -%}
+<script>
+  window.__isUltraContext = {% if is_legacy_product %}false{% else %}true{% endif %};
+</script>
 <div class="willa-cart-drawer-overlay" id="willaCartOverlay" onclick="closeWillaCart()"></div>
 
 <div class="willa-cart-drawer" id="willaCartDrawer">
@@ -475,18 +478,21 @@
 
       const payableTotalCents = Math.max(0, cart.total_price - bundleDeductionCents);
 
-      // Update free shipping bar ($70 = 7000 cents)
-      const threshold = 7000;
+      // Update free shipping bar (Dynamic context: $49 for Ultra, $70 for Legacy)
+      const isUltra = typeof window.__isUltraContext !== 'undefined'
+        ? window.__isUltraContext
+        : (!window.location.pathname.includes('/products/ear-cleaner') && !window.location.pathname.includes('/products/eyvelle') && !window.location.pathname.includes('/products/metallic-silver'));
+      const threshold = isUltra ? 4900 : 7000;
       const textElem = document.getElementById('willaShippingText');
       const fillElem = document.getElementById('willaShippingFill');
-      const percent = Math.min(100, Math.round((payableTotalCents / threshold) * 100));
+      const percent = Math.min(100, Math.max(0, Math.round((payableTotalCents / threshold) * 100)));
       if (fillElem) fillElem.style.width = percent + '%';
 
       if (textElem) {
         if (payableTotalCents >= threshold) {
           textElem.innerHTML = '🎉 You unlocked <strong>FREE US SHIPPING</strong>!';
         } else {
-          const remaining = ((threshold - payableTotalCents) / 100).toFixed(2);
+          const remaining = (Math.max(0, threshold - payableTotalCents) / 100).toFixed(2);
           textElem.innerHTML = 'Add <strong>$' + remaining + '</strong> more to unlock <strong>FREE SHIPPING</strong>!';
         }
       }
@@ -531,13 +537,17 @@
       const bodyElem = document.getElementById('willaCartItemsBody');
       if (bodyElem) {
         if (cart.item_count === 0) {
+          const emptyCtaUrl = isUltra ? '/products/full-spine-ultra-overnight' : '/';
+          const emptyCtaText = isUltra ? 'SHOP ULTRA OVERNIGHT ➔' : 'CONTINUE SHOPPING ➔';
+          const emptyDesc = isUltra ? 'Explore FULL-SPINE ULTRA OVERNIGHT™ for leak-free, restful sleep.' : 'Explore our best-selling smart innovations, wellness gear, and daily essentials.';
+          const btnStyle = isUltra ? 'style="background-color:var(--uo-plum,#58233D);color:#ffffff !important;"' : '';
           bodyElem.innerHTML = `
             <div class="willa-empty-cart">
               <div class="empty-icon">🛒</div>
               <h3>Your cart is empty</h3>
-              <p>Explore our best-selling smart innovations, wellness gear, and daily essentials.</p>
-              <a href="/collections/all" class="willa-btn-primary" onclick="closeWillaCart()">
-                START SHOPPING ➔
+              <p>${emptyDesc}</p>
+              <a href="${emptyCtaUrl}" class="willa-btn-primary" ${btnStyle} onclick="closeWillaCart()">
+                ${emptyCtaText}
               </a>
             </div>`;
         } else {

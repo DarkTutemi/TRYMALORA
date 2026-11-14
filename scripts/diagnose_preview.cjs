@@ -53,7 +53,7 @@ async function diagnose() {
         expression: `
           const pass = document.getElementById('password') || document.querySelector('input[type="password"]');
           if (pass) {
-            pass.value = 'lompea';
+            pass.value = ${JSON.stringify(STORE_PASSWORD)};
             const form = pass.closest('form');
             if (form) form.submit();
           }

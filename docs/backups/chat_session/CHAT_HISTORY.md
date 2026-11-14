@@ -40,7 +40,7 @@
   [https://ikwh1h-fx.myshopify.com/collections/all?view=showroom](https://ikwh1h-fx.myshopify.com/collections/all?view=showroom)
 - **Shopify Theme Customizer (Editor)**:  
   [https://ikwh1h-fx.myshopify.com/admin/themes/197111513459/editor](https://ikwh1h-fx.myshopify.com/admin/themes/197111513459/editor)
-- **Mật khẩu truy cập cửa hàng (nếu được hỏi)**: `lompea`
+- **Mật khẩu truy cập cửa hàng (nếu được hỏi)**: `[STOREFRONT_PASSWORD_REDACTED]`
 
 ---
 
@@ -1074,7 +1074,7 @@ The **TRYMALORA 2.5D Showroom V4** has been implemented, validated across all vi
 
 ### 5. Verification & Live Links
 
-- **Live Storefront**: [https://ikwh1h-fx.myshopify.com](https://ikwh1h-fx.myshopify.com) (Password: `lompea`)
+- **Live Storefront**: [https://ikwh1h-fx.myshopify.com](https://ikwh1h-fx.myshopify.com) (Password: `[STOREFRONT_PASSWORD_REDACTED]`)
 - **Showroom Collection**: [https://ikwh1h-fx.myshopify.com/collections/all?view=showroom](https://ikwh1h-fx.myshopify.com/collections/all?view=showroom)
 - **Product Page V2**: [https://ikwh1h-fx.myshopify.com/products/kids-infrared-laser-battle-toy-gun-set-with-2-mini-pistols-and-1-projector-featuring-sound-and-light](https://ikwh1h-fx.myshopify.com/products/kids-infrared-laser-battle-toy-gun-set-with-2-mini-pistols-and-1-projector-featuring-sound-and-light)
 - **GitHub Commit**: `19966f2` on [TRYMALORA Repository](https://github.com/DarkTutemi/TRYMALORA)
@@ -1129,7 +1129,7 @@ Tôi đã hoàn thành toàn bộ các yêu cầu của bạn, kiểm tra trực
 ---
 
 ### Kết quả kiểm tra trực tiếp trên Store:
-- **Live Store**: `https://ikwh1h-fx.myshopify.com/` (Mật khẩu: `lompea`)
+- **Live Store**: `https://ikwh1h-fx.myshopify.com/` (Mật khẩu: `[STOREFRONT_PASSWORD_REDACTED]`)
 - **Showroom Kệ Trưng Bày**: `https://ikwh1h-fx.myshopify.com/collections/all?view=showroom`
 - **GitHub Commit**: [`800b604`](https://github.com/DarkTutemi/TRYMALORA/commit/800b604) trên cả nhánh `main` và `master`.
 
@@ -1191,7 +1191,7 @@ Cấu trúc trang chủ hiện tại cực kỳ tinh gọn, chuyên nghiệp và
 ---
 
 ### Kiểm tra trực tiếp trên Store:
-- **Live Store**: `https://ikwh1h-fx.myshopify.com/` (Mật khẩu: `lompea`)
+- **Live Store**: `https://ikwh1h-fx.myshopify.com/` (Mật khẩu: `[STOREFRONT_PASSWORD_REDACTED]`)
 - **GitHub Commit**: [`c79ecda`](https://github.com/DarkTutemi/TRYMALORA/commit/c79ecda) (Đã push lên cả `main` và `master`).
 
 ---
@@ -1260,11 +1260,13 @@ thay hình : https://ashbtop.com/cdn/shop/files/spp_shopify20261028173020_95469e
 ở MODE A · PRECISION TARGET PRACTICE thành video https://cdn.shopify.com/videos/c/o/v/cdc0dde4a907461cba0446744aed37e6.mp4
 thay ảnh ở MODE B · MULTI-TEAM ARENA COMBAT
 https://ashbtop.com/cdn/shop/files/spp_shopify20261028173020_94e0edf9f1023e1489161d1b3218329e_57ef72a8-8ded-4354-b4fd-8dfd4995b2d2.png bằng ảnh https://cdn.shopify.com/s/files/1/1032/4541/4771/files/b2.webp?v=1793726274
-Phần 3-Step Effortless Setup chữ No complex smartphone apps, pairing codes, or Bluetooth syncing required. cân giữa cho tao
+Phần 3-Step Effortless Setup
+ chữ No complex smartphone apps, pairing codes, or Bluetooth syncing required. cân giữa cho tao
 
 thay chữ Load 2× AAA batteries into each blaster and 3× AA batteries into the projector base. thành Adjust the projector focus, aim at your targets and start playing!
 
-icon của Insert Batteries
+
+icon của Insert Batteries
 : https://cdn.shopify.com/s/files/1/1032/4541/4771/files/ic1.webp?v=1793726063
 icon của Choose Your Play Modehttps://cdn.shopify.com/s/files/1/1032/4541/4771/files/ic2.webp?v=1793726063
 icon của Power On & Battle https://cdn.shopify.com/s/files/1/1032/4541/4771/files/ic3.webp?v=1793726063
@@ -2859,7 +2861,7 @@ Không sửa theme chính.
 - **Shopify Theme ID**: `#197144805747` (vai trò: `[unpublished]`)
 - **Storefront Preview URL**:  
   👉 **[Xem trước Theme Draft trên trình duyệt](https://ikwh1h-fx.myshopify.com?preview_theme_id=197144805747)**  
-  *(Mật khẩu Storefront nếu cần: `lompea`)*
+  *(Mật khẩu Storefront nếu cần: `[STOREFRONT_PASSWORD_REDACTED]`)*
 - **Theme Editor Admin URL**:  
   👉 **[Mở Theme Customizer trong Admin](https://ikwh1h-fx.myshopify.com/admin/themes/197144805747/editor)**
 
@@ -3023,7 +3025,7 @@ chưa xem được trang sản phẩm trên theme draft
 Sản phẩm đang bán và có link công khai là **Infrared Laser Battle Set**. Bạn có thể bấm vào link xem trước trực tiếp dưới đây để duyệt toàn bộ kiến trúc Product Page V2 trên theme draft:
 
 🔗 **[BẤM ĐỂ XEM TRANG SẢN PHẨM TRÊN THEME DRAFT](https://trymalora.com/products/kids-infrared-battle-blaster-set-with-target-projector?preview_theme_id=197144805747)**  
-*(Nếu được hỏi mật khẩu truy cập store: nhập `lompea`)*
+*(Nếu được hỏi mật khẩu truy cập store: nhập `[STOREFRONT_PASSWORD_REDACTED]`)*
 
 > [!NOTE]
 > Trang này hiển thị đầy đủ giao diện **Product Page V2** hoàn thiện:
@@ -5491,8 +5493,10 @@ Phiên đăng nhập trước đã hết hạn trong lúc chờ. Tôi đã khở
 *Timestamp: 2026-11-05T18:05:11Z (Step 7317)*
 
 ```text
-Client ID: a759e3bccdc3c1b6f1c96f4868184acd
-Client secret: shp_[REDACTED_SHOPIFY_SECRET]
+Client ID
+: [SHOPIFY_CLIENT_ID_REDACTED]
+Client secret
+: shp_[REDACTED_SHOPIFY_SECRET]
 tao tạo app cho mày full quyền rồi đấy, làm đi 
 
 read_customers,write_customers,read_price_rules,write_price_rules,read_discounts,write_discounts,read_discovery,write_discovery,read_files,write_files,write_inventory,read_inventory,write_locations,read_locations,read_online_store_navigation,write_online_store_navigation,read_orders,write_orders,read_product_feeds,write_product_feeds,read_product_listings,write_product_listings,read_products,write_products,read_publications,write_publications,read_shopify_payments_disputes,write_shopify_payments_disputes,read_content,write_content,customer_write_customers,customer_read_customers,customer_read_orders,customer_write_orders,read_themes,write_themes
@@ -5841,8 +5845,10 @@ thứ tự sắp xếp của bundle mua 1, mua 2 tặng 2, mua 4 tặng 4, đồ
 ```text
 https://trymalora.com/products/ear-cleane](https://trymalora.com/products/ear-cleaner
 # TASK: FIX BUNDLE ORDER, 100ML VARIANTS & SUBSCRIPTION DISCOUNT
-
-**QUAN TRỌNG:** Chỉ chỉnh sửa bundle của sản phẩm hiện tại. Không thay đổi bundle của sản phẩm khác, không sửa layout toàn website hoặc các chức năng không liên quan.
+
+
+
+**QUAN TRỌNG:** Chỉ chỉnh sửa bundle của sản phẩm hiện tại. Không thay đổi bundle của sản phẩm khác, không sửa layout toàn website hoặc các chức năng không liên quan.
 
 ## 1. Sắp xếp lại thứ tự Bundle
 
@@ -6069,7 +6075,8 @@ Bạn có thể kiểm tra trực tiếp ngay trên link live:
 
 ```text
 https://eyvelle.com/products/eyvelle-steam-therapy?fbclid=IwZXh0bgNhZW0CMTEAcGRvZgVicmlkETFkRUJkdHp2Uk1sZEFvSktQc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABH8SggX5adgfFGtGp7RCfzgDNR_j9Ev1-1sqL6qzVDL_ne5PdBcKDXrtAADJ-_aem__C7oYiHupfhe47_j2cH1yQ
-clone tiếp sản phẩm này, up sale sản phẩm này https://ae-pic-a1.aliexpress-media.com/kf/Sa2036508456e4e449020a5de57fd474cU.jpg_960x960q75.jpg_.avif (Eye Beauty Massager Vibration Eye Red‑Light Care Soothe Facial Skin for Skin Puffiness Dark Circles Portable Skincare Tool) viết lại tên cho premium, giá sản phẩm up sale là 29.99$
+clone tiếp sản phẩm này, up sale sản phẩm này https://ae-pic-a1.aliexpress-media.com/kf/Sa2036508456e4e449020a5de57fd474cU.jpg_960x960q75.jpg_.avif (Eye Beauty Massager Vibration Eye Red‑Light Care Soothe Facial Skin for Skin Puffiness Dark Circles Portable Skincare Tool
+) viết lại tên cho premium, giá sản phẩm up sale là 29.99$
 ```
 
 ### Assistant Responses
@@ -7596,7 +7603,7 @@ No existing advertising campaign is disrupted by unauthorized data changes.
 
 #### Response Part 1 *(2026-11-14T04:33:42Z)*
 
-I am deploying the ULTRA OVERNIGHT assets, templates, and sections to the unpublished Shopify Draft Theme (`197625381235`). I will proceed with verification as soon as the upload completes.
+I am deploying the ULTRA OVERNIGHT assets, templates, and sections to the unpublished Shopify Draft Theme (`[SHOPIFY_THEME_ID_REDACTED]`). I will proceed with verification as soon as the upload completes.
 
 #### Response Part 2 *(2026-11-14T04:34:28Z)*
 
@@ -7629,10 +7636,10 @@ Chúng tôi đã hoàn thành toàn diện việc **thiết kế, lập trình, 
 ### 1. Thông tin Theme & Đường dẫn xem trước (Preview Links)
 - **Shopify Store:** `ikwh1h-fx.myshopify.com` (`trymalora.com`)
 - **Live Theme ID:** `197144805747` (**GIỮ NGUYÊN 100%, KHÔNG CHẠM VÀO**)
-- **Unpublished Draft Theme ID:** **`197625381235`**  
+- **Unpublished Draft Theme ID:** **`[SHOPIFY_THEME_ID_REDACTED]`**  
   *(Tên Theme: `ULTRA OVERNIGHT — PREMIUM FEMININE V1 — DRAFT` — được nhân bản trực tiếp từ Live Theme)*
-- 🔗 **Draft Preview URL (Storefront):** [https://ikwh1h-fx.myshopify.com/?preview_theme_id=197625381235](https://ikwh1h-fx.myshopify.com/?preview_theme_id=197625381235)
-- 🛠️ **Shopify Theme Editor URL:** [https://admin.shopify.com/store/ikwh1h-fx/themes/197625381235/editor](https://admin.shopify.com/store/ikwh1h-fx/themes/197625381235/editor)
+- 🔗 **Draft Preview URL (Storefront):** [https://ikwh1h-fx.myshopify.com/?preview_theme_id=[SHOPIFY_THEME_ID_REDACTED]](https://ikwh1h-fx.myshopify.com/?preview_theme_id=[SHOPIFY_THEME_ID_REDACTED])
+- 🛠️ **Shopify Theme Editor URL:** [https://admin.shopify.com/store/ikwh1h-fx/themes/[SHOPIFY_THEME_ID_REDACTED]/editor](https://admin.shopify.com/store/ikwh1h-fx/themes/[SHOPIFY_THEME_ID_REDACTED]/editor)
 - 🌿 **Git Branch:** [`feat/ultra-overnight-premium-storefront`](https://github.com/DarkTutemi/TRYMALORA/tree/feat/ultra-overnight-premium-storefront)
 - 📌 **Commit SHA:** `8756c0d` (`feat(storefront): implement ULTRA OVERNIGHT premium feminine transformation on draft theme`)
 
@@ -7690,7 +7697,7 @@ Tất cả hình ảnh đã được trích xuất 1:1 từ bản thiết kế m
 ### 5. Tình trạng Xác thực & Các bước Kích hoạt (Validation Status)
 
 - [x] **Đã hoàn thiện & kiểm thử code (100%):** Theme code, sections, templates, CSS, JS, navigation isolation, cart drawer.
-- [x] **Đã triển khai lên Draft Theme (ID `197625381235`):** Có thể mở xem trực tiếp và chỉnh sửa bằng Shopify Theme Editor.
+- [x] **Đã triển khai lên Draft Theme (ID `[SHOPIFY_THEME_ID_REDACTED]`):** Có thể mở xem trực tiếp và chỉnh sửa bằng Shopify Theme Editor.
 - [x] **Bảo vệ an toàn Live Theme:** Không xuất bản, không làm gián đoạn chiến dịch Meta Ads đang chạy.
 - [ ] **Bước chuẩn bị trên Shopify Admin (Khi bạn sẵn sàng):**
   1. *Tạo sản phẩm mới:* Vào Shopify Admin > Products > Thêm sản phẩm `FULL-SPINE ULTRA OVERNIGHT™`, chọn theme template là `ultra-overnight`.

@@ -50,7 +50,7 @@ async function main() {
         expression: `
           const pw = document.querySelector('input[type="password"]');
           if (pw) {
-            pw.value = 'lompea';
+            pw.value = ${JSON.stringify(STORE_PASSWORD)};
             const form = pw.closest('form');
             if (form) form.submit();
           }

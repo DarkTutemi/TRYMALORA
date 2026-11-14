@@ -4,7 +4,7 @@
   "description": "Trymalora Theme - Immersive Retail Showroom V4 & High-Converting PDP",
   "type": "module",
   "scripts": {
-    "dev": "shopify theme dev --store ikwh1h-fx.myshopify.com --store-password lompea",
+    "dev": "shopify theme dev --store ikwh1h-fx.myshopify.com",
     "push": "shopify theme push --store ikwh1h-fx.myshopify.com --unpublished",
     "pull": "shopify theme pull --store ikwh1h-fx.myshopify.com",
     "check": "shopify theme check",
