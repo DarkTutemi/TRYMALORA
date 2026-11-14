@@ -47,6 +47,7 @@ if (fs.existsSync(transcriptSrc)) {
 
 console.log('2. Copying markdown report artifacts...');
 const reportFiles = [
+  'ultra_overnight_transformation_report.md',
   'steam_eye_therapy_clone_report.md',
   'ear_cleaner_task_report.md',
   'ear_cleaner_clone_report.md',
