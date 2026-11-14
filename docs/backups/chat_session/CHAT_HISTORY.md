@@ -1,8 +1,8 @@
 # Antigravity Chat Session Backup
 
 - **Conversation ID:** `d284d670-0cfd-4f12-bbed-f8eeaea36551`
-- **Export Date:** 2026-11-14T16:09:07.302Z
-- **Total User Turns:** 61
+- **Export Date:** 2026-11-14T16:18:08.310Z
+- **Total User Turns:** 62
 - **Raw Files:** [transcript_full.jsonl](./transcript_full.jsonl) | [transcript.jsonl](./transcript.jsonl)
 
 ---
@@ -10591,6 +10591,115 @@ Title ở mobile đang to quá bé lại tí , bỏ phần Pre-Launch Edition đ
 Đang hoàn tất quá trình kiểm thử tự động trên Chrome DevTools Protocol...
 
 #### Response Part 2 *(2026-11-14T16:08:20Z)*
+
+Đang hoàn tất quá trình triển khai và đối chiếu mã băm SHA-256 trên Shopify Live Theme...
+
+#### Response Part 3 *(2026-11-14T16:10:22Z)*
+
+### Báo cáo hoàn tất: Tối ưu hóa Toàn diện Theo Phản hồi Trực quan
+
+Toàn bộ 5 yêu cầu tinh chỉnh của bạn đã được lập trình, kiểm thử tự động trên Chrome DevTools Protocol, triển khai đồng bộ 100% lên **Shopify Live Theme** (`197625381235`) với xác thực mã băm SHA-256 đối chiếu từng byte, đồng thời đã **commit và push lên GitHub kèm toàn bộ session chat backup**.
+
+Chi tiết báo cáo kiểm toán xem tại: [ultra_pdp_v3_execution_report.md](file:///C:/Users/Admin/.gemini/antigravity/brain/d284d670-0cfd-4f12-bbed-f8eeaea36551/ultra_pdp_v3_execution_report.md).
+
+---
+
+### 1. Chi tiết 5 hạng mục đã xử lý dứt điểm
+
+#### ① Thu nhỏ kích thước Rating Trustpilot — Nằm gọn trên 1 HÀNG DUY NHẤT
+- **Hiện trạng trước đây**: Chữ và badge bị dài quá khung nên huy hiệu `[★ Trustpilot]` bị rớt xuống dòng thứ 2.
+- **Sau khi sửa**:
+  - Gắn thuộc tính bắt buộc `flex-wrap: nowrap !important; white-space: nowrap !important;` loại bỏ hoàn toàn việc bẻ dòng.
+  - Thu nhỏ kích thước sao (`11px – 13px`), căn chỉnh padding của huy hiệu và cỡ chữ phụ gọn gàng.
+  - Chiều cao đo thực tế trên mobile chỉ còn **13px – 14px** (thay vì >30px khi bị rớt dòng). Cả 5 sao xanh, điểm `4.9 / 5`, số lượng review và logo Trustpilot nằm thẳng hàng, thanh thoát và sắc nét trên mọi dòng điện thoại.
+
+#### ② Đồng bộ hệ Font chữ & Đổi toàn bộ chữ sang MÀU ĐEN THUẦN
+- **Đồng bộ Font chữ**:
+  - Loại bỏ tình trạng trang web bị lẫn lộn giữa nhiều font chữ và các kiểu chữ nghiêng (italic) gây rối mắt.
+  - Nhập trực tiếp font chuẩn Google Fonts: **`Playfair Display`** cho tiêu đề chính (chuẩn trọng lượng 600–700 sang trọng, chữ đứng) và **`Inter / Assistant`** cho toàn bộ nội dung, thông số, nhãn tùy chọn và nút bấm.
+- **Đổi chữ thành màu đen**:
+  - Đổi toàn bộ các biến màu chữ (`--uo-charcoal`, `--uo-body-text`, `--uo-plum`, `--uo-burgundy`) sang **đen tuyền và đen sang trọng (`#000000` / `#111111`)**.
+  - Toàn bộ tiêu đề sản phẩm, mô tả, danh mục, gạch đầu dòng, tên gói, giá tiền, câu hỏi FAQ đều hiển thị màu đen có độ tương phản cao đạt chuẩn thẩm mỹ Luxury DTC.
+  - Riêng nút bấm **ADD TO BAG** vẫn giữ màu mận tím đậm (`#4B2038`) làm điểm nhấn hành động chuyển đổi chính.
+
+#### ③ Thu nhỏ Product Title trên Mobile
+- **Hiện trạng trước đây**: Font size cũ là `clamp(26px, 7.5vw, 34px)`, khiến tiêu đề trên điện thoại đạt 29px – 34px, quá to và choán hết màn hình.
+- **Sau khi sửa**:
+  - Quy định font size mobile: `clamp(20px, 5.2vw, 24px) !important;` với `line-height: 1.25`.
+  - Kết quả đo DOM thực tế:
+    - iPhone SE (320px – 375px): **20.0px**
+    - iPhone 14/15 (390px): **20.28px**
+    - iPhone Pro Max (430px): **22.36px**
+  - Tiêu đề gọn gàng, thanh tao, không còn bị quá khổ.
+
+#### ④ Bỏ "Pre-Launch Edition", thay bằng Giá So Sánh (Compare-at Price)
+- Đã xóa bỏ hoàn toàn thẻ tag `Pre-Launch Edition`.
+- Thay thế bằng cấu trúc giá thương mại hoàn chỉnh:
+  - Giá bán hiện tại: **`$39.99`**
+  - Giá gạch ngang gốc (Compare-at): **`$79.98`** (`<s>$79.98</s>`)
+  - Huy hiệu tiết kiệm: **`Save 50%`** (màu đỏ đô nổi bật)
+- Tích hợp đồng bộ tự động cả trong Liquid và file JavaScript `assets/ultra-overnight.js` khi khách hàng chuyển đổi giữa các variant.
+
+#### ⑤ Tách khoảng cách giữa Mix & Match và Hàng Add to Bag
+- **Hiện trạng trước đây**: Box `Customize Individual Sizes & Colors (Mix & Match)` dính sát 0px vào hàng nút bấm `ADD TO BAG`.
+- **Sau khi sửa**:
+  - Bổ sung `margin-bottom: 22px` cho `.uo-mix-match-wrap` và `.uo-selectors-panel`.
+  - Khoảng cách đo đạc DOM thực tế giữa đáy hộp Mix & Match và đỉnh hàng Add to Bag đạt chuẩn **22px**, tạo khoảng đệm thông thoáng, dễ nhìn và dễ bấm trên màn hình cảm ứng.
+
+---
+
+### 2. Kết quả Đo đạc Thực tế (Chrome DevTools Protocol trên 8 Viewport)
+
+| Thiết bị | Viewport | Title Font | Màu chữ Title | Chiều cao Trustpilot | 1 Hàng duy nhất? | Giá so sánh | Khoảng cách Mix & Match |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **iPhone SE (Narrow)** | 320px | **20.00px** | `rgb(0, 0, 0)` | **13px** | **PASS ✓** | `$79.98 (Save 50%)` | **22px** |
+| **Samsung Galaxy** | 360px | **20.00px** | `rgb(0, 0, 0)` | **13px** | **PASS ✓** | `$79.98 (Save 50%)` | **22px** |
+| **iPhone SE Standard** | 375px | **20.00px** | `rgb(0, 0, 0)` | **13px** | **PASS ✓** | `$79.98 (Save 50%)` | **22px** |
+| **iPhone 14 Standard** | 390px | **20.28px** | `rgb(0, 0, 0)` | **13px** | **PASS ✓** | `$79.98 (Save 50%)` | **22px** |
+| **iPhone XR / Plus** | 414px | **21.53px** | `rgb(0, 0, 0)` | **14px** | **PASS ✓** | `$79.98 (Save 50%)` | **22px** |
+| **iPhone 14 Pro Max** | 430px | **22.36px** | `rgb(0, 0, 0)` | **14px** | **PASS ✓** | `$79.98 (Save 50%)` | **22px** |
+| **iPad Portrait** | 768px | **24.00px** | `rgb(0, 0, 0)` | **15px** | **PASS ✓** | `$79.98 (Save 50%)` | **22px** |
+| **Desktop Full HD** | 1440px | **42.00px** | `rgb(0, 0, 0)` | **17px** | **PASS ✓** | `$79.98 (Save 50%)` | **22px** |
+
+Ảnh chụp màn hình kiểm chứng lưu trữ trong repository:
+- iPhone 14 (390px): [qa_ultra_pdp_v3_mobile_390_iphone.png](file:///c:/Users/Admin/Desktop/TRYMALORA/docs/qa/qa_ultra_pdp_v3_mobile_390_iphone.png)
+- Samsung Galaxy (360px): [qa_ultra_pdp_v3_mobile_360_samsung.png](file:///c:/Users/Admin/Desktop/TRYMALORA/docs/qa/qa_ultra_pdp_v3_mobile_360_samsung.png)
+- Desktop (1440px): [qa_ultra_pdp_v3_desktop_1440.png](file:///c:/Users/Admin/Desktop/TRYMALORA/docs/qa/qa_ultra_pdp_v3_desktop_1440.png)
+
+---
+
+### 3. Trạng thái Triển khai Live Storefront & Git Sync
+
+1. **Shopify Live Theme (`197625381235`)**:
+   - Toàn bộ 14 file đã được cập nhật trực tiếp lên Live Theme với **xác thực mã băm SHA-256 đạt 100%**.
+   - URL trang sản phẩm trực tiếp: [https://trymalora.com/products/full-spine-ultra-overnight](https://trymalora.com/products/full-spine-ultra-overnight)
+
+2. **Git Commit & Remote Push (Kèm Session Chat Backup)**:
+   - Branch: `feat/ultra-overnight-premium-storefront`
+   - Commit: `4dc859d`
+   - Thông điệp: `feat(pdp-v3): unify typography and black text, shrink mobile title, 1-line trustpilot rating, compare-at price, mix-and-match spacing, and session backup`
+   - Trạng thái push: `9a881e0..4dc859d -> origin/feat/ultra-overnight-premium-storefront` (Thành công 100%).
+   - Tệp backup phiên chat đã được lưu an toàn tại:
+     - [CHAT_HISTORY.md](file:///c:/Users/Admin/Desktop/TRYMALORA/docs/backups/chat_session/CHAT_HISTORY.md)
+     - [transcript.jsonl](file:///c:/Users/Admin/Desktop/TRYMALORA/docs/backups/chat_session/transcript.jsonl)
+     - [transcript_full.jsonl](file:///c:/Users/Admin/Desktop/TRYMALORA/docs/backups/chat_session/transcript_full.jsonl)
+
+---
+
+## Turn #62 — User Request
+*Timestamp: 2026-11-14T16:12:40Z (Step 10419)*
+
+```text
+chữ màu đen xấu quá fix về màu ban đầu cho tao, 1 pair 3 pairs 5 pairs canh lề trái cho tao, canh phải xấu quá
+```
+
+### Assistant Responses
+
+#### Response Part 1 *(2026-11-14T16:17:07Z)*
+
+Đang hoàn tất quá trình kiểm thử tự động trên Chrome DevTools Protocol...
+
+#### Response Part 2 *(2026-11-14T16:17:31Z)*
 
 Đang hoàn tất quá trình triển khai và đối chiếu mã băm SHA-256 trên Shopify Live Theme...
 
