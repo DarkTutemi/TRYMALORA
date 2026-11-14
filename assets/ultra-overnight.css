@@ -1369,15 +1369,17 @@
 .uo-trust-badges-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  padding: 16px 0;
+  gap: 12px;
+  padding: 18px 0 10px;
   border-top: 1px solid var(--uo-border);
+  margin-top: 16px;
 }
 
 .uo-trust-item {
   display: flex;
   align-items: center;
   gap: 8px;
+  min-height: 40px;
 }
 
 .uo-trust-icon {
@@ -1636,7 +1638,35 @@
   }
   .uo-trust-badges-row {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 10px 12px;
+    padding: 16px 0 6px;
+    border-top: 1px solid var(--uo-border);
+    margin-top: 16px;
+  }
+  .uo-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: #FCF8F9;
+    border: 1px solid #F0E2E5;
+    border-radius: 8px;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 48px;
+  }
+  .uo-trust-icon {
+    width: 22px;
+    height: 22px;
+    color: var(--uo-plum);
+    flex-shrink: 0;
+  }
+  .uo-trust-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--uo-charcoal);
+    line-height: 1.25;
+    word-break: normal;
   }
 }
 
@@ -2122,12 +2152,8 @@
 .uo-cc-wreath {
   display: inline-flex;
   align-items: center;
-  color: var(--uo-burgundy);
+  color: #DB9E18;
   flex-shrink: 0;
-}
-
-.uo-cc-wreath--flip {
-  transform: scaleX(-1);
 }
 
 .uo-cc-caduceus {
@@ -2183,6 +2209,7 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
   margin-left: -7px;
   overflow: hidden;
+  object-fit: cover;
   vertical-align: middle;
 }
 
@@ -2190,9 +2217,10 @@
   margin-left: 0;
 }
 
-.uo-cc-avatar svg {
+.uo-cc-avatar img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   display: block;
 }
 

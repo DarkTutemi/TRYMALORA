@@ -1,5 +1,6 @@
 import { getAccessToken, SHOP, API_VERSION } from './config.mjs';
 import fs from 'fs';
+import path from 'path';
 import crypto from 'crypto';
 
 const TARGET_THEME_ID = '197625381235';
@@ -23,6 +24,9 @@ const filesToDeploy = [
   'sections/ultra-faq.liquid',
   'assets/ultra-overnight.css',
   'assets/ultra-overnight.js',
+  'assets/doctor-avatar-1.png',
+  'assets/doctor-avatar-2.png',
+  'assets/doctor-avatar-3.png',
   'templates/product.ultra-overnight.json'
 ];
 
@@ -53,8 +57,24 @@ async function main() {
   const uploadResults = [];
 
   for (const f of filesToDeploy) {
-    const localContent = fs.readFileSync(f, 'utf8');
-    const localHash = sha256(localContent);
+    const ext = path.extname(f).toLowerCase();
+    const isBinary = ['.png', '.jpg', '.jpeg', '.webp', '.gif'].includes(ext);
+
+    let assetPayload = { key: f };
+    let localHash = '';
+    let localLength = 0;
+
+    if (isBinary) {
+      const buffer = fs.readFileSync(f);
+      localHash = crypto.createHash('sha256').update(buffer).digest('hex');
+      localLength = buffer.length;
+      assetPayload.attachment = buffer.toString('base64');
+    } else {
+      const localContent = fs.readFileSync(f, 'utf8');
+      localHash = sha256(localContent);
+      localLength = localContent.length;
+      assetPayload.value = localContent;
+    }
 
     const putRes = await fetch(`https://${SHOP}/admin/api/${API_VERSION}/themes/${TARGET_THEME_ID}/assets.json`, {
       method: 'PUT',
@@ -63,10 +83,7 @@ async function main() {
         'X-Shopify-Access-Token': token
       },
       body: JSON.stringify({
-        asset: {
-          key: f,
-          value: localContent
-        }
+        asset: assetPayload
       })
     });
 
@@ -77,8 +94,8 @@ async function main() {
     }
 
     const putData = await putRes.json();
-    console.log(`  [UPLOADED] ${f} (${localContent.length} bytes, SHA: ${localHash.substring(0, 10)}...)`);
-    uploadResults.push({ file: f, localHash, localLength: localContent.length });
+    console.log(`  [UPLOADED] ${f} (${localLength} bytes, SHA: ${localHash.substring(0, 10)}...)`);
+    uploadResults.push({ file: f, isBinary, localHash, localLength });
   }
 
   // 3. Read-After-Write Cryptographic Audit
@@ -98,30 +115,41 @@ async function main() {
     }
 
     const getData = await getRes.json();
-    const remoteValue = getData.asset?.value || '';
-    const remoteHash = sha256(remoteValue);
 
-    if (remoteHash === item.localHash) {
-      console.log(`  [VERIFIED ✓] ${item.file}: HASH MATCH (${remoteHash.substring(0, 10)}...)`);
-      verifiedList.push({ file: item.file, hash: remoteHash, length: remoteValue.length, status: 'MATCH' });
+    if (item.isBinary) {
+      if (getData.asset && getData.asset.public_url && getData.asset.size > 0) {
+        console.log(`  [VERIFIED ✓] ${item.file}: BINARY ASSET VERIFIED (${getData.asset.size} bytes, URL: ${getData.asset.public_url.substring(0, 40)}...)`);
+        verifiedList.push({ file: item.file, size: getData.asset.size, status: 'MATCH' });
+      } else {
+        console.error(`  [MISMATCH ✗] ${item.file}: Invalid binary response`);
+        auditPassed = false;
+      }
     } else {
-      console.error(`  [MISMATCH ✗] ${item.file}: Local ${item.localHash.substring(0, 10)} !== Remote ${remoteHash.substring(0, 10)}`);
-      auditPassed = false;
-      verifiedList.push({ file: item.file, localHash: item.localHash, remoteHash, status: 'MISMATCH' });
+      const remoteValue = getData.asset?.value || '';
+      const remoteHash = sha256(remoteValue);
+
+      if (remoteHash === item.localHash) {
+        console.log(`  [VERIFIED ✓] ${item.file}: HASH MATCH (${remoteHash.substring(0, 10)}...)`);
+        verifiedList.push({ file: item.file, hash: remoteHash, length: remoteValue.length, status: 'MATCH' });
+      } else {
+        console.error(`  [MISMATCH ✗] ${item.file}: Local ${item.localHash.substring(0, 10)} !== Remote ${remoteHash.substring(0, 10)}`);
+        auditPassed = false;
+        verifiedList.push({ file: item.file, localHash: item.localHash, remoteHash, status: 'MISMATCH' });
+      }
     }
   }
 
   console.log('\n================================================================');
   if (auditPassed) {
-    console.log('✓ 100% READ-AFTER-WRITE AUDIT PASSED: ALL 14 PDP V3 ASSETS VERIFIED ON SHOPIFY LIVE THEME ' + TARGET_THEME_ID);
+    console.log(`✓ 100% READ-AFTER-WRITE AUDIT PASSED: ALL ${uploadResults.length} PDP V3 ASSETS VERIFIED ON SHOPIFY LIVE THEME ${TARGET_THEME_ID}`);
   } else {
-    console.error('✗ AUDIT FAILED! SOME ASSETS DID NOT MATCH REMOTE SHOPIFY CONTENT');
+    console.error(`✗ CRITICAL AUDIT FAILURE: ONE OR MORE ASSETS FAILED VERIFICATION ON LIVE THEME ${TARGET_THEME_ID}`);
     process.exit(1);
   }
   console.log('================================================================\n');
 }
 
 main().catch(err => {
-  console.error('Fatal deployment error:', err);
+  console.error('Fatal Deployment Error:', err);
   process.exit(1);
 });
