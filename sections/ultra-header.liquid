@@ -1,0 +1,121 @@
+{%- liquid
+  assign is_legacy_product = false
+  if template.name == 'product' and template.suffix != 'ultra-overnight' and product.handle != 'full-spine-ultra-overnight' and product.handle != 'ultra-overnight'
+    assign is_legacy_product = true
+  endif
+-%}
+
+{%- unless is_legacy_product -%}
+<!-- ULTRA OVERNIGHT Announcement Bar -->
+{% if section.settings.show_announcement %}
+  <div class="uo-announcement-bar">
+    <div class="uo-wrap">
+      <span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="1" y="3" width="15" height="13"></rect>
+          <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+          <circle cx="5.5" cy="18.5" r="2.5"></circle>
+          <circle cx="18.5" cy="18.5" r="2.5"></circle>
+        </svg>
+        {{ section.settings.announcement_text }}
+      </span>
+    </div>
+  </div>
+{% endif %}
+
+<!-- ULTRA OVERNIGHT Main Header -->
+<header class="uo-header-wrap">
+  <div class="uo-wrap">
+    <div class="uo-header">
+      <!-- Mobile Menu Toggle -->
+      <button type="button" class="uo-mobile-menu-toggle" aria-label="Open navigation menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Brand Logo -->
+      <a href="/" class="uo-logo" aria-label="ULTRA OVERNIGHT Home">
+        <img src="{{ 'ultra-logo.svg' | asset_url }}" alt="ULTRA OVERNIGHT" width="220" height="36" loading="eager">
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="uo-nav" aria-label="Primary navigation">
+        <a href="/" class="uo-nav-link {% if request.page_type == 'index' %}is-active{% endif %}">Home</a>
+        <a href="/products/full-spine-ultra-overnight" class="uo-nav-link {% if template.suffix == 'ultra-overnight' or product.handle contains 'ultra' %}is-active{% endif %}">Product</a>
+        <a href="/pages/about-us" class="uo-nav-link {% if request.path contains '/pages/about' %}is-active{% endif %}">About Us</a>
+        <a href="/pages/track-order" class="uo-nav-link {% if request.path contains '/pages/track' %}is-active{% endif %}">Track Order</a>
+      </nav>
+
+      <!-- Header Action Icons -->
+      <div class="uo-header-actions">
+        <!-- Search Icon -->
+        <a href="/search" class="uo-header-icon-btn" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </a>
+
+        <!-- Account Icon -->
+        <a href="/account" class="uo-header-icon-btn" aria-label="Customer Account">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+
+        <!-- Cart Icon -->
+        <button type="button" class="uo-header-icon-btn" onclick="if(typeof openWillaCart === 'function') openWillaCart(); else window.location.href='/cart';" aria-label="View shopping bag">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="uo-cart-badge" id="uoCartCount">{{ cart.item_count }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation Drawer -->
+<div class="uo-mobile-drawer-overlay"></div>
+<aside class="uo-mobile-drawer" aria-label="Mobile menu">
+  <div class="uo-mobile-drawer-header">
+    <img src="{{ 'ultra-logo.svg' | asset_url }}" alt="ULTRA OVERNIGHT" width="160" height="26">
+    <button type="button" class="uo-mobile-drawer-close" aria-label="Close menu" style="background:none;border:none;font-size:24px;cursor:pointer;color:var(--uo-plum);">&times;</button>
+  </div>
+  <nav class="uo-mobile-nav">
+    <a href="/" class="uo-mobile-nav-link">Home <span>➔</span></a>
+    <a href="/products/full-spine-ultra-overnight" class="uo-mobile-nav-link">Product <span>➔</span></a>
+    <a href="/pages/about-us" class="uo-mobile-nav-link">About Us <span>➔</span></a>
+    <a href="/pages/track-order" class="uo-mobile-nav-link">Track Order <span>➔</span></a>
+    <a href="/pages/faq" class="uo-mobile-nav-link">FAQ & Support <span>➔</span></a>
+    <a href="/pages/contact" class="uo-mobile-nav-link">Contact Us <span>➔</span></a>
+  </nav>
+</aside>
+{%- endunless -%}
+
+{% schema %}
+{
+  "name": "Ultra Header",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show Announcement Bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement Text",
+      "default": "FREE US SHIPPING OVER $49 · 30-DAY MONEY-BACK GUARANTEE"
+    }
+  ]
+}
+{% endschema %}
+

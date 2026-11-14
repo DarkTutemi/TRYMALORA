@@ -1,0 +1,54 @@
+<section class="uo-page-hero">
+  <div class="uo-wrap">
+    <span class="uo-eyebrow">CUSTOMER CARE</span>
+    <h1 class="uo-heading-serif uo-page-hero-title">Contact Us</h1>
+    <p class="uo-page-hero-desc">
+      Have a question about sizing, delivery, or our 30-day guarantee? Our dedicated care team is here to help.
+    </p>
+  </div>
+</section>
+
+<section class="uo-page-content-wrap">
+  <div class="uo-wrap">
+    <div class="uo-track-box">
+      <form class="uo-track-form" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent to the ULTRA OVERNIGHT team. We will respond within 24 hours.');">
+        <div class="uo-input-group">
+          <label for="uoContactName">Full Name</label>
+          <input type="text" id="uoContactName" class="uo-input-control" placeholder="Jane Doe" required>
+        </div>
+
+        <div class="uo-input-group">
+          <label for="uoContactEmail">Email Address</label>
+          <input type="email" id="uoContactEmail" class="uo-input-control" placeholder="jane@example.com" required>
+        </div>
+
+        <div class="uo-input-group">
+          <label for="uoContactMsg">Message</label>
+          <textarea id="uoContactMsg" class="uo-input-control" rows="5" style="height:auto;padding-top:10px;" placeholder="How can we assist you today?" required></textarea>
+        </div>
+
+        <button type="submit" class="uo-btn-primary" style="width: 100%; margin-top: 8px;">
+          SEND MESSAGE ➔
+        </button>
+      </form>
+
+      <div style="margin-top: 24px; text-align: center; font-family: var(--uo-font-sans); font-size: 13.5px; color: var(--uo-body-text);">
+        Direct Support Email: <a href="mailto:support@trymalora.com" style="color:var(--uo-plum);font-weight:700;">support@trymalora.com</a><br>
+        Response Window: Monday – Friday, 9am – 6pm EST
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ultra Contact",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Ultra Contact"
+    }
+  ]
+}
+{% endschema %}
+

@@ -1,3 +1,10 @@
+{%- liquid
+  assign is_legacy_product = false
+  if template.name == 'product' and template.suffix != 'ultra-overnight' and product.handle != 'full-spine-ultra-overnight' and product.handle != 'ultra-overnight'
+    assign is_legacy_product = true
+  endif
+-%}
+{%- if is_legacy_product -%}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&display=swap" rel="stylesheet">
@@ -448,6 +455,7 @@
     }
   });
 </script>
+{%- endif -%}
 
 {% schema %}
 {

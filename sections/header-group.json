@@ -2,6 +2,13 @@
   "name": "Header group",
   "type": "header",
   "sections": {
+    "ultra-header": {
+      "type": "ultra-header",
+      "settings": {
+        "show_announcement": true,
+        "announcement_text": "FREE US SHIPPING OVER $49 · 30-DAY MONEY-BACK GUARANTEE"
+      }
+    },
     "willa-header": {
       "type": "willa-header",
       "blocks": {
@@ -11,16 +18,6 @@
             "title": "Home",
             "link": "/",
             "icon": "🏠",
-            "show_desktop": true,
-            "show_mobile": true
-          }
-        },
-        "nav_shop_all": {
-          "type": "nav_link",
-          "settings": {
-            "title": "Shop All",
-            "link": "/collections/all",
-            "icon": "🛍️",
             "show_desktop": true,
             "show_mobile": true
           }
@@ -38,7 +35,6 @@
       },
       "block_order": [
         "nav_home",
-        "nav_shop_all",
         "nav_track"
       ],
       "settings": {
@@ -48,12 +44,13 @@
         "promo_tag": "CURATED ESSENTIALS",
         "promo_title": "TRYMALORA Storefront",
         "promo_desc": "Innovative family essentials, automotive restoration care, surface coatings, and smart daily tools.",
-        "promo_btn_text": "EXPLORE ALL PRODUCTS ➔",
-        "promo_btn_link": "/collections/all"
+        "promo_btn_text": "TRACK YOUR ORDER ➔",
+        "promo_btn_link": "/pages/track-order"
       }
     }
   },
   "order": [
+    "ultra-header",
     "willa-header"
   ]
 }

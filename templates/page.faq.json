@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "ultra-faq",
+      "settings": {
+        "title": "Frequently Asked Questions"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
+

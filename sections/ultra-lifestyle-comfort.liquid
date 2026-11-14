@@ -1,0 +1,83 @@
+<section class="uo-comfort-section">
+  <div class="uo-wrap">
+    <div class="uo-comfort-grid">
+      <!-- Left Intro -->
+      <div class="uo-comfort-intro">
+        <h2 class="uo-heading-serif">{{ section.settings.title }}</h2>
+        <p>{{ section.settings.description }}</p>
+      </div>
+
+      <!-- Right 3 Lifestyle Cards -->
+      <div class="uo-comfort-cards">
+        <!-- Card 1 -->
+        <div class="uo-comfort-card">
+          <img src="{{ 'ultra-lifestyle-card-1.jpg' | asset_url }}" alt="Sleep With Confidence" loading="lazy">
+          <div class="uo-comfort-card-overlay">
+            <div class="uo-comfort-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+              Sleep With Confidence
+            </div>
+            <p class="uo-comfort-card-desc">Reliable protection for heavy-flow nights.</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="uo-comfort-card">
+          <img src="{{ 'ultra-lifestyle-card-2.jpg' | asset_url }}" alt="Side-Sleeper Protection" loading="lazy">
+          <div class="uo-comfort-card-overlay">
+            <div class="uo-comfort-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="M9 12l2 2 4-4"></path>
+              </svg>
+              Side-Sleeper Protection
+            </div>
+            <p class="uo-comfort-card-desc">Full-spine coverage helps prevent leaks, even on your side.</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="uo-comfort-card">
+          <img src="{{ 'ultra-lifestyle-card-3.jpg' | asset_url }}" alt="Soft, Cloud-Like Comfort" loading="lazy">
+          <div class="uo-comfort-card-overlay">
+            <div class="uo-comfort-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+              </svg>
+              Soft, Cloud-Like Comfort
+            </div>
+            <p class="uo-comfort-card-desc">A gentle, flexible fit you can wear all night long.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ultra Lifestyle Comfort",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "All-Night Comfort for Real Life"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Protection you can trust, so you can sleep deeper, move freely, and wake up feeling your best."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ultra Lifestyle Comfort"
+    }
+  ]
+}
+{% endschema %}
+

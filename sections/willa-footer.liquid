@@ -1,3 +1,10 @@
+{%- liquid
+  assign is_legacy_product = false
+  if template.name == 'product' and template.suffix != 'ultra-overnight' and product.handle != 'full-spine-ultra-overnight' and product.handle != 'ultra-overnight'
+    assign is_legacy_product = true
+  endif
+-%}
+{%- if is_legacy_product -%}
 <footer class="willa-footer-wrap">
   <div class="willa-container">
     <!-- Top Footer: Newsletter & Brand Story -->
@@ -239,6 +246,7 @@
     }
   }
 </style>
+{%- endif -%}
 
 {% schema %}
 {

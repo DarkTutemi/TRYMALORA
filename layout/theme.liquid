@@ -158,6 +158,8 @@
     {{ 'zavelyn-elixir.css' | asset_url | stylesheet_tag }}
     {{ 'zavelyn-pdp-body.css' | asset_url | stylesheet_tag }}
     {{ 'zavelyn-v4-tokens.css' | asset_url | stylesheet_tag }}
+    {{ 'ultra-overnight.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'ultra-overnight.js' | asset_url }}" defer="defer"></script>
   </head>
 
   <body class="template-{{ template.name }}{% if template.suffix %} template-{{ template.name }}-{{ template.suffix }}{% endif %}">

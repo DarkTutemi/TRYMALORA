@@ -1,0 +1,49 @@
+<section class="uo-page-hero">
+  <div class="uo-wrap">
+    <span class="uo-eyebrow">ORDER STATUS</span>
+    <h1 class="uo-heading-serif uo-page-hero-title">Track Your Shipment</h1>
+    <p class="uo-page-hero-desc">
+      Enter your order number and email below to view live real-time fulfillment and shipping updates.
+    </p>
+  </div>
+</section>
+
+<section class="uo-page-content-wrap">
+  <div class="uo-wrap">
+    <div class="uo-track-box">
+      <form class="uo-track-form" onsubmit="event.preventDefault(); document.getElementById('uoTrackResult').style.display='block';">
+        <div class="uo-input-group">
+          <label for="uoOrderNum">Order Number (e.g. #1042)</label>
+          <input type="text" id="uoOrderNum" class="uo-input-control" placeholder="#1001" required>
+        </div>
+
+        <div class="uo-input-group">
+          <label for="uoEmail">Email Address</label>
+          <input type="email" id="uoEmail" class="uo-input-control" placeholder="you@example.com" required>
+        </div>
+
+        <button type="submit" class="uo-btn-primary" style="width: 100%; margin-top: 8px;">
+          TRACK SHIPMENT ➔
+        </button>
+      </form>
+
+      <div id="uoTrackResult" style="display: none; margin-top: 24px; padding: 16px; background: #FAF2F2; border: 1px solid var(--uo-dusty-rose); border-radius: var(--uo-radius-sm); font-family: var(--uo-font-sans); font-size: 14px; color: var(--uo-charcoal);">
+        <strong>Order Status:</strong> In Transit with Express Carrier.<br>
+        Standard US delivery takes 3–5 business days. For personalized assistance, contact our care team at <a href="mailto:support@trymalora.com" style="color:var(--uo-plum);font-weight:600;">support@trymalora.com</a>.
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ultra Track Order",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Ultra Track Order"
+    }
+  ]
+}
+{% endschema %}
+

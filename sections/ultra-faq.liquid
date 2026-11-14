@@ -1,0 +1,79 @@
+<section class="uo-faq-section">
+  <div class="uo-wrap">
+    <h2 class="uo-heading-serif uo-faq-title">{{ section.settings.title }}</h2>
+
+    <div class="uo-faq-list">
+      <!-- Q1 -->
+      <div class="uo-faq-item is-active">
+        <button type="button" class="uo-faq-trigger" aria-expanded="true">
+          <span>How heavy of a flow can ULTRA OVERNIGHT™ handle?</span>
+          <span class="uo-faq-icon">+</span>
+        </button>
+        <div class="uo-faq-content">
+          <div class="uo-faq-body">
+            FULL-SPINE ULTRA OVERNIGHT™ is specifically engineered for your heaviest days and nights. Its high-capacity multi-layer core is designed to absorb and lock in liquid rapidly, keeping you dry and secure through 8 to 12 hours of sleep.
+          </div>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="uo-faq-item">
+        <button type="button" class="uo-faq-trigger" aria-expanded="false">
+          <span>Will it really prevent leaks when I sleep on my side?</span>
+          <span class="uo-faq-icon">+</span>
+        </button>
+        <div class="uo-faq-content">
+          <div class="uo-faq-body">
+            Yes! Ordinary period underwear only covers the bottom gusset. Our proprietary Full-Spine™ coverage extends all the way up the rear waistband with protective leg-contour side seals that catch fluid when you turn, toss, or sleep on your side.
+          </div>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="uo-faq-item">
+        <button type="button" class="uo-faq-trigger" aria-expanded="false">
+          <span>How do I wash and care for it?</span>
+          <span class="uo-faq-icon">+</span>
+        </button>
+        <div class="uo-faq-content">
+          <div class="uo-faq-body">
+            Rinse in cold water until water runs clear after use, then machine wash on a cold, gentle cycle with standard detergent. Hang to dry or lay flat. Avoid fabric softeners and bleach to maintain optimal absorbency.
+          </div>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="uo-faq-item">
+        <button type="button" class="uo-faq-trigger" aria-expanded="false">
+          <span>Is it comfortable enough to wear all night?</span>
+          <span class="uo-faq-icon">+</span>
+        </button>
+        <div class="uo-faq-content">
+          <div class="uo-faq-body">
+            Absolutely. Crafted with soft CloudFlex™ modal and elastane knit, it feels like high-end luxury lingerie without crunchiness, bulk, or chafing, providing a gentle seamless hug while you sleep.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ultra FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ultra FAQ"
+    }
+  ]
+}
+{% endschema %}
+

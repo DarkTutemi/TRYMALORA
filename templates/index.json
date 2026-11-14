@@ -1,46 +1,61 @@
 {
   "sections": {
-    "hero": {
-      "type": "zavelyn-v4-hero",
+    "ultra_hero": {
+      "type": "ultra-hero",
       "settings": {
-        "heading": "Curated Everyday Innovations & Interactive Essentials",
-        "subheading": "Engineered for active family play, precision automotive surface restoration, home renovation coatings, and personal styling essentials. Backed by 30-day money-back guarantee."
+        "eyebrow": "FULL-SPINE ULTRA OVERNIGHT™",
+        "headline": "Sleep Through Heavy-Flow Nights With More Confidence.",
+        "subhead": "An engineered overnight period underwear with full-spine coverage, multi-layer protection, and all-night comfort — so you can rest easier, move freely, and wake up feeling fresh and secure.",
+        "cta_text": "SHOP ULTRA OVERNIGHT",
+        "cta_link": "/products/full-spine-ultra-overnight"
       }
     },
-    "featured_products": {
-      "type": "trymalora-featured-products",
-      "settings": {
-        "pill_text": "CURATED STOREFRONT",
-        "heading": "Featured New Releases & Best Sellers",
-        "subhead": "Explore our full catalog of active interactive play, automotive surface restoration, home renovation coatings, and personal styling essentials."
-      }
-    },
-    "shipping_info": {
-      "type": "trymalora-homepage-shipping",
+    "ultra_benefits": {
+      "type": "ultra-benefit-strip",
       "settings": {}
     },
-    "brand_values": {
-      "type": "willa-facts",
+    "ultra_pillars": {
+      "type": "ultra-seven-pillars",
       "settings": {
-        "pill_text": "THE TRYMALORA PROMISE",
-        "heading": "Built for Reliability, Performance & Value",
-        "subtitle": "Tested materials, transparent logistics, and dedicated customer service for complete peace of mind."
+        "title": "The Seven Pillars of ULTRA OVERNIGHT™",
+        "subhead": "Thoughtfully engineered for overnight protection, lasting comfort, and real peace of mind."
       }
     },
-    "faq": {
-      "type": "willa-faq",
+    "ultra_layers": {
+      "type": "ultra-five-layers",
       "settings": {
-        "pill_text": "GOT QUESTIONS?",
-        "heading": "Frequently Asked Questions",
-        "subtitle": "Everything you need to know about our products, worldwide shipping, and 30-day return policy."
+        "title": "5 Layers of Overnight Protection",
+        "description": "A powerful, multi-layer design that absorbs, locks, and helps prevent leaks so you can sleep with confidence."
+      }
+    },
+    "ultra_comfort": {
+      "type": "ultra-lifestyle-comfort",
+      "settings": {
+        "title": "All-Night Comfort for Real Life",
+        "description": "Protection you can trust, so you can sleep deeper, move freely, and wake up feeling your best."
+      }
+    },
+    "ultra_reviews": {
+      "type": "ultra-reviews",
+      "settings": {
+        "title": "Loved by Women Who Sleep Deeper",
+        "subhead": "Real experiences from women who trust ULTRA OVERNIGHT™ for their heaviest nights."
+      }
+    },
+    "ultra_faq": {
+      "type": "ultra-faq",
+      "settings": {
+        "title": "Frequently Asked Questions"
       }
     }
   },
   "order": [
-    "hero",
-    "featured_products",
-    "shipping_info",
-    "brand_values",
-    "faq"
+    "ultra_hero",
+    "ultra_benefits",
+    "ultra_pillars",
+    "ultra_layers",
+    "ultra_comfort",
+    "ultra_reviews",
+    "ultra_faq"
   ]
 }

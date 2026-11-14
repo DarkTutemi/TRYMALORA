@@ -1,12 +1,11 @@
 {
-  "layout": "offer",
   "sections": {
-    "redirect": {
-      "type": "redirect-home",
+    "main": {
+      "type": "ultra-contact",
       "settings": {}
     }
   },
   "order": [
-    "redirect"
+    "main"
   ]
 }

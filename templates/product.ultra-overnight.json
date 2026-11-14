@@ -1,0 +1,45 @@
+{
+  "sections": {
+    "main": {
+      "type": "ultra-product-main",
+      "settings": {}
+    },
+    "benefits": {
+      "type": "ultra-benefit-strip",
+      "settings": {}
+    },
+    "layers": {
+      "type": "ultra-five-layers",
+      "settings": {
+        "title": "5 Layers of Overnight Protection",
+        "description": "A powerful, multi-layer design that absorbs, locks, and helps prevent leaks so you can sleep with confidence."
+      }
+    },
+    "tabs": {
+      "type": "ultra-pdp-tabs",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "ultra-reviews",
+      "settings": {
+        "title": "Real Reviews from Women Who Sleep Deeper",
+        "subhead": "Real experiences from women who trust ULTRA OVERNIGHT™ for their heaviest nights."
+      }
+    },
+    "faq": {
+      "type": "ultra-faq",
+      "settings": {
+        "title": "Frequently Asked Questions"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "benefits",
+    "layers",
+    "tabs",
+    "reviews",
+    "faq"
+  ]
+}
+

@@ -1,4 +1,10 @@
 <!-- Willa Style Slide-Out Cart Drawer -->
+{%- liquid
+  assign is_legacy_product = false
+  if template.name == 'product' and template.suffix != 'ultra-overnight' and product.handle != 'full-spine-ultra-overnight' and product.handle != 'ultra-overnight'
+    assign is_legacy_product = true
+  endif
+-%}
 <div class="willa-cart-drawer-overlay" id="willaCartOverlay" onclick="closeWillaCart()"></div>
 
 <div class="willa-cart-drawer" id="willaCartDrawer">
@@ -12,7 +18,11 @@
   <!-- Free Shipping Progress Bar -->
   <div class="willa-shipping-bar-wrap">
     <div class="shipping-bar-text" id="willaShippingText">
-      {% assign threshold = 7000 %}
+      {% if is_legacy_product %}
+        {% assign threshold = 7000 %}
+      {% else %}
+        {% assign threshold = 4900 %}
+      {% endif %}
       {% if cart.total_price >= threshold %}
         🎉 You unlocked <strong>FREE US SHIPPING</strong>!
       {% else %}
@@ -83,10 +93,17 @@
       <div class="willa-empty-cart">
         <div class="empty-icon">🛒</div>
         <h3>Your cart is empty</h3>
-        <p>Explore our best-selling smart innovations, wellness gear, and daily essentials.</p>
-        <a href="/collections/all" class="willa-btn-primary" onclick="closeWillaCart()">
-          START SHOPPING ➔
-        </a>
+        {% if is_legacy_product %}
+          <p>Explore our best-selling smart innovations, wellness gear, and daily essentials.</p>
+          <a href="/" class="willa-btn-primary" onclick="closeWillaCart()">
+            CONTINUE SHOPPING ➔
+          </a>
+        {% else %}
+          <p>Explore FULL-SPINE ULTRA OVERNIGHT™ for leak-free, restful sleep.</p>
+          <a href="/products/full-spine-ultra-overnight" class="willa-btn-primary" style="background-color:var(--uo-plum,#58233D);color:#ffffff !important;" onclick="closeWillaCart()">
+            SHOP ULTRA OVERNIGHT ➔
+          </a>
+        {% endif %}
       </div>
     {% endif %}
   </div>

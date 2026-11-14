@@ -45,7 +45,7 @@ export function getCliToken(shopDomain = SHOP) {
   return null;
 }
 
-let cachedToken = process.env.SHOPIFY_ACCESS_TOKEN || null;
+let cachedToken = null;
 
 export async function getAccessToken(forceRefresh = false) {
   if (cachedToken && !forceRefresh) {
@@ -67,7 +67,6 @@ export async function getAccessToken(forceRefresh = false) {
     const data = await tRes.json();
     if (data.access_token) {
       cachedToken = data.access_token;
-      process.env.SHOPIFY_ACCESS_TOKEN = data.access_token;
       return data.access_token;
     }
   }
@@ -75,6 +74,9 @@ export async function getAccessToken(forceRefresh = false) {
   const cliToken = getCliToken();
   if (cliToken) {
     return cliToken;
+  }
+  if (process.env.SHOPIFY_ACCESS_TOKEN) {
+    return process.env.SHOPIFY_ACCESS_TOKEN;
   }
   throw new Error('Failed to obtain Shopify access token.');
 }

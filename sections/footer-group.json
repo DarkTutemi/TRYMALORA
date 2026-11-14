@@ -2,6 +2,10 @@
   "name": "Footer group",
   "type": "footer",
   "sections": {
+    "ultra-footer": {
+      "type": "ultra-footer",
+      "settings": {}
+    },
     "willa-footer": {
       "type": "willa-footer",
       "settings": {
@@ -15,6 +19,7 @@
     }
   },
   "order": [
+    "ultra-footer",
     "willa-footer"
   ]
 }
