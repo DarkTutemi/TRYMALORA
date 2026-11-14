@@ -1,0 +1,57 @@
+{
+  "id": 11181999227222,
+  "handle": "ear-cleaner",
+  "url": "/products/ear-cleaner",
+  "availableForSale": true,
+  "title": "Ear Cleaner for Dogs & Cats",
+  "image": "//amblora.com/cdn/shop/files/v2.webp?height=200&v=1790421304",
+  "collectionIds": [
+    702663852374
+  ],
+  "options": [
+    {
+      "defaultName": "Title",
+      "name": "Title",
+      "position": 1,
+      "optionValues": [
+        {
+          "id": 11107113075030,
+          "defaultName": "Default Title",
+          "name": "Default Title",
+          "swatch": {
+            "color": null,
+            "image": null
+          }
+        }
+      ]
+    }
+  ],
+  "selectedVariantId": 54993877238102,
+  "variants": [
+    {
+      "id": 54993877238102,
+      "availableForSale": true,
+      "price": 3499,
+      "compareAtPrice": 6999,
+      "options": [
+        "Default Title"
+      ],
+      "imageId": null,
+      "image": null,
+      "inventoryManagement": null,
+      "inventoryPolicy": "deny",
+      "inventoryQuantity": -42500,
+      "unitPriceMeasurement": null,
+      "sellingPlans": []
+    }
+  ],
+  "requiresSellingPlan": false,
+  "sellingPlans": [],
+  "isNativeBundle": null,
+  "metafields": {
+    "text": null,
+    "text2": null,
+    "text3": null,
+    "text4": null
+  }
+}

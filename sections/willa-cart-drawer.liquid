@@ -12,7 +12,7 @@
   <!-- Free Shipping Progress Bar -->
   <div class="willa-shipping-bar-wrap">
     <div class="shipping-bar-text" id="willaShippingText">
-      {% assign threshold = 4900 %}
+      {% assign threshold = 7000 %}
       {% if cart.total_price >= threshold %}
         🎉 You unlocked <strong>FREE US SHIPPING</strong>!
       {% else %}
@@ -42,13 +42,39 @@
             {% unless item.product.has_only_default_variant %}
               <div class="cart-item-variant">{{ item.variant.title }}</div>
             {% endunless %}
+            {% if item.selling_plan_allocation %}
+              <div style="display:inline-block;background:#eff6ff;color:#1d4ed8;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;margin-top:3px;">
+                🔄 Auto-Ship: {{ item.selling_plan_allocation.selling_plan.name }}
+              </div>
+            {% endif %}
+            {% if item.properties.Package %}
+              <div style="display:inline-block;background:#ecfdf5;color:#047857;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;margin-top:3px;">
+                {% if item.properties._free_qty %}🎁 {{ item.properties.Package }}{% else %}📦 {{ item.properties.Package }}{% endif %}
+              </div>
+            {% elsif item.properties._upsell %}
+              <div style="display:inline-block;background:#fdf2f8;color:#be185d;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;margin-top:3px;">
+                ✨ Companion: {{ item.properties._upsell }}
+              </div>
+            {% elsif item.properties._box %}
+              <div class="cart-item-prop" style="font-size: 11px; color: #7A6670; margin-top: 2px;">{{ item.properties._box }}</div>
+            {% endif %}
             <div class="cart-item-bottom-row">
               <div class="cart-qty-ctrl">
                 <button type="button" onclick="willaUpdateLineItem('{{ item.key }}', {{ item.quantity | minus: 1 }})">-</button>
                 <span>{{ item.quantity }}</span>
                 <button type="button" onclick="willaUpdateLineItem('{{ item.key }}', {{ item.quantity | plus: 1 }})">+</button>
               </div>
-              <div class="cart-item-price">{{ item.final_line_price | money }}</div>
+              {% assign free_q = item.properties._free_qty | plus: 0 %}
+              {% if free_q > 0 and item.product.handle == 'metallic-silver-anti-rust-renovation-coating' %}
+                {% assign free_cents = item.price | times: free_q %}
+                {% assign payable_line = item.final_line_price | minus: free_cents %}
+                <div class="cart-item-price">
+                  <span style="color:#047857;font-weight:700;">{{ payable_line | money }}</span>
+                  <span style="font-size:12px;color:#858380;text-decoration:line-through;margin-left:4px;">{{ item.final_line_price | money }}</span>
+                </div>
+              {% else %}
+                <div class="cart-item-price">{{ item.final_line_price | money }}</div>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -413,27 +439,76 @@
       const drawerCount = document.getElementById('willaDrawerCount');
       if (drawerCount) drawerCount.innerText = cart.item_count;
 
-      // Update free shipping bar ($49 = 4900 cents)
-      const threshold = 4900;
+      // Calculate payable subtotal accounting for discounts
+      let bundleDeductionCents = 0;
+      let appliedDiscount = window._activeBundleDiscount || '';
+
+      if (cart.items) {
+        cart.items.forEach(item => {
+          if (item.properties && item.properties._bundle) {
+            const b = item.properties._bundle;
+            if (b.includes('15%')) {
+              if (!appliedDiscount) appliedDiscount = 'TILE15';
+            } else if (b.includes('5%')) {
+              if (!appliedDiscount) appliedDiscount = 'TILE5';
+            }
+          }
+        });
+      }
+
+      const payableTotalCents = Math.max(0, cart.total_price - bundleDeductionCents);
+
+      // Update free shipping bar ($70 = 7000 cents)
+      const threshold = 7000;
       const textElem = document.getElementById('willaShippingText');
       const fillElem = document.getElementById('willaShippingFill');
-      const percent = Math.min(100, Math.round((cart.total_price / threshold) * 100));
+      const percent = Math.min(100, Math.round((payableTotalCents / threshold) * 100));
       if (fillElem) fillElem.style.width = percent + '%';
 
       if (textElem) {
-        if (cart.total_price >= threshold) {
+        if (payableTotalCents >= threshold) {
           textElem.innerHTML = '🎉 You unlocked <strong>FREE US SHIPPING</strong>!';
         } else {
-          const remaining = ((threshold - cart.total_price) / 100).toFixed(2);
+          const remaining = ((threshold - payableTotalCents) / 100).toFixed(2);
           textElem.innerHTML = 'Add <strong>$' + remaining + '</strong> more to unlock <strong>FREE SHIPPING</strong>!';
         }
       }
 
       // Update Subtotal & Footer
       const subtotalElem = document.getElementById('willaDrawerSubtotal');
-      if (subtotalElem) subtotalElem.innerText = '$' + (cart.total_price / 100).toFixed(2);
+      if (subtotalElem) {
+        if (bundleDeductionCents > 0) {
+          subtotalElem.innerHTML = '$' + (payableTotalCents / 100).toFixed(2) + ' <span style="font-size:12px;color:#858380;text-decoration:line-through;margin-left:4px;">$' + (cart.total_price / 100).toFixed(2) + '</span>';
+        } else {
+          subtotalElem.innerText = '$' + (payableTotalCents / 100).toFixed(2);
+        }
+      }
       const footerElem = document.getElementById('willaCartFooter');
       if (footerElem) footerElem.style.display = cart.item_count > 0 ? 'block' : 'none';
+
+      // Update checkout URL with bundle discount if applicable
+      const checkoutBtn = document.querySelector('.willa-checkout-btn');
+      if (checkoutBtn) {
+        if (appliedDiscount) {
+          checkoutBtn.href = '/checkout?discount=' + encodeURIComponent(appliedDiscount);
+        } else {
+          checkoutBtn.href = '/checkout';
+        }
+        if (!checkoutBtn._hasFbqTrack) {
+          checkoutBtn._hasFbqTrack = true;
+          checkoutBtn.addEventListener('click', function() {
+            if (window.fbq) {
+              try {
+                window.fbq('track', 'InitiateCheckout', {
+                  num_items: cart.item_count || 1,
+                  value: (payableTotalCents || cart.total_price || 0) / 100,
+                  currency: 'USD'
+                });
+              } catch(e) {}
+            }
+          });
+        }
+      }
 
       // Re-render items
       const bodyElem = document.getElementById('willaCartItemsBody');
@@ -451,8 +526,38 @@
         } else {
           let html = '';
           cart.items.forEach(item => {
-            const itemPrice = '$' + (item.final_line_price / 100).toFixed(2);
+            let payableLineCents = item.final_line_price;
+            let bundleBadgeHtml = '';
+
+            if (item.properties && item.properties._bundle) {
+              const b = item.properties._bundle;
+              if (b.includes('Buy 5 Get 3') || b === 'Buy 5 Get 3 FREE') {
+                bundleBadgeHtml = `<div style="display:inline-block;background:#ecfdf5;color:#047857;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;margin-top:4px;">🎁 FREE 3 CANS · Pay for 5 · Receive 8 Cans (50g)</div>`;
+              } else if (b.includes('Buy 3 Get 1') || b === 'Buy 3 Get 1 FREE') {
+                bundleBadgeHtml = `<div style="display:inline-block;background:#ecfdf5;color:#047857;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;margin-top:4px;">🎁 FREE 1 CAN · Pay for 3 · Receive 4 Cans (50g)</div>`;
+              } else if (b.includes('Buy 2 Get 2') || b === 'Buy 2 Get 2 FREE') {
+                bundleBadgeHtml = `<div style="display:inline-block;background:#ecfdf5;color:#047857;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;margin-top:4px;">🎁 BUY 2 GET 2 FREE · Extra 10% OFF · 4 Bottles</div>`;
+              } else if (b.includes('Buy 4 Get 4') || b === 'Buy 4 Get 4 FREE') {
+                bundleBadgeHtml = `<div style="display:inline-block;background:#ecfdf5;color:#047857;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;margin-top:4px;">👑 BUY 4 GET 4 FREE · Extra 20% OFF · 8 Bottles</div>`;
+              } else if (item.properties.Package) {
+                bundleBadgeHtml = `<div style="display:inline-block;background:#f3f4f6;color:#374151;font-size:11px;font-weight:600;padding:2px 6px;border-radius:4px;margin-top:4px;">📦 ${item.properties.Package}</div>`;
+              }
+            } else if (item.properties && item.properties._upsell) {
+              bundleBadgeHtml = `<div style="display:inline-block;background:#fdf2f8;color:#be185d;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;margin-top:4px;">✨ Companion: ${item.properties._upsell}</div>`;
+            }
+
+            if (item.selling_plan_allocation) {
+              bundleBadgeHtml += `<div style="display:inline-block;background:#eff6ff;color:#1d4ed8;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;margin-top:4px;margin-left:4px;">🔄 Auto-Ship: Every 30 Days</div>`;
+            }
+
+            const itemPrice = payableLineCents < item.final_line_price
+              ? `<div><span style="color:#047857;font-weight:700;">$${(payableLineCents / 100).toFixed(2)}</span> <span style="font-size:12px;color:#858380;text-decoration:line-through;margin-left:4px;">$${(item.final_line_price / 100).toFixed(2)}</span></div>`
+              : `$${(payableLineCents / 100).toFixed(2)}`;
+
             const variantText = item.variant_title ? `<div class="cart-item-variant">${item.variant_title}</div>` : '';
+            const propText = (item.properties && item.properties._box) 
+              ? `<div class="cart-item-prop" style="font-size: 11px; color: #7A6670; margin-top: 2px;">${item.properties._box}</div>` 
+              : '';
             html += `
               <div class="willa-cart-item" data-line-key="${item.key}">
                 <div class="cart-item-img">
@@ -464,6 +569,8 @@
                     <button type="button" class="cart-remove-btn" onclick="willaUpdateLineItem('${item.key}', 0)">&times;</button>
                   </div>
                   ${variantText}
+                  ${propText}
+                  ${bundleBadgeHtml}
                   <div class="cart-item-bottom-row">
                     <div class="cart-qty-ctrl">
                       <button type="button" onclick="willaUpdateLineItem('${item.key}', ${item.quantity - 1})">-</button>

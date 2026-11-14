@@ -1,0 +1,951 @@
+{% comment %}
+  Trymalora PDP Customer Reviews Section
+  Imported from aneedfamily.com/products/itcb for Metallic Silver Coating
+{% endcomment %}
+
+{% if product.handle == 'metallic-silver-anti-rust-renovation-coating' or product.handle == 'eyvelle-steam-therapy' or product.handle == 'christmas-lantern-welcome-gnome' %}
+<section class="tm-reviews-section" id="tmCustomerReviews" aria-label="Customer Reviews">
+  <div class="tm-reviews-container">
+    
+    <!-- HEADER SUMMARY -->
+    <div class="tm-reviews-header">
+      <h2 class="tm-reviews-title">{{ section.settings.heading | default: "Customer Reviews" }}</h2>
+      
+      <div class="tm-reviews-summary-grid">
+        <!-- SCORE & STARS -->
+        <div class="tm-rev-score-col">
+          {% if section.settings.rating_score != blank %}
+            <div class="tm-rev-big-score">{{ section.settings.rating_score }}</div>
+          {% elsif product.handle == 'eyvelle-steam-therapy' or product.handle == 'christmas-lantern-welcome-gnome' %}
+            <div class="tm-rev-big-score">4.9</div>
+          {% else %}
+            <div class="tm-rev-big-score">4.8</div>
+          {% endif %}
+          <div class="tm-rev-stars-row" aria-label="Customer star rating">
+            <svg viewBox="0 0 20 20" fill="#F59E0B" width="22" height="22"><path d="M10 1.5l2.4 6.5H19l-5.3 4 2 6.5-5.7-4.2-5.7 4.2 2-6.5-5.3-4h6.6z"/></svg>
+            <svg viewBox="0 0 20 20" fill="#F59E0B" width="22" height="22"><path d="M10 1.5l2.4 6.5H19l-5.3 4 2 6.5-5.7-4.2-5.7 4.2 2-6.5-5.3-4h6.6z"/></svg>
+            <svg viewBox="0 0 20 20" fill="#F59E0B" width="22" height="22"><path d="M10 1.5l2.4 6.5H19l-5.3 4 2 6.5-5.7-4.2-5.7 4.2 2-6.5-5.3-4h6.6z"/></svg>
+            <svg viewBox="0 0 20 20" fill="#F59E0B" width="22" height="22"><path d="M10 1.5l2.4 6.5H19l-5.3 4 2 6.5-5.7-4.2-5.7 4.2 2-6.5-5.3-4h6.6z"/></svg>
+            <svg viewBox="0 0 20 20" fill="#F59E0B" width="22" height="22"><path d="M10 1.5l2.4 6.5H19l-5.3 4 2 6.5-5.7-4.2-5.7 4.2 2-6.5-5.3-4h6.6z"/></svg>
+          </div>
+          {% if section.settings.rating_count_label != blank %}
+            <div class="tm-rev-count-label">{{ section.settings.rating_count_label }}</div>
+          {% elsif product.handle == 'eyvelle-steam-therapy' %}
+            <div class="tm-rev-count-label">1,615 reviews</div>
+          {% elsif product.handle == 'christmas-lantern-welcome-gnome' %}
+            <div class="tm-rev-count-label">10 reviews</div>
+          {% else %}
+            <div class="tm-rev-count-label">125 reviews</div>
+          {% endif %}
+        </div>
+
+        <!-- BREAKDOWN BARS -->
+        <div class="tm-rev-breakdown-col">
+          {% if section.blocks.size > 0 %}
+            {% assign b_total = section.blocks.size %}
+            {% assign b_5 = 0 %}
+            {% assign b_4 = 0 %}
+            {% assign b_3 = 0 %}
+            {% assign b_2 = 0 %}
+            {% assign b_1 = 0 %}
+            {% for block in section.blocks %}
+              {% case block.settings.rating %}
+                {% when 5 %}{% assign b_5 = b_5 | plus: 1 %}
+                {% when 4 %}{% assign b_4 = b_4 | plus: 1 %}
+                {% when 3 %}{% assign b_3 = b_3 | plus: 1 %}
+                {% when 2 %}{% assign b_2 = b_2 | plus: 1 %}
+                {% when 1 %}{% assign b_1 = b_1 | plus: 1 %}
+              {% endcase %}
+            {% endfor %}
+            {% assign p_5 = b_5 | times: 100 | divided_by: b_total %}
+            {% assign p_4 = b_4 | times: 100 | divided_by: b_total %}
+            {% assign p_3 = b_3 | times: 100 | divided_by: b_total %}
+            {% assign p_2 = b_2 | times: 100 | divided_by: b_total %}
+            {% assign p_1 = b_1 | times: 100 | divided_by: b_total %}
+            <div class="tm-rev-bar-row"><span class="tm-bar-label">5 Star</span><div class="tm-bar-track"><div class="tm-bar-fill" style="width: {{ p_5 }}%;"></div></div><span class="tm-bar-count">{{ b_5 }}</span></div>
+            <div class="tm-rev-bar-row"><span class="tm-bar-label">4 Star</span><div class="tm-bar-track"><div class="tm-bar-fill" style="width: {{ p_4 }}%;"></div></div><span class="tm-bar-count">{{ b_4 }}</span></div>
+            <div class="tm-rev-bar-row"><span class="tm-bar-label">3 Star</span><div class="tm-bar-track"><div class="tm-bar-fill" style="width: {{ p_3 }}%;"></div></div><span class="tm-bar-count">{{ b_3 }}</span></div>
+            <div class="tm-rev-bar-row"><span class="tm-bar-label">2 Star</span><div class="tm-bar-track"><div class="tm-bar-fill" style="width: {{ p_2 }}%;"></div></div><span class="tm-bar-count">{{ b_2 }}</span></div>
+            <div class="tm-rev-bar-row"><span class="tm-bar-label">1 Star</span><div class="tm-bar-track"><div class="tm-bar-fill" style="width: {{ p_1 }}%;"></div></div><span class="tm-bar-count">{{ b_1 }}</span></div>
+          {% elsif product.handle == 'christmas-lantern-welcome-gnome' %}
+            <div class="tm-rev-bar-row"><span class="tm-bar-label">5 Star</span><div class="tm-bar-track"><div class="tm-bar-fill" style="width: 90%;"></div></div><span class="tm-bar-count">9</span></div>
+            <div class="tm-rev-bar-row"><span class="tm-bar-label">4 Star</span><div class="tm-bar-track"><div class="tm-bar-fill" style="width: 10%;"></div></div><span class="tm-bar-count">1</span></div>
+            <div class="tm-rev-bar-row"><span class="tm-bar-label">3 Star</span><div class="tm-bar-track"><div class="tm-bar-fill" style="width: 0%;"></div></div><span class="tm-bar-count">0</span></div>
+            <div class="tm-rev-bar-row"><span class="tm-bar-label">2 Star</span><div class="tm-bar-track"><div class="tm-bar-fill" style="width: 0%;"></div></div><span class="tm-bar-count">0</span></div>
+            <div class="tm-rev-bar-row"><span class="tm-bar-label">1 Star</span><div class="tm-bar-track"><div class="tm-bar-fill" style="width: 0%;"></div></div><span class="tm-bar-count">0</span></div>
+          {% else %}
+            <div class="tm-rev-bar-row">
+              <span class="tm-bar-label">5 Star</span>
+              <div class="tm-bar-track"><div class="tm-bar-fill" style="width: 85.6%;"></div></div>
+              <span class="tm-bar-count">107</span>
+            </div>
+            <div class="tm-rev-bar-row">
+              <span class="tm-bar-label">4 Star</span>
+              <div class="tm-bar-track"><div class="tm-bar-fill" style="width: 12.8%;"></div></div>
+              <span class="tm-bar-count">16</span>
+            </div>
+            <div class="tm-rev-bar-row">
+              <span class="tm-bar-label">3 Star</span>
+              <div class="tm-bar-track"><div class="tm-bar-fill" style="width: 1.6%;"></div></div>
+              <span class="tm-bar-count">2</span>
+            </div>
+            <div class="tm-rev-bar-row">
+              <span class="tm-bar-label">2 Star</span>
+              <div class="tm-bar-track"><div class="tm-bar-fill" style="width: 0%;"></div></div>
+              <span class="tm-bar-count">0</span>
+            </div>
+            <div class="tm-rev-bar-row">
+              <span class="tm-bar-label">1 Star</span>
+              <div class="tm-bar-track"><div class="tm-bar-fill" style="width: 0%;"></div></div>
+              <span class="tm-bar-count">0</span>
+            </div>
+          {% endif %}
+        </div>
+
+        <!-- FILTER ICON BUTTON -->
+        <div class="tm-rev-actions-col">
+          <button type="button" class="tm-rev-filter-btn" id="tmRevFilterBtn" aria-label="Filter Reviews">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" y1="21" x2="4" y2="14"></line>
+              <line x1="4" y1="10" x2="4" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12" y2="3"></line>
+              <line x1="20" y1="21" x2="20" y2="16"></line>
+              <line x1="20" y1="12" x2="20" y2="3"></line>
+              <line x1="1" y1="14" x2="7" y2="14"></line>
+              <line x1="9" y1="8" x2="15" y2="8"></line>
+              <line x1="17" y1="16" x2="23" y2="16"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- FILTER DROPDOWN / TOGGLE BAR -->
+      <div class="tm-rev-filter-bar" id="tmRevFilterBar">
+        <button type="button" class="tm-filter-chip active" data-filter="all" id="tmFilterAll">All Reviews</button>
+        <button type="button" class="tm-filter-chip" data-filter="photo" id="tmFilterPhoto">With Photos</button>
+        <button type="button" class="tm-filter-chip" data-filter="5star" id="tmFilter5Star">5 Stars</button>
+      </div>
+
+      <!-- SUBTITLE / TRUST STATEMENT -->
+      {% if section.settings.trust_statement != blank %}
+        <div class="tm-rev-trust-statement">
+          <span>{{ section.settings.trust_statement }}</span>
+        </div>
+      {% elsif product.handle == 'eyvelle-steam-therapy' %}
+        <div class="tm-rev-trust-statement">
+          <span>1,615 ★★★★★ verified customer ratings &middot; Real photo reviews</span>
+        </div>
+      {% elsif product.handle == 'christmas-lantern-welcome-gnome' %}
+        <div class="tm-rev-trust-statement">
+          <span>Verified Trymalora customer feedback &middot; Real holiday home photos</span>
+        </div>
+      {% else %}
+        <div class="tm-rev-trust-statement">
+          <span>125 ★★★★★ verified customer ratings &middot; 125 with detailed reviews</span>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- REVIEWS GRID -->
+    <div class="tm-reviews-grid" id="tmReviewsGrid">
+      <!-- Injected via JavaScript -->
+    </div>
+
+    <!-- PAGINATION -->
+    <div class="tm-reviews-pagination" id="tmReviewsPagination">
+      <!-- Injected via JavaScript -->
+    </div>
+
+  </div>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="tm-rev-lightbox" id="tmRevLightbox" style="display: none;" role="dialog" aria-modal="true" aria-label="Review Photo Modal">
+    <div class="tm-rev-lightbox-overlay" id="tmLightboxOverlay"></div>
+    <div class="tm-rev-lightbox-card">
+      <button type="button" class="tm-lightbox-close" id="tmLightboxClose" aria-label="Close modal">&times;</button>
+      <div class="tm-lightbox-body">
+        <div class="tm-lightbox-media">
+          <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Customer Review Photo" id="tmLightboxImg" />
+          <button type="button" class="tm-lightbox-nav prev" id="tmLightboxPrev" aria-label="Previous photo">&#10094;</button>
+          <button type="button" class="tm-lightbox-nav next" id="tmLightboxNext" aria-label="Next photo">&#10095;</button>
+        </div>
+        <div class="tm-lightbox-info">
+          <div class="tm-lightbox-stars" id="tmLightboxStars">★★★★★</div>
+          <div class="tm-lightbox-author" id="tmLightboxAuthor">Frank H.</div>
+          <div class="tm-lightbox-badge"><span class="check-icon">✓</span> Verified purchase</div>
+          <p class="tm-lightbox-text" id="tmLightboxText"></p>
+          <div class="tm-lightbox-date" id="tmLightboxDate"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.tm-reviews-section {
+  background: #FFFFFF;
+  padding: 64px 20px 80px;
+  border-top: 1px solid #F0E8ED;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1F2937;
+}
+
+.tm-reviews-container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.tm-reviews-header {
+  margin-bottom: 32px;
+}
+
+.tm-reviews-title {
+  font-family: var(--zv-font-heading, "Fraunces", Georgia, serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: #1F2937;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.01em;
+}
+
+.tm-reviews-summary-grid {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #E5E7EB;
+  position: relative;
+}
+
+.tm-rev-score-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 130px;
+}
+
+.tm-rev-big-score {
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1;
+  color: #111827;
+  letter-spacing: -0.02em;
+}
+
+.tm-rev-stars-row {
+  display: flex;
+  gap: 3px;
+  margin: 8px 0 4px;
+}
+
+.tm-rev-count-label {
+  font-size: 13px;
+  color: #6B7280;
+  font-weight: 500;
+}
+
+.tm-rev-breakdown-col {
+  flex: 1;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tm-rev-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #4B5563;
+}
+
+.tm-bar-label {
+  width: 48px;
+  font-size: 12px;
+  color: #4B5563;
+}
+
+.tm-bar-track {
+  flex: 1;
+  height: 9px;
+  background: #F3F4F6;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.tm-bar-fill {
+  height: 100%;
+  background: #F59E0B;
+  border-radius: 999px;
+}
+
+.tm-bar-count {
+  width: 32px;
+  text-align: right;
+  font-size: 12px;
+  color: #6B7280;
+}
+
+.tm-rev-actions-col {
+  margin-left: auto;
+}
+
+.tm-rev-filter-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #D1D5DB;
+  background: #FFFFFF;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #4B5563;
+  transition: all 0.15s ease;
+}
+
+.tm-rev-filter-btn:hover {
+  background: #F9FAFB;
+  border-color: #9CA3AF;
+}
+
+.tm-rev-filter-bar {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.tm-filter-chip {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid #E5E7EB;
+  background: #FFFFFF;
+  color: #4B5563;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tm-filter-chip:hover, .tm-filter-chip.active {
+  background: #111827;
+  color: #FFFFFF;
+  border-color: #111827;
+}
+
+.tm-rev-trust-statement {
+  margin-top: 18px;
+  font-size: 13px;
+  color: #6B7280;
+  font-weight: 500;
+}
+
+/* REVIEWS GRID */
+.tm-reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.tm-rev-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.tm-rev-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.tm-rev-card-media {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  background: #F3F4F6;
+  cursor: pointer;
+  position: relative;
+}
+
+.tm-rev-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.tm-rev-card-media:hover img {
+  transform: scale(1.04);
+}
+
+.tm-rev-card-stars {
+  color: #F59E0B;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.tm-rev-card-author {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 2px;
+}
+
+.tm-rev-card-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #4B5563;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.tm-rev-card-badge .check-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #111827;
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.tm-rev-card-content {
+  font-size: 13px;
+  line-height: 1.45;
+  color: #374151;
+  flex: 1;
+}
+
+.tm-rev-readmore-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6B7280;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-left: 4px;
+}
+
+/* PAGINATION */
+.tm-reviews-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.tm-page-btn {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 6px;
+  border: 1px solid #E5E7EB;
+  background: #FFFFFF;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tm-page-btn:hover {
+  border-color: #9CA3AF;
+  background: #F9FAFB;
+}
+
+.tm-page-btn.active {
+  background: #111827;
+  border-color: #111827;
+  color: #FFFFFF;
+}
+
+/* LIGHTBOX MODAL */
+.tm-rev-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tm-rev-lightbox-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+}
+
+.tm-rev-lightbox-card {
+  position: relative;
+  z-index: 2;
+  background: #FFFFFF;
+  border-radius: 12px;
+  max-width: 780px;
+  width: 90%;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.tm-lightbox-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  z-index: 10;
+  background: rgba(0,0,0,0.5);
+  color: #FFF;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.tm-lightbox-close:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+.tm-lightbox-body {
+  display: flex;
+  flex-direction: row;
+  max-height: 85vh;
+}
+
+.tm-lightbox-media {
+  flex: 1.2;
+  background: #000;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tm-lightbox-media img {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+}
+
+.tm-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.7);
+  color: #000;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 0.15s;
+}
+
+.tm-lightbox-nav.prev { left: 12px; }
+.tm-lightbox-nav.next { right: 12px; }
+.tm-lightbox-nav:hover { background: #FFFFFF; }
+
+.tm-lightbox-info {
+  flex: 1;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.tm-lightbox-stars {
+  color: #F59E0B;
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.tm-lightbox-author {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.tm-lightbox-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #059669;
+  font-weight: 600;
+  margin: 4px 0 16px;
+}
+
+.tm-lightbox-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #374151;
+  flex: 1;
+}
+
+.tm-lightbox-date {
+  font-size: 12px;
+  color: #9CA3AF;
+  margin-top: 16px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .tm-reviews-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .tm-lightbox-body {
+    flex-direction: column;
+  }
+  .tm-lightbox-media {
+    max-height: 50vh;
+  }
+}
+
+@media (max-width: 640px) {
+  .tm-reviews-summary-grid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .tm-rev-breakdown-col {
+    width: 100%;
+  }
+  .tm-reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .tm-rev-card {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .tm-reviews-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script>
+(function() {
+  const allReviewsData = {% if section.blocks.size > 0 %}[
+    {% for block in section.blocks %}
+      {% assign rev_img = '' %}
+      {% if block.settings.photo != blank %}
+        {% assign rev_img = block.settings.photo | image_url: width: 900 %}
+      {% elsif block.settings.photo_url != blank %}
+        {% assign rev_img = block.settings.photo_url %}
+      {% endif %}
+      {
+        "id": {{ block.id | json }},
+        "star": {{ block.settings.rating | default: 5 }},
+        "author": {{ block.settings.author | default: "Verified Customer" | json }},
+        "date": {{ block.settings.date | default: "" | json }},
+        "content": {{ block.settings.content | default: "" | json }},
+        "img": {% if rev_img != blank %}{{ rev_img | json }}{% else %}null{% endif %},
+        "thumb": {% if rev_img != blank %}{{ rev_img | json }}{% else %}null{% endif %}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]{% elsif product.handle == 'christmas-lantern-welcome-gnome' %}[{"id":"gnome-rev-01","star":5,"author":"Hannah M.","date":"11/04/2026","content":"This little gnome is hands down the sweetest holiday decoration we've ever bought! The star lantern produces such a gentle, cozy glow on our porch every evening. Everyone who visits stops to take a picture!","img":"https://cdn.shopify.com/s/files/1/1032/4541/4771/files/51ec8bc9-19e1-4750-81e9-716b9f443448.png?v=1794374485&width=800","thumb":"https://cdn.shopify.com/s/files/1/1032/4541/4771/files/51ec8bc9-19e1-4750-81e9-716b9f443448.png?v=1794374485&width=200"},{"id":"gnome-rev-02","star":5,"author":"Thomas & Claire G.","date":"11/02/2026","content":"We placed him right next to our Christmas tree by the presents. The warm light from his star blends so nicely with the tree lights. The pinecone and greenery textures look so realistic!","img":"https://cdn.shopify.com/s/files/1/1032/4541/4771/files/41b23eb3-e0f1-48f2-bf80-ea57b5122a81.png?v=1794374485&width=800","thumb":"https://cdn.shopify.com/s/files/1/1032/4541/4771/files/41b23eb3-e0f1-48f2-bf80-ea57b5122a81.png?v=1794374485&width=200"},{"id":"gnome-rev-03","star":5,"author":"Margaret B.","date":"10/29/2026","content":"The craftsmanship on the knitted hat and the snowy beard exceeded my expectations. It feels heavy and well-weighted, so it doesn't tip over. Packaged beautifully too.","img":"https://cdn.shopify.com/s/files/1/1032/4541/4771/files/7a2a339d-5869-4893-bdbc-a646d5370aba.png?v=1794374485&width=800","thumb":"https://cdn.shopify.com/s/files/1/1032/4541/4771/files/7a2a339d-5869-4893-bdbc-a646d5370aba.png?v=1794374485&width=200"},{"id":"gnome-rev-04","star":5,"author":"David S.","date":"10/26/2026","content":"Bought the 2-pack for our entryway table and fireplace hearth. They create such an inviting, rustic Nordic Christmas vibe. My grandchildren adore them!","img":"https://cdn.shopify.com/s/files/1/1032/4541/4771/files/6c43cc71-c025-43bd-9631-2f3a04afe121.png?v=1794374484&width=800","thumb":"https://cdn.shopify.com/s/files/1/1032/4541/4771/files/6c43cc71-c025-43bd-9631-2f3a04afe121.png?v=1794374484&width=200"},{"id":"gnome-rev-05","star":5,"author":"Jessica K.","date":"10/22/2026","content":"The glowing star lantern at night is pure magic. It has a warm amber-white tone that isn't glaring at all. Battery lasts forever. Highly recommended!","img":"https://cdn.shopify.com/s/files/1/1032/4541/4771/files/37fa84c3-075e-4dc0-a07e-20fde6a1a4e8.png?v=1794374485&width=800","thumb":"https://cdn.shopify.com/s/files/1/1032/4541/4771/files/37fa84c3-075e-4dc0-a07e-20fde6a1a4e8.png?v=1794374485&width=200"},{"id":"gnome-rev-06","star":5,"author":"Robert P.","date":"10/19/2026","content":"The attention to detail with the berries and pine boughs gives it such an authentic woodland character. Exactly as pictured, arrived in 3 days.","img":null,"thumb":null},{"id":"gnome-rev-07","star":5,"author":"Evelyn W.","date":"10/16/2026","content":"Super cute holiday centerpiece! Heavy enough to stay upright on our windy covered porch. Will be buying a couple more as gifts.","img":null,"thumb":null},{"id":"gnome-rev-08","star":4,"author":"Brian L.","date":"10/12/2026","content":"Very well made decoration. Looks great at night. Wish the battery switch was a tiny bit easier to reach without lifting, but otherwise 10/10.","img":null,"thumb":null},{"id":"gnome-rev-09","star":5,"author":"Samantha D.","date":"10/08/2026","content":"Brought so much festive spirit into our foyer. Quality is wonderful and the star light is warm and comforting.","img":null,"thumb":null},{"id":"gnome-rev-10","star":5,"author":"Arthur N.","date":"10/04/2026","content":"Outstanding quality. You can tell it's not cheap hollow plastic. It has genuine weight and the knitted texture is lovely.","img":null,"thumb":null}]{% elsif product.handle == 'eyvelle-steam-therapy' %}[{"id":"52728537","star":5,"author":"Howard S Li","date":"05/07/2025","content":"I have extremely dry eyes from Sjogrens. This not only moistens, but the heat is good for the oil glands in my eyes lids. I use this multiple tones a day. Next time I fly it will be an essential item to take.","img":"https://review-assets.laireviews.com/y3fv52-5y/reviews/78052900184715290018471.jpg","thumb":"https://review-assets.laireviews.com/y3fv52-5y/reviews/78052900184715290018471.jpg"},{"id":"52728538","star":5,"author":"KerryLynn Yearwood","date":"04/23/2025","content":"I had itching dry eyes and this functioned perfectly with a mist that was warm. Would definitely recommend to have in every household.","img":"https://review-assets.laireviews.com/y3fv52-5y/reviews/47005900184710590018471.jpg","thumb":"https://review-assets.laireviews.com/y3fv52-5y/reviews/47005900184710590018471.jpg"},{"id":"52728536","star":5,"author":"Jerel Nedd","date":"04/09/2025","content":"This is the best my eyes have felt in years. I have tried and tried every approach to help my dry eyes and nothing has worked until your product. And it is so easy - just 5 minutes every morning sets me on track for a good eye day. Thank you","img":"https://review-assets.laireviews.com/y3fv52-5y/reviews/29856010184715601018471.jpg","thumb":"https://review-assets.laireviews.com/y3fv52-5y/reviews/29856010184715601018471.jpg"},{"id":"52728533","star":5,"author":"Rick","date":"04/06/2025","content":"This Steam Therapy is fantastic I have cronic dry eye after using it for 2 weeks I went for an eye exam and the optomatrist said she could'nt believe I had cronic dry eye.I highly reccommend eyvelle","img":"https://review-assets.laireviews.com/y3fv52-5y/reviews/56133800184713380018471.jpg","thumb":"https://review-assets.laireviews.com/y3fv52-5y/reviews/56133800184713380018471.jpg"},{"id":"52728513","star":5,"author":"Melanie Harris","date":"04/02/2025","content":"This is an Amazing and so relaxing gadget!! I hate that I didn't find it sooner! Definitely relaxing and puts you to sleep! I love it!","img":"https://review-assets.laireviews.com/y3fv52-5y/reviews/81745500184714550018471.png","thumb":"https://review-assets.laireviews.com/y3fv52-5y/reviews/81745500184714550018471.png"},{"id":"52728512","star":5,"author":"Jessica Diehl","date":"03/30/2025","content":"Hubby really enjoyed all of the features! I tried it as well and think the heat could be good for dry eyes after a long day in front of the computer.","img":"https://review-assets.laireviews.com/y3fv52-5y/reviews/28545500184714550018471.png","thumb":"https://review-assets.laireviews.com/y3fv52-5y/reviews/28545500184714550018471.png"},{"id":"52728535","star":5,"author":"Kathy Stevens","date":"03/14/2025","content":"The eye steamer is the best thing I've found for dry eye problems.","img":"https://review-assets.laireviews.com/y3fv52-5y/reviews/07176800184717680018471.jpg","thumb":"https://review-assets.laireviews.com/y3fv52-5y/reviews/07176800184717680018471.jpg"},{"id":"52728534","star":5,"author":"Shea Jones","date":"03/13/2025","content":"Love this for my tired eyes. I work night shift and my eyes get very dry, while I work. It’s refreshing to come home and use this before bed.","img":"https://review-assets.laireviews.com/y3fv52-5y/reviews/81758800184715880018471.jpg","thumb":"https://review-assets.laireviews.com/y3fv52-5y/reviews/81758800184715880018471.jpg"},{"id":"52730108","star":5,"author":"Johnny W.","date":"07/03/2025","content":"Noticeably reduced eye strain from working long hours on my laptop.","img":null,"thumb":null},{"id":"52729687","star":5,"author":"Karen R.","date":"07/03/2025","content":"I showed it to my eye doctor and he was impressed. Been using it every morning.","img":null,"thumb":null},{"id":"52729062","star":5,"author":"Brandon W.","date":"07/03/2025","content":"Super easy to use. Just fill with water, press a button, and relief is instant.","img":null,"thumb":null},{"id":"52728717","star":5,"author":"Robin T.","date":"07/03/2025","content":"After trying everything from drops to hot compresses, this is the first thing that gave me lasting comfort.","img":null,"thumb":null},{"id":"52729669","star":5,"author":"Joseph S.","date":"07/03/2025","content":"Using this daily has reduced the need for OTC drops. Love the heat and mist settings!","img":null,"thumb":null},{"id":"52729648","star":5,"author":"Raymond S.","date":"07/02/2025","content":"I showed it to my eye doctor and he was impressed. Been using it every morning.","img":null,"thumb":null},{"id":"52728723","star":5,"author":"Stephanie T.","date":"07/02/2025","content":"I’ve recommended this to everyone in my office. No more red, dry eyes at the end of the day.","img":null,"thumb":null}]{% else %}[{"id":"26475727","star":5,"author":"Frank H.","date":"2026-10-28","content":"Got this to fix up the iron railings on my front steps. The winter salt had really done a number on them and they were rusting bad. I wire brushed the loose stuff and painted this right over. It bonded great and the silver is very bright. It's been a few weeks and it's holding up to the weather perfectly. Good solid coating.","img":"https://img.trustoo.io/pro/68196728915/2026/10/29/BjZpDQT7xA.png?x-oss-process=style/trustoo_big","thumb":"https://img.trustoo.io/pro/68196728915/2026/10/29/BjZpDQT7xA.png?x-oss-process=style/trustoo_small"},{"id":"26475697","star":5,"author":"Ryan R.","date":"2026-10-27","content":"Really good rust blocker for outdoors","img":"https://img.trustoo.io/pro/68196728915/2026/10/29/Cw2ctDk4c2.png?x-oss-process=style/trustoo_big","thumb":"https://img.trustoo.io/pro/68196728915/2026/10/29/Cw2ctDk4c2.png?x-oss-process=style/trustoo_small"},{"id":"26475690","star":5,"author":"Stephanie E.","date":"2026-10-26","content":"Love how it turned out 🌟","img":"https://img.trustoo.io/pro/68196728915/2026/10/29/kkA4hZMFcp.png?x-oss-process=style/trustoo_big","thumb":"https://img.trustoo.io/pro/68196728915/2026/10/29/kkA4hZMFcp.png?x-oss-process=style/trustoo_small"},{"id":"26475729","star":5,"author":"Raymond A.","date":"2026-10-20","content":"I use this stuff for all sorts of metal repairs around the farm. It's great for sealing up rust spots on equipment before they get worse. The fact that it's water based makes it easy to work with, but once it dries it forms a really tough shell. The silver color is nice and bright too. Definitely a handy product to keep in the garage.","img":"https://img.trustoo.io/pro/68196728915/2026/10/29/SnY2bxJstB.png?x-oss-process=style/trustoo_big","thumb":"https://img.trustoo.io/pro/68196728915/2026/10/29/SnY2bxJstB.png?x-oss-process=style/trustoo_small"},{"id":"26475707","star":5,"author":"Stephen C.","date":"2026-10-15","content":"Great adhesion. I didn't even sand the rust that much, just brushed it on and it stuck right to it.","img":"https://img.trustoo.io/pro/68196728915/2026/10/29/bektfWRxZY.png?x-oss-process=style/trustoo_big","thumb":"https://img.trustoo.io/pro/68196728915/2026/10/29/bektfWRxZY.png?x-oss-process=style/trustoo_small"},{"id":"26475656","star":5,"author":"Jessica J.","date":"2026-10-10","content":"Looks brand new again thanks","img":"https://img.trustoo.io/pro/68196728915/2026/10/29/XFM28TStNn.png?x-oss-process=style/trustoo_big","thumb":"https://img.trustoo.io/pro/68196728915/2026/10/29/XFM28TStNn.png?x-oss-process=style/trustoo_small"},{"id":"26475689","star":5,"author":"Ronald P.","date":"2026-10-10","content":"Best silver paint I have used","img":"https://img.trustoo.io/pro/68196728915/2026/10/29/y5S8Tawcwb.png?x-oss-process=style/trustoo_big","thumb":"https://img.trustoo.io/pro/68196728915/2026/10/29/y5S8Tawcwb.png?x-oss-process=style/trustoo_small"},{"id":"26475719","star":5,"author":"Samuel B.","date":"2026-10-10","content":"Perfect for small metal renovations. The brush application is easy and it self-levels pretty well so you don't see streaks.","img":"https://img.trustoo.io/pro/68196728915/2026/10/29/FdX242Wf2T.png?x-oss-process=style/trustoo_big","thumb":"https://img.trustoo.io/pro/68196728915/2026/10/29/FdX242Wf2T.png?x-oss-process=style/trustoo_small"},{"id":"26475693","star":5,"author":"Jason P.","date":"2026-10-07","content":"Strong stuff, hasn't chipped at all","img":"https://img.trustoo.io/pro/68196728915/2026/10/29/TxkXnTMZ7x.png?x-oss-process=style/trustoo_big","thumb":"https://img.trustoo.io/pro/68196728915/2026/10/29/TxkXnTMZ7x.png?x-oss-process=style/trustoo_small"},{"id":"26475698","star":5,"author":"Cynthia S.","date":"2026-10-05","content":"Bright and shiny, very pretty","img":"https://img.trustoo.io/pro/68196728915/2026/10/29/iSYhXjayBy.png?x-oss-process=style/trustoo_big","thumb":"https://img.trustoo.io/pro/68196728915/2026/10/29/iSYhXjayBy.png?x-oss-process=style/trustoo_small"},{"id":"26475684","star":5,"author":"Amanda C.","date":"2026-10-04","content":"Shiny silver, just as described","img":"https://img.trustoo.io/pro/68196728915/2026/10/29/tEQZtGhDZY.png?x-oss-process=style/trustoo_big","thumb":"https://img.trustoo.io/pro/68196728915/2026/10/29/tEQZtGhDZY.png?x-oss-process=style/trustoo_small"},{"id":"26475691","star":5,"author":"Timothy T.","date":"2026-10-03","content":"Covered the oxidation right up","img":"https://img.trustoo.io/pro/68196728915/2026/10/29/AAWzFw2e76.png?x-oss-process=style/trustoo_big","thumb":"https://img.trustoo.io/pro/68196728915/2026/10/29/AAWzFw2e76.png?x-oss-process=style/trustoo_small"},{"id":"26475706","star":5,"author":"Angela M.","date":"2026-10-01","content":"The silver color is gorgeous. It literally looks like a mirror. I've been painting all kinds of random things around the house.","img":"https://img.trustoo.io/pro/68196728915/2026/10/29/PDe88bejQh.png?x-oss-process=style/trustoo_big","thumb":"https://img.trustoo.io/pro/68196728915/2026/10/29/PDe88bejQh.png?x-oss-process=style/trustoo_small"},{"id":"26475721","star":5,"author":"Gregory W.","date":"2026-09-30","content":"Covers oxidation easily. I used two coats just to be safe but the first coat honestly did a great job.","img":"https://img.trustoo.io/pro/68196728915/2026/10/29/w6EjwX3jhw.png?x-oss-process=style/trustoo_big","thumb":"https://img.trustoo.io/pro/68196728915/2026/10/29/w6EjwX3jhw.png?x-oss-process=style/trustoo_small"},{"id":"26475695","star":5,"author":"Jeffrey E.","date":"2026-09-29","content":"Easy to brush on, looks good","img":"https://img.trustoo.io/pro/68196728915/2026/10/29/PydESE7Gab.png?x-oss-process=style/trustoo_big","thumb":"https://img.trustoo.io/pro/68196728915/2026/10/29/PydESE7Gab.png?x-oss-process=style/trustoo_small"},{"id":"26475686","star":5,"author":"Melissa C.","date":"2026-10-29","content":"Used it on wood, looks fantastic","img":null,"thumb":null},{"id":"26475723","star":5,"author":"Alexander B.","date":"2026-10-29","content":"The micro particles really do make it look seamless. It doesn't look like cheap glitter paint, it looks like actual metal.","img":null,"thumb":null},{"id":"26475652","star":4,"author":"Richard A.","date":"2026-10-28","content":"Good stuff for quick touch ups.","img":null,"thumb":null},{"id":"26475680","star":5,"author":"Michelle N.","date":"2026-10-28","content":"Water based so cleanup was easy","img":null,"thumb":null},{"id":"26475708","star":5,"author":"Helen P.","date":"2026-10-28","content":"Used it on my rusted bathroom pipes. It completely hid the ugly spots and made them look like new chrome. 🚿","img":null,"thumb":null},{"id":"26475767","star":5,"author":"Sandra L.","date":"2026-10-28","content":"I honestly didn't expect much from such a tiny container but i was wrong. I had a bunch of rusty metal garden ornaments that were looking really sad. I cleaned them up a bit and brushed this on. The consistency is nice and it doesn't drip everywhere. It completely transformed them with this really bright silver mirror look. They literally look like i just bought them from the store. I did two coats just to be safe and they have been sitting out in the sun and rain for weeks with zero cracking or peeling. Totally worth the money.","img":null,"thumb":null},{"id":"26475667","star":5,"author":"Mark R.","date":"2026-10-27","content":"Good coverage for a small jar","img":null,"thumb":null},{"id":"26475720","star":5,"author":"Samantha C.","date":"2026-10-27","content":"I'm obsessed with this silver paint. It made my old thrift store finds look modern and chic. Highly recommend.","img":null,"thumb":null},{"id":"26475736","star":5,"author":"Diane W.","date":"2026-10-27","content":"I love doing DIY crafts and this silver paint is my new favorite thing. It turns literally anything into a beautiful metallic piece of art. I've painted wood, plastic, and old metal tins with it. It always dries with a brilliant mirror sheen. Plus it doesn't smell terrible like oil based paints. Highly recommend for crafters! 🎨","img":null,"thumb":null},{"id":"26475760","star":5,"author":"Thomas M.","date":"2026-10-27","content":"Small container but it goes a long way. Painted a couple rusty brackets and they look brand new now. Solid paint.","img":null,"thumb":null},{"id":"26475660","star":5,"author":"Karen T.","date":"2026-10-26","content":"Love the mirror finish on this","img":null,"thumb":null},{"id":"26475712","star":5,"author":"Brenda H.","date":"2026-10-26","content":"A little bit goes a long way. I was worried 100g wouldn't be enough but I still have half a jar left.","img":null,"thumb":null},{"id":"26475744","star":5,"author":"Megan D.","date":"2026-10-26","content":"This paint was a lifesaver for my vintage patio set. The chairs were structurally sound but looked terrible due to years of surface rust and peeling paint. I didn't want the hassle of spray painting, so this brush-on water-based option was perfect. It adhered beautifully to both the bare metal and the remaining old paint without any issues. The silver color is incredibly vibrant and reflective, giving the whole set a fresh, modern look. The tough lacquer finish seems very durable and has easily withstood the elements so far. It's a simple, effective solution for restoring old metal.","img":null,"thumb":null},{"id":"26475646","star":4,"author":"Michael M.","date":"2026-10-25","content":"Used on my fence, not bad","img":null,"thumb":null},{"id":"26475676","star":5,"author":"Donna H.","date":"2026-10-25","content":"Exactly what I needed for garden decor","img":null,"thumb":null},{"id":"26475703","star":5,"author":"Nicholas R.","date":"2026-10-25","content":"Got this to touch up some scratches on my aluminum boat. Blends in pretty well and keeps the corrosion away. Good stuff.","img":null,"thumb":null},{"id":"26475732","star":5,"author":"Maria P.","date":"2026-10-25","content":"I bought this on a whim to paint some old plaster statues I have in my garden. I wanted them to look like metal sculptures. This paint worked perfectly! It went on so smooth and the metallic particles are so fine that it really looks like solid silver. They look stunning catching the sunlight in the yard.","img":null,"thumb":null},{"id":"26475755","star":5,"author":"Karen J.","date":"2026-10-25","content":"Shiny and goes on pretty smooth.","img":null,"thumb":null},{"id":"26475664","star":5,"author":"Lisa C.","date":"2026-10-24","content":"Really bright silver, looks amazing","img":null,"thumb":null},{"id":"26475694","star":5,"author":"Sharon C.","date":"2026-10-24","content":"Looks like a mirror when dry!","img":null,"thumb":null},{"id":"26475718","star":5,"author":"Emma W.","date":"2026-10-24","content":"Looks amazing on my front porch railings. They were looking so sad and rusty, now they sparkle in the sun. ☀️","img":null,"thumb":null},{"id":"26475742","star":5,"author":"Evelyn R.","date":"2026-10-24","content":"I absolutely love this silver metallic coating! I bought it initially just to touch up a rusty spot on my outdoor AC unit, which it did perfectly, but I was so impressed with the finish that I started painting everything. I updated some old, tired-looking wooden planters, a faded plastic watering can, and even some decorative rocks. The mirror silver sheen is gorgeous and makes everything look so premium and expensive. It's very easy to apply, dries quickly, and washes out of the brush with just water. A fantastic, versatile product for both home repairs and creative crafts. 💖","img":null,"thumb":null},{"id":"26475764","star":5,"author":"Christopher W.","date":"2026-10-24","content":"I had these really old rusted pipes in the backyard that looked awful. Bought this small jar just to try it out. Brushed it right over the cleaned metal and it looks like a completely different pipe now. The silver finish is super bright and it bonded really well. No peeling so far even with the rain we had last week.","img":null,"thumb":null},{"id":"26475682","star":5,"author":"Carol H.","date":"2026-10-23","content":"Transformed my ugly rusted pipes","img":null,"thumb":null},{"id":"26475710","star":5,"author":"Anna R.","date":"2026-10-23","content":"I love that it doesn't have a harsh chemical smell. Painted a few indoor things and it was totally fine. Looks great.","img":null,"thumb":null},{"id":"26475649","star":3,"author":"Elizabeth L.","date":"2026-10-22","content":"Used this on some old garden decorations. It gave them a nice silver look but I had to prep a lot.","img":null,"thumb":null},{"id":"26475674","star":5,"author":"Kimberly T.","date":"2026-10-22","content":"Painted some old frames, looks great","img":null,"thumb":null},{"id":"26475701","star":5,"author":"Gary M.","date":"2026-10-22","content":"Painted my trailer hitch with this. It covered the rust perfectly and has a nice glossy metallic look. Seems durable.","img":null,"thumb":null},{"id":"26475734","star":5,"author":"Heather L.","date":"2026-10-22","content":"This paint completely transformed my old rusted mailbox. I just gave it a quick wipe down and painted this right on. It dried pretty fast and the result is a beautiful, shiny silver mailbox that looks brand new. It's been out in the weather for a month and hasn't chipped or faded at all. Great protective coating.","img":null,"thumb":null},{"id":"26475754","star":5,"author":"David B.","date":"2026-10-22","content":"Good stuff for fixing rust spots.","img":null,"thumb":null},{"id":"26475658","star":5,"author":"Sarah L.","date":"2026-10-21","content":"Super shiny and easy to use ✨","img":null,"thumb":null},{"id":"26475688","star":5,"author":"Deborah G.","date":"2026-10-21","content":"Small jar but goes a long way","img":null,"thumb":null},{"id":"26475716","star":5,"author":"Nicole W.","date":"2026-10-21","content":"This paint is so fun to use. It goes on really smooth and dries fast. Painted my mailbox and it shines.","img":null,"thumb":null},{"id":"26475740","star":5,"author":"Joyce B.","date":"2026-10-21","content":"I was incredibly skeptical about a water-based paint being able to handle outdoor rust, but this product completely blew me away. I have a large, ornate wrought iron gate that was severely corroded at the bottom. Sanding it down completely wasn't an option. I applied this silver coating directly over the cleaned rust, and the transformation was instant. The paint leveled out beautifully, hiding the pitted texture of the rust, and dried to an absolutely brilliant, mirror-like silver. It has survived heavy rain and intense sun without a single flake or crack. It literally saved my gate.","img":null,"thumb":null},{"id":"26475642","star":4,"author":"Robert W.","date":"2026-10-20","content":"Good silver color, needs two coats","img":null,"thumb":null},{"id":"26475671","star":5,"author":"Steven K.","date":"2026-10-20","content":"No more rust on the railing 🙌","img":null,"thumb":null},{"id":"26475699","star":5,"author":"Jacob M.","date":"2026-10-20","content":"Worked wonders on the iron fence 🏡","img":null,"thumb":null},{"id":"26475753","star":5,"author":"Sarah J.","date":"2026-10-20","content":"Worked perfectly on my garden chairs ✨","img":null,"thumb":null},{"id":"26475663","star":5,"author":"Matthew S.","date":"2026-10-19","content":"Stopped the rust on my gate","img":null,"thumb":null},{"id":"26475714","star":5,"author":"Pamela K.","date":"2026-10-19","content":"Transformed some cheap plastic planters into what looks like expensive metal ones. The metallic effect is super realistic.","img":null,"thumb":null},{"id":"26475738","star":5,"author":"Julie S.","date":"2026-10-19","content":"My vintage birdcage was rusting away on the porch. I spent an afternoon painting it with this silver coating and it looks absolutely gorgeous now. The paint is thick enough to cover the rough rust spots but smooth enough to give a seamless finish. It really saved a piece I was about to throw away.","img":null,"thumb":null},{"id":"26475763","star":4,"author":"Betty T.","date":"2026-10-19","content":"The paint is nice and thick. It covered the rust on my patio table legs well.","img":null,"thumb":null},{"id":"26475648","star":3,"author":"William H.","date":"2026-10-18","content":"Covered the rust on my porch railing pretty well. Wish it came in a bigger size though.","img":null,"thumb":null},{"id":"26475678","star":5,"author":"Emily G.","date":"2026-10-18","content":"Smooth finish and no brush marks","img":null,"thumb":null},{"id":"26475705","star":5,"author":"Eric O.","date":"2026-10-18","content":"Applied this to my outdoor iron handrail. It rained two days later and the paint held up perfectly. No new rust.","img":null,"thumb":null},{"id":"26475757","star":4,"author":"Jessica T.","date":"2026-10-18","content":"Looks okay.","img":null,"thumb":null},{"id":"26475685","star":5,"author":"George M.","date":"2026-10-17","content":"Went on smooth, dried quick","img":null,"thumb":null},{"id":"26475725","star":5,"author":"Patrick M.","date":"2026-10-17","content":"Strong adhesion for sure. Painted over some old flaky metal (after scraping it) and it bonded perfectly. Very satisfied.","img":null,"thumb":null},{"id":"26475661","star":5,"author":"Daniel W.","date":"2026-10-16","content":"Dried fast and looks great","img":null,"thumb":null},{"id":"26475692","star":5,"author":"Rebecca D.","date":"2026-10-16","content":"Perfect silver color for my table 🍽️","img":null,"thumb":null},{"id":"26475731","star":5,"author":"Jack S.","date":"2026-10-16","content":"Painted the rusted base of my outdoor fire pit with this. I was skeptical that a water based paint would hold up outside, but it's been through a few rainstorms and still looks perfect. The adhesion is really strong and it hasn't flaked at all despite the heat. The metallic finish is a nice touch too.","img":null,"thumb":null},{"id":"26475644","star":4,"author":"John J.","date":"2026-10-15","content":"Decent rust paint for small jobs","img":null,"thumb":null},{"id":"26475673","star":5,"author":"Paul S.","date":"2026-10-15","content":"Did the job perfectly on my pipes.","img":null,"thumb":null},{"id":"26475752","star":5,"author":"William S.","date":"2026-10-15","content":"Painted some old tools, looks new.","img":null,"thumb":null},{"id":"26475654","star":4,"author":"Joseph T.","date":"2026-10-14","content":"Works well enough for small outdoor metal repairs. I used it on my gate hinges. It bonded fine and seems to be holding up to the rain so far.","img":null,"thumb":null},{"id":"26475679","star":5,"author":"Kenneth A.","date":"2026-10-14","content":"Fixed my rusty mailbox easily","img":null,"thumb":null},{"id":"26475722","star":5,"author":"Christine J.","date":"2026-10-14","content":"Great product! Cleaned up some rusted garden tools and painted the metal parts. They look awesome and won't rust anymore.","img":null,"thumb":null},{"id":"26475761","star":5,"author":"Lisa L.","date":"2026-10-14","content":"Worked way better than expected on an old wood and metal shelf. The silver really pops and it hasn't flaked off at all. 🔥","img":null,"thumb":null},{"id":"26475666","star":5,"author":"Betty L.","date":"2026-10-13","content":"Made my old lamp look new 💡","img":null,"thumb":null},{"id":"26475696","star":5,"author":"Laura C.","date":"2026-10-13","content":"Saved my old patio furniture 🪑","img":null,"thumb":null},{"id":"26475726","star":5,"author":"Virginia R.","date":"2026-10-13","content":"I had this ugly rusted pipe in my laundry room that was driving me crazy. I didn't want to replace it so I tried this paint. It was so easy to apply and the water cleanup is a huge plus. It completely covered the rust and dried to a super shiny silver. It looks like a brand new chrome pipe now. Very happy with how it turned out.","img":null,"thumb":null},{"id":"26475641","star":4,"author":"Mary J.","date":"2026-10-12","content":"Looks good","img":null,"thumb":null},{"id":"26475683","star":5,"author":"Brian R.","date":"2026-10-12","content":"Very good quality paint for metal","img":null,"thumb":null},{"id":"26475711","star":5,"author":"Justin K.","date":"2026-10-12","content":"Fixed up an old metal wagon for my kids. The silver paint made it look fantastic and covered all the rust.","img":null,"thumb":null},{"id":"26475751","star":4,"author":"Linda G.","date":"2026-10-12","content":"Nice silver color.","img":null,"thumb":null},{"id":"26475651","star":4,"author":"Barbara W.","date":"2026-10-11","content":"The silver is very bright. Almost too shiny for what I wanted, but it covered the rust spots.","img":null,"thumb":null},{"id":"26475670","star":5,"author":"Sandra A.","date":"2026-10-11","content":"Beautiful metallic color, very reflective","img":null,"thumb":null},{"id":"26475702","star":5,"author":"Amy C.","date":"2026-10-11","content":"This little jar is awesome. I painted some old wooden picture frames and they look like solid silver metal now. Very cool. 😎","img":null,"thumb":null},{"id":"26475735","star":5,"author":"Jerry F.","date":"2026-10-11","content":"I had some exposed metal pipes on the side of my house that were looking pretty corroded. This paint was the perfect solution. It brushed on easily, didn't drip much, and the silver color matches the other fixtures perfectly. It seems to have formed a really hard, protective layer over the metal. Very satisfied with the quality.","img":null,"thumb":null},{"id":"26475759","star":5,"author":"Nancy J.","date":"2026-10-10","content":"Got this to touch up some outdoor metal decor. It brushed on simple and the silver color is really bright. Dried fast too.","img":null,"thumb":null},{"id":"26475653","star":4,"author":"Susan T.","date":"2026-10-09","content":"I bought this to fix up some old patio chairs that were starting to rust. The paint went on pretty easily and the silver color is definitely very reflective.","img":null,"thumb":null},{"id":"26475681","star":5,"author":"Kevin B.","date":"2026-10-09","content":"Looks like real metal now 😲","img":null,"thumb":null},{"id":"26475709","star":5,"author":"Larry B.","date":"2026-10-09","content":"Very reflective. I painted some house numbers with it so they show up better at night. Worked like a charm.","img":null,"thumb":null},{"id":"26475743","star":5,"author":"Adam G.","date":"2026-10-09","content":"If you have outdoor metal that is starting to rust, get this stuff. I had a metal shed that was rusting along the bottom edge where it meets the ground. I cleaned off the loose debris and brushed on two coats of this silver paint. It completely sealed the rusted areas and stopped the corrosion from spreading. The coating dries very hard and feels like a tough protective shell. The 100g container is small, but the paint spreads very well, so I actually had enough to do the entire perimeter of the shed. Highly recommended for rust prevention.","img":null,"thumb":null},{"id":"26475766","star":5,"author":"Daniel C.","date":"2026-10-09","content":"Pretty impressed with this paint. I used it on my rusted iron fence gate. It completely hid the orange rust and left a nice silver finish. It rained a few days later and the paint held up perfectly fine. Small jar but i still have some left over after doing the whole gate latch area. Good buy.","img":null,"thumb":null},{"id":"26475647","star":4,"author":"Linda R.","date":"2026-10-08","content":"Nice finish","img":null,"thumb":null},{"id":"26475675","star":5,"author":"Andrew N.","date":"2026-10-08","content":"Bonds well to bare metal","img":null,"thumb":null},{"id":"26475700","star":5,"author":"Kathleen M.","date":"2026-10-08","content":"I used this on some rusty brackets outside. It brushed on super easy and the silver is really bright. Looks way better now.","img":null,"thumb":null},{"id":"26475733","star":5,"author":"Dennis M.","date":"2026-10-08","content":"Really impressed with the coverage of this little jar. I painted a whole set of rusty wheelbarrows and still had some left over. It stops the rust in its tracks and leaves a really nice glossy silver finish. It's much easier than using spray paint and making a mess everywhere. Will definitely buy again when I run out.","img":null,"thumb":null},{"id":"26475756","star":5,"author":"Richard T.","date":"2026-10-08","content":"Covered the rust on my gate.","img":null,"thumb":null},{"id":"26475665","star":5,"author":"Anthony R.","date":"2026-10-07","content":"Easy to apply, no mess","img":null,"thumb":null},{"id":"26475717","star":5,"author":"Benjamin R.","date":"2026-10-07","content":"Good anti rust paint. Used it on some exposed rebar and it sealed it right up. Nice bright color too.","img":null,"thumb":null},{"id":"26475741","star":5,"author":"Jose A.","date":"2026-10-07","content":"This is an outstanding product for metal renovation. I restore old bicycles as a hobby, and finding a good brush-on metallic paint that actually looks like metal and not just gray paint with glitter is difficult. This formula is ultra-fine, just as advertised. It lays down a seamless, highly reflective silver layer that looks incredibly close to actual chrome or polished aluminum. I used it on some rusted fenders and the results were fantastic. The adhesion is incredibly strong, and the fact that it provides a tough, corrosion-resistant shield is exactly what I need for outdoor use.","img":null,"thumb":null},{"id":"26475659","star":5,"author":"Christopher P.","date":"2026-10-06","content":"Great for fixing up old metal 🔧","img":null,"thumb":null},{"id":"26475687","star":5,"author":"Edward R.","date":"2026-10-06","content":"Great protection for outdoor stuff 🛡️","img":null,"thumb":null},{"id":"26475715","star":5,"author":"Brandon C.","date":"2026-10-06","content":"Bought this for a rusty gate latch. It moves smooth now and looks a hundred times better with the silver coat.","img":null,"thumb":null},{"id":"26475739","star":5,"author":"Aaron G.","date":"2026-10-06","content":"Great for fixing up old tools. I had some wrenches and hammers that were left out in the rain and got rusty. I cleaned them up and painted the handles with this. They look great and the paint provides a nice tough shield against future rust. The water cleanup makes the whole process very easy.","img":null,"thumb":null},{"id":"26475640","star":4,"author":"James M.","date":"2026-10-05","content":"Worked fine on my pipes.","img":null,"thumb":null},{"id":"26475669","star":5,"author":"Donald Y.","date":"2026-10-05","content":"Worked perfectly on my car trim","img":null,"thumb":null},{"id":"26475728","star":5,"author":"Carolyn P.","date":"2026-10-05","content":"This is the best metallic paint I've ever used. I like to upcycle old furniture and I used this on some wooden drawer pulls to make them look like metal. The finish is incredibly smooth and reflective, not grainy like some other silver paints. It really does have a mirror-like sheen. The 100g size was plenty for my project. ✨","img":null,"thumb":null},{"id":"26475749","star":5,"author":"Mary M.","date":"2026-10-05","content":"Easy to use and dries fast. 👍","img":null,"thumb":null},{"id":"26475662","star":5,"author":"Nancy H.","date":"2026-10-04","content":"Perfect for my craft projects! 🎨","img":null,"thumb":null},{"id":"26475713","star":5,"author":"Scott R.","date":"2026-10-04","content":"Really tough coating. I accidentally hit the painted pipe with a wrench and it didn't even chip the paint. 💪","img":null,"thumb":null},{"id":"26475737","star":5,"author":"Tyler B.","date":"2026-10-04","content":"Used this to touch up the rusted frame of my utility trailer. It bonded tightly to the metal and the rust hasn't come back. The silver finish is very reflective and looks professional. It's a small container but it goes on thin and covers a lot of area. Good stuff for maintaining outdoor equipment.","img":null,"thumb":null},{"id":"26475762","star":5,"author":"Charles P.","date":"2026-10-04","content":"Used it to cover up some bad rust on my trailer. Looks much cleaner now. Just make sure you clean the metal first.","img":null,"thumb":null},{"id":"26475655","star":5,"author":"Thomas M.","date":"2026-10-03","content":"Awesome silver paint for my tools! 👍","img":null,"thumb":null},{"id":"26475724","star":5,"author":"Catherine G.","date":"2026-10-03","content":"So glad I found this. It saved me from having to replace my outdoor light fixtures. They look brand new.","img":null,"thumb":null},{"id":"26475645","star":4,"author":"Jennifer G.","date":"2026-10-02","content":"Goes on smooth, pretty shiny.","img":null,"thumb":null},{"id":"26475672","star":5,"author":"Ashley W.","date":"2026-10-02","content":"So shiny! Love it 😍","img":null,"thumb":null},{"id":"26475704","star":5,"author":"Shirley G.","date":"2026-10-02","content":"Cleanup was a breeze since it's water based. I painted a rusted plant stand and it looks brand new. Very shiny!","img":null,"thumb":null},{"id":"26475730","star":5,"author":"Janet C.","date":"2026-10-02","content":"My patio furniture was starting to look really awful with rust spots everywhere. I bought this hoping to salvage it for one more summer. I was amazed at how well it covered the dark rust stains with just one coat. I ended up doing two coats for extra protection. The chairs look fantastic, the silver is very shiny and modern looking.","img":null,"thumb":null},{"id":"26475748","star":5,"author":"James W.","date":"2026-10-02","content":"Looks great on my old mailbox.","img":null,"thumb":null},{"id":"26475650","star":4,"author":"David G.","date":"2026-10-01","content":"It does what it says. Painted a rusted pipe in the basement. Smell wasn't too bad.","img":null,"thumb":null},{"id":"26475677","star":5,"author":"Joshua F.","date":"2026-10-01","content":"Great anti rust paint, very shiny","img":null,"thumb":null},{"id":"26475758","star":5,"author":"Joseph M.","date":"2026-10-01","content":"I used this on the metal railings outside. It covered the rust easily and gave it a nice shiny look. Very happy with it.","img":null,"thumb":null},{"id":"26475643","star":4,"author":"Patricia B.","date":"2026-09-30","content":"Painted the mailbox, looks okay now","img":null,"thumb":null},{"id":"26475668","star":5,"author":"Margaret W.","date":"2026-09-30","content":"Highly recommend for rusty spots","img":null,"thumb":null},{"id":"26475750","star":5,"author":"Robert D.","date":"2026-09-30","content":"Fixed up the rusty pipes good.","img":null,"thumb":null},{"id":"26475657","star":5,"author":"Charles M.","date":"2026-09-29","content":"Covered the rust completely. Very happy","img":null,"thumb":null},{"id":"26475765","star":5,"author":"Margaret H.","date":"2026-09-29","content":"Got this to fix up a rusty birdbath stand. I just wiped the dirt off and painted right over the worst spots. It went on super smooth and covered everything in one coat. The metallic shine is really pretty. It saved me from throwing the whole thing in the trash. Definitely recommend if you have old rusty metal stuff. 💯","img":null,"thumb":null}]{% endif %};
+
+  let activeFilter = 'all';
+  let currentPage = 1;
+  const pageSize = 15;
+  let activeLightboxIndex = -1;
+
+  // Sync filter chip counts dynamically from loaded reviews
+  const filterAllEl = document.getElementById('tmFilterAll');
+  const filterPhotoEl = document.getElementById('tmFilterPhoto');
+  const filter5El = document.getElementById('tmFilter5Star');
+  if (filterAllEl) filterAllEl.textContent = 'All Reviews (' + allReviewsData.length + ')';
+  if (filterPhotoEl) filterPhotoEl.textContent = 'With Photos (' + allReviewsData.filter(r => r.img).length + ')';
+  if (filter5El) filter5El.textContent = '5 Stars (' + allReviewsData.filter(r => r.star === 5).length + ')';
+
+  function getFilteredReviews() {
+    if (activeFilter === 'photo') {
+      return allReviewsData.filter(r => r.img);
+    } else if (activeFilter === '5star') {
+      return allReviewsData.filter(r => r.star === 5);
+    }
+    return allReviewsData;
+  }
+
+  function renderReviews() {
+    const grid = document.getElementById('tmReviewsGrid');
+    const pagination = document.getElementById('tmReviewsPagination');
+    if (!grid) return;
+
+    const filtered = getFilteredReviews();
+    const totalPages = Math.ceil(filtered.length / pageSize) || 1;
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    const start = (currentPage - 1) * pageSize;
+    const pageItems = filtered.slice(start, start + pageSize);
+
+    let html = '';
+    pageItems.forEach((rev, idx) => {
+      const globalIdx = filtered.indexOf(rev);
+      const isLong = rev.content.length > 130;
+      const snippet = isLong ? rev.content.slice(0, 130) + '...' : rev.content;
+
+      html += `
+        <div class="tm-rev-card" data-global-idx="${globalIdx}">
+          ${rev.img ? `
+            <div class="tm-rev-card-media" onclick="window.openTmLightbox(${globalIdx})">
+              <img src="${rev.img}" alt="Customer photo by ${rev.author}" loading="lazy" />
+            </div>
+          ` : ''}
+          <div class="tm-rev-card-stars">${'★'.repeat(rev.star)}</div>
+          <div class="tm-rev-card-author">${rev.author}</div>
+          <div class="tm-rev-card-badge">
+            <span class="check-circle">✓</span> Verified purchase
+          </div>
+          <div class="tm-rev-card-content">
+            <span class="tm-rev-text-body" id="tmRevText_${rev.id}">${snippet}</span>
+            ${isLong ? `
+              <button type="button" class="tm-rev-readmore-btn" onclick="window.toggleTmFullText('${String(rev.id).replace(/'/g, "\\'")}', ${globalIdx})">Show full review</button>
+            ` : ''}
+          </div>
+        </div>
+      `;
+    });
+    grid.innerHTML = html;
+
+    // Render Pagination
+    if (pagination) {
+      if (totalPages <= 1) {
+        pagination.style.display = 'none';
+      } else {
+        pagination.style.display = 'flex';
+        let pagHtml = '';
+        if (currentPage > 1) {
+          pagHtml += `<button type="button" class="tm-page-btn prev" onclick="window.goTmPage(${currentPage - 1})">&#10094;</button>`;
+        }
+        for (let p = 1; p <= Math.min(totalPages, 5); p++) {
+          pagHtml += `<button type="button" class="tm-page-btn ${p === currentPage ? 'active' : ''}" onclick="window.goTmPage(${p})">${p}</button>`;
+        }
+        if (totalPages > 5 && currentPage < totalPages) {
+          pagHtml += `<span style="color:#9CA3AF;padding:0 4px;">...</span>`;
+          pagHtml += `<button type="button" class="tm-page-btn ${totalPages === currentPage ? 'active' : ''}" onclick="window.goTmPage(${totalPages})">${totalPages}</button>`;
+        }
+        if (currentPage < totalPages) {
+          pagHtml += `<button type="button" class="tm-page-btn next" onclick="window.goTmPage(${currentPage + 1})">&#10095;</button>`;
+        }
+        pagination.innerHTML = pagHtml;
+      }
+    }
+  }
+
+  // Global Handlers
+  window.goTmPage = function(p) {
+    currentPage = p;
+    renderReviews();
+    const sec = document.getElementById('tmCustomerReviews');
+    if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  window.toggleTmFullText = function(id, globalIdx) {
+    const el = document.getElementById('tmRevText_' + id);
+    const rev = getFilteredReviews()[globalIdx];
+    if (el && rev) {
+      el.textContent = rev.content;
+      const btn = el.nextElementSibling;
+      if (btn && btn.classList.contains('tm-rev-readmore-btn')) btn.style.display = 'none';
+    }
+  };
+
+  // Lightbox
+  const lightbox = document.getElementById('tmRevLightbox');
+  const lightboxImg = document.getElementById('tmLightboxImg');
+  const lightboxStars = document.getElementById('tmLightboxStars');
+  const lightboxAuthor = document.getElementById('tmLightboxAuthor');
+  const lightboxText = document.getElementById('tmLightboxText');
+  const lightboxDate = document.getElementById('tmLightboxDate');
+
+  window.openTmLightbox = function(globalIdx) {
+    const filtered = getFilteredReviews();
+    const rev = filtered[globalIdx];
+    if (!rev || !rev.img) return;
+    activeLightboxIndex = globalIdx;
+
+    if (lightboxImg) lightboxImg.src = rev.img;
+    if (lightboxStars) lightboxStars.textContent = '★'.repeat(rev.star);
+    if (lightboxAuthor) lightboxAuthor.textContent = rev.author;
+    if (lightboxText) lightboxText.textContent = rev.content;
+    if (lightboxDate) lightboxDate.textContent = rev.date ? 'Reviewed on ' + rev.date : '';
+    if (lightbox) lightbox.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  };
+
+  function closeTmLightbox() {
+    if (lightbox) lightbox.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  const closeBtn = document.getElementById('tmLightboxClose');
+  const overlay = document.getElementById('tmLightboxOverlay');
+  if (closeBtn) closeBtn.addEventListener('click', closeTmLightbox);
+  if (overlay) overlay.addEventListener('click', closeTmLightbox);
+
+  const prevBtn = document.getElementById('tmLightboxPrev');
+  const nextBtn = document.getElementById('tmLightboxNext');
+  
+  function navLightbox(direction) {
+    const filtered = getFilteredReviews();
+    const photoIndices = filtered.map((r, i) => (r.img ? i : -1)).filter(i => i !== -1);
+    if (photoIndices.length === 0) return;
+    const pos = photoIndices.indexOf(activeLightboxIndex);
+    let nextPos = (pos === -1 ? 0 : pos + direction);
+    if (nextPos < 0) nextPos = photoIndices.length - 1;
+    if (nextPos >= photoIndices.length) nextPos = 0;
+    window.openTmLightbox(photoIndices[nextPos]);
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => navLightbox(-1));
+  if (nextBtn) nextBtn.addEventListener('click', () => navLightbox(1));
+
+  document.addEventListener('keydown', function(e) {
+    if (lightbox && lightbox.style.display === 'flex') {
+      if (e.key === 'Escape') closeTmLightbox();
+      if (e.key === 'ArrowLeft') navLightbox(-1);
+      if (e.key === 'ArrowRight') navLightbox(1);
+    }
+  });
+
+  // Filter Buttons
+  const filterChips = document.querySelectorAll('.tm-filter-chip');
+  filterChips.forEach(chip => {
+    chip.addEventListener('click', function() {
+      filterChips.forEach(c => c.classList.remove('active'));
+      this.classList.add('active');
+      activeFilter = this.getAttribute('data-filter') || 'all';
+      currentPage = 1;
+      renderReviews();
+    });
+  });
+
+  // Filter toggle button
+  const filterBtn = document.getElementById('tmRevFilterBtn');
+  const filterBar = document.getElementById('tmRevFilterBar');
+  if (filterBtn && filterBar) {
+    filterBtn.addEventListener('click', function() {
+      filterBar.style.display = filterBar.style.display === 'none' ? 'flex' : 'none';
+    });
+  }
+
+  // Initial render
+  renderReviews();
+})();
+</script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Customer Reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Customer Reviews"
+    },
+    {
+      "type": "text",
+      "id": "rating_score",
+      "label": "Rating Score Override (e.g. 4.9)"
+    },
+    {
+      "type": "text",
+      "id": "rating_count_label",
+      "label": "Rating Count Label (e.g. 10 reviews)"
+    },
+    {
+      "type": "text",
+      "id": "trust_statement",
+      "label": "Trust Statement Below Filter Bar"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review_card",
+      "name": "Customer Review Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name",
+          "default": "Hannah M."
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Star Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Review Date",
+          "default": "11/04/2026"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Review Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "photo",
+          "label": "Customer Photo"
+        },
+        {
+          "type": "text",
+          "id": "photo_url",
+          "label": "Customer Photo URL Fallback (Optional CDN URL)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Reviews"
+    }
+  ]
+}
+{% endschema %}

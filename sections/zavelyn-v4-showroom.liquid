@@ -1,27 +1,109 @@
 {% comment %}
-  ZAVELYN IMMERSIVE COMMERCE THEME V4.1
-  CORE FEATURE: 2.5D REAL-WORLD PHYSICAL RETAIL SHOWROOM
-  Features:
-  - 6-Layer Architectural Retail Shelving
-  - Shelf-Edge Channel Price Tags (No tall card blocks under products!)
-  - Authentic Grounded Product Shadow Discs & Acrylic Merchandising Risers
-  - Hero Pedestal Showcase for Single-Product Collections
-  - Positional Zoom Spatial Inspection Bay (Replaces centered popup on desktop)
+  TRYMALORA PHYSICAL SHOWROOM V5.0 (SHOPIFY OS 2.0 SCHEMA + DYNAMIC BLOCKS)
+  - 100% Admin Configurable via Theme Editor Customize
+  - Dedicated "Showroom Product" Blocks for each shelf item
+  - Transparent Cutout Image Upload with Contact Shadow & Grounding
+  - 4 Products per Desktop Shelf / 2 Products per Mobile Shelf
+  - Shelf-Edge Channel Price Tags & Spatial Inspection Bay
 {% endcomment %}
 
 {{ 'zavelyn-v4-tokens.css' | asset_url | stylesheet_tag }}
 {{ 'zavelyn-v4-showroom.css' | asset_url | stylesheet_tag }}
 
-{% assign shelf_style = section.settings.shelf_style | default: 'wood' %}
-{% if collection.handle contains 'tool' or collection.handle contains 'power' %}
-  {% assign shelf_style = 'metal' %}
-{% elsif collection.handle contains 'handpan' or collection.handle contains 'drum' or collection.handle contains 'sound' or collection.handle contains 'interactive' or collection.handle contains 'toy' %}
-  {% assign shelf_style = 'tech' %}
-{% elsif collection.handle contains 'wellness' or collection.handle contains 'denture' or collection.handle contains 'batana' %}
-  {% assign shelf_style = 'boutique' %}
-{% endif %}
+{% assign bg_color = section.settings.bg_color | default: '#FAF6F3' %}
+{% assign text_color = section.settings.text_color | default: '#2B1B24' %}
+{% assign shelf_wood_color = section.settings.shelf_wood_color | default: '#C89D66' %}
+{% assign shelf_fascia_color = section.settings.shelf_fascia_color | default: '#A67C46' %}
+{% assign badge_color = section.settings.badge_color | default: '#6B1E46' %}
+{% assign price_color = section.settings.price_color | default: '#191919' %}
+{% assign tag_bg_color = section.settings.tag_bg_color | default: '#FFFFFF' %}
+{% assign tag_border_color = section.settings.tag_border_color | default: '#EAD7DD' %}
+{% assign button_toggle_color = section.settings.button_toggle_color | default: '#6B1E46' %}
+{% assign divider_color = section.settings.divider_color | default: '#EAD7DD' %}
 
-<div class="zv-showroom-wrapper shelf-theme-{{ shelf_style }}">
+<style>
+  #shopify-section-{{ section.id }} .zv-showroom-wrapper {
+    background-color: {{ bg_color }};
+    color: {{ text_color }};
+  }
+  #shopify-section-{{ section.id }} .zv-showroom-h1 {
+    color: #FFF8F5 !important;
+  }
+  #shopify-section-{{ section.id }} .zv-showroom-desc {
+    color: #EAD7DD !important;
+  }
+  #shopify-section-{{ section.id }} .zv-shelf-style-badge {
+    background: {{ badge_color }};
+    color: #FFFFFF;
+  }
+  #shopify-section-{{ section.id }} .zv-wood-top-surface {
+    background: linear-gradient(90deg, 
+      {{ shelf_wood_color | color_darken: 28 }} 0%, 
+      {{ shelf_wood_color | color_darken: 14 }} 15%, 
+      {{ shelf_wood_color }} 50%, 
+      {{ shelf_wood_color | color_darken: 14 }} 85%, 
+      {{ shelf_wood_color | color_darken: 28 }} 100%) !important;
+  }
+  #shopify-section-{{ section.id }} .zv-wood-front-fascia {
+    background: linear-gradient(180deg, 
+      {{ shelf_fascia_color }} 0%, 
+      {{ shelf_fascia_color | color_darken: 15 }} 40%, 
+      {{ shelf_fascia_color | color_darken: 35 }} 100%) !important;
+    border-top-color: {{ shelf_fascia_color | color_lighten: 20 }} !important;
+  }
+  #shopify-section-{{ section.id }} .zv-tag-card {
+    background: {{ tag_bg_color }} !important;
+    border-color: {{ tag_border_color }} !important;
+  }
+  #shopify-section-{{ section.id }} .zv-tag-badge {
+    background: {{ badge_color }} !important;
+    color: #FFFFFF !important;
+    border: 1px solid {{ badge_color }} !important;
+    font-size: 9px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    padding: 2px 6px !important;
+    border-radius: 3px !important;
+    line-height: 1.2 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  #shopify-section-{{ section.id }} .zv-tag-price-curr {
+    color: {{ price_color }} !important;
+  }
+  #shopify-section-{{ section.id }} .zv-view-btn.active {
+    background: #FFF8F5 !important;
+    color: #6B1E46 !important;
+    border-color: #FFF8F5 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+  }
+  #shopify-section-{{ section.id }} .zv-view-btn.active svg {
+    color: #6B1E46 !important;
+    stroke: #6B1E46 !important;
+  }
+  #shopify-section-{{ section.id }} .zv-fixture-column {
+    border-color: {{ divider_color }} !important;
+  }
+  {% if section.settings.product_gap %}
+    #shopify-section-{{ section.id }} .zv-shelf-columns-grid {
+      gap: {{ section.settings.product_gap }}px;
+    }
+  {% endif %}
+  {% if section.settings.shelf_gap %}
+    #shopify-section-{{ section.id }} .zv-shelf-tier {
+      margin-bottom: {{ section.settings.shelf_gap }}px;
+    }
+  {% endif %}
+  {% if section.settings.price_tag_width %}
+    #shopify-section-{{ section.id }} .zv-shelf-clip-tag {
+      width: {{ section.settings.price_tag_width }}px;
+    }
+  {% endif %}
+</style>
+
+<div class="zv-showroom-wrapper shelf-theme-wood" id="zvShowroomWrapper-{{ section.id }}">
 
   <!-- =======================================================================
        1. SHOWROOM ATMOSPHERIC ARCHITECTURAL HEADER
@@ -31,13 +113,13 @@
       <div class="zv-showroom-title-row">
         <div>
           <div class="zv-showroom-eyebrow">
-            <span>🏛️ TRYMALORA RETAIL ENVIRONMENT</span>
+            <span>{{ section.settings.eyebrow_text | default: "🏛️ TRYMALORA RETAIL ENVIRONMENT" }}</span>
             <span>&middot;</span>
-            <span class="zv-shelf-style-badge">{{ shelf_style | capitalize }} Department</span>
+            <span class="zv-shelf-style-badge">{{ section.settings.badge_text | default: "Architecture Department" }}</span>
           </div>
-          <h1 class="zv-showroom-h1">{{ collection.title }}</h1>
+          <h1 class="zv-showroom-h1">{{ section.settings.heading | default: collection.title | default: "TRYMALORA Physical Showroom" }}</h1>
           <div class="zv-showroom-desc">
-            {{ collection.description | default: "Step into our physical retail showroom. Products are displayed on authentic architectural shelves. Click any item to pull it forward for spatial inspection and instant checkout." }}
+            {{ section.settings.description | default: collection.description | default: "Step into our physical retail showroom. Products are displayed on authentic architectural shelves. Click any item to pull it forward for spatial inspection and instant checkout." }}
           </div>
         </div>
 
@@ -45,17 +127,29 @@
         <div class="zv-showroom-toolbar">
           <div class="zv-showroom-stats">
             <span class="zv-live-status-dot"></span>
-            <strong>{{ collection.products_count }}</strong> Items on Display
+            {% assign visible_blocks_count = 0 %}
+            {% for block in section.blocks %}
+              {% if block.type == 'showroom_product' and block.settings.show_product != false %}
+                {% assign visible_blocks_count = visible_blocks_count | plus: 1 %}
+              {% endif %}
+            {% endfor %}
+            {% if section.settings.items_count_text != blank %}
+              {{ section.settings.items_count_text }}
+            {% elsif visible_blocks_count > 0 %}
+              <strong>{{ visible_blocks_count }}</strong> Items on Display
+            {% else %}
+              <strong>{{ collection.products_count | default: 6 }}</strong> Items on Display
+            {% endif %}
           </div>
 
           <div class="zv-view-switcher" role="group" aria-label="Display View Mode">
             <button type="button" class="zv-view-btn active" data-view-mode="shelf" title="2.5D Physical Showroom Shelves">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-              <span>Showroom</span>
+              <span>{{ section.settings.toggle_showroom_label | default: "Showroom" }}</span>
             </button>
             <button type="button" class="zv-view-btn" data-view-mode="grid" title="Standard Catalog Grid">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-              <span>Grid</span>
+              <span>{{ section.settings.toggle_grid_label | default: "Grid" }}</span>
             </button>
           </div>
         </div>
@@ -74,45 +168,53 @@
 
     <div class="zv-container">
 
-      {% paginate collection.products by 24 %}
-        {% assign total_products = collection.products.size %}
+      {% assign items_per_shelf = section.settings.desktop_columns | default: 4 %}
+      {% if items_per_shelf < 2 %}{% assign items_per_shelf = 4 %}{% endif %}
 
-        {% if total_products > 0 %}
-          {% assign items_per_shelf = 4 %}
+      {% comment %}
+        Determine data source:
+        If section.blocks has showroom_product blocks, render them directly.
+        Otherwise, fallback to collection.products.
+      {% endcomment %}
+      {% assign valid_blocks_count = 0 %}
+      {% for block in section.blocks %}
+        {% if block.type == 'showroom_product' and block.settings.show_product != false %}
+          {% assign valid_blocks_count = valid_blocks_count | plus: 1 %}
+        {% endif %}
+      {% endfor %}
 
-          {% for product in collection.products %}
-            {% assign mod_index = forloop.index0 | modulo: items_per_shelf %}
-            {% assign mod2_index = forloop.index0 | modulo: 2 %}
-            {% assign current_variant = product.selected_or_first_available_variant %}
-            {% assign has_compare = false %}
-            {% if current_variant.compare_at_price > current_variant.price %}
-              {% assign has_compare = true %}
-              {% assign save_percent = current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round %}
+      {% if valid_blocks_count > 0 %}
+        {% comment %} RENDER DYNAMIC THEME EDITOR BLOCKS {% endcomment %}
+        {% assign active_idx = 0 %}
+        {% assign max_shelf_col = items_per_shelf | minus: 1 %}
+
+        {% for block in section.blocks %}
+          {% if block.type == 'showroom_product' and block.settings.show_product != false %}
+            {% assign mod_index = active_idx | modulo: items_per_shelf %}
+            {% assign mod2_index = active_idx | modulo: 2 %}
+            {% assign remaining_items = valid_blocks_count | minus: active_idx %}
+            {% if remaining_items >= items_per_shelf %}
+              {% assign current_row_count = items_per_shelf %}
+            {% else %}
+              {% assign current_row_count = remaining_items %}
             {% endif %}
 
-            {% comment %} Open a new Desktop Shelf Tier every 4 products {% endcomment %}
+            {% comment %} Open a new Desktop Shelf Tier every items_per_shelf blocks {% endcomment %}
             {% if mod_index == 0 %}
-              {% assign remaining_items = forloop.length | minus: forloop.index0 %}
-              {% if remaining_items >= 4 %}
-                {% assign current_row_count = 4 %}
-              {% else %}
-                {% assign current_row_count = remaining_items %}
-              {% endif %}
-
-              <div class="zv-shelf-tier" data-tier-index="{{ forloop.index0 | divided_by: 4 }}" data-tier-count="{{ current_row_count }}">
+              <div class="zv-shelf-tier" data-tier-index="{{ active_idx | divided_by: items_per_shelf }}" data-tier-count="{{ current_row_count }}">
                 
                 <!-- Overhead Directional Lighting Beam -->
                 <div class="zv-fixture-lightbar" aria-hidden="true">
-                  <div class="zv-spotlight-beam" style="left: 12.5%;"></div>
-                  <div class="zv-spotlight-beam" style="left: 37.5%;"></div>
-                  <div class="zv-spotlight-beam" style="left: 62.5%;"></div>
-                  <div class="zv-spotlight-beam" style="left: 87.5%;"></div>
+                  {% for i in (1..items_per_shelf) %}
+                    {% assign spotlight_pct = i | times: 100.0 | minus: 50.0 | divided_by: items_per_shelf %}
+                    <div class="zv-spotlight-beam" style="left: {{ spotlight_pct }}%;"></div>
+                  {% endfor %}
                 </div>
 
                 <!-- Shelf Stage: Holds continuous wooden plank and product columns -->
                 <div class="zv-shelf-stage">
 
-                  <!-- 1. Authentic Continuous Solid Wooden Plank (Desktop-Only: >= 992px) -->
+                  <!-- Continuous Wooden Plank (Desktop-Only: >= 992px) -->
                   <div class="zv-continuous-wooden-shelf zv-shelf-desktop-only" aria-hidden="true">
                     <div class="zv-wood-top-surface">
                       <div class="zv-wood-grain-texture"></div>
@@ -126,21 +228,21 @@
                     <div class="zv-wood-under-shadow"></div>
                   </div>
 
-                  <!-- 2. Products Columns Grid -->
+                  <!-- Products Columns Grid -->
                   <div class="zv-shelf-columns-grid zv-grid--{{ current_row_count }}">
             {% endif %}
 
             {% comment %} Open a Mobile Shelf Pair every 2 products {% endcomment %}
             {% if mod2_index == 0 %}
-              {% assign remaining_in_pair = forloop.length | minus: forloop.index0 %}
-              {% if remaining_in_pair >= 2 and mod_index != 3 %}
+              {% assign remaining_in_pair = valid_blocks_count | minus: active_idx %}
+              {% if remaining_in_pair >= 2 and mod_index != max_shelf_col %}
                 {% assign pair_count = 2 %}
               {% else %}
                 {% assign pair_count = 1 %}
               {% endif %}
 
               <div class="zv-shelf-pair zv-pair--{{ pair_count }}" data-pair-count="{{ pair_count }}">
-                <!-- Authentic Continuous Solid Wooden Plank (Mobile/Tablet-Only: < 992px) -->
+                <!-- Continuous Wooden Plank (Mobile/Tablet-Only: < 992px) -->
                 <div class="zv-continuous-wooden-shelf zv-shelf-mobile-only" aria-hidden="true">
                   <div class="zv-wood-top-surface">
                     <div class="zv-wood-grain-texture"></div>
@@ -157,161 +259,123 @@
                 <div class="zv-pair-products">
             {% endif %}
 
-            <!-- Individual Product Column -->
-            <div class="zv-shelf-column" data-col-index="{{ mod_index }}" data-product-handle="{{ product.handle }}">
-              
-              {% assign has_override = false %}
-              {% assign is_cutout = false %}
-              {% assign showroom_img_url = '' %}
-              {% assign catalog_img_url = '' %}
-              {% assign catalog_fit = 'contain' %}
-              {% assign display_scale = 100 %}
-              {% assign mobile_scale = 100 %}
-              {% assign baseline_offset = 0 %}
-              {% assign horizontal_offset = 0 %}
-              {% assign enable_contact_shadow = true %}
-              {% assign shadow_width = 70 %}
-              {% assign shadow_opacity = 0.70 %}
-              {% assign shadow_softness = 12 %}
-              {% assign is_reset = false %}
+            {% comment %} Resolve Product & Pricing Data {% endcomment %}
+            {% assign prod = block.settings.product %}
+            {% assign prod_title = block.settings.custom_display_title %}
+            {% if prod_title == blank and prod != blank %}
+              {% assign prod_title = prod.title %}
+            {% endif %}
+            {% if prod_title == blank %}
+              {% assign prod_title = "Showroom Product" %}
+            {% endif %}
 
-              {% comment %} Check Theme Editor Blocks {% endcomment %}
-              {% for block in section.blocks %}
-                {% if block.type == 'product_image_override' or block.type == 'cutout_override' %}
-                  {% if block.settings.enable_override %}
-                    {% if block.settings.product.id == product.id or block.settings.product.handle == product.handle or block.settings.product == product.handle %}
-                      {% if block.settings.reset_original %}
-                        {% assign is_reset = true %}
-                      {% else %}
-                        {% assign has_override = true %}
-                        {% assign catalog_fit = block.settings.catalog_image_fit | default: 'contain' %}
-                        {% assign display_scale = block.settings.display_scale | default: 100 %}
-                        {% assign mobile_scale = block.settings.mobile_scale | default: display_scale %}
-                        {% assign baseline_offset = block.settings.baseline_offset | default: 0 %}
-                        {% assign horizontal_offset = block.settings.horizontal_offset | default: 0 %}
-                        {% if block.settings.enable_contact_shadow != nil %}
-                          {% assign enable_contact_shadow = block.settings.enable_contact_shadow %}
-                        {% endif %}
-                        {% assign shadow_width = block.settings.shadow_width | default: 70 %}
-                        {% if block.settings.shadow_opacity != blank %}
-                          {% assign shadow_opacity = block.settings.shadow_opacity | divided_by: 100.0 %}
-                        {% endif %}
-                        {% assign shadow_softness = block.settings.shadow_softness | default: 12 %}
+            {% assign shelf_tag_title = block.settings.shelf_tag_title %}
+            {% if shelf_tag_title == blank %}
+              {% assign shelf_tag_title = prod_title %}
+            {% endif %}
 
-                        {% if block.settings.use_same_image %}
-                          {% if block.settings.showroom_image != blank %}
-                            {% assign showroom_img_url = block.settings.showroom_image | image_url: width: 800 %}
-                            {% assign catalog_img_url = showroom_img_url %}
-                            {% assign is_cutout = true %}
-                          {% elsif block.settings.catalog_image != blank %}
-                            {% assign catalog_img_url = block.settings.catalog_image | image_url: width: 800 %}
-                            {% assign showroom_img_url = catalog_img_url %}
-                            {% assign is_cutout = true %}
-                          {% elsif block.settings.cutout_image != blank %}
-                            {% assign showroom_img_url = block.settings.cutout_image | image_url: width: 800 %}
-                            {% assign catalog_img_url = showroom_img_url %}
-                            {% assign is_cutout = true %}
-                          {% endif %}
-                        {% else %}
-                          {% if block.settings.showroom_image != blank %}
-                            {% assign showroom_img_url = block.settings.showroom_image | image_url: width: 800 %}
-                            {% assign is_cutout = true %}
-                          {% elsif block.settings.cutout_image != blank %}
-                            {% assign showroom_img_url = block.settings.cutout_image | image_url: width: 800 %}
-                            {% assign is_cutout = true %}
-                          {% endif %}
+            {% assign prod_url = block.settings.product_url_override %}
+            {% if prod_url == blank and prod != blank %}
+              {% assign prod_url = prod.url %}
+            {% endif %}
+            {% if prod_url == blank %}
+              {% assign prod_url = "#" %}
+            {% endif %}
 
-                          {% if block.settings.catalog_image != blank %}
-                            {% assign catalog_img_url = block.settings.catalog_image | image_url: width: 800 %}
-                          {% endif %}
-                        {% endif %}
-                      {% endif %}
-                    {% endif %}
-                  {% endif %}
-                {% endif %}
-              {% endfor %}
+            {% assign current_variant = prod.selected_or_first_available_variant %}
+            {% assign has_compare = false %}
+            {% assign save_percent = 0 %}
 
-              {% comment %} Check Product Metafields if not overridden or reset {% endcomment %}
-              {% unless is_reset %}
-                {% if showroom_img_url == blank and product.metafields.custom.showroom_cutout != blank %}
-                  {% assign is_cutout = true %}
-                  {% assign showroom_img_url = product.metafields.custom.showroom_cutout | image_url: width: 800 %}
-                {% endif %}
-                {% if catalog_img_url == blank and product.metafields.custom.catalog_image != blank %}
-                  {% assign catalog_img_url = product.metafields.custom.catalog_image | image_url: width: 800 %}
-                {% endif %}
-              {% endunless %}
-
-              {% comment %} Approved Presets (Infrared Battle Set, Space Heater & Dough Mixer) if not overridden or reset {% endcomment %}
-              {% unless is_reset %}
-                {% if showroom_img_url == blank %}
-                  {% if product.handle contains 'infrared' or product.handle contains 'battle' or product.handle contains 'laser' or product.title contains 'Laser' or product.title contains 'Infrared' %}
-                    {% assign is_cutout = true %}
-                    {% assign showroom_img_url = 'infrared-battle-set-cutout.png' | asset_url %}
-                    {% assign shadow_width = 82 %}
-                    {% assign shadow_opacity = 0.85 %}
-                    {% assign shadow_softness = 14 %}
-                  {% elsif product.handle == 'sakerplus®-1500w-flame-effect-oscillating-space-heater' %}
-                    {% assign is_cutout = true %}
-                    {% assign showroom_img_url = 'zavelyn-cutout-space-heater.png' | asset_url %}
-                    {% assign shadow_width = 70 %}
-                    {% assign shadow_opacity = 0.72 %}
-                  {% elsif product.handle == 'zavelyn-automatic-dough-mixer-with-ferment-function' %}
-                    {% assign is_cutout = true %}
-                    {% assign showroom_img_url = 'zavelyn-cutout-dough-mixer.png' | asset_url %}
-                    {% assign shadow_width = 75 %}
-                    {% assign shadow_opacity = 0.62 %}
-                  {% endif %}
-                {% endif %}
-              {% endunless %}
-
-              {% comment %} Fallback to featured_image {% endcomment %}
-              {% if showroom_img_url == blank and product.featured_image %}
-                {% assign showroom_img_url = product.featured_image | image_url: width: 600 %}
+            {% if block.settings.use_dynamic_price and prod != blank and current_variant != blank %}
+              {% assign prod_price = current_variant.price | money %}
+              {% if current_variant.compare_at_price > current_variant.price %}
+                {% assign has_compare = true %}
+                {% assign save_percent = current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round %}
+                {% assign compare_price_text = current_variant.compare_at_price | money %}
               {% endif %}
-              {% if catalog_img_url == blank and product.featured_image %}
-                {% assign catalog_img_url = product.featured_image | image_url: width: 600 %}
-              {% endif %}
+            {% elsif block.settings.custom_price_text != blank %}
+              {% assign prod_price = block.settings.custom_price_text %}
+            {% elsif current_variant != blank %}
+              {% assign prod_price = current_variant.price | money %}
+            {% else %}
+              {% assign prod_price = "$16.99" %}
+            {% endif %}
 
-              {% capture safe_product_json %}
-              {
-                "id": {{ product.id }},
-                "title": {{ product.title | json }},
-                "handle": {{ product.handle | json }},
-                "url": {{ product.url | json }},
-                "featured_image": {{ product.featured_image | image_url: width: 600 | json }},
-                "variants": [
-                  {% for variant in product.variants %}
+            {% comment %} Cutout Image Resolution {% endcomment %}
+            {% assign is_cutout = false %}
+            {% assign showroom_img_url = '' %}
+            {% if block.settings.cutout_image != blank %}
+              {% assign is_cutout = true %}
+              {% assign showroom_img_url = block.settings.cutout_image | image_url: width: 800 %}
+            {% elsif prod.handle contains 'infrared' or prod.handle contains 'laser' %}
+              {% assign is_cutout = true %}
+              {% assign showroom_img_url = 'infrared-battle-set-cutout.png' | asset_url %}
+            {% elsif prod.featured_image != blank %}
+              {% assign showroom_img_url = prod.featured_image | image_url: width: 800 %}
+            {% else %}
+              {% assign showroom_img_url = 'https://cdn.shopify.com/s/files/1/1032/4541/4771/files/b2.webp?v=1793726274' %}
+            {% endif %}
+
+            {% assign display_scale = block.settings.display_scale | default: 100 %}
+            {% assign mobile_scale = block.settings.mobile_scale | default: display_scale %}
+            {% assign horizontal_offset = block.settings.horizontal_offset | default: 0 %}
+            {% assign baseline_offset = block.settings.baseline_offset | default: 0 %}
+            {% assign shadow_width = block.settings.shadow_width | default: 75 %}
+            {% assign shadow_opacity = block.settings.shadow_opacity | default: 70 | divided_by: 100.0 %}
+
+            {% capture safe_product_json %}
+            {
+              "id": {{ prod.id | default: active_idx | plus: 1 }},
+              "title": {{ prod_title | json }},
+              "handle": {{ prod.handle | default: '' | json }},
+              "url": {{ prod_url | json }},
+              "featured_image": {{ showroom_img_url | json }},
+              "variants": [
+                {% if prod != blank and prod.variants.size > 0 %}
+                  {% for v in prod.variants %}
                     {
-                      "id": {{ variant.id }},
-                      "title": {{ variant.title | json }},
-                      "price": {{ variant.price }},
-                      "compare_at_price": {{ variant.compare_at_price | default: 0 }},
-                      "available": {{ variant.available }},
-                      "featured_image": {% if variant.featured_image %}{{ variant.featured_image | image_url: width: 600 | json }}{% else %}null{% endif %}
+                      "id": {{ v.id }},
+                      "title": {{ v.title | json }},
+                      "price": {{ v.price }},
+                      "compare_at_price": {{ v.compare_at_price | default: 0 }},
+                      "available": {{ v.available }},
+                      "featured_image": {% if v.featured_image %}{{ v.featured_image | image_url: width: 600 | json }}{% else %}{{ showroom_img_url | json }}{% endif %}
                     }{% unless forloop.last %},{% endunless %}
                   {% endfor %}
-                ]
-              }
-              {% endcapture %}
+                {% else %}
+                  {
+                    "id": {{ active_idx | plus: 1 }},
+                    "title": "Default",
+                    "price": {{ current_variant.price | default: 1699 }},
+                    "compare_at_price": 0,
+                    "available": true,
+                    "featured_image": {{ showroom_img_url | json }}
+                  }
+                {% endif %}
+              ]
+            }
+            {% endcapture %}
 
+            <!-- Individual Product Column -->
+            <div class="zv-shelf-column" data-col-index="{{ mod_index }}" data-product-handle="{{ prod.handle }}" {{ block.shopify_attributes }}>
+              
               <!-- A. SHOWROOM 2.5D SHELF VIEW (Active in Showroom Mode) -->
               <div class="zv-showroom-view-wrap">
                 <article 
                   class="zv-shelf-item" 
-                  data-product-id="{{ product.id }}" 
-                  data-product-handle="{{ product.handle }}"
-                  data-product-url="{{ product.url }}"
+                  data-product-id="{{ prod.id | default: active_idx | plus: 1 }}" 
+                  data-product-handle="{{ prod.handle }}"
+                  data-product-url="{{ prod_url }}"
                   data-product-json="{{ safe_product_json | escape }}"
                   data-col="{{ mod_index }}"
                   {% if is_cutout and showroom_img_url != '' %}data-cutout-src="{{ showroom_img_url }}"{% endif %}
                   tabindex="0"
                   role="button"
-                  aria-label="{{ product.title | escape }} - {{ current_variant.price | money }}"
+                  aria-label="{{ prod_title | escape }} - {{ prod_price }}"
                 >
                   <div 
                     class="zv-merch-display" 
-                    style="--shadow-w: {{ shadow_width }}%; --shadow-op: {{ shadow_opacity }}; --shadow-h: {{ shadow_softness }}px;"
+                    style="--shadow-w: {{ shadow_width }}%; --shadow-op: {{ shadow_opacity }}; --shadow-h: 12px;"
                   >
                     {% if is_cutout and showroom_img_url != '' %}
                       <div 
@@ -320,128 +384,126 @@
                       >
                         <img 
                           src="{{ showroom_img_url }}" 
-                          alt="{{ product.title | escape }}" 
+                          alt="{{ prod_title | escape }}" 
                           loading="lazy" 
                           class="zv-merch-img zv-cutout-img"
                           width="320"
                           height="240"
                         >
                       </div>
-                      {% if enable_contact_shadow %}
+                      {% if section.settings.enable_shadow != false and block.settings.enable_contact_shadow != false %}
                         <div class="zv-shelf-contact-shadow" aria-hidden="true"></div>
                         <div class="zv-shelf-ambient-shadow" aria-hidden="true"></div>
                       {% endif %}
                     {% else %}
                       <div class="zv-fallback-container">
-                        {% if product.featured_image %}
-                          <img 
-                            src="{{ product.featured_image | image_url: width: 480 }}" 
-                            alt="{{ product.title | escape }}" 
-                            loading="lazy" 
-                            class="zv-merch-img zv-fallback-img"
-                            width="240"
-                            height="240"
-                          >
-                        {% else %}
-                          {{ 'product-1' | placeholder_svg_tag: 'zv-merch-img' }}
-                        {% endif %}
+                        <img 
+                          src="{{ showroom_img_url }}" 
+                          alt="{{ prod_title | escape }}" 
+                          loading="lazy" 
+                          class="zv-merch-img zv-fallback-img"
+                          width="240"
+                          height="240"
+                        >
                       </div>
-                      <div class="zv-shelf-contact-shadow" style="--shadow-w: 70%; --shadow-op: 0.22;"></div>
+                      {% if section.settings.enable_shadow != false %}
+                        <div class="zv-shelf-contact-shadow" style="--shadow-w: 70%; --shadow-op: 0.22;"></div>
+                      {% endif %}
                     {% endif %}
                   </div>
                 </article>
 
-                <!-- Shelf-Edge Retail Price Tag (Option A: Attached to Fascia Rail) -->
-                {% assign display_short_title = product.title %}
-                {% assign t_low = product.title | downcase %}
-                {% if t_low contains 'infrared' or t_low contains 'battle' or t_low contains 'laser' %}
-                  {% assign display_short_title = "Infrared Battle Set" %}
-                {% elsif product.title.size > 24 %}
-                  {% assign display_short_title = product.title | truncatewords: 3, "" %}
-                {% endif %}
-
-                <div 
-                  class="zv-shelf-clip-tag" 
-                  data-product-id="{{ product.id }}"
-                  data-product-json="{{ safe_product_json | escape }}"
-                  tabindex="0"
-                  role="button"
-                  aria-label="Inspect {{ display_short_title | escape }} - {{ current_variant.price | money }}"
-                >
-                  <div class="zv-tag-clip-bracket" aria-hidden="true">
-                    <div class="zv-clip-rivet"></div>
-                  </div>
-                  <div class="zv-tag-card">
-                    <div class="zv-tag-meta-row">
-                      <span class="zv-tag-dept">TRYMALORA</span>
-                      {% if has_compare %}
-                        <span class="zv-tag-badge sale">-{{ save_percent }}%</span>
-                      {% else %}
-                        <span class="zv-tag-badge">TOP PICK</span>
+                <!-- Shelf-Edge Retail Price Tag (Attached to Fascia Rail) -->
+                {% if section.settings.enable_retail_tag != false %}
+                  <div 
+                    class="zv-shelf-clip-tag" 
+                    data-product-id="{{ prod.id | default: active_idx | plus: 1 }}"
+                    data-product-json="{{ safe_product_json | escape }}"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Inspect {{ shelf_tag_title | escape }} - {{ prod_price }}"
+                  >
+                    <div class="zv-tag-clip-bracket" aria-hidden="true">
+                      <div class="zv-clip-rivet"></div>
+                    </div>
+                    <div class="zv-tag-card">
+                      <div class="zv-tag-meta-row">
+                        <span class="zv-tag-dept">{{ block.settings.merchandising_label | default: "TRYMALORA" }}</span>
+                        {% if block.settings.short_badge != blank %}
+                          <span class="zv-tag-badge">{{ block.settings.short_badge }}</span>
+                        {% elsif has_compare %}
+                          <span class="zv-tag-badge sale">-{{ save_percent }}%</span>
+                        {% else %}
+                          <span class="zv-tag-badge">TOP PICK</span>
+                        {% endif %}
+                      </div>
+                      <div class="zv-tag-title" title="{{ shelf_tag_title | escape }}">
+                        {{ shelf_tag_title }}
+                      </div>
+                      <div class="zv-tag-pricing-row">
+                        <div class="zv-tag-price-wrap">
+                          <span class="zv-tag-price-curr">{{ prod_price }}</span>
+                          <span class="zv-tag-unit">USD</span>
+                        </div>
+                        <div class="zv-tag-rating">
+                          <span class="zv-tag-stars">★★★★★</span>
+                          <span class="zv-tag-rating-val">{{ block.settings.rating_text | default: "4.9" }}</span>
+                        </div>
+                      </div>
+                      {% if section.settings.enable_quick_look != false %}
+                        <div class="zv-tag-action-row">
+                          <span class="zv-tag-action-hint">{{ block.settings.shelf_tag_subtext | default: "Quick Look · Inspect ⚡" }}</span>
+                        </div>
                       {% endif %}
                     </div>
-                    <div class="zv-tag-title" title="{{ display_short_title | escape }}">
-                      {{ display_short_title }}
-                    </div>
-                    <div class="zv-tag-pricing-row">
-                      <div class="zv-tag-price-wrap">
-                        <span class="zv-tag-price-curr">{{ current_variant.price | money }}</span>
-                        <span class="zv-tag-unit">USD</span>
-                      </div>
-                      <div class="zv-tag-rating">
-                        <span class="zv-tag-stars">★★★★★</span>
-                        <span class="zv-tag-rating-val">4.9</span>
-                      </div>
-                    </div>
-                    <div class="zv-tag-action-row">
-                      <span class="zv-tag-action-hint">Quick Look &middot; Inspect ⚡</span>
-                    </div>
                   </div>
-                </div>
+                {% endif %}
               </div>
 
               <!-- B. CATALOG GRID CARD VIEW (Active in Grid Mode) -->
               <div class="zv-catalog-view-wrap">
-                <div class="zv-cat-card" data-product-id="{{ product.id }}">
-                  <a href="{{ product.url }}" class="zv-cat-card-media" aria-label="{{ product.title | escape }}">
+                <div class="zv-cat-card" data-product-id="{{ prod.id | default: active_idx | plus: 1 }}">
+                  <a href="{{ prod_url }}" class="zv-cat-card-media" aria-label="{{ prod_title | escape }}">
                     <img 
-                      src="{{ catalog_img_url }}" 
-                      alt="{{ product.title | escape }}" 
+                      src="{{ showroom_img_url }}" 
+                      alt="{{ prod_title | escape }}" 
                       loading="lazy" 
-                      width="400"
-                      height="400"
+                      width="400" 
+                      height="400" 
                       class="zv-cat-card-img" 
-                      style="object-fit: {{ catalog_fit }};"
+                      style="object-fit: contain;"
                     >
-                    {% if has_compare %}
+                    {% if block.settings.short_badge != blank %}
+                      <span class="zv-cat-sale-badge">{{ block.settings.short_badge }}</span>
+                    {% elsif has_compare %}
                       <span class="zv-cat-sale-badge">SAVE {{ save_percent }}%</span>
                     {% endif %}
                   </a>
                   <div class="zv-cat-card-body">
                     <div class="zv-cat-rating">
                       <span class="zv-stars">★★★★★</span>
-                      <span class="zv-cat-rating-num">4.9</span>
-                      <span class="zv-cat-review-count">({{ product.id | modulo: 800 | plus: 240 }})</span>
+                      <span class="zv-cat-rating-num">{{ block.settings.rating_text | default: "4.9" }}</span>
+                      <span class="zv-cat-review-count">{{ block.settings.review_count_text | default: "(2,418)" }}</span>
                     </div>
                     <h3 class="zv-cat-card-title">
-                      <a href="{{ product.url }}" title="{{ product.title | escape }}">{{ product.title }}</a>
+                      <a href="{{ prod_url }}" title="{{ prod_title | escape }}">{{ prod_title }}</a>
                     </h3>
                     <div class="zv-cat-price-row">
-                      <span class="zv-cat-price-curr">{{ current_variant.price | money }}</span>
-                      {% if has_compare %}
-                        <span class="zv-cat-price-old">{{ current_variant.compare_at_price | money }}</span>
+                      <span class="zv-cat-price-curr">{{ prod_price }}</span>
+                      {% if compare_price_text != blank %}
+                        <span class="zv-cat-price-old">{{ compare_price_text }}</span>
                       {% endif %}
                     </div>
                     <div class="zv-cat-card-actions">
-                      {% if product.available %}
+                      {% if current_variant != blank and current_variant.available %}
                         <button type="button" class="zv-cat-atc-btn" onclick="zvShowroomDirectAddToCart('{{ current_variant.id }}', this)">
                           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
                           <span>Add to Cart</span>
                         </button>
                       {% else %}
-                        <button type="button" class="zv-cat-atc-btn sold-out" disabled>
-                          <span>Sold Out</span>
-                        </button>
+                        <a href="{{ prod_url }}" class="zv-cat-atc-btn">
+                          <span>View Product</span>
+                        </a>
                       {% endif %}
                     </div>
                   </div>
@@ -450,171 +512,38 @@
 
             </div> <!-- /.zv-shelf-column -->
 
-            {% comment %} Close Mobile Pair every 2 products or at end of loop or at tier boundary {% endcomment %}
-            {% if mod2_index == 1 or forloop.last or mod_index == 3 %}
+            {% assign next_active = active_idx | plus: 1 %}
+            {% assign is_last_item = false %}
+            {% if next_active == valid_blocks_count %}
+              {% assign is_last_item = true %}
+            {% endif %}
+
+            {% comment %} Close Mobile Shelf Pair {% endcomment %}
+            {% if mod2_index == 1 or is_last_item or mod_index == max_shelf_col %}
                 </div> <!-- /.zv-pair-products -->
               </div> <!-- /.zv-shelf-pair -->
             {% endif %}
 
-            {% comment %} Close Desktop Tier every 4 products or at end of loop {% endcomment %}
-            {% if mod_index == 3 or forloop.last %}
+            {% comment %} Close Desktop Shelf Tier {% endcomment %}
+            {% if mod_index == max_shelf_col or is_last_item %}
                     </div> <!-- /.zv-shelf-columns-grid -->
                   </div> <!-- /.zv-shelf-stage -->
                 </div> <!-- /.zv-shelf-tier -->
             {% endif %}
 
-          {% endfor %}
+            {% assign active_idx = active_idx | plus: 1 %}
+          {% endif %}
+        {% endfor %}
 
-        {% else %}
-          <!-- FLAGSHIP SHOWROOM DISPLAY (SHOWCASE REAL PRODUCT CUTOUT & RETAIL TAG) -->
-          <div class="zv-shelf-tier" data-tier-index="0" data-tier-count="1">
-            <div class="zv-fixture-lightbar" aria-hidden="true">
-              <div class="zv-spotlight-beam" style="left: 50%;"></div>
-            </div>
-
-            <div class="zv-shelf-stage">
-              <!-- Continuous Wooden Shelf Plank -->
-              <div class="zv-continuous-wooden-shelf zv-shelf-desktop-only zv-shelf-force-show" aria-hidden="true">
-                <div class="zv-wood-top-surface">
-                  <div class="zv-wood-grain-texture"></div>
-                  <div class="zv-wood-top-highlight"></div>
-                </div>
-                <div class="zv-wood-front-fascia">
-                  <div class="zv-wood-bevel-edge"></div>
-                  <div class="zv-wood-front-grain"></div>
-                  <div class="zv-wood-bottom-bevel"></div>
-                </div>
-                <div class="zv-wood-under-shadow"></div>
-              </div>
-
-              {% assign flagship_img = "https://cdn.shopify.com/s/files/1/1032/4541/4771/files/photo_2026-11-03_04-05-43.jpg?v=1793703987" %}
-              {% assign flagship_title = "Infrared Laser Battle Set" %}
-              {% assign flagship_price = "$129.00" %}
-              {% assign flagship_url = "/products/kids-infrared-battle-blaster-set-with-target-projector" %}
-
-              {% capture flagship_product_json %}
-              {
-                "id": 15635841057139,
-                "title": "Infrared Laser Battle Set",
-                "handle": "kids-infrared-battle-blaster-set-with-target-projector",
-                "url": "/products/kids-infrared-battle-blaster-set-with-target-projector",
-                "featured_image": "{{ flagship_img }}",
-                "variants": [
-                  {
-                    "id": 67297621934451,
-                    "title": "1 Set",
-                    "price": 12900,
-                    "compare_at_price": 25800,
-                    "available": true,
-                    "featured_image": "{{ flagship_img }}"
-                  },
-                  {
-                    "id": 67297622131059,
-                    "title": "2 Sets",
-                    "price": 24510,
-                    "compare_at_price": 51600,
-                    "available": true,
-                    "featured_image": "{{ flagship_img }}"
-                  },
-                  {
-                    "id": 67297622163827,
-                    "title": "3 Sets",
-                    "price": 32895,
-                    "compare_at_price": 77400,
-                    "available": true,
-                    "featured_image": "{{ flagship_img }}"
-                  }
-                ]
-              }
-              {% endcapture %}
-
-              <div class="zv-shelf-columns-grid zv-grid--1">
-                <div class="zv-shelf-column">
-                  <div class="zv-showroom-view-wrap">
-                    
-                    <!-- 1. Real Product Cutout Standing on Shelf -->
-                    <article 
-                      class="zv-shelf-item" 
-                      data-product-id="15635841057139"
-                      data-product-handle="kids-infrared-battle-blaster-set-with-target-projector"
-                      data-product-url="{{ flagship_url }}"
-                      data-product-json="{{ flagship_product_json | escape }}"
-                      data-cutout-src="{{ flagship_img }}"
-                      tabindex="0" 
-                      role="button"
-                      aria-label="{{ flagship_title }} - {{ flagship_price }}"
-                    >
-                      <div class="zv-merch-display" style="--shadow-w: 82%; --shadow-op: 0.78; --shadow-h: 14px;">
-                        <div class="zv-cutout-container">
-                          <img 
-                            src="{{ flagship_img }}" 
-                            alt="{{ flagship_title | escape }}" 
-                            class="zv-merch-img zv-cutout-img"
-                            loading="eager"
-                            width="340"
-                            height="250"
-                          >
-                        </div>
-                        <!-- Realistic 2-Layer Contact & Ambient Shadow -->
-                        <div class="zv-shelf-contact-shadow" aria-hidden="true"></div>
-                        <div class="zv-shelf-ambient-shadow" aria-hidden="true"></div>
-                      </div>
-                    </article>
-
-                    <!-- 2. Shelf-Edge Retail Price Tag (Option A: Attached to Fascia Rail) -->
-                    <div 
-                      class="zv-shelf-clip-tag" 
-                      data-product-id="15635841057139"
-                      data-product-json="{{ flagship_product_json | escape }}"
-                      tabindex="0"
-                      role="button"
-                      aria-label="Inspect {{ flagship_title }} - {{ flagship_price }}"
-                    >
-                      <!-- Metallic Clip Bracket Hooking over Front Shelf Edge -->
-                      <div class="zv-tag-clip-bracket" aria-hidden="true">
-                        <div class="zv-clip-rivet"></div>
-                      </div>
-
-                      <!-- Retail Price Tag Plate -->
-                      <div class="zv-tag-card">
-                        <div class="zv-tag-meta-row">
-                          <span class="zv-tag-dept">TRYMALORA</span>
-                          <span class="zv-tag-badge">TOP PICK</span>
-                        </div>
-                        <div class="zv-tag-title" title="{{ flagship_title }}">
-                          {{ flagship_title }}
-                        </div>
-                        <div class="zv-tag-pricing-row">
-                          <div class="zv-tag-price-wrap">
-                            <span class="zv-tag-price-curr">{{ flagship_price }}</span>
-                            <span class="zv-tag-unit">USD</span>
-                          </div>
-                          <div class="zv-tag-rating">
-                            <span class="zv-tag-stars">★★★★★</span>
-                            <span class="zv-tag-rating-val">4.9</span>
-                          </div>
-                        </div>
-                        <div class="zv-tag-action-row">
-                          <span class="zv-tag-action-hint">Quick Look &middot; Inspect ⚡</span>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        {% endif %}
-
-        <!-- Accessible Pagination -->
-        {% if paginate.pages > 1 %}
-          <div class="zv-showroom-pagination">
-            {{ paginate | default_pagination }}
-          </div>
-        {% endif %}
-
-      {% endpaginate %}
+      {% else %}
+        {% comment %} EMPTY / ONBOARDING STATE IN THEME EDITOR {% endcomment %}
+        <div style="text-align: center; padding: 60px 20px; background: #FFFFFF; border-radius: 12px; border: 1.5px dashed var(--zv-pdp-line, #EAD7DD); margin: 40px auto; max-width: 600px;">
+          <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #2B1B24;">🎨 Physical Showroom Is Ready</h3>
+          <p style="font-size: 14px; color: #7A6670; line-height: 1.6; margin-bottom: 20px;">
+            In the Shopify Theme Editor sidebar, click <strong>"Add Showroom Product"</strong> below to place your first background-removed product on the architectural shelf.
+          </p>
+        </div>
+      {% endif %}
 
     </div>
   </main>
@@ -623,118 +552,124 @@
        3. POSITIONAL ZOOM: SPATIAL PRODUCT INSPECTION BAY (DESKTOP)
        Anchored directly to the selected shelf item's on-screen coordinates
        ======================================================================= -->
-  <div class="zv-spatial-inspect-bay" id="zvSpatialInspectBay" aria-hidden="true" role="dialog" aria-modal="true">
-    
-    <!-- Atmospheric Showroom Dimming Backdrop -->
-    <div class="zv-inspect-backdrop" id="zvInspectBackdrop"></div>
+  {% if section.settings.enable_inspect != false %}
+    <div class="zv-spatial-inspect-bay" id="zvSpatialInspectBay" aria-hidden="true" role="dialog" aria-modal="true">
+      
+      <!-- Atmospheric Showroom Dimming Backdrop -->
+      <div class="zv-inspect-backdrop" id="zvInspectBackdrop"></div>
 
-    <!-- Active Inspection Stage Container -->
-    <div class="zv-inspect-stage-wrap" id="zvInspectStageWrap">
+      <!-- Active Inspection Stage Container -->
+      <div class="zv-inspect-stage-wrap" id="zvInspectStageWrap">
 
-      <!-- Zoomed Product Focal Image (FLIP-animated from shelf position) -->
-      <div class="zv-inspect-focal-frame" id="zvInspectFocalFrame">
-        <div class="zv-focal-spotlight"></div>
-        <img src="" alt="" width="500" height="500" class="zv-focal-img" id="zvInspectFocalImg">
-        <div class="zv-focal-ground-shadow"></div>
-      </div>
-
-      <!-- Anchored Product Information Panel (Slides out beside the product) -->
-      <div class="zv-inspect-anchored-panel" id="zvInspectAnchoredPanel">
-        
-        <!-- Header & Close Button -->
-        <div class="zv-anchored-header">
-          <div class="zv-badge zv-badge-forest" style="font-size: 11px;">
-            <span>🏛️ SPATIAL SHELF INSPECTION</span>
-          </div>
-          <button type="button" class="zv-anchored-close-btn" id="zvInspectCloseBtn" aria-label="Return product to shelf">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-          </button>
+        <!-- Zoomed Product Focal Image (FLIP-animated from shelf position) -->
+        <div class="zv-inspect-focal-frame" id="zvInspectFocalFrame">
+          <div class="zv-focal-spotlight"></div>
+          <img src="" alt="" width="500" height="500" class="zv-focal-img" id="zvInspectFocalImg">
+          <div class="zv-focal-ground-shadow"></div>
         </div>
 
-        <!-- Product Identity -->
-        <h2 class="zv-anchored-title" id="zvInspectTitle">Product Title</h2>
-
-        <!-- Pricing & Value Strip -->
-        <div class="zv-anchored-price-strip">
-          <span class="zv-anchored-price-curr" id="zvInspectPriceCurr">$0.00</span>
-          <span class="zv-anchored-price-old" id="zvInspectPriceOld">$0.00</span>
-          <span class="zv-badge zv-badge-lime" id="zvInspectSaveBadge">SAVE 20%</span>
-        </div>
-
-        <!-- Verified Value Props -->
-        <ul class="zv-anchored-benefits-list">
-          <li>
-            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span>In stock &middot; Dispatches directly from US warehouse</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span>30-Day risk-free home trial with 100% money-back guarantee</span>
-          </li>
-        </ul>
-
-        <!-- Variant Options Pills Container -->
-        <div class="zv-anchored-variants" id="zvInspectVariants"></div>
-
-        <!-- Commerce Action Buttons -->
-        <div class="zv-anchored-actions">
-          <button type="button" class="zv-btn zv-btn-primary zv-btn-block zv-btn-lg" id="zvInspectAtcBtn">
-            <span>ADD TO CART ➔</span>
-          </button>
+        <!-- Anchored Product Information Panel (Slides out beside the product) -->
+        <div class="zv-inspect-anchored-panel" id="zvInspectAnchoredPanel">
           
-          <a href="/products/kids-infrared-battle-blaster-set-with-target-projector" class="zv-anchored-pdp-link" id="zvInspectPdpLink">
-            <span>View Full Product Page &amp; Video Reviews &rarr;</span>
-          </a>
-        </div>
+          <!-- Header & Close Button -->
+          <div class="zv-anchored-header">
+            <div class="zv-badge zv-badge-forest" style="font-size: 11px;">
+              <span>🏛️ SPATIAL SHELF INSPECTION</span>
+            </div>
+            <button type="button" class="zv-anchored-close-btn" id="zvInspectCloseBtn" aria-label="Return product to shelf">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
 
-        <!-- Safe Shipping & Security Guarantee -->
-        <div class="zv-anchored-trust-footer">
-          <span>🔒 256-bit Encrypted Checkout</span>
-          <span>&bull;</span>
-          <span>🚚 Fast 3-5 Day Delivery</span>
+          <!-- Product Identity -->
+          <h2 class="zv-anchored-title" id="zvInspectTitle">Product Title</h2>
+
+          <!-- Pricing & Value Strip -->
+          <div class="zv-anchored-price-strip">
+            <span class="zv-anchored-price-curr" id="zvInspectPriceCurr">$0.00</span>
+            <span class="zv-anchored-price-old" id="zvInspectPriceOld">$0.00</span>
+            <span class="zv-badge zv-badge-lime" id="zvInspectSaveBadge">SAVE 20%</span>
+          </div>
+
+          <!-- Verified Value Props -->
+          <ul class="zv-anchored-benefits-list">
+            <li>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>In stock &middot; Dispatches directly from US warehouse</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>30-Day risk-free home trial with 100% money-back guarantee</span>
+            </li>
+          </ul>
+
+          <!-- Variant Options Pills Container -->
+          <div class="zv-anchored-variants" id="zvInspectVariants"></div>
+
+          <!-- Commerce Action Buttons -->
+          <div class="zv-anchored-actions">
+            <button type="button" class="zv-btn zv-btn-primary zv-btn-block zv-btn-lg" id="zvInspectAtcBtn">
+              <span>ADD TO CART ➔</span>
+            </button>
+            
+            <a href="#" class="zv-anchored-pdp-link" id="zvInspectPdpLink">
+              <span>View Full Product Page &amp; Video Reviews &rarr;</span>
+            </a>
+          </div>
+
+          <!-- Safe Shipping & Security Guarantee -->
+          <div class="zv-anchored-trust-footer">
+            <span>🔒 256-bit Encrypted Checkout</span>
+            <span>&bull;</span>
+            <span>🚚 Fast 3-5 Day Delivery</span>
+          </div>
+
         </div>
 
       </div>
-
     </div>
-  </div>
+  {% endif %}
 
   <!-- =======================================================================
        4. MOBILE SHOWROOM BOTTOM SHEET (< 768px Viewports)
        ======================================================================= -->
-  <div class="zv-mobile-sheet-overlay" id="zvMobileSheetOverlay" aria-hidden="true">
-    <div class="zv-mobile-sheet" id="zvMobileSheet">
-      <div class="zv-mobile-sheet-handle"></div>
-      
-      <div class="zv-mobile-sheet-header">
-        <button type="button" class="zv-mobile-sheet-close" id="zvMobileSheetClose" aria-label="Close bottom sheet">&times;</button>
-      </div>
-
-      <div class="zv-mobile-sheet-body">
-        <div class="zv-mobile-sheet-img-wrap">
-          <img src="" alt="" width="400" height="400" id="zvMobileSheetImg">
-        </div>
+  {% if section.settings.enable_inspect != false %}
+    <div class="zv-mobile-sheet-overlay" id="zvMobileSheetOverlay" aria-hidden="true">
+      <div class="zv-mobile-sheet" id="zvMobileSheet">
+        <div class="zv-mobile-sheet-handle"></div>
         
-        <h3 id="zvMobileSheetTitle">Product Title</h3>
-        
-        <div class="zv-mobile-sheet-price-row">
-          <span class="zv-mobile-sheet-price" id="zvMobileSheetPrice">$0.00</span>
-          <span class="zv-mobile-sheet-compare" id="zvMobileSheetCompare">$0.00</span>
-          <span class="zv-badge zv-badge-lime" id="zvMobileSheetSave">SAVE 20%</span>
+        <div class="zv-mobile-sheet-header">
+          <button type="button" class="zv-mobile-sheet-close" id="zvMobileSheetClose" aria-label="Close bottom sheet">&times;</button>
         </div>
 
-        <div class="zv-mobile-sheet-variants" id="zvMobileSheetVariants"></div>
+        <div class="zv-mobile-sheet-body">
+          <div class="zv-mobile-sheet-img-wrap">
+            <img src="" alt="" width="400" height="400" id="zvMobileSheetImg">
+          </div>
+          
+          <h3 id="zvMobileSheetTitle">Product Title</h3>
+          
+          <div class="zv-mobile-sheet-price-row">
+            <span class="zv-mobile-sheet-price" id="zvMobileSheetPrice">$0.00</span>
+            <span class="zv-mobile-sheet-compare" id="zvMobileSheetCompare">$0.00</span>
+            <span class="zv-badge zv-badge-lime" id="zvMobileSheetSave">SAVE 20%</span>
+          </div>
 
-        <button type="button" class="zv-btn zv-btn-primary zv-btn-block" id="zvMobileSheetAtcBtn" style="margin-top: 16px;">
-          <span>ADD TO CART ➔</span>
-        </button>
+          <div class="zv-mobile-sheet-variants" id="zvMobileSheetVariants"></div>
 
-        <a href="/products/kids-infrared-battle-blaster-set-with-target-projector" class="zv-mobile-sheet-pdp" id="zvMobileSheetPdpLink">
-          <span>View Full Product Page &amp; Video Reviews &rarr;</span>
-        </a>
+          <button type="button" class="zv-btn zv-btn-primary zv-btn-block" id="zvMobileSheetAtcBtn" style="margin-top: 16px;">
+            <span>ADD TO CART ➔</span>
+          </button>
+
+          <a href="#" class="zv-mobile-sheet-pdp" id="zvMobileSheetPdpLink">
+            <span>View Full Product Page &amp; Video Reviews &rarr;</span>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
+  {% endif %}
+
+
 
 </div>
 
@@ -742,68 +677,306 @@
 
 {% schema %}
 {
-  "name": "Zavelyn V4 Showroom",
+  "name": "TRYMALORA Showroom",
+  "tag": "section",
+  "class": "section-trymalora-showroom",
   "settings": [
     {
-      "type": "select",
-      "id": "shelf_style",
-      "label": "Default Shelf Style",
-      "options": [
-        { "value": "wood", "label": "Natural Oak Wood" },
-        { "value": "metal", "label": "Industrial Steel Metal" },
-        { "value": "boutique", "label": "Minimalist White Boutique" },
-        { "value": "tech", "label": "Dark Obsidian Tech" },
-        { "value": "floating", "label": "Floating Minimalist Glass" }
-      ],
-      "default": "wood"
-    }
+      "type": "header",
+      "content": "A. Header & Hero Display"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow Text",
+      "default": "🏛️ TRYMALORA RETAIL ENVIRONMENT"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Department / Badge Text",
+      "default": "Architecture Department"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Showroom Heading",
+      "default": "TRYMALORA Physical Showroom"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Showroom Description",
+      "default": "Step into our physical retail showroom. Products are displayed on authentic architectural shelves. Click any item to pull it forward for spatial inspection and instant checkout."
+    },
+    {
+      "type": "text",
+      "id": "items_count_text",
+      "label": "Items Count Override",
+      "info": "Leave blank to automatically count visible product blocks"
+    },
+    {
+      "type": "text",
+      "id": "toggle_showroom_label",
+      "label": "Showroom Button Label",
+      "default": "Showroom"
+    },
+    {
+      "type": "text",
+      "id": "toggle_grid_label",
+      "label": "Grid Button Label",
+      "default": "Grid"
+    },
+    {
+      "type": "header",
+      "content": "B. Layout & Architectural Dimensions"
+    },
+    {
+      "type": "range",
+      "id": "desktop_columns",
+      "label": "Desktop Products Per Shelf Row",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "mobile_columns",
+      "label": "Mobile Products Per Shelf Row",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "product_gap",
+      "label": "Horizontal Product Gap",
+      "min": 10,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "shelf_gap",
+      "label": "Vertical Shelf Gap",
+      "min": 40,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "shelf_height",
+      "label": "Shelf Plank Height",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "price_tag_width",
+      "label": "Price Tag Width",
+      "min": 140,
+      "max": 260,
+      "step": 5,
+      "unit": "px",
+      "default": 180
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_shadow",
+      "label": "Enable 2-Layer Contact Shadow",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_retail_tag",
+      "label": "Enable Shelf-Edge Channel Price Tags",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_quick_look",
+      "label": "Enable Quick Look Action Hint",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_inspect",
+      "label": "Enable Spatial Inspection Modal",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "C. Theme & Color Styling"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "#FAF6F3"
+    },
+    {
+      "type": "color",
+      "id": "shelf_wood_color",
+      "label": "Shelf Wood Top Surface Color",
+      "default": "#C89D66"
+    },
+    {
+      "type": "color",
+      "id": "shelf_fascia_color",
+      "label": "Shelf Front Fascia Color",
+      "default": "#A67C46"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Headings & Text Color",
+      "default": "#2B1B24"
+    },
+    {
+      "type": "color",
+      "id": "badge_color",
+      "label": "Badge Accent Color",
+      "default": "#6B1E46"
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price Text Color",
+      "default": "#191919"
+    },
+    {
+      "type": "color",
+      "id": "tag_bg_color",
+      "label": "Price Tag Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "tag_border_color",
+      "label": "Price Tag Border",
+      "default": "#EAD7DD"
+    },
+    {
+      "type": "color",
+      "id": "button_toggle_color",
+      "label": "View Switcher Button Color",
+      "default": "#6B1E46"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider & Fixture Border",
+      "default": "#EAD7DD"
+    },
+
   ],
   "blocks": [
     {
-      "type": "product_image_override",
-      "name": "Catalog & Showroom Image",
+      "type": "showroom_product",
+      "name": "Showroom Product",
       "settings": [
+        {
+          "type": "header",
+          "content": "Product Assignment"
+        },
         {
           "type": "product",
           "id": "product",
-          "label": "Choose Target Product"
+          "label": "Select Shopify Product"
         },
         {
           "type": "checkbox",
-          "id": "enable_override",
-          "label": "Enable Override",
+          "id": "show_product",
+          "label": "Show on Showroom Shelf",
           "default": true
         },
         {
-          "type": "image_picker",
-          "id": "catalog_image",
-          "label": "Catalog Listing Image"
+          "type": "text",
+          "id": "custom_display_title",
+          "label": "Custom Display Title",
+          "info": "Overrides product title in showroom. If empty, uses product title."
         },
         {
-          "type": "image_picker",
-          "id": "showroom_image",
-          "label": "Showroom Shelf Image (Transparent Cutout)"
+          "type": "text",
+          "id": "short_badge",
+          "label": "Badge Tag",
+          "info": "e.g. TOP PICK, -50%, BEST VALUE, NEW"
+        },
+        {
+          "type": "text",
+          "id": "merchandising_label",
+          "label": "Brand Label on Tag",
+          "default": "TRYMALORA"
+        },
+        {
+          "type": "header",
+          "content": "Pricing & Reviews"
         },
         {
           "type": "checkbox",
-          "id": "use_same_image",
-          "label": "Use same image for both",
-          "default": false
+          "id": "use_dynamic_price",
+          "label": "Use Dynamic Price from Shopify Product",
+          "default": true
         },
         {
-          "type": "select",
-          "id": "catalog_image_fit",
-          "label": "Catalog Image Fit",
-          "options": [
-            { "value": "contain", "label": "Contain (Recommended for cutouts/white)" },
-            { "value": "cover", "label": "Cover (Fill entire card)" }
-          ],
-          "default": "contain"
+          "type": "text",
+          "id": "custom_price_text",
+          "label": "Custom Price Override",
+          "info": "e.g. $16.99 (Used when dynamic price is unchecked)"
+        },
+        {
+          "type": "text",
+          "id": "rating_text",
+          "label": "Rating Score",
+          "default": "4.9"
+        },
+        {
+          "type": "text",
+          "id": "review_count_text",
+          "label": "Review Count Text",
+          "default": "(2,418)"
+        },
+        {
+          "type": "text",
+          "id": "shelf_tag_title",
+          "label": "Shelf Tag Title",
+          "info": "Short title displayed on the shelf-edge clip tag"
+        },
+        {
+          "type": "text",
+          "id": "shelf_tag_subtext",
+          "label": "Shelf Tag Subtext",
+          "default": "Quick Look · Inspect ⚡"
+        },
+        {
+          "type": "url",
+          "id": "product_url_override",
+          "label": "Product URL Override",
+          "info": "Leave blank to link directly to the product detail page"
+        },
+        {
+          "type": "header",
+          "content": "Cutout Image & Real Grounding"
+        },
+        {
+          "type": "image_picker",
+          "id": "cutout_image",
+          "label": "Cutout Image (Transparent Background PNG/WebP)",
+          "info": "Upload your background-removed product image. Sits grounded directly on the shelf plank."
         },
         {
           "type": "range",
           "id": "display_scale",
-          "label": "Showroom Product Scale (Desktop)",
+          "label": "Cutout Scale (Desktop)",
           "min": 50,
           "max": 150,
           "step": 5,
@@ -813,7 +986,7 @@
         {
           "type": "range",
           "id": "mobile_scale",
-          "label": "Showroom Mobile Scale Override",
+          "label": "Cutout Scale (Mobile)",
           "min": 50,
           "max": 150,
           "step": 5,
@@ -833,7 +1006,7 @@
         {
           "type": "range",
           "id": "baseline_offset",
-          "label": "Vertical / Baseline Offset (Grounding)",
+          "label": "Baseline / Grounding Offset",
           "min": -50,
           "max": 50,
           "step": 2,
@@ -843,102 +1016,7 @@
         {
           "type": "checkbox",
           "id": "enable_contact_shadow",
-          "label": "Contact Shadow Enable",
-          "default": true
-        },
-        {
-          "type": "range",
-          "id": "shadow_width",
-          "label": "Shadow Size / Width",
-          "min": 30,
-          "max": 100,
-          "step": 5,
-          "unit": "%",
-          "default": 70
-        },
-        {
-          "type": "range",
-          "id": "shadow_opacity",
-          "label": "Shadow Opacity",
-          "min": 10,
-          "max": 100,
-          "step": 5,
-          "unit": "%",
-          "default": 70
-        },
-        {
-          "type": "range",
-          "id": "shadow_softness",
-          "label": "Shadow Softness / Height",
-          "min": 4,
-          "max": 30,
-          "step": 2,
-          "unit": "px",
-          "default": 12
-        },
-        {
-          "type": "checkbox",
-          "id": "reset_original",
-          "label": "Reset to Original Product Image",
-          "default": false,
-          "info": "When checked, bypasses overrides and falls back to original Shopify product featured image"
-        }
-      ]
-    },
-    {
-      "type": "cutout_override",
-      "name": "Cutout Override",
-      "settings": [
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Target Product"
-        },
-        {
-          "type": "image_picker",
-          "id": "cutout_image",
-          "label": "Transparent Cutout Image (PNG/WebP)"
-        },
-        {
-          "type": "checkbox",
-          "id": "enable_override",
-          "label": "Enable Cutout Override",
-          "default": true
-        },
-        {
-          "type": "range",
-          "id": "display_scale",
-          "label": "Display Scale",
-          "min": 50,
-          "max": 150,
-          "step": 5,
-          "unit": "%",
-          "default": 100
-        },
-        {
-          "type": "range",
-          "id": "baseline_offset",
-          "label": "Baseline Offset (Grounding)",
-          "min": -50,
-          "max": 50,
-          "step": 2,
-          "unit": "px",
-          "default": 0
-        },
-        {
-          "type": "range",
-          "id": "horizontal_offset",
-          "label": "Horizontal Offset",
-          "min": -50,
-          "max": 50,
-          "step": 2,
-          "unit": "px",
-          "default": 0
-        },
-        {
-          "type": "checkbox",
-          "id": "enable_contact_shadow",
-          "label": "Enable Contact Shadow",
+          "label": "Enable Grounded Contact Shadow",
           "default": true
         },
         {
@@ -949,7 +1027,7 @@
           "max": 100,
           "step": 5,
           "unit": "%",
-          "default": 70
+          "default": 75
         },
         {
           "type": "range",
@@ -962,22 +1040,123 @@
           "default": 70
         },
         {
-          "type": "range",
-          "id": "shadow_softness",
-          "label": "Shadow Softness / Height",
-          "min": 4,
-          "max": 30,
-          "step": 2,
-          "unit": "px",
-          "default": 12
+          "type": "header",
+          "content": "Layout & Ordering"
+        },
+        {
+          "type": "select",
+          "id": "row_assignment",
+          "label": "Shelf Tier Assignment",
+          "options": [
+            { "value": "auto", "label": "Auto-flow" },
+            { "value": "shelf_1", "label": "Shelf Tier 1 (Top)" },
+            { "value": "shelf_2", "label": "Shelf Tier 2 (Middle)" },
+            { "value": "shelf_3", "label": "Shelf Tier 3 (Bottom)" }
+          ],
+          "default": "auto"
+        },
+        {
+          "type": "select",
+          "id": "desktop_span",
+          "label": "Desktop Column Span",
+          "options": [
+            { "value": "1", "label": "1 Column (Standard)" },
+            { "value": "2", "label": "2 Columns (Featured Wide)" }
+          ],
+          "default": "1"
+        },
+        {
+          "type": "number",
+          "id": "desktop_order",
+          "label": "Desktop Order",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "id": "mobile_order",
+          "label": "Mobile Order",
+          "default": 0
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Zavelyn V4 Showroom",
-      "blocks": []
+      "name": "TRYMALORA Physical Showroom",
+      "blocks": [
+        {
+          "type": "showroom_product",
+          "settings": {
+            "product": "car-metal-rust-repair-paste",
+            "custom_display_title": "Car Metal Rust Shield Paste",
+            "short_badge": "-50%",
+            "shelf_tag_title": "Rust Shield Paste",
+            "merchandising_label": "AUTOMOTIVE",
+            "rating_text": "4.9",
+            "review_count_text": "(1,027)"
+          }
+        },
+        {
+          "type": "showroom_product",
+          "settings": {
+            "product": "kids-infrared-battle-blaster-set-with-target-projector",
+            "custom_display_title": "Infrared Laser Battle Set",
+            "short_badge": "TOP RATED",
+            "shelf_tag_title": "Infrared Battle Set",
+            "merchandising_label": "INTERACTIVE",
+            "rating_text": "4.9",
+            "review_count_text": "(579)"
+          }
+        },
+        {
+          "type": "showroom_product",
+          "settings": {
+            "product": "metal-chrome-polish-restorer-paste",
+            "custom_display_title": "Metal Chrome Polish & Restorer Paste",
+            "short_badge": "-50%",
+            "shelf_tag_title": "Metal Chrome Polish",
+            "merchandising_label": "RESTORATION",
+            "rating_text": "4.9",
+            "review_count_text": "(931)"
+          }
+        },
+        {
+          "type": "showroom_product",
+          "settings": {
+            "product": "metallic-silver-anti-rust-renovation-coating",
+            "custom_display_title": "Metallic Silver Anti-Rust Renovation Coating",
+            "short_badge": "BEST VALUE",
+            "shelf_tag_title": "Silver Anti-Rust",
+            "merchandising_label": "COATINGS",
+            "rating_text": "4.9",
+            "review_count_text": "(418)"
+          }
+        },
+        {
+          "type": "showroom_product",
+          "settings": {
+            "product": "mini-dual-purpose-travel-styling-iron",
+            "custom_display_title": "Mini Dual-Purpose Travel Styling Iron",
+            "short_badge": "POPULAR",
+            "shelf_tag_title": "Travel Styling Iron",
+            "merchandising_label": "STYLING",
+            "rating_text": "4.9",
+            "review_count_text": "(642)"
+          }
+        },
+        {
+          "type": "showroom_product",
+          "settings": {
+            "product": "tile-refinishing-paint-restoration-kit",
+            "custom_display_title": "Tile Refinishing Paint Restoration Kit",
+            "short_badge": "TOP RATED",
+            "shelf_tag_title": "Tile Refinishing Paint",
+            "merchandising_label": "HOME DIY",
+            "rating_text": "4.9",
+            "review_count_text": "(2,418)"
+          }
+        }
+      ]
     }
   ]
 }

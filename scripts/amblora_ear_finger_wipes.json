@@ -1,0 +1,86 @@
+{
+  "product": {
+    "id": 11204910874966,
+    "title": "Ear Finger Wipes",
+    "body_html": "",
+    "vendor": "Amblora",
+    "product_type": "",
+    "created_at": "2026-08-26T03:16:59-04:00",
+    "handle": "ear-finger-wipes",
+    "updated_at": "2026-11-09T09:36:30-05:00",
+    "published_at": "2026-08-26T03:17:01-04:00",
+    "template_suffix": "ear-finger-wipes",
+    "published_scope": "global",
+    "tags": "",
+    "variants": [
+      {
+        "id": 55102113349974,
+        "product_id": 11204910874966,
+        "title": "Default Title",
+        "price": "29.99",
+        "sku": null,
+        "position": 1,
+        "compare_at_price": "",
+        "fulfillment_service": "manual",
+        "inventory_management": null,
+        "option1": "Default Title",
+        "option2": null,
+        "option3": null,
+        "created_at": "2026-08-26T03:17:00-04:00",
+        "updated_at": "2026-11-09T09:36:30-05:00",
+        "taxable": false,
+        "barcode": null,
+        "grams": 0,
+        "image_id": null,
+        "weight": 0,
+        "weight_unit": "lb",
+        "requires_shipping": true,
+        "quantity_rule": {
+          "min": 1,
+          "max": null,
+          "increment": 1
+        },
+        "price_currency": "USD",
+        "compare_at_price_currency": "",
+        "quantity_price_breaks": []
+      }
+    ],
+    "options": [
+      {
+        "id": 14310170034518,
+        "product_id": 11204910874966,
+        "name": "Title",
+        "position": 1,
+        "values": [
+          "Default Title"
+        ]
+      }
+    ],
+    "images": [
+      {
+        "id": 84220875637078,
+        "product_id": 11204910874966,
+        "position": 1,
+        "created_at": "2026-08-26T05:09:41-04:00",
+        "updated_at": "2026-08-26T05:09:46-04:00",
+        "alt": null,
+        "width": 2048,
+        "height": 2048,
+        "src": "https://cdn.shopify.com/s/files/1/1043/6630/9718/files/packshot-v2-a.png?v=1787735386",
+        "variant_ids": []
+      }
+    ],
+    "image": {
+      "id": 84220875637078,
+      "product_id": 11204910874966,
+      "position": 1,
+      "created_at": "2026-08-26T05:09:41-04:00",
+      "updated_at": "2026-08-26T05:09:46-04:00",
+      "alt": null,
+      "width": 2048,
+      "height": 2048,
+      "src": "https://cdn.shopify.com/s/files/1/1043/6630/9718/files/packshot-v2-a.png?v=1787735386",
+      "variant_ids": []
+    }
+  }
+}

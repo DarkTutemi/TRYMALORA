@@ -35,6 +35,7 @@
     {% endif %}
 
     {% render 'meta-tags' %}
+    {% render 'meta-pixel' %}
 
     {{ content_for_header }}
 
@@ -192,6 +193,39 @@
         } else {
           sanitizePolicies();
         }
+      })();
+    </script>
+
+    <!-- Preserve Draft Theme Preview Context Across All Navigation Links -->
+    <script>
+      (function() {
+        try {
+          const params = new URLSearchParams(window.location.search);
+          const previewId = params.get('preview_theme_id') || '{{ theme.id }}';
+          const isPreview = window.location.search.includes('preview_theme_id') || document.cookie.includes('preview_theme_id');
+          if (isPreview && previewId) {
+            function preservePreview() {
+              document.querySelectorAll('a[href^="/"], a[href*="' + window.location.hostname + '"]').forEach(function(link) {
+                try {
+                  const rawHref = link.getAttribute('href');
+                  if (!rawHref || rawHref.startsWith('#') || rawHref.startsWith('mailto:') || rawHref.startsWith('tel:') || rawHref.startsWith('javascript:')) return;
+                  const url = new URL(link.href, window.location.origin);
+                  if (url.origin === window.location.origin && !url.searchParams.has('preview_theme_id')) {
+                    url.searchParams.set('preview_theme_id', previewId);
+                    link.href = url.pathname + url.search + url.hash;
+                  }
+                } catch(e) {}
+              });
+            }
+            if (document.readyState === 'loading') {
+              document.addEventListener('DOMContentLoaded', preservePreview);
+            } else {
+              preservePreview();
+            }
+            setTimeout(preservePreview, 800);
+            setTimeout(preservePreview, 2500);
+          }
+        } catch(e) {}
       })();
     </script>
   </body>

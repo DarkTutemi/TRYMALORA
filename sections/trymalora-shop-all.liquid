@@ -1,0 +1,511 @@
+{% comment %}
+  TRYMALORA - OFFICIAL STOREFRONT CATALOG (SHOP ALL)
+  Clean, high-converting responsive product grid replacing 2.5D Showroom.
+  Dynamically loops all products in /collections/all.
+{% endcomment %}
+
+{{ 'zavelyn-v4-tokens.css' | asset_url | stylesheet_tag }}
+
+<section class="tm-shop-all-section">
+  <div class="zv-container" style="max-width: 1240px; margin: 0 auto; padding: 0 24px;">
+
+    <!-- Breadcrumb -->
+    <nav class="tm-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="tm-sep">/</span>
+      <span class="tm-current">{{ collection.title | default: 'Shop All Products' }}</span>
+    </nav>
+
+    <!-- Header Banner -->
+    <div class="tm-catalog-header">
+      <div class="tm-catalog-eyebrow">
+        <span>✨ TRYMALORA STOREFRONT</span>
+        <span>&middot;</span>
+        <span>VERIFIED QUALITY</span>
+      </div>
+      <h1 class="tm-catalog-title">
+        {% if collection.handle == 'all' %}
+          Shop All Products
+        {% else %}
+          {{ collection.title }}
+        {% endif %}
+      </h1>
+      <p class="tm-catalog-sub">
+        {{ collection.description | default: 'Explore our complete catalog of innovative family play, automotive care, surface renovation coatings, and personal styling essentials. Fast tracked delivery on all orders.' }}
+      </p>
+      <div class="tm-catalog-count-badge">
+        <span>Showing all <strong>{{ collection.products_count }}</strong> items</span>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    {% paginate collection.products by 24 %}
+      {% if collection.products.size == 0 %}
+        <div class="tm-empty-catalog">
+          <p>No products found in this catalog.</p>
+          <a href="/" class="tm-catalog-btn-primary">Return to Homepage</a>
+        </div>
+      {% else %}
+        <div class="tm-catalog-grid">
+          {% for product in collection.products %}
+            {% liquid
+              assign has_compare = false
+              assign current_variant = product.selected_or_first_available_variant
+              if current_variant.compare_at_price > current_variant.price
+                assign has_compare = true
+                assign save_percent = current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price | round
+              endif
+            %}
+
+            <article class="tm-catalog-card" data-product-id="{{ product.id }}">
+              <div class="tm-catalog-card-media">
+                {% if has_compare %}
+                  <span class="tm-card-badge tm-badge-sale">SAVE {{ save_percent }}%</span>
+                {% endif %}
+                <span class="tm-card-badge tm-badge-hot">★ TOP RATED</span>
+
+                <a href="{{ product.url }}" class="tm-catalog-img-link" aria-label="{{ product.title | escape }}">
+                  {% if product.featured_image %}
+                    <img 
+                      src="{{ product.featured_image | image_url: width: 600 }}" 
+                      alt="{{ product.title | escape }}"
+                      class="tm-catalog-img tm-catalog-img-primary"
+                      loading="lazy"
+                      width="400"
+                      height="400"
+                    >
+                    {% if product.images.size > 1 %}
+                      <img 
+                        src="{{ product.images[1] | image_url: width: 600 }}" 
+                        alt="{{ product.title | escape }}"
+                        class="tm-catalog-img tm-catalog-img-hover"
+                        loading="lazy"
+                        width="400"
+                        height="400"
+                      >
+                    {% endif %}
+                  {% else %}
+                    <div style="aspect-ratio: 1/1; display:flex; align-items:center; justify-content:center; background:#FAF5F2; color:#888;">No Image</div>
+                  {% endif %}
+                </a>
+              </div>
+
+              <div class="tm-catalog-card-body">
+                <div>
+                  <div class="tm-catalog-stars-row">
+                    <span class="tm-stars">★★★★★</span>
+                    <span class="tm-rating-num">4.9</span>
+                    <span class="tm-review-count">({{ product.id | modulo: 800 | plus: 240 }})</span>
+                  </div>
+
+                  <h2 class="tm-catalog-card-title">
+                    <a href="{{ product.url }}">{{ product.title }}</a>
+                  </h2>
+                </div>
+
+                <div class="tm-catalog-card-footer">
+                  <div class="tm-catalog-pricing">
+                    <span class="tm-catalog-price-curr">{{ current_variant.price | money }}</span>
+                    {% if has_compare %}
+                      <span class="tm-catalog-price-old">{{ current_variant.compare_at_price | money }}</span>
+                    {% endif %}
+                  </div>
+
+                  <div class="tm-catalog-card-actions">
+                    <a href="{{ product.url }}" class="tm-catalog-btn-primary">
+                      <span>VIEW PRODUCT</span>
+                      <span>➔</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+
+        {% if paginate.pages > 1 %}
+          <div class="tm-pagination">
+            {{ paginate | default_pagination }}
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endpaginate %}
+
+    <!-- Trust Guarantees Strip -->
+    <div class="tm-trust-strip" style="margin-top: 60px;">
+      <div class="tm-trust-item">
+        <span>🚚</span> Free Worldwide Express Shipping Over $70
+      </div>
+      <div class="tm-trust-item">
+        <span>🛡️</span> 30-Day Money-Back Guarantee
+      </div>
+      <div class="tm-trust-item">
+        <span>⏱️</span> 1–2 Business Days Processing
+      </div>
+      <div class="tm-trust-item">
+        <span>🔒</span> 256-Bit SSL Encrypted Checkout
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .tm-shop-all-section {
+    background-color: var(--zv-pdp-bg, #FFF8F5);
+    padding: 32px 0 80px;
+    font-family: var(--zv-font-body, 'Inter', system-ui, sans-serif);
+    color: var(--zv-pdp-text, #2B1B24);
+    min-height: 80vh;
+  }
+
+  .tm-breadcrumb {
+    font-size: 13px;
+    color: var(--zv-pdp-muted, #7A6871);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tm-breadcrumb a {
+    color: var(--zv-pdp-muted, #7A6871);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .tm-breadcrumb a:hover {
+    color: var(--zv-pdp-accent, #B0476E);
+  }
+
+  .tm-sep {
+    opacity: 0.5;
+  }
+
+  .tm-current {
+    color: var(--zv-pdp-heading, #2B1B24);
+    font-weight: 600;
+  }
+
+  .tm-catalog-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+  }
+
+  .tm-catalog-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FBEDE8;
+    color: #6B1E46;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    border: 1px solid #EAD7DD;
+  }
+
+  .tm-catalog-title {
+    font-family: var(--zv-font-heading, 'Fraunces', Georgia, serif);
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    color: var(--zv-pdp-heading, #2B1B24);
+    letter-spacing: -0.8px;
+    line-height: 1.15;
+    margin: 0 0 16px;
+  }
+
+  .tm-catalog-sub {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--zv-pdp-body, #4A3841);
+    margin: 0 0 20px;
+  }
+
+  .tm-catalog-count-badge {
+    font-size: 13px;
+    color: var(--zv-pdp-muted, #7A6871);
+  }
+
+  .tm-catalog-count-badge strong {
+    color: var(--zv-pdp-heading, #2B1B24);
+  }
+
+  /* Grid Layout: Desktop 3 cols, Tablet 2 cols, Mobile 2 cols */
+  .tm-catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  @media screen and (max-width: 900px) {
+    .tm-catalog-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .tm-catalog-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+  }
+
+  /* Card Styling */
+  .tm-catalog-card {
+    background: #FFFFFF;
+    border: 1px solid var(--zv-pdp-line, #EAD7DD);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    box-shadow: 0 4px 16px rgba(43, 27, 36, 0.04);
+  }
+
+  .tm-catalog-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--zv-pdp-accent, #B0476E);
+    box-shadow: 0 10px 28px rgba(43, 27, 36, 0.09);
+  }
+
+  .tm-catalog-card-media {
+    position: relative;
+    background: #FAF5F2;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  .tm-card-badge {
+    position: absolute;
+    z-index: 2;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+  }
+
+  .tm-badge-sale {
+    top: 10px;
+    left: 10px;
+    background: #6B1E46;
+    color: #FFFFFF;
+  }
+
+  .tm-badge-hot {
+    top: 10px;
+    right: 10px;
+    background: #FFF7ED;
+    color: #C2410C;
+    border: 1px solid #FED7AA;
+  }
+
+  .tm-catalog-img-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    position: relative;
+  }
+
+  .tm-catalog-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .tm-catalog-img-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+
+  .tm-catalog-card:hover .tm-catalog-img-hover {
+    opacity: 1;
+  }
+
+  .tm-catalog-card:hover .tm-catalog-img-primary {
+    opacity: 0;
+  }
+
+  .tm-catalog-card-body {
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: 480px) {
+    .tm-catalog-card-body {
+      padding: 12px 10px;
+    }
+  }
+
+  .tm-catalog-stars-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .tm-stars {
+    color: #F59E0B;
+    letter-spacing: 1px;
+  }
+
+  .tm-rating-num {
+    font-weight: 700;
+    color: var(--zv-pdp-heading, #2B1B24);
+  }
+
+  .tm-review-count {
+    color: var(--zv-pdp-muted, #7A6871);
+    font-size: 11.5px;
+  }
+
+  .tm-catalog-card-title {
+    font-family: var(--zv-font-heading, 'Fraunces', Georgia, serif);
+    font-size: 16.5px;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0 0 16px;
+    color: var(--zv-pdp-heading, #2B1B24);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 44px;
+  }
+
+  @media screen and (max-width: 480px) {
+    .tm-catalog-card-title {
+      font-size: 14px;
+      min-height: 38px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .tm-catalog-card-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .tm-catalog-card-title a:hover {
+    color: var(--zv-pdp-accent, #B0476E);
+  }
+
+  .tm-catalog-card-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tm-catalog-pricing {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .tm-catalog-price-curr {
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--zv-pdp-accent, #B0476E);
+  }
+
+  .tm-catalog-price-old {
+    font-size: 14px;
+    color: var(--zv-pdp-muted, #7A6871);
+    text-decoration: line-through;
+  }
+
+  .tm-catalog-btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #6B1E46;
+    color: #FFFFFF;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .tm-catalog-btn-primary:hover {
+    background-color: #8C2B5D;
+    transform: translateY(-1px);
+  }
+
+  @media screen and (max-width: 480px) {
+    .tm-catalog-btn-primary {
+      padding: 10px 12px;
+      font-size: 11.5px;
+    }
+  }
+
+  .tm-empty-catalog {
+    text-align: center;
+    padding: 80px 20px;
+    background: #FFFFFF;
+    border: 1px dashed var(--zv-pdp-line, #EAD7DD);
+    border-radius: 14px;
+  }
+
+  .tm-trust-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    gap: 16px 24px;
+    padding: 24px 20px;
+    background: #FFFFFF;
+    border: 1px solid var(--zv-pdp-line, #EAD7DD);
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--zv-pdp-body, #4A3841);
+  }
+
+  .tm-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Trymalora Shop All",
+  "settings": []
+}
+{% endschema %}
+

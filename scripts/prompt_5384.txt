@@ -1,0 +1,472 @@
+<USER_REQUEST>
+TRYMALORA — PRODUCT FIX 01: TILE REFINISHING PAINT
+
+Bạn là Shopify OS 2.0 Developer và CRO Designer.
+
+TARGET PRODUCT:
+https://trymalora.com/products/tile-refinishing-paint-restoration-kit
+
+SOURCE REFERENCE:
+https://newbeew.com/products/white-tile-refinishing-paint-with-brush
+
+PRODUCT VIDEO:
+https://cdn.shopify.com/videos/c/o/v/22d393cbbfef4b1fa48284f0595279e4.mp4
+
+MỤC TIÊU:
+Sửa hoàn chỉnh sản phẩm Tile Refinishing Paint Restoration Kit trên Shopify Draft Theme hiện tại.
+
+KHÔNG sửa theme chính đang chạy Ads.
+KHÔNG sửa các sản phẩm khác.
+KHÔNG tự động Git commit hoặc Git push.
+KHÔNG chạy full audit toàn store.
+KHÔNG publish theme hoặc sản phẩm.
+
+LƯU Ý:
+Shopify Product và Variant là dữ liệu Admin dùng chung giữa các theme.
+Nếu sản phẩm đích đang live, không thay đổi trực tiếp variant, giá, nội dung hoặc media của bản live.
+Hãy tạo bản sao sản phẩm ở trạng thái DRAFT để kiểm thử hoặc chuẩn bị cấu hình chờ duyệt.
+Chỉ thao tác trên product record draft đã xác định rõ ID.
+
+==================================================
+TASK 1 — SHIPPING RULE
+==================================================
+
+Hiện tại bundle selector đang hiển thị Free Shipping không đúng điều kiện.
+
+Thiết lập ngưỡng giao hàng miễn phí:
+ORDER SUBTOTAL > $70 USD.
+
+Nội dung chuẩn:
+Free Shipping for Orders Over $70
+
+QUAN TRỌNG:
+
+Free Shipping phụ thuộc tổng giá trị hàng trong đơn,
+không chỉ phụ thuộc giá của một sản phẩm.
+
+Nếu tổng giá trị giỏ hàng hoặc lựa chọn bundle chưa vượt $70:
+- Không hiển thị badge Free Shipping đã được mở khóa.
+- Không ghi Free Shipping như một quyền lợi sẵn có.
+
+Nếu tổng đơn hàng vượt $70:
+- Có thể hiển thị badge Free Shipping.
+
+Không thay đổi Shopify Shipping Rates trong Admin khi chưa được phê duyệt.
+
+Trước khi hiển thị badge, kiểm tra cấu hình shipping thực tế có hỗ trợ ngưỡng trên hay không.
+
+Đảm bảo shipping logic dùng chung có thể áp dụng cho các sản phẩm khác, nhưng chỉ sửa code template trên draft theme.
+
+Không dùng giá product đơn lẻ để kết luận toàn bộ đơn hàng đủ điều kiện.
+
+==================================================
+TASK 2 — PRODUCT VARIANTS
+==================================================
+
+Tạo cấu hình hai Shopify product options:
+
+OPTION 1 — COLOR
+Pure White
+Modern Gray
+Matte Black
+
+OPTION 2 — SIZE
+100g
+300g
+500g
+
+Tổng cộng:
+9 Shopify variants.
+
+PRICE BY SIZE:
+
+100g — $16.99
+300g — $29.99
+500g — $39.99
+
+Cả ba màu có cùng giá trong mỗi dung tích.
+
+Phải có đủ 9 combinations.
+
+Hiển thị color selector bằng pill hoặc swatch.
+
+Hiển thị size selector:
+100g / 300g / 500g
+
+Khi đổi size:
+- Giá cập nhật tức thì.
+- Variant ID cập nhật chính xác.
+- Add to Cart đúng variant.
+- Buy Now đúng variant.
+- Cart Drawer hiển thị đúng color và size.
+
+Không tạo tồn kho giả.
+Không tự gán compare-at-price chưa được phê duyệt.
+
+==================================================
+TASK 3 — BUNDLE SELECTOR
+==================================================
+
+Bundle hiện tại đang dùng ba màu làm ba package.
+
+ĐÂY LÀ LỖI KIẾN TRÚC.
+
+Phải tách:
+
+COLOR SELECTOR
+SIZE SELECTOR
+BUNDLE QUANTITY SELECTOR
+
+BUNDLE:
+
+Buy 1
+Buy 2
+Buy 3
+
+Thứ tự:
+Buy 1 → Buy 2 → Buy 3
+
+Mặc định:
+Buy 1.
+
+Giá bundle tính theo size đã chọn.
+
+Ví dụ 100g:
+Buy 1 = $16.99
+Buy 2 = $33.98
+Buy 3 = $50.97
+
+300g:
+Buy 1 = $29.99
+Buy 2 = $59.98
+Buy 3 = $89.97
+
+500g:
+Buy 1 = $39.99
+Buy 2 = $79.98
+Buy 3 = $119.97
+
+Chưa áp dụng discount bundle nếu chưa có cấu hình giá ưu đãi được phê duyệt.
+
+Không tạo fake savings.
+Không dùng MOST POPULAR hoặc BEST VALUE dựa trên dữ liệu chưa xác minh.
+
+Mặc định các sản phẩm trong cùng bundle dùng chung màu và dung tích đã chọn.
+
+Mỗi thay đổi size/color/quantity phải cập nhật:
+- Total price
+- Unit price
+- Variant ID
+- Cart quantity
+- Shipping eligibility
+- CTA price
+
+Tái sử dụng component bundle của PDP V2 nhưng không phá hỏng các sản phẩm khác.
+
+==================================================
+TASK 4 — PRODUCT REVIEW
+==================================================
+
+Hiện tại trang Tile Paint đang hiển thị review của Laser Battle:
+
+"The kids put down their tablets immediately..."
+
+XÓA review không liên quan này.
+
+Thay bằng content block dành riêng cho Tile Refinishing Paint.
+
+Có thể sử dụng mẫu nội dung tiếp thị:
+"Give tired-looking tiles a fresh finish with a simple brush-on application."
+
+Đây là marketing copy, KHÔNG phải lời nhận xét của khách hàng.
+
+Không tự tạo tên khách, địa chỉ, Verified Buyer hoặc đánh giá 5 sao giả.
+
+Nếu chưa có review thật:
+- Ẩn testimonial card.
+- Giữ cấu trúc review section để kết nối review thực sau này.
+
+Không dùng chung testimonial giữa các sản phẩm khác loại.
+
+==================================================
+TASK 5 — PRODUCT VIDEO
+==================================================
+
+Sử dụng video do chủ store cung cấp:
+
+https://cdn.shopify.com/videos/c/o/v/22d393cbbfef4b1fa48284f0595279e4.mp4
+
+Kiểm tra khả năng truy cập và quyền sử dụng video.
+
+Nếu video đã thuộc Shopify CDN của store:
+Tái sử dụng trực tiếp từ Shopify Files khi có thể,
+không upload bản sao không cần thiết.
+
+Thêm video vào gallery.
+
+Vị trí ưu tiên:
+Sau ảnh hero chính.
+
+Yêu cầu:
+- Video thumbnail có icon Play.
+- Autoplay muted khi cần và được trình duyệt cho phép.
+- Controls đầy đủ khi khách tương tác.
+- Playsinline trên mobile.
+- Không autoplay có âm thanh.
+- Không làm chậm LCP của hero.
+- Không tải video lớn trước khi cần thiết.
+- Poster image rõ ràng.
+- Không tạo khoảng trống đen.
+
+Nếu video phù hợp với hướng dẫn sử dụng:
+Có thể tái sử dụng trong How It Works,
+nhưng tránh tải cùng một file nhiều lần không cần thiết.
+
+==================================================
+TASK 6 — HOW IT WORKS REDESIGN
+==================================================
+
+Hiện tại:
+3-Step Tile Refinishing Process đang dùng ba vòng tròn
+và thiếu ảnh minh họa.
+
+XÓA layout vòng tròn hiện tại.
+
+Thiết kế lại dựa trên screenshot của đối thủ:
+
+HEADING:
+Refresh Tiles in 3 Easy Steps
+
+SUBHEADING:
+A simple brush-on process for refreshing worn-looking tiles.
+
+DESKTOP:
+3 image cards nằm ngang.
+
+MOBILE:
+3 cards xếp dọc hoặc carousel có điều khiển rõ ràng.
+
+CARD 1:
+01 Clean the Surface
+
+Description:
+Remove dust, dirt, and grease. Make sure the surface is clean and dry.
+
+Image:
+Người dùng vệ sinh bề mặt gạch.
+
+CARD 2:
+02 Apply the Paint
+
+Description:
+Use the brush to apply an even coat, following the product instructions.
+
+Image:
+Cọ quét sơn lên bề mặt gạch.
+
+CARD 3:
+03 Let It Dry
+
+Description:
+Allow the coating to dry and fully cure according to the manufacturer's instructions.
+
+Image:
+Bề mặt gạch sau khi được phủ sơn và hoàn thiện.
+
+VISUAL STYLE:
+- 3 ảnh kích thước đồng nhất.
+- Bo góc nhẹ.
+- Typography lớn, rõ.
+- Hình ảnh chiếm phần lớn card.
+- Heading từng bước nằm dưới ảnh.
+- Mô tả ngắn gọn.
+- Khoảng cách cân đối.
+- Màu sắc đồng bộ PDP hiện tại.
+
+TÀI SẢN HÌNH ẢNH:
+
+Kiểm tra ba ảnh tham chiếu từ website nguồn.
+
+Chỉ tải và lưu vào Shopify Files những ảnh
+mà store có quyền sử dụng hoặc được cấp phép.
+
+Nếu chưa xác nhận quyền:
+Chuẩn bị cấu trúc section và dùng ảnh sản phẩm
+được cấp phép hoặc ảnh gốc tương đương.
+
+Không hotlink hình ảnh đối thủ.
+
+Không tự khẳng định waterproof cure 48h,
+số lớp sơn hoặc thời gian khô khi chưa có
+hướng dẫn chính xác của nhà sản xuất.
+
+==================================================
+TASK 7 — GUARANTEE AND DELIVERY COPY
+==================================================
+
+Rà soát CTA và các thông báo:
+
+Không dùng:
+30-DAY MONEY-BACK GUARANTEE
+
+nếu Return & Refund Policy thực tế không hỗ trợ
+cam kết hoàn tiền vô điều kiện.
+
+Sử dụng:
+30-Day Returns on Eligible Items
+
+nếu chính sách hiện hành cho phép.
+
+SHIPPING:
+Processing 1–2 Business Days
+Estimated Delivery 5–20 Business Days
+
+Không quảng cáo thời gian vận chuyển nhanh hơn
+chính sách thực tế.
+
+Không nhầm processing time với delivery time.
+
+==================================================
+TASK 8 — PRODUCT-SPECIFIC CONFIGURATION
+==================================================
+
+Không hardcode các giá trị Tile Paint vào
+section dùng chung cho toàn bộ sản phẩm.
+
+Sử dụng product metafields / metaobjects hoặc
+settings riêng cho từng sản phẩm:
+
+- Color options
+- Size options
+- Bundle configuration
+- Product-specific content
+- Product video
+- Shipping badge eligibility
+- Reviews
+- How It Works images
+- FAQ
+- Product specifications
+
+Đảm bảo các sản phẩm khác không bị ảnh hưởng.
+
+==================================================
+TASK 9 — QUICK QA
+==================================================
+
+Chỉ kiểm tra sản phẩm Tile Refinishing.
+
+Desktop 1440px.
+Mobile 390px.
+
+Kiểm thử:
+
+1. Chọn ba màu.
+2. Chọn ba dung tích.
+3. Kiểm tra đủ 9 variants.
+4. Kiểm tra giá từng size.
+5. Chọn Buy 1 / Buy 2 / Buy 3.
+6. Kiểm tra cập nhật total price.
+7. Kiểm tra shipping threshold.
+8. Kiểm tra Add to Cart.
+9. Kiểm tra Willa Cart Drawer.
+10. Kiểm tra video.
+11. Kiểm tra How It Works có 3 ảnh.
+12. Kiểm tra testimonial Laser Battle đã bị xóa.
+13. Kiểm tra không làm thay đổi theme chính.
+14. Kiểm tra không làm thay đổi product live.
+
+Không cần audit toàn store.
+Không cần tạo báo cáo dài.
+Không git push.
+
+==================================================
+FINAL REPORT
+==================================================
+
+Báo cáo ngắn bằng tiếng Việt:
+
+1. Những lỗi đã sửa.
+2. Danh sách 9 variants.
+3. Giá và bundle đã cấu hình.
+4. Shipping logic.
+5. Video đã thêm.
+6. How It Works sau chỉnh sửa.
+7. File đã sửa.
+8. Shopify Draft Preview URL.
+9. Các bước cần phê duyệt trước khi cập nhật bản live.
+
+BẮT ĐẦU THỰC HIỆN NGAY TRÊN DRAFT THEME.
+
+KHÔNG SỬA THEME CHÍNH.
+KHÔNG SỬA PRODUCT LIVE.
+KHÔNG TỰ ĐỘNG GIT PUSH.
+KHÔNG PUBLISH.
+
+
+TRYMALORA — UPDATE TILE REFINISHING BUNDLE DISCOUNTS
+
+Chỉ cập nhật bundle cho Tile Refinishing Paint Restoration Kit trên môi trường Draft đã xác định.
+
+BUY 1:
+Không giảm thêm.
+
+BUY 2:
+Extra 5% OFF trên tổng giá 2 hộp.
+
+BUY 3:
+Extra 10% OFF trên tổng giá 3 hộp.
+
+BẢNG GIÁ:
+
+100g:
+Buy 1: $16.99
+Buy 2: $32.28
+Buy 3: $45.87
+
+300g:
+Buy 1: $29.99
+Buy 2: $56.98
+Buy 3: $80.97
+
+500g:
+Buy 1: $39.99
+Buy 2: $75.98
+Buy 3: $107.97
+
+Mỗi giá áp dụng cho cả ba màu:
+Pure White, Modern Gray, Matte Black.
+
+YÊU CẦU:
+1. Hiển thị badge EXTRA 5% OFF trên Buy 2.
+2. Hiển thị badge EXTRA 10% OFF trên Buy 3.
+3. Hiển thị tổng tiền thực tế sau giảm giá.
+4. Hiển thị giá gốc gạch ngang khi có giảm.
+5. Hiển thị giá mỗi hộp sau giảm.
+6. Đồng bộ giá giữa bundle selector, CTA, Willa Cart Drawer và checkout.
+7. Thực thi discount thực sự bằng cơ chế Shopify được hỗ trợ, không chỉ sửa giá hiển thị bằng JavaScript.
+8. Kiểm tra không áp dụng giảm giá hai lần nếu đang có discount khác.
+9. Tính điều kiện Free Shipping trên giá sau giảm: đơn hàng trên $70.
+10. Giữ nguyên selector màu và dung tích.
+11. Không thay đổi các sản phẩm khác.
+12. Không chỉnh sửa product live hoặc theme chính.
+13. Không tự động git commit/push.
+14. Chạy kiểm thử nhanh trên Draft theme.
+
+LƯU Ý:
+Shopify có thể làm tròn chiết khấu từng dòng sản phẩm khác với phép tính tổng. Đảm bảo số tiền checkout và số tiền quảng cáo luôn khớp.
+
+Báo cáo ngắn bằng tiếng Việt khi hoàn thành.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-11-04T12:18:41+07:00.
+
+The user's current state is as follows:
+Active Document: c:\Users\Admin\Desktop\TRYMALORA\sections\zavelyn-v4-pdp-main.liquid (LANGUAGE_UNSPECIFIED)
+Cursor is on line: 6
+Other open documents:
+- c:\Users\Admin\Desktop\TRYMALORA\layout\theme.liquid (LANGUAGE_UNSPECIFIED)
+- c:\Users\Admin\Desktop\TRYMALORA\scripts\introspect_bulk_publish.mjs (LANGUAGE_UNSPECIFIED)
+- c:\Users\Admin\Desktop\TRYMALORA\sections\redirect-home.liquid (LANGUAGE_UNSPECIFIED)
+- c:\Users\Admin\Desktop\TRYMALORA\sections\zavelyn-track-order.liquid (LANGUAGE_UNSPECIFIED)
+- c:\Users\Admin\Desktop\TRYMALORA\templates\404.json (LANGUAGE_UNSPECIFIED)
+</ADDITIONAL_METADATA>

@@ -16,14 +16,6 @@
       "type": "trymalora-pdp-how-it-works",
       "settings": {}
     },
-    "description": {
-      "type": "trymalora-pdp-description",
-      "settings": {}
-    },
-    "specs": {
-      "type": "trymalora-pdp-specs",
-      "settings": {}
-    },
     "faq": {
       "type": "trymalora-pdp-faq",
       "settings": {}
@@ -38,8 +30,6 @@
     "marquee",
     "package",
     "how_it_works",
-    "description",
-    "specs",
     "faq",
     "shipping"
   ]

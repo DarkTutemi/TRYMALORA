@@ -687,19 +687,46 @@
 }
 
 /* 3 Products Row - Balanced Center Spacing */
-.zv-grid--3 {
-  grid-template-columns: repeat(3, 1fr);
-  max-width: 960px;
-  margin: 0 auto;
-  gap: 32px;
+@media screen and (min-width: 1024px) {
+  .zv-grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 270px));
+    justify-content: center;
+    gap: 28px;
+    padding: 0 20px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .zv-grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
 }
 
-/* 2 Products Row - Symmetrical Distribution */
-.zv-grid--2 {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 36px;
-  max-width: 680px;
-  margin: 0 auto;
+/* 2 Products Row - Symmetrical Centered Duo */
+@media screen and (min-width: 1024px) {
+  .zv-grid--2 {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 40px !important;
+    max-width: 640px !important;
+    margin: 0 auto !important;
+  }
+  .zv-grid--2 .zv-shelf-column {
+    width: 270px !important;
+    max-width: 270px !important;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .zv-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
 }
 
 /* 1 Product Row - Centered within Retail Shelf Slot (Matching User Acceptance Mockup) */

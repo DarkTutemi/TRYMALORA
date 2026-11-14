@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "main": {
+      "type": "zavelyn-v4-pdp-main",
+      "settings": {}
+    },
+    "package": {
+      "type": "trymalora-pdp-package",
+      "settings": {}
+    },
+    "how_it_works": {
+      "type": "trymalora-pdp-how-it-works",
+      "settings": {}
+    },
+    "faq": {
+      "type": "trymalora-pdp-faq",
+      "settings": {}
+    },
+    "shipping": {
+      "type": "zavelyn-pdp-shipping",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "trymalora-pdp-reviews",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "package",
+    "how_it_works",
+    "faq",
+    "shipping",
+    "reviews"
+  ]
+}

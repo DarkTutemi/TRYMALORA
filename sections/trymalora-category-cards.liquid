@@ -1,0 +1,433 @@
+{% comment %}
+  TRYMALORA - SHOP BY CATEGORY / ARCHITECTURAL STORE ENTRANCES (SECTION 4 & 6)
+  Atmospheric retail portals inspired by ShopSideK T01 and 2.5D Showroom aesthetics.
+  Links directly to the specialized collections.
+{% endcomment %}
+
+<style>
+  .tm-dept-section {
+    padding: 72px 0 80px;
+    background-color: var(--zv-pdp-bg, #FFF8F5);
+    border-bottom: 1px solid var(--zv-pdp-line, #EAD7DD);
+    font-family: var(--zv-font-body, 'Inter', system-ui, sans-serif);
+    color: var(--zv-pdp-text, #2B1B24);
+  }
+
+  .tm-dept-header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 52px;
+  }
+
+  .tm-dept-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: var(--zv-radius-full, 9999px);
+    background: #FBEDE8;
+    color: #6B1E46;
+    border: 1px solid #EAD7DD;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .tm-dept-title {
+    font-family: var(--zv-font-heading, 'Fraunces', Georgia, serif);
+    font-size: clamp(28px, 3.8vw, 40px);
+    font-weight: 600;
+    color: var(--zv-pdp-heading, #2B1B24);
+    line-height: 1.18;
+    letter-spacing: -0.6px;
+    margin: 0 0 16px;
+  }
+
+  .tm-dept-desc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--zv-pdp-body, #4A3841);
+    margin: 0;
+  }
+
+  .tm-dept-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  @media screen and (max-width: 860px) {
+    .tm-dept-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+
+  .tm-dept-card {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px 28px 24px;
+    color: #FFFFFF;
+    text-decoration: none;
+    min-height: 340px;
+    box-sizing: border-box;
+  }
+
+  .tm-dept-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+  }
+
+  /* Department Themes */
+  .tm-theme-arena {
+    background: linear-gradient(135deg, #1C2E24 0%, #101B15 100%);
+    border: 1px solid rgba(82, 140, 102, 0.3);
+  }
+  .tm-theme-workshop {
+    background: linear-gradient(135deg, #1F252E 0%, #12161C 100%);
+    border: 1px solid rgba(90, 115, 145, 0.3);
+  }
+  .tm-theme-renovation {
+    background: linear-gradient(135deg, #332322 0%, #1E1414 100%);
+    border: 1px solid rgba(160, 105, 95, 0.3);
+  }
+  .tm-theme-sanctuary {
+    background: linear-gradient(135deg, #1E2333 0%, #131622 100%);
+    border: 1px solid rgba(100, 115, 165, 0.3);
+  }
+
+  .tm-dept-top {
+    margin-bottom: 24px;
+  }
+
+  .tm-dept-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .tm-dept-badge {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #E2E8F0;
+  }
+
+  .tm-dept-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #4ADE80;
+  }
+
+  .tm-dept-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4ADE80;
+    box-shadow: 0 0 8px #4ADE80;
+  }
+
+  .tm-dept-name {
+    font-family: var(--zv-font-heading, 'Fraunces', Georgia, serif);
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: #FFFFFF;
+    line-height: 1.25;
+  }
+
+  .tm-dept-summary {
+    font-size: 14px;
+    line-height: 1.55;
+    color: #CBD5E1;
+    margin: 0;
+  }
+
+  /* Product Shelving Merch Row */
+  .tm-dept-merch {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px;
+  }
+
+  .tm-merch-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .tm-merch-img-box {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    background: #FFFFFF;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .tm-merch-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .tm-merch-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #E2E8F0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80px;
+  }
+
+  /* Button Action Bar */
+  .tm-dept-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .tm-dept-card:hover .tm-dept-cta {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+
+  .tm-dept-cta-arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .tm-dept-card:hover .tm-dept-cta-arrow {
+    transform: translateX(4px);
+  }
+</style>
+
+<section class="tm-dept-section" id="tmCategories">
+  <div class="zv-container" style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+
+    <!-- Section Header -->
+    <div class="tm-dept-header">
+      <span class="tm-dept-chip">
+        🏛️ THE TRYMALORA RETAIL SHOWROOMS
+      </span>
+      <h2 class="tm-dept-title">
+        Walk Into Our Specialized Stores
+      </h2>
+      <p class="tm-dept-desc">
+        Rather than browsing a flat catalog, step through our architectural storefronts. Each retail environment features specialized physical shelving, curated display lighting, and authentic spatial product exploration.
+      </p>
+    </div>
+
+    <!-- 4 Department Cards Grid -->
+    <div class="tm-dept-grid">
+
+      <!-- DEPT 01: Interactive Toys & Gadgets -->
+      <a href="/collections/interactive-toys" class="tm-dept-card tm-theme-arena">
+        <div class="tm-dept-top">
+          <div class="tm-dept-meta-row">
+            <span class="tm-dept-badge">DEPT 01 · ARENA</span>
+            <span class="tm-dept-status"><span class="tm-dept-status-dot"></span> OPEN FOR BROWSING</span>
+          </div>
+          <h3 class="tm-dept-name">Interactive Toys &amp; Gadgets</h3>
+          <p class="tm-dept-summary">Dynamic infrared battle blasters, wall-projected target arenas, and active indoor play systems.</p>
+        </div>
+
+        <div class="tm-dept-merch">
+          <div class="tm-merch-item">
+            <div class="tm-merch-img-box">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/photo_2026-11-03_04-05-43.jpg?v=1793703987" alt="Tactical Blaster" class="tm-merch-img" width="60" height="60" loading="lazy">
+            </div>
+            <span class="tm-merch-label">Laser Blasters</span>
+          </div>
+          <div class="tm-merch-item">
+            <div class="tm-merch-img-box">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/spp_shopify20261028173020_95469ec9ffbf4d73ac184b9e30d7d3ee_356f56e5-46d7-4421-8be1-d7f82d6241f0.png?v=1793695549" alt="Target Projector" class="tm-merch-img" width="60" height="60" loading="lazy">
+            </div>
+            <span class="tm-merch-label">Projector</span>
+          </div>
+          <div class="tm-merch-item">
+            <div class="tm-merch-img-box">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/b2.webp?v=1793726274" alt="Arena Set" class="tm-merch-img" width="60" height="60" loading="lazy">
+            </div>
+            <span class="tm-merch-label">Arena Kit</span>
+          </div>
+        </div>
+
+        <div class="tm-dept-cta">
+          <span>WALK INTO STORE</span>
+          <span class="tm-dept-cta-arrow">➔</span>
+        </div>
+      </a>
+
+      <!-- DEPT 02: Automotive Care & Restoration -->
+      <a href="/collections/automotive-care" class="tm-dept-card tm-theme-workshop">
+        <div class="tm-dept-top">
+          <div class="tm-dept-meta-row">
+            <span class="tm-dept-badge">DEPT 02 · WORKSHOP</span>
+            <span class="tm-dept-status"><span class="tm-dept-status-dot"></span> OPEN FOR BROWSING</span>
+          </div>
+          <h3 class="tm-dept-name">Automotive Care &amp; Restoration</h3>
+          <p class="tm-dept-summary">Heavy-duty car metal rust repair pastes, chrome restoration creams, and vehicle surface protection.</p>
+        </div>
+
+        <div class="tm-dept-merch">
+          <div class="tm-merch-item">
+            <div class="tm-merch-img-box">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/spp_shopify20260902180016_73687cc3ad944528bd44cad273b1ee75_73949241-45e0-4725-8a9c-f163c91f3e0a.jpg?v=1793736110" alt="Rust Repair" class="tm-merch-img" width="60" height="60" loading="lazy">
+            </div>
+            <span class="tm-merch-label">Rust Repair</span>
+          </div>
+          <div class="tm-merch-item">
+            <div class="tm-merch-img-box">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/spp_shopify20261012184458_20a0f24e6ce7f19780a02337446a36df_14ea459a-9647-48d2-ba24-d524eee41336_e7525770-7a9f-436f-960e-ad2b89629655.png?v=1793736118" alt="Chrome Polish" class="tm-merch-img" width="60" height="60" loading="lazy">
+            </div>
+            <span class="tm-merch-label">Chrome Polish</span>
+          </div>
+          <div class="tm-merch-item">
+            <div class="tm-merch-img-box">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/spp_shopify20260902180016_9430ca69d8c7087e28333b84988b2923_295af922-0e13-4485-b1a7-ad213148b7ba.jpg?v=1793736111" alt="Brush Applicator" class="tm-merch-img" width="60" height="60" loading="lazy">
+            </div>
+            <span class="tm-merch-label">Detail Kit</span>
+          </div>
+        </div>
+
+        <div class="tm-dept-cta">
+          <span>WALK INTO WORKSHOP</span>
+          <span class="tm-dept-cta-arrow">➔</span>
+        </div>
+      </a>
+
+      <!-- DEPT 03: Home Improvement & Renovation -->
+      <a href="/collections/home-improvement" class="tm-dept-card tm-theme-renovation">
+        <div class="tm-dept-top">
+          <div class="tm-dept-meta-row">
+            <span class="tm-dept-badge">DEPT 03 · RENOVATION</span>
+            <span class="tm-dept-status"><span class="tm-dept-status-dot"></span> OPEN FOR BROWSING</span>
+          </div>
+          <h3 class="tm-dept-name">Home Improvement &amp; Upgrades</h3>
+          <p class="tm-dept-summary">High-coverage anti-rust renovation coatings, waterproof tile refinishing paints, and architectural repair kits.</p>
+        </div>
+
+        <div class="tm-dept-merch">
+          <div class="tm-merch-item">
+            <div class="tm-merch-img-box">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/1_5866c7c2-b42a-4860-a294-9babbd6c8130.png?v=1793736106" alt="Silver Anti-Rust" class="tm-merch-img" width="60" height="60" loading="lazy">
+            </div>
+            <span class="tm-merch-label">Silver Coating</span>
+          </div>
+          <div class="tm-merch-item">
+            <div class="tm-merch-img-box">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/spp_shopify20260924173032_fa3f1644adf419e419535a7a56d7b7a2_cadd7957-c46f-4ec7-84a6-568ca94f7d10.png?v=1793736125" alt="Tile Refinishing" class="tm-merch-img" width="60" height="60" loading="lazy">
+            </div>
+            <span class="tm-merch-label">Tile Paint</span>
+          </div>
+          <div class="tm-merch-item">
+            <div class="tm-merch-img-box">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/6fb53c51539b47559cf0d122a832cf63.png?v=1793736107" alt="Renovation Brush" class="tm-merch-img" width="60" height="60" loading="lazy">
+            </div>
+            <span class="tm-merch-label">Surface Shield</span>
+          </div>
+        </div>
+
+        <div class="tm-dept-cta">
+          <span>WALK INTO RENOVATION</span>
+          <span class="tm-dept-cta-arrow">➔</span>
+        </div>
+      </a>
+
+      <!-- DEPT 04: Beauty & Personal Styling -->
+      <a href="/collections/beauty-personal-care" class="tm-dept-card tm-theme-sanctuary">
+        <div class="tm-dept-top">
+          <div class="tm-dept-meta-row">
+            <span class="tm-dept-badge">DEPT 04 · SANCTUARY</span>
+            <span class="tm-dept-status"><span class="tm-dept-status-dot"></span> OPEN FOR BROWSING</span>
+          </div>
+          <h3 class="tm-dept-name">Beauty &amp; Personal Styling</h3>
+          <p class="tm-dept-summary">Dual-purpose ceramic travel irons, precision grooming devices, and salon-grade daily hair styling tools.</p>
+        </div>
+
+        <div class="tm-dept-merch">
+          <div class="tm-merch-item">
+            <div class="tm-merch-img-box">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/644c316ca05566dbd50e9ee2ad82b586d595d580.jpg?v=1793736121" alt="Travel Styling Iron" class="tm-merch-img" width="60" height="60" loading="lazy">
+            </div>
+            <span class="tm-merch-label">Styling Iron</span>
+          </div>
+          <div class="tm-merch-item">
+            <div class="tm-merch-img-box">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/195f5aa896f0d4555f2d2de1a6e85ce40db45e93.jpg?v=1793736120" alt="Ceramic Plates" class="tm-merch-img" width="60" height="60" loading="lazy">
+            </div>
+            <span class="tm-merch-label">Ceramic Glaze</span>
+          </div>
+          <div class="tm-merch-item">
+            <div class="tm-merch-img-box">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/8ac25b59126e79dea55ff923f1bc3c2b9a098061.jpg?v=1793736121" alt="Compact Body" class="tm-merch-img" width="60" height="60" loading="lazy">
+            </div>
+            <span class="tm-merch-label">Travel Body</span>
+          </div>
+        </div>
+
+        <div class="tm-dept-cta">
+          <span>WALK INTO BOUTIQUE</span>
+          <span class="tm-dept-cta-arrow">➔</span>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trymalora Category Cards",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Trymalora Category Cards"
+    }
+  ]
+}
+{% endschema %}
+

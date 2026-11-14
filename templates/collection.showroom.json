@@ -3,39 +3,164 @@
     "showroom": {
       "type": "zavelyn-v4-showroom",
       "blocks": {
-        "override_heater": {
-          "type": "product_image_override",
+        "prod_rust_paste": {
+          "type": "showroom_product",
           "settings": {
-            "product": "sakerplus®-1500w-flame-effect-oscillating-space-heater",
-            "enable_override": true,
-            "use_same_image": false,
-            "catalog_image_fit": "contain",
+            "product": "car-metal-rust-repair-paste",
+            "show_product": true,
+            "custom_display_title": "Car Metal Rust Shield Paste",
+            "short_badge": "-50%",
+            "shelf_tag_title": "Rust Shield Paste",
+            "merchandising_label": "AUTOMOTIVE",
+            "use_dynamic_price": true,
+            "rating_text": "4.9",
+            "review_count_text": "(1,027)",
+            "shelf_tag_subtext": "Quick Look · Inspect ⚡",
             "display_scale": 100,
             "mobile_scale": 100,
-            "baseline_offset": 0,
-            "horizontal_offset": 0,
+            "enable_contact_shadow": true,
+            "shadow_width": 75,
+            "shadow_opacity": 70
+          }
+        },
+        "prod_laser_battle": {
+          "type": "showroom_product",
+          "settings": {
+            "product": "kids-infrared-battle-blaster-set-with-target-projector",
+            "show_product": true,
+            "custom_display_title": "Infrared Laser Battle Set",
+            "short_badge": "TOP RATED",
+            "shelf_tag_title": "Infrared Battle Set",
+            "merchandising_label": "INTERACTIVE",
+            "use_dynamic_price": true,
+            "rating_text": "4.9",
+            "review_count_text": "(579)",
+            "shelf_tag_subtext": "Quick Look · Inspect ⚡",
+            "display_scale": 115,
+            "mobile_scale": 110,
+            "enable_contact_shadow": true,
+            "shadow_width": 80,
+            "shadow_opacity": 80
+          }
+        },
+        "prod_chrome_polish": {
+          "type": "showroom_product",
+          "settings": {
+            "product": "metal-chrome-polish-restorer-paste",
+            "show_product": true,
+            "custom_display_title": "Metal Chrome Polish & Restorer Paste",
+            "short_badge": "-50%",
+            "shelf_tag_title": "Metal Chrome Polish",
+            "merchandising_label": "RESTORATION",
+            "use_dynamic_price": true,
+            "rating_text": "4.9",
+            "review_count_text": "(931)",
+            "shelf_tag_subtext": "Quick Look · Inspect ⚡",
+            "display_scale": 100,
+            "mobile_scale": 100,
+            "enable_contact_shadow": true,
+            "shadow_width": 75,
+            "shadow_opacity": 70
+          }
+        },
+        "prod_silver_coating": {
+          "type": "showroom_product",
+          "settings": {
+            "product": "metallic-silver-anti-rust-renovation-coating",
+            "show_product": true,
+            "custom_display_title": "Metallic Silver Anti-Rust Renovation Coating",
+            "short_badge": "BEST VALUE",
+            "shelf_tag_title": "Silver Anti-Rust",
+            "merchandising_label": "COATINGS",
+            "use_dynamic_price": true,
+            "rating_text": "4.9",
+            "review_count_text": "(418)",
+            "shelf_tag_subtext": "Quick Look · Inspect ⚡",
+            "display_scale": 100,
+            "mobile_scale": 100,
+            "enable_contact_shadow": true,
+            "shadow_width": 75,
+            "shadow_opacity": 70
+          }
+        },
+        "prod_styling_iron": {
+          "type": "showroom_product",
+          "settings": {
+            "product": "mini-dual-purpose-travel-styling-iron",
+            "show_product": true,
+            "custom_display_title": "Mini Dual-Purpose Travel Styling Iron",
+            "short_badge": "POPULAR",
+            "shelf_tag_title": "Travel Styling Iron",
+            "merchandising_label": "STYLING",
+            "use_dynamic_price": true,
+            "rating_text": "4.9",
+            "review_count_text": "(642)",
+            "shelf_tag_subtext": "Quick Look · Inspect ⚡",
+            "display_scale": 100,
+            "mobile_scale": 100,
             "enable_contact_shadow": true,
             "shadow_width": 70,
-            "shadow_opacity": 70,
-            "shadow_softness": 12,
-            "reset_original": false
+            "shadow_opacity": 70
+          }
+        },
+        "prod_tile_paint": {
+          "type": "showroom_product",
+          "settings": {
+            "product": "tile-refinishing-paint-restoration-kit",
+            "show_product": true,
+            "custom_display_title": "Tile Refinishing Paint Restoration Kit",
+            "short_badge": "TOP RATED",
+            "shelf_tag_title": "Tile Refinishing Paint",
+            "merchandising_label": "HOME DIY",
+            "use_dynamic_price": true,
+            "rating_text": "4.9",
+            "review_count_text": "(2,418)",
+            "shelf_tag_subtext": "Quick Look · Inspect ⚡",
+            "display_scale": 100,
+            "mobile_scale": 100,
+            "enable_contact_shadow": true,
+            "shadow_width": 75,
+            "shadow_opacity": 70
           }
         }
       },
       "block_order": [
-        "override_heater"
+        "prod_rust_paste",
+        "prod_laser_battle",
+        "prod_chrome_polish",
+        "prod_silver_coating",
+        "prod_styling_iron",
+        "prod_tile_paint"
       ],
       "settings": {
-        "shelf_style": "wood"
+        "eyebrow_text": "🏛️ TRYMALORA RETAIL ENVIRONMENT",
+        "badge_text": "Architecture Department",
+        "heading": "TRYMALORA Physical Showroom",
+        "description": "Step into our physical retail showroom. Products are displayed on authentic architectural shelves. Click any item to pull it forward for spatial inspection and instant checkout.",
+        "desktop_columns": 4,
+        "mobile_columns": 2,
+        "product_gap": 28,
+        "shelf_gap": 72,
+        "shelf_height": 36,
+        "price_tag_width": 180,
+        "enable_shadow": true,
+        "enable_retail_tag": true,
+        "enable_quick_look": true,
+        "enable_inspect": true,
+        "bg_color": "#FAF6F3",
+        "shelf_wood_color": "#C89D66",
+        "shelf_fascia_color": "#A67C46",
+        "text_color": "#2B1B24",
+        "badge_color": "#6B1E46",
+        "price_color": "#191919",
+        "tag_bg_color": "#FFFFFF",
+        "tag_border_color": "#EAD7DD",
+        "button_toggle_color": "#6B1E46",
+        "divider_color": "#EAD7DD"
       }
-    },
-    "shipping": {
-      "type": "zavelyn-pdp-shipping",
-      "settings": {}
     }
   },
   "order": [
-    "showroom",
-    "shipping"
+    "showroom"
   ]
 }

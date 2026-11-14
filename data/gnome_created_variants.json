@@ -1,0 +1,41 @@
+{
+  "productId": "gid://shopify/Product/15650950283635",
+  "variants": [
+    {
+      "id": "gid://shopify/ProductVariant/67357827694963",
+      "title": "1x Single Gnome",
+      "price": "69.99",
+      "compareAtPrice": "139.98",
+      "selectedOptions": [
+        {
+          "name": "Package",
+          "value": "1x Single Gnome"
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67357827727731",
+      "title": "2x Woodland Duo (Save $160)",
+      "price": "119.98",
+      "compareAtPrice": "279.96",
+      "selectedOptions": [
+        {
+          "name": "Package",
+          "value": "2x Woodland Duo (Save $160)"
+        }
+      ]
+    },
+    {
+      "id": "gid://shopify/ProductVariant/67357827760499",
+      "title": "3x Holiday Family Trio (Best Value)",
+      "price": "159.98",
+      "compareAtPrice": "419.94",
+      "selectedOptions": [
+        {
+          "name": "Package",
+          "value": "3x Holiday Family Trio (Best Value)"
+        }
+      ]
+    }
+  ]
+}

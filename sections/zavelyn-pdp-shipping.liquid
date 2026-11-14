@@ -66,7 +66,9 @@
   }
 
   .zv-delivery-header {
+    display: block !important;
     margin-bottom: 24px;
+    width: 100%;
   }
 
   .zv-delivery-chip {
@@ -170,6 +172,8 @@
     }
     .zv-delivery-header {
       order: 1;
+      display: block !important;
+      width: 100%;
     }
     .zv-delivery-media-col {
       order: 2;
@@ -179,6 +183,62 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 12px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .zv-delivery-section {
+      padding: 40px 0 48px;
+    }
+    .zv-container {
+      padding: 0 16px !important;
+    }
+    .zv-delivery-header {
+      display: block !important;
+      text-align: left;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+    .zv-delivery-chip {
+      display: inline-flex;
+      margin-bottom: 12px;
+      font-size: 10.5px;
+      padding: 5px 12px;
+    }
+    .zv-delivery-title {
+      font-size: 26px;
+      line-height: 1.25;
+      margin: 0 0 12px;
+      letter-spacing: -0.3px;
+    }
+    .zv-delivery-desc {
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .zv-delivery-media-col {
+      gap: 12px;
+    }
+    .zv-delivery-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .zv-trust-card {
+      padding: 14px 14px;
+      gap: 12px;
+    }
+    .zv-trust-card-icon {
+      width: 36px;
+      height: 36px;
+      font-size: 18px;
+      border-radius: 8px;
+    }
+    .zv-trust-card-title {
+      font-size: 14px;
+    }
+    .zv-trust-card-desc {
+      font-size: 12.5px;
     }
   }
 </style>

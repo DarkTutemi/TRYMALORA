@@ -3,34 +3,28 @@
     "hero": {
       "type": "zavelyn-v4-hero",
       "settings": {
-        "heading": "Innovative Interactive Toys & Modern Family Essentials",
-        "subheading": "Engineered for active screen-free play, dynamic target projections, and unforgettable family battles. Backed by 30-day money-back guarantee."
+        "heading": "Curated Everyday Innovations & Interactive Essentials",
+        "subheading": "Engineered for active family play, precision automotive surface restoration, home renovation coatings, and personal styling essentials. Backed by 30-day money-back guarantee."
       }
     },
     "featured_products": {
       "type": "trymalora-featured-products",
       "settings": {
-        "pill_text": "FEATURED RELEASES",
-        "heading": "Interactive Toys & Active Play",
-        "subhead": "Engineered for screen-free physical battles, wall target practice, and unforgettable family tournaments.",
-        "collection": "frontpage"
+        "pill_text": "CURATED STOREFRONT",
+        "heading": "Featured New Releases & Best Sellers",
+        "subhead": "Explore our full catalog of active interactive play, automotive surface restoration, home renovation coatings, and personal styling essentials."
       }
+    },
+    "shipping_info": {
+      "type": "trymalora-homepage-shipping",
+      "settings": {}
     },
     "brand_values": {
       "type": "willa-facts",
       "settings": {
-        "pill_text": "THE TRYMALORA DIFFERENCE",
-        "heading": "Engineered for Active Family Play",
-        "subtitle": "Screen-free excitement, durable impact-resistant design, and eye-safe technology built for hours of active fun."
-      }
-    },
-    "comparison": {
-      "type": "willa-comparison",
-      "settings": {
-        "pill_text": "HEAD-TO-HEAD COMPARISON",
-        "heading": "Why Trymalora Outperforms the Rest",
-        "brand_col_title": "Trymalora Original",
-        "competitor_col_title": "Generic Alternatives"
+        "pill_text": "THE TRYMALORA PROMISE",
+        "heading": "Built for Reliability, Performance & Value",
+        "subtitle": "Tested materials, transparent logistics, and dedicated customer service for complete peace of mind."
       }
     },
     "faq": {
@@ -38,15 +32,15 @@
       "settings": {
         "pill_text": "GOT QUESTIONS?",
         "heading": "Frequently Asked Questions",
-        "subtitle": "Everything you need to know about our products, shipping, and guarantees."
+        "subtitle": "Everything you need to know about our products, worldwide shipping, and 30-day return policy."
       }
     }
   },
   "order": [
     "hero",
     "featured_products",
+    "shipping_info",
     "brand_values",
-    "comparison",
     "faq"
   ]
 }

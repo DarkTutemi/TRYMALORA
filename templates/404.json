@@ -1,12 +1,16 @@
 {
-  "layout": "offer",
   "sections": {
+    "track": {
+      "type": "zavelyn-track-order",
+      "settings": {}
+    },
     "redirect": {
       "type": "redirect-home",
       "settings": {}
     }
   },
   "order": [
+    "track",
     "redirect"
   ]
 }

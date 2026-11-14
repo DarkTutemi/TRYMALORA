@@ -4,18 +4,38 @@
       "type": "zavelyn-v4-pdp-main",
       "settings": {}
     },
-    "story": {
-      "type": "zavelyn-v4-pdp-story",
+    "marquee": {
+      "type": "trymalora-pdp-marquee",
+      "settings": {}
+    },
+    "package": {
+      "type": "trymalora-pdp-package",
+      "settings": {}
+    },
+    "how_it_works": {
+      "type": "trymalora-pdp-how-it-works",
+      "settings": {}
+    },
+    "faq": {
+      "type": "trymalora-pdp-faq",
       "settings": {}
     },
     "shipping": {
       "type": "zavelyn-pdp-shipping",
       "settings": {}
+    },
+    "reviews": {
+      "type": "trymalora-pdp-reviews",
+      "settings": {}
     }
   },
   "order": [
     "main",
-    "story",
-    "shipping"
+    "marquee",
+    "package",
+    "how_it_works",
+    "faq",
+    "shipping",
+    "reviews"
   ]
 }

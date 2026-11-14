@@ -1,0 +1,64 @@
+{
+  "product": {
+    "title": "Christmas Lantern Welcome Gnome",
+    "handle": "christmas-lantern-welcome-gnome",
+    "vendor": "TRYMALORA",
+    "product_type": "Holiday & Home Decor",
+    "tags": ["Christmas", "Holiday", "Gnome", "Home Decor", "Illuminated", "Winter", "Showroom"],
+    "price": 69.99,
+    "compare_at_price": 139.98,
+    "currency": "USD",
+    "sku": "TM-GNOME-XMAS-01",
+    "body_html": "<p>Meet the charming <strong>Christmas Lantern Welcome Gnome</strong> who carries an illuminated warm-white star lantern and brings cozy woodland magic to your holiday home.</p><p>Dressed in a handcrafted red-and-cream knitted-style pointed hat with a long snowy beard, this delightful character is surrounded by lush evergreen branches, frosted pinecones, and crimson winter berries. After dark, his gentle star lantern casts an inviting, atmospheric glow across your sheltered porch, foyer, hearth, or Christmas tree.</p><h3>Key Highlights:</h3><ul><li><strong>Illuminated Warm-White Star Lantern:</strong> Creates an enchanting evening glow without harsh glare.</li><li><strong>Handcrafted Woodland Details:</strong> Realistic evergreen boughs, natural pinecones, and vibrant red holly berries.</li><li><strong>Textured Knitted-Style Cap & Snowy Beard:</strong> Rich tactile aesthetic inspired by traditional Nordic holiday folklore.</li><li><strong>Sturdy Weighted Base:</strong> Safe and stable on consoles, mantels, hearths, and covered entryways.</li><li><strong>60-Night Holiday Happiness Guarantee:</strong> Love the cozy festive atmosphere or your money back.</li></ul>",
+    "images": [
+      {
+        "src": "https://ncrovoprime.com/cdn/shop/files/51ec8bc9-19e1-4750-81e9-716b9f443448.png?v=1793673600",
+        "alt": "Christmas Lantern Welcome Gnome holding an illuminated star lantern on a festive porch"
+      },
+      {
+        "src": "https://ncrovoprime.com/cdn/shop/files/41b23eb3-e0f1-48f2-bf80-ea57b5122a81.png?v=1793673601",
+        "alt": "Christmas Lantern Welcome Gnome beside decorated Christmas tree with wrapped presents"
+      },
+      {
+        "src": "https://ncrovoprime.com/cdn/shop/files/7a2a339d-5869-4893-bdbc-a646d5370aba.png?v=1793673602",
+        "alt": "Close-up detail of gnome knitted red-and-cream pointed hat and snowy beard"
+      },
+      {
+        "src": "https://ncrovoprime.com/cdn/shop/files/6c43cc71-c025-43bd-9631-2f3a04afe121.png?v=1793673602",
+        "alt": "Christmas Lantern Welcome Gnome on a decorated holiday table display"
+      },
+      {
+        "src": "https://ncrovoprime.com/cdn/shop/files/37fa84c3-075e-4dc0-a07e-20fde6a1a4e8.png?v=1793673602",
+        "alt": "Nighttime glow of the warm-white five-pointed star lantern"
+      },
+      {
+        "src": "https://ncrovoprime.com/cdn/shop/files/1f01a5a0-e235-4c01-b456-843f62a58f73.png?v=1793673601",
+        "alt": "Full profile view showing evergreen boughs, pinecones, and red berries"
+      }
+    ],
+    "variants": [
+      {
+        "title": "1x Christmas Lantern Welcome Gnome (Single)",
+        "price": 69.99,
+        "compare_at_price": 139.98,
+        "sku": "TM-GNOME-01",
+        "inventory_quantity": 100
+      },
+      {
+        "title": "2x Woodland Duo Set (Buy 2 & Save $160)",
+        "price": 119.98,
+        "compare_at_price": 279.96,
+        "sku": "TM-GNOME-02",
+        "inventory_quantity": 100
+      },
+      {
+        "title": "3x Holiday Family Trio (Best Value + Free Gift Box)",
+        "price": 159.98,
+        "compare_at_price": 419.94,
+        "sku": "TM-GNOME-03",
+        "inventory_quantity": 100
+      }
+    ]
+  }
+}
+

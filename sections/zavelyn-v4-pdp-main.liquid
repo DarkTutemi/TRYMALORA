@@ -27,17 +27,108 @@
 {% endif %}
 
 {% assign prod_title = product.title | default: "Infrared Laser Battle Set" %}
-{% assign prod_hero_desc = "Turn ordinary playtime into an interactive adventure with infrared battles, projected targets, and exciting sound effects." %}
 
-{% assign t1_id = variant_tier_1.id | default: "67297621934451" %}
-{% assign t1_price = variant_tier_1.price | default: 12900 %}
-{% assign t1_compare = variant_tier_1.compare_at_price | default: 25800 %}
-{% assign t2_id = variant_tier_2.id | default: "67297622131059" %}
-{% assign t2_price = variant_tier_2.price | default: 24510 %}
-{% assign t2_compare = 51600 %}
-{% assign t3_id = variant_tier_3.id | default: "67297622163827" %}
-{% assign t3_price = variant_tier_3.price | default: 32895 %}
-{% assign t3_compare = 77400 %}
+{% case product.handle %}
+  {% when 'car-metal-rust-repair-paste' %}
+    {% assign prod_hero_desc = "High-viscosity paste formula penetrates micro-pores, halts active corrosion, and creates a durable waterproof barrier on car metal." %}
+  {% when 'metal-chrome-polish-restorer-paste' %}
+    {% assign prod_hero_desc = "Heavy-duty chrome polishing cream that eliminates oxidation, road grime, and water spots to restore a brilliant mirror shine." %}
+  {% when 'mini-dual-purpose-travel-styling-iron' %}
+    {% assign prod_hero_desc = "Compact 2-in-1 ceramic styling iron engineered for effortless silky straight strands and bouncy curls at home or on the go." %}
+  {% when 'tile-refinishing-paint-restoration-kit' %}
+    {% assign prod_hero_desc = "Waterproof high-gloss tile and tub refinishing paint that covers deep stains and renews outdated tiles without replacement." %}
+  {% when 'metallic-silver-anti-rust-renovation-coating' %}
+    {% assign prod_hero_desc = "Water-based high-gloss metallic silver coating that converts rust and shields metal gates, pipes, and railings from weathering." %}
+  {% when 'ear-cleaner' %}
+    {% assign prod_hero_desc = "Veterinarian-formulated botanical ear wash that dissolves deep wax buildup, neutralizes yeast odor, and stops frantic head shaking in under 2 minutes." %}
+  {% when 'eyvelle-steam-therapy' %}
+    {% assign prod_hero_desc = "Ophthalmologist-recommended ultrasonic warm nano-steam therapy that gently unblocks meibomian oil glands, restores natural tear film, and eliminates dry, burning, tired eyes in just 5 minutes." %}
+  {% when 'christmas-lantern-welcome-gnome' %}
+    {% assign prod_hero_desc = "Charming handcrafted woodland gnome with a warm-white illuminated star lantern, festive knitted hat, and lush evergreen boughs that bring cozy holiday magic to your home." %}
+  {% else %}
+    {% assign prod_hero_desc = "Turn ordinary playtime into an interactive adventure with infrared battles, projected targets, and exciting sound effects." %}
+{% endcase %}
+
+{% if product.handle == 'metallic-silver-anti-rust-renovation-coating' %}
+  {% assign default_v = product.variants[0] %}
+  {% assign t1_id = default_v.id %}
+  {% assign t1_price = default_v.price | default: 9995 %}
+  {% assign t1_compare = t1_price %}
+  {% assign t2_v = product.variants[1] %}
+  {% assign t2_id = t2_v.id %}
+  {% assign t2_price = t2_v.price | default: 5997 %}
+  {% assign t2_compare = t2_price %}
+  {% assign t3_v = product.variants[2] %}
+  {% assign t3_id = t3_v.id %}
+  {% assign t3_price = t3_v.price | default: 1999 %}
+  {% assign t3_compare = t3_price %}
+{% elsif product.handle == 'ear-cleaner' %}
+  {% assign ear_v1 = product.variants[0] %}
+  {% assign ear_v2 = product.variants[1] %}
+  {% assign ear_v3 = product.variants[2] %}
+  {% assign default_v = ear_v2 | default: product.variants[0] %}
+  {% assign t1_id = default_v.id %}
+  {% assign t1_price = 5668 %}
+  {% assign t1_compare = 13996 %}
+  {% assign t1_savings = 8328 %}
+  {% assign t2_id = ear_v3.id %}
+  {% assign t2_price = ear_v3.price | default: 11197 %}
+  {% assign t2_compare = 27992 %}
+  {% assign t3_id = ear_v1.id %}
+  {% assign t3_price = ear_v1.price | default: 3499 %}
+  {% assign t3_compare = 6999 %}
+{% elsif product.handle == 'eyvelle-steam-therapy' %}
+  {% assign eye_v1 = product.variants[0] %}
+  {% assign eye_v2 = product.variants[1] %}
+  {% assign eye_v3 = product.variants[2] %}
+  {% assign default_v = eye_v2 | default: product.variants[0] %}
+  {% assign t1_id = default_v.id %}
+  {% assign t1_price = default_v.price | default: 6998 %}
+  {% assign t1_compare = default_v.compare_at_price | default: 17000 %}
+  {% assign t1_savings = t1_compare | minus: t1_price %}
+  {% assign t2_id = eye_v3.id %}
+  {% assign t2_price = eye_v3.price | default: 9497 %}
+  {% assign t2_compare = 25500 %}
+  {% assign t3_id = eye_v1.id %}
+  {% assign t3_price = eye_v1.price | default: 3999 %}
+  {% assign t3_compare = 8500 %}
+{% elsif product.handle == 'christmas-lantern-welcome-gnome' %}
+  {% assign gnome_v1 = product.variants[0] %}
+  {% assign gnome_v2 = product.variants[1] %}
+  {% assign gnome_v3 = product.variants[2] %}
+  {% assign default_v = gnome_v2 | default: product.variants[0] %}
+  {% assign t1_id = default_v.id %}
+  {% assign t1_price = default_v.price | default: 11998 %}
+  {% assign t1_compare = default_v.compare_at_price | default: 27996 %}
+  {% assign t1_savings = t1_compare | minus: t1_price %}
+  {% assign t2_id = gnome_v3.id %}
+  {% assign t2_price = gnome_v3.price | default: 15998 %}
+  {% assign t2_compare = 41994 %}
+  {% assign t3_id = gnome_v1.id %}
+  {% assign t3_price = gnome_v1.price | default: 6999 %}
+  {% assign t3_compare = 13998 %}
+{% elsif product.handle != 'kids-infrared-battle-blaster-set-with-target-projector' and product.variants.size > 0 %}
+  {% assign default_v = product.selected_or_first_available_variant %}
+  {% assign t1_id = default_v.id %}
+  {% assign t1_price = default_v.price %}
+  {% assign t1_compare = default_v.compare_at_price | default: default_v.price %}
+  {% assign t2_id = default_v.id %}
+  {% assign t2_price = default_v.price %}
+  {% assign t2_compare = default_v.compare_at_price | default: default_v.price %}
+  {% assign t3_id = default_v.id %}
+  {% assign t3_price = default_v.price %}
+  {% assign t3_compare = default_v.compare_at_price | default: default_v.price %}
+{% else %}
+  {% assign t1_id = variant_tier_1.id | default: "67297621934451" %}
+  {% assign t1_price = variant_tier_1.price | default: 12900 %}
+  {% assign t1_compare = variant_tier_1.compare_at_price | default: 25800 %}
+  {% assign t2_id = variant_tier_2.id | default: "67297622131059" %}
+  {% assign t2_price = variant_tier_2.price | default: 24510 %}
+  {% assign t2_compare = 51600 %}
+  {% assign t3_id = variant_tier_3.id | default: "67297622163827" %}
+  {% assign t3_price = variant_tier_3.price | default: 32895 %}
+  {% assign t3_compare = 77400 %}
+{% endif %}
 
 {% assign t1_savings = t1_compare | minus: t1_price %}
 {% assign t2_savings = t2_compare | minus: t2_price %}
@@ -72,12 +163,69 @@
       <!-- LEFT COLUMN: STICKY GALLERY (SHOPSIDEK T01 PROPORTIONS) -->
       <div class="zv-pdp-gallery-col">
         <div class="zv-pdp-main-media">
-          <span class="zv-pdp-save-badge">TOP RATED · KIDS &amp; FAMILY</span>
+          {% assign image_badge = "TOP RATED · KIDS & FAMILY" %}
+          {% case product.handle %}
+            {% when 'car-metal-rust-repair-paste' %}
+              {% assign image_badge = "TOP RATED · AUTO CARE" %}
+            {% when 'metal-chrome-polish-restorer-paste' %}
+              {% assign image_badge = "TOP RATED · AUTO CARE" %}
+            {% when 'mini-dual-purpose-travel-styling-iron' %}
+              {% assign image_badge = "TOP RATED · BEAUTY CARE" %}
+            {% when 'tile-refinishing-paint-restoration-kit' %}
+              {% assign image_badge = "TOP RATED · HOME RESTORATION" %}
+            {% when 'tile-refinishing-paint-restoration-kit-draft' %}
+              {% assign image_badge = "TOP RATED · HOME RESTORATION" %}
+            {% when 'metallic-silver-anti-rust-renovation-coating' %}
+              {% assign image_badge = "TOP RATED · HOME & REPAIR" %}
+            {% when 'ear-cleaner' %}
+              {% assign image_badge = "TOP RATED · PET HEALTH & CARE" %}
+            {% when 'eyvelle-steam-therapy' %}
+              {% assign image_badge = "TOP RATED · EYE HEALTH & WELLNESS" %}
+            {% when 'christmas-lantern-welcome-gnome' %}
+              {% assign image_badge = "TOP RATED · HOLIDAY & HOME" %}
+          {% endcase %}
+          {% if section.settings.gallery_badge_text != blank %}
+            {% assign image_badge = section.settings.gallery_badge_text %}
+          {% endif %}
+          <span class="zv-pdp-save-badge">{{ image_badge }}</span>
+          {% if section.settings.enable_gallery_zoom != false %}
+            <button type="button" class="zv-gallery-zoom-btn" id="zvGalleryZoomBtn" aria-label="Zoom product photo">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+              <span>Zoom</span>
+            </button>
+          {% endif %}
+
+          {% if product.handle contains 'tile-refinishing' %}
+            <video 
+              id="zvMainVideo" 
+              class="zv-pdp-video" 
+              src="https://cdn.shopify.com/videos/c/o/v/22d393cbbfef4b1fa48284f0595279e4.mp4" 
+              playsinline 
+              muted 
+              controls 
+              style="display:none;"
+            ></video>
+          {% elsif product.handle == 'eyvelle-steam-therapy' %}
+            <video 
+              id="zvMainVideo" 
+              class="zv-pdp-video" 
+              src="https://cdn.shopify.com/videos/c/o/v/a7ddafb14ed04e9a96204a0a0bbffc50.mp4" 
+              playsinline 
+              muted 
+              controls 
+              loop
+              style="display:none;"
+            ></video>
+          {% endif %}
 
           {% if product.featured_image %}
+            {% assign main_img_url = product.featured_image | image_url: width: 1024 %}
+            {% if main_img_url contains '75187355-b515-479c-b765-d8223db49fa6' and product.images.size > 1 %}
+              {% assign main_img_url = product.images[1] | image_url: width: 1024 %}
+            {% endif %}
             <img 
               id="zvMainImg" 
-              src="{{ product.featured_image | image_url: width: 1024 }}" 
+              src="{{ main_img_url }}" 
               alt="{{ prod_title | escape }}" 
               class="zv-pdp-main-img"
               width="600"
@@ -100,10 +248,30 @@
         <!-- Thumbnails -->
         <div class="zv-pdp-thumbs">
           {% if product.images.size > 1 %}
-            {% for img in product.images limit: 8 %}
-              <div class="zv-pdp-thumb {% if forloop.first %}active{% endif %}" data-src="{{ img | image_url: width: 1024 }}">
-                <img src="{{ img | image_url: width: 160 }}" alt="{{ img.alt | escape }}" width="80" height="80" loading="lazy">
-              </div>
+            {% assign first_thumb = true %}
+            {% for img in product.images %}
+              {% assign img_url_str = img | image_url %}
+              {% unless img_url_str contains '75187355-b515-479c-b765-d8223db49fa6' %}
+                <div class="zv-pdp-thumb {% if first_thumb %}active{% endif %}" data-src="{{ img | image_url: width: 1024 }}">
+                  <img src="{{ img | image_url: width: 160 }}" alt="{{ img.alt | escape }}" width="80" height="80" loading="lazy">
+                </div>
+                {% if first_thumb and product.handle contains 'tile-refinishing' %}
+                  <div class="zv-pdp-thumb video-thumb" data-is-video="true" data-video-src="https://cdn.shopify.com/videos/c/o/v/22d393cbbfef4b1fa48284f0595279e4.mp4">
+                    <img src="{{ img | image_url: width: 160 }}" alt="Tile Refinishing Video Application" width="80" height="80" loading="lazy">
+                    <span class="zv-thumb-video-icon">
+                      <svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+                    </span>
+                  </div>
+                {% elsif first_thumb and product.handle == 'eyvelle-steam-therapy' %}
+                  <div class="zv-pdp-thumb video-thumb" data-is-video="true" data-video-src="https://cdn.shopify.com/videos/c/o/v/a7ddafb14ed04e9a96204a0a0bbffc50.mp4">
+                    <img src="https://cdn.shopify.com/s/files/1/0759/4072/4979/files/Woman_Eyvelle_Steam_5.webp" alt="Eyvelle Steam Therapy Live Video Demonstration" width="80" height="80" loading="lazy">
+                    <span class="zv-thumb-video-icon">
+                      <svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+                    </span>
+                  </div>
+                {% endif %}
+                {% assign first_thumb = false %}
+              {% endunless %}
             {% endfor %}
           {% else %}
             <div class="zv-pdp-thumb active" data-src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173020_6c8c1c4cf7d711cdd5a4d6aa91290eb2_e583f568-e0e8-4c22-9785-6dc4d0eb727b.jpg">
@@ -133,7 +301,7 @@
 
         <!-- 1. Trustpilot Verified Review Rating Row (ABOVE product title) -->
         {% if section.settings.show_rating %}
-          <a class="zv-pdp-rating-row zv-trustpilot-row" href="#tmFaqSection" aria-label="Trustpilot Rating">
+          <a class="zv-pdp-rating-row zv-trustpilot-row" href="#tmCustomerReviews" aria-label="Customer Rating">
             <span class="zv-tp-brand">
               <svg class="zv-tp-icon" viewBox="0 0 24 24" fill="#00B67A" width="16" height="16" aria-hidden="true">
                 <path d="M12 2l2.9 8.2H23l-6.5 5 2.5 8-7-4.9-7 4.9 2.5-8L1 10.2h8.1z"/>
@@ -149,7 +317,19 @@
             </div>
             <span class="zv-tp-score"><strong>{{ section.settings.rating_score | default: "4.9" }}</strong> / 5.0</span>
             <span class="zv-tp-sep">&middot;</span>
-            <span class="zv-tp-count">({{ section.settings.rating_count | default: "2,418" }} {{ section.settings.rating_label | default: "verified reviews" }})</span>
+            {% assign prod_reviews_count = section.settings.rating_count | default: "2,418" %}
+            {% unless section.settings.use_section_rating %}
+              {% if product.handle == 'metallic-silver-anti-rust-renovation-coating' %}
+                {% assign prod_reviews_count = "6,268" %}
+              {% elsif product.handle == 'ear-cleaner' %}
+                {% assign prod_reviews_count = "5,420" %}
+              {% elsif product.handle == 'eyvelle-steam-therapy' %}
+                {% assign prod_reviews_count = "1,615" %}
+              {% elsif product.handle == 'christmas-lantern-welcome-gnome' %}
+                {% assign prod_reviews_count = "10" %}
+              {% endif %}
+            {% endunless %}
+            <span class="zv-tp-count">({{ prod_reviews_count }} {{ section.settings.rating_label | default: "verified reviews" }})</span>
           </a>
         {% endif %}
 
@@ -158,233 +338,1173 @@
 
         <!-- 3. Short Description / Promise -->
         <p class="zv-pdp-lead">
-          {{ prod_hero_desc }}
+          {% if section.settings.lead_description != blank %}
+            {{ section.settings.lead_description }}
+          {% else %}
+            {{ prod_hero_desc }}
+          {% endif %}
         </p>
 
         <!-- 4. Benefit Bullets with Relevant Icons -->
         <ul class="zv-pdp-benefits">
-          <li>
-            <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"></circle>
-              <circle cx="12" cy="12" r="6"></circle>
-              <circle cx="12" cy="12" r="2"></circle>
-            </svg>
-            <span>Dynamic 180° Wall &amp; Ceiling Target Projection</span>
-          </li>
-          <li>
-            <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-            <span>4 Selectable Team Battle Channels &amp; Unlimited Players</span>
-          </li>
-          <li>
-            <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-            </svg>
-            <span>Acoustic Blaster Sounds, Hit Vibration &amp; LED Health Bars</span>
-          </li>
-          <li>
-            <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              <polyline points="9 12 11 14 15 10"></polyline>
-            </svg>
-            <span>Eye-Safe Class 1 Optical Infrared (Zero Physical Darts)</span>
-          </li>
+          {% assign benefit_blocks = section.blocks | where: "type", "benefit_item" %}
+          {% if benefit_blocks.size > 0 %}
+            {% for block in benefit_blocks %}
+              <li {{ block.shopify_attributes }}>
+                {% case block.settings.icon %}
+                  {% when 'star' %}
+                    <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  {% when 'leaf' %}
+                    <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                  {% when 'clock' %}
+                    <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  {% when 'heart' %}
+                    <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                  {% else %}
+                    <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                {% endcase %}
+                <span>{{ block.settings.text }}</span>
+              </li>
+            {% endfor %}
+          {% else %}
+            {% case product.handle %}
+            {% when 'car-metal-rust-repair-paste' %}
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>High-Viscosity Formula Penetrates Micro-Pores &amp; Locks Out Moisture</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"></path></svg>
+                <span>Restores Surface Integrity &amp; Halts Active Corrosion</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Direct Brush-On Application With Fast-Drying Protective Layer</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="4"></circle><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path></svg>
+                <span>Universal Multi-Color Finish Matches Automotive Body &amp; Trim</span>
+              </li>
+            {% when 'metal-chrome-polish-restorer-paste' %}
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <span>Removes Heavy Oxidation, Water Spots &amp; Surface Tarnishing</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path></svg>
+                <span>Restores Mirror-Like Chrome Luster Without Scratches</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                <span>Includes Dedicated Application Brush for Crevices &amp; Lug Nuts</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>Long-Lasting Hydrophobic Barrier Repels Grime &amp; Road Salt</span>
+              </li>
+            {% when 'mini-dual-purpose-travel-styling-iron' %}
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path></svg>
+                <span>Dual Straightening &amp; Volumizing Waves in One Ultra-Compact Tool</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                <span>Ceramic Glaze Coated Heating Plates Protect Hair From Heat Damage</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                <span>Rapid 30-Second PTC Heating with Constant Temperature Control</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                <span>Compact Lightweight Design Ideal for Travel, Dorms &amp; Touch-Ups</span>
+              </li>
+            {% when 'tile-refinishing-paint-restoration-kit' %}
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                <span>High-Adhesion Formula Renews Worn Ceramic Tiles, Sinks &amp; Grout</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <span>Deep Stain Coverage &amp; High-Gloss Ceramic-Like Enamel Finish</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>Water-Resistant &amp; Mold-Inhibiting Barrier Once Fully Cured</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 2l4 4-10 10H8v-4L18 2z"></path></svg>
+                <span>Complete Kit Includes Precision Bristle Brush For Seamless DIY</span>
+              </li>
+            {% when 'metallic-silver-anti-rust-renovation-coating' %}
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <span>Reflective Silver Metallic Luster with High-Strength Adhesion</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 2v20"></path></svg>
+                <span>Converts &amp; Seals Surface Rust on Gates, Pipes &amp; Metal Fixtures</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>Weatherproof Outdoor Protection Against Rain, UV &amp; Oxidation</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 2l4 4-10 10H8v-4L18 2z"></path></svg>
+                <span>Water-Based, Low-Odor &amp; Direct-to-Metal Brushing Formula</span>
+              </li>
+            {% when 'ear-cleaner' %}
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>Dissolves Deep L-Shaped Canal Wax &amp; Hardened Brown Discharge</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span>Fast 2-Minute Relief: Halts Frantic Head Shaking &amp; Ear Scratching</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <span>Eliminates Persistent Yeast Odors with Natural Chamomile &amp; Aloe</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                <span>100% Alcohol-Free &amp; Non-Stinging Formula for Dogs &amp; Cats of All Ages</span>
+              </li>
+            {% when 'eyvelle-steam-therapy' %}
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                <span>Ultra-Fine Nano Mist Unclogs Meibomian Glands in 60 Seconds</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                <span>Instant Relief for Tired, Gritty, Screen-Fatigued &amp; Dry Eyes</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>Gentle Medical-Grade Silicone Cup for a Soft, Leak-Proof Seal</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="15" x2="15.01" y2="15"></line></svg>
+                <span>Safe with Purified Water, Saline, or Preservative-Free Drops</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                <span>Rechargeable, Pocket-Sized &amp; Whisper-Quiet for Daily Desk Use</span>
+              </li>
+            {% when 'christmas-lantern-welcome-gnome' %}
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <span>Warm 5-Pointed Star Lantern Adds a Gentle Atmospheric Glow After Dark</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>Festive Hand-Knitted Style Red-and-Cream Pointed Hat &amp; Snowy Beard</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                <span>Lush Evergreen Branches, Natural Pinecones &amp; Crimson Winter Berries</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span>Sturdy Weighted Base Ideal for Porches, Entryways, Consoles &amp; Trees</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                <span>Nordic Woodland Folklore Styling Brings Warm Festive Cheer to All Guests</span>
+              </li>
+            {% else %}
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="6"></circle>
+                  <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+                <span>Dynamic 180° Wall &amp; Ceiling Target Projection</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>4 Selectable Team Battle Channels &amp; Unlimited Players</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+                <span>Acoustic Blaster Sounds, Hit Vibration &amp; LED Health Bars</span>
+              </li>
+              <li>
+                <svg class="zv-benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <polyline points="9 12 11 14 15 10"></polyline>
+                </svg>
+                <span>Eye-Safe Class 1 Optical Infrared (Zero Physical Darts)</span>
+              </li>
+          {% endcase %}
+          {% endif %}
         </ul>
 
-        <!-- 5. Live Viewing Urgency Pill (Merchant Configurable) -->
+        <!-- 5. Live Viewing Urgency Pill OR Authentic Craft Highlight Pill (Merchant Configurable) -->
         {% if section.settings.show_live_viewers %}
           <div class="zv-live-viewers">
             <span class="zv-live-dot"></span>
             <span>{{ section.settings.live_viewers_text | default: "28 families looking at this right now" }}</span>
+          </div>
+        {% elsif section.settings.show_craft_pill and section.settings.craft_pill_text != blank %}
+          <div class="zv-craft-highlight-pill">
+            <span aria-hidden="true">✨</span>
+            <span>{{ section.settings.craft_pill_text }}</span>
           </div>
         {% endif %}
 
         <!-- 6. Bold Price Hero Row -->
         <div class="zv-pdp-price-hero">
           <b class="zv-price-active" id="zvPriceActive">{{ t1_price | money }}</b>
-          <s class="zv-price-compare" id="zvPriceCompare">{{ t1_compare | money }}</s>
-          <span class="zv-price-save-pill" id="zvPriceSavings">SAVE {{ t1_savings | money }} (50% OFF)</span>
+          {% if product.handle == 'metallic-silver-anti-rust-renovation-coating' %}
+            <s class="zv-price-compare" id="zvPriceCompare" style="display: none;"></s>
+            <span class="zv-price-save-pill" id="zvPriceSavings" style="display: none;"></span>
+          {% else %}
+            <s class="zv-price-compare" id="zvPriceCompare">{{ t1_compare | money }}</s>
+            <span class="zv-price-save-pill" id="zvPriceSavings">SAVE {{ t1_savings | money }} (50% OFF)</span>
+          {% endif %}
         </div>
+
+        {% comment %}
+          For tile-refinishing, Color and Size selectors are moved inside the MIX & MATCH BUNDLE V2 customizer below.
+        {% endcomment %}
 
         <!-- 7. TIERED BUNDLE SELECTOR (KACHING / SHOPSIDEK T01 STYLE) -->
         <div class="zv-bundle-box">
           <div class="zv-bundle-head">
             <span>CHOOSE YOUR PACKAGE:</span>
-            <span class="zv-bundle-guarantee">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-              <span>30-Day Returns</span>
-            </span>
+            <div class="zv-bundle-badges-right">
+              <span class="zv-bundle-shipping-badge {% if product.handle == 'metallic-silver-anti-rust-renovation-coating' %}unlocked{% else %}locked{% endif %}" id="zvBundleShippingBadge">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M20 8h-3V4H1v13h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                <span id="zvBundleShippingText">{% if product.handle == 'metallic-silver-anti-rust-renovation-coating' %}🎉 Free Shipping Unlocked! ($99.95 > $70){% else %}Free Shipping for Orders Over $70{% endif %}</span>
+              </span>
+              <span class="zv-bundle-guarantee">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                <span>30-Day Returns on Eligible Items</span>
+              </span>
+            </div>
           </div>
 
-          <div class="zv-bundle-cards">
-            {% if is_ascending %}
-              <!-- TIER 1: 1 SET (DEFAULT SELECTED) -->
+          <div class="zv-bundle-cards" id="zvBundleCardsContainer">
+            {% if product.handle contains 'tile-refinishing' %}
+              <!-- TILE REFINISHING MIX & MATCH BUNDLE V2 (BUY 1, BUY 2 [5% OFF], BUY 3 [15% OFF]) -->
               <div 
-                class="zv-bundle-card selected" 
+                class="zv-bundle-card selected zv-tile-bundle-card" 
+                data-bundle-tier="1"
                 data-qty="1"
-                data-variant-id="{{ t1_id }}"
-                data-price-cents="{{ t1_price }}"
-                data-compare-cents="{{ t1_compare }}"
                 data-tier-level="1"
               >
                 <div class="zv-bundle-card-body">
                   <div class="zv-bundle-card-left">
                     <div class="zv-bundle-radio"></div>
                     <div class="zv-bundle-card-info">
-                      <div class="zv-bundle-card-name">1 Set <small style="font-weight: 600; color: var(--zv-pdp-muted);">(Starter Pack)</small></div>
-                      <div class="zv-bundle-card-sub">2 Blasters + 1 Target Projector &middot; 50% OFF</div>
+                      <div class="zv-bundle-card-name">Buy 1 <small style="font-weight: 600; color: var(--zv-pdp-muted);">(Single Box)</small></div>
+                      <div class="zv-bundle-card-sub">Standard single area restoration &middot; Regular Price</div>
                     </div>
                   </div>
                   <div class="zv-bundle-card-pricing">
-                    <div class="zv-bundle-card-total">{{ t1_price | money }}</div>
-                    <div class="zv-bundle-card-unit">{{ t1_price | money }} / set</div>
+                    <div class="zv-bundle-card-total" id="zvTileB1Total">$16.99</div>
+                    <div class="zv-bundle-card-unit" id="zvTileB1Unit">$16.99 / box</div>
                   </div>
                 </div>
               </div>
 
-              <!-- TIER 2: 2 SETS (MOST POPULAR) -->
               <div 
-                class="zv-bundle-card" 
-                data-qty="1"
-                data-variant-id="{{ t2_id }}"
-                data-price-cents="{{ t2_price }}"
-                data-compare-cents="{{ t2_compare }}"
+                class="zv-bundle-card zv-tile-bundle-card" 
+                data-bundle-tier="2"
+                data-qty="2"
                 data-tier-level="2"
               >
-                <span class="zv-bundle-card-badge">🔥 MOST POPULAR &middot; EXTRA 5% OFF &middot; SAVE {{ t2_savings | money }}</span>
+                <span class="zv-bundle-card-badge">🔥 EXTRA 5% OFF</span>
                 <div class="zv-bundle-card-body">
                   <div class="zv-bundle-card-left">
                     <div class="zv-bundle-radio"></div>
                     <div class="zv-bundle-card-info">
-                      <div class="zv-bundle-card-name">2 Sets <small style="font-weight: 600; color: var(--zv-pdp-muted);">(Arena Pack)</small></div>
-                      <div class="zv-bundle-card-sub">4 Blasters + 2 Projectors &middot; Extra 5% OFF &middot; Free US Shipping</div>
+                      <div class="zv-bundle-card-name">Buy 2 <small style="font-weight: 600; color: var(--zv-pdp-muted);">(Duo Pack)</small></div>
+                      <div class="zv-bundle-card-sub">Mix Any Colors &amp; Sizes &middot; Extra 5% OFF</div>
                     </div>
                   </div>
                   <div class="zv-bundle-card-pricing">
-                    <div class="zv-bundle-card-total">{{ t2_price | money }}</div>
-                    <div class="zv-bundle-card-unit">{{ t2_price | divided_by: 2 | money }} / set</div>
+                    <div class="zv-bundle-card-total" id="zvTileB2Total">$32.28</div>
+                    <div class="zv-bundle-card-unit">
+                      <span style="text-decoration: line-through; opacity: 0.6; margin-right: 4px;" id="zvTileB2Orig">$33.98</span>
+                      <span id="zvTileB2Unit">$16.14 / box</span>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <!-- TIER 3: 3 SETS (BEST VALUE) -->
               <div 
-                class="zv-bundle-card" 
-                data-qty="1"
-                data-variant-id="{{ t3_id }}"
-                data-price-cents="{{ t3_price }}"
-                data-compare-cents="{{ t3_compare }}"
+                class="zv-bundle-card zv-tile-bundle-card" 
+                data-bundle-tier="3"
+                data-qty="3"
                 data-tier-level="3"
               >
-                <span class="zv-bundle-card-badge alt">👑 BEST VALUE &middot; EXTRA 15% OFF &middot; SAVE {{ t3_savings | money }}</span>
+                <span class="zv-bundle-card-badge alt">👑 BEST VALUE &middot; EXTRA 15% OFF</span>
                 <div class="zv-bundle-card-body">
                   <div class="zv-bundle-card-left">
                     <div class="zv-bundle-radio"></div>
                     <div class="zv-bundle-card-info">
-                      <div class="zv-bundle-card-name">3 Sets <small style="font-weight: 600; color: var(--zv-pdp-muted);">(Tournament Pack)</small></div>
-                      <div class="zv-bundle-card-sub">6 Blasters + 3 Projectors &middot; Extra 15% OFF &middot; Free US Shipping</div>
+                      <div class="zv-bundle-card-name">Buy 3 <small style="font-weight: 600; color: var(--zv-pdp-muted);">(Complete Set)</small></div>
+                      <div class="zv-bundle-card-sub">Mix Any Colors &amp; Sizes &middot; Extra 15% OFF</div>
                     </div>
                   </div>
                   <div class="zv-bundle-card-pricing">
-                    <div class="zv-bundle-card-total">{{ t3_price | money }}</div>
-                    <div class="zv-bundle-card-unit">{{ t3_price | divided_by: 3 | money }} / set</div>
+                    <div class="zv-bundle-card-total" id="zvTileB3Total">$43.32</div>
+                    <div class="zv-bundle-card-unit">
+                      <span style="text-decoration: line-through; opacity: 0.6; margin-right: 4px;" id="zvTileB3Orig">$50.97</span>
+                      <span id="zvTileB3Unit">$14.44 / box</span>
+                    </div>
                   </div>
-                </div>
-                <div class="zv-bundle-bonus-gift">
-                  <span>🎟️ VIP Bonus: $20 OFF coupon on next order over $100 + FREE US Shipping</span>
                 </div>
               </div>
 
+              <!-- CUSTOMIZE YOUR SET (MIX & MATCH BOX SELECTORS) -->
+              <div class="zv-mix-customize-wrap" id="zvMixCustomizeSection">
+                <div class="zv-mix-customize-header">
+                  <span class="zv-mix-customize-title">🎨 CUSTOMIZE YOUR SET</span>
+                  <span class="zv-mix-customize-sub" id="zvMixCustomizeSub">Select color &amp; capacity for each box</span>
+                </div>
+
+                <!-- BOX 1 -->
+                <div class="zv-mix-box-row active" id="zvMixBox1" data-box-index="1">
+                  <div class="zv-mix-box-top">
+                    <span class="zv-mix-box-tag">BOX 1</span>
+                    <span class="zv-mix-box-detail" id="zvBox1Detail">Pure White &middot; 100g ($16.99)</span>
+                  </div>
+                  <div class="zv-mix-selectors-grid">
+                    <div class="zv-mix-select-field">
+                      <label class="zv-mix-field-label">Color:</label>
+                      <div class="zv-mix-select-wrapper">
+                        <select class="zv-mix-select" id="zvBox1Color" data-box="1" data-type="color">
+                          <option value="Pure White" selected>⚪ Pure White</option>
+                          <option value="Modern Gray">🔘 Modern Gray</option>
+                          <option value="Matte Black">⚫ Matte Black</option>
+                        </select>
+                        <span class="zv-mix-arrow">▾</span>
+                      </div>
+                    </div>
+                    <div class="zv-mix-select-field">
+                      <label class="zv-mix-field-label">Size / Capacity:</label>
+                      <div class="zv-mix-select-wrapper">
+                        <select class="zv-mix-select" id="zvBox1Size" data-box="1" data-type="size">
+                          <option value="100g" data-price="16.99" selected>100g &middot; $16.99</option>
+                          <option value="300g" data-price="29.99">300g &middot; $29.99</option>
+                          <option value="500g" data-price="39.99">500g &middot; $39.99</option>
+                        </select>
+                        <span class="zv-mix-arrow">▾</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- BOX 2 -->
+                <div class="zv-mix-box-row" id="zvMixBox2" data-box-index="2" style="display: none;">
+                  <div class="zv-mix-box-top">
+                    <span class="zv-mix-box-tag">BOX 2</span>
+                    <span class="zv-mix-box-detail" id="zvBox2Detail">Modern Gray &middot; 100g ($16.99)</span>
+                  </div>
+                  <div class="zv-mix-selectors-grid">
+                    <div class="zv-mix-select-field">
+                      <label class="zv-mix-field-label">Color:</label>
+                      <div class="zv-mix-select-wrapper">
+                        <select class="zv-mix-select" id="zvBox2Color" data-box="2" data-type="color">
+                          <option value="Pure White">⚪ Pure White</option>
+                          <option value="Modern Gray" selected>🔘 Modern Gray</option>
+                          <option value="Matte Black">⚫ Matte Black</option>
+                        </select>
+                        <span class="zv-mix-arrow">▾</span>
+                      </div>
+                    </div>
+                    <div class="zv-mix-select-field">
+                      <label class="zv-mix-field-label">Size / Capacity:</label>
+                      <div class="zv-mix-select-wrapper">
+                        <select class="zv-mix-select" id="zvBox2Size" data-box="2" data-type="size">
+                          <option value="100g" data-price="16.99" selected>100g &middot; $16.99</option>
+                          <option value="300g" data-price="29.99">300g &middot; $29.99</option>
+                          <option value="500g" data-price="39.99">500g &middot; $39.99</option>
+                        </select>
+                        <span class="zv-mix-arrow">▾</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- BOX 3 -->
+                <div class="zv-mix-box-row" id="zvMixBox3" data-box-index="3" style="display: none;">
+                  <div class="zv-mix-box-top">
+                    <span class="zv-mix-box-tag">BOX 3</span>
+                    <span class="zv-mix-box-detail" id="zvBox3Detail">Matte Black &middot; 100g ($16.99)</span>
+                  </div>
+                  <div class="zv-mix-selectors-grid">
+                    <div class="zv-mix-select-field">
+                      <label class="zv-mix-field-label">Color:</label>
+                      <div class="zv-mix-select-wrapper">
+                        <select class="zv-mix-select" id="zvBox3Color" data-box="3" data-type="color">
+                          <option value="Pure White">⚪ Pure White</option>
+                          <option value="Modern Gray">🔘 Modern Gray</option>
+                          <option value="Matte Black" selected>⚫ Matte Black</option>
+                        </select>
+                        <span class="zv-mix-arrow">▾</span>
+                      </div>
+                    </div>
+                    <div class="zv-mix-select-field">
+                      <label class="zv-mix-field-label">Size / Capacity:</label>
+                      <div class="zv-mix-select-wrapper">
+                        <select class="zv-mix-select" id="zvBox3Size" data-box="3" data-type="size">
+                          <option value="100g" data-price="16.99" selected>100g &middot; $16.99</option>
+                          <option value="300g" data-price="29.99">300g &middot; $29.99</option>
+                          <option value="500g" data-price="39.99">500g &middot; $39.99</option>
+                        </select>
+                        <span class="zv-mix-arrow">▾</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Summary Bar inside Customize Section -->
+                <div class="zv-mix-summary-bar">
+                  <div class="zv-mix-summary-left">
+                    <span class="zv-mix-summary-label">Selected Combo:</span>
+                    <span class="zv-mix-summary-val" id="zvMixSelectedCombo">1 Box (Pure White / 100g)</span>
+                  </div>
+                  <div class="zv-mix-summary-right">
+                    <span class="zv-mix-summary-subtotal" id="zvMixSubtotal">$16.99</span>
+                    <span class="zv-mix-summary-discount" id="zvMixDiscountPill" style="display: none;">EXTRA 5% OFF</span>
+                  </div>
+                </div>
+              </div>
+            {% elsif product.handle == 'kids-infrared-battle-blaster-set-with-target-projector' %}
+              {% if is_ascending %}
+                <!-- TIER 1: 1 SET (DEFAULT SELECTED) -->
+                <div 
+                  class="zv-bundle-card selected" 
+                  data-qty="1"
+                  data-variant-id="{{ t1_id }}"
+                  data-price-cents="{{ t1_price }}"
+                  data-compare-cents="{{ t1_compare }}"
+                  data-tier-level="1"
+                >
+                  <div class="zv-bundle-card-body">
+                    <div class="zv-bundle-card-left">
+                      <div class="zv-bundle-radio"></div>
+                      <div class="zv-bundle-card-info">
+                        <div class="zv-bundle-card-name">1 Set <small style="font-weight: 600; color: var(--zv-pdp-muted);">(Starter Pack)</small></div>
+                        <div class="zv-bundle-card-sub">2 Blasters + 1 Target Projector &middot; 50% OFF</div>
+                      </div>
+                    </div>
+                    <div class="zv-bundle-card-pricing">
+                      <div class="zv-bundle-card-total">{{ t1_price | money }}</div>
+                      <div class="zv-bundle-card-unit">{{ t1_price | money }} / set</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- TIER 2: 2 SETS (MOST POPULAR) -->
+                <div 
+                  class="zv-bundle-card" 
+                  data-qty="1"
+                  data-variant-id="{{ t2_id }}"
+                  data-price-cents="{{ t2_price }}"
+                  data-compare-cents="{{ t2_compare }}"
+                  data-tier-level="2"
+                >
+                  <span class="zv-bundle-card-badge">🔥 MOST POPULAR &middot; EXTRA 5% OFF &middot; SAVE {{ t2_savings | money }}</span>
+                  <div class="zv-bundle-card-body">
+                    <div class="zv-bundle-card-left">
+                      <div class="zv-bundle-radio"></div>
+                      <div class="zv-bundle-card-info">
+                        <div class="zv-bundle-card-name">2 Sets <small style="font-weight: 600; color: var(--zv-pdp-muted);">(Arena Pack)</small></div>
+                        <div class="zv-bundle-card-sub">4 Blasters + 2 Projectors &middot; Extra 5% OFF</div>
+                      </div>
+                    </div>
+                    <div class="zv-bundle-card-pricing">
+                      <div class="zv-bundle-card-total">{{ t2_price | money }}</div>
+                      <div class="zv-bundle-card-unit">{{ t2_price | divided_by: 2 | money }} / set</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- TIER 3: 3 SETS (BEST VALUE) -->
+                <div 
+                  class="zv-bundle-card" 
+                  data-qty="1"
+                  data-variant-id="{{ t3_id }}"
+                  data-price-cents="{{ t3_price }}"
+                  data-compare-cents="{{ t3_compare }}"
+                  data-tier-level="3"
+                >
+                  <span class="zv-bundle-card-badge alt">👑 BEST VALUE &middot; EXTRA 15% OFF &middot; SAVE {{ t3_savings | money }}</span>
+                  <div class="zv-bundle-card-body">
+                    <div class="zv-bundle-card-left">
+                      <div class="zv-bundle-radio"></div>
+                      <div class="zv-bundle-card-info">
+                        <div class="zv-bundle-card-name">3 Sets <small style="font-weight: 600; color: var(--zv-pdp-muted);">(Tournament Pack)</small></div>
+                        <div class="zv-bundle-card-sub">6 Blasters + 3 Projectors &middot; Extra 15% OFF</div>
+                      </div>
+                    </div>
+                    <div class="zv-bundle-card-pricing">
+                      <div class="zv-bundle-card-total">{{ t3_price | money }}</div>
+                      <div class="zv-bundle-card-unit">{{ t3_price | divided_by: 3 | money }} / set</div>
+                    </div>
+                  </div>
+                  <div class="zv-bundle-bonus-gift">
+                    <span>🎟️ VIP Bonus: $20 OFF coupon on next order over $100</span>
+                  </div>
+                </div>
+
+              {% else %}
+                <!-- DESCENDING ORDER -->
+                <div 
+                  class="zv-bundle-card" 
+                  data-qty="1"
+                  data-variant-id="{{ t3_id }}"
+                  data-price-cents="{{ t3_price }}"
+                  data-compare-cents="{{ t3_compare }}"
+                  data-tier-level="3"
+                >
+                  <span class="zv-bundle-card-badge alt">👑 BEST VALUE &middot; EXTRA 15% OFF &middot; SAVE {{ t3_savings | money }}</span>
+                  <div class="zv-bundle-card-body">
+                    <div class="zv-bundle-card-left">
+                      <div class="zv-bundle-radio"></div>
+                      <div class="zv-bundle-card-info">
+                        <div class="zv-bundle-card-name">3 Sets</div>
+                        <div class="zv-bundle-card-sub">6 Blasters + 3 Projectors &middot; Extra 15% OFF</div>
+                      </div>
+                    </div>
+                    <div class="zv-bundle-card-pricing">
+                      <div class="zv-bundle-card-total">{{ t3_price | money }}</div>
+                      <div class="zv-bundle-card-unit">{{ t3_price | divided_by: 3 | money }} / set</div>
+                    </div>
+                  </div>
+                  <div class="zv-bundle-bonus-gift">
+                    <span>🎟️ VIP Bonus: $20 OFF coupon on next order over $100</span>
+                  </div>
+                </div>
+
+                <div 
+                  class="zv-bundle-card" 
+                  data-qty="1"
+                  data-variant-id="{{ t2_id }}"
+                  data-price-cents="{{ t2_price }}"
+                  data-compare-cents="{{ t2_compare }}"
+                  data-tier-level="2"
+                >
+                  <span class="zv-bundle-card-badge">🔥 MOST POPULAR &middot; EXTRA 5% OFF &middot; SAVE {{ t2_savings | money }}</span>
+                  <div class="zv-bundle-card-body">
+                    <div class="zv-bundle-card-left">
+                      <div class="zv-bundle-radio"></div>
+                      <div class="zv-bundle-card-info">
+                        <div class="zv-bundle-card-name">2 Sets</div>
+                        <div class="zv-bundle-card-sub">4 Blasters + 2 Projectors &middot; Extra 5% OFF</div>
+                      </div>
+                    </div>
+                    <div class="zv-bundle-card-pricing">
+                      <div class="zv-bundle-card-total">{{ t2_price | money }}</div>
+                      <div class="zv-bundle-card-unit">{{ t2_price | divided_by: 2 | money }} / set</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div 
+                  class="zv-bundle-card selected" 
+                  data-qty="1"
+                  data-variant-id="{{ t1_id }}"
+                  data-price-cents="{{ t1_price }}"
+                  data-compare-cents="{{ t1_compare }}"
+                  data-tier-level="1"
+                >
+                  <div class="zv-bundle-card-body">
+                    <div class="zv-bundle-card-left">
+                      <div class="zv-bundle-radio"></div>
+                      <div class="zv-bundle-card-info">
+                        <div class="zv-bundle-card-name">1 Set</div>
+                        <div class="zv-bundle-card-sub">2 Blasters + 1 Target Projector &middot; 50% OFF</div>
+                      </div>
+                    </div>
+                    <div class="zv-bundle-card-pricing">
+                      <div class="zv-bundle-card-total">{{ t1_price | money }}</div>
+                      <div class="zv-bundle-card-unit">{{ t1_price | money }} / set</div>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            {% elsif product.handle == 'metallic-silver-anti-rust-renovation-coating' %}
+              <!-- METALLIC SILVER ANTI-RUST RENOVATION COATING BUNDLE (BUY 5 GET 3 FREE, BUY 3 GET 1 FREE, 1 CAN) -->
+              {% assign silver_v1 = product.variants[0] %}
+              {% assign silver_v2 = product.variants[1] %}
+              {% assign silver_v3 = product.variants[2] %}
+              {% assign buy5_cents = silver_v1.price | default: 9995 %}
+              {% assign buy3_cents = silver_v2.price | default: 5997 %}
+              {% assign buy1_cents = silver_v3.price | default: 1999 %}
+
+              <!-- BUNDLE 1 — ĐẦU TIÊN: BUY 5 GET 3 FREE (DEFAULT SELECTED) -->
+              <div 
+                class="zv-bundle-card selected zv-silver-bundle-card" 
+                data-bundle-type="buy5get3"
+                data-paid-qty="5"
+                data-receive-qty="8"
+                data-variant-id="{{ silver_v1.id }}"
+                data-price-cents="{{ buy5_cents }}"
+                data-tier-level="1"
+              >
+                <span class="zv-bundle-card-badge alt">🎁 FREE 3 CANS</span>
+                <div class="zv-bundle-card-body">
+                  <div class="zv-bundle-card-left">
+                    <div class="zv-bundle-radio"></div>
+                    <div class="zv-bundle-card-info">
+                      <div class="zv-bundle-card-name">Buy 5 Get 3 FREE</div>
+                      <div class="zv-bundle-card-sub">Pay for 5 Cans &middot; Receive 8 Cans</div>
+                    </div>
+                  </div>
+                  <div class="zv-bundle-card-pricing">
+                    <div class="zv-bundle-card-total">{{ buy5_cents | money }}</div>
+                    <div class="zv-bundle-card-unit">{{ buy5_cents | divided_by: 8 | money }} / can</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BUNDLE 2 — Ở GIỮA: BUY 3 GET 1 FREE -->
+              <div 
+                class="zv-bundle-card zv-silver-bundle-card" 
+                data-bundle-type="buy3get1"
+                data-paid-qty="3"
+                data-receive-qty="4"
+                data-variant-id="{{ silver_v2.id }}"
+                data-price-cents="{{ buy3_cents }}"
+                data-tier-level="2"
+              >
+                <span class="zv-bundle-card-badge">🎁 FREE 1 CAN</span>
+                <div class="zv-bundle-card-body">
+                  <div class="zv-bundle-card-left">
+                    <div class="zv-bundle-radio"></div>
+                    <div class="zv-bundle-card-info">
+                      <div class="zv-bundle-card-name">Buy 3 Get 1 FREE</div>
+                      <div class="zv-bundle-card-sub">Pay for 3 Cans &middot; Receive 4 Cans</div>
+                    </div>
+                  </div>
+                  <div class="zv-bundle-card-pricing">
+                    <div class="zv-bundle-card-total">{{ buy3_cents | money }}</div>
+                    <div class="zv-bundle-card-unit">{{ buy3_cents | divided_by: 4 | money }} / can</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BUNDLE 3 — CUỐI CÙNG: 1 CAN (50g STARTER KIT) -->
+              <div 
+                class="zv-bundle-card zv-silver-bundle-card" 
+                data-bundle-type="single"
+                data-paid-qty="1"
+                data-receive-qty="1"
+                data-variant-id="{{ silver_v3.id }}"
+                data-price-cents="{{ buy1_cents }}"
+                data-tier-level="3"
+              >
+                <div class="zv-bundle-card-body">
+                  <div class="zv-bundle-card-left">
+                    <div class="zv-bundle-radio"></div>
+                    <div class="zv-bundle-card-info">
+                      <div class="zv-bundle-card-name">1 Can (50g Starter Kit)</div>
+                      <div class="zv-bundle-card-sub">Single 50g Can</div>
+                    </div>
+                  </div>
+                  <div class="zv-bundle-card-pricing">
+                    <div class="zv-bundle-card-total">{{ buy1_cents | money }}</div>
+                    <div class="zv-bundle-card-unit">{{ buy1_cents | money }} / can</div>
+                  </div>
+                </div>
+              </div>
+            {% elsif product.handle == 'ear-cleaner' %}
+              <!-- PET EAR CLEANER BUNDLES (BUY 1, BUY 2 GET 2 FREE, BUY 4 GET 4 FREE) -->
+              {% assign ear_v1 = product.variants[0] %}
+              {% assign ear_v2 = product.variants[1] %}
+              {% assign ear_v3 = product.variants[2] %}
+              {% assign b1_price = ear_v1.price | default: 3499 %}
+              {% assign b2_price = ear_v2.price | default: 6298 %}
+              {% assign b3_price = ear_v3.price | default: 11197 %}
+
+              <!-- BUNDLE 1: BUY 1 (1 × 100ml) -->
+              <div 
+                class="zv-bundle-card zv-ear-bundle-card" 
+                data-bundle-tier="1"
+                data-bundle-name="Buy 1"
+                data-paid-qty="1"
+                data-receive-qty="1"
+                data-bottles="1"
+                data-variant-id="{{ ear_v1.id }}"
+                data-price-cents="{{ b1_price }}"
+                data-sub-price-cents="3149"
+                data-compare-cents="6999"
+                data-tier-level="1"
+              >
+                <div class="zv-bundle-card-body">
+                  <div class="zv-bundle-card-left">
+                    <div class="zv-bundle-radio"></div>
+                    <div class="zv-bundle-card-info">
+                      <div class="zv-bundle-card-name">Buy 1 <small style="font-weight: 600; color: var(--zv-pdp-muted);">(1 &times; 100ml Bottle)</small></div>
+                      <div class="zv-bundle-card-sub">1 &times; 100ml Bottle &middot; Starter Care</div>
+                    </div>
+                  </div>
+                  <div class="zv-bundle-card-pricing">
+                    <div class="zv-bundle-card-total" data-role="bundle-total">$31.49</div>
+                    <div class="zv-bundle-card-unit">
+                      <span class="zv-unit-compare" style="text-decoration: line-through; opacity: 0.6; margin-right: 4px;">$69.99</span>
+                      <span class="zv-unit-price" data-role="bundle-unit">$31.49 / bottle</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BUNDLE 2: BUY 2 GET 2 FREE (MOST POPULAR) (4 × 100ml) -->
+              <div 
+                class="zv-bundle-card selected zv-ear-bundle-card" 
+                data-bundle-tier="2"
+                data-bundle-name="Buy 2 Get 2 FREE"
+                data-paid-qty="2"
+                data-receive-qty="4"
+                data-bottles="4"
+                data-variant-id="{{ ear_v2.id }}"
+                data-price-cents="{{ b2_price }}"
+                data-sub-price-cents="5668"
+                data-compare-cents="13996"
+                data-tier-level="2"
+              >
+                <span class="zv-bundle-card-badge">🔥 MOST POPULAR &middot; BUY 2 GET 2 FREE</span>
+                <div class="zv-bundle-card-body">
+                  <div class="zv-bundle-card-left">
+                    <div class="zv-bundle-radio"></div>
+                    <div class="zv-bundle-card-info">
+                      <div class="zv-bundle-card-name">Buy 2 Get 2 FREE <small style="font-weight: 700; color: #047857;">(Receive 4 &times; 100ml Bottles)</small></div>
+                      <div class="zv-bundle-card-sub">Pay for 2 Bottles &middot; Receive 4 Bottles (4 &times; 100ml) &middot; Extra 10% OFF</div>
+                    </div>
+                  </div>
+                  <div class="zv-bundle-card-pricing">
+                    <div class="zv-bundle-card-total" data-role="bundle-total">$56.68</div>
+                    <div class="zv-bundle-card-unit">
+                      <span class="zv-unit-compare" style="text-decoration: line-through; opacity: 0.6; margin-right: 4px;">$139.96</span>
+                      <span class="zv-unit-price" data-role="bundle-unit">$14.17 / bottle</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BUNDLE 3: BUY 4 GET 4 FREE (BEST VALUE) (8 × 100ml) -->
+              <div 
+                class="zv-bundle-card zv-ear-bundle-card" 
+                data-bundle-tier="3"
+                data-bundle-name="Buy 4 Get 4 FREE"
+                data-paid-qty="4"
+                data-receive-qty="8"
+                data-bottles="8"
+                data-variant-id="{{ ear_v3.id }}"
+                data-price-cents="{{ b3_price }}"
+                data-sub-price-cents="10077"
+                data-compare-cents="27992"
+                data-tier-level="3"
+              >
+                <span class="zv-bundle-card-badge alt">👑 BEST VALUE &middot; BUY 4 GET 4 FREE</span>
+                <div class="zv-bundle-card-body">
+                  <div class="zv-bundle-card-left">
+                    <div class="zv-bundle-radio"></div>
+                    <div class="zv-bundle-card-info">
+                      <div class="zv-bundle-card-name">Buy 4 Get 4 FREE <small style="font-weight: 700; color: #047857;">(Receive 8 &times; 100ml Bottles)</small></div>
+                      <div class="zv-bundle-card-sub">Pay for 4 Bottles &middot; Receive 8 Bottles (8 &times; 100ml) &middot; Extra 20% OFF &middot; FREE Shipping</div>
+                    </div>
+                  </div>
+                  <div class="zv-bundle-card-pricing">
+                    <div class="zv-bundle-card-total" data-role="bundle-total">$100.77</div>
+                    <div class="zv-bundle-card-unit">
+                      <span class="zv-unit-compare" style="text-decoration: line-through; opacity: 0.6; margin-right: 4px;">$279.92</span>
+                      <span class="zv-unit-price" data-role="bundle-unit">$12.60 / bottle</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% elsif product.handle == 'eyvelle-steam-therapy' %}
+              <!-- STEAM THERAPY WAND BUNDLES (BUY 1, BUY 2 WANDS [MOST POPULAR], BUY 3 WANDS [BEST VALUE]) -->
+              {% assign eye_v1 = product.variants[0] %}
+              {% assign eye_v2 = product.variants[1] %}
+              {% assign eye_v3 = product.variants[2] %}
+              {% assign eye_b1_price = eye_v1.price | default: 3999 %}
+              {% assign eye_b2_price = eye_v2.price | default: 6998 %}
+              {% assign eye_b3_price = eye_v3.price | default: 9497 %}
+
+              <!-- BUNDLE 1: BUY 1 SINGLE STARTER KIT -->
+              <div 
+                class="zv-bundle-card zv-eye-bundle-card" 
+                data-bundle-tier="1"
+                data-bundle-name="Buy 1 — Single Starter Kit"
+                data-qty="1"
+                data-variant-id="{{ eye_v1.id }}"
+                data-price-cents="{{ eye_b1_price }}"
+                data-compare-cents="8500"
+                data-tier-level="1"
+              >
+                <div class="zv-bundle-card-body">
+                  <div class="zv-bundle-card-left">
+                    <div class="zv-bundle-radio"></div>
+                    <div class="zv-bundle-card-info">
+                      <div class="zv-bundle-card-name">Buy 1 <small style="font-weight: 600; color: var(--zv-pdp-muted);">(Single Starter Kit)</small></div>
+                      <div class="zv-bundle-card-sub">1 &times; Ultrasonic Steam Wand + 1 Silicone Cup &middot; Starter Set</div>
+                    </div>
+                  </div>
+                  <div class="zv-bundle-card-pricing">
+                    <div class="zv-bundle-card-total" data-role="bundle-total">$39.99</div>
+                    <div class="zv-bundle-card-unit">
+                      <span class="zv-unit-compare" style="text-decoration: line-through; opacity: 0.6; margin-right: 4px;">$85.00</span>
+                      <span class="zv-unit-price" data-role="bundle-unit">$39.99 / wand</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BUNDLE 2: BUY 2 WANDS (COUPLE CARE PACK · MOST POPULAR) - DEFAULT SELECTED -->
+              <div 
+                class="zv-bundle-card selected zv-eye-bundle-card" 
+                data-bundle-tier="2"
+                data-bundle-name="Buy 2 Wands — Couple Care Pack"
+                data-qty="1"
+                data-variant-id="{{ eye_v2.id }}"
+                data-price-cents="{{ eye_b2_price }}"
+                data-compare-cents="17000"
+                data-tier-level="2"
+              >
+                <span class="zv-bundle-card-badge">🔥 MOST POPULAR &middot; SAVE EXTRA $10</span>
+                <div class="zv-bundle-card-body">
+                  <div class="zv-bundle-card-left">
+                    <div class="zv-bundle-radio"></div>
+                    <div class="zv-bundle-card-info">
+                      <div class="zv-bundle-card-name">Buy 2 Wands <small style="font-weight: 700; color: #047857;">(Couple Care Pack &middot; Save $100.02)</small></div>
+                      <div class="zv-bundle-card-sub">2 &times; Steam Wands + 2 Silicone Cups &middot; Perfect for Home &amp; Office</div>
+                    </div>
+                  </div>
+                  <div class="zv-bundle-card-pricing">
+                    <div class="zv-bundle-card-total" data-role="bundle-total">$69.98</div>
+                    <div class="zv-bundle-card-unit">
+                      <span class="zv-unit-compare" style="text-decoration: line-through; opacity: 0.6; margin-right: 4px;">$170.00</span>
+                      <span class="zv-unit-price" data-role="bundle-unit">$34.99 / wand</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BUNDLE 3: BUY 3 WANDS (FAMILY SET · BEST VALUE · FREE SHIPPING) -->
+              <div 
+                class="zv-bundle-card zv-eye-bundle-card" 
+                data-bundle-tier="3"
+                data-bundle-name="Buy 3 Wands — Family Care Set"
+                data-qty="1"
+                data-variant-id="{{ eye_v3.id }}"
+                data-price-cents="{{ eye_b3_price }}"
+                data-compare-cents="25500"
+                data-tier-level="3"
+              >
+                <span class="zv-bundle-card-badge alt">👑 BEST VALUE &middot; FREE SHIPPING &middot; SAVE EXTRA $25</span>
+                <div class="zv-bundle-card-body">
+                  <div class="zv-bundle-card-left">
+                    <div class="zv-bundle-radio"></div>
+                    <div class="zv-bundle-card-info">
+                      <div class="zv-bundle-card-name">Buy 3 Wands <small style="font-weight: 700; color: #7c2d12;">(Family Set &middot; Free Shipping)</small></div>
+                      <div class="zv-bundle-card-sub">3 &times; Steam Wands + 3 Silicone Cups &middot; Complete Family Pack &middot; Highest Savings</div>
+                    </div>
+                  </div>
+                  <div class="zv-bundle-card-pricing">
+                    <div class="zv-bundle-card-total" data-role="bundle-total">$94.97</div>
+                    <div class="zv-bundle-card-unit">
+                      <span class="zv-unit-compare" style="text-decoration: line-through; opacity: 0.6; margin-right: 4px;">$255.00</span>
+                      <span class="zv-unit-price" data-role="bundle-unit">$31.66 / wand</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% elsif product.handle == 'christmas-lantern-welcome-gnome' %}
+              <!-- CHRISTMAS GNOME BUNDLES (SINGLE, BUY 2 DUO [MOST POPULAR], BUY 3 TRIO [BEST VALUE]) -->
+              {% assign g_v1 = product.variants[0] %}
+              {% assign g_v2 = product.variants[1] %}
+              {% assign g_v3 = product.variants[2] %}
+              {% assign g_b1_price = g_v1.price | default: 6999 %}
+              {% assign g_b2_price = g_v2.price | default: 11998 %}
+              {% assign g_b3_price = g_v3.price | default: 15998 %}
+
+              <!-- BUNDLE 1: BUY 1 SINGLE GNOME -->
+              <div 
+                class="zv-bundle-card zv-gnome-bundle-card" 
+                data-bundle-tier="1"
+                data-bundle-name="Buy 1 — Single Christmas Gnome"
+                data-qty="1"
+                data-variant-id="{{ g_v1.id }}"
+                data-price-cents="{{ g_b1_price }}"
+                data-compare-cents="13998"
+                data-tier-level="1"
+              >
+                <div class="zv-bundle-card-body">
+                  <div class="zv-bundle-card-left">
+                    <div class="zv-bundle-radio"></div>
+                    <div class="zv-bundle-card-info">
+                      <div class="zv-bundle-card-name">Buy 1 Gnome <small class="zv-tier-tag">(Single)</small></div>
+                      <div class="zv-bundle-card-sub">1 &times; Gnome + 1 LED Star Lantern</div>
+                    </div>
+                  </div>
+                  <div class="zv-bundle-card-pricing">
+                    <div class="zv-bundle-card-total" data-role="bundle-total">$69.99</div>
+                    <div class="zv-bundle-card-unit">
+                      <span class="zv-unit-compare" style="text-decoration: line-through; opacity: 0.6; margin-right: 4px;">$139.98</span>
+                      <span class="zv-unit-price" data-role="bundle-unit">$69.99 / ea</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BUNDLE 2: BUY 2 DUO SET (MOST POPULAR) - DEFAULT SELECTED -->
+              <div 
+                class="zv-bundle-card selected zv-gnome-bundle-card" 
+                data-bundle-tier="2"
+                data-bundle-name="Buy 2 — Woodland Duo Set"
+                data-qty="1"
+                data-variant-id="{{ g_v2.id }}"
+                data-price-cents="{{ g_b2_price }}"
+                data-compare-cents="27996"
+                data-tier-level="2"
+              >
+                <span class="zv-bundle-card-badge">✨ MOST POPULAR &middot; FREE SHIPPING</span>
+                <div class="zv-bundle-card-body">
+                  <div class="zv-bundle-card-left">
+                    <div class="zv-bundle-radio"></div>
+                    <div class="zv-bundle-card-info">
+                      <div class="zv-bundle-card-name">Buy 2 Gnomes <small class="zv-tier-tag zv-tier-save">(Save $159.98)</small></div>
+                      <div class="zv-bundle-card-sub">Woodland Duo &middot; Ideal for Porch &amp; Hearth</div>
+                    </div>
+                  </div>
+                  <div class="zv-bundle-card-pricing">
+                    <div class="zv-bundle-card-total" data-role="bundle-total">$119.98</div>
+                    <div class="zv-bundle-card-unit">
+                      <span class="zv-unit-compare" style="text-decoration: line-through; opacity: 0.6; margin-right: 4px;">$279.96</span>
+                      <span class="zv-unit-price" data-role="bundle-unit">$59.99 / ea</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BUNDLE 3: BUY 3 FAMILY TRIO (BEST VALUE) -->
+              <div 
+                class="zv-bundle-card zv-gnome-bundle-card" 
+                data-bundle-tier="3"
+                data-bundle-name="Buy 3 — Holiday Family Trio"
+                data-qty="1"
+                data-variant-id="{{ g_v3.id }}"
+                data-price-cents="{{ g_b3_price }}"
+                data-compare-cents="41994"
+                data-tier-level="3"
+              >
+                <span class="zv-bundle-card-badge alt">🎁 BEST VALUE &middot; COLLECTOR BOX</span>
+                <div class="zv-bundle-card-body">
+                  <div class="zv-bundle-card-left">
+                    <div class="zv-bundle-radio"></div>
+                    <div class="zv-bundle-card-info">
+                      <div class="zv-bundle-card-name">Buy 3 Gnomes <small class="zv-tier-tag zv-tier-best">(Save $259.96)</small></div>
+                      <div class="zv-bundle-card-sub">Holiday Trio &middot; Best Per-Unit Value</div>
+                    </div>
+                  </div>
+                  <div class="zv-bundle-card-pricing">
+                    <div class="zv-bundle-card-total" data-role="bundle-total">$159.98</div>
+                    <div class="zv-bundle-card-unit">
+                      <span class="zv-unit-compare" style="text-decoration: line-through; opacity: 0.6; margin-right: 4px;">$419.94</span>
+                      <span class="zv-unit-price" data-role="bundle-unit">$53.33 / ea</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             {% else %}
-              <!-- DESCENDING ORDER -->
-              <div 
-                class="zv-bundle-card" 
-                data-qty="1"
-                data-variant-id="{{ t3_id }}"
-                data-price-cents="{{ t3_price }}"
-                data-compare-cents="{{ t3_compare }}"
-                data-tier-level="3"
-              >
-                <span class="zv-bundle-card-badge alt">👑 BEST VALUE &middot; EXTRA 15% OFF &middot; SAVE {{ t3_savings | money }}</span>
-                <div class="zv-bundle-card-body">
-                  <div class="zv-bundle-card-left">
-                    <div class="zv-bundle-radio"></div>
-                    <div class="zv-bundle-card-info">
-                      <div class="zv-bundle-card-name">3 Sets</div>
-                      <div class="zv-bundle-card-sub">6 Blasters + 3 Projectors &middot; Extra 15% OFF &middot; Free US Shipping</div>
+              <!-- DYNAMIC VARIANTS FOR OTHER PRODUCTS -->
+              {% for v in product.variants %}
+                {% assign v_savings = 0 %}
+                {% if v.compare_at_price > v.price %}
+                  {% assign v_savings = v.compare_at_price | minus: v.price %}
+                  {% assign v_save_pct = v_savings | times: 100.0 | divided_by: v.compare_at_price | round %}
+                {% endif %}
+                <div 
+                  class="zv-bundle-card {% if forloop.first %}selected{% endif %}" 
+                  data-qty="1"
+                  data-variant-id="{{ v.id }}"
+                  data-price-cents="{{ v.price }}"
+                  data-compare-cents="{{ v.compare_at_price | default: v.price }}"
+                  data-tier-level="{{ forloop.index }}"
+                >
+                  {% if forloop.index == 2 and product.variants.size > 2 %}
+                    <span class="zv-bundle-card-badge">🔥 MOST POPULAR{% if v_savings > 0 %} &middot; SAVE {{ v_save_pct }}%{% endif %}</span>
+                  {% elsif forloop.last and product.variants.size > 2 %}
+                    <span class="zv-bundle-card-badge alt">👑 BEST VALUE{% if v_savings > 0 %} &middot; SAVE {{ v_save_pct }}%{% endif %}</span>
+                  {% endif %}
+                  <div class="zv-bundle-card-body">
+                    <div class="zv-bundle-card-left">
+                      <div class="zv-bundle-radio"></div>
+                      <div class="zv-bundle-card-info">
+                        <div class="zv-bundle-card-name">{{ v.title }}</div>
+                        {% if v_savings > 0 %}
+                          <div class="zv-bundle-card-sub">Save {{ v_savings | money }} ({{ v_save_pct }}% OFF)</div>
+                        {% endif %}
+                      </div>
+                    </div>
+                    <div class="zv-bundle-card-pricing">
+                      <div class="zv-bundle-card-total">{{ v.price | money }}</div>
+                      {% if v.compare_at_price > v.price %}
+                        <div class="zv-bundle-card-unit" style="text-decoration: line-through; opacity: 0.6;">{{ v.compare_at_price | money }}</div>
+                      {% endif %}
                     </div>
                   </div>
-                  <div class="zv-bundle-card-pricing">
-                    <div class="zv-bundle-card-total">{{ t3_price | money }}</div>
-                    <div class="zv-bundle-card-unit">{{ t3_price | divided_by: 3 | money }} / set</div>
-                  </div>
                 </div>
-                <div class="zv-bundle-bonus-gift">
-                  <span>🎟️ VIP Bonus: $20 OFF coupon on next order over $100 + FREE US Shipping</span>
-                </div>
-              </div>
-
-              <div 
-                class="zv-bundle-card" 
-                data-qty="1"
-                data-variant-id="{{ t2_id }}"
-                data-price-cents="{{ t2_price }}"
-                data-compare-cents="{{ t2_compare }}"
-                data-tier-level="2"
-              >
-                <span class="zv-bundle-card-badge">🔥 MOST POPULAR &middot; EXTRA 5% OFF &middot; SAVE {{ t2_savings | money }}</span>
-                <div class="zv-bundle-card-body">
-                  <div class="zv-bundle-card-left">
-                    <div class="zv-bundle-radio"></div>
-                    <div class="zv-bundle-card-info">
-                      <div class="zv-bundle-card-name">2 Sets</div>
-                      <div class="zv-bundle-card-sub">4 Blasters + 2 Projectors &middot; Extra 5% OFF &middot; Free US Shipping</div>
-                    </div>
-                  </div>
-                  <div class="zv-bundle-card-pricing">
-                    <div class="zv-bundle-card-total">{{ t2_price | money }}</div>
-                    <div class="zv-bundle-card-unit">{{ t2_price | divided_by: 2 | money }} / set</div>
-                  </div>
-                </div>
-              </div>
-
-              <div 
-                class="zv-bundle-card selected" 
-                data-qty="1"
-                data-variant-id="{{ t1_id }}"
-                data-price-cents="{{ t1_price }}"
-                data-compare-cents="{{ t1_compare }}"
-                data-tier-level="1"
-              >
-                <div class="zv-bundle-card-body">
-                  <div class="zv-bundle-card-left">
-                    <div class="zv-bundle-radio"></div>
-                    <div class="zv-bundle-card-info">
-                      <div class="zv-bundle-card-name">1 Set</div>
-                      <div class="zv-bundle-card-sub">2 Blasters + 1 Target Projector &middot; 50% OFF</div>
-                    </div>
-                  </div>
-                  <div class="zv-bundle-card-pricing">
-                    <div class="zv-bundle-card-total">{{ t1_price | money }}</div>
-                    <div class="zv-bundle-card-unit">{{ t1_price | money }} / set</div>
-                  </div>
-                </div>
-              </div>
+              {% endfor %}
             {% endif %}
           </div>
         </div>
 
-        <!-- 8. PRIMARY CTA (ADD TO CART · PRICE with Guarantee INSIDE) & BUY NOW -->
+        {% if product.handle == 'ear-cleaner' %}
+          <!-- 7b. SUBSCRIPTION FREQUENCY SELECTOR (DEFAULT: SUBSCRIBE & DELIVER EVERY 30 DAYS - EXTRA 10% OFF) -->
+          <div class="zv-sub-box" id="zvEarSubBox">
+            <div class="zv-sub-option selected" data-sub-type="subscription" data-selling-plan-id="693337882995" id="zvSubRecurring">
+              <div class="zv-sub-radio"></div>
+              <div class="zv-sub-info">
+                <div class="zv-sub-title-row">
+                  <span class="zv-sub-title">Subscribe &amp; Deliver Every 30 Days</span>
+                  <span class="zv-sub-badge">EXTRA 10% OFF</span>
+                </div>
+                <span class="zv-sub-desc">Auto-renews every 30 days &middot; Pause, skip, or cancel anytime in 1 click</span>
+              </div>
+            </div>
+            <div class="zv-sub-option" data-sub-type="onetime" id="zvSubOneTime">
+              <div class="zv-sub-radio"></div>
+              <div class="zv-sub-info">
+                <span class="zv-sub-title">One-time purchase</span>
+                <span class="zv-sub-desc">Standard order without recurring delivery</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7c. UPSELL COMPANION BOX: ADD 60 FINGER WIPES -->
+          <div class="zv-upsell-box" id="zvEarUpsellBox">
+            <label class="zv-upsell-label" for="zvEarUpsellCheck">
+              <input type="checkbox" id="zvEarUpsellCheck" class="zv-upsell-checkbox" data-variant-id="67346173690227" data-price-cents="1499">
+              <img src="https://cdn.shopify.com/s/files/1/1043/6630/9718/files/packshot-v2-a.png?v=1787735386" alt="Pet Ear Finger Wipes (60 Wipes)" class="zv-upsell-thumb" width="56" height="56" loading="lazy">
+              <div class="zv-upsell-info">
+                <div class="zv-upsell-title-row">
+                  <span class="zv-upsell-title">Add 60 Finger Wipes</span>
+                  <span class="zv-upsell-price">+$14.99 <s class="zv-upsell-compare">$24.99</s></span>
+                </div>
+                <div class="zv-upsell-desc">The cleaner loosens it. The wipes take it out. Pre-moistened textured wipes for effortless gunk removal.</div>
+              </div>
+            </label>
+          </div>
+        {% endif %}
+
+        {% if product.handle == 'eyvelle-steam-therapy' %}
+          <!-- 7c. EYE UPSELL COMPANION BOX: LUMINALIFT RED-LIGHT EYE SCULPTING WAND ($29.99) -->
+          <div class="zv-upsell-box" id="zvEyeUpsellBox">
+            <label class="zv-upsell-label" for="zvEyeUpsellCheck">
+              <input type="checkbox" id="zvEyeUpsellCheck" class="zv-upsell-checkbox" data-variant-id="67346609799539" data-price-cents="2999">
+              <img src="https://ae-pic-a1.aliexpress-media.com/kf/Sa2036508456e4e449020a5de57fd474cU.jpg" alt="Trymalora™ LuminaLift Pro Red-Light Eye Rejuvenator" class="zv-upsell-thumb" width="56" height="56" loading="lazy">
+              <div class="zv-upsell-info">
+                <div class="zv-upsell-title-row">
+                  <span class="zv-upsell-title">Add LuminaLift™ Red-Light Eye Sculpting Wand</span>
+                  <span class="zv-upsell-price">+$29.99 <s class="zv-upsell-compare">$59.99</s></span>
+                </div>
+                <div class="zv-upsell-desc">Thermal 42°C vibration + 630nm medical red-light phototherapy instantly de-puffs tired eye bags, fades dark circles, and sculpts delicate facial contours.</div>
+              </div>
+            </label>
+          </div>
+        {% endif %}
+
+        {% if product.handle == 'christmas-lantern-welcome-gnome' and section.settings.show_gnome_upsell != false %}
+          <!-- 7c. GNOME UPSELL COMPANION BOX: ARTISAN STARLIGHT PEARL & CRYSTAL ORNAMENTS ($25.99) -->
+          <div class="zv-upsell-box" id="zvGnomeUpsellBox">
+            <div class="zv-upsell-row">
+              <input type="checkbox" id="zvGnomeUpsellCheck" class="zv-upsell-checkbox" data-variant-id="{{ section.settings.upsell_variant_id | default: '67361024016755' }}" data-price-cents="{{ section.settings.upsell_price_cents | default: 2599 }}">
+              <div class="zv-upsell-thumb-wrap" id="zvGnomeUpsellZoomTrigger" role="button" tabindex="0" title="Click to enlarge & preview 6 ornaments" aria-label="Zoom in ornaments set">
+                <img src="{{ section.settings.upsell_image_url | default: 'https://cdn.shopify.com/s/files/1/1032/4541/4771/t/5/assets/trymalora_jeweled_ornaments_set_hd.png?v=1794390625' }}" alt="Artisan Starlight Pearl &amp; Crystal Mosaic Christmas Ornaments (6-Piece Heirloom Set)" class="zv-upsell-thumb" width="56" height="56" loading="lazy">
+                <span class="zv-upsell-zoom-badge" aria-hidden="true">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                </span>
+              </div>
+              <label class="zv-upsell-info" for="zvGnomeUpsellCheck">
+                <div class="zv-upsell-title-row">
+                  <span class="zv-upsell-title">{{ section.settings.upsell_title | default: "Add 6-Piece Jeweled Mosaic Ornaments Set" }}</span>
+                  <span class="zv-upsell-price">+$25.99 <s class="zv-upsell-compare">$52.00</s></span>
+                </div>
+                <div class="zv-upsell-desc">{{ section.settings.upsell_description | default: "Handcrafted wooden medallions adorned with sapphire crystals, winter starlight snowflakes, baroque pearls & shimmering gold cords." }} <span class="zv-upsell-view-link">Tap photo to enlarge 🔍</span></div>
+              </label>
+            </div>
+          </div>
+
+          <!-- 7d. GNOME UPSELL LIGHTBOX MODAL -->
+          <div id="zvUpsellModal" class="zv-lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="zvModalTitle" aria-hidden="true">
+            <div class="zv-lightbox-backdrop" id="zvUpsellModalBackdrop"></div>
+            <div class="zv-lightbox-dialog">
+              <button type="button" class="zv-lightbox-close" id="zvUpsellModalClose" aria-label="Close dialog">&times;</button>
+              <div class="zv-lightbox-media-wrap">
+                <span class="zv-lightbox-badge">✨ 6-Piece Artisan Heirloom Set</span>
+                <img id="zvUpsellModalImg" src="{{ section.settings.upsell_image_url | default: 'https://cdn.shopify.com/s/files/1/1032/4541/4771/t/5/assets/trymalora_jeweled_ornaments_set_hd.png?v=1794390625' }}" alt="Artisan Starlight Pearl &amp; Crystal Mosaic Christmas Ornaments (6-Piece Heirloom Set)" class="zv-lightbox-img" width="880" height="880" loading="eager">
+              </div>
+              <div class="zv-lightbox-body">
+                <div class="zv-lightbox-header">
+                  <h3 class="zv-lightbox-title" id="zvModalTitle">{{ section.settings.upsell_modal_title | default: "Artisan Starlight Pearl & Crystal Mosaic Ornaments" }}</h3>
+                  <div class="zv-lightbox-price-tag">
+                    <span class="zv-modal-cur-price">$25.99</span>
+                    <s class="zv-modal-orig-price">$52.00</s>
+                    <span class="zv-modal-save-badge">SAVE 50%</span>
+                  </div>
+                </div>
+                <p class="zv-lightbox-tagline">{{ section.settings.upsell_description | default: "6 Handcrafted wooden medallions adorned with sapphire crystals, winter starlight snowflakes, baroque pearls & shimmering gold cords." }}</p>
+                
+                <div class="zv-lightbox-features">
+                  <div class="zv-lightbox-feat-item">
+                    <span class="zv-feat-bullet">✦</span>
+                    <span><strong>6 Unique Keepsake Patterns:</strong> Sapphire rosette, celestial mandala, winter snowflake &amp; baroque crystal motifs.</span>
+                  </div>
+                  <div class="zv-lightbox-feat-item">
+                    <span class="zv-feat-bullet">✦</span>
+                    <span><strong>Tactile 3D Gemwork:</strong> Raised faceted crystals and luminous baroque faux pearls catch holiday light from every angle.</span>
+                  </div>
+                  <div class="zv-lightbox-feat-item">
+                    <span class="zv-feat-bullet">✦</span>
+                    <span><strong>Pre-Threaded Gold Cords:</strong> Ready to hang on trees, wreaths, holiday garlands, or festive gift packages.</span>
+                  </div>
+                </div>
+
+                <div class="zv-lightbox-actions">
+                  <button type="button" class="zv-lightbox-btn-add" id="zvUpsellModalAddBtn">
+                    <span>Add to Order &middot; +$25.99</span>
+                  </button>
+                  <button type="button" class="zv-lightbox-btn-cancel" id="zvUpsellModalDismiss">
+                    Continue without adding
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+        <!-- 8. PRIMARY CTA (OPTIONAL QUANTITY STEPPER + ADD TO CART · PRICE & BUY NOW) -->
         <div class="zv-cta-group">
-          <button type="button" class="zv-btn-atc" id="zvBtnClaim">
-            <span class="zv-atc-main" id="zvBtnClaimLabel">ADD TO CART &middot; {{ t1_price | money }}</span>
-            <span class="zv-atc-sub">30-DAY MONEY-BACK GUARANTEE</span>
-          </button>
+          <div class="zv-cta-qty-row {% unless section.settings.show_quantity_selector %}zv-no-qty{% endunless %}">
+            {% if section.settings.show_quantity_selector %}
+              <div class="zv-qty-stepper" id="zvPackQtyStepper" aria-label="Package Quantity">
+                <button type="button" class="zv-qty-btn" id="zvQtyMinus" aria-label="Decrease quantity">&minus;</button>
+                <input type="number" id="zvPackQtyInput" class="zv-qty-input" value="1" min="1" max="10" aria-label="Quantity" readonly>
+                <button type="button" class="zv-qty-btn" id="zvQtyPlus" aria-label="Increase quantity">+</button>
+              </div>
+            {% endif %}
+            <button type="button" class="zv-btn-atc" id="zvBtnClaim">
+              <span class="zv-atc-main" id="zvBtnClaimLabel">ADD TO CART &middot; {{ t1_price | money }}</span>
+              <span class="zv-atc-sub">{% if section.settings.atc_subtext != blank %}{{ section.settings.atc_subtext }}{% elsif product.handle contains 'tile-refinishing' %}30-Day Returns on Eligible Items{% else %}30-DAY MONEY-BACK GUARANTEE{% endif %}</span>
+            </button>
+          </div>
 
           <button type="button" class="zv-btn-buynow" id="zvBtnBuyNow">
             <span>BUY NOW</span>
@@ -395,18 +1515,18 @@
         <div class="zv-pdp-delivery">
           <div class="zv-delivery-header">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-            <span>Order placed today, dispatched within 24–48 hours</span>
+            <span>{% if product.handle contains 'tile-refinishing' %}Processing 1–2 Business Days &middot; Estimated Delivery 5–20 Business Days{% else %}Order placed today, dispatched within 24–48 hours{% endif %}</span>
           </div>
           <ol class="zv-dl-steps">
             <li class="zv-dl-step completed">
               <span class="zv-dl-ic">✓</span>
-              <span>Order Placed</span>
+              <span>{% if product.handle contains 'tile-refinishing' %}Processing 1–2 Days{% else %}Order Placed{% endif %}</span>
             </li>
             <li class="zv-dl-step completed">
               <span class="zv-dl-ic">
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
               </span>
-              <span>24–48h Dispatch</span>
+              <span>{% if product.handle contains 'tile-refinishing' %}In Transit 5–20 Days{% else %}24–48h Dispatch{% endif %}</span>
             </li>
             <li class="zv-dl-step">
               <span class="zv-dl-ic">
@@ -417,21 +1537,83 @@
           </ol>
         </div>
 
-        <!-- 10. COMPACT CUSTOMER REVIEW MINI CARD (Task 11) -->
+        <!-- 10. COMPACT CUSTOMER REVIEW MINI CARD (Task 11 / TASK 4) -->
         {% if section.settings.show_mini_review %}
-          <figure class="zv-pdp-mini-review">
-            <div class="zv-mini-avatar">🎯</div>
-            <div class="zv-mini-content">
-              <div class="zv-stars">★★★★★</div>
-              <blockquote>&ldquo;{{ section.settings.mini_review_quote | default: "The kids put down their tablets immediately. Projecting moving targets on the bedroom wall turned our house into an arcade. Best family gift all year!" }}&rdquo;</blockquote>
-              <figcaption>
-                {{ section.settings.mini_review_author | default: "Marcus & Elena T., Austin TX" }}
-                {% if section.settings.mini_review_verified %}
-                  &middot; <span class="zv-verified-buyer">✓ {{ section.settings.mini_review_badge | default: "Verified Buyer" }}</span>
-                {% endif %}
-              </figcaption>
+          {% if product.handle contains 'tile-refinishing' %}
+            <div class="zv-pdp-highlight-box" style="margin: 20px 0; padding: 16px 20px; border-radius: 12px; background: #FFF5F7; border: 1px solid var(--zv-pdp-line, #EAD7DD); color: var(--zv-pdp-heading, #2B1B24); font-size: 14.5px; line-height: 1.5; font-weight: 500;">
+              ✨ Give tired-looking tiles a fresh finish with a simple brush-on application.
             </div>
-          </figure>
+          {% elsif product.handle == 'metallic-silver-anti-rust-renovation-coating' %}
+            <figure class="zv-pdp-mini-review">
+              <div class="zv-mini-avatar">🛡️</div>
+              <div class="zv-mini-content">
+                <div class="zv-stars">★★★★★</div>
+                <blockquote>&ldquo;Coated our weathered iron gate and porch railing over a weekend. It covered the rust completely and gave it a brilliant metallic silver finish that looks brand new. Saved us hundreds in replacement costs!&rdquo;</blockquote>
+                <figcaption>
+                  David M., Denver CO
+                  {% if section.settings.mini_review_verified %}
+                    &middot; <span class="zv-verified-buyer">✓ {{ section.settings.mini_review_badge | default: "Verified Buyer" }}</span>
+                  {% endif %}
+                </figcaption>
+              </div>
+            </figure>
+          {% elsif product.handle == 'ear-cleaner' %}
+            <figure class="zv-pdp-mini-review">
+              <div class="zv-mini-avatar">🐾</div>
+              <div class="zv-mini-content">
+                <div class="zv-stars">★★★★★</div>
+                <blockquote>&ldquo;Our golden retriever shook his head constantly and scratched his ears raw. After just two applications with Trymalora, all the dark gunk melted away and he finally slept through the night!&rdquo;</blockquote>
+                <figcaption>
+                  Sarah &amp; Cooper (Golden Retriever), Seattle WA
+                  {% if section.settings.mini_review_verified %}
+                    &middot; <span class="zv-verified-buyer">✓ {{ section.settings.mini_review_badge | default: "Verified Buyer" }}</span>
+                  {% endif %}
+                </figcaption>
+              </div>
+            </figure>
+          {% elsif product.handle == 'eyvelle-steam-therapy' %}
+            <figure class="zv-pdp-mini-review">
+              <div class="zv-mini-avatar">👁️</div>
+              <div class="zv-mini-content">
+                <div class="zv-stars">★★★★★</div>
+                <blockquote>&ldquo;Staring at computer screens 10 hours a day left my eyes burning and gritty by 3 PM. 5 minutes with Trymalora Nano-Steam feels like a warm spa facial for my eyes. Total soothing relief with zero stinging!&rdquo;</blockquote>
+                <figcaption>
+                  Emily R., UX Designer, Austin TX
+                  {% if section.settings.mini_review_verified %}
+                    &middot; <span class="zv-verified-buyer">✓ {{ section.settings.mini_review_badge | default: "Verified Buyer" }}</span>
+                  {% endif %}
+                </figcaption>
+              </div>
+            </figure>
+          {% elsif product.handle == 'christmas-lantern-welcome-gnome' %}
+            <figure class="zv-pdp-mini-review">
+              <div class="zv-mini-avatar">🎄</div>
+              <div class="zv-mini-content">
+                <div class="zv-stars">★★★★★</div>
+                <blockquote>&ldquo;This little gnome is hands down the sweetest holiday decoration we’ve ever bought! The star lantern produces such a gentle, cozy glow on our porch every evening. Everyone who visits stops to take a picture!&rdquo;</blockquote>
+                <figcaption>
+                  Hannah M., Aspen CO
+                  {% if section.settings.mini_review_verified %}
+                    &middot; <span class="zv-verified-buyer">✓ {{ section.settings.mini_review_badge | default: "Verified Buyer" }}</span>
+                  {% endif %}
+                </figcaption>
+              </div>
+            </figure>
+          {% else %}
+            <figure class="zv-pdp-mini-review">
+              <div class="zv-mini-avatar">🎯</div>
+              <div class="zv-mini-content">
+                <div class="zv-stars">★★★★★</div>
+                <blockquote>&ldquo;{{ section.settings.mini_review_quote | default: "The kids put down their tablets immediately. Projecting moving targets on the bedroom wall turned our house into an arcade. Best family gift all year!" }}&rdquo;</blockquote>
+                <figcaption>
+                  {{ section.settings.mini_review_author | default: "Marcus & Elena T., Austin TX" }}
+                  {% if section.settings.mini_review_verified %}
+                    &middot; <span class="zv-verified-buyer">✓ {{ section.settings.mini_review_badge | default: "Verified Buyer" }}</span>
+                  {% endif %}
+                </figcaption>
+              </div>
+            </figure>
+          {% endif %}
         {% endif %}
 
         <!-- 11. SHOPIFY NATIVE PAYMENT ICONS (Task 9: Clean, No Outer Header) -->
@@ -453,50 +1635,304 @@
 
         <!-- 12. MINIMAL PRODUCT ACCORDIONS (Task 12: 4 Rows, Thin Dividers, Rotating Plus) -->
         <div class="zv-acc-group">
-          
-          <!-- Accordion 1: How to use -->
-          <details class="zv-acc-item" open>
-            <summary class="zv-acc-summary">
-              <span>How to use</span>
-              <span class="zv-acc-ic" aria-hidden="true">+</span>
-            </summary>
-            <div class="zv-acc-body">
-              Insert batteries into each blaster and projector, then switch the power on. For solo training, point the projector lens at any wall or ceiling in a slightly dimmed room to blast moving projected targets. For multiplayer battles, select matching team colors on blasters to team up across 4 distinct combat channels.
-            </div>
-          </details>
+          {% assign accordion_blocks = section.blocks | where: "type", "accordion_item" %}
+          {% if accordion_blocks.size > 0 %}
+            {% for block in accordion_blocks %}
+              <details class="zv-acc-item" {% if block.settings.open_default %}open{% endif %} {{ block.shopify_attributes }}>
+                <summary class="zv-acc-summary">
+                  <span>{{ block.settings.title }}</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  {{ block.settings.body }}
+                </div>
+              </details>
+            {% endfor %}
+          {% else %}
+            {% case product.handle %}
+            {% when 'car-metal-rust-repair-paste' %}
+              <details class="zv-acc-item" open>
+                <summary class="zv-acc-summary">
+                  <span>How to apply</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Scrape away loose, flaking rust from the metal surface and clean off any oil or grime. Dab an even coat of repair paste directly over the exposed metal with the included foam sponge. Allow 1–2 hours to dry to touch, and 24 hours for full cure.
+                </div>
+              </details>
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>What's inside</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Includes 1× Car Metal Rust Repair Paste (50g sealed tube in selected color), 1× high-density application foam sponge, and an illustrated application handbook.
+                </div>
+              </details>
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>30-day guarantee</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  We back every TRYMALORA order with a 30-day satisfaction guarantee. If it doesn't perform to your expectations, contact our support team for an effortless return or exchange.
+                </div>
+              </details>
 
-          <!-- Accordion 2: What's inside -->
-          <details class="zv-acc-item">
-            <summary class="zv-acc-summary">
-              <span>What's inside</span>
-              <span class="zv-acc-ic" aria-hidden="true">+</span>
-            </summary>
-            <div class="zv-acc-body">
-              Each 1 Set includes 2 Tactical Blasters, 1 Dynamic Target Projector, target slide discs, and an illustrated quickstart manual. 2 Sets include 4 Blasters and 2 Projectors. 3 Sets include 6 Blasters and 3 Projectors.
-            </div>
-          </details>
+            {% when 'metal-chrome-polish-restorer-paste' %}
+              <details class="zv-acc-item" open>
+                <summary class="zv-acc-summary">
+                  <span>How to use</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Ensure the chrome surface is free from abrasive dirt. Apply a small amount of polishing paste with the detail brush onto wheels or trim. Buff firmly with a clean microfiber cloth in small circles until brilliant mirror reflection is restored.
+                </div>
+              </details>
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>What's inside</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Includes 1× Heavy-Duty Metal Chrome Polish Cream (100g tub), 1× ergonomic detail bristle brush, and a quickstart restoration guide.
+                </div>
+              </details>
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>30-day guarantee</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Backed by TRYMALORA's 30-day money-back guarantee. If you're not thrilled with the mirror shine, contact support@trymalora.com.
+                </div>
+              </details>
 
-          <!-- Accordion 3: 30-day guarantee -->
-          <details class="zv-acc-item">
-            <summary class="zv-acc-summary">
-              <span>30-day guarantee</span>
-              <span class="zv-acc-ic" aria-hidden="true">+</span>
-            </summary>
-            <div class="zv-acc-body">
-              We stand behind TRYMALORA quality with a 30-day money-back guarantee. If you or your family are not completely satisfied within 30 days of delivery, contact our US customer support team for an effortless return process.
-            </div>
-          </details>
+            {% when 'mini-dual-purpose-travel-styling-iron' %}
+              <details class="zv-acc-item" open>
+                <summary class="zv-acc-summary">
+                  <span>How to use</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Plug into power and wait 30 seconds for the ceramic plates to reach optimal temperature. For straightening, clamp small sections and glide downward. For curling, clamp near mid-length, twist 180 degrees, and pull gently through the ends.
+                </div>
+              </details>
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>What's inside</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Includes 1× Mini Dual-Purpose Styling Iron (selected color), 1× insulated protective tip, and user manual with styling tutorials.
+                </div>
+              </details>
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>30-day guarantee</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Backed by TRYMALORA's 30-day guarantee for complete peace of mind.
+                </div>
+              </details>
 
-          <!-- Accordion 4: Shipping -->
-          <details class="zv-acc-item">
-            <summary class="zv-acc-summary">
-              <span>Shipping</span>
-              <span class="zv-acc-ic" aria-hidden="true">+</span>
-            </summary>
-            <div class="zv-acc-body">
-              Orders are packaged and dispatched from regional US warehouses within 24–48 business hours. Tracked standard delivery arrives in 3–5 business days. Free shipping is automatically included on all 2-pack and 3-pack bundle orders.
-            </div>
-          </details>
+            {% when 'tile-refinishing-paint-restoration-kit' %}
+              <details class="zv-acc-item" open>
+                <summary class="zv-acc-summary">
+                  <span>How to use</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Thoroughly clean and dry tiles to remove soap scum and grease. Lightly scuff glossy tiles with the sanding pad. Apply an even first coat with the detail brush. Allow 2 hours drying, then apply a second coat. Avoid water contact for 24–48 hours for complete enamel hardening.
+                </div>
+              </details>
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>What's inside</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Includes 1× White Tile Refinishing Paint (100g), 1× precision application brush, 1× surface preparation scuff pad, and instructions.
+                </div>
+              </details>
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>30-day guarantee</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Risk-free 30-day guarantee. If you're not delighted with the tile restoration, reach out to our customer care team.
+                </div>
+              </details>
+
+            {% when 'metallic-silver-anti-rust-renovation-coating' %}
+              <details class="zv-acc-item" open>
+                <summary class="zv-acc-summary">
+                  <span>How to use</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Remove loose scale or rust flakes with a brush. Apply the water-based metallic silver coating directly onto the metal surface using smooth, even strokes. Dries to touch in 1 hour; apply second coat after 2 hours for maximum outdoor weatherproofing.
+                </div>
+              </details>
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>What's inside</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Includes 1× Metallic Silver Anti-Rust Renovation Coating (50g can in selected bundle), 1× application brush, and guide.
+                </div>
+              </details>
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>30-day guarantee</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Backed by TRYMALORA's 30-day money-back guarantee.
+                </div>
+              </details>
+
+            {% when 'ear-cleaner' %}
+              <details class="zv-acc-item" open>
+                <summary class="zv-acc-summary">
+                  <span>How to use</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  1. Shake gently. Squeeze 2–4 drops directly into your pet's ear canal using the soft precision applicator tip.<br>
+                  2. Gently massage the base of the ear for 30–60 seconds to break down stubborn wax, yeast, and buildup.<br>
+                  3. Allow your pet to naturally shake their head, then gently wipe away loosened debris using a soft cloth or our textured Ear Finger Wipes. Use 2–3 times weekly for healthy maintenance.
+                </div>
+              </details>
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>What's inside</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Includes 1× Bottle (100ml) of Veterinarian-Formulated Pet Ear Cleansing Solution with soft precision applicator nozzle, and step-by-step pet care manual. Formulated with soothing chamomile extract, pure aloe vera, and gentle antiseptic agents. 100% alcohol-free and non-stinging.
+                </div>
+              </details>
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>30-day guarantee</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  We stand behind TRYMALORA with our 30-Day Money-Back Guarantee. If your dog or cat doesn't experience cleaner, fresher, itch-free ears within 30 days, simply contact our care team for an effortless full refund.
+                </div>
+              </details>
+
+            {% when 'eyvelle-steam-therapy' %}
+              <details class="zv-acc-item" open>
+                <summary class="zv-acc-summary">
+                  <span>How to use</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  1. Fill the 15ml reservoir with distilled water, purified water, or sterile eye saline solution.<br>
+                  2. Snap the soft medical-grade silicone eye contour cup securely onto the wand nozzle.<br>
+                  3. Place the cup gently over your eye, press the power button, and relax as the soothing 40°C ultrasonic nano-mist warms and hydrates for 3–5 minutes. Repeat on the second eye.
+                </div>
+              </details>
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>What's inside</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Includes 1× Trymalora™ Ultrasonic Nano-Steam Therapy Wand, 1× Ergonomic Medical Silicone Eye Cup, 1× Fast USB-C Charging Cable, 1× Precision Refill Dropper, and 1× Illustrated User Care Guide.
+                </div>
+              </details>
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>30-day guarantee</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  We stand behind TRYMALORA with our 30-Day Money-Back Guarantee. If you don't experience soothing, lasting relief from dry, fatigued eyes within 30 days, simply contact our care team for an effortless full refund.
+                </div>
+              </details>
+
+            {% when 'christmas-lantern-welcome-gnome' %}
+              <details class="zv-acc-item" open>
+                <summary class="zv-acc-summary">
+                  <span>How to use &amp; Placement</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  1. Unbox your gnome and gently fluff the realistic evergreen branches, pinecones, and red berries.<br>
+                  2. Insert standard batteries into the hidden bottom compartment and slide the toggle to ON.<br>
+                  3. Place on your sheltered porch, entryway console, living room mantle, or beside the Christmas tree for a warm, magical holiday ambiance.
+                </div>
+              </details>
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>What's inside</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Includes 1&times; Handcrafted Christmas Lantern Welcome Gnome with red-and-cream knitted cap and snowy beard, 1&times; Warm-White LED Star Lantern, realistic woodland garland with pinecones &amp; crimson berries, and protective holiday collector packaging.
+                </div>
+              </details>
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>60-night holiday guarantee</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  We stand behind TRYMALORA with our 60-Night Holiday Happiness Guarantee. If this charming gnome doesn't bring warmth, togetherness, and festive smiles to your family, simply contact our concierge team for an effortless full refund.
+                </div>
+              </details>
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>Dimensions &amp; Materials</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  <strong>Height:</strong> Approx. 14 inches (35 cm) | <strong>Base Width:</strong> 6 inches (15 cm)<br>
+                  <strong>Materials:</strong> Weighted resin &amp; natural stone composite base, artisan knitted-style cap, plush faux snow beard, PE botanical evergreen branches, energy-efficient warm LED star lantern.
+                </div>
+              </details>
+
+            {% else %}
+              <!-- Accordion 1: How to use -->
+              <details class="zv-acc-item" open>
+                <summary class="zv-acc-summary">
+                  <span>How to use</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Insert batteries into each blaster and projector, then switch the power on. For solo training, point the projector lens at any wall or ceiling in a slightly dimmed room to blast moving projected targets. For multiplayer battles, select matching team colors on blasters to team up across 4 distinct combat channels.
+                </div>
+              </details>
+
+              <!-- Accordion 2: What's inside -->
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>What's inside</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  Each 1 Set includes 2 Tactical Blasters, 1 Dynamic Target Projector, target slide discs, and an illustrated quickstart manual. 2 Sets include 4 Blasters and 2 Projectors. 3 Sets include 6 Blasters and 3 Projectors.
+                </div>
+              </details>
+
+              <!-- Accordion 3: 30-day guarantee -->
+              <details class="zv-acc-item">
+                <summary class="zv-acc-summary">
+                  <span>30-day guarantee</span>
+                  <span class="zv-acc-ic" aria-hidden="true">+</span>
+                </summary>
+                <div class="zv-acc-body">
+                  We stand behind TRYMALORA quality with a 30-day money-back guarantee. If you or your family are not completely satisfied within 30 days of delivery, contact our US customer support team for an effortless return process.
+                </div>
+              </details>
+          {% endcase %}
+          {% endif %}
 
         </div>
 
@@ -506,19 +1942,44 @@
   </div>
 </section>
 
+<!-- GALLERY FULL-RESOLUTION ZOOM LIGHTBOX -->
+<div id="zvGalleryLightbox" class="zv-gallery-lightbox" role="dialog" aria-modal="true" aria-label="Product Image Zoom" aria-hidden="true">
+  <div class="zv-gallery-lb-backdrop" id="zvGalleryLbBackdrop"></div>
+  <div class="zv-gallery-lb-content">
+    <button type="button" class="zv-gallery-lb-close" id="zvGalleryLbClose" aria-label="Close zoom viewer">&times;</button>
+    <button type="button" class="zv-gallery-lb-nav prev" id="zvGalleryLbPrev" aria-label="Previous product image">&#10094;</button>
+    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="{{ prod_title | escape }}" id="zvGalleryLbImg" class="zv-gallery-lb-img">
+    <button type="button" class="zv-gallery-lb-nav next" id="zvGalleryLbNext" aria-label="Next product image">&#10095;</button>
+    <div class="zv-gallery-lb-counter" id="zvGalleryLbCounter">1 / 1</div>
+  </div>
+</div>
+
 <!-- STICKY ATC BAR ON SCROLL -->
 <div class="zv-sticky-bar" id="zvStickyBar" role="region" aria-label="Quick Add to Cart">
   <div class="zv-sticky-prod-info">
-    <img src="https://ashbtop.com/cdn/shop/files/spp_shopify20261028173020_6c8c1c4cf7d711cdd5a4d6aa91290eb2_e583f568-e0e8-4c22-9785-6dc4d0eb727b.jpg" alt="{{ prod_title | escape }}" class="zv-sticky-thumb" width="44" height="44">
-    <div>
+    <img src="{{ product.featured_image | image_url: width: 100 | default: 'https://ashbtop.com/cdn/shop/files/spp_shopify20261028173020_6c8c1c4cf7d711cdd5a4d6aa91290eb2_e583f568-e0e8-4c22-9785-6dc4d0eb727b.jpg' }}" alt="{{ prod_title | escape }}" class="zv-sticky-thumb" width="44" height="44">
+    <div class="zv-sticky-meta">
       <div class="zv-sticky-name">{{ prod_title }}</div>
       <div class="zv-sticky-price" id="zvStickyPrice">{{ t1_price | money }}</div>
     </div>
   </div>
-  <button type="button" class="zv-btn-atc" id="zvStickyBtn" style="min-height: 48px; padding: 8px 24px;">
+  <button type="button" class="zv-btn-atc" id="zvStickyBtn" style="min-height: 46px; padding: 8px 20px;">
     <span class="zv-atc-main" id="zvStickyBtnLabel">ADD TO CART &middot; {{ t1_price | money }}</span>
   </button>
 </div>
+
+<script type="application/json" id="zvTileVariantMatrix">
+  {
+    {% for v in product.variants %}
+      "{{ v.title }}": {
+        "id": "{{ v.id }}",
+        "price": {{ v.price }},
+        "compareAt": {{ v.compare_at_price | default: v.price }},
+        "available": {{ v.available }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  }
+</script>
 
 <script src="{{ 'zavelyn-v4-pdp.js' | asset_url }}" defer></script>
 
@@ -528,6 +1989,26 @@
   "settings": [
     {
       "type": "header",
+      "content": "Product Hero & Gallery"
+    },
+    {
+      "type": "text",
+      "id": "gallery_badge_text",
+      "label": "Gallery Top-Left Badge (Optional override)"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_gallery_zoom",
+      "label": "Enable Click-to-Zoom Gallery Lightbox",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "lead_description",
+      "label": "Lead Promise Description (Optional override)"
+    },
+    {
+      "type": "header",
       "content": "Social Proof & Customer Rating"
     },
     {
@@ -535,6 +2016,12 @@
       "id": "show_rating",
       "label": "Show Customer Rating Row",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_section_rating",
+      "label": "Use Theme Editor Rating Count Override",
+      "default": false
     },
     {
       "type": "text",
@@ -556,12 +2043,12 @@
     },
     {
       "type": "header",
-      "content": "Live Viewing Message"
+      "content": "Highlight Pill & Live Viewing"
     },
     {
       "type": "checkbox",
       "id": "show_live_viewers",
-      "label": "Show Live Viewers Urgency Pill",
+      "label": "Show Live Viewers Urgency Pill (Not recommended)",
       "default": true
     },
     {
@@ -569,6 +2056,76 @@
       "id": "live_viewers_text",
       "label": "Live Viewers Text",
       "default": "28 families looking at this right now"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_craft_pill",
+      "label": "Show Craft & Guarantee Highlight Pill",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "craft_pill_text",
+      "label": "Craft Highlight Text",
+      "default": "Handcrafted Holiday Edition · Warm-White LED Starlight"
+    },
+    {
+      "type": "header",
+      "content": "Purchase Controls & Guarantee"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quantity_selector",
+      "label": "Show Pack Quantity Selector (- 1 +)",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "atc_subtext",
+      "label": "ATC Button Subtext (Optional override)"
+    },
+    {
+      "type": "header",
+      "content": "Companion Upsell Card"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_gnome_upsell",
+      "label": "Show Companion Upsell Box",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "upsell_variant_id",
+      "label": "Upsell Variant ID",
+      "default": "67361024016755"
+    },
+    {
+      "type": "number",
+      "id": "upsell_price_cents",
+      "label": "Upsell Price (Cents)",
+      "default": 2599
+    },
+    {
+      "type": "text",
+      "id": "upsell_title",
+      "label": "Upsell Title",
+      "default": "Add 6-Piece Jeweled Mosaic Ornaments Set"
+    },
+    {
+      "type": "textarea",
+      "id": "upsell_description",
+      "label": "Upsell Description"
+    },
+    {
+      "type": "text",
+      "id": "upsell_image_url",
+      "label": "Upsell Image URL"
+    },
+    {
+      "type": "text",
+      "id": "upsell_modal_title",
+      "label": "Upsell Modal Title"
     },
     {
       "type": "header",
@@ -624,6 +2181,54 @@
         { "value": "descending", "label": "Descending (3 Sets, 2 Sets, 1 Set)" }
       ],
       "default": "auto"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit_item",
+      "name": "Benefit Bullet",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "star", "label": "Star / Glow" },
+            { "value": "shield", "label": "Shield / Guarantee" },
+            { "value": "leaf", "label": "Evergreen / Craft" },
+            { "value": "clock", "label": "Base / Placement" },
+            { "value": "heart", "label": "Warmth / Holiday" }
+          ],
+          "default": "star"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Benefit Text"
+        }
+      ]
+    },
+    {
+      "type": "accordion_item",
+      "name": "Product Info Accordion",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Accordion Title"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Accordion Body (HTML supported)"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_default",
+          "label": "Open by default",
+          "default": false
+        }
+      ]
     }
   ],
   "presets": [

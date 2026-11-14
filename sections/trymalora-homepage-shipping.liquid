@@ -1,0 +1,180 @@
+{% comment %}
+  TRYMALORA - HOMEPAGE SHIPPING & FULFILLMENT INFORMATION (SECTION 8)
+  Factual dispatch, clear timeline, and carrier partnerships.
+{% endcomment %}
+
+<style>
+  .tm-home-shipping-section {
+    padding: 64px 0;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid var(--zv-pdp-line, #EAD7DD);
+    font-family: var(--zv-font-body, 'Inter', system-ui, sans-serif);
+    color: var(--zv-pdp-text, #2B1B24);
+  }
+
+  .tm-home-shipping-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 44px;
+  }
+
+  .tm-home-shipping-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: var(--zv-radius-full, 9999px);
+    background: #FBEDE8;
+    color: #6B1E46;
+    border: 1px solid #EAD7DD;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .tm-home-shipping-title {
+    font-family: var(--zv-font-heading, 'Fraunces', Georgia, serif);
+    font-size: clamp(26px, 3.5vw, 36px);
+    font-weight: 600;
+    color: var(--zv-pdp-heading, #2B1B24);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin: 0 0 12px;
+  }
+
+  .tm-home-shipping-desc {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--zv-pdp-body, #4A3841);
+    margin: 0;
+  }
+
+  .tm-shipping-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  @media screen and (max-width: 900px) {
+    .tm-shipping-cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  }
+
+  @media screen and (max-width: 540px) {
+    .tm-shipping-cards-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+
+  .tm-shipping-card {
+    background: var(--zv-pdp-bg, #FFF8F5);
+    border: 1px solid var(--zv-pdp-line, #EAD7DD);
+    border-radius: 14px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .tm-shipping-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(43, 27, 36, 0.06);
+    border-color: var(--zv-pdp-accent, #B0476E);
+  }
+
+  .tm-shipping-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #FFFFFF;
+    border: 1px solid var(--zv-pdp-line, #EAD7DD);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: var(--zv-pdp-accent, #B0476E);
+  }
+
+  .tm-shipping-card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--zv-pdp-heading, #2B1B24);
+    margin: 0 0 8px;
+    line-height: 1.3;
+  }
+
+  .tm-shipping-card-text {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--zv-pdp-body, #4A3841);
+    margin: 0;
+  }
+</style>
+
+<section class="tm-home-shipping-section" id="tmShippingInfo">
+  <div class="zv-container" style="max-width: 1240px; margin: 0 auto; padding: 0 24px;">
+
+    <!-- Section Header -->
+    <div class="tm-home-shipping-header">
+      <span class="tm-home-shipping-chip">
+        📦 ORDER FULFILLMENT &amp; LOGISTICS
+      </span>
+      <h2 class="tm-home-shipping-title">
+        Transparent Global Shipping &amp; Doorstep Delivery
+      </h2>
+      <p class="tm-home-shipping-desc">
+        We partner directly with tier-1 international carriers to provide tracked, insured, and dependable worldwide fulfillment on every TRYMALORA order.
+      </p>
+    </div>
+
+    <!-- 4 Information Cards -->
+    <div class="tm-shipping-cards-grid">
+
+      <div class="tm-shipping-card">
+        <div class="tm-shipping-icon-box">⏱️</div>
+        <h3 class="tm-shipping-card-title">1–2 Days Processing</h3>
+        <p class="tm-shipping-card-text">Every item is cushioned in reinforced packaging, quality-inspected, and dispatched within 1–2 business days.</p>
+      </div>
+
+      <div class="tm-shipping-card">
+        <div class="tm-shipping-icon-box">✈️</div>
+        <h3 class="tm-shipping-card-title">5–20 Days Delivery</h3>
+        <p class="tm-shipping-card-text">Standard tracked transit delivers in 5–20 business days globally, backed by end-to-end milestone updates.</p>
+      </div>
+
+      <div class="tm-shipping-card">
+        <div class="tm-shipping-icon-box">🚚</div>
+        <h3 class="tm-shipping-card-title">Free Shipping Over $70</h3>
+        <p class="tm-shipping-card-text">Complimentary tracked delivery is automatically applied to all worldwide orders of $70 or more ($4.95 under $70).</p>
+      </div>
+
+      <div class="tm-shipping-card">
+        <div class="tm-shipping-icon-box">🛡️</div>
+        <h3 class="tm-shipping-card-title">30-Day Guarantee</h3>
+        <p class="tm-shipping-card-text">Every order is backed by our risk-free 30-day money-back guarantee with responsive customer support.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trymalora Shipping Info",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Trymalora Shipping Info"
+    }
+  ]
+}
+{% endschema %}
+

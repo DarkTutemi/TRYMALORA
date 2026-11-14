@@ -1,0 +1,243 @@
+{% comment %}
+  TRYMALORA - 2.5D SHOWROOM SPOTLIGHT ENTRY (SECTION 6)
+  Invites shoppers into the spatial retail showroom experience.
+{% endcomment %}
+
+<style>
+  .tm-showroom-entry {
+    background: linear-gradient(135deg, #2B1B24 0%, #170B12 100%);
+    color: #FFFFFF;
+    padding: 72px 0;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: var(--zv-font-body, 'Inter', system-ui, sans-serif);
+  }
+
+  .tm-showroom-entry-wrap {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 900px) {
+    .tm-showroom-entry-wrap {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 36px;
+    }
+  }
+
+  .tm-showroom-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(176, 71, 110, 0.25);
+    border: 1px solid rgba(234, 215, 221, 0.35);
+    color: #FBEDE8;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+  }
+
+  .tm-showroom-title {
+    font-family: var(--zv-font-heading, 'Fraunces', Georgia, serif);
+    font-size: clamp(28px, 3.6vw, 42px);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.6px;
+    color: #FFFFFF;
+    margin: 0 0 16px;
+  }
+
+  .tm-showroom-desc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #EAD7DD;
+    margin: 0 0 28px;
+  }
+
+  .tm-showroom-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #6B1E46;
+    border: 1px solid #B0476E;
+    color: #FFFFFF;
+    padding: 16px 36px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.2s ease;
+  }
+
+  .tm-showroom-btn:hover {
+    background: #8E2B5C;
+    transform: translateY(-2px);
+  }
+
+  .tm-showroom-preview-box {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .tm-showroom-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .tm-showroom-shelf-unit {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .tm-showroom-thumb-wrap {
+    width: 68px;
+    height: 68px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    padding: 4px;
+  }
+
+  .tm-showroom-thumb {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .tm-showroom-item-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: #E2E8F0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80px;
+  }
+
+  .tm-showroom-item-price {
+    font-size: 11.5px;
+    font-weight: 800;
+    color: #FBBF24;
+    margin-top: 2px;
+  }
+</style>
+
+<section class="tm-showroom-entry" id="tmShowroomEntry">
+  <div class="zv-container" style="max-width: 1240px; margin: 0 auto; padding: 0 24px;">
+    <div class="tm-showroom-entry-wrap">
+      
+      <!-- Text Column -->
+      <div>
+        <div class="tm-showroom-badge">
+          🏛️ 2.5D REAL-WORLD PHYSICAL RETAIL
+        </div>
+        <h2 class="tm-showroom-title">
+          Explore Products on Architectural Showroom Shelves
+        </h2>
+        <p class="tm-showroom-desc">
+          Step into our flagship retail environments. Browse products realistically grounded on multi-tier architectural shelving with shelf-edge price tags, spatial inspection zoom, and instant cart dispatch.
+        </p>
+        <a href="/collections/all" class="tm-showroom-btn">
+          <span>EXPLORE 2.5D SHOWROOM</span>
+          <span>➔</span>
+        </a>
+      </div>
+
+      <!-- Spatial Shelving Mockup Preview -->
+      <div class="tm-showroom-preview-box">
+        <div style="font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: #EAD7DD; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+          <span>TRYMALORA RETAIL FIXTURE</span>
+          <span style="color: #4ADE80;">● INTERACTIVE MODE</span>
+        </div>
+        <div class="tm-showroom-preview-grid">
+          <div class="tm-showroom-shelf-unit">
+            <div class="tm-showroom-thumb-wrap">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/photo_2026-11-03_04-05-43.jpg?v=1793703987" alt="Battle Blasters" class="tm-showroom-thumb" width="60" height="60" loading="lazy">
+            </div>
+            <span class="tm-showroom-item-name">Battle Blasters</span>
+            <span class="tm-showroom-item-price">$129.00</span>
+          </div>
+
+          <div class="tm-showroom-shelf-unit">
+            <div class="tm-showroom-thumb-wrap">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/spp_shopify20260902180016_73687cc3ad944528bd44cad273b1ee75_73949241-45e0-4725-8a9c-f163c91f3e0a.jpg?v=1793736110" alt="Rust Paste" class="tm-showroom-thumb" width="60" height="60" loading="lazy">
+            </div>
+            <span class="tm-showroom-item-name">Rust Repair</span>
+            <span class="tm-showroom-item-price">$14.99</span>
+          </div>
+
+          <div class="tm-showroom-shelf-unit">
+            <div class="tm-showroom-thumb-wrap">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/spp_shopify20261012184458_20a0f24e6ce7f19780a02337446a36df_14ea459a-9647-48d2-ba24-d524eee41336_e7525770-7a9f-436f-960e-ad2b89629655.png?v=1793736118" alt="Chrome Polish" class="tm-showroom-thumb" width="60" height="60" loading="lazy">
+            </div>
+            <span class="tm-showroom-item-name">Chrome Polish</span>
+            <span class="tm-showroom-item-price">$13.99</span>
+          </div>
+
+          <div class="tm-showroom-shelf-unit">
+            <div class="tm-showroom-thumb-wrap">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/1_5866c7c2-b42a-4860-a294-9babbd6c8130.png?v=1793736106" alt="Silver Anti-Rust" class="tm-showroom-thumb" width="60" height="60" loading="lazy">
+            </div>
+            <span class="tm-showroom-item-name">Silver Shield</span>
+            <span class="tm-showroom-item-price">$19.99</span>
+          </div>
+
+          <div class="tm-showroom-shelf-unit">
+            <div class="tm-showroom-thumb-wrap">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/spp_shopify20260924173032_fa3f1644adf419e419535a7a56d7b7a2_cadd7957-c46f-4ec7-84a6-568ca94f7d10.png?v=1793736125" alt="Tile Refinish" class="tm-showroom-thumb" width="60" height="60" loading="lazy">
+            </div>
+            <span class="tm-showroom-item-name">Tile Paint</span>
+            <span class="tm-showroom-item-price">$16.99</span>
+          </div>
+
+          <div class="tm-showroom-shelf-unit">
+            <div class="tm-showroom-thumb-wrap">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/644c316ca05566dbd50e9ee2ad82b586d595d580.jpg?v=1793736121" alt="Styling Iron" class="tm-showroom-thumb" width="60" height="60" loading="lazy">
+            </div>
+            <span class="tm-showroom-item-name">Styling Iron</span>
+            <span class="tm-showroom-item-price">$19.99</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trymalora Showroom Banner",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Trymalora Showroom Banner"
+    }
+  ]
+}
+{% endschema %}
+

@@ -1,12 +1,15 @@
-{%- comment -%} One-page store: send non-offer routes to the landing page {%- endcomment -%}
 {%- assign target = routes.root_url -%}
 <script>
-  window.location.replace({{ target | json }});
+  if (!window.location.pathname.includes('track')) {
+    window.location.replace({{ target | json }});
+  }
 </script>
-<meta http-equiv="refresh" content="0;url={{ target }}">
-<p style="font-family:system-ui;padding:2rem;text-align:center;">
-  <a href="{{ target }}">Continue to store</a>
-</p>
+<noscript>
+  <meta http-equiv="refresh" content="0;url={{ target }}">
+  <p style="font-family:system-ui;padding:2rem;text-align:center;">
+    <a href="{{ target }}">Continue to store</a>
+  </p>
+</noscript>
 
 {% schema %}
 {

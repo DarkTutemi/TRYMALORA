@@ -1,0 +1,447 @@
+{
+  "sections": {
+    "main": {
+      "type": "zavelyn-v4-pdp-main",
+      "settings": {
+        "gallery_badge_text": "HOLIDAY EDITION · HANDCRAFTED",
+        "enable_gallery_zoom": true,
+        "lead_description": "Charming handcrafted woodland gnome with a warm-white illuminated star lantern, festive knitted hat, and lush evergreen boughs that bring cozy holiday magic to your home.",
+        "show_rating": true,
+        "use_section_rating": true,
+        "rating_score": "4.9",
+        "rating_count": "10",
+        "rating_label": "customer reviews",
+        "show_live_viewers": false,
+        "show_craft_pill": true,
+        "craft_pill_text": "Warm-White LED Starlight · 60-Night Holiday Guarantee",
+        "show_quantity_selector": true,
+        "atc_subtext": "60-NIGHT HOLIDAY HAPPINESS GUARANTEE",
+        "show_gnome_upsell": true,
+        "upsell_variant_id": "67361024016755",
+        "upsell_price_cents": 2599,
+        "upsell_title": "Add 6-Piece Jeweled Mosaic Ornaments Set",
+        "upsell_description": "Handcrafted wooden medallions adorned with sapphire crystals, winter starlight snowflakes, baroque pearls & shimmering gold cords.",
+        "upsell_image_url": "https://cdn.shopify.com/s/files/1/1032/4541/4771/t/5/assets/trymalora_jeweled_ornaments_set_hd.png?v=1794390625",
+        "upsell_modal_title": "Artisan Starlight Pearl & Crystal Mosaic Ornaments",
+        "show_mini_review": true,
+        "mini_review_quote": "This little gnome is hands down the sweetest holiday decoration we've ever bought! The star lantern produces such a gentle, cozy glow on our porch every evening.",
+        "mini_review_author": "Hannah M., Aspen CO",
+        "mini_review_verified": true,
+        "mini_review_badge": "Verified Buyer"
+      },
+      "blocks": {
+        "ben_1": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "star",
+            "text": "Warm 5-Pointed Star Lantern Casts Gentle Evening Glow"
+          }
+        },
+        "ben_2": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "shield",
+            "text": "Festive Hand-Knitted Style Hat & Plush Snowy Beard"
+          }
+        },
+        "ben_3": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "leaf",
+            "text": "Realistic Evergreen Boughs, Natural Pinecones & Winter Berries"
+          }
+        },
+        "ben_4": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "clock",
+            "text": "Sturdy Weighted Base Ideal for Covered Porches, Mantels & Trees"
+          }
+        },
+        "acc_1": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "How to Display & Care",
+            "body": "1. Unbox your gnome and gently fluff the realistic evergreen branches, frosted pinecones, and red berries.<br>2. Insert standard batteries into the concealed bottom compartment and slide the power switch to ON.<br>3. Display on a sheltered covered porch, entryway console, fireplace hearth, or beside your Christmas tree.",
+            "open_default": true
+          }
+        },
+        "acc_2": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "What's Included",
+            "body": "Each single gnome includes 1× Handcrafted Christmas Lantern Welcome Gnome with knitted red-and-cream cap, 1× Warm-White LED Star Lantern, pre-arranged woodland garland, and protective holiday storage packaging.",
+            "open_default": false
+          }
+        },
+        "acc_3": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "Dimensions & Craft Materials",
+            "body": "<strong>Height:</strong> Approx. 14 in (35 cm) &nbsp;|&nbsp; <strong>Base Width:</strong> 6 in (15 cm) &nbsp;|&nbsp; <strong>Weight:</strong> ~2.8 lbs (1.3 kg)<br><strong>Materials:</strong> Weighted resin-stone composite base, textured knit cap, faux plush beard, PE botanical evergreen branches, warm-white LED star lantern.",
+            "open_default": false
+          }
+        },
+        "acc_4": {
+          "type": "accordion_item",
+          "settings": {
+            "title": "60-Night Holiday Happiness Guarantee",
+            "body": "We stand behind every Trymalora holiday piece with our 60-Night Holiday Happiness Guarantee. If it doesn't bring warmth and festive cheer to your home within 60 days of delivery, contact support@trymalora.com for an effortless return and full refund.",
+            "open_default": false
+          }
+        }
+      },
+      "block_order": [
+        "ben_1",
+        "ben_2",
+        "ben_3",
+        "ben_4",
+        "acc_1",
+        "acc_2",
+        "acc_3",
+        "acc_4"
+      ]
+    },
+    "package": {
+      "type": "trymalora-pdp-package",
+      "settings": {
+        "chip_text": "✦ FULL HOLIDAY KIT",
+        "heading": "What's in the Box",
+        "subtitle": "Every package arrives cushioned in collector's holiday storage packaging with your handcrafted woodland gnome, warm-white LED star lantern, and botanical garland."
+      },
+      "blocks": {
+        "pkg_1": {
+          "type": "package_item",
+          "settings": {
+            "icon": "shield",
+            "badge": "IN SELECTED BUNDLE",
+            "title": "Handcrafted Welcome Gnome",
+            "description": "Artisan polyresin body featuring a festive red-and-cream knitted cap, plush snowy beard, and weighted tip-resistant base."
+          }
+        },
+        "pkg_2": {
+          "type": "package_item",
+          "settings": {
+            "icon": "star",
+            "badge": "ATMOSPHERIC GLOW",
+            "title": "Warm-White LED Star Lantern",
+            "description": "Five-pointed illuminated lantern casting an inviting amber-white holiday glow with zero open flames or harsh glare."
+          }
+        },
+        "pkg_3": {
+          "type": "package_item",
+          "settings": {
+            "icon": "leaf",
+            "badge": "NATURAL TEXTURE",
+            "title": "Pre-Fitted Woodland Garland",
+            "description": "Lush botanical evergreen sprigs, natural frosted pinecones, and vibrant crimson winter berries hand-arranged on the robe."
+          }
+        },
+        "pkg_4": {
+          "type": "package_item",
+          "settings": {
+            "icon": "gift",
+            "badge": "GIFT READY",
+            "title": "Collector Gift Box & Care Guide",
+            "description": "Foam-lined storage carton engineered for safe doorstep transit and clean off-season preservation year after year."
+          }
+        }
+      },
+      "block_order": [
+        "pkg_1",
+        "pkg_2",
+        "pkg_3",
+        "pkg_4"
+      ]
+    },
+    "how_it_works": {
+      "type": "trymalora-pdp-how-it-works",
+      "settings": {
+        "chip_text": "✦ HANDCRAFTED WOODLAND HOLIDAY ARTISTRY",
+        "heading": "Bring Home the Warmth of Traditional Holiday Starlight",
+        "subtitle": "From the cozy knit of his red-and-cream hat to the gentle atmospheric glow of his five-pointed star lantern, the Christmas Lantern Welcome Gnome brings timeless holiday warmth into your home.",
+        "show_setup_band": true,
+        "setup_title": "Simple 60-Second Setup",
+        "setup_subtitle": "No complicated wires or tools. Instant holiday ambiance straight out of the box."
+      },
+      "blocks": {
+        "story_1": {
+          "type": "story_row",
+          "settings": {
+            "image_url": "https://cdn.shopify.com/s/files/1/1032/4541/4771/files/51ec8bc9-19e1-4750-81e9-716b9f443448.png?v=1794374485&width=1000",
+            "badge_text": "Warm Starlight",
+            "eyebrow": "ATMOSPHERIC ILLUMINATION",
+            "heading": "A Magical Evening Welcome for Family & Guests",
+            "description": "As daylight fades into evening, the five-pointed star lantern illuminates with a soft, warm-white glow. Positioned beside your front entryway or in a cozy living room nook, it turns every homecoming into a festive holiday moment.",
+            "check_1": "Warm-White LED Glow: Gentle ambient starlight with no harsh glare or heat",
+            "check_2": "Safe Battery Power: Concealed bottom compartment with clean on/off switch",
+            "check_3": "Weighted Stable Base: Stands firmly on covered porches, mantels, and tables",
+            "reverse_layout": false
+          }
+        },
+        "story_2": {
+          "type": "story_row",
+          "settings": {
+            "image_url": "https://cdn.shopify.com/s/files/1/1032/4541/4771/files/7a2a339d-5869-4893-bdbc-a646d5370aba.png?v=1794374485&width=1000",
+            "badge_text": "Nordic Folklore Craft",
+            "eyebrow": "ARTISAN TEXTURES",
+            "heading": "Rich Woodland Details Built for Cozy Traditions",
+            "description": "Every detail is thoughtfully sculpted and textured. From the ribbed knitting pattern on his festive tall cap to his flowing snowy beard and evergreen boughs, this piece looks just as captivating by daylight as it does glowing at night.",
+            "check_1": "Knitted-Style Pointed Hat: Traditional Scandinavian red-and-cream winter motif",
+            "check_2": "Botanical Pine & Berries: Frosted pinecones paired with vibrant winter berries",
+            "check_3": "Weighted Composite Body: Crafted to bring festive cheer season after season",
+            "reverse_layout": true
+          }
+        },
+        "story_3": {
+          "type": "story_row",
+          "settings": {
+            "image_url": "https://cdn.shopify.com/s/files/1/1032/4541/4771/files/41b23eb3-e0f1-48f2-bf80-ea57b5122a81.png?v=1794374485&width=1000",
+            "badge_text": "Versatile Display",
+            "eyebrow": "PORCH · HEARTH · TREE",
+            "heading": "From the Covered Front Entry to Beside the Christmas Tree",
+            "description": "Create an enchanting holiday focal point wherever your loved ones gather. Frame your covered front doorway with the Woodland Duo, tuck him beside wrapped gifts under the tree, or style him on a fireplace mantel.",
+            "check_1": "Sheltered Porch Friendly: Ideal for covered entryways, foyers, and sunrooms",
+            "check_2": "Tree & Hearth Harmony: Complements warm string lights, garlands, and wreaths",
+            "check_3": "Memorable Holiday Gift: Arrives boxed and ready to delight family or hosts",
+            "reverse_layout": false
+          }
+        },
+        "step_1": {
+          "type": "setup_step",
+          "settings": {
+            "step_number": "1",
+            "title": "Unbox & Fluff",
+            "description": "Lift your gnome out of the protective foam carton and gently shape the evergreen sprigs and berries."
+          }
+        },
+        "step_2": {
+          "type": "setup_step",
+          "settings": {
+            "step_number": "2",
+            "title": "Switch On Starlight",
+            "description": "Insert batteries into the recessed bottom compartment and slide the switch to ON."
+          }
+        },
+        "step_3": {
+          "type": "setup_step",
+          "settings": {
+            "step_number": "3",
+            "title": "Place & Enjoy",
+            "description": "Set on your covered porch, fireplace hearth, or entryway table and enjoy warm evening starlight."
+          }
+        }
+      },
+      "block_order": [
+        "story_1",
+        "story_2",
+        "story_3",
+        "step_1",
+        "step_2",
+        "step_3"
+      ]
+    },
+    "faq": {
+      "type": "trymalora-pdp-faq",
+      "settings": {
+        "chip_text": "✦ COMMON QUESTIONS",
+        "heading": "Frequently Asked Questions",
+        "subtitle": "Everything you need to know about sheltered porch placement, LED battery life, dimensions, and our 60-night holiday guarantee."
+      },
+      "blocks": {
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I place this gnome outside on my front porch?",
+            "answer": "Yes! The Christmas Lantern Welcome Gnome is ideal for covered front porches, sheltered entryways, verandas, and indoor living spaces. Because the knit hat and botanical pinecones are textured decorative materials, please keep him under an overhead shelter away from direct heavy rain or snow.",
+            "open_default": true
+          }
+        },
+        "faq_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How is the star lantern powered and how long does it last?",
+            "answer": "The star lantern is powered by standard replaceable batteries housed discreetly inside the base compartment. Energy-efficient warm-white LED diodes provide over 120 hours of soft ambient glow across a holiday season.",
+            "open_default": false
+          }
+        },
+        "faq_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are the exact dimensions and weight of the gnome?",
+            "answer": "Each gnome stands approximately 14 inches (35 cm) tall with a 6-inch (15 cm) base diameter and weighs approximately 2.8 lbs (1.3 kg). The weighted base keeps him steady upright on entry tables, mantels, and covered porches.",
+            "open_default": false
+          }
+        },
+        "faq_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What materials are used for the hat, greenery, and lantern?",
+            "answer": "The gnome combines a weighted polyresin-stone composite core with a cozy ribbed knit-style cap, plush snowy beard, PE botanical evergreen boughs, natural frosted pinecones, crimson berry accents, and a shatter-resistant LED star lantern.",
+            "open_default": false
+          }
+        },
+        "faq_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How should I store the gnome after the holidays?",
+            "answer": "Remove batteries from the base compartment and return the gnome to his foam-cushioned collector box so the knit hat and evergreen sprigs stay crisp and dust-free until next winter.",
+            "open_default": false
+          }
+        },
+        "faq_6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What does the 60-Night Holiday Happiness Guarantee cover?",
+            "answer": "If you aren't delighted with the craftsmanship or cozy glow within 60 days of delivery, email support@trymalora.com for an effortless return and full refund.",
+            "open_default": false
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5",
+        "faq_6"
+      ]
+    },
+    "shipping": {
+      "type": "zavelyn-pdp-shipping",
+      "settings": {
+        "badge_text": "FAST & INSURED HOLIDAY DELIVERY",
+        "heading": "Doorstep Delivery Guarantee & Real-Time Tracking",
+        "subheading": "Every Christmas Lantern Welcome Gnome is cushioned in reinforced protective foam, quality-checked before dispatch, and shipped with end-to-end tracking straight to your doorstep.",
+        "card4_title": "60-Night Guarantee",
+        "card4_desc": "Risk-free 60-night holiday happiness guarantee with friendly support returns."
+      }
+    },
+    "reviews": {
+      "type": "trymalora-pdp-reviews",
+      "settings": {
+        "heading": "Customer Reviews",
+        "rating_score": "4.9",
+        "rating_count_label": "10 reviews",
+        "trust_statement": "Average 4.9 / 5.0 across 10 featured customer reviews · Real Trymalora holiday photos"
+      },
+      "blocks": {
+        "rev_1": {
+          "type": "review_card",
+          "settings": {
+            "author": "Hannah M.",
+            "rating": 5,
+            "date": "11/04/2026",
+            "content": "This little gnome is hands down the sweetest holiday decoration we've ever bought! The star lantern produces such a gentle, cozy glow on our porch every evening. Everyone who visits stops to take a picture!",
+            "photo_url": "https://cdn.shopify.com/s/files/1/1032/4541/4771/files/51ec8bc9-19e1-4750-81e9-716b9f443448.png?v=1794374485&width=800"
+          }
+        },
+        "rev_2": {
+          "type": "review_card",
+          "settings": {
+            "author": "Thomas & Claire G.",
+            "rating": 5,
+            "date": "11/02/2026",
+            "content": "We placed him right next to our Christmas tree by the presents. The warm light from his star blends so nicely with the tree lights. The pinecone and greenery textures look so realistic!",
+            "photo_url": "https://cdn.shopify.com/s/files/1/1032/4541/4771/files/41b23eb3-e0f1-48f2-bf80-ea57b5122a81.png?v=1794374485&width=800"
+          }
+        },
+        "rev_3": {
+          "type": "review_card",
+          "settings": {
+            "author": "Margaret B.",
+            "rating": 5,
+            "date": "10/29/2026",
+            "content": "The craftsmanship on the knitted hat and the snowy beard exceeded my expectations. It feels heavy and well-weighted, so it doesn't tip over. Packaged beautifully too.",
+            "photo_url": "https://cdn.shopify.com/s/files/1/1032/4541/4771/files/7a2a339d-5869-4893-bdbc-a646d5370aba.png?v=1794374485&width=800"
+          }
+        },
+        "rev_4": {
+          "type": "review_card",
+          "settings": {
+            "author": "David S.",
+            "rating": 5,
+            "date": "10/26/2026",
+            "content": "Bought the 2-pack for our entryway table and fireplace hearth. They create such an inviting, rustic Nordic Christmas vibe. My grandchildren adore them!",
+            "photo_url": "https://cdn.shopify.com/s/files/1/1032/4541/4771/files/6c43cc71-c025-43bd-9631-2f3a04afe121.png?v=1794374484&width=800"
+          }
+        },
+        "rev_5": {
+          "type": "review_card",
+          "settings": {
+            "author": "Jessica K.",
+            "rating": 5,
+            "date": "10/22/2026",
+            "content": "The glowing star lantern at night is pure magic. It has a warm amber-white tone that isn't glaring at all. Battery lasts forever. Highly recommended!",
+            "photo_url": "https://cdn.shopify.com/s/files/1/1032/4541/4771/files/37fa84c3-075e-4dc0-a07e-20fde6a1a4e8.png?v=1794374485&width=800"
+          }
+        },
+        "rev_6": {
+          "type": "review_card",
+          "settings": {
+            "author": "Robert P.",
+            "rating": 5,
+            "date": "10/19/2026",
+            "content": "The attention to detail with the berries and pine boughs gives it such an authentic woodland character. Exactly as pictured, arrived in 3 days."
+          }
+        },
+        "rev_7": {
+          "type": "review_card",
+          "settings": {
+            "author": "Evelyn W.",
+            "rating": 5,
+            "date": "10/16/2026",
+            "content": "Super cute holiday centerpiece! Heavy enough to stay upright on our windy covered porch. Will be buying a couple more as gifts."
+          }
+        },
+        "rev_8": {
+          "type": "review_card",
+          "settings": {
+            "author": "Brian L.",
+            "rating": 4,
+            "date": "10/12/2026",
+            "content": "Very well made decoration. Looks great at night. Wish the battery switch was a tiny bit easier to reach without lifting, but otherwise 10/10."
+          }
+        },
+        "rev_9": {
+          "type": "review_card",
+          "settings": {
+            "author": "Samantha D.",
+            "rating": 5,
+            "date": "10/08/2026",
+            "content": "Brought so much festive spirit into our foyer. Quality is wonderful and the star light is warm and comforting."
+          }
+        },
+        "rev_10": {
+          "type": "review_card",
+          "settings": {
+            "author": "Arthur N.",
+            "rating": 5,
+            "date": "10/04/2026",
+            "content": "Outstanding quality. You can tell it's not cheap hollow plastic. It has genuine weight and the knitted texture is lovely."
+          }
+        }
+      },
+      "block_order": [
+        "rev_1",
+        "rev_2",
+        "rev_3",
+        "rev_4",
+        "rev_5",
+        "rev_6",
+        "rev_7",
+        "rev_8",
+        "rev_9",
+        "rev_10"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "package",
+    "how_it_works",
+    "faq",
+    "shipping",
+    "reviews"
+  ]
+}

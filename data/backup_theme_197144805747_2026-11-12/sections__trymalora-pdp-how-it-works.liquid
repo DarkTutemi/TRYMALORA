@@ -1,0 +1,1030 @@
+{% comment %}
+  TRYMALORA - HOW IT WORKS & PRODUCT STORYTELLING (SECTIONS XIV.B & XV)
+  Dynamic per product: Alternating editorial rows + 3-step setup band.
+{% endcomment %}
+
+<style>
+  .tm-hiw-section {
+    padding: 72px 0;
+    background: var(--zv-pdp-bg, #FFF8F5);
+    border-top: 1px solid var(--zv-pdp-line, #EAD7DD);
+    font-family: var(--zv-font-body, 'Inter', system-ui, sans-serif);
+    color: var(--zv-pdp-text, #2B1B24);
+  }
+
+  .tm-hiw-header {
+    text-align: center;
+    max-width: 740px;
+    margin: 0 auto 56px;
+  }
+
+  .tm-hiw-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: var(--zv-radius-full, 9999px);
+    background: var(--zv-pdp-tint, #F8E4EB);
+    color: var(--zv-pdp-accent, #B0476E);
+    border: 1px solid var(--zv-pdp-line, #EAD7DD);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .tm-hiw-title {
+    font-family: var(--zv-font-heading, 'Fraunces', Georgia, serif);
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--zv-pdp-heading, #2B1B24);
+    line-height: 1.18;
+    letter-spacing: -0.6px;
+    margin: 0 0 14px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .tm-hiw-title {
+      font-size: 40px;
+    }
+  }
+
+  .tm-hiw-subtitle {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--zv-pdp-body, #4A3841);
+    margin: 0;
+  }
+
+  .tm-story-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    margin-bottom: 72px;
+  }
+
+  .tm-story-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 36px;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 860px) {
+    .tm-story-row {
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+    .tm-story-row.reverse {
+      direction: rtl;
+    }
+    .tm-story-row.reverse > * {
+      direction: ltr;
+    }
+  }
+
+  .tm-story-media {
+    position: relative;
+    border-radius: var(--zv-radius-lg, 16px);
+    overflow: hidden;
+    background: #FFFFFF;
+    border: 1px solid var(--zv-pdp-line, #EAD7DD);
+    box-shadow: 0 8px 30px rgba(43, 27, 36, 0.06);
+  }
+
+  .tm-story-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: var(--zv-radius-full, 9999px);
+    background: var(--zv-pdp-cta, #6B1E46);
+    color: #FFFFFF;
+  }
+
+  .tm-story-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .tm-story-eyebrow {
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--zv-pdp-accent, #B0476E);
+    margin-bottom: 8px;
+  }
+
+  .tm-story-heading {
+    font-family: var(--zv-font-heading, 'Fraunces', Georgia, serif);
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--zv-pdp-heading, #2B1B24);
+    line-height: 1.25;
+    letter-spacing: -0.4px;
+    margin: 0 0 14px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .tm-story-heading {
+      font-size: 30px;
+    }
+  }
+
+  .tm-story-desc {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--zv-pdp-body, #4A3841);
+    margin: 0 0 20px;
+  }
+
+  .tm-story-checks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tm-story-checks li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--zv-pdp-heading, #2B1B24);
+  }
+
+  .tm-story-check-ic {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--zv-pdp-ok-tint, #E5F2EA);
+    color: var(--zv-pdp-ok, #3F8F6B);
+    font-size: 13px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  /* 3-Step Setup Band */
+  .tm-setup-band {
+    background: var(--zv-pdp-surface, #FBEDE8);
+    border: 1px solid var(--zv-pdp-line, #EAD7DD);
+    border-radius: var(--zv-radius-lg, 16px);
+    padding: 40px 32px;
+    box-shadow: 0 4px 20px rgba(43, 27, 36, 0.04);
+  }
+
+  .tm-setup-title {
+    font-family: var(--zv-font-heading, 'Fraunces', Georgia, serif);
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--zv-pdp-heading, #2B1B24);
+    margin: 0 0 8px;
+  }
+
+  .tm-setup-sub {
+    font-size: 14px;
+    text-align: center !important;
+    color: var(--zv-pdp-muted, #7A6670);
+    margin: 0 auto 32px auto !important;
+    max-width: 600px;
+    display: block;
+  }
+
+  .tm-setup-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    text-align: center;
+  }
+
+  .tm-setup-num {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    background: var(--zv-pdp-cta, #6B1E46);
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 800;
+    margin: 0 auto 12px;
+  }
+
+  .tm-setup-step-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--zv-pdp-heading, #2B1B24);
+    margin: 0 0 6px;
+  }
+
+  .tm-setup-step-desc {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--zv-pdp-body, #4A3841);
+    margin: 0;
+  }
+</style>
+
+<section class="tm-hiw-section" id="tmHowItWorks">
+  <div class="zv-container" style="max-width: 1140px; margin: 0 auto; padding: 0 24px;">
+
+    {% case product.handle %}
+      {% when 'car-metal-rust-repair-paste' %}
+        <div class="tm-hiw-header">
+          <span class="tm-hiw-chip">✦ AUTOMOTIVE RESTORATION SYSTEM</span>
+          <h2 class="tm-hiw-title">Precision Rust Restoration &amp; Moisture Barrier</h2>
+          <p class="tm-hiw-subtitle">Stop oxidation in its tracks. Our high-viscosity repair paste bonds directly to automotive metal to halt active corrosion and restore surface integrity.</p>
+        </div>
+
+        <div class="tm-story-blocks">
+          <div class="tm-story-row">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">Deep Barrier Seal</span>
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/spp_shopify20260902180016_763ec67413b8b02e5219b8b03d2dbddb_5fb90228-b7ce-4264-ac29-6d5184bb3d27.jpg?v=1793736111" alt="Moisture Barrier Protection" class="tm-story-img" width="600" height="400" loading="lazy">
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">DEEP MOLECULAR PENETRATION</span>
+              <h3 class="tm-story-heading">Locks Out Oxygen, Road Salt &amp; Moisture</h3>
+              <p class="tm-story-desc">Unlike temporary cosmetic touch-up pens, this dense paste penetrates microscopic metal fissures, chemical-bonding to the substrate and neutralizing rust creep.</p>
+              <ul class="tm-story-checks">
+                <li><span class="tm-story-check-ic">✓</span><span>Universal formulation matches factory automotive body and trim finishes</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>Heat, frost, and weather-resistant seal prevents future bubble blistering</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>Non-drip formula stays where applied without running onto clean clear coats</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tm-story-row reverse">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">Targeted DIY Application</span>
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/spp_shopify20260902180016_8654814357e3b373fc8c3a7868268847_cea423ef-e39d-4777-9330-87075eb0f5d1.jpg?v=1793736111" alt="Automotive Wheel and Edge Application" class="tm-story-img" width="600" height="400" loading="lazy">
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">BODYWORK PROTECTION</span>
+              <h3 class="tm-story-heading">Flawless Blending for Door Edges &amp; Wheel Arches</h3>
+              <p class="tm-story-desc">Ideal for rock chips, door ding rust, wheel lip corrosion, and rocker panel seams. Formulated for effortless leveling and buffing after complete cure.</p>
+              <ul class="tm-story-checks">
+                <li><span class="tm-story-check-ic">✓</span><span>Surface dries to touch in 1–2 hours; fully cures in 24 hours</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>High-density foam applicator included for smooth, streak-free leveling</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>Compatible with automotive primers, clear coats, and ceramic waxes</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="tm-setup-band">
+          <h3 class="tm-setup-title">3-Step Effortless Application</h3>
+          <p class="tm-setup-sub">No complex sanding equipment or professional spray booths required.</p>
+          <div class="tm-setup-grid">
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">1</div>
+              <h4 class="tm-setup-step-title">Clean &amp; Scrape</h4>
+              <p class="tm-setup-step-desc">Remove loose flaking rust scale and wipe clean with a degreasing cloth.</p>
+            </div>
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">2</div>
+              <h4 class="tm-setup-step-title">Apply &amp; Spread</h4>
+              <p class="tm-setup-step-desc">Dab paste onto foam sponge and spread an even layer across the repair area.</p>
+            </div>
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">3</div>
+              <h4 class="tm-setup-step-title">Cure &amp; Seal</h4>
+              <p class="tm-setup-step-desc">Allow 24h cure; buff gently with microfiber towel for an airtight barrier.</p>
+            </div>
+          </div>
+        </div>
+
+      {% when 'metal-chrome-polish-restorer-paste' %}
+        <div class="tm-hiw-header">
+          <span class="tm-hiw-chip">✦ BRILLIANT MIRROR RESTORATION</span>
+          <h2 class="tm-hiw-title">Restore Mirror-Like Reflection &amp; Strip Away Heavy Oxidation</h2>
+          <p class="tm-hiw-subtitle">Revitalize weathered chrome bumpers, exhaust tips, alloy wheels, and bathroom fixtures with zero abrasive scratching.</p>
+        </div>
+
+        <div class="tm-story-blocks">
+          <div class="tm-story-row">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">Instant Chemical Lift</span>
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/spp_shopify20261012184459_1cbe44b2250786ed8f7d9bd2e04d2f6b_2803a103-1544-4d0a-9483-ccf40f1f4697_d1b7cd3b-bbf1-46e3-b50e-1dcea211c4cc.png?v=1793736118" alt="Chrome Oxidation Polish" class="tm-story-img" width="600" height="400" loading="lazy">
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">ACTIVE MICRO-POLISHING</span>
+              <h3 class="tm-story-heading">Dissolves Tarnishing &amp; Water Spots on Contact</h3>
+              <p class="tm-story-desc">Gentle cleansing compounds react with tarnish and road grime, lifting dull yellowing and oxidation without removing the precious chrome layer underneath.</p>
+              <ul class="tm-story-checks">
+                <li><span class="tm-story-check-ic">✓</span><span>Safe for genuine chrome, polished aluminum, stainless steel, and brass</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>Dedicated detail bristle brush reaches tight lug nut pockets and grilles</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>Restores a liquid-mirror shine in minutes with minimal buffing effort</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tm-story-row reverse">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">Hydrophobic Shield</span>
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/spp_shopify20261012184459_499f3c485d1b6b79064025e8810738c6_ca19a1d5-4869-4a80-a77c-6f5b72b1c53e_40ca79ea-b91c-4101-93c3-0af2c2bc7b57.png?v=1793736118" alt="Hydrophobic Metal Coating" class="tm-story-img" width="600" height="400" loading="lazy">
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">LONG-LASTING PROTECTION</span>
+              <h3 class="tm-story-heading">Repels Water Spots, Brake Dust &amp; Road Salt</h3>
+              <p class="tm-story-desc">Leaves behind a durable microscopic polymer shield that sheds rain, road chemicals, and brake dust, keeping your vehicle gleaming for months.</p>
+              <ul class="tm-story-checks">
+                <li><span class="tm-story-check-ic">✓</span><span>Extreme water beading properties prevent future mineral spot buildup</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>Zero harsh petroleum fumes; safe for indoor bathroom and kitchen fittings</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>100g wide-mouth tub delivers dozens of vehicle and household detailing sessions</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="tm-setup-band">
+          <h3 class="tm-setup-title">3-Step Mirror Detailing Process</h3>
+          <p class="tm-setup-sub">Simple wipe, brush, and buff for showroom shine.</p>
+          <div class="tm-setup-grid">
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">1</div>
+              <h4 class="tm-setup-step-title">Wipe Clean</h4>
+              <p class="tm-setup-step-desc">Wipe loose dirt and road dust off the surface with a damp towel.</p>
+            </div>
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">2</div>
+              <h4 class="tm-setup-step-title">Brush &amp; Spread</h4>
+              <p class="tm-setup-step-desc">Dip brush in polish cream and work into dull chrome with circular motions.</p>
+            </div>
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">3</div>
+              <h4 class="tm-setup-step-title">Buff to Shine</h4>
+              <p class="tm-setup-step-desc">Buff firmly with clean microfiber cloth until brilliant mirror reflection appears.</p>
+            </div>
+          </div>
+        </div>
+
+      {% when 'mini-dual-purpose-travel-styling-iron' %}
+        <div class="tm-hiw-header">
+          <span class="tm-hiw-chip">✦ TRAVEL HAIR STYLING INNOVATION</span>
+          <h2 class="tm-hiw-title">Salon-Grade Sleek Styles &amp; Bouncy Curls Everywhere You Travel</h2>
+          <p class="tm-hiw-subtitle">Ultra-compact 2-in-1 ceramic styling iron that fits effortlessly in any purse, carry-on, or gym bag with worldwide dual voltage.</p>
+        </div>
+
+        <div class="tm-story-blocks">
+          <div class="tm-story-row">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">Ceramic Glaze Care</span>
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/195f5aa896f0d4555f2d2de1a6e85ce40db45e93.jpg?v=1793736120" alt="Ceramic Plates Heating" class="tm-story-img" width="600" height="400" loading="lazy">
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">CERAMIC GLAZE TECHNOLOGY</span>
+              <h3 class="tm-story-heading">Silk Straight Strands or Beach Waves with One Glide</h3>
+              <p class="tm-story-desc">Curved 3D floating ceramic heating plates provide even heat distribution while negative ions seal cuticles, eliminating frizz and enhancing natural shine.</p>
+              <ul class="tm-story-checks">
+                <li><span class="tm-story-check-ic">✓</span><span>Dual straightening and curling capabilities in one pocket-sized device</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>Rapid 30-second PTC heating reaches constant hair-safe 375°F (190°C)</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>Anti-snag rounded barrel glides through thick, fine, and textured hair</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tm-story-row reverse">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">Worldwide Dual Voltage</span>
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/8ac25b59126e79dea55ff923f1bc3c2b9a098061.jpg?v=1793736121" alt="Compact Travel Styling Iron" class="tm-story-img" width="600" height="400" loading="lazy">
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">PORTABLE &amp; TRAVEL READY</span>
+              <h3 class="tm-story-heading">Worldwide Dual Voltage (110–240V) for Global Travel</h3>
+              <p class="tm-story-desc">Weighing just 180g and measuring 17cm, this compact powerhouse tucks into carry-on luggage without taking up space or weight allowances.</p>
+              <ul class="tm-story-checks">
+                <li><span class="tm-story-check-ic">✓</span><span>Insulated anti-burn front tip allows safe two-handed control</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>360° tangle-free swivel cord prevents cord twisting during styling</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>Ideal for bangs, touch-ups, short hairstyles, and vacation styling</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="tm-setup-band">
+          <h3 class="tm-setup-title">3-Step Quick Styling Routine</h3>
+          <p class="tm-setup-sub">Plug in, heat in 30 seconds, and style effortlessly.</p>
+          <div class="tm-setup-grid">
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">1</div>
+              <h4 class="tm-setup-step-title">Power On</h4>
+              <p class="tm-setup-step-desc">Plug into outlet; ceramic plates heat up in under 30 seconds.</p>
+            </div>
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">2</div>
+              <h4 class="tm-setup-step-title">Glide or Twist</h4>
+              <p class="tm-setup-step-desc">Glide straight down for sleek silk, or twist 180° for loose bouncy waves.</p>
+            </div>
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">3</div>
+              <h4 class="tm-setup-step-title">Cool &amp; Pack</h4>
+              <p class="tm-setup-step-desc">Slip on insulated silicone tip and stow safely in your travel bag.</p>
+            </div>
+          </div>
+        </div>
+
+      {% when 'tile-refinishing-paint-restoration-kit', 'tile-refinishing-paint-restoration-kit-draft' %}
+        <div class="tm-hiw-header">
+          <span class="tm-hiw-chip">✦ ARCHITECTURAL SURFACE RENOVATION</span>
+          <h2 class="tm-hiw-title">Renew Dated Tiles &amp; Grout Without Expensive Remodeling</h2>
+          <p class="tm-hiw-subtitle">Transform worn, discolored bathroom tiles, shower stalls, sinks, and kitchen backsplashes with a waterproof ceramic-like enamel finish.</p>
+        </div>
+
+        <div class="tm-story-blocks">
+          <div class="tm-story-row">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">High-Gloss Enamel</span>
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/spp_shopify20260924173035_9f0c90c9a1c1660270bac48d0e763a61_9c643d90-452e-404c-935d-02aa2bb9e0ad.png?v=1793736126" alt="Tile Refinishing Paint Application" class="tm-story-img" width="600" height="400" loading="lazy">
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">HIGH-ADHESION ENAMEL</span>
+              <h3 class="tm-story-heading">Covers Deep Stains &amp; Restores High-Gloss White</h3>
+              <p class="tm-story-desc">Specially formulated acrylic resin binds tightly to glazed ceramic, porcelain, acrylic, and fiberglass, hiding decades of grime and discolored grout lines.</p>
+              <ul class="tm-story-checks">
+                <li><span class="tm-story-check-ic">✓</span><span>High-density formula provides opaque, even coverage in just 2 thin coats</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>Mold and mildew resistant barrier locks out moisture in high-humidity areas</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>Odorless water-based formula is safe for enclosed bathrooms without noxious fumes</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tm-story-row reverse">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">Weekend Transformation</span>
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/spp_shopify20260924173038_09131ab58b0b44eb13e71ebf5b7b5d14_53904d06-891f-4747-b974-73ffb4e3e184.png?v=1793736125" alt="Clean Bathroom Tiles Renovation" class="tm-story-img" width="600" height="400" loading="lazy">
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">COST-EFFECTIVE MAKEOVER</span>
+              <h3 class="tm-story-heading">Save Thousands on Contractor Tile Replacement</h3>
+              <p class="tm-story-desc">Instead of messy demolition and expensive tile re-installation, achieve a clean, pristine designer aesthetic over a single relaxing weekend.</p>
+              <ul class="tm-story-checks">
+                <li><span class="tm-story-check-ic">✓</span><span>Complete DIY kit includes precision application brush and scuff pad</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>Dries to touch in 2 hours; fully cures to a waterproof shield in 24–48 hours</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>1 kit covers up to 15–20 sq ft of wall tile, sink basins, or splash zones</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3-STEP IMAGE CARDS REDESIGN (TASK 6) -->
+        <div class="tm-setup-band">
+          <h3 class="tm-setup-title">3-Step Tile Refinishing Process</h3>
+          <p class="tm-setup-sub" style="text-align: center; margin: 0 auto 36px; max-width: 600px;">Clean, apply two thin coats, and cure for a durable waterproof porcelain seal.</p>
+          <div class="tm-setup-image-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto;">
+            
+            <div class="tm-setup-img-card" style="background: #FFFFFF; border: 1px solid var(--zv-pdp-line, #EAD7DD); border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(43,27,36,0.04); display: flex; flex-direction: column;">
+              <div style="position: relative; height: 190px; overflow: hidden; background: #F3F4F6;">
+                <span style="position: absolute; top: 12px; left: 12px; z-index: 2; padding: 4px 10px; border-radius: 9999px; background: rgba(43, 27, 36, 0.85); color: #FFF; font-size: 11px; font-weight: 700; letter-spacing: 0.5px;">STEP 01</span>
+                <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/spp_shopify20260924173041_12ec96592ae8ad0a4a53f888570b7267_81d1f546-823c-407d-99f7-6d5648366eb0.png?v=1793736125" alt="Clean the Surface" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+              </div>
+              <div style="padding: 20px;">
+                <h4 style="font-family: var(--zv-font-heading, 'Fraunces', Georgia, serif); font-size: 19px; font-weight: 600; color: var(--zv-pdp-heading, #2B1B24); margin: 0 0 8px;">Clean the Surface</h4>
+                <p style="font-size: 13.5px; line-height: 1.55; color: var(--zv-pdp-body, #4A3841); margin: 0;">Thoroughly remove grease, dirt, soap scum, and dry the tile completely before applying the refinishing formula.</p>
+              </div>
+            </div>
+
+            <div class="tm-setup-img-card" style="background: #FFFFFF; border: 1px solid var(--zv-pdp-line, #EAD7DD); border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(43,27,36,0.04); display: flex; flex-direction: column;">
+              <div style="position: relative; height: 190px; overflow: hidden; background: #F3F4F6;">
+                <span style="position: absolute; top: 12px; left: 12px; z-index: 2; padding: 4px 10px; border-radius: 9999px; background: rgba(43, 27, 36, 0.85); color: #FFF; font-size: 11px; font-weight: 700; letter-spacing: 0.5px;">STEP 02</span>
+                <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/spp_shopify20260924173035_9f0c90c9a1c1660270bac48d0e763a61_9c643d90-452e-404c-935d-02aa2bb9e0ad.png?v=1793736126" alt="Apply the Paint" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+              </div>
+              <div style="padding: 20px;">
+                <h4 style="font-family: var(--zv-font-heading, 'Fraunces', Georgia, serif); font-size: 19px; font-weight: 600; color: var(--zv-pdp-heading, #2B1B24); margin: 0 0 8px;">Apply the Paint</h4>
+                <p style="font-size: 13.5px; line-height: 1.55; color: var(--zv-pdp-body, #4A3841); margin: 0;">Use the included precision brush to apply thin, uniform coats. Wait 2 hours dry time between coats for optimal opacity.</p>
+              </div>
+            </div>
+
+            <div class="tm-setup-img-card" style="background: #FFFFFF; border: 1px solid var(--zv-pdp-line, #EAD7DD); border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(43,27,36,0.04); display: flex; flex-direction: column;">
+              <div style="position: relative; height: 190px; overflow: hidden; background: #F3F4F6;">
+                <span style="position: absolute; top: 12px; left: 12px; z-index: 2; padding: 4px 10px; border-radius: 9999px; background: rgba(43, 27, 36, 0.85); color: #FFF; font-size: 11px; font-weight: 700; letter-spacing: 0.5px;">STEP 03</span>
+                <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/spp_shopify20260924173038_09131ab58b0b44eb13e71ebf5b7b5d14_53904d06-891f-4747-b974-73ffb4e3e184.png?v=1793736125" alt="Let It Dry" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+              </div>
+              <div style="padding: 20px;">
+                <h4 style="font-family: var(--zv-font-heading, 'Fraunces', Georgia, serif); font-size: 19px; font-weight: 600; color: var(--zv-pdp-heading, #2B1B24); margin: 0 0 8px;">Let It Dry</h4>
+                <p style="font-size: 13.5px; line-height: 1.55; color: var(--zv-pdp-body, #4A3841); margin: 0;">Allow 24–48 hours for complete chemical curing to achieve an impermeable waterproof gloss enamel shield.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      {% when 'metallic-silver-anti-rust-renovation-coating' %}
+        <div class="tm-hiw-header">
+          <span class="tm-hiw-chip">✦ INDUSTRIAL METALLIC RENOVATION</span>
+          <h2 class="tm-hiw-title">Industrial Silver Renovation Coating for Outdoor &amp; Metal Structures</h2>
+          <p class="tm-hiw-subtitle">Direct-to-rust metallic silver shield that halts corrosion and restores a brilliant protective finish to gates, railings, fences, and pipes.</p>
+        </div>
+
+        <div class="tm-story-blocks">
+          <div class="tm-story-row">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">Direct-to-Rust Bonding</span>
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/6fb53c51539b47559cf0d122a832cf63.png?v=1793736107" alt="Direct Metal Coating" class="tm-story-img" width="600" height="400" loading="lazy">
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">DIRECT-TO-RUST ADHESION</span>
+              <h3 class="tm-story-heading">Eliminates Tedious Sanding &amp; Chemical Primers</h3>
+              <p class="tm-story-desc">Advanced conversion polymers bind directly to surface rust, creating an impenetrable chemical barrier that starves underlying iron of oxygen and moisture.</p>
+              <ul class="tm-story-checks">
+                <li><span class="tm-story-check-ic">✓</span><span>High-gloss reflective metallic silver finish restores architectural curb appeal</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>Weatherproof shield withstands driving rain, blistering UV rays, and snow</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>Eco-friendly water-based formula is non-flammable and low VOC</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tm-story-row reverse">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">All-Weather Outdoor Shield</span>
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/9_f36deb93-3035-472f-b16c-bc540399a240.png?v=1793736107" alt="Outdoor Metal Gate Protection" class="tm-story-img" width="600" height="400" loading="lazy">
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">EXTREME DURABILITY</span>
+              <h3 class="tm-story-heading">Long-Term Protection for Gates, Railings &amp; Metal Roofs</h3>
+              <p class="tm-story-desc">Engineered for harsh outdoor environments. Forms a resilient, flexible coating that expands and contracts with seasonal temperature shifts without cracking or peeling.</p>
+              <ul class="tm-story-checks">
+                <li><span class="tm-story-check-ic">✓</span><span>Safe for iron gates, galvanized steel pipes, metal sheds, and machinery</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>Quick-drying formula allows recoating in 2 hours for maximum protection</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>50g can covers 5–6 square feet with single-coat application</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="tm-setup-band">
+          <h3 class="tm-setup-title">3-Step Metal Renovation Workflow</h3>
+          <p class="tm-setup-sub">Clean loose scale, brush directly, and allow to cure.</p>
+          <div class="tm-setup-grid">
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">1</div>
+              <h4 class="tm-setup-step-title">Scrape Loose Rust</h4>
+              <p class="tm-setup-step-desc">Brush off flaking rust particles; no need to sand down to bare metal.</p>
+            </div>
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">2</div>
+              <h4 class="tm-setup-step-title">Brush Silver Shield</h4>
+              <p class="tm-setup-step-desc">Apply smooth, even strokes directly onto the rusted metal surface.</p>
+            </div>
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">3</div>
+              <h4 class="tm-setup-step-title">Weatherproof Cure</h4>
+              <p class="tm-setup-step-desc">Dries to touch in 1 hour; apply second coat after 2h for heavy weatherproofing.</p>
+            </div>
+          </div>
+        </div>
+
+      {% when 'ear-cleaner' %}
+        <div class="tm-hiw-header">
+          <span class="tm-hiw-chip">✦ VETERINARIAN-DEVELOPED PET CARE</span>
+          <h2 class="tm-hiw-title">Dissolves Deep Ear Canal Wax &amp; Yeast in Under 2 Minutes</h2>
+          <p class="tm-hiw-subtitle">He has been telling you for months. Constant head shaking, frantic paw scratching, and foul yeasty odor aren't just habits — they are cries for relief from deep L-shaped canal wax traps.</p>
+        </div>
+
+        <div class="tm-story-blocks">
+          <div class="tm-story-row">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">Anatomy Breakdown</span>
+              <img src="https://cdn.shopify.com/s/files/1/1043/6630/9718/files/02-symptomes_1cf315a3-8e50-4c36-9b12-9effd76ba003.png?v=1786814766" alt="L-Shaped Ear Canal Anatomy" class="tm-story-img" width="600" height="400" loading="lazy">
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">THE 90-DEGREE ANATOMY TRAP</span>
+              <h3 class="tm-story-heading">Why Cotton Swabs &amp; Surface Wipes Never Work</h3>
+              <p class="tm-story-desc">Dogs and cats have an L-shaped ear canal with a sharp 90-degree bend. Cotton balls only reach the outer entrance, often pushing dark discharge, bacteria, and moisture deeper into the horizontal canal. Trymalora liquefies stubborn buildup deep inside without touching delicate eardrums.</p>
+              <ul class="tm-story-checks">
+                <li><span class="tm-story-check-ic">✓</span><span>Gentle botanical liquid flows around the 90° bend to dissolve hardened gunk</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>Soothes red, inflamed ear canals with natural chamomile and pure aloe vera</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span>100% alcohol-free, non-stinging, and non-toxic if licked by curious paws</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tm-story-row reverse">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">Clinical Timeline</span>
+              <img src="https://cdn.shopify.com/s/files/1/1043/6630/9718/files/04-avant-apres_47705026-32a0-4ae3-be3b-bebe7f33aabc.png?v=1786815043" alt="Before and After Results" class="tm-story-img" width="600" height="400" loading="lazy">
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">VISIBLE RELIEF</span>
+              <h3 class="tm-story-heading">What Actually Happens After The First Rinse</h3>
+              <p class="tm-story-desc">Within seconds of the 30-second ear canal massage, your pet will naturally shake their head, propelling loosened dark wax out of the canal. Simply wipe clean. Relief is instant, lasting, and completely stress-free.</p>
+              <ul class="tm-story-checks">
+                <li><span class="tm-story-check-ic">✓</span><span><strong>Day 1:</strong> Frantic head shaking and midnight ear scratching stop immediately</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span><strong>Day 3:</strong> Foul yeasty odors vanish, replaced by fresh, clean comfort</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span><strong>Day 7:</strong> Ear canal returns to healthy, clear pink skin with zero irritation</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="tm-setup-band">
+          <h3 class="tm-setup-title">3-Step Easy Home Routine</h3>
+          <p class="tm-setup-sub">Just 60 seconds. No traumatic vet visits, no swabbing, and zero mess.</p>
+          <div class="tm-setup-grid">
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">1</div>
+              <h4 class="tm-setup-step-title">Apply 2–4 Drops</h4>
+              <p class="tm-setup-step-desc">Insert the soft precision tip gently into the ear canal and squeeze 2–4 drops.</p>
+            </div>
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">2</div>
+              <h4 class="tm-setup-step-title">Massage 30–60s</h4>
+              <p class="tm-setup-step-desc">Gently massage the base of the ear to let the solution break down deep wax and yeast.</p>
+            </div>
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">3</div>
+              <h4 class="tm-setup-step-title">Shake &amp; Wipe</h4>
+              <p class="tm-setup-step-desc">Let your pet shake naturally, then easily wipe away loosened gunk with wipes or cloth.</p>
+            </div>
+          </div>
+        </div>
+
+      {% when 'eyvelle-steam-therapy' %}
+        <div class="tm-hiw-header">
+          <span class="tm-hiw-chip">✦ OPHTHALMOLOGIST-RECOMMENDED THERAPY</span>
+          <h2 class="tm-hiw-title">Soothing Warm Nano-Steam: The True Cure for Dry, Burning Eyes</h2>
+          <p class="tm-hiw-subtitle">Over 86% of chronic dry eye cases are caused by blocked meibomian oil glands. Traditional drops wash away your natural tears in minutes. Trymalora's ultrasonic 40°C warm nano-mist gently unplugs glands to restore all-day natural eye moisture.</p>
+        </div>
+
+        <div class="tm-story-blocks">
+          <!-- STORY ROW 1: VIDEO 2 (SOOTHING STEAM APPLICATION) -->
+          <div class="tm-story-row">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">Direct Thermal Mist</span>
+              <video 
+                src="https://cdn.shopify.com/videos/c/o/v/208a6954a3124440b2448beb2a475bfc.mp4" 
+                class="tm-story-img tm-story-video"
+                autoplay 
+                loop 
+                muted 
+                playsinline
+                controls
+                preload="metadata"
+                style="width: 100%; height: auto; border-radius: 12px; display: block; object-fit: cover;"
+              ></video>
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">TARGET THE ROOT CAUSE</span>
+              <h3 class="tm-story-heading">Unclogs Blocked Meibomian Glands in 60 Seconds</h3>
+              <p class="tm-story-desc">Your eyelids contain microscopic oil glands that produce the lipid layer protecting your eyes from evaporation. Excessive screen use and dry indoor air cause this essential oil to thicken and harden into waxy plugs. Trymalora produces gentle 40°C ultrasonic steam that liquefies blockages and stimulates natural tear production.</p>
+              <ul class="tm-story-checks">
+                <li><span class="tm-story-check-ic">✓</span><span><strong>40°C Controlled Warmth:</strong> Safely dissolves hardened oils without overheating delicate eye tissue</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span><strong>Ergonomic Silicone Cup:</strong> Contours comfortably to eye sockets for zero steam leakage</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span><strong>100% Pure &amp; Drug-Free:</strong> Works with distilled water or saline — no chemicals or preservatives</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- STORY ROW 2: ANIMATED STEAM WEBP (NANOMIST PENETRATION) -->
+          <div class="tm-story-row reverse">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">0.3μm Micro-Droplets</span>
+              <img 
+                src="https://cdn.shopify.com/s/files/1/0759/4072/4979/files/ezgif-218f793e491b04.webp" 
+                alt="Ultrasonic Nano Steam Particles" 
+                class="tm-story-img" 
+                width="600" 
+                height="400" 
+                loading="lazy"
+                style="width: 100%; height: auto; border-radius: 12px; display: block; object-fit: cover;"
+              >
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">ULTRASONIC ATOMIZATION</span>
+              <h3 class="tm-story-heading">Why Eye Drops Evaporate &amp; How Nano-Mist Lasts All Day</h3>
+              <p class="tm-story-desc">Standard liquid drops flood the eye with massive water droplets, flushing away the delicate lipid layer and evaporating within 15 minutes. Trymalora's ultrasonic core atomizes moisture into 0.3-micron nanoparticles that seamlessly integrate into your natural tear film without blurriness or stinging.</p>
+              <ul class="tm-story-checks">
+                <li><span class="tm-story-check-ic">✓</span><span><strong>10× Finer Than Liquid Drops:</strong> Rapid microscopic absorption into ocular surface</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span><strong>Long-Lasting Hydration Shield:</strong> Locks in moisture to prevent afternoon screen fatigue</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span><strong>Contact Lens Compatible:</strong> Comfortably rehydrates tired eyes without removing lenses</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- STORY ROW 3: VIDEO 3 (BEFORE & AFTER / RELIEF RESULTS) -->
+          <div class="tm-story-row">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">Clinical Results</span>
+              <video 
+                src="https://cdn.shopify.com/videos/c/o/v/934310fce2034a8b91f79f5d5d403f2e.mp4" 
+                class="tm-story-img tm-story-video"
+                autoplay 
+                loop 
+                muted 
+                playsinline
+                controls
+                preload="metadata"
+                style="width: 100%; height: auto; border-radius: 12px; display: block; object-fit: cover;"
+              ></video>
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">CLINICALLY PROVEN COMFORT</span>
+              <h3 class="tm-story-heading">Just 5 Minutes A Day for Crystal-Clear, Rested Eyes</h3>
+              <p class="tm-story-desc">Whether battling long hours behind dual monitors, dry winter heating, or chronic blepharitis, this whisper-quiet wand brings clinical thermal relief directly to your desk or bedside table.</p>
+              <ul class="tm-story-checks">
+                <li><span class="tm-story-check-ic">✓</span><span><strong>Minute 1:</strong> Stinging, redness, and gritty "sand in eyes" sensation melts away</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span><strong>Day 3:</strong> Significant decrease in digital eyestrain, blurred vision, and light sensitivity</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span><strong>Week 2:</strong> Meibomian oil flow stabilized, maintaining fresh, comfortable vision all day</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3-STEP SETUP BAND -->
+        <div class="tm-setup-band">
+          <h3 class="tm-setup-title">3-Step Easy Eye Spa Routine</h3>
+          <p class="tm-setup-sub">Just 3–5 minutes a day. Completely effortless, soothing, and mess-free.</p>
+          <div class="tm-setup-grid">
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">1</div>
+              <h4 class="tm-setup-step-title">Fill Reservoir</h4>
+              <p class="tm-setup-step-desc">Open silicone stopper and add distilled water or saline using the included precision dropper.</p>
+            </div>
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">2</div>
+              <h4 class="tm-setup-step-title">Attach Soft Cup</h4>
+              <p class="tm-setup-step-desc">Snap the ergonomic silicone contour cup onto the nozzle and position gently over your eye.</p>
+            </div>
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">3</div>
+              <h4 class="tm-setup-step-title">Power On &amp; Relax</h4>
+              <p class="tm-setup-step-desc">Press the button and enjoy 3–5 minutes of continuous warm nano-mist soothing your eyes.</p>
+            </div>
+          </div>
+        </div>
+
+      {% when 'christmas-lantern-welcome-gnome' %}
+        <div class="tm-hiw-header">
+          <span class="tm-hiw-chip">✦ HANDCRAFTED WOODLAND HOLIDAY ARTISTRY</span>
+          <h2 class="tm-hiw-title">Bring Home the Warmth of Traditional Holiday Starlight</h2>
+          <p class="tm-hiw-subtitle">From the cozy knit of his red-and-cream hat to the gentle atmospheric glow of his five-pointed star lantern, the Christmas Lantern Welcome Gnome brings joyful warmth, nostalgic togetherness, and timeless holiday magic into your home.</p>
+        </div>
+
+        <div class="tm-story-blocks">
+          <!-- STORY ROW 1: ILLUMINATED STAR LANTERN -->
+          <div class="tm-story-row">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">Warm Starlight</span>
+              <img 
+                src="https://ncrovoprime.com/cdn/shop/files/51ec8bc9-19e1-4750-81e9-716b9f443448.png?v=1793673600&width=800" 
+                alt="Christmas Lantern Welcome Gnome Porch Glow" 
+                class="tm-story-img" 
+                width="600" 
+                height="400" 
+                loading="lazy"
+                style="width: 100%; height: auto; border-radius: 12px; display: block; object-fit: cover;"
+              >
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">ATMOSPHERIC ILLUMINATION</span>
+              <h3 class="tm-story-heading">A Magical Evening Welcome for Your Family &amp; Guests</h3>
+              <p class="tm-story-desc">As daylight fades into evening, the five-pointed star lantern illuminates with a soft, warm-white glow. Positioned beside your front entryway or in a cozy living room nook, it creates a magical greeting that turns every homecoming into a festive holiday celebration.</p>
+              <ul class="tm-story-checks">
+                <li><span class="tm-story-check-ic">✓</span><span><strong>Warm-White LED Glow:</strong> Gentle ambient starlight with no harsh glare or heat</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span><strong>Safe Battery Power:</strong> Concealed bottom compartment with effortless on/off switch</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span><strong>Weighted Stable Base:</strong> Stays firmly in place on porches, mantels, and tables</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- STORY ROW 2: ARTISAN FOLKLORE CRAFTSMANSHIP -->
+          <div class="tm-story-row reverse">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">Nordic Folklore Design</span>
+              <img 
+                src="https://ncrovoprime.com/cdn/shop/files/7a2a339d-5869-4893-bdbc-a646d5370aba.png?v=1793673602&width=800" 
+                alt="Gnome Handcrafted Textures & Hat" 
+                class="tm-story-img" 
+                width="600" 
+                height="400" 
+                loading="lazy"
+                style="width: 100%; height: auto; border-radius: 12px; display: block; object-fit: cover;"
+              >
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">ARTISAN CRAFTSMANSHIP</span>
+              <h3 class="tm-story-heading">Rich Woodland Textures &amp; Handcrafted Folklore Charm</h3>
+              <p class="tm-story-desc">Every detail is thoughtfully sculpted and textured. From the cozy ribbed knitting pattern on his festive tall cap to his flowing snowy white beard and botanical evergreen garland, this piece looks equally stunning under natural daylight as it does glowing at night.</p>
+              <ul class="tm-story-checks">
+                <li><span class="tm-story-check-ic">✓</span><span><strong>Knitted-Style Pointed Hat:</strong> Traditional Scandinavian red-and-cream holiday pattern</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span><strong>Woodland Pine &amp; Berries:</strong> Realistic frosted pinecones and vibrant red winter berries</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span><strong>Durable Polyresin Core:</strong> Built to bring joy and festive cheer for decades to come</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- STORY ROW 3: VERSATILE PLACEMENT -->
+          <div class="tm-story-row">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">Versatile Display</span>
+              <img 
+                src="https://ncrovoprime.com/cdn/shop/files/41b23eb3-e0f1-48f2-bf80-ea57b5122a81.png?v=1793673601&width=800" 
+                alt="Gnome beside Christmas Tree" 
+                class="tm-story-img" 
+                width="600" 
+                height="400" 
+                loading="lazy"
+                style="width: 100%; height: auto; border-radius: 12px; display: block; object-fit: cover;"
+              >
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">HOLIDAY TRADITIONS</span>
+              <h3 class="tm-story-heading">From the Front Door to Beside the Christmas Tree</h3>
+              <p class="tm-story-desc">Create an enchanting holiday focal point wherever your loved ones gather. Place him next to your front entrance wreath, tuck him under the lower branches of your Christmas tree alongside wrapped gifts, or showcase him upon a festive fireplace hearth.</p>
+              <ul class="tm-story-checks">
+                <li><span class="tm-story-check-ic">✓</span><span><strong>Sheltered Porch Ready:</strong> Perfect for covered entryways, foyers, and hallways</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span><strong>Tree Display Harmony:</strong> Blends seamlessly with existing tree lights and garlands</span></li>
+                <li><span class="tm-story-check-ic">✓</span><span><strong>Delightful Gift Presentation:</strong> Ships securely boxed in collector holiday packaging</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3-STEP SETUP BAND -->
+        <div class="tm-setup-band">
+          <h3 class="tm-setup-title">Simple 60-Second Setup</h3>
+          <p class="tm-setup-sub">No complicated wires or tools. Instant holiday magic straight out of the box.</p>
+          <div class="tm-setup-grid">
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">1</div>
+              <h4 class="tm-setup-step-title">Unbox &amp; Fluff</h4>
+              <p class="tm-setup-step-desc">Remove your gnome from the protective packaging and gently arrange the pine sprigs and berries.</p>
+            </div>
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">2</div>
+              <h4 class="tm-setup-step-title">Switch On Magic</h4>
+              <p class="tm-setup-step-desc">Insert standard batteries into the hidden bottom compartment and slide the switch to ON.</p>
+            </div>
+            <div class="tm-setup-col">
+              <div class="tm-setup-num">3</div>
+              <h4 class="tm-setup-step-title">Place &amp; Enjoy</h4>
+              <p class="tm-setup-step-desc">Position on your porch, hearth, or beside the tree and bask in the warm, cozy holiday starlight.</p>
+            </div>
+          </div>
+        </div>
+
+      {% else %}
+        <!-- Default: Infrared Laser Battle Set (Exact Preserved) -->
+        <div class="tm-hiw-header">
+          <span class="tm-hiw-chip">
+            ✦ INTERACTIVE DUAL-PLAY MODES
+          </span>
+          <h2 class="tm-hiw-title">
+            Transform Any Room Into An Interactive Battle Arena
+          </h2>
+          <p class="tm-hiw-subtitle">
+            Whether practicing solo marksmanship against dynamic wall projections or teaming up for full-room family battles, TRYMALORA delivers active, screen-free entertainment.
+          </p>
+        </div>
+
+        <div class="tm-story-blocks">
+          <div class="tm-story-row">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">Solo &amp; Co-op Arcade Mode</span>
+              <video 
+                src="https://cdn.shopify.com/videos/c/o/v/cdc0dde4a907461cba0446744aed37e6.mp4" 
+                class="tm-story-img tm-story-video"
+                autoplay 
+                loop 
+                muted 
+                playsinline
+                controls
+                preload="metadata"
+                style="width: 100%; height: auto; border-radius: 12px; display: block; object-fit: cover;"
+              ></video>
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">MODE A &middot; PRECISION TARGET PRACTICE</span>
+              <h3 class="tm-story-heading">
+                Roving Wall Projections That Sharpen Reflexes
+              </h3>
+              <p class="tm-story-desc">
+                Place the compact projector on any surface facing a light wall or ceiling in a dimmed room. The precision lens animates roving UFO and arcade targets across 180° of motion. Struck targets register with instant audio cues and scored feedback.
+              </p>
+              <ul class="tm-story-checks">
+                <li>
+                  <span class="tm-story-check-ic">✓</span>
+                  <span>180° Variable Angle Projection for walls or ceilings</span>
+                </li>
+                <li>
+                  <span class="tm-story-check-ic">✓</span>
+                  <span>Real-Time Hit Confirmation with responsive audio &amp; flash</span>
+                </li>
+                <li>
+                  <span class="tm-story-check-ic">✓</span>
+                  <span>Encourages physical activity and sharp hand-eye coordination</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tm-story-row reverse">
+            <div class="tm-story-media">
+              <span class="tm-story-badge">Multiplayer Team Mode</span>
+              <img 
+                src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/b2.webp?v=1793726274" 
+                alt="Tactical Laser Battle Gameplay with Family" 
+                class="tm-story-img"
+                loading="lazy"
+                width="600"
+                height="400"
+              >
+            </div>
+            <div class="tm-story-content">
+              <span class="tm-story-eyebrow">MODE B &middot; MULTI-TEAM ARENA COMBAT</span>
+              <h3 class="tm-story-heading">
+                Tactical PvP Battles With Zero Physical Darts
+              </h3>
+              <p class="tm-story-desc">
+                Switch team channels on your blaster to form squads. Play 1-on-1 duels or sync unlimited blasters across Blue, Red, Green, and White teams. Haptic vibration pulses on your handle whenever you take a hit, while LED health meters track remaining lives.
+              </p>
+              <ul class="tm-story-checks">
+                <li>
+                  <span class="tm-story-check-ic">✓</span>
+                  <span>4 Selectable Team Battle Channels with team-fire protection</span>
+                </li>
+                <li>
+                  <span class="tm-story-check-ic">✓</span>
+                  <span>Tactile Vibration Motors deliver physical hit feedback</span>
+                </li>
+                <li>
+                  <span class="tm-story-check-ic">✓</span>
+                  <span>3-Bar LED Life Indicator displays team health in real time</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="tm-setup-band">
+          <h3 class="tm-setup-title">
+            3-Step Effortless Setup
+          </h3>
+          <p class="tm-setup-sub" style="text-align: center; margin-left: auto; margin-right: auto;">
+            No complex smartphone apps, pairing codes, or Bluetooth syncing required.
+          </p>
+
+          <div class="tm-setup-grid">
+            <div class="tm-setup-col">
+              <div class="tm-setup-icon">
+                <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/ic1.webp?v=1793726063" alt="Insert Batteries" width="54" height="54" loading="lazy">
+              </div>
+              <h4 class="tm-setup-step-title">Insert Batteries</h4>
+              <p class="tm-setup-step-desc">
+                Adjust the projector focus, aim at your targets and start playing!
+              </p>
+            </div>
+
+            <div class="tm-setup-col">
+              <div class="tm-setup-icon">
+                <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/ic2.webp?v=1793726063" alt="Choose Your Play Mode" width="54" height="54" loading="lazy">
+              </div>
+              <h4 class="tm-setup-step-title">Choose Your Play Mode</h4>
+              <p class="tm-setup-step-desc">
+                Turn on the projector for wall target drills, or select your team color channel for PvP.
+              </p>
+            </div>
+
+            <div class="tm-setup-col">
+              <div class="tm-setup-icon">
+                <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/ic3.webp?v=1793726063" alt="Power On and Battle" width="54" height="54" loading="lazy">
+              </div>
+              <h4 class="tm-setup-step-title">Power On &amp; Battle</h4>
+              <p class="tm-setup-step-desc">
+                Switch on, take aim, and engage in high-energy interactive indoor battles.
+              </p>
+            </div>
+          </div>
+        </div>
+    {% endcase %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trymalora How It Works",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Trymalora How It Works"
+    }
+  ]
+}
+{% endschema %}

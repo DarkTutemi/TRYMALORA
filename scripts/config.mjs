@@ -17,7 +17,7 @@ if (fs.existsSync(envPath)) {
   }
 }
 
-export const SHOP = process.env.SHOPIFY_STORE || process.env.SHOP_DOMAIN || 'trymalora.myshopify.com';
+export const SHOP = process.env.SHOPIFY_STORE || process.env.SHOP_DOMAIN || 'ikwh1h-fx.myshopify.com';
 export const CLIENT_ID = process.env.SHOPIFY_CLIENT_ID || '';
 export const CLIENT_SECRET = process.env.SHOPIFY_CLIENT_SECRET || process.env.SHOPIFY_API_SECRET || '';
 export const THEME_ID = process.env.SHOPIFY_THEME_ID || process.env.THEME_ID || '';
@@ -45,44 +45,67 @@ export function getCliToken(shopDomain = SHOP) {
   return null;
 }
 
-export async function getAccessToken() {
-  if (process.env.SHOPIFY_ACCESS_TOKEN) {
-    return process.env.SHOPIFY_ACCESS_TOKEN;
+let cachedToken = process.env.SHOPIFY_ACCESS_TOKEN || null;
+
+export async function getAccessToken(forceRefresh = false) {
+  if (cachedToken && !forceRefresh) {
+    return cachedToken;
   }
+  const clientId = process.env.SHOPIFY_CLIENT_ID || CLIENT_ID;
+  const clientSecret = process.env.SHOPIFY_CLIENT_SECRET || CLIENT_SECRET;
+
+  if (clientId && clientSecret) {
+    const tRes = await fetch(`https://${SHOP}/admin/oauth/access_token`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        client_id: clientId,
+        client_secret: clientSecret,
+        grant_type: 'client_credentials'
+      })
+    });
+    const data = await tRes.json();
+    if (data.access_token) {
+      cachedToken = data.access_token;
+      process.env.SHOPIFY_ACCESS_TOKEN = data.access_token;
+      return data.access_token;
+    }
+  }
+
   const cliToken = getCliToken();
   if (cliToken) {
     return cliToken;
   }
-  if (!CLIENT_ID || !CLIENT_SECRET) {
-    throw new Error('Missing SHOPIFY_CLIENT_ID or SHOPIFY_CLIENT_SECRET or CLI session');
-  }
-  const tRes = await fetch(`https://${SHOP}/admin/oauth/access_token`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      client_id: CLIENT_ID,
-      client_secret: CLIENT_SECRET,
-      grant_type: 'client_credentials'
-    })
-  });
-  const data = await tRes.json();
-  if (!data.access_token) {
-    throw new Error(`Failed to get access token from ${SHOP}: ${JSON.stringify(data)}`);
-  }
-  return data.access_token;
+  throw new Error('Failed to obtain Shopify access token.');
 }
 
 export async function adminGraphql(query, variables = {}) {
-  const token = await getAccessToken();
+  let token = await getAccessToken();
   const url = `https://${SHOP}/admin/api/${API_VERSION}/graphql.json`;
-  const res = await fetch(url, {
+  let res = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'X-Shopify-Access-Token': token,
       'Authorization': `Bearer ${token}`
     },
     body: JSON.stringify({ query, variables })
   });
+
+  if (res.status === 401) {
+    console.log('Token expired, refreshing...');
+    token = await getAccessToken(true);
+    res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Shopify-Access-Token': token,
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ query, variables })
+    });
+  }
+
   const json = await res.json();
   if (json.errors) {
     console.error('GraphQL Errors:', JSON.stringify(json.errors, null, 2));

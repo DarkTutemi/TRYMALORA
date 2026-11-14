@@ -22,7 +22,7 @@
     display: flex;
     width: max-content;
     will-change: transform;
-    animation: tmContinuousTicker 24s linear infinite;
+    animation: tmContinuousTicker 16s linear infinite;
   }
 
   .tm-marquee-wrapper:hover .tm-marquee-track {
@@ -100,30 +100,89 @@
   <div class="tm-marquee-track">
     {% for i in (1..2) %}
       <div class="tm-marquee-group" aria-hidden="{% if forloop.index == 2 %}true{% else %}false{% endif %}">
-        <span class="tm-marquee-item">
-          <span>INTERACTIVE FAMILY PLAY</span>
-          <span class="tm-separator">✦</span>
-        </span>
-        <span class="tm-marquee-item">
-          <span>DYNAMIC WALL &amp; CEILING TARGETS</span>
-          <span class="tm-separator">✦</span>
-        </span>
-        <span class="tm-marquee-item">
-          <span>EYE-SAFE OPTICAL INFRARED</span>
-          <span class="tm-separator">✦</span>
-        </span>
-        <span class="tm-marquee-item">
-          <span>ACOUSTIC SOUNDS &amp; HIT VIBRATION</span>
-          <span class="tm-separator">✦</span>
-        </span>
-        <span class="tm-marquee-item">
-          <span>4 TEAM COMBAT CHANNELS</span>
-          <span class="tm-separator">✦</span>
-        </span>
-        <span class="tm-marquee-item">
-          <span>30-DAY MONEY-BACK GUARANTEE</span>
-          <span class="tm-separator">✦</span>
-        </span>
+        {% case product.handle %}
+          {% when 'car-metal-rust-repair-paste' %}
+            <span class="tm-marquee-item"><span>DEEP RUST PENETRATION</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>SEALS &amp; BLOCKS MOISTURE</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>DIRECT BRUSH-ON APPLICATION</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>MATCHES VEHICLE TRIM</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>WEATHER &amp; ROAD SALT RESISTANT</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>30-DAY MONEY-BACK GUARANTEE</span><span class="tm-separator">✦</span></span>
+          {% when 'metal-chrome-polish-restorer-paste' %}
+            <span class="tm-marquee-item"><span>BRILLIANT MIRROR REFLECTION</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>HEAVY-DUTY OXIDATION REMOVER</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>ZERO-SCRATCH FORMULA</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>ALLOY WHEELS, TRIM &amp; FAUCETS</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>HYDROPHOBIC PROTECTIVE SHIELD</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>30-DAY MONEY-BACK GUARANTEE</span><span class="tm-separator">✦</span></span>
+          {% when 'mini-dual-purpose-travel-styling-iron' %}
+            <span class="tm-marquee-item"><span>2-IN-1 STRAIGHTENING &amp; CURLS</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>CERAMIC GLAZE HEAT PROTECTION</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>RAPID 30-SECOND PTC HEATING</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>COMPACT TRAVEL DUAL VOLTAGE</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>ANTI-SCALD PROTECTIVE TIP</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>30-DAY MONEY-BACK GUARANTEE</span><span class="tm-separator">✦</span></span>
+          {% when 'tile-refinishing-paint-restoration-kit', 'tile-refinishing-paint-restoration-kit-draft' %}
+            <span class="tm-marquee-item"><span>HIGH-GLOSS CERAMIC TILE ENAMEL</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>COVERS STUBBORN STAINS &amp; GROUT</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>WATERPROOF &amp; MOLD RESISTANT</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>BATHROOM TILES, SINKS &amp; TUBS</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>ODORLESS WATER-BASED FORMULA</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>30-DAY MONEY-BACK GUARANTEE</span><span class="tm-separator">✦</span></span>
+          {% when 'metallic-silver-anti-rust-renovation-coating' %}
+            <span class="tm-marquee-item"><span>REFLECTIVE SILVER METALLIC SHIELD</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>DIRECT-TO-RUST BRUSH APPLICATION</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>WEATHERPROOF OUTDOOR RESISTANCE</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>GATES, PIPES &amp; METAL RAILINGS</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>HIGH ADHESION ANTI-PEELING</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>30-DAY MONEY-BACK GUARANTEE</span><span class="tm-separator">✦</span></span>
+          {% when 'ear-cleaner' %}
+            <span class="tm-marquee-item"><span>FAST-ACTING EAR WAX DISSOLVER</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>RELIEVES ITCHING &amp; HEAD SHAKING</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>ELIMINATES YEAST &amp; FOUL ODORS</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>NATURAL BOTANICAL INGREDIENTS</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>VET APPROVED FOR DOGS &amp; CATS</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>30-DAY MONEY-BACK GUARANTEE</span><span class="tm-separator">✦</span></span>
+          {% when 'eyvelle-steam-therapy' %}
+            <span class="tm-marquee-item"><span>SOOTHING WARM NANO-MIST</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>UNCLOGS MEIBOMIAN OIL GLANDS</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>INSTANT RELIEF FROM SCREEN FATIGUE</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>ERGONOMIC MEDICAL SILICONE CUP</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>USB-C RECHARGEABLE &amp; PORTABLE</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>30-DAY MONEY-BACK GUARANTEE</span><span class="tm-separator">✦</span></span>
+          {% when 'christmas-lantern-welcome-gnome' %}
+            <span class="tm-marquee-item"><span>WARM-WHITE STARLIGHT GLOW</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>HAND-KNITTED NORDIC STYLE HAT</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>REALISTIC WOODLAND GARLAND</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>STURDY WEIGHTED BASE</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>SHELTERED PORCH &amp; LIVING ROOM</span><span class="tm-separator">✦</span></span>
+            <span class="tm-marquee-item"><span>60-NIGHT HOLIDAY HAPPINESS GUARANTEE</span><span class="tm-separator">✦</span></span>
+          {% else %}
+            <span class="tm-marquee-item">
+              <span>INTERACTIVE FAMILY PLAY</span>
+              <span class="tm-separator">✦</span>
+            </span>
+            <span class="tm-marquee-item">
+              <span>DYNAMIC WALL &amp; CEILING TARGETS</span>
+              <span class="tm-separator">✦</span>
+            </span>
+            <span class="tm-marquee-item">
+              <span>EYE-SAFE OPTICAL INFRARED</span>
+              <span class="tm-separator">✦</span>
+            </span>
+            <span class="tm-marquee-item">
+              <span>ACOUSTIC SOUNDS &amp; HIT VIBRATION</span>
+              <span class="tm-separator">✦</span>
+            </span>
+            <span class="tm-marquee-item">
+              <span>4 TEAM COMBAT CHANNELS</span>
+              <span class="tm-separator">✦</span>
+            </span>
+            <span class="tm-marquee-item">
+              <span>30-DAY MONEY-BACK GUARANTEE</span>
+              <span class="tm-separator">✦</span>
+            </span>
+        {% endcase %}
       </div>
     {% endfor %}
   </div>
