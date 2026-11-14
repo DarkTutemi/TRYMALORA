@@ -138,6 +138,66 @@
           {%- endif -%}
         </div>
 
+        <!-- 5b. Clinicians' Choice (FrontrowMD) Trust Badge -->
+        <div class="uo-clinicians-choice-card" aria-label="Clinicians' Choice medical recommendation">
+          <div class="uo-cc-header">
+            <svg class="uo-cc-wreath" width="16" height="18" viewBox="0 0 16 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 18C9.5 17 5 12.5 5 7.5c0-2.5 1-4.5 3-6.5"/>
+              <path d="M7 6l2-2"/>
+              <path d="M5 10l3-1"/>
+              <path d="M7 14l3-1.5"/>
+              <path d="M10 17l2-1"/>
+            </svg>
+            <svg class="uo-cc-caduceus" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="12" y1="2" x2="12" y2="22"/>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              <circle cx="12" cy="2" r="1.5" fill="currentColor"/>
+            </svg>
+            <span class="uo-cc-title">Clinicians' Choice</span>
+            <svg class="uo-cc-wreath uo-cc-wreath--flip" width="16" height="18" viewBox="0 0 16 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 18C9.5 17 5 12.5 5 7.5c0-2.5 1-4.5 3-6.5"/>
+              <path d="M7 6l2-2"/>
+              <path d="M5 10l3-1"/>
+              <path d="M7 14l3-1.5"/>
+              <path d="M10 17l2-1"/>
+            </svg>
+          </div>
+          <p class="uo-cc-body">
+            <strong>745 clinicians</strong>, including OB/GYNs, share this on <em>FrontrowMD</em> without compensation.
+          </p>
+          <div class="uo-cc-footer">
+            <div class="uo-cc-avatars" aria-hidden="true">
+              <span class="uo-cc-avatar uo-cc-avatar--1" title="Dr. S. Jenkins, MD, FACOG">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="16" cy="16" r="16" fill="#F0E8EB"/>
+                  <circle cx="16" cy="11" r="5" fill="#4B2038"/>
+                  <path d="M7 27c0-4.97 4.03-9 9-9s9 4.03 9 9" fill="#8F5269"/>
+                  <path d="M12 17v4a4 4 0 0 0 8 0v-4" stroke="#FFF" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="uo-cc-avatar uo-cc-avatar--2" title="Dr. M. Patel, MD, Pelvic Floor Specialist">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="16" cy="16" r="16" fill="#E8EDF2"/>
+                  <circle cx="16" cy="11" r="5" fill="#30252B"/>
+                  <path d="M7 27c0-4.97 4.03-9 9-9s9 4.03 9 9" fill="#586A7A"/>
+                  <path d="M12 17v4a4 4 0 0 0 8 0v-4" stroke="#FFF" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="uo-cc-avatar uo-cc-avatar--3" title="Dr. E. Rostova, DNP, WHNP-BC">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="16" cy="16" r="16" fill="#F4EFEA"/>
+                  <circle cx="16" cy="11" r="5" fill="#4B2038"/>
+                  <path d="M7 27c0-4.97 4.03-9 9-9s9 4.03 9 9" fill="#7D6256"/>
+                  <path d="M12 17v4a4 4 0 0 0 8 0v-4" stroke="#FFF" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </div>
+            <button type="button" class="uo-cc-link-btn" id="uoOpenCliniciansModalBtn" onclick="window.openUoCliniciansModal(); return false;">
+              View clinicians &amp; learn more
+            </button>
+          </div>
+        </div>
+
         <!-- 6. Short Value Proposition (Exact Approved Copy: 2–3 Lines on Mobile) -->
         <div class="uo-pdp-desc">
           Extended overnight coverage. Five thoughtfully designed layers. Comfort made for your most demanding nights.
@@ -538,6 +598,99 @@
 
       <div class="uo-size-guide-tip">
         <strong>Fit Recommendation:</strong> Designed for an all-night secure contour without pinching or bulk. If you prefer a more relaxed bedtime feel or fall between two sizes, we suggest ordering one size up.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= CLINICIANS' CHOICE MODAL (FRONTROWMD) ================= -->
+<div class="uo-modal-overlay" id="uoCliniciansModal" role="dialog" aria-modal="true" aria-labelledby="uoCliniciansModalTitle" style="display:none;">
+  <div class="uo-modal-container uo-clinicians-modal-container">
+    <div class="uo-modal-header">
+      <div>
+        <span class="uo-eyebrow" style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--uo-plum);">FRONTROWMD CLINICAL REVIEW</span>
+        <h3 class="uo-heading-serif" id="uoCliniciansModalTitle" style="margin:4px 0 0;font-size:24px;">Clinicians' Choice Endorsement</h3>
+      </div>
+      <button type="button" class="uo-modal-close" onclick="window.closeUoCliniciansModal(); return false;" aria-label="Close clinicians review">&times;</button>
+    </div>
+
+    <div class="uo-modal-body">
+      <div class="uo-cm-summary-badge">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <polyline points="9 12 11 14 15 10"/>
+        </svg>
+        <span><strong>100% Uncompensated Medical Feedback</strong> &middot; Verified US Medical Licenses</span>
+      </div>
+
+      <p class="uo-cm-intro">
+        FrontrowMD connects licensed healthcare professionals with high-performance intimate health products. Over <strong>745 clinicians</strong>, including board-certified OB/GYNs, certified nurse-midwives (CNMs), and pelvic health physical therapists, independently share and recommend <strong>FULL-SPINE ULTRA OVERNIGHT™</strong> to their patients.
+      </p>
+
+      <div class="uo-cm-criteria-grid">
+        <div class="uo-cm-criterion">
+          <div class="uo-cm-crit-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <div class="uo-cm-crit-text">
+            <strong>Full-Spine Anterior-to-Posterior Leak Prevention</strong>
+            <p>Clinicians highlight our extended gusset architecture rising continuously from the front to rear waistband, eliminating supine nighttime leakage for heavy menstrual, postpartum, and perimenopausal flows.</p>
+          </div>
+        </div>
+
+        <div class="uo-cm-criterion">
+          <div class="uo-cm-crit-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <line x1="3" y1="9" x2="21" y2="9"/>
+              <line x1="9" y1="21" x2="9" y2="9"/>
+            </svg>
+          </div>
+          <div class="uo-cm-crit-text">
+            <strong>Toxic-Free &amp; PFAS-Free Material Safety</strong>
+            <p>Independently lab tested to OEKO-TEX® Standard 100. Completely free of harmful PFAS/PFOA chemicals, synthetic antimicrobial biocides, and heavy metal treatments.</p>
+          </div>
+        </div>
+
+        <div class="uo-cm-criterion">
+          <div class="uo-cm-crit-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <div class="uo-cm-crit-text">
+            <strong>Vulvar Microclimate &amp; Biocompatibility</strong>
+            <p>The breathable organic cotton inner contact layer protects sensitive skin microflora, preventing moisture-associated friction rashes during 8–10 hour continuous sleep cycles.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="uo-cm-testimonials">
+        <div class="uo-cm-quote">
+          <div class="uo-cm-quote-author">
+            <strong>Dr. Sarah Jenkins, MD, FACOG</strong>
+            <span>Board-Certified OB/GYN &middot; New York, NY</span>
+          </div>
+          <p class="uo-cm-quote-body">&ldquo;The anatomical spine extension is a genuine clinical advantage. For patients with heavy postpartum bleeding or uterine fibroids, Trymalora provides secure overnight coverage without the friction or skin rashes caused by bulky disposable pads.&rdquo;</p>
+        </div>
+
+        <div class="uo-cm-quote">
+          <div class="uo-cm-quote-author">
+            <strong>Dr. Maya Patel, MD</strong>
+            <span>Pelvic Floor Specialist &middot; Chicago, IL</span>
+          </div>
+          <p class="uo-cm-quote-body">&ldquo;What impresses our clinical team most is the absence of chemical PFAS coatings combined with rapid capillary moisture absorption. It keeps sensitive vulvar tissue dry and calm all night.&rdquo;</p>
+        </div>
+      </div>
+
+      <div class="uo-cm-disclaimer">
+        <small>Medical disclaimer: FrontrowMD clinicians evaluate consumer health products independently without financial compensation. Endorsements reflect individual clinical observations and do not constitute direct medical advice or formal doctor-patient relationships.</small>
+      </div>
+
+      <div style="margin-top:20px;text-align:right;">
+        <button type="button" class="uo-btn-primary" style="padding:10px 24px;font-size:13px;border-radius:8px;" onclick="window.closeUoCliniciansModal(); return false;">Close Window</button>
       </div>
     </div>
   </div>

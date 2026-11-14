@@ -300,11 +300,21 @@ async function runSuite() {
       ];
       const sectionsPresent = sections.map(s => !!document.querySelector(s));
 
+      const clinCard = document.querySelector('.uo-clinicians-choice-card');
+      const clinTitle = document.querySelector('.uo-cc-title');
+      const clinBody = document.querySelector('.uo-cc-body');
+      const clinAvatars = document.querySelectorAll('.uo-cc-avatar');
+
       return {
         titleFont: title ? window.getComputedStyle(title).fontSize : null,
+        titleFontPassDesktop: title ? parseFloat(window.getComputedStyle(title).fontSize) <= 30 : false,
         titleText: title ? title.textContent.trim() : null,
+        cliniciansCardPresent: !!clinCard,
+        cliniciansTitle: clinTitle ? clinTitle.textContent.trim() : null,
+        cliniciansBodyText: clinBody ? clinBody.textContent.replace(/\s+/g, ' ').trim() : null,
+        cliniciansAvatarsCount: clinAvatars.length,
         trustpilotPresent: !!tpBar,
-        trustpilotText: tpBar ? tpBar.textContent.replace(/\\s+/g, ' ').trim() : null,
+        trustpilotText: tpBar ? tpBar.textContent.replace(/\s+/g, ' ').trim() : null,
         liveViewersPresent: !!liveCard,
         liveViewersCount: liveCount,
         liveViewersRangeOk: liveCount >= 10 && liveCount <= 30,
@@ -518,6 +528,35 @@ async function runSuite() {
     returnByValue: true
   });
   console.log('  Size Guide Modal Close:', getVal(modalCloseEval));
+
+  // 8. Test Clinicians' Choice Modal Open & Close
+  await send('Runtime.evaluate', { expression: `window.openUoCliniciansModal()` });
+  await new Promise(r => setTimeout(r, 200));
+  const clinOpenEval = await send('Runtime.evaluate', {
+    expression: `(() => {
+      const modal = document.getElementById('uoCliniciansModal');
+      const title = document.getElementById('uoCliniciansModalTitle');
+      const critCount = document.querySelectorAll('.uo-cm-criterion').length;
+      return {
+        display: modal ? modal.style.display : null,
+        title: title ? title.textContent.trim() : null,
+        criteriaCount: critCount
+      };
+    })()`,
+    returnByValue: true
+  });
+  console.log('  Clinicians Choice Modal Open:', getVal(clinOpenEval));
+
+  await send('Runtime.evaluate', { expression: `window.closeUoCliniciansModal()` });
+  await new Promise(r => setTimeout(r, 200));
+  const clinCloseEval = await send('Runtime.evaluate', {
+    expression: `(() => {
+      const modal = document.getElementById('uoCliniciansModal');
+      return modal ? modal.style.display : null;
+    })()`,
+    returnByValue: true
+  });
+  console.log('  Clinicians Choice Modal Close:', getVal(clinCloseEval));
 
   console.log('\n======================================================');
   console.log('ALL TESTS COMPLETED SUCCESSFULLY!');

@@ -37,6 +37,22 @@ window.closeUoSizeGuide = function () {
   }
 };
 
+window.openUoCliniciansModal = function () {
+  const modal = document.getElementById('uoCliniciansModal');
+  if (modal) {
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+};
+
+window.closeUoCliniciansModal = function () {
+  const modal = document.getElementById('uoCliniciansModal');
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+};
+
 window.scrollToUoBuyBox = function () {
   const buyBox = document.getElementById('uoBuyBox') || document.getElementById('uoPdpSection');
   if (buyBox) {
@@ -543,11 +559,20 @@ function initPdpTabs() {
 
 // 10. Modal Backdrop & ESC Listener
 function initModalListeners() {
-  const modal = document.getElementById('uoSizeGuideModal');
-  if (modal) {
-    modal.addEventListener('click', function (e) {
-      if (e.target === modal) {
+  const sizeModal = document.getElementById('uoSizeGuideModal');
+  if (sizeModal) {
+    sizeModal.addEventListener('click', function (e) {
+      if (e.target === sizeModal) {
         window.closeUoSizeGuide();
+      }
+    });
+  }
+
+  const clinModal = document.getElementById('uoCliniciansModal');
+  if (clinModal) {
+    clinModal.addEventListener('click', function (e) {
+      if (e.target === clinModal) {
+        window.closeUoCliniciansModal();
       }
     });
   }
@@ -555,6 +580,7 @@ function initModalListeners() {
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
       window.closeUoSizeGuide();
+      window.closeUoCliniciansModal();
     }
   });
 }

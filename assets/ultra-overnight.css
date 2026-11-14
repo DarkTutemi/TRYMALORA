@@ -1115,11 +1115,12 @@
 
 .uo-product-title {
   font-family: var(--uo-font-serif);
-  font-size: clamp(28px, 3vw, 38px);
-  line-height: 1.15;
+  font-size: clamp(22px, 1.8vw, 28px);
+  line-height: 1.2;
   margin-bottom: 12px;
   color: var(--uo-plum);
   font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
 .uo-pdp-rating-row {
@@ -1646,7 +1647,7 @@
 .uo-main-image-wrap{background:#f7eceb;border-radius:18px;border:1px solid #ead8dc}
 .uo-gallery-wrap{top:110px;gap:14px}
 .uo-buybox{padding:22px clamp(8px,1.7vw,28px) 26px;background:#fff;border:1px solid #f0e4e6;border-radius:18px;box-shadow:0 18px 38px rgba(88,35,61,.05)}
-.uo-product-title{font-size:clamp(30px,3vw,42px);line-height:1.12;letter-spacing:-.02em;color:var(--uo-plum);font-weight:600}
+.uo-product-title{font-size:clamp(22px,1.8vw,28px);line-height:1.2;letter-spacing:-.015em;color:var(--uo-plum);font-weight:600}
 .uo-price-current{font-size:26px;color:var(--uo-plum)}
 .uo-pdp-promise{font-family:var(--uo-font-serif);font-style:normal;color:var(--uo-plum);font-size:20px;margin:0 0 22px}
 .uo-tier-card{border-radius:12px;padding:19px 15px;min-height:118px}
@@ -2098,7 +2099,230 @@
   background: #FBF7F3;
   padding: 12px 16px;
   border-radius: 6px;
-  border-left: 3px solid #000000;
+  border-left: 3px solid var(--uo-plum);
+}
+
+/* Clinicians' Choice (FrontrowMD) Widget */
+.uo-clinicians-choice-card {
+  margin: 14px 0 16px;
+  padding: 12px 14px;
+  background: #FCF8F9;
+  border: 1px solid #F0E2E5;
+  border-radius: 10px;
+}
+
+.uo-cc-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  color: var(--uo-plum);
+}
+
+.uo-cc-wreath {
+  display: inline-flex;
+  align-items: center;
+  color: var(--uo-burgundy);
+  flex-shrink: 0;
+}
+
+.uo-cc-wreath--flip {
+  transform: scaleX(-1);
+}
+
+.uo-cc-caduceus {
+  display: inline-flex;
+  align-items: center;
+  color: var(--uo-plum);
+  flex-shrink: 0;
+}
+
+.uo-cc-title {
+  font-family: var(--uo-font-serif);
+  font-size: 15.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--uo-plum);
+}
+
+.uo-cc-body {
+  font-family: var(--uo-font-sans);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--uo-charcoal);
+  margin: 0 0 10px;
+}
+
+.uo-cc-body strong {
+  font-weight: 700;
+  color: var(--uo-plum);
+}
+
+.uo-cc-body em {
+  font-style: italic;
+}
+
+.uo-cc-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.uo-cc-avatars {
+  display: inline-flex;
+  align-items: center;
+}
+
+.uo-cc-avatar {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  margin-left: -7px;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.uo-cc-avatar:first-child {
+  margin-left: 0;
+}
+
+.uo-cc-avatar svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.uo-cc-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--uo-font-sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--uo-charcoal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.uo-cc-link-btn:hover {
+  color: var(--uo-plum);
+}
+
+/* Clinicians' Choice Modal Container */
+.uo-clinicians-modal-container {
+  max-width: 620px;
+}
+
+.uo-cm-summary-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: #F4EBEF;
+  border-radius: 8px;
+  color: var(--uo-plum);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.uo-cm-intro {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--uo-body-text);
+  margin-bottom: 18px;
+}
+
+.uo-cm-criteria-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.uo-cm-criterion {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #FCF9FA;
+  border: 1px solid #F2E4E7;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.uo-cm-crit-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #F2E3E8;
+  color: var(--uo-plum);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uo-cm-crit-text strong {
+  display: block;
+  font-size: 13.5px;
+  color: var(--uo-plum);
+  margin-bottom: 3px;
+}
+
+.uo-cm-crit-text p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--uo-body-text);
+}
+
+.uo-cm-testimonials {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid #EFE4E7;
+  padding-top: 16px;
+  margin-bottom: 16px;
+}
+
+.uo-cm-quote {
+  background: #FFFFFF;
+  border-left: 3px solid var(--uo-plum);
+  padding: 10px 14px;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.uo-cm-quote-author strong {
+  font-size: 13px;
+  color: var(--uo-plum);
+  display: block;
+}
+
+.uo-cm-quote-author span {
+  font-size: 11.5px;
+  color: var(--uo-body-text);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.uo-cm-quote-body {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  font-style: italic;
+  color: var(--uo-charcoal);
+}
+
+.uo-cm-disclaimer {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #8C7B83;
 }
 
 /* Mix & Match Customizer & Spacing */
@@ -2126,7 +2350,7 @@
   font-family: var(--uo-font-sans);
   font-size: 13px;
   font-weight: 700;
-  color: #000000;
+  color: var(--uo-plum);
   cursor: pointer;
   text-align: left;
   transition: background 0.15s ease;
