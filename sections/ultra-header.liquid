@@ -11,12 +11,7 @@
   <div class="uo-announcement-bar">
     <div class="uo-wrap">
       <span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="1" y="3" width="15" height="13"></rect>
-          <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-          <circle cx="5.5" cy="18.5" r="2.5"></circle>
-          <circle cx="18.5" cy="18.5" r="2.5"></circle>
-        </svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.6 15.5A8.5 8.5 0 0 1 8.5 3.4 8.5 8.5 0 1 0 20.6 15.5Z"/></svg>
         {{ section.settings.announcement_text }}
       </span>
     </div>
@@ -28,7 +23,7 @@
   <div class="uo-wrap">
     <div class="uo-header">
       <!-- Mobile Menu Toggle -->
-      <button type="button" class="uo-mobile-menu-toggle" aria-label="Open navigation menu">
+      <button type="button" class="uo-mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="uoMobileNavDrawer">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -41,18 +36,25 @@
         <img src="{{ 'ultra-logo.svg' | asset_url }}" alt="ULTRA OVERNIGHT" width="220" height="36" loading="eager">
       </a>
 
-      <!-- Desktop Navigation -->
+      <!-- Primary Navigation -->
       <nav class="uo-nav" aria-label="Primary navigation">
-        <a href="/" class="uo-nav-link {% if request.page_type == 'index' %}is-active{% endif %}">Home</a>
-        <a href="/products/full-spine-ultra-overnight" class="uo-nav-link {% if template.suffix == 'ultra-overnight' or product.handle contains 'ultra' %}is-active{% endif %}">Product</a>
-        <a href="/pages/about-us" class="uo-nav-link {% if request.path contains '/pages/about' %}is-active{% endif %}">About Us</a>
-        <a href="/pages/track-order" class="uo-nav-link {% if request.path contains '/pages/track' %}is-active{% endif %}">Track Order</a>
+        {%- if section.settings.primary_menu.links.size > 0 -%}
+          {%- for link in section.settings.primary_menu.links -%}
+            <a href="{{ link.url }}" class="uo-nav-link{% if link.active %} is-active{% endif %}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>
+          {%- endfor -%}
+        {%- else -%}
+          <a href="/" class="uo-nav-link {% if request.page_type == 'index' %}is-active{% endif %}">Home</a>
+          <a href="/products/full-spine-ultra-overnight" class="uo-nav-link {% if template.suffix == 'ultra-overnight' or product.handle contains 'ultra' %}is-active{% endif %}">ULTRA OVERNIGHT</a>
+          <a href="/pages/about-us" class="uo-nav-link {% if request.path contains '/pages/about' %}is-active{% endif %}">Our Story</a>
+          <a href="/pages/track-order" class="uo-nav-link {% if request.path contains '/pages/track' %}is-active{% endif %}">Track Order</a>
+          <a href="/pages/contact" class="uo-nav-link {% if request.path contains '/pages/contact' %}is-active{% endif %}">Contact</a>
+        {%- endif -%}
       </nav>
 
       <!-- Header Action Icons -->
       <div class="uo-header-actions">
         <!-- Customer Account Icon -->
-        <a href="/account" class="uo-header-icon-btn" aria-label="Customer Account">
+        <a href="{{ routes.account_url }}" class="uo-header-icon-btn" aria-label="Customer Account">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
             <circle cx="12" cy="7" r="4"></circle>
@@ -75,18 +77,23 @@
 
 <!-- Mobile Navigation Drawer -->
 <div class="uo-mobile-drawer-overlay"></div>
-<aside class="uo-mobile-drawer" aria-label="Mobile menu">
+<aside class="uo-mobile-drawer" id="uoMobileNavDrawer" aria-label="Mobile menu" aria-hidden="true">
   <div class="uo-mobile-drawer-header">
     <img src="{{ 'ultra-logo.svg' | asset_url }}" alt="ULTRA OVERNIGHT" width="160" height="26">
     <button type="button" class="uo-mobile-drawer-close" aria-label="Close menu" style="background:none;border:none;font-size:24px;cursor:pointer;color:var(--uo-plum);">&times;</button>
   </div>
-  <nav class="uo-mobile-nav">
-    <a href="/" class="uo-mobile-nav-link">Home <span>➔</span></a>
-    <a href="/products/full-spine-ultra-overnight" class="uo-mobile-nav-link">Product <span>➔</span></a>
-    <a href="/pages/about-us" class="uo-mobile-nav-link">About Us <span>➔</span></a>
-    <a href="/pages/track-order" class="uo-mobile-nav-link">Track Order <span>➔</span></a>
-    <a href="/pages/faq" class="uo-mobile-nav-link">FAQ & Support <span>➔</span></a>
-    <a href="/pages/contact" class="uo-mobile-nav-link">Contact Us <span>➔</span></a>
+  <nav class="uo-mobile-nav" aria-label="Mobile navigation">
+    {%- if section.settings.primary_menu.links.size > 0 -%}
+      {%- for link in section.settings.primary_menu.links -%}
+        <a href="{{ link.url }}" class="uo-mobile-nav-link"{% if link.active %} aria-current="page"{% endif %}>{{ link.title | escape }} <span aria-hidden="true">→</span></a>
+      {%- endfor -%}
+    {%- else -%}
+      <a href="/" class="uo-mobile-nav-link">Home <span aria-hidden="true">→</span></a>
+      <a href="/products/full-spine-ultra-overnight" class="uo-mobile-nav-link">ULTRA OVERNIGHT <span aria-hidden="true">→</span></a>
+      <a href="/pages/about-us" class="uo-mobile-nav-link">Our Story <span aria-hidden="true">→</span></a>
+      <a href="/pages/track-order" class="uo-mobile-nav-link">Track Order <span aria-hidden="true">→</span></a>
+      <a href="/pages/contact" class="uo-mobile-nav-link">Contact <span aria-hidden="true">→</span></a>
+    {%- endif -%}
   </nav>
 </aside>
 {%- endunless -%}
@@ -95,6 +102,11 @@
 {
   "name": "Ultra Header",
   "settings": [
+    {
+      "type": "link_list",
+      "id": "primary_menu",
+      "label": "ULTRA Primary Navigation"
+    },
     {
       "type": "checkbox",
       "id": "show_announcement",
@@ -110,4 +122,3 @@
   ]
 }
 {% endschema %}
-

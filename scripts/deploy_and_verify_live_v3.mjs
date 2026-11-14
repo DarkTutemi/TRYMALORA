@@ -11,6 +11,11 @@ function sha256(str) {
 }
 
 const filesToDeploy = [
+  'sections/ultra-header.liquid',
+  'sections/ultra-about-story.liquid',
+  'sections/ultra-track-order.liquid',
+  'templates/page.about-us.json',
+  'templates/page.track-order.json',
   'sections/ultra-product-main.liquid',
   'sections/ultra-pdp-problem.liquid',
   'sections/ultra-pdp-editorial.liquid',

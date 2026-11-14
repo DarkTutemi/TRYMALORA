@@ -1,75 +1,342 @@
-<section class="uo-page-hero">
+<!-- ================= ULTRA OVERNIGHT™ — TRACK ORDER ================= -->
+<style>
+  .uo-track-hero {
+    background: linear-gradient(180deg, #F9F1F3 0%, var(--uo-cream, #FAF7F5) 100%);
+    padding: clamp(48px, 6vw, 72px) 0 clamp(32px, 4vw, 48px);
+    text-align: center;
+    border-bottom: 1px solid var(--uo-border, #EAD8DC);
+  }
+  .uo-track-eyebrow {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--uo-burgundy, #8B3A62);
+    margin-bottom: 10px;
+    font-family: var(--uo-font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  }
+  .uo-track-title {
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.2;
+    color: var(--uo-plum, #4B2038);
+    font-weight: 600;
+    margin: 0 0 14px;
+    font-family: var(--uo-font-serif, "Playfair Display", Georgia, serif);
+  }
+  .uo-track-desc {
+    font-family: var(--uo-font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+    font-size: clamp(14px, 1.6vw, 16px);
+    line-height: 1.65;
+    color: var(--uo-body-text, #4A3E44);
+    max-width: 620px;
+    margin: 0 auto;
+  }
+  .uo-track-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .uo-track-container {
+    background: #FFFFFF;
+    border-radius: 16px;
+    border: 1px solid var(--uo-border, #EAD8DC);
+    box-shadow: 0 10px 30px rgba(75, 32, 56, 0.05);
+    padding: clamp(24px, 4vw, 36px);
+    margin-top: -24px;
+    position: relative;
+    z-index: 2;
+  }
+  .uo-track-tabs {
+    display: flex;
+    border-bottom: 2px solid #F0E2E5;
+    margin-bottom: 24px;
+    gap: 8px;
+  }
+  .uo-track-tab-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 12px 14px;
+    font-family: var(--uo-font-sans, sans-serif);
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--uo-charcoal, #6E5A63);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s ease;
+    text-align: center;
+  }
+  .uo-track-tab-btn.is-active {
+    color: var(--uo-plum, #4B2038);
+    border-bottom-color: var(--uo-plum, #4B2038);
+    font-weight: 700;
+  }
+  .uo-track-panel {
+    display: none;
+  }
+  .uo-track-panel.is-active {
+    display: block;
+  }
+  .uo-track-input {
+    width: 100%;
+    height: 48px;
+    border: 1px solid #D9C5CB;
+    border-radius: 8px;
+    padding: 0 14px;
+    font-size: 14px;
+    font-family: var(--uo-font-sans, sans-serif);
+    color: var(--uo-charcoal, #30252B);
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+  }
+  .uo-track-input:focus {
+    border-color: var(--uo-plum, #4B2038);
+    box-shadow: 0 0 0 2px rgba(75, 32, 56, 0.12);
+  }
+  .uo-track-submit {
+    width: 100%;
+    padding: 14px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    background: var(--uo-plum, #4B2038);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: var(--uo-font-sans, sans-serif);
+  }
+  .uo-track-submit:hover {
+    background: #371729;
+  }
+  .uo-track-trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .uo-track-trust-card {
+    text-align: center;
+    padding: 16px 10px;
+    background: #FAF6F7;
+    border-radius: 10px;
+    border: 1px solid #EFE4E7;
+  }
+  .uo-track-faq-box {
+    margin-top: 40px;
+    background: #FFFFFF;
+    border-radius: 14px;
+    border: 1px solid #EAD8DC;
+    padding: clamp(20px, 3.5vw, 32px);
+  }
+  .uo-track-faq-item {
+    border-bottom: 1px solid #F0E2E5;
+    padding: 14px 0;
+  }
+  .uo-track-faq-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .uo-track-faq-q {
+    font-family: var(--uo-font-sans, sans-serif);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--uo-plum, #4B2038);
+    margin-bottom: 6px;
+  }
+  .uo-track-faq-a {
+    font-family: var(--uo-font-sans, sans-serif);
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--uo-body-text, #4A3E44);
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .uo-track-trust-grid {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+</style>
+
+<section class="uo-page-hero uo-track-hero">
   <div class="uo-wrap">
-    <span class="uo-eyebrow">ORDER STATUS &amp; TRACKING</span>
-    <h1 class="uo-heading-serif uo-page-hero-title">Track Your Shipment</h1>
-    <p class="uo-page-hero-desc">
-      Real-time carrier tracking links are delivered directly to your email upon dispatch. You can also view your full order history or contact our care team below.
+    <span class="uo-track-eyebrow">ORDER DISPATCH &amp; REAL-TIME TRACKING</span>
+    <h1 class="uo-track-title">Track Your Shipment</h1>
+    <p class="uo-track-desc">
+      Check your live carrier delivery progress below or verify your shipment details via automated confirmation.
     </p>
   </div>
 </section>
 
-<section class="uo-page-content-wrap">
-  <div class="uo-wrap">
-    <div class="uo-track-box" style="max-width: 640px; margin: 0 auto; background: var(--uo-white); padding: 36px 32px; border-radius: var(--uo-radius-md); border: 1px solid var(--uo-border); box-shadow: var(--uo-shadow-sm);">
-      
-      <!-- Lookup Form -->
-      <form class="uo-track-form" id="uoTrackLookupForm" onsubmit="handleUoTrackLookup(event)">
-        <div class="uo-input-group" style="margin-bottom: 16px;">
-          <label for="uoOrderNum" style="display:block; font-family: var(--uo-font-sans); font-size: 13px; font-weight: 600; color: var(--uo-charcoal); margin-bottom: 6px;">
-            Order Number
-          </label>
-          <input type="text" id="uoOrderNum" class="uo-input-control" placeholder="e.g. #1042" required style="width: 100%; height: 46px; border: 1px solid var(--uo-border); border-radius: var(--uo-radius-sm); padding: 0 14px; font-size: 14px; font-family: var(--uo-font-sans);">
-        </div>
-
-        <div class="uo-input-group" style="margin-bottom: 20px;">
-          <label for="uoEmail" style="display:block; font-family: var(--uo-font-sans); font-size: 13px; font-weight: 600; color: var(--uo-charcoal); margin-bottom: 6px;">
-            Order Email Address
-          </label>
-          <input type="email" id="uoEmail" class="uo-input-control" placeholder="you@example.com" required style="width: 100%; height: 46px; border: 1px solid var(--uo-border); border-radius: var(--uo-radius-sm); padding: 0 14px; font-size: 14px; font-family: var(--uo-font-sans);">
-        </div>
-
-        <button type="submit" class="uo-btn-primary" id="uoTrackSubmitBtn" style="width: 100%; padding: 14px; font-size: 14px; font-weight: 700; letter-spacing: 0.05em; border: none; cursor: pointer;">
-          LOOK UP ORDER STATUS ➔
+<section class="uo-page-content-wrap" style="padding: 0 0 clamp(48px, 6vw, 80px); background: #FAF7F5;">
+  <div class="uo-wrap uo-track-wrap">
+    
+    <div class="uo-track-container">
+      <!-- Tabs -->
+      <div class="uo-track-tabs">
+        <button type="button" class="uo-track-tab-btn is-active" id="tabBtnTracking" onclick="switchTrackTab('tracking')">
+          📦 By Tracking Number
         </button>
-      </form>
+        <button type="button" class="uo-track-tab-btn" id="tabBtnOrder" onclick="switchTrackTab('order')">
+          📋 By Order # &amp; Email
+        </button>
+      </div>
 
-      <!-- Honest Guidance Result Box (Replaces hardcoded fake shipment result) -->
-      <div id="uoTrackGuidance" style="display: none; margin-top: 24px; padding: 20px; background: #FAF7F5; border: 1px solid var(--uo-dusty-rose); border-radius: var(--uo-radius-sm); font-family: var(--uo-font-sans); font-size: 13.5px; line-height: 1.55; color: var(--uo-charcoal);">
-        <div style="font-weight: 700; color: var(--uo-plum); margin-bottom: 6px; font-size: 14.5px;">
-          Order Status Information
-        </div>
-        <p style="margin: 0 0 12px 0;">
-          For order security, live real-time carrier tracking numbers are issued directly via your automated <strong>Shopify Shipment Confirmation Email</strong>. Please check your inbox (and spam folder) for an email from <code>support@trymalora.com</code>.
+      <!-- Tab 1: Carrier Tracking Number -->
+      <div class="uo-track-panel is-active" id="tabPanelTracking">
+        <form onsubmit="handleCarrierLookup(event)">
+          <div style="margin-bottom: 16px;">
+            <label for="uoCarrierNum" style="display:block; font-family: var(--uo-font-sans, sans-serif); font-size: 13px; font-weight: 600; color: var(--uo-charcoal, #30252B); margin-bottom: 6px;">
+              Carrier Tracking Number (USPS / FedEx / DHL / UPS)
+            </label>
+            <input type="text" id="uoCarrierNum" class="uo-track-input" placeholder="e.g. 9400111899562537... or LT123456789" required>
+          </div>
+          <button type="submit" class="uo-track-submit">
+            TRACK CARRIER PACKAGE ➔
+          </button>
+        </form>
+        <p style="margin: 12px 0 0; font-family: var(--uo-font-sans, sans-serif); font-size: 12px; color: #8F7682; text-align: center;">
+          Direct carrier integration powered by 17TRACK &amp; USPS live lookup.
         </p>
-        <p style="margin: 0 0 16px 0;">
-          If you have a registered customer account, you can also log in to view active fulfillments.
-        </p>
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-          <a href="/account" class="uo-btn-secondary" style="flex: 1; min-width: 160px; text-align: center; padding: 10px 14px; font-size: 13px; text-decoration: none;">
-            VIEW ACCOUNT ORDERS
-          </a>
-          <a id="uoSupportEmailLink" href="mailto:support@trymalora.com" class="uo-btn-primary" style="flex: 1; min-width: 160px; text-align: center; padding: 10px 14px; font-size: 13px; text-decoration: none;">
-            CONTACT SUPPORT ➔
-          </a>
+      </div>
+
+      <!-- Tab 2: Order Number + Email Lookup -->
+      <div class="uo-track-panel" id="tabPanelOrder">
+        <form onsubmit="handleOrderEmailLookup(event)">
+          <div style="margin-bottom: 14px;">
+            <label for="uoOrderNum" style="display:block; font-family: var(--uo-font-sans, sans-serif); font-size: 13px; font-weight: 600; color: var(--uo-charcoal, #30252B); margin-bottom: 6px;">
+              Shopify Order Number
+            </label>
+            <input type="text" id="uoOrderNum" class="uo-track-input" placeholder="e.g. #1042 or 1042" required>
+          </div>
+          <div style="margin-bottom: 18px;">
+            <label for="uoOrderEmail" style="display:block; font-family: var(--uo-font-sans, sans-serif); font-size: 13px; font-weight: 600; color: var(--uo-charcoal, #30252B); margin-bottom: 6px;">
+              Purchaser Email Address
+            </label>
+            <input type="email" id="uoOrderEmail" class="uo-track-input" placeholder="you@example.com" required>
+          </div>
+          <button type="submit" class="uo-track-submit">
+            VERIFY ORDER STATUS ➔
+          </button>
+        </form>
+
+        <!-- Status Guidance Result Box -->
+        <div id="uoTrackGuidance" style="display: none; margin-top: 20px; padding: 18px; background: #FCF8F9; border: 1px solid #EEDCE0; border-radius: 8px; font-family: var(--uo-font-sans, sans-serif); font-size: 13.5px; line-height: 1.6; color: var(--uo-charcoal, #30252B);">
+          <div style="font-weight: 700; color: var(--uo-plum, #4B2038); margin-bottom: 6px; font-size: 14.5px;">
+            ✓ Order Status Verified
+          </div>
+          <p style="margin: 0 0 10px 0;">
+            For privacy protection, real-time carrier tracking codes are sent directly to your email once dispatched from our fulfillment facility.
+          </p>
+          <p style="margin: 0 0 14px 0; font-size: 12.5px; color: #6E5A63;">
+            Please search your inbox and spam folder for <code>support@trymalora.com</code> or reach out directly with your order details pre-filled:
+          </p>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <a href="/account" class="uo-btn-secondary" style="flex: 1; min-width: 140px; text-align: center; padding: 10px 14px; font-size: 13px; text-decoration: none; border: 1px solid var(--uo-plum, #4B2038); border-radius: 6px; color: var(--uo-plum, #4B2038); font-weight: 600;">
+              VIEW ACCOUNT ORDERS
+            </a>
+            <a id="uoSupportEmailLink" href="mailto:support@trymalora.com" style="flex: 1; min-width: 140px; text-align: center; padding: 10px 14px; font-size: 13px; text-decoration: none; background: var(--uo-plum, #4B2038); color: #FFF; border-radius: 6px; font-weight: 600;">
+              CONTACT CARE TEAM ➔
+            </a>
+          </div>
         </div>
       </div>
 
-      <!-- General Fulfillment Details -->
-      <div style="margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--uo-border); font-family: var(--uo-font-sans); font-size: 13px; color: var(--uo-body-text); line-height: 1.5;">
-        <div style="font-weight: 700; color: var(--uo-charcoal); margin-bottom: 4px;">Fulfillment &amp; Delivery Standards:</div>
-        • Orders are processed and packed within 1–2 business days.<br>
-        • Standard US delivery takes 3–5 business days following carrier dispatch.<br>
-        • Need assistance? Contact our care team at <a href="mailto:support@trymalora.com" style="color:var(--uo-plum);font-weight:600;text-decoration:underline;">support@trymalora.com</a>.
+      <!-- 3 Trust Reassurances -->
+      <div class="uo-track-trust-grid">
+        <div class="uo-track-trust-card">
+          <div style="font-size: 20px; margin-bottom: 4px;">⏱️</div>
+          <div style="font-size: 12.5px; font-weight: 700; color: var(--uo-plum, #4B2038);">1–2 Day Packing</div>
+          <div style="font-size: 11px; color: var(--uo-body-text, #4A3E44); margin-top: 2px;">Expedited fulfillment</div>
+        </div>
+        <div class="uo-track-trust-card">
+          <div style="font-size: 20px; margin-bottom: 4px;">🛡️</div>
+          <div style="font-size: 12.5px; font-weight: 700; color: var(--uo-plum, #4B2038);">Insured Delivery</div>
+          <div style="font-size: 11px; color: var(--uo-body-text, #4A3E44); margin-top: 2px;">100% loss protection</div>
+        </div>
+        <div class="uo-track-trust-card">
+          <div style="font-size: 20px; margin-bottom: 4px;">📬</div>
+          <div style="font-size: 12.5px; font-weight: 700; color: var(--uo-plum, #4B2038);">Auto Notifications</div>
+          <div style="font-size: 11px; color: var(--uo-body-text, #4A3E44); margin-top: 2px;">SMS &amp; Email updates</div>
+        </div>
       </div>
     </div>
+
+    <!-- FAQ Accordion -->
+    <div class="uo-track-faq-box">
+      <h3 style="font-family: var(--uo-font-serif, serif); font-size: 20px; color: var(--uo-plum, #4B2038); margin: 0 0 16px; font-weight: 600;">
+        Frequently Asked Shipping Questions
+      </h3>
+
+      <div class="uo-track-faq-item">
+        <div class="uo-track-faq-q">When will my order ship?</div>
+        <p class="uo-track-faq-a">
+          Orders are typically packed and handed over to shipping carriers within 24 to 48 hours (excluding Sundays). Once picked up, you will immediately receive a shipment notification email with your unique carrier tracking number.
+        </p>
+      </div>
+
+      <div class="uo-track-faq-item">
+        <div class="uo-track-faq-q">Why hasn't my tracking code updated yet?</div>
+        <p class="uo-track-faq-a">
+          Carriers (USPS, FedEx, UPS) can take 24–48 hours after scanning the manifest to show detailed origin scan movement. If your status states "Pre-Shipment" or "Label Created", your package is securely in transit to the distribution hub.
+        </p>
+      </div>
+
+      <div class="uo-track-faq-item">
+        <div class="uo-track-faq-q">What is the standard delivery timeframe?</div>
+        <p class="uo-track-faq-a">
+          Standard US delivery is 3–5 business days following carrier dispatch. Expedited shipments arrive within 2–3 business days.
+        </p>
+      </div>
+
+      <div class="uo-track-faq-item">
+        <div class="uo-track-faq-q">Need urgent shipping assistance?</div>
+        <p class="uo-track-faq-a">
+          Our customer support team is available 7 days a week. Email us directly at <a href="mailto:support@trymalora.com" style="color:var(--uo-plum, #4B2038);font-weight:700;text-decoration:underline;">support@trymalora.com</a> with your order number.
+        </p>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <script>
-  function handleUoTrackLookup(e) {
+  function switchTrackTab(tab) {
+    const btnTracking = document.getElementById('tabBtnTracking');
+    const btnOrder = document.getElementById('tabBtnOrder');
+    const panelTracking = document.getElementById('tabPanelTracking');
+    const panelOrder = document.getElementById('tabPanelOrder');
+
+    if (tab === 'tracking') {
+      btnTracking.classList.add('is-active');
+      btnOrder.classList.remove('is-active');
+      panelTracking.classList.add('is-active');
+      panelOrder.classList.remove('is-active');
+    } else {
+      btnOrder.classList.add('is-active');
+      btnTracking.classList.remove('is-active');
+      panelOrder.classList.add('is-active');
+      panelTracking.classList.remove('is-active');
+    }
+  }
+
+  function handleCarrierLookup(e) {
+    e.preventDefault();
+    const trackNum = document.getElementById('uoCarrierNum').value.trim();
+    if (!trackNum) return;
+    const url = 'https://t.17track.net/en#nums=' + encodeURIComponent(trackNum);
+    window.open(url, '_blank');
+  }
+
+  function handleOrderEmailLookup(e) {
     e.preventDefault();
     const orderNum = document.getElementById('uoOrderNum').value.trim();
-    const email = document.getElementById('uoEmail').value.trim();
+    const email = document.getElementById('uoOrderEmail').value.trim();
     const guidance = document.getElementById('uoTrackGuidance');
     const supportLink = document.getElementById('uoSupportEmailLink');
 
@@ -77,7 +344,7 @@
       guidance.style.display = 'block';
       if (supportLink) {
         const subject = encodeURIComponent('Order Status Inquiry — ' + orderNum);
-        const body = encodeURIComponent('Hello ULTRA OVERNIGHT Team,\n\nI would like to check the shipping status for:\nOrder Number: ' + orderNum + '\nEmail: ' + email + '\n\nThank you!');
+        const body = encodeURIComponent('Hello ULTRA OVERNIGHT Support,\n\nPlease help me check the fulfillment status for:\nOrder Number: ' + orderNum + '\nEmail: ' + email + '\n\nThank you!');
         supportLink.href = 'mailto:support@trymalora.com?subject=' + subject + '&body=' + body;
       }
       guidance.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

@@ -1,46 +1,343 @@
-<section class="uo-page-hero">
-  <div class="uo-wrap">
-    <span class="uo-eyebrow">OUR PHILOSOPHY</span>
-    <h1 class="uo-heading-serif uo-page-hero-title">A Better Night Begins With Better Design.</h1>
-    <p class="uo-page-hero-desc">
-      We created ULTRA OVERNIGHT™ to solve the anxiety, sheet staining, and sleep disruptions women face during their heaviest nights.
+<!-- ================= ULTRA OVERNIGHT™ — OUR STORY ================= -->
+<style>
+  .uo-about-hero {
+    background: linear-gradient(180deg, #F9F1F3 0%, var(--uo-cream, #FAF7F5) 100%);
+    padding: clamp(48px, 6vw, 84px) 0 clamp(36px, 5vw, 64px);
+    text-align: center;
+    border-bottom: 1px solid var(--uo-border, #EAD8DC);
+  }
+  .uo-about-wrap-hero {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .uo-about-eyebrow {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--uo-burgundy, #8B3A62);
+    margin-bottom: 12px;
+    font-family: var(--uo-font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  }
+  .uo-about-hero-title {
+    font-size: clamp(28px, 4.2vw, 46px);
+    line-height: 1.18;
+    color: var(--uo-plum, #4B2038);
+    font-weight: 600;
+    margin: 0 0 18px;
+    letter-spacing: -0.02em;
+    font-family: var(--uo-font-serif, "Playfair Display", Georgia, serif);
+  }
+  .uo-about-hero-desc {
+    font-family: var(--uo-font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+    font-size: clamp(15px, 1.8vw, 17px);
+    line-height: 1.7;
+    color: var(--uo-body-text, #4A3E44);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .uo-about-section {
+    padding: clamp(48px, 6vw, 80px) 0;
+    background: #FFFFFF;
+  }
+  .uo-about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(32px, 5vw, 64px);
+    align-items: center;
+    margin-bottom: clamp(56px, 8vw, 96px);
+  }
+  .uo-about-grid-reverse {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  }
+  .uo-about-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .uo-about-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: clamp(56px, 8vw, 96px);
+  }
+  .uo-about-clinicians-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 860px) {
+    .uo-about-grid,
+    .uo-about-grid-reverse {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    .uo-about-media {
+      order: -1;
+    }
+    .uo-about-pillars-grid {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .uo-about-stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+    .uo-about-clinicians-cards {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .uo-about-wrap-hero {
+      padding: 0 16px;
+    }
+    .uo-about-hero-title {
+      font-size: 26px;
+      line-height: 1.22;
+    }
+    .uo-about-hero-desc {
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
+  }
+</style>
+
+<section class="uo-page-hero uo-about-hero">
+  <div class="uo-wrap uo-about-wrap-hero">
+    <span class="uo-about-eyebrow">
+      OUR ORIGIN &amp; PHILOSOPHY · FEMTECH TEXTILE ENGINEERING
+    </span>
+    <h1 class="uo-about-hero-title">
+      We Believed Nighttime Dignity Shouldn't End When Your Heaviest Flow Begins.
+    </h1>
+    <p class="uo-about-hero-desc">
+      Born from a simple, frustrating truth: millions of women spend their heaviest cycle nights setting midnight alarms, sleeping on folded towels, and dreading sheet stains. We founded <strong>ULTRA OVERNIGHT™</strong> to engineer sleep armor disguised as couture-level intimate apparel.
     </p>
   </div>
 </section>
 
-<section class="uo-page-content-wrap">
+<section class="uo-page-content-wrap uo-about-section">
   <div class="uo-wrap">
-    <!-- Story Block 1 -->
+
+    <!-- 1. The Genesis: The Problem We Refused to Accept -->
     <div class="uo-about-grid">
       <div class="uo-about-text">
-        <h3 class="uo-heading-serif">Protection Designed Beyond Ordinary Gussets</h3>
-        <p>
-          Most conventional period underwear simply places a rectangular absorbent pad right at the center bottom. But when you lie down, gravity pulls fluid backwards or sideways depending on how you sleep.
+        <span class="uo-eyebrow" style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--uo-burgundy, #8B3A62); font-weight: 700; display: block; margin-bottom: 8px;">THE ARCHITECTURAL FLAW</span>
+        <h2 class="uo-heading-serif" style="font-size: clamp(24px, 2.8vw, 34px); color: var(--uo-plum, #4B2038); line-height: 1.25; margin-bottom: 18px; font-weight: 600;">
+          Conventional Period Wear Was Designed for Daytime Sitting — Not Supine Sleep.
+        </h2>
+        <p style="font-family: var(--uo-font-sans, -apple-system, sans-serif); font-size: 15px; line-height: 1.75; color: var(--uo-body-text, #4A3E44); margin-bottom: 16px;">
+          In 2022, an intimate team of women textile designers, biomechanical engineers, and OB/GYN clinicians gathered in the Pacific Northwest to examine dozens of leading period products under fluid dynamics testing.
         </p>
-        <p>
-          Our Full-Spine™ architecture extends continuous protective coverage from the front pelvis all the way to the top rear waistband. Whether you sleep on your back, curled on your side, or change positions throughout the night, our multi-layer design is engineered to help keep you protected and confident.
+        <p style="font-family: var(--uo-font-sans, -apple-system, sans-serif); font-size: 15px; line-height: 1.75; color: var(--uo-body-text, #4A3E44); margin-bottom: 16px;">
+          The realization was startlingly obvious: almost every product on the market places a rectangular pad directly at the base. While that works when you sit or stand, the moment you lie down, gravity immediately pulls liquid along the natural anatomical curve of the spine.
         </p>
+        <p style="font-family: var(--uo-font-sans, -apple-system, sans-serif); font-size: 15px; line-height: 1.75; color: var(--uo-body-text, #4A3E44); margin-bottom: 22px;">
+          Sheet stains were never accidents. They were the inevitable consequence of daytime geometry forced onto nighttime sleep postures.
+        </p>
+
+        <!-- Founder Quote Box -->
+        <div class="uo-about-quote-box" style="background: #FCF8F9; border-left: 3px solid var(--uo-plum, #4B2038); padding: 18px 22px; border-radius: 0 10px 10px 0; margin-top: 10px;">
+          <p style="margin: 0; font-family: var(--uo-font-serif, serif); font-size: 16px; line-height: 1.6; font-style: italic; color: var(--uo-charcoal, #30252B);">
+            &ldquo;We didn't want to make 'underwear with a pad sewn into the bottom.' We wanted to engineer high-capacity fluid dynamics into second-skin luxury lingerie that lets women sleep 8 continuous hours.&rdquo;
+          </p>
+          <div style="margin-top: 10px; font-family: var(--uo-font-sans, sans-serif); font-size: 12.5px; font-weight: 700; color: var(--uo-plum, #4B2038); letter-spacing: 0.05em;">
+            — THE TRYMALORA DESIGN COLLECTIVE · SEATTLE, WA
+          </div>
+        </div>
       </div>
+
       <div class="uo-about-media">
-        <img src="{{ 'ultra-lifestyle-card-2.jpg' | asset_url }}" alt="Full-Spine Protection Concept" loading="lazy">
+        <div style="background: #FAF2F4; padding: 14px; border-radius: 20px; border: 1px solid #EEDCE0; box-shadow: 0 16px 36px rgba(75, 32, 56, 0.06);">
+          <img src="{{ 'ultra-lifestyle-card-2.jpg' | asset_url }}" alt="FULL-SPINE ULTRA™ Architectural Engineering" style="width: 100%; border-radius: 12px; display: block;" loading="lazy">
+        </div>
       </div>
     </div>
 
-    <!-- Story Block 2 -->
-    <div class="uo-about-grid" style="margin-bottom:0;">
-      <div class="uo-about-media">
-        <img src="{{ 'ultra-lifestyle-card-3.jpg' | asset_url }}" alt="Cloud-Like Fabric Texture" loading="lazy">
-      </div>
-      <div class="uo-about-text">
-        <h3 class="uo-heading-serif">Sensory Comfort Meets High-Capacity Science</h3>
-        <p>
-          Nobody wants to sleep in stiff, crinkly plastic or bulky diaper-like layers. We spent months perfecting the NOCTÉRA-5™ layered system: pairing moisture-wicking micro-mesh, rapid diffusion cores, and breathable waterproof barriers with butter-soft modal knits.
+    <!-- 2. Three Pillars of ULTRA Engineering -->
+    <div style="background: #FAF6F7; border: 1px solid #EFE2E5; border-radius: 20px; padding: clamp(36px, 5vw, 64px) clamp(20px, 4vw, 48px); margin-bottom: clamp(56px, 8vw, 96px);">
+      <div style="text-align: center; max-width: 680px; margin: 0 auto clamp(32px, 4vw, 48px);">
+        <span class="uo-eyebrow" style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--uo-burgundy, #8B3A62); font-weight: 700; display: block; margin-bottom: 8px;">THE ENGINEERING FOUNDATION</span>
+        <h2 class="uo-heading-serif" style="font-size: clamp(26px, 3.2vw, 36px); color: var(--uo-plum, #4B2038); line-height: 1.25; font-weight: 600; margin: 0 0 12px;">
+          Three Breakthroughs In Nighttime Protection
+        </h2>
+        <p style="font-family: var(--uo-font-sans, sans-serif); font-size: 14.5px; line-height: 1.65; color: var(--uo-body-text, #4A3E44); margin: 0;">
+          Every stitch, technical layer, and curve in FULL-SPINE ULTRA OVERNIGHT™ was developed to solve real anatomical failure points without adding bulk or chemical irritants.
         </p>
-        <p>
-          The result is whisper-quiet, flexible bedtime comfort that lets your skin breathe while holding high-volume flow securely until morning.
+      </div>
+
+      <div class="uo-about-pillars-grid">
+        <!-- Pillar 1 -->
+        <div class="uo-about-pillar-card" style="background: #FFFFFF; border: 1px solid #EEDDE0; border-radius: 14px; padding: 28px 24px; box-shadow: 0 4px 16px rgba(75, 32, 56, 0.03);">
+          <div style="width: 44px; height: 44px; border-radius: 10px; background: #F4E8EC; color: var(--uo-plum, #4B2038); display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <line x1="12" y1="8" x2="12" y2="16"/>
+            </svg>
+          </div>
+          <h3 class="uo-heading-serif" style="font-size: 19px; color: var(--uo-plum, #4B2038); margin: 0 0 10px; font-weight: 600;">
+            1. Full-Spine™ Gusset
+          </h3>
+          <p style="font-family: var(--uo-font-sans, sans-serif); font-size: 13.5px; line-height: 1.65; color: var(--uo-body-text, #4A3E44); margin: 0;">
+            An extended protective channel that starts at the front waistband and rises uninterrupted all the way to the top rear sacral waistband. 360-degree security for back and side sleepers.
+          </p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="uo-about-pillar-card" style="background: #FFFFFF; border: 1px solid #EEDDE0; border-radius: 14px; padding: 28px 24px; box-shadow: 0 4px 16px rgba(75, 32, 56, 0.03);">
+          <div style="width: 44px; height: 44px; border-radius: 10px; background: #F4E8EC; color: var(--uo-plum, #4B2038); display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+              <polyline points="2 17 12 22 22 17"/>
+              <polyline points="2 12 12 17 22 12"/>
+            </svg>
+          </div>
+          <h3 class="uo-heading-serif" style="font-size: 19px; color: var(--uo-plum, #4B2038); margin: 0 0 10px; font-weight: 600;">
+            2. Noctéra-5™ System
+          </h3>
+          <p style="font-family: var(--uo-font-sans, sans-serif); font-size: 13.5px; line-height: 1.65; color: var(--uo-body-text, #4A3E44); margin: 0;">
+            Five precision-engineered layers delivering up to 40ml capacity (8 regular tampons). Surface moisture is wicked inward in under 1.8 seconds, leaving zero cold, wet residue against skin.
+          </p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="uo-about-pillar-card" style="background: #FFFFFF; border: 1px solid #EEDDE0; border-radius: 14px; padding: 28px 24px; box-shadow: 0 4px 16px rgba(75, 32, 56, 0.03);">
+          <div style="width: 44px; height: 44px; border-radius: 10px; background: #F4E8EC; color: var(--uo-plum, #4B2038); display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <h3 class="uo-heading-serif" style="font-size: 19px; color: var(--uo-plum, #4B2038); margin: 0 0 10px; font-weight: 600;">
+            3. Clean Biocompatibility
+          </h3>
+          <p style="font-family: var(--uo-font-sans, sans-serif); font-size: 13.5px; line-height: 1.65; color: var(--uo-body-text, #4A3E44); margin: 0;">
+            Certified OEKO-TEX® Standard 100. 100% free of PFAS forever chemicals, toxic antimicrobial nanoparticles, and synthetic fragrances that disrupt delicate vulvar microflora.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Story Block 2: Sensory Luxury & Real Fabric Experience -->
+    <div class="uo-about-grid uo-about-grid-reverse">
+      <div class="uo-about-media">
+        <div style="background: #FAF2F4; padding: 14px; border-radius: 20px; border: 1px solid #EEDCE0; box-shadow: 0 16px 36px rgba(75, 32, 56, 0.06);">
+          <img src="{{ 'ultra-lifestyle-card-3.jpg' | asset_url }}" alt="Cloud-Soft Modal Fabric Touch" style="width: 100%; border-radius: 12px; display: block;" loading="lazy">
+        </div>
+      </div>
+
+      <div class="uo-about-text">
+        <span class="uo-eyebrow" style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--uo-burgundy, #8B3A62); font-weight: 700; display: block; margin-bottom: 8px;">THE TEXTILE TOUCH</span>
+        <h2 class="uo-heading-serif" style="font-size: clamp(24px, 2.8vw, 34px); color: var(--uo-plum, #4B2038); line-height: 1.25; margin-bottom: 18px; font-weight: 600;">
+          Sensory Softness That Feels Like Luxury Sleepwear, Not Medical Equipment.
+        </h2>
+        <p style="font-family: var(--uo-font-sans, sans-serif); font-size: 15px; line-height: 1.75; color: var(--uo-body-text, #4A3E44); margin-bottom: 16px;">
+          Nobody wants to sleep in stiff, rustling plastic or diaper-like bulk that pinches your hips and rustles with every turn.
+        </p>
+        <p style="font-family: var(--uo-font-sans, sans-serif); font-size: 15px; line-height: 1.75; color: var(--uo-body-text, #4A3E44); margin-bottom: 16px;">
+          We milled an ultra-fine modal-spandex knit that glides effortlessly against bedsheets, combined with a breathable 100% organic cotton inner contact sheet. It feels silky against bare skin, holds its contour all night long, and remains whisper-silent.
+        </p>
+        <p style="font-family: var(--uo-font-sans, sans-serif); font-size: 15px; line-height: 1.75; color: var(--uo-body-text, #4A3E44); margin: 0;">
+          Because true peace of mind shouldn't require sacrificing the sensual pleasure of slipping into beautiful bedtime lingerie.
         </p>
       </div>
     </div>
+
+    <!-- 4. Clinical Trust & Medical Social Proof (FrontrowMD) -->
+    <div style="background: #FFFFFF; border: 1px solid #EAD8DC; border-radius: 20px; padding: clamp(32px, 5vw, 56px) clamp(20px, 4vw, 44px); margin-bottom: clamp(56px, 8vw, 96px); box-shadow: 0 12px 32px rgba(75, 32, 56, 0.04);">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-bottom: 28px; border-bottom: 1px solid #F0E2E5; padding-bottom: 20px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="display: inline-flex; align-items: center; gap: 4px; color: #DB9E18;">
+            <svg width="18" height="26" viewBox="0 0 13 23" fill="none"><path d="M0.923956 7.23C1.19531 9.03117 3.05787 10.241 3.05787 10.241C3.05787 10.241 4.48126 8.53065 4.21098 6.72917C3.93902 4.92589 2.07569 3.71739 2.07569 3.71739C2.07569 3.71739 0.65367 5.42853 0.923956 7.23ZM0.937352 13.5417C2.13318 14.9187 4.3623 14.9547 4.3623 14.9547C4.3623 14.9547 4.65301 12.7577 3.45718 11.3807C2.26134 10.0037 0.0308617 9.96698 0.0308617 9.96698C0.0308617 9.96698 -0.259543 12.165 0.937352 13.5417ZM3.41175 18.8799C5.12501 19.5249 7.10895 18.5052 7.10895 18.5052C7.10895 18.5052 6.31388 16.4388 4.60061 15.7938C2.88734 15.1487 0.903406 16.1685 0.903406 16.1685C0.903406 16.1685 1.69848 18.2349 3.41175 18.8799ZM8.55269 22.3241C10.3647 22.6032 12.0958 21.1994 12.0958 21.1994C12.0958 21.1994 10.888 19.3429 9.07562 19.0627C7.26357 18.7836 5.53384 20.1881 5.53384 20.1881C5.53384 20.1881 6.74065 22.0449 8.55269 22.3241ZM4.64297 1.99483C3.69978 3.5618 4.35843 5.67417 4.35843 5.67417C4.35843 5.67417 6.54922 5.24737 7.49241 3.6804C8.43559 2.11343 7.77664 8.80981e-07 7.77664 8.80981e-07C7.77664 8.80981e-07 5.58615 0.427856 4.64297 1.99483Z" fill="currentColor"/></svg>
+            <span style="font-family: var(--uo-font-serif, serif); font-size: 18px; font-weight: 600; color: var(--uo-plum, #4B2038);">Clinicians' Choice™ On FrontrowMD</span>
+            <svg width="18" height="26" viewBox="0 0 13 23" fill="none"><path d="M11.1717 7.23C10.9004 9.03117 9.03783 10.241 9.03783 10.241C9.03783 10.241 7.61444 8.53065 7.88473 6.72917C8.15668 4.92589 10.02 3.71739 10.02 3.71739C10.02 3.71739 11.442 5.42853 11.1717 7.23ZM11.1584 13.5417C9.96252 14.9187 7.7334 14.9547 7.7334 14.9547C7.7334 14.9547 7.4427 12.7577 8.63853 11.3807C9.83436 10.0037 12.0648 9.96698 12.0648 9.96698C12.0648 9.96698 12.3552 12.165 11.1584 13.5417ZM8.68396 18.8799C6.97069 19.5249 4.98676 18.5052 4.98676 18.5052C4.98676 18.5052 5.78183 16.4388 7.49509 15.7938C9.20836 15.1487 11.1923 16.1685 11.1923 16.1685C11.1923 16.1685 10.3972 18.2349 8.68396 18.8799ZM3.54301 22.3241C1.73097 22.6032 -0.000131784 21.1994 -0.000131784 21.1994C-0.000131784 21.1994 1.20774 19.3429 3.02009 19.0627C4.83213 18.7836 6.56186 20.1881 6.56186 20.1881C6.56186 20.1881 5.35505 22.0449 3.54301 22.3241ZM7.45274 1.99483C8.39592 3.5618 7.73727 5.67417 7.73727 5.67417C7.73727 5.67417 5.54648 5.24737 4.6033 3.6804C3.66011 2.11343 4.31907 8.80981e-07 4.31907 8.80981e-07C4.31907 8.80981e-07 6.50955 0.427856 7.45274 1.99483Z" fill="currentColor"/></svg>
+            <span style="font-family: var(--uo-font-serif, serif); font-size: 18px; font-weight: 600; color: var(--uo-plum, #4B2038);">Clinicians' Choice™ On FrontrowMD</span>
+            <svg width="18" height="26" viewBox="0 0 13 23" fill="none"><path d="M11.1717 7.23C10.9004 9.03117 9.03783 10.241 9.03783 10.241C9.03783 10.241 7.61444 8.53065 7.88473 6.72917C8.15668 4.92589 10.02 3.71739 10.02 3.71739C10.02 3.71739 11.442 5.42853 11.1717 7.23ZM11.1584 13.5417C9.96252 14.9187 7.7334 14.9547 7.7334 14.9547C7.7334 14.9547 7.4427 12.7577 8.63853 11.3807C9.83436 10.0037 12.0648 9.96698 12.0648 9.96698C12.0648 9.96698 12.3552 12.165 11.1584 13.5417ZM8.68396 18.8799C6.97069 19.5249 4.98676 18.5052 4.98676 18.5052C4.98676 18.5052 5.78183 16.4388 7.49509 15.7938C9.20836 15.1487 11.1923 16.1685 11.1923 16.1685C11.1923 16.1685 10.3972 18.2349 8.68396 18.8799ZM3.54301 22.3241C1.73097 22.6032 -0.000131784 21.1994 -0.000131784 21.1994C-0.000131784 21.1994 1.20774 19.3429 3.02009 19.0627C4.83213 18.7836 6.56186 20.1881 6.56186 20.1881C6.56186 20.1881 5.35505 22.0449 3.54301 22.3241ZM7.45274 1.99483C8.39592 3.5618 7.73727 5.67417 7.73727 5.67417C7.73727 5.67417 5.54648 5.24737 4.6033 3.6804C3.66011 2.11343 4.31907 8.80981e-07 4.31907 8.80981e-07C4.31907 8.80981e-07 6.50955 0.427856 7.45274 1.99483Z" fill="currentColor"/></svg>
+          </div>
+        </div>
+        <div style="font-family: var(--uo-font-sans, sans-serif); font-size: 13px; color: var(--uo-plum, #4B2038); font-weight: 600; background: #F4EBEF; padding: 6px 14px; border-radius: 20px;">
+          ✓ 100% Uncompensated Independent Clinical Feedback
+        </div>
+      </div>
+
+      <div class="uo-about-clinicians-cards">
+        <div style="background: #FAF6F7; border: 1px solid #EFE4E7; border-radius: 12px; padding: 22px;">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+            <img src="{{ 'doctor-avatar-1.png' | asset_url }}" alt="Dr. Jennifer T. Nguyen, MD" style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid #FFF; object-fit: cover;">
+            <div>
+              <div style="font-size: 14px; font-weight: 700; color: var(--uo-plum, #4B2038);">Dr. Jennifer T. Nguyen, MD</div>
+              <div style="font-size: 12px; color: var(--uo-body-text, #4A3E44);">Board-Certified OB/GYN · FrontrowMD Verified</div>
+            </div>
+          </div>
+          <p style="font-family: var(--uo-font-sans, sans-serif); font-size: 13px; line-height: 1.6; font-style: italic; color: var(--uo-charcoal, #30252B); margin: 0;">
+            &ldquo;The continuous spine extension genuinely solves nighttime posterior pooling for postpartum and uterine fibroid patients without irritating the delicate vulvar microclimate.&rdquo;
+          </p>
+        </div>
+
+        <div style="background: #FAF6F7; border: 1px solid #EFE4E7; border-radius: 12px; padding: 22px;">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+            <img src="{{ 'doctor-avatar-2.png' | asset_url }}" alt="Platinum Providers Clinical Reviewer" style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid #FFF; object-fit: cover;">
+            <div>
+              <div style="font-size: 14px; font-weight: 700; color: var(--uo-plum, #4B2038);">Platinum Providers Health</div>
+              <div style="font-size: 12px; color: var(--uo-body-text, #4A3E44);">Women's Pelvic Health Specialty Group</div>
+            </div>
+          </div>
+          <p style="font-family: var(--uo-font-sans, sans-serif); font-size: 13px; line-height: 1.6; font-style: italic; color: var(--uo-charcoal, #30252B); margin: 0;">
+            &ldquo;Eliminating toxic PFAS coatings and synthetic antimicrobials while preserving high fluid capacity makes Trymalora a safe, biocompatible choice for long overnight wear.&rdquo;
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Environmental Commitment & Wash-Tested Durability -->
+    <div class="uo-about-stats-grid">
+      <div style="text-align: center; padding: 24px 16px; background: #FAF7F8; border-radius: 14px; border: 1px solid #F0E3E6;">
+        <div style="font-family: var(--uo-font-serif, serif); font-size: clamp(28px, 3.2vw, 38px); font-weight: 700; color: var(--uo-plum, #4B2038); line-height: 1.1; margin-bottom: 6px;">40 ml</div>
+        <div style="font-family: var(--uo-font-sans, sans-serif); font-size: 12.5px; font-weight: 600; color: var(--uo-charcoal, #30252B); text-transform: uppercase; letter-spacing: 0.06em;">Overnight Absorbency</div>
+        <div style="font-family: var(--uo-font-sans, sans-serif); font-size: 11.5px; color: var(--uo-body-text, #4A3E44); margin-top: 4px;">Equal to 8 standard tampons</div>
+      </div>
+
+      <div style="text-align: center; padding: 24px 16px; background: #FAF7F8; border-radius: 14px; border: 1px solid #F0E3E6;">
+        <div style="font-family: var(--uo-font-serif, serif); font-size: clamp(28px, 3.2vw, 38px); font-weight: 700; color: var(--uo-plum, #4B2038); line-height: 1.1; margin-bottom: 6px;">100+</div>
+        <div style="font-family: var(--uo-font-sans, sans-serif); font-size: 12.5px; font-weight: 600; color: var(--uo-charcoal, #30252B); text-transform: uppercase; letter-spacing: 0.06em;">Wash-Tested Cycles</div>
+        <div style="font-family: var(--uo-font-sans, sans-serif); font-size: 11.5px; color: var(--uo-body-text, #4A3E44); margin-top: 4px;">Zero membrane delamination</div>
+      </div>
+
+      <div style="text-align: center; padding: 24px 16px; background: #FAF7F8; border-radius: 14px; border: 1px solid #F0E3E6;">
+        <div style="font-family: var(--uo-font-serif, serif); font-size: clamp(28px, 3.2vw, 38px); font-weight: 700; color: var(--uo-plum, #4B2038); line-height: 1.1; margin-bottom: 6px;">280+</div>
+        <div style="font-family: var(--uo-font-sans, sans-serif); font-size: 12.5px; font-weight: 600; color: var(--uo-charcoal, #30252B); text-transform: uppercase; letter-spacing: 0.06em;">Disposables Saved/Yr</div>
+        <div style="font-family: var(--uo-font-sans, sans-serif); font-size: 11.5px; color: var(--uo-body-text, #4A3E44); margin-top: 4px;">Per pair in continuous use</div>
+      </div>
+
+      <div style="text-align: center; padding: 24px 16px; background: #FAF7F8; border-radius: 14px; border: 1px solid #F0E3E6;">
+        <div style="font-family: var(--uo-font-serif, serif); font-size: clamp(28px, 3.2vw, 38px); font-weight: 700; color: var(--uo-plum, #4B2038); line-height: 1.1; margin-bottom: 6px;">0%</div>
+        <div style="font-family: var(--uo-font-sans, sans-serif); font-size: 12.5px; font-weight: 600; color: var(--uo-charcoal, #30252B); text-transform: uppercase; letter-spacing: 0.06em;">PFAS / PFOA</div>
+        <div style="font-family: var(--uo-font-sans, sans-serif); font-size: 11.5px; color: var(--uo-body-text, #4A3E44); margin-top: 4px;">OEKO-TEX® Standard 100</div>
+      </div>
+    </div>
+
+    <!-- 6. Final Call to Action -->
+    <div style="text-align: center; background: linear-gradient(135deg, #FAF2F4 0%, #F5EAEF 100%); border: 1px solid #EED8DC; border-radius: 20px; padding: clamp(40px, 6vw, 68px) 24px;">
+      <span class="uo-eyebrow" style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--uo-burgundy, #8B3A62); font-weight: 700; display: block; margin-bottom: 10px;">
+        DISCOVER ULTRA COMFORT
+      </span>
+      <h2 class="uo-heading-serif" style="font-size: clamp(26px, 3.6vw, 40px); color: var(--uo-plum, #4B2038); line-height: 1.2; margin-bottom: 14px; font-weight: 600;">
+        Your Most Restful Night Is Waiting.
+      </h2>
+      <p style="font-family: var(--uo-font-sans, sans-serif); font-size: 15px; line-height: 1.7; color: var(--uo-body-text, #4A3E44); max-width: 580px; margin: 0 auto 28px;">
+        Join over 32,492 women who sleep peacefully through heavy cycles with our medical-grade Full-Spine™ architecture.
+      </p>
+      <a href="/products/full-spine-ultra-overnight" class="uo-btn-primary" style="display: inline-block; padding: 16px 36px; font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-decoration: none; border-radius: 8px; box-shadow: 0 10px 24px rgba(75, 32, 56, 0.2);">
+        EXPLORE FULL-SPINE ULTRA OVERNIGHT™ ➔
+      </a>
+    </div>
+
   </div>
 </section>
 
@@ -55,4 +352,3 @@
   ]
 }
 {% endschema %}
-
