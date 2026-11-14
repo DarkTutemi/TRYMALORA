@@ -80,7 +80,7 @@
       <!-- ================= RIGHT: BUY BOX (PREMIUM VISUAL HIERARCHY) ================= -->
       <div class="uo-buybox" id="uoBuyBox">
         
-        <!-- 1. Trustpilot Verified Rating (Positioned Above Product Title) -->
+        <!-- 1. Trustpilot Verified Rating (Positioned Above Product Title - Strictly 1 Line) -->
         <div class="uo-trustpilot-rating-bar" aria-label="Trustpilot Rating 4.9 out of 5 based on 32,492 customer reviews">
           <div class="uo-tp-stars-row">
             <span class="uo-tp-star-box">★</span>
@@ -92,10 +92,10 @@
           <span class="uo-tp-rating-lead">
             <strong class="uo-tp-score">4.9 / 5</strong>
             <span class="uo-tp-dot">·</span>
-            <span class="uo-tp-count-text">Based on <strong>32,492</strong> customer reviews</span>
+            <span class="uo-tp-count-text"><span class="uo-tp-lead-word">Based on </span><strong>32,492</strong> reviews</span>
           </span>
           <span class="uo-tp-brand-badge">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="#00b67a" style="vertical-align:-1px;margin-right:3px;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="#00b67a" style="vertical-align:-1px;margin-right:2px;">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
             </svg>
             Trustpilot
@@ -105,7 +105,7 @@
         <!-- 2. Product Category Label -->
         <div class="uo-product-category">PREMIUM OVERNIGHT PERIOD UNDERWEAR</div>
 
-        <!-- 3. Product Title (Compact 27–31px on Mobile, Serif) -->
+        <!-- 3. Product Title (Compact on Mobile, Serif) -->
         <h1 class="uo-heading-serif uo-product-title">
           {%- if has_real_product -%}
             {{ current_product.title }}
@@ -117,7 +117,7 @@
         <!-- 4. Short Emotional Headline -->
         <h2 class="uo-pdp-subhead-serif">Sleep Through Heavy-Flow Nights With More Confidence.</h2>
 
-        <!-- 5. Price / Availability Row -->
+        <!-- 5. Price / Availability Row (With Compare-at Price) -->
         <div class="uo-price-row">
           <span class="uo-price-current">
             {%- if can_purchase and current_variant.price > 0 -%}
@@ -126,7 +126,16 @@
               Pricing coming soon
             {%- endif -%}
           </span>
-          <span class="uo-pdp-prelaunch-tag">Pre-Launch Edition</span>
+          {%- if current_variant.compare_at_price > current_variant.price -%}
+            <s class="uo-price-compare" id="uoPriceCompare">{{ current_variant.compare_at_price | money }}</s>
+            {%- assign savings = current_variant.compare_at_price | minus: current_variant.price | times: 100.0 | divided_by: current_variant.compare_at_price | round -%}
+            {%- if savings > 0 -%}
+              <span class="uo-price-save-badge" id="uoPriceSaveBadge">Save {{ savings }}%</span>
+            {%- endif -%}
+          {%- else -%}
+            <s class="uo-price-compare" id="uoPriceCompare" style="display:none;"></s>
+            <span class="uo-price-save-badge" id="uoPriceSaveBadge" style="display:none;"></span>
+          {%- endif -%}
         </div>
 
         <!-- 6. Short Value Proposition (Exact Approved Copy: 2–3 Lines on Mobile) -->

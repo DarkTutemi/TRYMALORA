@@ -190,14 +190,32 @@ function syncAuthoritativeVariant() {
       activeTierCard.setAttribute('data-variant-id', matched.id);
     }
 
-    // Pricing update (if real price > 0 format money; otherwise Pricing to be confirmed)
+    // Pricing update (if real price > 0 format money; otherwise Pricing coming soon)
     if (priceDisplay) {
       const priceCents = Number(matched.price || 0);
+      const compareCents = Number(matched.compare_at_price || 0);
+      const compareDisplay = document.getElementById('uoPriceCompare');
+      const saveBadge = document.getElementById('uoPriceSaveBadge');
+      const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+
       if (priceCents > 0) {
-        const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
         priceDisplay.textContent = currency.format(priceCents / 100);
+        if (compareDisplay && compareCents > priceCents) {
+          compareDisplay.textContent = currency.format(compareCents / 100);
+          compareDisplay.style.display = 'inline';
+          if (saveBadge) {
+            const savings = Math.round(((compareCents - priceCents) / compareCents) * 100);
+            saveBadge.textContent = `Save ${savings}%`;
+            saveBadge.style.display = 'inline-block';
+          }
+        } else {
+          if (compareDisplay) compareDisplay.style.display = 'none';
+          if (saveBadge) saveBadge.style.display = 'none';
+        }
       } else {
-        priceDisplay.textContent = 'Pricing to be confirmed';
+        priceDisplay.textContent = 'Pricing coming soon';
+        if (compareDisplay) compareDisplay.style.display = 'none';
+        if (saveBadge) saveBadge.style.display = 'none';
       }
     }
   }

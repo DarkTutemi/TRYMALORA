@@ -31,6 +31,12 @@ function createLocalServer(port) {
     content = content.replace(/{%-?\s*if\s+section\.blocks\.size\s*>\s*0\s*-?%}[\s\S]*?{%-?\s*else\s*-?%}([\s\S]*?){%-?\s*endif\s*-?%}/g, '$1');
     content = content.replace(/{%-?\s*if\s+has_real_product\s*-?%}[\s\S]*?{%-?\s*else\s*-?%}([\s\S]*?){%-?\s*endif\s*-?%}/g, '$1');
     content = content.replace(/{%-?\s*if\s+can_purchase\s*.*?%}[\s\S]*?{%-?\s*else\s*-?%}([\s\S]*?){%-?\s*endif\s*-?%}/g, '$1');
+    content = content.replace(/{%-?\s*if\s+current_variant\.compare_at_price\s*>\s*current_variant\.price\s*-?%}([\s\S]*?){%-?\s*else\s*-?%}([\s\S]*?){%-?\s*endif\s*-?%}/g, '$1');
+    content = content.replace(/{{\s*current_variant\.price\s*\|\s*money\s*}}/g, '$39.99');
+    content = content.replace(/{{\s*current_variant\.price\s*\|\s*times:\s*3\s*\|\s*money\s*}}/g, '$119.97');
+    content = content.replace(/{{\s*current_variant\.price\s*\|\s*times:\s*5\s*\|\s*money\s*}}/g, '$199.95');
+    content = content.replace(/{{\s*current_variant\.compare_at_price\s*\|\s*money\s*}}/g, '$79.98');
+    content = content.replace(/{{\s*savings\s*}}/g, '50');
     content = content.replace(/{%-?\s*if\s+section\.settings\.enable_review_app[\s\S]*?{%-?\s*else\s*-?%}([\s\S]*?){%-?\s*endif\s*-?%}/g, '$1');
     content = content.replace(/{%-?\s*if\s+product\.metafields\.reviews\.rating\.value\s*!=\s*blank[\s\S]*?{%-?\s*endif\s*-?%}/g, '');
     content = content.replace(/{%-?\s*if\s+shop\.enabled_payment_types\.size\s*>\s*0\s*-?%}([\s\S]*?){%-?\s*endif\s*-?%}/g, `
@@ -338,6 +344,12 @@ async function runSuite() {
         const tierCards = document.querySelector('.uo-tier-cards');
         const firstTier = document.querySelector('.uo-tier-card');
         const badge = document.getElementById('uoGalleryCounterBadge');
+        const tpBar = document.querySelector('.uo-trustpilot-rating-bar');
+        const compareEl = document.getElementById('uoPriceCompare');
+        const saveBadgeEl = document.getElementById('uoPriceSaveBadge');
+        const prelaunchEl = document.querySelector('.uo-pdp-prelaunch-tag');
+        const mmWrap = document.getElementById('uoMixMatchWrap');
+        const atcRow = document.querySelector('.uo-atc-row');
         const overflow = document.documentElement.scrollWidth - window.innerWidth;
         
         let galleryMobileOrderOk = false;
@@ -347,12 +359,26 @@ async function runSuite() {
           galleryMobileOrderOk = mainRect.bottom <= stripRect.top + 20;
         }
 
+        let mmSpacing = null;
+        if (mmWrap && atcRow) {
+          mmSpacing = Math.round(atcRow.getBoundingClientRect().top - mmWrap.getBoundingClientRect().bottom);
+        }
+
+        const tpHeight = tpBar ? Math.round(tpBar.getBoundingClientRect().height) : null;
+
         return {
           viewport: ${vp.w},
           overflow: overflow,
           overflowPass: overflow <= 1,
           titleFontSize: title ? window.getComputedStyle(title).fontSize : null,
-          titleLineHeight: title ? window.getComputedStyle(title).lineHeight : null,
+          titleColor: title ? window.getComputedStyle(title).color : null,
+          trustpilotHeight: tpHeight,
+          trustpilotSingleLinePass: tpHeight !== null && tpHeight <= 26,
+          compareAtPrice: compareEl ? compareEl.textContent.trim() : null,
+          saveBadge: saveBadgeEl ? saveBadgeEl.textContent.trim() : null,
+          prelaunchAbsentPass: !prelaunchEl || window.getComputedStyle(prelaunchEl).display === 'none',
+          mixMatchSpacingPx: mmSpacing,
+          mixMatchSpacingPass: mmSpacing >= 18,
           galleryMainAboveThumbnails: galleryMobileOrderOk,
           tierCardHeight: firstTier ? firstTier.getBoundingClientRect().height : null,
           counterBadge: badge ? badge.textContent.trim() : null

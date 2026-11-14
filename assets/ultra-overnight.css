@@ -1,27 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap');
+
 /* ==========================================================================
    ULTRA OVERNIGHT™ — PREMIUM FEMININE DESIGN SYSTEM
    Visual Identity: Luxury Wellness / High-Conversion DTC / Feminine Editorial
    ========================================================================== */
 
 :root {
-  --uo-plum: #4B2038;
-  --uo-plum-dark: #371427;
-  --uo-burgundy: #8F5269;
+  --uo-plum: #000000;
+  --uo-plum-dark: #1a1a1a;
+  --uo-btn-plum: #4B2038;
+  --uo-btn-plum-dark: #371427;
+  --uo-burgundy: #000000;
   --uo-dusty-rose: #C8879D;
   --uo-rose: #C8879D;
   --uo-blush: #F8EEF0;
   --uo-blush-light: #FAF4F5;
   --uo-cream: #FCF8F5;
   --uo-cream-warm: #F8F2ED;
-  --uo-muted-mauve: #8F5269;
-  --uo-charcoal: #30252B;
-  --uo-body-text: #30252B;
+  --uo-muted-mauve: #555555;
+  --uo-charcoal: #000000;
+  --uo-body-text: #111111;
+  --uo-heading-color: #000000;
   --uo-white: #FFFFFF;
   --uo-border: #EEDEE2;
   --uo-border-light: #F6EBEE;
   
-  --uo-font-serif: 'Playfair Display', 'Cormorant Garamond', 'Didot', Georgia, serif;
-  --uo-font-sans: 'Inter', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --uo-font-serif: 'Playfair Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Georgia, serif;
+  --uo-font-sans: -apple-system, BlinkMacSystemFont, 'Inter', 'Assistant', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   
   --uo-radius-sm: 4px;
   --uo-radius-md: 8px;
@@ -48,19 +53,19 @@
 
 .uo-heading-serif {
   font-family: var(--uo-font-serif);
-  color: var(--uo-plum);
+  color: #000000;
   letter-spacing: -0.01em;
   margin: 0;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .uo-eyebrow {
   font-family: var(--uo-font-sans);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--uo-burgundy);
+  letter-spacing: 1.5px;
+  color: #000000;
   margin-bottom: 12px;
   display: block;
 }
@@ -70,11 +75,11 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: var(--uo-plum);
+  background-color: var(--uo-btn-plum);
   color: var(--uo-white);
   font-family: var(--uo-font-sans);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.5px;
   padding: 14px 28px;
   border-radius: var(--uo-radius-sm);
@@ -85,7 +90,7 @@
 }
 
 .uo-btn-primary:hover {
-  background-color: var(--uo-plum-dark);
+  background-color: var(--uo-btn-plum-dark);
   color: var(--uo-white);
   transform: translateY(-1px);
 }
@@ -95,7 +100,7 @@
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  color: var(--uo-plum);
+  color: #000000;
   font-family: var(--uo-font-sans);
   font-size: 14px;
   font-weight: 600;
@@ -103,21 +108,21 @@
   padding: 13px 26px;
   border-radius: var(--uo-radius-sm);
   text-decoration: none;
-  border: 1px solid var(--uo-plum);
+  border: 1px solid #000000;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .uo-btn-secondary:hover {
   background-color: var(--uo-blush);
-  color: var(--uo-plum);
+  color: #000000;
 }
 
 /* ==========================================================================
    1. ANNOUNCEMENT BAR & HEADER
    ========================================================================== */
 .uo-announcement-bar {
-  background-color: var(--uo-plum);
+  background-color: var(--uo-btn-plum-dark);
   color: var(--uo-white);
   font-family: var(--uo-font-sans);
   font-size: 12px;
@@ -1100,18 +1105,21 @@
 
 .uo-product-category {
   font-family: var(--uo-font-sans);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.5px;
-  color: var(--uo-burgundy);
+  color: #000000;
   text-transform: uppercase;
   margin-bottom: 8px;
 }
 
 .uo-product-title {
+  font-family: var(--uo-font-serif);
   font-size: clamp(28px, 3vw, 38px);
   line-height: 1.15;
   margin-bottom: 12px;
+  color: #000000;
+  font-weight: 700;
 }
 
 .uo-pdp-rating-row {
@@ -1124,17 +1132,17 @@
 }
 
 .uo-pdp-rating-stars {
-  color: var(--uo-plum);
+  color: #000000;
   font-size: 15px;
 }
 
 .uo-pdp-rating-score {
   font-weight: 700;
-  color: var(--uo-charcoal);
+  color: #000000;
 }
 
 .uo-pdp-rating-count {
-  color: var(--uo-body-text);
+  color: #111111;
 }
 
 .uo-price-row {
@@ -1148,7 +1156,7 @@
   font-family: var(--uo-font-sans);
   font-size: 28px;
   font-weight: 700;
-  color: var(--uo-plum);
+  color: #000000;
 }
 
 .uo-installments-text {
@@ -1634,24 +1642,24 @@
 .uo-main-image-wrap{background:#f7eceb;border-radius:18px;border:1px solid #ead8dc}
 .uo-gallery-wrap{top:110px;gap:14px}
 .uo-buybox{padding:22px clamp(8px,1.7vw,28px) 26px;background:#fff;border:1px solid #f0e4e6;border-radius:18px;box-shadow:0 18px 38px rgba(88,35,61,.05)}
-.uo-product-title{font-size:clamp(32px,3.2vw,48px);line-height:1.08;letter-spacing:-.025em}
-.uo-price-current{font-size:26px}
-.uo-pdp-promise{font-family:var(--uo-font-serif);font-style:italic;color:var(--uo-plum);font-size:20px;margin:0 0 22px}
+.uo-product-title{font-size:clamp(30px,3vw,42px);line-height:1.12;letter-spacing:-.02em;color:#000000;font-weight:700}
+.uo-price-current{font-size:26px;color:#000000}
+.uo-pdp-promise{font-family:var(--uo-font-serif);font-style:normal;color:#000000;font-size:20px;margin:0 0 22px}
 .uo-tier-card{border-radius:12px;padding:19px 15px;min-height:118px}
 .uo-tier-card.is-selected{background:#fff7f8;box-shadow:0 0 0 2px rgba(88,35,61,.08)}
 .uo-pdp-footnote{font-size:12px;line-height:1.6;color:var(--uo-body-text);margin:0 0 20px}
 .uo-pdp-atc-btn{height:58px;border-radius:9px;font-weight:700}
 .uo-pdp-editorial{padding:clamp(60px,8vw,120px) 0;background:#fff}
 .uo-pdp-editorial-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);align-items:center;gap:clamp(32px,7vw,110px)}
-.uo-pdp-editorial-kicker{font-family:var(--uo-font-sans);font-size:11px;font-weight:700;letter-spacing:.17em;color:var(--uo-burgundy);margin:0 0 20px}
-.uo-pdp-editorial-copy h2{font-size:clamp(38px,4vw,62px);letter-spacing:-.035em;line-height:1.08;max-width:540px}
+.uo-pdp-editorial-kicker{font-family:var(--uo-font-sans);font-size:11px;font-weight:700;letter-spacing:.17em;color:#000000;margin:0 0 20px}
+.uo-pdp-editorial-copy h2{font-size:clamp(34px,3.8vw,56px);letter-spacing:-.03em;line-height:1.1;color:#000000;max-width:540px}
 .uo-pdp-editorial-lead{font-size:17px;line-height:1.7;color:var(--uo-body-text);margin:22px 0 28px;max-width:510px}
 .uo-pdp-editorial-features{display:grid;gap:18px;border-top:1px solid var(--uo-border);padding-top:26px}
 .uo-pdp-editorial-feature{display:flex;align-items:flex-start;gap:14px}
-.uo-pdp-feature-mark{color:var(--uo-burgundy);font-size:16px;padding-top:3px}
-.uo-pdp-editorial-feature h3{font:700 15px var(--uo-font-sans);color:var(--uo-charcoal);margin:0 0 5px}
+.uo-pdp-feature-mark{color:#000000;font-size:16px;padding-top:3px}
+.uo-pdp-editorial-feature h3{font:700 15px var(--uo-font-sans);color:#000000;margin:0 0 5px}
 .uo-pdp-editorial-feature p{font:400 13px/1.65 var(--uo-font-sans);color:var(--uo-body-text);margin:0}
-.uo-pdp-editorial-link{display:inline-block;margin-top:30px;color:var(--uo-plum);font:700 13px var(--uo-font-sans);text-decoration:underline;text-underline-offset:5px}
+.uo-pdp-editorial-link{display:inline-block;margin-top:30px;color:#000000;font:700 13px var(--uo-font-sans);text-decoration:underline;text-underline-offset:5px}
 .uo-pdp-editorial-visual{background:#f5eaeb;border-radius:22px;padding:clamp(18px,3vw,42px);overflow:hidden}
 .uo-pdp-editorial-image{width:100%;height:auto;display:block;object-fit:contain;max-height:580px}
 .uo-pdp-editorial-caption{font:400 11px/1.5 var(--uo-font-sans);text-align:center;color:var(--uo-body-text);margin-top:16px}
@@ -1708,15 +1716,19 @@
     margin: 0;
   }
   .uo-product-title {
-    font-size: clamp(26px, 7.5vw, 34px);
-    line-height: 1.15;
-    margin-bottom: 10px;
-    font-weight: 600;
+    font-size: clamp(20px, 5.2vw, 24px) !important;
+    line-height: 1.25 !important;
+    margin-bottom: 8px !important;
+    font-weight: 700 !important;
+    color: #000000 !important;
   }
   .uo-pdp-subhead-serif {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.35;
     margin-bottom: 12px;
+    font-style: normal !important;
+    color: #111111 !important;
+    font-weight: 500;
   }
   .uo-pdp-editorial {
     padding: 48px 0;
@@ -1800,27 +1812,46 @@
 /* Subhead Serif */
 .uo-pdp-subhead-serif {
   font-family: var(--uo-font-serif);
-  font-size: 19px;
+  font-size: 17px;
   font-weight: 500;
+  font-style: normal !important;
   line-height: 1.35;
-  color: var(--uo-plum);
+  color: #111111;
   margin: 0 0 16px 0;
 }
 
-/* Pre-launch Tag */
-.uo-pdp-prelaunch-tag {
+/* Compare-at Price & Savings Badge */
+.uo-price-compare {
   display: inline-block;
+  font-family: var(--uo-font-sans);
+  font-size: 17px;
+  font-weight: 400;
+  color: #767676;
+  text-decoration: line-through;
+  margin-left: 10px;
+  vertical-align: baseline;
+}
+
+.uo-price-save-badge {
+  display: inline-flex;
+  align-items: center;
   font-family: var(--uo-font-sans);
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--uo-burgundy);
-  background: var(--uo-blush);
-  padding: 4px 10px;
-  border-radius: 20px;
-  margin-left: 10px;
+  letter-spacing: 0.04em;
+  color: #991B1B;
+  background: #FEE2E2;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
   vertical-align: middle;
+  line-height: 1.2;
+}
+
+/* Legacy tag fallback */
+.uo-pdp-prelaunch-tag {
+  display: none !important;
 }
 
 /* PDP Highlights Grid */
@@ -1842,7 +1873,7 @@
   font-family: var(--uo-font-sans);
   font-size: 12.5px;
   font-weight: 600;
-  color: var(--uo-charcoal);
+  color: #000000;
   line-height: 1.3;
 }
 
@@ -1850,7 +1881,7 @@
   width: 17px;
   height: 17px;
   flex-shrink: 0;
-  color: var(--uo-plum);
+  color: #000000;
 }
 
 /* Color Swatches */
@@ -2061,12 +2092,17 @@
   background: #FBF7F3;
   padding: 12px 16px;
   border-radius: 6px;
-  border-left: 3px solid var(--uo-plum);
+  border-left: 3px solid #000000;
 }
 
-/* Mix & Match Customizer */
+/* Mix & Match Customizer & Spacing */
+.uo-selectors-panel {
+  margin-bottom: 22px;
+}
+
 .uo-mix-match-wrap {
-  margin-top: 16px;
+  margin-top: 14px;
+  margin-bottom: 22px;
   border: 1px solid #EEDCDF;
   background: #FDF8F9;
   border-radius: var(--uo-radius-sm);
@@ -2084,7 +2120,7 @@
   font-family: var(--uo-font-sans);
   font-size: 13px;
   font-weight: 700;
-  color: var(--uo-plum);
+  color: #000000;
   cursor: pointer;
   text-align: left;
   transition: background 0.15s ease;
@@ -2504,32 +2540,34 @@
    15. PDP V3 COMPONENT EXTENSIONS — FEMININE LUXURY & CRO
    ========================================================================== */
 
-/* Trustpilot Verified Rating Bar (Above Product Title) */
+/* Trustpilot Verified Rating Bar (Above Product Title - Strictly 1 Row) */
 .uo-trustpilot-rating-bar {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 6px 10px;
-  margin-bottom: 12px;
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+  gap: 6px 8px;
+  margin-bottom: 10px;
   font-family: var(--uo-font-sans);
-  font-size: 13px;
-  line-height: 1.4;
+  font-size: 12px;
+  line-height: 1;
 }
 
 .uo-tp-stars-row {
   display: inline-flex;
-  gap: 2px;
+  gap: 1.5px;
+  flex-shrink: 0;
 }
 
 .uo-tp-star-box {
-  width: 17px;
-  height: 17px;
+  width: 15px;
+  height: 15px;
   background-color: #00b67a;
   color: #ffffff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
+  font-size: 9.5px;
   border-radius: 2px;
   line-height: 1;
 }
@@ -2537,35 +2575,92 @@
 .uo-tp-rating-lead {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  color: var(--uo-charcoal);
+  gap: 4px;
+  color: #000000;
+  flex-shrink: 0;
 }
 
 .uo-tp-score {
   font-weight: 700;
-  color: var(--uo-charcoal);
-  font-size: 13.5px;
+  color: #000000;
+  font-size: 12px;
 }
 
 .uo-tp-dot {
-  color: var(--uo-muted-mauve);
+  color: #777777;
+  margin: 0 1px;
 }
 
 .uo-tp-count-text {
-  color: #55444D;
-  font-size: 12.5px;
+  color: #111111;
+  font-size: 11.5px;
+  white-space: nowrap;
 }
 
 .uo-tp-brand-badge {
   display: inline-flex;
   align-items: center;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   color: #00b67a;
   background: rgba(0, 182, 122, 0.08);
-  padding: 2px 7px;
+  padding: 2px 5px;
   border-radius: 4px;
   letter-spacing: 0.02em;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+@media(max-width: 640px) {
+  .uo-trustpilot-rating-bar {
+    gap: 4px 6px;
+    font-size: 11px;
+    margin-bottom: 8px;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+  }
+  .uo-tp-stars-row {
+    gap: 1px;
+  }
+  .uo-tp-star-box {
+    width: 12px;
+    height: 12px;
+    font-size: 8px;
+  }
+  .uo-tp-score {
+    font-size: 11px;
+  }
+  .uo-tp-count-text {
+    font-size: 10.5px;
+  }
+  .uo-tp-brand-badge {
+    font-size: 9.5px;
+    padding: 1.5px 5px;
+  }
+}
+
+@media(max-width: 400px) {
+  .uo-trustpilot-rating-bar {
+    gap: 3px 4px;
+  }
+  .uo-tp-star-box {
+    width: 11px;
+    height: 11px;
+    font-size: 7.5px;
+  }
+  .uo-tp-lead-word {
+    display: none;
+  }
+  .uo-tp-score {
+    font-size: 10.5px;
+  }
+  .uo-tp-count-text {
+    font-size: 10px;
+  }
+  .uo-tp-brand-badge {
+    font-size: 9px;
+    padding: 1px 4px;
+  }
 }
 
 /* Tier Card Internal Columns (Desktop default) */
