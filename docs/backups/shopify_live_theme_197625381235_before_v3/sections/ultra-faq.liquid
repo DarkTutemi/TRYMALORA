@@ -1,0 +1,175 @@
+<section class="uo-faq-section" id="ultra-faq">
+  <div class="uo-wrap">
+    <div class="uo-faq-header">
+      <span class="uo-eyebrow">{{ section.settings.eyebrow | default: 'CLARITY & DETAILS' }}</span>
+      {%- if request.page_type == 'page' -%}
+      <h1 class="uo-heading-serif uo-faq-title">{{ section.settings.title | default: 'Frequently Asked Questions' }}</h1>
+      {%- else -%}
+      <h2 class="uo-heading-serif uo-faq-title">{{ section.settings.title | default: 'Frequently Asked Questions' }}</h2>
+      {%- endif -%}
+      <p class="uo-faq-subhead">{{ section.settings.subhead | default: 'Clear, transparent answers about our design, fit, care, and upcoming release.' }}</p>
+    </div>
+
+    <div class="uo-faq-list">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <div class="uo-faq-item {% if forloop.first %}is-active{% endif %}" {{ block.shopify_attributes }}>
+            <button type="button" class="uo-faq-trigger" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
+              <span>{{ block.settings.question | escape }}</span>
+              <span class="uo-faq-icon">+</span>
+            </button>
+            <div class="uo-faq-content">
+              <div class="uo-faq-body">
+                {{ block.settings.answer | escape }}
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        <!-- Seven pre-launch information questions. Avoid unsupported performance claims. -->
+        <!-- Q1 -->
+        <div class="uo-faq-item is-active">
+          <button type="button" class="uo-faq-trigger" aria-expanded="true">
+            <span>What is Full-Spine™ coverage?</span>
+            <span class="uo-faq-icon">+</span>
+          </button>
+          <div class="uo-faq-content">
+            <div class="uo-faq-body">
+              Full-Spine™ is a proposed front-to-rear absorbent coverage design for overnight wear. The final coverage shape and size grading will be confirmed after factory sampling.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="uo-faq-item">
+          <button type="button" class="uo-faq-trigger" aria-expanded="false">
+            <span>What is the NOCTÉRA-5™ system?</span>
+            <span class="uo-faq-icon">+</span>
+          </button>
+          <div class="uo-faq-content">
+            <div class="uo-faq-body">
+              NOCTÉRA-5™ is the name of our proposed five-layer construction: a soft skin-facing layer, a fluid distribution layer, an absorbent core, a protective barrier and a flexible outer fabric. Final material selection and performance tests are pending.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="uo-faq-item">
+          <button type="button" class="uo-faq-trigger" aria-expanded="false">
+            <span>How do I select my size?</span>
+            <span class="uo-faq-icon">+</span>
+          </button>
+          <div class="uo-faq-content">
+            <div class="uo-faq-body">
+              Our product is currently in the development stage, with size options from XS to 4XL configured for preview. The final measured size guide will be published after factory fitting checks.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="uo-faq-item">
+          <button type="button" class="uo-faq-trigger" aria-expanded="false">
+            <span>What is the intended use?</span>
+            <span class="uo-faq-icon">+</span>
+          </button>
+          <div class="uo-faq-content">
+            <div class="uo-faq-body">
+              ULTRA OVERNIGHT™ is being developed as reusable period sleepwear, with a focus on extended coverage and comfort. Flow needs vary; no guaranteed absorbency or wear time is claimed before testing.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="uo-faq-item">
+          <button type="button" class="uo-faq-trigger" aria-expanded="false">
+            <span>How do I wash and care for the underwear?</span>
+            <span class="uo-faq-icon">+</span>
+          </button>
+          <div class="uo-faq-content">
+            <div class="uo-faq-body">
+              Final care-label instructions will be confirmed with the factory. We are evaluating a cold rinse, gentle wash and low-heat-free drying routine for the finished fabric construction.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="uo-faq-item">
+          <button type="button" class="uo-faq-trigger" aria-expanded="false">
+            <span>Can I choose different sizes and colors in a bundle?</span>
+            <span class="uo-faq-icon">+</span>
+          </button>
+          <div class="uo-faq-content">
+            <div class="uo-faq-body">
+              The planned three-pair and five-pair selectors support individual size and color choices. Purchasing and any actual bundle savings will be enabled only after product launch and checkout validation.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="uo-faq-item">
+          <button type="button" class="uo-faq-trigger" aria-expanded="false">
+            <span>When will FULL-SPINE ULTRA™ be available for purchase?</span>
+            <span class="uo-faq-icon">+</span>
+          </button>
+          <div class="uo-faq-content">
+            <div class="uo-faq-body">
+              We are still finalizing factory samples, sizing and independent testing. The official launch date and prices have not been set. Join the email list to receive updates.
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ultra FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "CLARITY & DETAILS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "id": "subhead",
+      "label": "Subhead",
+      "default": "Clear, transparent answers about our design, fit, care, and upcoming release."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Question title here"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Detailed answer text here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ultra FAQ"
+    }
+  ]
+}
+{% endschema %}
+

@@ -27,57 +27,72 @@
   <div class="uo-wrap">
     <div class="uo-pdp-grid">
       
-      <!-- ================= LEFT: PRODUCT GALLERY ================= -->
+      <!-- ================= LEFT: PRODUCT GALLERY (MOBILE-FIRST P0) ================= -->
       <div class="uo-gallery-wrap">
-        <!-- Vertical Thumbnails (7 Structured Product Views) -->
-        <div class="uo-thumbnails-col" role="tablist" aria-label="Product Gallery Thumbnails">
-          <!-- 1. Front View -->
-          <button type="button" class="uo-thumb-btn is-active" data-image-src="{{ 'ultra-pdp-main.jpg' | asset_url }}" aria-label="View 1: Front perspective with packaging box" role="tab" aria-selected="true">
-            <img src="{{ 'ultra-thumb-front.jpg' | asset_url }}" alt="Front View" width="70" height="70" loading="eager">
-          </button>
-          <!-- 2. Rear Full-Spine View -->
-          <button type="button" class="uo-thumb-btn" data-image-src="{{ 'ultra-lifestyle-card-2.jpg' | asset_url }}" aria-label="View 2: Rear Full-Spine coverage concept" role="tab" aria-selected="false">
-            <img src="{{ 'ultra-lifestyle-card-2.jpg' | asset_url }}" alt="Full-Spine Rear Coverage" width="70" height="70" loading="lazy">
-          </button>
-          <!-- 3. Side Contour -->
-          <button type="button" class="uo-thumb-btn" data-image-src="{{ 'ultra-lifestyle-card-1.jpg' | asset_url }}" aria-label="View 3: Side-sleeper contour protection" role="tab" aria-selected="false">
-            <img src="{{ 'ultra-lifestyle-card-1.jpg' | asset_url }}" alt="Side-Sleeper Contour" width="70" height="70" loading="lazy">
-          </button>
-          <!-- 4. CloudFlex Knit Close-Up -->
-          <button type="button" class="uo-thumb-btn" data-image-src="{{ 'ultra-thumb-texture.jpg' | asset_url }}" aria-label="View 4: CloudFlex modal fabric texture close-up" role="tab" aria-selected="false">
-            <img src="{{ 'ultra-thumb-texture.jpg' | asset_url }}" alt="Fabric Texture Close-Up" width="70" height="70" loading="lazy">
-          </button>
-          <!-- 5. 5-Layer Composite Concept -->
-          <button type="button" class="uo-thumb-btn" data-image-src="{{ 'ultra-5-layers-exploded.png' | asset_url }}" aria-label="View 5: NOCTÉRA-5 layered construction illustration" role="tab" aria-selected="false">
-            <img src="{{ 'ultra-5-layers-exploded.png' | asset_url }}" alt="5-Layer Construction Concept" width="70" height="70" loading="lazy">
-          </button>
-          <!-- 6. Luxury Packaging -->
-          <button type="button" class="uo-thumb-btn" data-image-src="{{ 'ultra-thumb-box.jpg' | asset_url }}" aria-label="View 6: Luxury retail box packaging" role="tab" aria-selected="false">
-            <img src="{{ 'ultra-thumb-box.jpg' | asset_url }}" alt="Packaging Box" width="70" height="70" loading="lazy">
-          </button>
-          <!-- 7. Bedtime Sleep Lifestyle -->
-          <button type="button" class="uo-thumb-btn" data-image-src="{{ 'ultra-thumb-lifestyle.jpg' | asset_url }}" aria-label="View 7: Bedtime sleep lifestyle" role="tab" aria-selected="false">
-            <img src="{{ 'ultra-thumb-lifestyle.jpg' | asset_url }}" alt="Bedtime Lifestyle" width="70" height="70" loading="lazy">
-          </button>
-        </div>
-
-        <!-- Main Featured Image -->
+        <!-- 1. Main Featured Image (First in Mobile DOM) -->
         <div class="uo-main-image-wrap">
           <img 
             src="{{ 'ultra-pdp-main.jpg' | asset_url }}" 
-            alt="FULL-SPINE ULTRA OVERNIGHT™ Product & Box" 
+            alt="FULL-SPINE ULTRA OVERNIGHT™ Product & Packaging Box" 
             class="uo-main-image"
+            id="uoMainProductImage"
             width="600" 
             height="600"
             loading="eager"
           >
-          <span class="uo-gallery-badge">V4 DEVELOPMENT CONCEPT</span>
+          <div class="uo-gallery-counter-badge" id="uoGalleryCounterBadge">1 / 7</div>
+          <span class="uo-gallery-badge">PRE-LAUNCH PREVIEW</span>
+        </div>
+
+        <!-- 2. Thumbnails Strip (Directly Below Main Image) -->
+        <div class="uo-thumbnails-strip" id="uoThumbnailsStrip" role="tablist" aria-label="Product Gallery Thumbnails">
+          <!-- 1. Front View -->
+          <button type="button" class="uo-thumb-btn is-active" data-index="1" data-image-src="{{ 'ultra-pdp-main.jpg' | asset_url }}" aria-label="View 1: Front perspective with box" role="tab" aria-selected="true">
+            <img src="{{ 'ultra-thumb-front.jpg' | asset_url }}" alt="Front View" width="76" height="76" loading="eager">
+          </button>
+          <!-- 2. Rear Full-Spine View -->
+          <button type="button" class="uo-thumb-btn" data-index="2" data-image-src="{{ 'ultra-lifestyle-card-2.jpg' | asset_url }}" aria-label="View 2: Rear Full-Spine coverage concept" role="tab" aria-selected="false">
+            <img src="{{ 'ultra-lifestyle-card-2.jpg' | asset_url }}" alt="Full-Spine Rear Coverage" width="76" height="76" loading="lazy">
+          </button>
+          <!-- 3. Side Contour -->
+          <button type="button" class="uo-thumb-btn" data-index="3" data-image-src="{{ 'ultra-lifestyle-card-1.jpg' | asset_url }}" aria-label="View 3: Side-sleeper contour protection" role="tab" aria-selected="false">
+            <img src="{{ 'ultra-lifestyle-card-1.jpg' | asset_url }}" alt="Side-Sleeper Contour" width="76" height="76" loading="lazy">
+          </button>
+          <!-- 4. Fabric Close-Up -->
+          <button type="button" class="uo-thumb-btn" data-index="4" data-image-src="{{ 'ultra-thumb-texture.jpg' | asset_url }}" aria-label="View 4: CloudFlex modal fabric texture" role="tab" aria-selected="false">
+            <img src="{{ 'ultra-thumb-texture.jpg' | asset_url }}" alt="Fabric Texture Close-Up" width="76" height="76" loading="lazy">
+          </button>
+          <!-- 5. 5-Layer Construction Concept -->
+          <button type="button" class="uo-thumb-btn" data-index="5" data-image-src="{{ 'ultra-5-layers-exploded.png' | asset_url }}" aria-label="View 5: 5-Layer fluid management illustration" role="tab" aria-selected="false">
+            <img src="{{ 'ultra-5-layers-exploded.png' | asset_url }}" alt="5-Layer Construction Concept" width="76" height="76" loading="lazy">
+          </button>
+          <!-- 6. Packaging Box -->
+          <button type="button" class="uo-thumb-btn" data-index="6" data-image-src="{{ 'ultra-thumb-box.jpg' | asset_url }}" aria-label="View 6: Luxury retail box packaging" role="tab" aria-selected="false">
+            <img src="{{ 'ultra-thumb-box.jpg' | asset_url }}" alt="Packaging Box" width="76" height="76" loading="lazy">
+          </button>
+          <!-- 7. Bedtime Lifestyle -->
+          <button type="button" class="uo-thumb-btn" data-index="7" data-image-src="{{ 'ultra-thumb-lifestyle.jpg' | asset_url }}" aria-label="View 7: Bedtime sleep lifestyle" role="tab" aria-selected="false">
+            <img src="{{ 'ultra-thumb-lifestyle.jpg' | asset_url }}" alt="Bedtime Lifestyle" width="76" height="76" loading="lazy">
+          </button>
         </div>
       </div>
 
-      <!-- ================= RIGHT: BUY BOX ================= -->
+      <!-- ================= RIGHT: BUY BOX (PREMIUM VISUAL HIERARCHY) ================= -->
       <div class="uo-buybox" id="uoBuyBox">
+        
+        <!-- 1. Conditional Rating / Review Verification (Above Title, Collapses With Zero Space If Empty) -->
+        {%- if product.metafields.reviews.rating.value != blank -%}
+          <div class="uo-rating-row">
+            <span class="uo-rating-stars">★★★★★</span>
+            <span class="uo-rating-score">{{ product.metafields.reviews.rating.value }}</span>
+            <span class="uo-rating-count">({{ product.metafields.reviews.rating_count.value | default: 'Verified' }})</span>
+          </div>
+        {%- endif -%}
+
+        <!-- 2. Product Category Label -->
         <div class="uo-product-category">PREMIUM OVERNIGHT PERIOD UNDERWEAR</div>
+
+        <!-- 3. Product Title (Compact 27–31px on Mobile, Serif) -->
         <h1 class="uo-heading-serif uo-product-title">
           {%- if has_real_product -%}
             {{ current_product.title }}
@@ -86,34 +101,34 @@
           {%- endif -%}
         </h1>
 
-        <!-- Premium Headline -->
-        <h2 class="uo-pdp-subhead-serif">Sleep More Comfortably. Worry Less About Leaks.</h2>
+        <!-- 4. Short Emotional Headline -->
+        <h2 class="uo-pdp-subhead-serif">Sleep Through Heavy-Flow Nights With More Confidence.</h2>
 
-        <!-- Price Row -->
+        <!-- 5. Price / Availability Row -->
         <div class="uo-price-row">
           <span class="uo-price-current">
             {%- if can_purchase and current_variant.price > 0 -%}
               {{ current_variant.price | money }}
             {%- else -%}
-              Pricing to be confirmed
+              Pricing coming soon
             {%- endif -%}
           </span>
-          <span class="uo-pdp-prelaunch-tag">Pre-Launch Preview</span>
+          <span class="uo-pdp-prelaunch-tag">Pre-Launch Edition</span>
         </div>
 
-        <!-- Short Description -->
+        <!-- 6. Short Value Proposition (Exact Approved Copy: 2–3 Lines on Mobile) -->
         <div class="uo-pdp-desc">
-          Thoughtfully designed for heavy-flow nights, with extended front-to-rear coverage, a five-layer protection concept and a soft, flexible feel.
+          Extended overnight coverage. Five thoughtfully designed layers. Comfort made for your most demanding nights.
         </div>
 
-        <!-- 4 Concise Benefit Highlights with Custom SVGs -->
+        <!-- 7. Four Concise Benefit Highlights Near Price -->
         <div class="uo-pdp-highlights-grid">
           <div class="uo-highlight-item">
             <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
               <line x1="12" y1="8" x2="12" y2="16"></line>
             </svg>
-            <span>Extended Full-Spine Coverage</span>
+            <span>Full-Spine Coverage</span>
           </div>
 
           <div class="uo-highlight-item">
@@ -122,7 +137,7 @@
               <polyline points="2 17 12 22 22 17"></polyline>
               <polyline points="2 12 12 17 22 12"></polyline>
             </svg>
-            <span>Five-Layer Protection Design</span>
+            <span>Five-Layer Design</span>
           </div>
 
           <div class="uo-highlight-item">
@@ -141,47 +156,47 @@
           </div>
         </div>
 
-        <!-- ================= COLOR & SIZE SELECTORS ================= -->
+        <!-- ================= 8 & 9. COLOR & SIZE SELECTORS ================= -->
         <div class="uo-selectors-panel">
-          <!-- Color Selector -->
+          <!-- 8. Color Selector -->
           <div class="uo-option-group uo-color-group" data-option-type="color">
             <div class="uo-option-header-row">
-              <label class="uo-option-title">Select Color: <span class="uo-selected-color-name" id="uoSelectedColorLabel">Plum Noir</span></label>
+              <label class="uo-option-title">Color: <span class="uo-selected-color-name" id="uoSelectedColorLabel">Plum Noir</span></label>
             </div>
             <div class="uo-color-swatches" role="radiogroup" aria-label="Product Color Options">
-              <!-- Plum Noir -->
+              <!-- Deep Plum / Plum Noir (#4B2038) -->
               <button 
                 type="button" 
                 class="uo-color-swatch is-active" 
                 data-color-name="Plum Noir" 
-                data-swatch-hex="#58233D" 
+                data-swatch-hex="#4B2038" 
                 role="radio" 
                 aria-checked="true"
                 aria-label="Color: Plum Noir (Deep Plum)"
               >
-                <span class="uo-swatch-circle" style="background-color: #58233D;"></span>
+                <span class="uo-swatch-circle" style="background-color: #4B2038;"></span>
                 <span class="uo-swatch-text">Plum Noir</span>
               </button>
-              <!-- Blush Rose -->
+              <!-- Blush Rose (#C8879D) -->
               <button 
                 type="button" 
                 class="uo-color-swatch" 
                 data-color-name="Blush Rose" 
-                data-swatch-hex="#C98F9D" 
+                data-swatch-hex="#C8879D" 
                 role="radio" 
                 aria-checked="false"
                 aria-label="Color: Blush Rose (Soft Dusty Rose)"
               >
-                <span class="uo-swatch-circle" style="background-color: #C98F9D;"></span>
+                <span class="uo-swatch-circle" style="background-color: #C8879D;"></span>
                 <span class="uo-swatch-text">Blush Rose</span>
               </button>
             </div>
           </div>
 
-          <!-- Size Selector -->
+          <!-- 9. Size Selector + Size Guide -->
           <div class="uo-option-group uo-size-group" data-option-type="size">
             <div class="uo-option-header-row">
-              <label class="uo-option-title">Select Size: <span class="uo-selected-size-name" id="uoSelectedSizeLabel">M</span></label>
+              <label class="uo-option-title">Size: <span class="uo-selected-size-name" id="uoSelectedSizeLabel">M</span></label>
               <button type="button" class="uo-size-guide-trigger" onclick="openUoSizeGuide()" aria-haspopup="dialog">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M2 12h20"></path><path d="M6 12v3"></path><path d="M10 12v2"></path><path d="M14 12v3"></path><path d="M18 12v2"></path>
@@ -208,12 +223,12 @@
           </div>
         </div>
 
-        <!-- ================= PREMIUM BUNDLE SYSTEM ================= -->
+        <!-- ================= 10. BUNDLE SELECTOR (1, 3, 5 PAIRS) ================= -->
         <div class="uo-bundle-section">
           <div class="uo-tier-section-title">Pick Your Pack</div>
           <div class="uo-tier-cards" role="radiogroup" aria-label="Select bundle pack">
             
-            <!-- Tier 1: 1 Pair (Single Pair) -->
+            <!-- Tier 1: 1 Pair -->
             <div 
               class="uo-tier-card" 
               role="radio" 
@@ -231,19 +246,19 @@
                 {%- if can_purchase and current_variant.price > 0 -%}
                   {{ current_variant.price | money }}
                 {%- else -%}
-                  TBD
+                  Pricing coming soon
                 {%- endif -%}
               </div>
               <div class="uo-tier-unit">
                 {%- if can_purchase and current_variant.price > 0 -%}
                   ({{ current_variant.price | money }}/each)
                 {%- else -%}
-                  (Pricing to be confirmed)
+                  (1 pair total)
                 {%- endif -%}
               </div>
             </div>
 
-            <!-- Tier 2: 3 Pairs (Multi-Pair) — Selected by Default -->
+            <!-- Tier 2: 3 Pairs (Selected by Default) -->
             <div 
               class="uo-tier-card is-selected" 
               role="radio" 
@@ -261,19 +276,19 @@
                 {%- if can_purchase and current_variant.price > 0 -%}
                   {{ current_variant.price | times: 3 | money }}
                 {%- else -%}
-                  TBD
+                  Pricing coming soon
                 {%- endif -%}
               </div>
               <div class="uo-tier-unit">
                 {%- if can_purchase and current_variant.price > 0 -%}
                   ({{ current_variant.price | money }}/each)
                 {%- else -%}
-                  (Pricing to be confirmed)
+                  (Full wash rotation)
                 {%- endif -%}
               </div>
             </div>
 
-            <!-- Tier 3: 5 Pairs (Larger Pack) -->
+            <!-- Tier 3: 5 Pairs -->
             <div 
               class="uo-tier-card" 
               role="radio" 
@@ -282,7 +297,7 @@
               data-tier="5-pairs" 
               data-pack-qty="5"
             >
-              <span class="uo-tier-badge uo-tier-badge--neutral">VALUE PACK</span>
+              <span class="uo-tier-badge uo-tier-badge--neutral">CYCLE PACK</span>
               <div class="uo-tier-header">
                 <span class="uo-tier-name">5 Pairs</span>
                 <div class="uo-tier-radio"></div>
@@ -291,21 +306,21 @@
                 {%- if can_purchase and current_variant.price > 0 -%}
                   {{ current_variant.price | times: 5 | money }}
                 {%- else -%}
-                  TBD
+                  Pricing coming soon
                 {%- endif -%}
               </div>
               <div class="uo-tier-unit">
                 {%- if can_purchase and current_variant.price > 0 -%}
                   ({{ current_variant.price | money }}/each)
                 {%- else -%}
-                  (Pricing to be confirmed)
+                  (Full cycle coverage)
                 {%- endif -%}
               </div>
             </div>
 
           </div>
 
-          <!-- ================= MIX-AND-MATCH CUSTOMIZER ================= -->
+          <!-- ================= 11. MIX-AND-MATCH CUSTOMIZER ================= -->
           <div class="uo-mix-match-wrap" id="uoMixMatchWrap">
             <button type="button" class="uo-mix-match-toggle" id="uoMixMatchToggle" aria-expanded="false">
               <span>
@@ -355,16 +370,13 @@
                   </select>
                 </div>
               </div>
-              <div class="uo-slot-subnote">
-                ⚙️ <em>Architecture Ready: Multi-item line bundling will bind real variant IDs upon commercial launch.</em>
-              </div>
             </div>
           </div>
         </div>
 
-        <!-- ================= QUANTITY & CTA AREA ================= -->
+        <!-- ================= 12 & 13. QUANTITY & PRIMARY CTA ================= -->
         <div class="uo-atc-row">
-          <!-- Hidden Authoritative Variant ID (bound exclusively to real Shopify variant) -->
+          <!-- Hidden Variant ID -->
           <input type="hidden" name="id" id="uoSelectedVariantId" value="{% if current_variant %}{{ current_variant.id }}{% endif %}">
 
           <div class="uo-qty-wrap">
@@ -384,28 +396,46 @@
               disabled="disabled" 
               aria-disabled="true" 
               data-has-product="false"
-              style="cursor: not-allowed; opacity: 0.82; background: #6E3B52;"
+              style="cursor: not-allowed; opacity: 0.88; background: var(--uo-plum);"
             >
               COMING SOON
             </button>
           {%- endif -%}
         </div>
 
-        <!-- Pre-Launch Development Notice -->
-        <div class="uo-admin-setup-notice" style="margin-top:12px;font-size:12.5px;color:#7A6670;line-height:1.45;text-align:center;padding:11px 14px;background:#F9F2F4;border:1px dashed #D9B8C4;border-radius:6px;">
-          🔒 <strong>Pre-Production Status:</strong> Sizes and colors are development options. Final pricing, commercial publication, and inventory will be activated upon owner authorization.
+        <!-- ================= 14. REAL SHOPIFY PAYMENT ICONS ================= -->
+        {%- if shop.enabled_payment_types.size > 0 -%}
+          <div class="uo-payment-methods-strip" aria-label="Accepted Payment Methods">
+            {%- for type in shop.enabled_payment_types -%}
+              {{ type | payment_type_svg_tag: class: 'uo-payment-icon-svg' }}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <!-- ================= 15. REASSURANCE / EARLY ACCESS BANNER ================= -->
+        <div class="uo-early-access-banner">
+          <div class="uo-early-access-header">
+            <span class="uo-early-access-dot"></span>
+            <strong class="uo-early-access-title">Early Access Is Coming — Be First to Know.</strong>
+          </div>
+          <p class="uo-early-access-sub">
+            Join our launch list for priority access, sizing invitations, and opening release notifications.
+          </p>
+          <a href="#ultra-newsletter" class="uo-early-access-link" onclick="document.querySelector('#ContactFooter, footer, .uo-footer-section')?.scrollIntoView({behavior: 'smooth'}); return false;">
+            Get Launch Updates →
+          </a>
         </div>
 
         <div class="uo-pdp-error-msg" style="display:none;margin-top:10px;padding:8px 12px;background:#fef2f2;border:1px solid #f87171;border-radius:4px;color:#b91c1c;font-size:13px;"></div>
 
-        <!-- Trust Badges Row -->
+        <!-- ================= 16. REASSURANCE BADGES ROW ================= -->
         <div class="uo-trust-badges-row">
           <div class="uo-trust-item">
             <svg class="uo-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
               <polyline points="9 12 11 14 15 10"></polyline>
             </svg>
-            <span class="uo-trust-label">Nighttime<br>Comfort</span>
+            <span class="uo-trust-label">Nighttime<br>Security</span>
           </div>
 
           <div class="uo-trust-item">
@@ -421,7 +451,7 @@
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
               <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
             </svg>
-            <span class="uo-trust-label">Secure<br>Checkout</span>
+            <span class="uo-trust-label">Secure<br>Experience</span>
           </div>
 
           <div class="uo-trust-item">

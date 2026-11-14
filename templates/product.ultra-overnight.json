@@ -4,6 +4,14 @@
       "type": "ultra-product-main",
       "settings": {}
     },
+    "problem": {
+      "type": "ultra-pdp-problem",
+      "settings": {
+        "eyebrow": "THE OVERNIGHT REALITY",
+        "title": "Why Traditional Overnight Protection Disrupts Your Rest",
+        "subhead": "You should never have to compromise your deepest sleep just to protect your sheets."
+      }
+    },
     "editorial": {
       "type": "ultra-pdp-editorial",
       "settings": {
@@ -51,10 +59,6 @@
         "side"
       ]
     },
-    "benefits": {
-      "type": "ultra-benefit-strip",
-      "settings": {}
-    },
     "layers": {
       "type": "ultra-five-layers",
       "settings": {
@@ -62,19 +66,28 @@
         "description": "A powerful, multi-layer design that absorbs, locks, and helps prevent leaks so you can sleep with confidence."
       }
     },
-    "pillars": {
-      "type": "ultra-seven-pillars",
-      "settings": {
-        "eyebrow": "ENGINEERING INNOVATION",
-        "title": "The Seven Pillars of ULTRA OVERNIGHT™",
-        "subhead": "Thoughtfully engineered for overnight protection, lasting comfort, and real peace of mind."
-      }
-    },
     "comfort": {
       "type": "ultra-lifestyle-comfort",
       "settings": {
-        "title": "All-Night Comfort for Real Life",
-        "description": "Protection you can trust, so you can sleep deeper, move freely, and wake up feeling your best."
+        "eyebrow": "ERGONOMIC ALL-NIGHT SECURITY",
+        "title": "Engineered for Every Way You Sleep",
+        "description": "We do not sleep in rigid still positions. FULL-SPINE ULTRA OVERNIGHT™ is anatomically contoured to follow your natural movement throughout the night without shifting or binding."
+      }
+    },
+    "fabric": {
+      "type": "ultra-fabric-experience",
+      "settings": {
+        "eyebrow": "INTIMATE SENSORY COMFORT",
+        "title": "Crafted for Pure Skin-to-Skin Softness",
+        "description": "Protection should never feel stiff or cumbersome. FULL-SPINE ULTRA OVERNIGHT™ is engineered with soft-drape modal knit and flatlock seams designed to feel as effortless as luxury loungewear."
+      }
+    },
+    "choose_pack": {
+      "type": "ultra-choose-pack",
+      "settings": {
+        "eyebrow": "YOUR BEDTIME ROTATION",
+        "title": "Why Women Choose Multi-Pair Bundles",
+        "subhead": "One pair gets you through tonight. A multi-pair pack gives you peace of mind throughout your entire cycle."
       }
     },
     "hiw_steps": {
@@ -89,7 +102,8 @@
       "type": "ultra-pdp-tabs",
       "settings": {
         "eyebrow": "IN-DEPTH SPECIFICATIONS",
-        "title": "Product Details & Guidance"
+        "title": "Product Details & Technical Specifications",
+        "subhead": "Complete transparency into our materials, sizing standards, care rituals, and production roadmap."
       }
     },
     "reviews": {
@@ -107,28 +121,19 @@
         "title": "Frequently Asked Questions",
         "subhead": "Clear, transparent answers about our design, fit, care, and upcoming release."
       }
-    },
-    "closing_reminder": {
-      "type": "ultra-closing-reminder",
-      "settings": {
-        "eyebrow": "RESTFUL NIGHTS AWAIT",
-        "title": "Full-Spine Protection for Deeper, Worry-Free Sleep.",
-        "description": "Experience thoughtfully engineered coverage from front to back, five-layer fluid security, and CloudFlex™ comfort crafted for every sleeping position.",
-        "cta_text": "COMING SOON — VIEW OPTIONS"
-      }
     }
   },
   "order": [
     "main",
+    "problem",
     "editorial",
-    "benefits",
     "layers",
-    "pillars",
     "comfort",
+    "fabric",
+    "choose_pack",
     "hiw_steps",
     "tabs",
     "reviews",
-    "faq",
-    "closing_reminder"
+    "faq"
   ]
 }

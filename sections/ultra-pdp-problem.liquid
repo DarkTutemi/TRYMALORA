@@ -1,0 +1,83 @@
+<section class="uo-problem-section" id="ultra-overnight-problem">
+  <div class="uo-wrap">
+    <div class="uo-problem-header">
+      <span class="uo-eyebrow">{{ section.settings.eyebrow | default: 'THE OVERNIGHT REALITY' }}</span>
+      <h2 class="uo-heading-serif uo-problem-title">{{ section.settings.title | default: 'Why Traditional Overnight Protection Disrupts Your Rest' }}</h2>
+      <p class="uo-problem-subhead">{{ section.settings.subhead | default: 'You should never have to compromise your deepest sleep just to protect your sheets.' }}</p>
+    </div>
+
+    <div class="uo-problem-grid">
+      <!-- Problem Card 1 -->
+      <div class="uo-problem-card">
+        <div class="uo-problem-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 4v16"></path><path d="M2 8h18a2 2 0 0 1 2 2v10"></path><path d="M2 17h20"></path><path d="M6 8v9"></path>
+          </svg>
+        </div>
+        <h3 class="uo-problem-card-title">Midnight Sheet Anxiety</h3>
+        <p class="uo-problem-card-desc">
+          Waking up at 2 AM to check your mattress or sleeping tensely in one position disrupts restorative REM cycles and leaves you exhausted.
+        </p>
+      </div>
+
+      <!-- Problem Card 2 -->
+      <div class="uo-problem-card">
+        <div class="uo-problem-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8l-4 4 4 4"></path><path d="M6 8l4 4-4 4"></path>
+          </svg>
+        </div>
+        <h3 class="uo-problem-card-title">The Side-Sleeper Shift</h3>
+        <p class="uo-problem-card-desc">
+          Narrow central gussets bunch and twist when your hips rotate. The moment you turn onto your side, fluid escapes along the edges.
+        </p>
+      </div>
+
+      <!-- Problem Card 3 -->
+      <div class="uo-problem-card">
+        <div class="uo-problem-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+        </div>
+        <h3 class="uo-problem-card-title">Bulky, Restless Discomfort</h3>
+        <p class="uo-problem-card-desc">
+          Doubling up thick pads creates friction, traps moisture and heat, and crinkles with every breath instead of letting your skin breathe comfortably.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ultra PDP Problem",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "THE OVERNIGHT REALITY"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Why Traditional Overnight Protection Disrupts Your Rest"
+    },
+    {
+      "type": "text",
+      "id": "subhead",
+      "label": "Subhead",
+      "default": "You should never have to compromise your deepest sleep just to protect your sheets."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ultra PDP Problem"
+    }
+  ]
+}
+{% endschema %}

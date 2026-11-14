@@ -1,0 +1,94 @@
+<section class="uo-fabric-section" id="ultra-fabric-experience">
+  <div class="uo-wrap">
+    <div class="uo-fabric-grid">
+      <!-- Left Visual -->
+      <div class="uo-fabric-visual">
+        <img 
+          src="{{ 'ultra-thumb-texture.jpg' | asset_url }}" 
+          alt="CloudFlex Modal Fabric Texture Close-Up" 
+          class="uo-fabric-img"
+          width="520" 
+          height="480"
+          loading="lazy"
+        >
+        <div class="uo-fabric-badge">CLOUDFLEX™ TEXTILE CONCEPT</div>
+      </div>
+
+      <!-- Right Content -->
+      <div class="uo-fabric-content">
+        <span class="uo-eyebrow">{{ section.settings.eyebrow | default: 'INTIMATE SENSORY COMFORT' }}</span>
+        <h2 class="uo-heading-serif uo-fabric-title">{{ section.settings.title | default: 'Crafted for Pure Skin-to-Skin Softness' }}</h2>
+        <p class="uo-fabric-desc">{{ section.settings.description | default: 'Protection should never feel stiff or cumbersome. FULL-SPINE ULTRA OVERNIGHT™ is engineered with soft-drape modal knit and flatlock seams designed to feel as effortless as luxury loungewear.' }}</p>
+
+        <div class="uo-fabric-pillars">
+          <!-- Pillar 1 -->
+          <div class="uo-fabric-pillar-item">
+            <div class="uo-fabric-dot"></div>
+            <div>
+              <h4 class="uo-fabric-pillar-name">Seamless Comfort Waistband</h4>
+              <p class="uo-fabric-pillar-text">Gentle, wide elastic sits flat against your lower stomach without rolling, pinching, or digging into your waist while sleeping.</p>
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="uo-fabric-pillar-item">
+            <div class="uo-fabric-dot"></div>
+            <div>
+              <h4 class="uo-fabric-pillar-name">Silky Modal Surface Touch</h4>
+              <p class="uo-fabric-pillar-text">Breathable cellulosic fibers pull humidity outward and feel velvety smooth against delicate intimate skin.</p>
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="uo-fabric-pillar-item">
+            <div class="uo-fabric-dot"></div>
+            <div>
+              <h4 class="uo-fabric-pillar-name">Zero-Bulk Flexible Core</h4>
+              <p class="uo-fabric-pillar-text">Composite layers stay pliable and quiet with every movement—no crinkling sounds or stiff cardboard feeling.</p>
+            </div>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="uo-fabric-pillar-item">
+            <div class="uo-fabric-dot"></div>
+            <div>
+              <h4 class="uo-fabric-pillar-name">Smooth Anti-Chafing Contours</h4>
+              <p class="uo-fabric-pillar-text">Low-profile ergonomic stitching prevents inner thigh chafing as you shift sleep positions through the night.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ultra Fabric Experience",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "INTIMATE SENSORY COMFORT"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Crafted for Pure Skin-to-Skin Softness"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Protection should never feel stiff or cumbersome. FULL-SPINE ULTRA OVERNIGHT™ is engineered with soft-drape modal knit and flatlock seams designed to feel as effortless as luxury loungewear."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ultra Fabric Experience"
+    }
+  ]
+}
+{% endschema %}

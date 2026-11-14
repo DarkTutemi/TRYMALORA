@@ -1,54 +1,56 @@
-<section class="uo-comfort-section">
+<section class="uo-comfort-section" id="ultra-lifestyle-comfort">
   <div class="uo-wrap">
     <div class="uo-comfort-grid">
       <!-- Left Intro -->
       <div class="uo-comfort-intro">
-        <h2 class="uo-heading-serif">{{ section.settings.title }}</h2>
-        <p>{{ section.settings.description }}</p>
+        <span class="uo-eyebrow">{{ section.settings.eyebrow | default: 'ERGONOMIC ALL-NIGHT SECURITY' }}</span>
+        <h2 class="uo-heading-serif">{{ section.settings.title | default: 'Engineered for Every Way You Sleep' }}</h2>
+        <p>{{ section.settings.description | default: 'We do not sleep in rigid still positions. FULL-SPINE ULTRA OVERNIGHT™ is anatomically contoured to follow your natural movement throughout the night without shifting or binding.' }}</p>
       </div>
 
-      <!-- Right 3 Lifestyle Cards -->
+      <!-- Right 3 Sleep Position Cards -->
       <div class="uo-comfort-cards">
-        <!-- Card 1 -->
+        <!-- Card 1: Back Sleeper -->
         <div class="uo-comfort-card">
-          <img src="{{ 'ultra-lifestyle-card-1.jpg' | asset_url }}" alt="Sleep With Confidence" loading="lazy">
+          <img src="{{ 'ultra-lifestyle-card-2.jpg' | asset_url }}" alt="Back Sleeper Full-Spine Coverage" loading="lazy">
           <div class="uo-comfort-card-overlay">
             <div class="uo-comfort-card-title">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="8" y1="12" x2="16" y2="12"></line>
               </svg>
-              Sleep With Confidence
+              1. Back Sleeper
             </div>
-            <p class="uo-comfort-card-desc">Reliable protection for heavy-flow nights.</p>
+            <p class="uo-comfort-card-desc">Continuous rear shield runs all the way to the waistband to guard against pooling when lying flat on your back.</p>
           </div>
         </div>
 
-        <!-- Card 2 -->
+        <!-- Card 2: Side Sleeper -->
         <div class="uo-comfort-card">
-          <img src="{{ 'ultra-lifestyle-card-2.jpg' | asset_url }}" alt="Side-Sleeper Protection" loading="lazy">
+          <img src="{{ 'ultra-lifestyle-card-1.jpg' | asset_url }}" alt="Side Sleeper Contour Protection" loading="lazy">
           <div class="uo-comfort-card-overlay">
             <div class="uo-comfort-card-title">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                 <path d="M9 12l2 2 4-4"></path>
               </svg>
-              Side-Sleeper Protection
+              2. Side Sleeper
             </div>
-            <p class="uo-comfort-card-desc">Full-spine coverage helps prevent leaks, even on your side.</p>
+            <p class="uo-comfort-card-desc">Contoured SideSeal leg barriers hug inner thighs to prevent lateral migration when curled up on your side.</p>
           </div>
         </div>
 
-        <!-- Card 3 -->
+        <!-- Card 3: Active Sleeper -->
         <div class="uo-comfort-card">
-          <img src="{{ 'ultra-lifestyle-card-3.jpg' | asset_url }}" alt="Soft, Cloud-Like Comfort" loading="lazy">
+          <img src="{{ 'ultra-lifestyle-card-3.jpg' | asset_url }}" alt="Active Sleeper Stretch Flexibility" loading="lazy">
           <div class="uo-comfort-card-overlay">
             <div class="uo-comfort-card-title">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
               </svg>
-              Soft, Cloud-Like Comfort
+              3. Active Sleeper
             </div>
-            <p class="uo-comfort-card-desc">A gentle, flexible fit you can wear all night long.</p>
+            <p class="uo-comfort-card-desc">Four-way stretch CloudFlex knit moves seamlessly with every turn, keeping protective layers snugly in place.</p>
           </div>
         </div>
       </div>
@@ -62,15 +64,21 @@
   "settings": [
     {
       "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "ERGONOMIC ALL-NIGHT SECURITY"
+    },
+    {
+      "type": "text",
       "id": "title",
       "label": "Heading",
-      "default": "All-Night Comfort for Real Life"
+      "default": "Engineered for Every Way You Sleep"
     },
     {
       "type": "textarea",
       "id": "description",
       "label": "Description",
-      "default": "Protection you can trust, so you can sleep deeper, move freely, and wake up feeling your best."
+      "default": "We do not sleep in rigid still positions. FULL-SPINE ULTRA OVERNIGHT™ is anatomically contoured to follow your natural movement throughout the night without shifting or binding."
     }
   ],
   "presets": [
@@ -80,4 +88,3 @@
   ]
 }
 {% endschema %}
-

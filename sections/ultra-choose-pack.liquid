@@ -1,0 +1,96 @@
+<section class="uo-pack-section" id="ultra-choose-pack">
+  <div class="uo-wrap">
+    <div class="uo-pack-header">
+      <span class="uo-eyebrow">{{ section.settings.eyebrow | default: 'YOUR BEDTIME ROTATION' }}</span>
+      <h2 class="uo-heading-serif uo-pack-title">{{ section.settings.title | default: 'Why Women Choose Multi-Pair Bundles' }}</h2>
+      <p class="uo-pack-subhead">{{ section.settings.subhead | default: 'One pair gets you through tonight. A multi-pair pack gives you peace of mind throughout your entire cycle.' }}</p>
+    </div>
+
+    <div class="uo-pack-grid">
+      <!-- Reason 1 -->
+      <div class="uo-pack-card">
+        <div class="uo-pack-card-badge">SEAMLESS ROTATION</div>
+        <div class="uo-pack-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <polyline points="1 20 1 14 7 14"></polyline>
+            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+          </svg>
+        </div>
+        <h3 class="uo-pack-card-title">Wash-Day Continuity</h3>
+        <p class="uo-pack-card-desc">
+          Because intimate sleepwear requires gentle cold washing and hang drying, having 3 or 5 pairs ensures a fresh, completely dry pair is always ready without late-night laundry rushes.
+        </p>
+      </div>
+
+      <!-- Reason 2 -->
+      <div class="uo-pack-card">
+        <div class="uo-pack-card-badge">CYCLE PREPAREDNESS</div>
+        <div class="uo-pack-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </div>
+        <h3 class="uo-pack-card-title">Full Heaviest-Night Coverage</h3>
+        <p class="uo-pack-card-desc">
+          Most menstrual cycles include 2 to 4 demanding heavy-flow nights. A dedicated 3-pack or 5-pack covers your entire critical window without needing disposable pads.
+        </p>
+      </div>
+
+      <!-- Reason 3 -->
+      <div class="uo-pack-card">
+        <div class="uo-pack-card-badge">CALM ROUTINE</div>
+        <div class="uo-pack-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </div>
+        <h3 class="uo-pack-card-title">Stress-Free Bedtime Routine</h3>
+        <p class="uo-pack-card-desc">
+          Step into bedtime knowing you have reliable protection waiting in your top drawer. Relax, tuck in, and sleep peacefully every single evening.
+        </p>
+      </div>
+    </div>
+
+    <!-- Action Link Back to Buy Box -->
+    <div class="uo-pack-cta-row">
+      <button type="button" class="uo-btn-primary uo-pack-btn" onclick="scrollToUoBuyBox()">
+        SELECT YOUR PACK ABOVE ➔
+      </button>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ultra Choose Pack",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "YOUR BEDTIME ROTATION"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Why Women Choose Multi-Pair Bundles"
+    },
+    {
+      "type": "text",
+      "id": "subhead",
+      "label": "Subhead",
+      "default": "One pair gets you through tonight. A multi-pair pack gives you peace of mind throughout your entire cycle."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ultra Choose Pack"
+    }
+  ]
+}
+{% endschema %}

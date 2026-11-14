@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initMixAndMatchArchitecture();
   initStickyMobileBar();
   initPdpTabs();
+  initDetailsAccordion();
   initModalListeners();
 });
 
@@ -113,10 +114,12 @@ function initFaqAccordions() {
 function initPdpGallery() {
   const thumbBtns = document.querySelectorAll('.uo-thumb-btn');
   const mainImg = document.querySelector('.uo-main-image');
+  const counterBadge = document.getElementById('uoGalleryCounterBadge');
+  const totalCount = thumbBtns.length || 7;
 
   if (!thumbBtns.length || !mainImg) return;
 
-  thumbBtns.forEach(function (btn) {
+  thumbBtns.forEach(function (btn, index) {
     btn.addEventListener('click', function () {
       thumbBtns.forEach(function (b) {
         b.classList.remove('is-active');
@@ -127,6 +130,12 @@ function initPdpGallery() {
       const newSrc = this.getAttribute('data-image-src');
       if (newSrc) {
         mainImg.src = newSrc;
+      }
+      if (counterBadge) {
+        counterBadge.textContent = (index + 1) + ' / ' + totalCount;
+      }
+      if (typeof this.scrollIntoView === 'function') {
+        this.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
       }
     });
   });
@@ -528,5 +537,31 @@ function initModalListeners() {
     if (e.key === 'Escape') {
       window.closeUoSizeGuide();
     }
+  });
+}
+
+// 11. Product Details Accordion
+function initDetailsAccordion() {
+  const headers = document.querySelectorAll('.uo-accordion-header');
+  headers.forEach(function (header) {
+    header.addEventListener('click', function () {
+      const item = this.closest('.uo-accordion-item');
+      if (!item) return;
+      const isOpen = item.classList.contains('is-open');
+      const content = item.querySelector('.uo-accordion-content');
+      const icon = item.querySelector('.uo-accordion-icon');
+
+      if (isOpen) {
+        item.classList.remove('is-open');
+        this.setAttribute('aria-expanded', 'false');
+        if (content) content.style.display = 'none';
+        if (icon) icon.textContent = '+';
+      } else {
+        item.classList.add('is-open');
+        this.setAttribute('aria-expanded', 'true');
+        if (content) content.style.display = 'block';
+        if (icon) icon.textContent = '−';
+      }
+    });
   });
 }

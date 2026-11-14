@@ -1,108 +1,128 @@
-<section class="uo-tabs-section" id="ultra-product-tabs">
+<section class="uo-details-section" id="ultra-product-details">
   <div class="uo-wrap">
-    <div class="uo-tabs-header">
+    <div class="uo-details-header">
       <span class="uo-eyebrow">{{ section.settings.eyebrow | default: 'IN-DEPTH SPECIFICATIONS' }}</span>
-      <h2 class="uo-heading-serif uo-tabs-main-title">{{ section.settings.title | default: 'Product Details & Guidance' }}</h2>
+      <h2 class="uo-heading-serif uo-details-title">{{ section.settings.title | default: 'Product Details & Technical Specifications' }}</h2>
+      <p class="uo-details-subhead">{{ section.settings.subhead | default: 'Complete transparency into our materials, sizing standards, care rituals, and production roadmap.' }}</p>
     </div>
 
-    <!-- Tab Nav with accessible ARIA -->
-    <div class="uo-tabs-nav" role="tablist" aria-label="Product Information Tabs">
-      <button 
-        type="button" 
-        class="uo-tab-btn is-active" 
-        data-tab-target="tab-how-it-works"
-        role="tab"
-        id="tab-btn-how-it-works"
-        aria-selected="true"
-        aria-controls="tab-how-it-works"
-      >
-        How It Works
-      </button>
-      <button 
-        type="button" 
-        class="uo-tab-btn" 
-        data-tab-target="tab-how-to-use"
-        role="tab"
-        id="tab-btn-how-to-use"
-        aria-selected="false"
-        aria-controls="tab-how-to-use"
-      >
-        How To Use
-      </button>
-      <button 
-        type="button" 
-        class="uo-tab-btn" 
-        data-tab-target="tab-care-washing"
-        role="tab"
-        id="tab-btn-care-washing"
-        aria-selected="false"
-        aria-controls="tab-care-washing"
-      >
-        Care &amp; Washing
-      </button>
-      <button 
-        type="button" 
-        class="uo-tab-btn" 
-        data-tab-target="tab-fit-sizing"
-        role="tab"
-        id="tab-btn-fit-sizing"
-        aria-selected="false"
-        aria-controls="tab-fit-sizing"
-      >
-        Fit &amp; Sizing
-      </button>
-    </div>
-
-    <!-- Tab 1: How It Works -->
-    <div 
-      class="uo-tab-panel is-active" 
-      id="tab-how-it-works" 
-      role="tabpanel" 
-      aria-labelledby="tab-btn-how-it-works"
-    >
-      <div class="uo-tab-content-inner">
-        <h3 class="uo-tab-panel-title">Five-Layer Fluid Security &amp; Extended Shielding</h3>
-        <p>{{ section.settings.tab_how_it_works | default: 'The FULL-SPINE ULTRA OVERNIGHT™ pairs an innovative NOCTÉRA-5™ layered textile system with continuous front-to-rear coverage. A micro-honeycomb top layer wicks liquid into a concentrated core, while an impermeable yet breathable barrier prevents nighttime transfer to bedding. Ergonomic side contours help shield against edge leaks as your body moves naturally during sleep.' }}</p>
+    <!-- Accordion Container -->
+    <div class="uo-details-accordion" role="region" aria-label="Product Details Accordion">
+      
+      <!-- Accordion 1: Materials & Construction -->
+      <div class="uo-accordion-item is-open">
+        <button type="button" class="uo-accordion-header" aria-expanded="true" aria-controls="acc-materials">
+          <span class="uo-accordion-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            Materials &amp; Layer Construction
+          </span>
+          <span class="uo-accordion-icon">−</span>
+        </button>
+        <div class="uo-accordion-content" id="acc-materials">
+          <div class="uo-accordion-body">
+            <p><strong>Composite Layering Architecture:</strong></p>
+            <ul>
+              <li><strong>Body Shell:</strong> 93% MicroModal, 7% Elastane for breathable, feather-light skin contact.</li>
+              <li><strong>Top Wick Layer:</strong> Rapid-drying honeycomb polyester mesh designed to pull moisture downward instantly.</li>
+              <li><strong>Middle Absorbent Core:</strong> High-density poly-cellulose blend providing extended multi-hour liquid retention.</li>
+              <li><strong>Waterproof Barrier:</strong> Breathable polyurethane (TPU) protective membrane preventing liquid pass-through without crinkling.</li>
+              <li><strong>Lining:</strong> 100% natural organic cotton gusset surface gentle on sensitive mucous membranes.</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- Tab 2: How To Use -->
-    <div 
-      class="uo-tab-panel" 
-      id="tab-how-to-use" 
-      role="tabpanel" 
-      aria-labelledby="tab-btn-how-to-use"
-    >
-      <div class="uo-tab-content-inner">
-        <h3 class="uo-tab-panel-title">Bedtime Preparation &amp; Daily Wear Routine</h3>
-        <p>{{ section.settings.tab_how_to_use | default: 'Slip on FULL-SPINE ULTRA OVERNIGHT™ before going to sleep, exactly like standard underwear. Designed specifically for heavy-flow nights, it delivers standalone comfort or can be paired with your preferred routine on exceptionally heavy cycle days. Ensure the waistband sits comfortably at your natural waist without tension.' }}</p>
+      <!-- Accordion 2: Size & Fit -->
+      <div class="uo-accordion-item">
+        <button type="button" class="uo-accordion-header" aria-expanded="false" aria-controls="acc-size-fit">
+          <span class="uo-accordion-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12h20"></path><path d="M6 12v3"></path><path d="M10 12v2"></path><path d="M14 12v3"></path><path d="M18 12v2"></path>
+            </svg>
+            Size &amp; Fit Recommendations
+          </span>
+          <span class="uo-accordion-icon">+</span>
+        </button>
+        <div class="uo-accordion-content" id="acc-size-fit" style="display:none;">
+          <div class="uo-accordion-body">
+            <p>Available in 8 inclusive US sizes from XS to 4XL. Engineered with an ergonomic mid-high waist rise and full rear seat coverage.</p>
+            <p><strong>Fit Tip:</strong> Underwear should fit snugly against leg contours to optimize side seal coverage. If you fall between two sizes or prefer a looser bedtime feel, we recommend sizing up one size.</p>
+            <p><button type="button" class="uo-link-btn" onclick="openUoSizeGuide()">View Complete Sizing Chart ↗</button></p>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- Tab 3: Care & Washing -->
-    <div 
-      class="uo-tab-panel" 
-      id="tab-care-washing" 
-      role="tabpanel" 
-      aria-labelledby="tab-btn-care-washing"
-    >
-      <div class="uo-tab-content-inner">
-        <h3 class="uo-tab-panel-title">Preserving Absorbency &amp; Fabric Longevity</h3>
-        <p>{{ section.settings.tab_care_washing | default: '1. Rinse thoroughly in cold running water upon waking until the water runs clear. 2. Machine wash on cold gentle cycle using standard mild liquid detergent. 3. Hang dry in a well-ventilated area or lay flat. Strictly avoid bleach, chemical stain removers, fabric softeners, or high-heat tumble dryers to protect technical membrane integrity.' }}</p>
+      <!-- Accordion 3: Care Instructions -->
+      <div class="uo-accordion-item">
+        <button type="button" class="uo-accordion-header" aria-expanded="false" aria-controls="acc-care">
+          <span class="uo-accordion-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="3"></rect>
+              <circle cx="12" cy="13" r="5"></circle>
+              <circle cx="6" cy="6" r="1"></circle>
+            </svg>
+            Care &amp; Wash Routine
+          </span>
+          <span class="uo-accordion-icon">+</span>
+        </button>
+        <div class="uo-accordion-content" id="acc-care" style="display:none;">
+          <div class="uo-accordion-body">
+            <ol>
+              <li><strong>Cold Rinse:</strong> Immediately after waking, rinse under cold running water until the runoff is clear.</li>
+              <li><strong>Gentle Machine Wash:</strong> Wash with similar dark colors on a cold gentle cycle (max 30°C / 86°F) using mild liquid detergent.</li>
+              <li><strong>Hang to Dry:</strong> Lay flat or hang dry in a well-ventilated space. Avoid direct high-heat radiators or tumble dryers to preserve the waterproof membrane.</li>
+              <li><strong>Do Not Use:</strong> Bleach, fabric softeners, or harsh stain removers, as they coat the technical absorption fibers and reduce wicking capability.</li>
+            </ol>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- Tab 4: Fit & Sizing -->
-    <div 
-      class="uo-tab-panel" 
-      id="tab-fit-sizing" 
-      role="tabpanel" 
-      aria-labelledby="tab-btn-fit-sizing"
-    >
-      <div class="uo-tab-content-inner">
-        <h3 class="uo-tab-panel-title">Finding Your Ideal Restful Night Size</h3>
-        <p>{{ section.settings.tab_fit_sizing | default: 'Available in 8 development sizes ranging from XS to 4XL. For restful sleep without constriction, select your normal underwear size based on your hip measurement. If you prefer a looser, gentle bedtime fit or measure between sizes, we recommend sizing up. Factory-validated dimensional specs will accompany the final commercial release.' }}</p>
+      <!-- Accordion 4: Shipping & Returns -->
+      <div class="uo-accordion-item">
+        <button type="button" class="uo-accordion-header" aria-expanded="false" aria-controls="acc-shipping">
+          <span class="uo-accordion-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+            Shipping &amp; Hygiene Return Policy
+          </span>
+          <span class="uo-accordion-icon">+</span>
+        </button>
+        <div class="uo-accordion-content" id="acc-shipping" style="display:none;">
+          <div class="uo-accordion-body">
+            <p><strong>Domestic US Delivery:</strong> Standard shipping delivers within 3–5 business days. Free standard US shipping is provided on all multi-pair bundle orders over $49.</p>
+            <p><strong>Intimate Hygiene Policy:</strong> For customer health and hygiene standards, only unopened, unworn pairs with original tamper-evident seals intact are eligible for return within 30 days of receipt.</p>
+          </div>
+        </div>
       </div>
+
+      <!-- Accordion 5: Product Development / Testing Status -->
+      <div class="uo-accordion-item">
+        <button type="button" class="uo-accordion-header" aria-expanded="false" aria-controls="acc-testing">
+          <span class="uo-accordion-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            Product Development &amp; Validation Status
+          </span>
+          <span class="uo-accordion-icon">+</span>
+        </button>
+        <div class="uo-accordion-content" id="acc-testing" style="display:none;">
+          <div class="uo-accordion-body">
+            <p>FULL-SPINE ULTRA OVERNIGHT™ is currently in pre-production pilot sampling. Visual cutaways, architectural illustrations, and specifications reflect production engineering targets.</p>
+            <p>Final commercial release will open following third-party dimensional fit verification and lab absorption capacity certification.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -121,31 +141,13 @@
       "type": "text",
       "id": "title",
       "label": "Heading",
-      "default": "Product Details & Guidance"
+      "default": "Product Details & Technical Specifications"
     },
     {
-      "type": "textarea",
-      "id": "tab_how_it_works",
-      "label": "How It Works Content",
-      "default": "The FULL-SPINE ULTRA OVERNIGHT™ pairs an innovative NOCTÉRA-5™ layered textile system with continuous front-to-rear coverage. A micro-honeycomb top layer wicks liquid into a concentrated core, while an impermeable yet breathable barrier prevents nighttime transfer to bedding. Ergonomic side contours help shield against edge leaks as your body moves naturally during sleep."
-    },
-    {
-      "type": "textarea",
-      "id": "tab_how_to_use",
-      "label": "How To Use Content",
-      "default": "Slip on FULL-SPINE ULTRA OVERNIGHT™ before going to sleep, exactly like standard underwear. Designed specifically for heavy-flow nights, it delivers standalone comfort or can be paired with your preferred routine on exceptionally heavy cycle days. Ensure the waistband sits comfortably at your natural waist without tension."
-    },
-    {
-      "type": "textarea",
-      "id": "tab_care_washing",
-      "label": "Care & Washing Content",
-      "default": "1. Rinse thoroughly in cold running water upon waking until the water runs clear. 2. Machine wash on cold gentle cycle using standard mild liquid detergent. 3. Hang dry in a well-ventilated area or lay flat. Strictly avoid bleach, chemical stain removers, fabric softeners, or high-heat tumble dryers to protect technical membrane integrity."
-    },
-    {
-      "type": "textarea",
-      "id": "tab_fit_sizing",
-      "label": "Fit & Sizing Content",
-      "default": "Available in 8 development sizes ranging from XS to 4XL. For restful sleep without constriction, select your normal underwear size based on your hip measurement. If you prefer a looser, gentle bedtime fit or measure between sizes, we recommend sizing up. Factory-validated dimensional specs will accompany the final commercial release."
+      "type": "text",
+      "id": "subhead",
+      "label": "Subhead",
+      "default": "Complete transparency into our materials, sizing standards, care rituals, and production roadmap."
     }
   ],
   "presets": [

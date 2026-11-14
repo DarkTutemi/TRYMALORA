@@ -1,0 +1,96 @@
+<section class="uo-layers-section">
+  <div class="uo-wrap">
+    <div class="uo-layers-grid">
+      <!-- Left Visual: Cutaway -->
+      <div class="uo-layers-visual-left">
+        <img 
+          src="{{ 'ultra-5-layers-cutaway.png' | asset_url }}" 
+          alt="ULTRA OVERNIGHT 5-Layer Underwear Cutaway" 
+          width="290" 
+          height="145"
+          loading="lazy"
+        >
+      </div>
+
+      <!-- Middle: Headlines -->
+      <div class="uo-layers-center-text">
+        <h2 class="uo-heading-serif uo-layers-title">{{ section.settings.title }}</h2>
+        <p class="uo-layers-desc">{{ section.settings.description }}</p>
+      </div>
+
+      <!-- Right: Exploded Layers Breakdown -->
+      <div class="uo-layers-list-right">
+        <!-- Layer 1 -->
+        <div class="uo-layer-item">
+          <div class="uo-layer-badge">1</div>
+          <div class="uo-layer-info">
+            <h4>Soft, Breathable Top Layer</h4>
+            <p>Gentle on skin and helps wick moisture away.</p>
+          </div>
+        </div>
+
+        <!-- Layer 2 -->
+        <div class="uo-layer-item">
+          <div class="uo-layer-badge">2</div>
+          <div class="uo-layer-info">
+            <h4>Rapid Absorb Layer</h4>
+            <p>Quickly draws in and spreads flow.</p>
+          </div>
+        </div>
+
+        <!-- Layer 3 -->
+        <div class="uo-layer-item">
+          <div class="uo-layer-badge">3</div>
+          <div class="uo-layer-info">
+            <h4>Ultra-Lock Core</h4>
+            <p>High-capacity absorption that locks in moisture.</p>
+          </div>
+        </div>
+
+        <!-- Layer 4 -->
+        <div class="uo-layer-item">
+          <div class="uo-layer-badge">4</div>
+          <div class="uo-layer-info">
+            <h4>Leak-Blocking Barrier</h4>
+            <p>A protective layer that helps prevent leaks.</p>
+          </div>
+        </div>
+
+        <!-- Layer 5 -->
+        <div class="uo-layer-item">
+          <div class="uo-layer-badge">5</div>
+          <div class="uo-layer-info">
+            <h4>Breathable Outer Layer</h4>
+            <p>Durable, flexible, and built for repeated washing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ultra Five Layers",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "5 Layers of Overnight Protection"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "A powerful, multi-layer design that absorbs, locks, and helps prevent leaks so you can sleep with confidence."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ultra Five Layers"
+    }
+  ]
+}
+{% endschema %}
+
