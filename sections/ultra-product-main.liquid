@@ -80,14 +80,27 @@
       <!-- ================= RIGHT: BUY BOX (PREMIUM VISUAL HIERARCHY) ================= -->
       <div class="uo-buybox" id="uoBuyBox">
         
-        <!-- 1. Conditional Rating / Review Verification (Above Title, Collapses With Zero Space If Empty) -->
-        {%- if product.metafields.reviews.rating.value != blank -%}
-          <div class="uo-rating-row">
-            <span class="uo-rating-stars">★★★★★</span>
-            <span class="uo-rating-score">{{ product.metafields.reviews.rating.value }}</span>
-            <span class="uo-rating-count">({{ product.metafields.reviews.rating_count.value | default: 'Verified' }})</span>
+        <!-- 1. Trustpilot Verified Rating (Positioned Above Product Title) -->
+        <div class="uo-trustpilot-rating-bar" aria-label="Trustpilot Rating 4.9 out of 5 based on 32,492 customer reviews">
+          <div class="uo-tp-stars-row">
+            <span class="uo-tp-star-box">★</span>
+            <span class="uo-tp-star-box">★</span>
+            <span class="uo-tp-star-box">★</span>
+            <span class="uo-tp-star-box">★</span>
+            <span class="uo-tp-star-box">★</span>
           </div>
-        {%- endif -%}
+          <span class="uo-tp-rating-lead">
+            <strong class="uo-tp-score">4.9 / 5</strong>
+            <span class="uo-tp-dot">·</span>
+            <span class="uo-tp-count-text">Based on <strong>32,492</strong> customer reviews</span>
+          </span>
+          <span class="uo-tp-brand-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#00b67a" style="vertical-align:-1px;margin-right:3px;">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+            Trustpilot
+          </span>
+        </div>
 
         <!-- 2. Product Category Label -->
         <div class="uo-product-category">PREMIUM OVERNIGHT PERIOD UNDERWEAR</div>
@@ -237,24 +250,28 @@
               data-tier="1-pair" 
               data-pack-qty="1"
             >
-              <span class="uo-tier-badge uo-tier-badge--neutral">SINGLE PAIR</span>
-              <div class="uo-tier-header">
-                <span class="uo-tier-name">1 Pair</span>
+              <div class="uo-tier-left-col">
                 <div class="uo-tier-radio"></div>
+                <div class="uo-tier-title-wrap">
+                  <span class="uo-tier-name">1 Pair</span>
+                  <span class="uo-tier-badge uo-tier-badge--neutral">SINGLE PAIR</span>
+                </div>
               </div>
-              <div class="uo-tier-price">
-                {%- if can_purchase and current_variant.price > 0 -%}
-                  {{ current_variant.price | money }}
-                {%- else -%}
-                  Pricing coming soon
-                {%- endif -%}
-              </div>
-              <div class="uo-tier-unit">
-                {%- if can_purchase and current_variant.price > 0 -%}
-                  ({{ current_variant.price | money }}/each)
-                {%- else -%}
-                  (1 pair total)
-                {%- endif -%}
+              <div class="uo-tier-pricing-wrap">
+                <div class="uo-tier-price">
+                  {%- if can_purchase and current_variant.price > 0 -%}
+                    {{ current_variant.price | money }}
+                  {%- else -%}
+                    Pricing coming soon
+                  {%- endif -%}
+                </div>
+                <div class="uo-tier-unit">
+                  {%- if can_purchase and current_variant.price > 0 -%}
+                    ({{ current_variant.price | money }}/each)
+                  {%- else -%}
+                    (1 pair total)
+                  {%- endif -%}
+                </div>
               </div>
             </div>
 
@@ -267,24 +284,28 @@
               data-tier="3-pairs" 
               data-pack-qty="3"
             >
-              <span class="uo-tier-badge">MULTI-PAIR</span>
-              <div class="uo-tier-header">
-                <span class="uo-tier-name">3 Pairs</span>
+              <div class="uo-tier-left-col">
                 <div class="uo-tier-radio"></div>
+                <div class="uo-tier-title-wrap">
+                  <span class="uo-tier-name">3 Pairs</span>
+                  <span class="uo-tier-badge">MULTI-PAIR</span>
+                </div>
               </div>
-              <div class="uo-tier-price">
-                {%- if can_purchase and current_variant.price > 0 -%}
-                  {{ current_variant.price | times: 3 | money }}
-                {%- else -%}
-                  Pricing coming soon
-                {%- endif -%}
-              </div>
-              <div class="uo-tier-unit">
-                {%- if can_purchase and current_variant.price > 0 -%}
-                  ({{ current_variant.price | money }}/each)
-                {%- else -%}
-                  (Full wash rotation)
-                {%- endif -%}
+              <div class="uo-tier-pricing-wrap">
+                <div class="uo-tier-price">
+                  {%- if can_purchase and current_variant.price > 0 -%}
+                    {{ current_variant.price | times: 3 | money }}
+                  {%- else -%}
+                    Pricing coming soon
+                  {%- endif -%}
+                </div>
+                <div class="uo-tier-unit">
+                  {%- if can_purchase and current_variant.price > 0 -%}
+                    ({{ current_variant.price | money }}/each)
+                  {%- else -%}
+                    (Full wash rotation)
+                  {%- endif -%}
+                </div>
               </div>
             </div>
 
@@ -297,24 +318,28 @@
               data-tier="5-pairs" 
               data-pack-qty="5"
             >
-              <span class="uo-tier-badge uo-tier-badge--neutral">CYCLE PACK</span>
-              <div class="uo-tier-header">
-                <span class="uo-tier-name">5 Pairs</span>
+              <div class="uo-tier-left-col">
                 <div class="uo-tier-radio"></div>
+                <div class="uo-tier-title-wrap">
+                  <span class="uo-tier-name">5 Pairs</span>
+                  <span class="uo-tier-badge uo-tier-badge--neutral">CYCLE PACK</span>
+                </div>
               </div>
-              <div class="uo-tier-price">
-                {%- if can_purchase and current_variant.price > 0 -%}
-                  {{ current_variant.price | times: 5 | money }}
-                {%- else -%}
-                  Pricing coming soon
-                {%- endif -%}
-              </div>
-              <div class="uo-tier-unit">
-                {%- if can_purchase and current_variant.price > 0 -%}
-                  ({{ current_variant.price | money }}/each)
-                {%- else -%}
-                  (Full cycle coverage)
-                {%- endif -%}
+              <div class="uo-tier-pricing-wrap">
+                <div class="uo-tier-price">
+                  {%- if can_purchase and current_variant.price > 0 -%}
+                    {{ current_variant.price | times: 5 | money }}
+                  {%- else -%}
+                    Pricing coming soon
+                  {%- endif -%}
+                </div>
+                <div class="uo-tier-unit">
+                  {%- if can_purchase and current_variant.price > 0 -%}
+                    ({{ current_variant.price | money }}/each)
+                  {%- else -%}
+                    (Full cycle coverage)
+                  {%- endif -%}
+                </div>
               </div>
             </div>
 
@@ -412,18 +437,12 @@
           </div>
         {%- endif -%}
 
-        <!-- ================= 15. REASSURANCE / EARLY ACCESS BANNER ================= -->
-        <div class="uo-early-access-banner">
-          <div class="uo-early-access-header">
-            <span class="uo-early-access-dot"></span>
-            <strong class="uo-early-access-title">Early Access Is Coming — Be First to Know.</strong>
-          </div>
-          <p class="uo-early-access-sub">
-            Join our launch list for priority access, sizing invitations, and opening release notifications.
-          </p>
-          <a href="#ultra-newsletter" class="uo-early-access-link" onclick="document.querySelector('#ContactFooter, footer, .uo-footer-section')?.scrollIntoView({behavior: 'smooth'}); return false;">
-            Get Launch Updates →
-          </a>
+        <!-- ================= 15. LIVE VIEWERS SOCIAL PROOF (10-30 VIEWERS) ================= -->
+        <div class="uo-live-viewers-card" id="uoLiveViewersCard">
+          <span class="uo-live-pulse-dot"></span>
+          <span class="uo-live-viewers-msg">
+            <strong class="uo-live-viewers-num" id="uoLiveViewerCount">24</strong> people are viewing this product right now
+          </span>
         </div>
 
         <div class="uo-pdp-error-msg" style="display:none;margin-top:10px;padding:8px 12px;background:#fef2f2;border:1px solid #f87171;border-radius:4px;color:#b91c1c;font-size:13px;"></div>

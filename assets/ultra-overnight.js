@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initPdpTabs();
   initDetailsAccordion();
   initModalListeners();
+  initLiveViewersCounter();
 });
 
 // 1. Mobile Drawer Navigation
@@ -564,4 +565,23 @@ function initDetailsAccordion() {
       }
     });
   });
+}
+
+// 12. Dynamic Live Viewers Counter (10 - 30 Viewers)
+function initLiveViewersCounter() {
+  const countEl = document.getElementById('uoLiveViewerCount');
+  if (!countEl) return;
+  // Initialize with a random number between 10 and 30
+  const randomInit = Math.floor(Math.random() * (30 - 10 + 1)) + 10;
+  countEl.textContent = randomInit;
+
+  // Gentle subtle natural fluctuation
+  setInterval(function () {
+    const current = parseInt(countEl.textContent, 10) || 20;
+    const delta = (Math.random() > 0.5 ? 1 : -1) * (Math.floor(Math.random() * 2) + 1);
+    let next = current + delta;
+    if (next < 10) next = 12;
+    if (next > 30) next = 28;
+    countEl.textContent = next;
+  }, 12000);
 }

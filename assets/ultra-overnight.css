@@ -1657,8 +1657,140 @@
 .uo-pdp-editorial-caption{font:400 11px/1.5 var(--uo-font-sans);text-align:center;color:var(--uo-body-text);margin-top:16px}
 .uo-pdp-editorial a:focus-visible,.uo-pdp-section button:focus-visible{outline:3px solid var(--uo-burgundy);outline-offset:3px}
 @media(max-width:1024px){.uo-pdp-grid{grid-template-columns:1fr}.uo-gallery-wrap{position:static}.uo-pdp-editorial-layout{grid-template-columns:1fr}}
-@media(max-width:768px){.uo-pdp-section{padding:18px 0 44px}.uo-buybox{padding:22px 18px}.uo-product-title{font-size:clamp(27px, 7vw, 31px);line-height:1.12;margin-bottom:10px}.uo-pdp-subhead-serif{font-size:15px;line-height:1.3;margin-bottom:12px}.uo-tier-cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.uo-tier-card{padding:15px 8px;min-height:116px}.uo-tier-name{font-size:12px}.uo-tier-price{font-size:13px}.uo-tier-unit{font-size:10px}.uo-pdp-editorial{padding:56px 0}.uo-pdp-editorial-copy h2{font-size:38px}.uo-pdp-editorial-visual{border-radius:15px}}
-@media(max-width:360px){.uo-tier-cards{grid-template-columns:1fr}.uo-tier-card{min-height:unset}}
+@media(max-width:768px){
+  .uo-wrap {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .uo-pdp-section {
+    padding: 12px 0 36px;
+  }
+  .uo-pdp-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+  .uo-gallery-wrap {
+    display: flex;
+    flex-direction: column;
+    position: static;
+    width: 100%;
+    margin: 0;
+  }
+  .uo-main-image-wrap {
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .uo-main-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+  }
+  .uo-thumbnails-strip {
+    width: 100%;
+    padding: 2px 0 6px;
+  }
+  .uo-thumb-btn {
+    flex: 0 0 72px;
+    width: 72px;
+    height: 72px;
+  }
+  .uo-buybox {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 18px 16px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(75, 32, 56, 0.05);
+    margin: 0;
+  }
+  .uo-product-title {
+    font-size: clamp(26px, 7.5vw, 34px);
+    line-height: 1.15;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .uo-pdp-subhead-serif {
+    font-size: 16px;
+    line-height: 1.35;
+    margin-bottom: 12px;
+  }
+  .uo-pdp-editorial {
+    padding: 48px 0;
+  }
+  .uo-pdp-editorial-copy h2 {
+    font-size: 34px;
+  }
+  .uo-pdp-editorial-visual {
+    border-radius: 15px;
+  }
+}
+@media(max-width:640px){
+  .uo-tier-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .uo-tier-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 56px;
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+  .uo-tier-left-col {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: auto;
+    margin-bottom: 0;
+  }
+  .uo-tier-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .uo-tier-name {
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .uo-tier-badge {
+    position: static;
+    transform: none;
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+  .uo-tier-pricing-wrap {
+    text-align: right;
+    margin-top: 0;
+    flex-shrink: 0;
+  }
+  .uo-tier-price {
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .uo-tier-unit {
+    font-size: 11px;
+    margin-top: 1px;
+  }
+}
+@media(max-width:360px){
+  .uo-wrap {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .uo-buybox {
+    padding: 16px 12px;
+  }
+}
 
 
 /* ==========================================================================
@@ -2372,30 +2504,87 @@
    15. PDP V3 COMPONENT EXTENSIONS — FEMININE LUXURY & CRO
    ========================================================================== */
 
-/* Conditional Rating Row (Zero Height When Empty) */
-.uo-rating-row {
+/* Trustpilot Verified Rating Bar (Above Product Title) */
+.uo-trustpilot-rating-bar {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin-bottom: 12px;
   font-family: var(--uo-font-sans);
-  font-size: 13.5px;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
-.uo-rating-stars {
-  color: var(--uo-plum);
-  letter-spacing: 2px;
-  font-size: 14px;
+.uo-tp-stars-row {
+  display: inline-flex;
+  gap: 2px;
 }
 
-.uo-rating-score {
-  font-weight: 700;
+.uo-tp-star-box {
+  width: 17px;
+  height: 17px;
+  background-color: #00b67a;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  border-radius: 2px;
+  line-height: 1;
+}
+
+.uo-tp-rating-lead {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   color: var(--uo-charcoal);
 }
 
-.uo-rating-count {
-  color: var(--uo-burgundy);
+.uo-tp-score {
+  font-weight: 700;
+  color: var(--uo-charcoal);
+  font-size: 13.5px;
+}
+
+.uo-tp-dot {
+  color: var(--uo-muted-mauve);
+}
+
+.uo-tp-count-text {
+  color: #55444D;
   font-size: 12.5px;
+}
+
+.uo-tp-brand-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #00b67a;
+  background: rgba(0, 182, 122, 0.08);
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+}
+
+/* Tier Card Internal Columns (Desktop default) */
+.uo-tier-left-col {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.uo-tier-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.uo-tier-pricing-wrap {
+  margin-top: auto;
 }
 
 /* Real Shopify Payment Icons Strip Under Primary CTA */
@@ -2418,63 +2607,46 @@
   display: block;
 }
 
-/* Early Access Reassurance Banner */
-.uo-early-access-banner {
+/* Live Viewers Social Proof Banner (10-30 viewers) */
+.uo-live-viewers-card {
   margin-top: 14px;
-  padding: 13px 16px;
+  padding: 12px 16px;
   background: var(--uo-blush);
   border: 1px solid var(--uo-border);
   border-radius: 10px;
-  text-align: center;
-}
-
-.uo-early-access-header {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
-  margin-bottom: 5px;
+  gap: 9px;
+  box-sizing: border-box;
 }
 
-.uo-early-access-dot {
-  width: 7px;
-  height: 7px;
-  background-color: var(--uo-plum);
+.uo-live-pulse-dot {
+  width: 9px;
+  height: 9px;
+  background-color: #16a34a;
   border-radius: 50%;
   display: inline-block;
-  animation: uo-pulse 2s infinite ease-in-out;
+  flex-shrink: 0;
+  animation: uo-live-pulse 1.8s infinite ease-in-out;
 }
 
-@keyframes uo-pulse {
-  0% { transform: scale(0.9); opacity: 0.7; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(0.9); opacity: 0.7; }
+@keyframes uo-live-pulse {
+  0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.6); }
+  70% { transform: scale(1.1); box-shadow: 0 0 0 7px rgba(22, 163, 74, 0); }
+  100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
 }
 
-.uo-early-access-title {
+.uo-live-viewers-msg {
   font-family: var(--uo-font-sans);
-  font-size: 13.5px;
+  font-size: 13px;
+  color: var(--uo-charcoal);
+  line-height: 1.4;
+}
+
+.uo-live-viewers-num {
   font-weight: 700;
   color: var(--uo-plum);
-}
-
-.uo-early-access-sub {
-  font-family: var(--uo-font-sans);
-  font-size: 12.5px;
-  line-height: 1.45;
-  color: var(--uo-charcoal);
-  margin: 0 0 8px 0;
-}
-
-.uo-early-access-link {
-  font-family: var(--uo-font-sans);
-  font-size: 12.5px;
-  font-weight: 700;
-  color: var(--uo-burgundy);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  cursor: pointer;
-  display: inline-block;
 }
 
 /* SECTION 02: THE OVERNIGHT PROBLEM */

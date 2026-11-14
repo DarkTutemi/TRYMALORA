@@ -47,6 +47,11 @@ if (fs.existsSync(transcriptSrc)) {
 
 console.log('2. Copying markdown report artifacts...');
 const reportFiles = [
+  'ultra_pdp_v3_execution_report.md',
+  'ultra_pdp_v2_recovery_report.md',
+  'ultra_pdp_v2_audit_resolution_report.md',
+  'ultra_pdp_v2_implementation_report.md',
+  'ultra_production_readiness_audit_report.md',
   'ultra_overnight_transformation_report.md',
   'steam_eye_therapy_clone_report.md',
   'ear_cleaner_task_report.md',

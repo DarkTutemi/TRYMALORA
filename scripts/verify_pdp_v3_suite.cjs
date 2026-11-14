@@ -274,8 +274,10 @@ async function runSuite() {
       const title = document.querySelector('.uo-product-title');
       const subhead = document.querySelector('.uo-pdp-subhead-serif');
       const desc = document.querySelector('.uo-pdp-desc');
+      const tpBar = document.querySelector('.uo-trustpilot-rating-bar');
+      const liveCard = document.querySelector('.uo-live-viewers-card');
+      const liveCount = parseInt(document.getElementById('uoLiveViewerCount')?.textContent, 10);
       const paymentIcons = document.querySelectorAll('.uo-payment-icon-svg');
-      const earlyAccess = document.querySelector('.uo-early-access-banner');
       const overflow = document.documentElement.scrollWidth - window.innerWidth;
       const sections = [
         '#uoPdpSection',
@@ -294,12 +296,13 @@ async function runSuite() {
 
       return {
         titleFont: title ? window.getComputedStyle(title).fontSize : null,
-        titleLineHeight: title ? window.getComputedStyle(title).lineHeight : null,
         titleText: title ? title.textContent.trim() : null,
-        subheadText: subhead ? subhead.textContent.trim() : null,
-        descText: desc ? desc.textContent.trim() : null,
+        trustpilotPresent: !!tpBar,
+        trustpilotText: tpBar ? tpBar.textContent.replace(/\\s+/g, ' ').trim() : null,
+        liveViewersPresent: !!liveCard,
+        liveViewersCount: liveCount,
+        liveViewersRangeOk: liveCount >= 10 && liveCount <= 30,
         paymentIconsCount: paymentIcons.length,
-        earlyAccessPresent: !!earlyAccess,
         overflow: overflow,
         sectionsCount: sectionsPresent.filter(Boolean).length,
         all11Present: sectionsPresent.every(Boolean)
@@ -310,11 +313,13 @@ async function runSuite() {
   console.log('  Desktop Evaluation:', getVal(desktopEval));
   await takeScreenshot('qa_ultra_pdp_v3_desktop_1440.png');
 
-  // --- TEST 2: MOBILE VIEWPORTS (320px, 375px, 390px, 430px) ---
+  // --- TEST 2: MOBILE VIEWPORTS (320px, 360px, 375px, 390px, 414px, 430px, 768px) ---
   const viewports = [
     { w: 320, h: 568, name: '320px (iPhone SE Narrow)' },
+    { w: 360, h: 740, name: '360px (Samsung Galaxy / Android)' },
     { w: 375, h: 667, name: '375px (iPhone SE Standard)' },
     { w: 390, h: 844, name: '390px (iPhone 14 Standard)' },
+    { w: 414, h: 896, name: '414px (iPhone XR / Plus)' },
     { w: 430, h: 932, name: '430px (iPhone 14 Pro Max)' },
     { w: 768, h: 1024, name: '768px (iPad Portrait)' }
   ];
@@ -330,6 +335,8 @@ async function runSuite() {
         const mainImg = document.querySelector('.uo-main-image-wrap');
         const thumbStrip = document.querySelector('.uo-thumbnails-strip');
         const thumbs = document.querySelectorAll('.uo-thumb-btn');
+        const tierCards = document.querySelector('.uo-tier-cards');
+        const firstTier = document.querySelector('.uo-tier-card');
         const badge = document.getElementById('uoGalleryCounterBadge');
         const overflow = document.documentElement.scrollWidth - window.innerWidth;
         
@@ -347,16 +354,19 @@ async function runSuite() {
           titleFontSize: title ? window.getComputedStyle(title).fontSize : null,
           titleLineHeight: title ? window.getComputedStyle(title).lineHeight : null,
           galleryMainAboveThumbnails: galleryMobileOrderOk,
-          counterBadge: badge ? badge.textContent.trim() : null,
-          thumbnailsCount: thumbs.length
+          tierCardHeight: firstTier ? firstTier.getBoundingClientRect().height : null,
+          counterBadge: badge ? badge.textContent.trim() : null
         };
       })()`,
       returnByValue: true
     });
     console.log('  Mobile Check Result:', getVal(vpEval));
 
+    if (vp.w === 360) {
+      await takeScreenshot('qa_ultra_pdp_v3_mobile_360_samsung.png');
+    }
     if (vp.w === 390) {
-      await takeScreenshot('qa_ultra_pdp_v3_mobile_390.png');
+      await takeScreenshot('qa_ultra_pdp_v3_mobile_390_iphone.png');
     }
   }
 
@@ -498,3 +508,4 @@ runSuite().catch(err => {
   console.error('Test Suite Failed:', err);
   process.exit(1);
 });
+
