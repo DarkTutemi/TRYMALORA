@@ -1,0 +1,170 @@
+<section class="uo-faq-section" id="ultra-faq">
+  <div class="uo-wrap">
+    <div class="uo-faq-header">
+      <span class="uo-eyebrow">{{ section.settings.eyebrow | default: 'CLARITY & DETAILS' }}</span>
+      <h2 class="uo-heading-serif uo-faq-title">{{ section.settings.title | default: 'Frequently Asked Questions' }}</h2>
+      <p class="uo-faq-subhead">{{ section.settings.subhead | default: 'Clear, transparent answers about our design, fit, care, and upcoming release.' }}</p>
+    </div>
+
+    <div class="uo-faq-list">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <div class="uo-faq-item {% if forloop.first %}is-active{% endif %}" {{ block.shopify_attributes }}>
+            <button type="button" class="uo-faq-trigger" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
+              <span>{{ block.settings.question | escape }}</span>
+              <span class="uo-faq-icon">+</span>
+            </button>
+            <div class="uo-faq-content">
+              <div class="uo-faq-body">
+                {{ block.settings.answer | escape }}
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        <!-- Default 7 Verified Questions -->
+        <!-- Q1 -->
+        <div class="uo-faq-item is-active">
+          <button type="button" class="uo-faq-trigger" aria-expanded="true">
+            <span>What is Full-Spine™ coverage?</span>
+            <span class="uo-faq-icon">+</span>
+          </button>
+          <div class="uo-faq-content">
+            <div class="uo-faq-body">
+              Unlike traditional period underwear with a small central gusset, Full-Spine™ architecture extends protective absorbent coverage all the way from the front waistband across the entire posterior seat up to the rear waistband. This continuous barrier is designed to catch flow whether you sleep on your back, stomach, or side.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="uo-faq-item">
+          <button type="button" class="uo-faq-trigger" aria-expanded="false">
+            <span>What is the NOCTÉRA-5™ system?</span>
+            <span class="uo-faq-icon">+</span>
+          </button>
+          <div class="uo-faq-content">
+            <div class="uo-faq-body">
+              NOCTÉRA-5™ is our proprietary 5-layer fluid management concept combining: (1) a soft, breathable moisture-wicking top layer, (2) a rapid distribution layer, (3) a high-capacity absorbency core, (4) a leak-blocking waterproof breathable membrane, and (5) a soft CloudFlex™ modal outer shell.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="uo-faq-item">
+          <button type="button" class="uo-faq-trigger" aria-expanded="false">
+            <span>How do I select my size?</span>
+            <span class="uo-faq-icon">+</span>
+          </button>
+          <div class="uo-faq-content">
+            <div class="uo-faq-body">
+              We offer 8 sizes spanning XS through 4XL. Click the "Size Guide ↗" link beside the size selector to view waist and hip guidelines. If you prefer a more relaxed fit for sleeping or fall between two sizes, we recommend sizing up one size.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="uo-faq-item">
+          <button type="button" class="uo-faq-trigger" aria-expanded="false">
+            <span>What is the intended use?</span>
+            <span class="uo-faq-icon">+</span>
+          </button>
+          <div class="uo-faq-content">
+            <div class="uo-faq-body">
+              FULL-SPINE ULTRA OVERNIGHT™ is engineered specifically for nighttime wear and heavy flow days, providing continuous multi-angle protection so you can sleep peacefully without waking up to adjust pads or change stained sheets.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="uo-faq-item">
+          <button type="button" class="uo-faq-trigger" aria-expanded="false">
+            <span>How do I wash and care for the underwear?</span>
+            <span class="uo-faq-icon">+</span>
+          </button>
+          <div class="uo-faq-content">
+            <div class="uo-faq-body">
+              Simple 3-step care: (1) Rinse in cold water after wearing until water runs clear. (2) Machine wash cold on gentle cycle with standard detergent. (3) Hang dry or lay flat. Do not use fabric softener, bleach, or high-heat dryers.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="uo-faq-item">
+          <button type="button" class="uo-faq-trigger" aria-expanded="false">
+            <span>Can I choose different sizes and colors in a bundle?</span>
+            <span class="uo-faq-icon">+</span>
+          </button>
+          <div class="uo-faq-content">
+            <div class="uo-faq-body">
+              Yes. Our interactive Mix &amp; Match customizer allows you to tailor each pair in your 3-pack or 5-pack with independent size and color selections, giving you complete flexibility for your wardrobe.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="uo-faq-item">
+          <button type="button" class="uo-faq-trigger" aria-expanded="false">
+            <span>When will FULL-SPINE ULTRA™ be available for purchase?</span>
+            <span class="uo-faq-icon">+</span>
+          </button>
+          <div class="uo-faq-content">
+            <div class="uo-faq-body">
+              We are currently completing factory sample testing and pre-launch quality audits. Official commercial availability and inventory release will be announced to our early-access list. Sign up with your email to receive launch notification.
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ultra FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "CLARITY & DETAILS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "id": "subhead",
+      "label": "Subhead",
+      "default": "Clear, transparent answers about our design, fit, care, and upcoming release."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Question title here"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Detailed answer text here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ultra FAQ"
+    }
+  ]
+}
+{% endschema %}

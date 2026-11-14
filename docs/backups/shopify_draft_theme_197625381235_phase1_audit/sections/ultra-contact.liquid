@@ -1,0 +1,117 @@
+<section class="uo-page-hero">
+  <div class="uo-wrap">
+    <span class="uo-eyebrow">CUSTOMER CARE</span>
+    <h1 class="uo-heading-serif uo-page-hero-title">Contact Us</h1>
+    <p class="uo-page-hero-desc">
+      Have a question about sizing, order details, or care instructions? Our dedicated support team is here to help.
+    </p>
+  </div>
+</section>
+
+<section class="uo-page-content-wrap">
+  <div class="uo-wrap">
+    <div class="uo-track-box" style="max-width: 600px; margin: 0 auto; background: var(--uo-white); padding: 36px 32px; border-radius: var(--uo-radius-md); border: 1px solid var(--uo-border); box-shadow: var(--uo-shadow-sm);">
+      
+      {%- form 'contact', id: 'uoContactForm', class: 'uo-contact-form' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="uo-form-success" style="padding: 18px 20px; background: #ECFDF5; border: 1px solid #A7F3D0; border-radius: var(--uo-radius-sm); margin-bottom: 24px; font-family: var(--uo-font-sans); color: #065F46; font-size: 14px; line-height: 1.5;">
+            <div style="font-weight: 700; margin-bottom: 4px;">✓ Message Sent Successfully</div>
+            Thank you for reaching out to ULTRA OVERNIGHT™. Our customer care team has received your inquiry and will respond to your email.
+          </div>
+        {%- endif -%}
+
+        {%- if form.errors -%}
+          <div class="uo-form-error" style="padding: 14px 18px; background: #FEF2F2; border: 1px solid #FECACA; border-radius: var(--uo-radius-sm); margin-bottom: 20px; font-family: var(--uo-font-sans); color: #991B1B; font-size: 13.5px; line-height: 1.4;">
+            <div style="font-weight: 700; margin-bottom: 4px;">Please correct the following:</div>
+            {{ form.errors | default_errors }}
+          </div>
+        {%- endif -%}
+
+        <div class="uo-input-group" style="margin-bottom: 16px;">
+          <label for="uoContactName" style="display:block; font-family: var(--uo-font-sans); font-size: 13px; font-weight: 600; color: var(--uo-charcoal); margin-bottom: 6px;">
+            Full Name <span style="color:#b91c1c;">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="uoContactName" 
+            name="contact[name]" 
+            class="uo-input-control" 
+            placeholder="Jane Doe" 
+            required 
+            aria-required="true"
+            value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+            style="width: 100%; height: 46px; border: 1px solid var(--uo-border); border-radius: var(--uo-radius-sm); padding: 0 14px; font-size: 14px; font-family: var(--uo-font-sans);"
+          >
+        </div>
+
+        <div class="uo-input-group" style="margin-bottom: 16px;">
+          <label for="uoContactEmail" style="display:block; font-family: var(--uo-font-sans); font-size: 13px; font-weight: 600; color: var(--uo-charcoal); margin-bottom: 6px;">
+            Email Address <span style="color:#b91c1c;">*</span>
+          </label>
+          <input 
+            type="email" 
+            id="uoContactEmail" 
+            name="contact[email]" 
+            class="uo-input-control" 
+            placeholder="jane@example.com" 
+            required 
+            aria-required="true"
+            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            style="width: 100%; height: 46px; border: 1px solid var(--uo-border); border-radius: var(--uo-radius-sm); padding: 0 14px; font-size: 14px; font-family: var(--uo-font-sans);"
+          >
+        </div>
+
+        <div class="uo-input-group" style="margin-bottom: 16px;">
+          <label for="uoContactOrder" style="display:block; font-family: var(--uo-font-sans); font-size: 13px; font-weight: 600; color: var(--uo-charcoal); margin-bottom: 6px;">
+            Order Number <span style="font-weight:400;color:var(--uo-body-text);">(optional)</span>
+          </label>
+          <input 
+            type="text" 
+            id="uoContactOrder" 
+            name="contact[order_number]" 
+            class="uo-input-control" 
+            placeholder="#1042" 
+            style="width: 100%; height: 46px; border: 1px solid var(--uo-border); border-radius: var(--uo-radius-sm); padding: 0 14px; font-size: 14px; font-family: var(--uo-font-sans);"
+          >
+        </div>
+
+        <div class="uo-input-group" style="margin-bottom: 20px;">
+          <label for="uoContactMsg" style="display:block; font-family: var(--uo-font-sans); font-size: 13px; font-weight: 600; color: var(--uo-charcoal); margin-bottom: 6px;">
+            Message <span style="color:#b91c1c;">*</span>
+          </label>
+          <textarea 
+            id="uoContactMsg" 
+            name="contact[body]" 
+            class="uo-input-control" 
+            rows="5" 
+            placeholder="How can our care team assist you today?" 
+            required 
+            aria-required="true"
+            style="width: 100%; min-height: 120px; border: 1px solid var(--uo-border); border-radius: var(--uo-radius-sm); padding: 12px 14px; font-size: 14px; font-family: var(--uo-font-sans); line-height: 1.5; resize: vertical;"
+          >{% if form.body %}{{ form.body }}{% endif %}</textarea>
+        </div>
+
+        <button type="submit" class="uo-btn-primary" style="width: 100%; padding: 14px; font-size: 14px; font-weight: 700; letter-spacing: 0.05em; border: none; cursor: pointer;">
+          SEND MESSAGE ➔
+        </button>
+      {%- endform -%}
+
+      <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--uo-border); text-align: center; font-family: var(--uo-font-sans); font-size: 13.5px; color: var(--uo-body-text); line-height: 1.5;">
+        Direct Inquiries: <a href="mailto:support@trymalora.com" style="color:var(--uo-plum);font-weight:700;text-decoration:underline;">support@trymalora.com</a><br>
+        Customer Care Hours: Monday – Friday, 9am – 6pm EST
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ultra Contact",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Ultra Contact"
+    }
+  ]
+}
+{% endschema %}

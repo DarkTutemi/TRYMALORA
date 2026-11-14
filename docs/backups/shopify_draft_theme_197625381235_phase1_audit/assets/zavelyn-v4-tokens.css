@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Brand Core Palette */
+  --zv-primary: #17352B;          /* Deep Forest Green */
+  --zv-primary-hover: #0F241D;    /* Darkened Forest */
+  --zv-primary-rgb: 23, 53, 43;
+  --zv-accent: #BCE76A;           /* Soft Lime */
+  --zv-accent-hover: #AADB54;
+  --zv-accent-dark: #17352B;
+  --zv-bg: #FAFAF6;
+  --zv-surface: #FFFFFF;
+  --zv-surface-muted: #F3F5EF;
+  --zv-heading: #17231E;
+  --zv-body: #454F49;
+  --zv-muted: #738076;
+  --zv-border: #E5E8E2;
+  --zv-border-light: rgba(23, 53, 43, 0.08);
+  --zv-ok: #2E7D32;
+  --zv-ok-tint: #E8F5E9;
+  --zv-warn: #D97706;
+  --zv-warn-tint: #FEF3C7;
+
+  /* ShopSideK T01 Visual Match Design Tokens (Warm Blush, Plum & Rose Palette) */
+  --zv-pdp-bg: #FFF8F5;           /* Soft Blush / Warm Ivory */
+  --zv-pdp-surface: #FBEDE8;      /* Warm Muted Neutral Surface */
+  --zv-pdp-text: #2B1B24;         /* Elegant Dark Chocolate / Plum */
+  --zv-pdp-heading: #2B1B24;      /* High-contrast Title Color */
+  --zv-pdp-body: #4A3841;         /* Refined Dark Slate */
+  --zv-pdp-muted: #7A6670;        /* Muted Plum / Taupe */
+  --zv-pdp-accent: #B0476E;       /* Rose / Soft Pink Accent */
+  --zv-pdp-tint: #F8E4EB;         /* Soft Pink Tint / Pill Surface */
+  --zv-pdp-cta: #6B1E46;          /* Deep Plum / Burgundy Primary CTA */
+  --zv-pdp-cta-hover: #541536;    /* Darker Plum Hover State */
+  --zv-pdp-line: #EAD7DD;         /* Soft Pink Accent Border / Divider */
+  --zv-pdp-ok: #3F8F6B;           /* Success / In-Stock Green */
+  --zv-pdp-ok-tint: #E5F2EA;      /* Soft Green Tint */
+  --zv-pdp-star: #E0A33A;         /* Verified Review Gold Star */
+
+  /* Typography Scale */
+  --zv-font-serif: 'Fraunces', Georgia, serif;
+  --zv-font-heading: 'Fraunces', Georgia, serif;
+  --zv-font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --zv-font-ui: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* Radii */
+  --zv-radius-sm: 8px;
+  --zv-radius-md: 12px;
+  --zv-radius-lg: 16px;
+  --zv-radius-xl: 20px;
+  --zv-radius-full: 9999px;
+  
+  /* Shadows */
+  --zv-shadow-sm: 0 2px 8px rgba(43, 27, 36, 0.04);
+  --zv-shadow-md: 0 10px 24px -8px rgba(43, 27, 36, 0.08);
+  --zv-shadow-lg: 0 24px 50px -16px rgba(43, 27, 36, 0.14);
+  --zv-shadow-cta: 0 10px 24px -10px rgba(107, 30, 70, 0.7);
+  --zv-shadow-shelf: 0 18px 30px -10px rgba(0, 0, 0, 0.28);
+  --zv-shadow-lift: 0 14px 34px -10px rgba(43, 27, 36, 0.18);
+  
+  /* Transitions */
+  --zv-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --zv-transition-fast: 0.18s var(--zv-ease);
+  --zv-transition-base: 0.28s var(--zv-ease);
+  --zv-transition-slow: 0.45s var(--zv-ease);
+}
+
+/* Base Utility Classes */
+.zv-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .zv-container {
+    padding: 0 40px;
+  }
+}
+
+.zv-section-pad {
+  padding: 64px 0;
+}
+
+@media screen and (min-width: 992px) {
+  .zv-section-pad {
+    padding: 96px 0;
+  }
+}
+
+.zv-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: var(--zv-radius-full);
+}
+
+.zv-badge-lime {
+  background: var(--zv-accent);
+  color: var(--zv-accent-dark);
+}
+
+.zv-badge-forest {
+  background: var(--zv-primary);
+  color: #FFFFFF;
+}
+
+.zv-badge-success {
+  background: var(--zv-ok-tint);
+  color: var(--zv-ok);
+}
+
+.zv-badge-warn {
+  background: var(--zv-warn-tint);
+  color: var(--zv-warn);
+}
+
+/* Button System */
+.zv-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--zv-font-heading);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  padding: 16px 32px;
+  border-radius: var(--zv-radius-md);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--zv-transition-fast);
+  border: none;
+  line-height: 1.2;
+}
+
+.zv-btn-primary {
+  background: var(--zv-primary);
+  color: #FFFFFF;
+  box-shadow: 0 8px 20px -6px rgba(var(--zv-primary-rgb), 0.45);
+}
+
+.zv-btn-primary:hover {
+  background: var(--zv-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -8px rgba(var(--zv-primary-rgb), 0.55);
+}
+
+.zv-btn-accent {
+  background: var(--zv-accent);
+  color: var(--zv-accent-dark);
+  box-shadow: 0 8px 20px -6px rgba(188, 231, 106, 0.45);
+}
+
+.zv-btn-accent:hover {
+  background: var(--zv-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -8px rgba(188, 231, 106, 0.6);
+}
+
+.zv-btn-outline {
+  background: transparent;
+  color: var(--zv-primary);
+  border: 1.5px solid var(--zv-primary);
+}
+
+.zv-btn-outline:hover {
+  background: rgba(var(--zv-primary-rgb), 0.06);
+}
+
+.zv-btn-block {
+  width: 100%;
+}

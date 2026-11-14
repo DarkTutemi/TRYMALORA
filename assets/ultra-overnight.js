@@ -1,16 +1,63 @@
 /**
- * ULTRA OVERNIGHT™ — Client-Side Interactions & Buy Box State Management
+ * ULTRA OVERNIGHT™ — Authoritative Client-Side State, Variant Mapping & Mix-and-Match
+ * Single source of truth for variant selection, bundle tiers, multi-line cart payload, and CRO interactions.
  */
+
+// Global State
+window.uoState = {
+  variants: [],
+  selectedSize: 'M',
+  selectedColor: 'Plum Noir',
+  activeVariantId: 67401560129907, // Default M / Plum Noir
+  selectedTier: '3-pairs',
+  packQty: 3,
+  currentQty: 1,
+  isMixMatchExpanded: false,
+  mixMatchSlots: [
+    { pairNum: 1, size: 'M', color: 'Plum Noir', variantId: 67401560129907 },
+    { pairNum: 2, size: 'M', color: 'Plum Noir', variantId: 67401560129907 },
+    { pairNum: 3, size: 'M', color: 'Plum Noir', variantId: 67401560129907 }
+  ]
+};
+
+// Global Helper Functions (Accessible from inline HTML)
+window.openUoSizeGuide = function () {
+  const modal = document.getElementById('uoSizeGuideModal');
+  if (modal) {
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+};
+
+window.closeUoSizeGuide = function () {
+  const modal = document.getElementById('uoSizeGuideModal');
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+};
+
+window.scrollToUoBuyBox = function () {
+  const buyBox = document.getElementById('uoBuyBox') || document.getElementById('uoPdpSection');
+  if (buyBox) {
+    buyBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+};
 
 document.addEventListener('DOMContentLoaded', function () {
   initMobileDrawer();
   initFaqAccordions();
   initPdpGallery();
-  initPdpBuyBox();
+  initAuthoritativeVariants();
+  initAuthoritativeSelectors();
+  initTierBundles();
+  initMixAndMatchArchitecture();
+  initStickyMobileBar();
   initPdpTabs();
+  initModalListeners();
 });
 
-// Mobile Drawer Navigation
+// 1. Mobile Drawer Navigation
 function initMobileDrawer() {
   const toggleBtn = document.querySelector('.uo-mobile-menu-toggle');
   const closeBtn = document.querySelector('.uo-mobile-drawer-close');
@@ -36,28 +83,33 @@ function initMobileDrawer() {
   overlay.addEventListener('click', closeMenu);
 }
 
-// FAQ Accordion
+// 2. FAQ Accordion
 function initFaqAccordions() {
   const triggers = document.querySelectorAll('.uo-faq-trigger');
   triggers.forEach(function (trigger) {
     trigger.addEventListener('click', function () {
       const item = this.closest('.uo-faq-item');
+      if (!item) return;
       const isActive = item.classList.contains('is-active');
 
-      // Close other items in the same container
       const parent = item.parentElement;
-      parent.querySelectorAll('.uo-faq-item').forEach(function (sibling) {
-        sibling.classList.remove('is-active');
-      });
+      if (parent) {
+        parent.querySelectorAll('.uo-faq-item').forEach(function (sibling) {
+          sibling.classList.remove('is-active');
+          const btn = sibling.querySelector('.uo-faq-trigger');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+      }
 
       if (!isActive) {
         item.classList.add('is-active');
+        this.setAttribute('aria-expanded', 'true');
       }
     });
   });
 }
 
-// PDP Thumbnail Gallery
+// 3. PDP Thumbnail Gallery
 function initPdpGallery() {
   const thumbBtns = document.querySelectorAll('.uo-thumb-btn');
   const mainImg = document.querySelector('.uo-main-image');
@@ -66,8 +118,12 @@ function initPdpGallery() {
 
   thumbBtns.forEach(function (btn) {
     btn.addEventListener('click', function () {
-      thumbBtns.forEach(function (b) { b.classList.remove('is-active'); });
+      thumbBtns.forEach(function (b) {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-selected', 'false');
+      });
       this.classList.add('is-active');
+      this.setAttribute('aria-selected', 'true');
       const newSrc = this.getAttribute('data-image-src');
       if (newSrc) {
         mainImg.src = newSrc;
@@ -76,327 +132,96 @@ function initPdpGallery() {
   });
 }
 
-// PDP Buy Box & Cart Integration
-function initPdpBuyBox() {
-  const tierCards = document.querySelectorAll('.uo-tier-card');
+// 4. Authoritative Variant Data Parser
+function initAuthoritativeVariants() {
+  const scriptEl = document.getElementById('uo-product-variants-json');
+  if (scriptEl) {
+    try {
+      window.uoState.variants = JSON.parse(scriptEl.textContent);
+    } catch (e) {
+      console.warn('[ULTRA] Error parsing variant JSON, using fallback:', e);
+    }
+  }
+
+  // Ensure default fallback 16 variants if empty
+  if (!window.uoState.variants || window.uoState.variants.length === 0) {
+    window.uoState.variants = [
+      { id: 67401560064371, title: 'XS / Plum Noir', option1: 'XS', option2: 'Plum Noir', price: 0, available: false },
+      { id: 67401560097139, title: 'S / Plum Noir', option1: 'S', option2: 'Plum Noir', price: 0, available: false },
+      { id: 67401560129907, title: 'M / Plum Noir', option1: 'M', option2: 'Plum Noir', price: 0, available: false },
+      { id: 67401560162675, title: 'L / Plum Noir', option1: 'L', option2: 'Plum Noir', price: 0, available: false },
+      { id: 67401560195443, title: 'XL / Plum Noir', option1: 'XL', option2: 'Plum Noir', price: 0, available: false },
+      { id: 67401560228211, title: '2XL / Plum Noir', option1: '2XL', option2: 'Plum Noir', price: 0, available: false },
+      { id: 67401560260979, title: '3XL / Plum Noir', option1: '3XL', option2: 'Plum Noir', price: 0, available: false },
+      { id: 67401560293747, title: '4XL / Plum Noir', option1: '4XL', option2: 'Plum Noir', price: 0, available: false },
+      { id: 67401560326515, title: 'XS / Blush Rose', option1: 'XS', option2: 'Blush Rose', price: 0, available: false },
+      { id: 67401560359283, title: 'S / Blush Rose', option1: 'S', option2: 'Blush Rose', price: 0, available: false },
+      { id: 67401560392051, title: 'M / Blush Rose', option1: 'M', option2: 'Blush Rose', price: 0, available: false },
+      { id: 67401560424819, title: 'L / Blush Rose', option1: 'L', option2: 'Blush Rose', price: 0, available: false },
+      { id: 67401560457587, title: 'XL / Blush Rose', option1: 'XL', option2: 'Blush Rose', price: 0, available: false },
+      { id: 67401560490355, title: '2XL / Blush Rose', option1: '2XL', option2: 'Blush Rose', price: 0, available: false },
+      { id: 67401560523123, title: '3XL / Blush Rose', option1: '3XL', option2: 'Blush Rose', price: 0, available: false },
+      { id: 67401560555891, title: '4XL / Blush Rose', option1: '4XL', option2: 'Blush Rose', price: 0, available: false }
+    ];
+  }
+
+  // Match initial state
+  syncAuthoritativeVariant();
+}
+
+// Helper: Find variant by size and color
+function findVariant(size, color) {
+  if (!window.uoState.variants || !window.uoState.variants.length) return null;
+  return window.uoState.variants.find(function (v) {
+    return (v.option1 === size && v.option2 === color) ||
+           (v.option1 === color && v.option2 === size) ||
+           (v.title && v.title.includes(size) && v.title.includes(color));
+  }) || null;
+}
+
+// Helper: Sync single variant selection across UI
+function syncAuthoritativeVariant() {
+  const matched = findVariant(window.uoState.selectedSize, window.uoState.selectedColor);
+  const hiddenInput = document.getElementById('uoSelectedVariantId');
   const priceDisplay = document.querySelector('.uo-price-current');
   const atcBtn = document.querySelector('.uo-pdp-atc-btn');
-  const qtyMinus = document.querySelector('.uo-qty-minus');
-  const qtyPlus = document.querySelector('.uo-qty-plus');
-  const qtyVal = document.querySelector('.uo-qty-val');
-  const errorMsg = document.querySelector('.uo-pdp-error-msg');
-  const optionPills = document.querySelectorAll('.uo-option-pill');
 
-  let currentPrice = 0; // pending actual product pricing
-  let currentQty = 1;
-  let currentTier = '3-pairs';
-  let currentPackQty = 3;
+  if (matched) {
+    window.uoState.activeVariantId = matched.id;
+    if (hiddenInput) hiddenInput.value = matched.id;
 
-  // Selected tier initialization
-  const initialTier = document.querySelector('.uo-tier-card.is-selected');
-  if (initialTier) {
-    currentPrice = parseFloat(initialTier.getAttribute('data-tier-price') || '0');
-    currentTier = initialTier.getAttribute('data-tier') || '3-pairs';
-    currentPackQty = parseInt(initialTier.getAttribute('data-pack-qty') || '3', 10);
-  }
-
-  // Parse variants data if embedded
-  const variantsDataEl = document.getElementById('uo-product-variants-json');
-  let variantsData = [];
-  if (variantsDataEl) {
-    try {
-      variantsData = JSON.parse(variantsDataEl.textContent);
-    } catch (e) {
-      console.warn('Could not parse variant data:', e);
+    // Update active variant id on selected tier card
+    const activeTierCard = document.querySelector('.uo-tier-card.is-selected');
+    if (activeTierCard) {
+      activeTierCard.setAttribute('data-variant-id', matched.id);
     }
-  }
 
-  // Option Pills (e.g. Size or Color)
-  if (optionPills.length > 0) {
-    optionPills.forEach(function (pill) {
-      pill.addEventListener('click', function () {
-        const group = this.closest('.uo-option-group');
-        if (!group) return;
-        group.querySelectorAll('.uo-option-pill').forEach(function (p) {
-          p.classList.remove('is-active');
-          p.setAttribute('aria-pressed', 'false');
-          p.style.backgroundColor = '#ffffff';
-          p.style.color = 'var(--uo-charcoal)';
-          p.style.borderColor = '#D9CCD0';
-        });
-        this.classList.add('is-active');
-        this.setAttribute('aria-pressed','true');
-        this.style.backgroundColor = 'var(--uo-plum)';
-        this.style.color = '#ffffff';
-        this.style.borderColor = 'var(--uo-plum)';
-
-        const valLabel = group.querySelector('.uo-option-selected-label');
-        if (valLabel) {
-          valLabel.textContent = this.getAttribute('data-option-value');
-        }
-
-        // Match selected options against variantsData
-        if (variantsData.length > 0) {
-          const selectedValues = Array.from(document.querySelectorAll('.uo-option-group')).map(function (g) {
-            const active = g.querySelector('.uo-option-pill.is-active');
-            return active ? active.getAttribute('data-option-value') : null;
-          });
-
-          const matchedVariant = variantsData.find(function (v) {
-            return selectedValues.every(function (val, idx) {
-              return !val || v.options[idx] === val;
-            });
-          });
-
-          if (matchedVariant) {
-            // Update variant ID on cards
-            tierCards.forEach(function (c) {
-              const packQty = parseInt(c.getAttribute('data-pack-qty') || '1', 10);
-              const unitCents = Number(matchedVariant.price || 0);
-              c.setAttribute('data-variant-id', matchedVariant.id);
-              c.setAttribute('data-tier-price', ((unitCents * packQty) / 100).toFixed(2));
-              const tierPrice = c.querySelector('.uo-tier-price');
-              const unitPrice = c.querySelector('.uo-tier-unit');
-              const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
-              if (tierPrice) tierPrice.textContent = unitCents > 0 ? currency.format(unitCents * packQty / 100) : 'TBD';
-              if (unitPrice) unitPrice.textContent = unitCents > 0 ? '(' + currency.format(unitCents / 100) + '/each)' : '(Pricing pending)';
-            });
-            const chosenCard = document.querySelector('.uo-tier-card.is-selected');
-            if (chosenCard) currentPrice = parseFloat(chosenCard.getAttribute('data-tier-price') || '0');
-            updatePrice();
-
-            // Update button availability
-            if (atcBtn && atcBtn.getAttribute('data-has-product') === 'true') {
-              if (matchedVariant.available) {
-                atcBtn.disabled = false;
-                atcBtn.innerHTML = 'ADD TO CART ➔';
-                atcBtn.classList.remove('uo-btn-disabled');
-              } else {
-                atcBtn.disabled = true;
-                atcBtn.innerHTML = 'SOLD OUT';
-                atcBtn.classList.add('uo-btn-disabled');
-              }
-            }
-          }
-        }
-      });
-    });
-  }
-
-  // Tier selection
-  tierCards.forEach(function (card) {
-    card.addEventListener('click', function () {
-      tierCards.forEach(function (c) {
-        c.classList.remove('is-selected');
-        c.setAttribute('aria-checked', 'false');
-        c.setAttribute('tabindex', '-1');
-      });
-      this.classList.add('is-selected');
-      this.setAttribute('aria-checked', 'true');
-      this.setAttribute('tabindex', '0');
-
-      const price = parseFloat(this.getAttribute('data-tier-price') || '0');
-      currentPrice = price;
-      currentTier = this.getAttribute('data-tier') || '3-pairs';
-      currentPackQty = parseInt(this.getAttribute('data-pack-qty') || '1', 10);
-
-      updatePrice();
-    });
-    card.addEventListener('keydown', function (event) {
-      if (event.key === ' ' || event.key === 'Enter') {
-        event.preventDefault();
-        card.click();
-      } else if (event.key === 'ArrowRight' || event.key === 'ArrowDown' || event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
-        event.preventDefault();
-        const cards = Array.from(tierCards);
-        const delta = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1 : -1;
-        const target = cards[(cards.indexOf(card) + delta + cards.length) % cards.length];
-        target.focus();
-        target.click();
-      }
-    });
-  });
-
-  // Quantity controls
-  if (qtyMinus && qtyPlus && qtyVal) {
-    qtyMinus.addEventListener('click', function () {
-      if (currentQty > 1) {
-        currentQty--;
-        qtyVal.textContent = currentQty;
-        updatePrice();
-      }
-    });
-
-    qtyPlus.addEventListener('click', function () {
-      currentQty++;
-      qtyVal.textContent = currentQty;
-      updatePrice();
-    });
-  }
-
-  function updatePrice() {
-    const total = (currentPrice * currentQty).toFixed(2);
+    // Pricing update (if real price > 0 format money; otherwise Pricing to be confirmed)
     if (priceDisplay) {
-      priceDisplay.textContent = currentPrice > 0 ? "$" + total : "Pricing to be confirmed"
+      const priceCents = Number(matched.price || 0);
+      if (priceCents > 0) {
+        const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+        priceDisplay.textContent = currency.format(priceCents / 100);
+      } else {
+        priceDisplay.textContent = 'Pricing to be confirmed';
+      }
     }
-
   }
 
-  // Add to cart click
-  if (atcBtn) {
-    atcBtn.addEventListener('click', async function (e) {
-      e.preventDefault();
-      if (errorMsg) {
-        errorMsg.style.display = 'none';
-        errorMsg.textContent = '';
-      }
+  // Update labels
+  const colorLabel = document.getElementById('uoSelectedColorLabel');
+  if (colorLabel) colorLabel.textContent = window.uoState.selectedColor;
 
-      const hasProduct = atcBtn.getAttribute('data-has-product') === 'true';
-      const activeCard = document.querySelector('.uo-tier-card.is-selected');
-      const variantId = activeCard ? activeCard.getAttribute('data-variant-id') : null;
+  const sizeLabel = document.getElementById('uoSelectedSizeLabel');
+  if (sizeLabel) sizeLabel.textContent = window.uoState.selectedSize;
 
-      // Graceful product-unavailable state if product is not yet created in Admin
-      if (!hasProduct || !variantId || variantId === 'null' || variantId === '') {
-        if (errorMsg) {
-          errorMsg.textContent = 'This pre-production product is not available for purchase yet.';
-          errorMsg.style.display = 'block';
-        }
-        return;
-      }
-
-      const tierName = activeCard ? activeCard.querySelector('.uo-tier-name').textContent.trim() : '3 Pairs';
-      const originalText = atcBtn.innerHTML;
-      atcBtn.disabled = true;
-      atcBtn.innerHTML = 'Adding to Bag...';
-
-      try {
-        const payload = {
-          id: parseInt(variantId, 10),
-          quantity: currentPackQty * currentQty,
-          properties: {
-            'Pack': tierName,
-            'Brand': 'ULTRA OVERNIGHT™'
-          }
-        };
-
-        const res = await fetch('/cart/add.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        if (res.ok) {
-          if (typeof window.willaRefreshCart === 'function') {
-            await window.willaRefreshCart();
-          }
-          if (typeof window.openWillaCart === 'function') {
-            window.openWillaCart();
-          } else {
-            window.location.href = '/cart';
-          }
-        } else {
-          const errData = await res.json().catch(function () { return {}; });
-          const message = errData.description || errData.message || 'Could not add to bag. Please try again.';
-          if (errorMsg) {
-            errorMsg.textContent = message;
-            errorMsg.style.display = 'block';
-          }
-        }
-      } catch (err) {
-        console.error('Cart add error:', err);
-        if (errorMsg) {
-          errorMsg.textContent = 'A network error occurred while adding to cart.';
-          errorMsg.style.display = 'block';
-        }
-      } finally {
-        atcBtn.disabled = false;
-        atcBtn.innerHTML = originalText;
-      }
-    });
-  }
+  updateStickyBarSummary();
 }
 
-// PDP Tabs
-function initPdpTabs() {
-  const tabBtns = document.querySelectorAll('.uo-tab-btn');
-  const tabPanels = document.querySelectorAll('.uo-tab-panel');
-
-  if (!tabBtns.length || !tabPanels.length) return;
-
-  tabBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      const targetId = this.getAttribute('data-tab-target');
-
-      tabBtns.forEach(function (b) { b.classList.remove('is-active'); });
-      tabPanels.forEach(function (p) { p.classList.remove('is-active'); });
-
-      this.classList.add('is-active');
-      const activePanel = document.getElementById(targetId);
-      if (activePanel) {
-        activePanel.classList.add('is-active');
-      }
-    });
-  });
-}
-
-// ==========================================================================
-// PDP V2 EXTENSIONS — SIZE GUIDE, SWATCHES, MIX-AND-MATCH & STICKY BUY BAR
-// ==========================================================================
-
-// Global Modal Handlers
-window.openUoSizeGuide = function () {
-  var modal = document.getElementById('uoSizeGuideModal');
-  if (modal) {
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  }
-};
-
-window.closeUoSizeGuide = function () {
-  var modal = document.getElementById('uoSizeGuideModal');
-  if (modal) {
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-};
-
-// Global Scroll to Buy Box
-window.scrollToUoBuyBox = function () {
-  var buyBox = document.getElementById('uoBuyBox') || document.getElementById('uoPdpSection');
-  if (buyBox) {
-    buyBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-};
-
-// Close modal on Escape or clicking backdrop
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') {
-    window.closeUoSizeGuide();
-  }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  var modal = document.getElementById('uoSizeGuideModal');
-  if (modal) {
-    modal.addEventListener('click', function (e) {
-      if (e.target === modal) {
-        window.closeUoSizeGuide();
-      }
-    });
-  }
-
-  initColorSwatches();
-  initSizePills();
-  initMixAndMatch();
-  initStickyMobileBar();
-  initPdpTabsAria();
-});
-
-// Color Swatches
-function initColorSwatches() {
-  var swatches = document.querySelectorAll('.uo-color-swatch');
-  var colorLabel = document.getElementById('uoSelectedColorLabel');
-
+// 5. Authoritative Selectors (Swatches & Size Pills)
+function initAuthoritativeSelectors() {
+  // Color Swatches
+  const swatches = document.querySelectorAll('.uo-color-swatch');
   swatches.forEach(function (swatch) {
     swatch.addEventListener('click', function () {
       swatches.forEach(function (s) {
@@ -406,20 +231,16 @@ function initColorSwatches() {
       this.classList.add('is-active');
       this.setAttribute('aria-checked', 'true');
 
-      var colorName = this.getAttribute('data-color-name');
-      if (colorLabel && colorName) {
-        colorLabel.textContent = colorName;
+      const color = this.getAttribute('data-color-name');
+      if (color) {
+        window.uoState.selectedColor = color;
+        syncAuthoritativeVariant();
       }
-      updateStickyBarSummary();
     });
   });
-}
 
-// Size Pills
-function initSizePills() {
-  var sizePills = document.querySelectorAll('.uo-size-pill');
-  var sizeLabel = document.getElementById('uoSelectedSizeLabel');
-
+  // Size Pills
+  const sizePills = document.querySelectorAll('.uo-size-pill');
   sizePills.forEach(function (pill) {
     pill.addEventListener('click', function () {
       sizePills.forEach(function (p) {
@@ -431,101 +252,209 @@ function initSizePills() {
       this.setAttribute('aria-checked', 'true');
       this.setAttribute('tabindex', '0');
 
-      var sizeVal = this.getAttribute('data-size-value');
-      if (sizeLabel && sizeVal) {
-        sizeLabel.textContent = sizeVal;
+      const size = this.getAttribute('data-size-value');
+      if (size) {
+        window.uoState.selectedSize = size;
+        syncAuthoritativeVariant();
       }
-      updateStickyBarSummary();
     });
   });
 }
 
-// Mix & Match Customizer
-function initMixAndMatch() {
-  var toggleBtn = document.getElementById('uoMixMatchToggle');
-  var body = document.getElementById('uoMixMatchBody');
-  var tierCards = document.querySelectorAll('.uo-tier-card');
-  var slotsContainer = document.getElementById('uoMixMatchSlots');
+// 6. Tier Bundles Selection (1 Pair, 3 Pairs, 5 Pairs)
+function initTierBundles() {
+  const tierCards = document.querySelectorAll('.uo-tier-card');
+  const qtyMinus = document.querySelector('.uo-qty-minus');
+  const qtyPlus = document.querySelector('.uo-qty-plus');
+  const qtyVal = document.querySelector('.uo-qty-val');
+
+  tierCards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      tierCards.forEach(function (c) {
+        c.classList.remove('is-selected');
+        c.setAttribute('aria-checked', 'false');
+        c.setAttribute('tabindex', '-1');
+      });
+      this.classList.add('is-selected');
+      this.setAttribute('aria-checked', 'true');
+      this.setAttribute('tabindex', '0');
+
+      const tier = this.getAttribute('data-tier') || '3-pairs';
+      const packQty = parseInt(this.getAttribute('data-pack-qty') || '3', 10);
+
+      window.uoState.selectedTier = tier;
+      window.uoState.packQty = packQty;
+
+      // Re-render mix and match slots according to tier count
+      renderMixMatchSlots(packQty);
+      syncAuthoritativeVariant();
+    });
+
+    card.addEventListener('keydown', function (e) {
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        card.click();
+      }
+    });
+  });
+
+  // Quantity stepper
+  if (qtyMinus && qtyPlus && qtyVal) {
+    qtyMinus.addEventListener('click', function () {
+      if (window.uoState.currentQty > 1) {
+        window.uoState.currentQty--;
+        qtyVal.textContent = window.uoState.currentQty;
+        updateStickyBarSummary();
+      }
+    });
+    qtyPlus.addEventListener('click', function () {
+      window.uoState.currentQty++;
+      qtyVal.textContent = window.uoState.currentQty;
+      updateStickyBarSummary();
+    });
+  }
+}
+
+// 7. REAL MIX-AND-MATCH ARCHITECTURE (Multi-Line Cart Payload)
+function initMixAndMatchArchitecture() {
+  const toggleBtn = document.getElementById('uoMixMatchToggle');
+  const body = document.getElementById('uoMixMatchBody');
 
   if (toggleBtn && body) {
     toggleBtn.addEventListener('click', function () {
-      var isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
       toggleBtn.setAttribute('aria-expanded', !isExpanded);
       body.style.display = isExpanded ? 'none' : 'block';
-    });
-  }
-
-  // Update slots when tier changes
-  tierCards.forEach(function (card) {
-    card.addEventListener('click', function () {
-      var packQty = parseInt(this.getAttribute('data-pack-qty') || '3', 10);
-      renderMixMatchSlots(packQty);
+      window.uoState.isMixMatchExpanded = !isExpanded;
       updateStickyBarSummary();
     });
+  }
+
+  // Initial render with default pack quantity (3 pairs)
+  renderMixMatchSlots(window.uoState.packQty);
+}
+
+function renderMixMatchSlots(count) {
+  const container = document.getElementById('uoMixMatchSlots');
+  if (!container) return;
+
+  const sizes = ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'];
+  const colors = ['Plum Noir', 'Blush Rose'];
+
+  window.uoState.mixMatchSlots = [];
+
+  let html = '';
+  for (let i = 1; i <= count; i++) {
+    const pairSize = window.uoState.selectedSize || 'M';
+    const pairColor = window.uoState.selectedColor || 'Plum Noir';
+    const variant = findVariant(pairSize, pairColor);
+
+    window.uoState.mixMatchSlots.push({
+      pairNum: i,
+      size: pairSize,
+      color: pairColor,
+      variantId: variant ? variant.id : window.uoState.activeVariantId
+    });
+
+    html += '<div class="uo-pair-slot" data-slot-index="' + (i - 1) + '">';
+    html += '  <span class="uo-slot-label">Pair ' + i + ':</span>';
+    html += '  <select class="uo-slot-select uo-slot-size" aria-label="Pair ' + i + ' Size">';
+    sizes.forEach(function (s) {
+      html += '    <option value="' + s + '"' + (s === pairSize ? ' selected' : '') + '>Size ' + s + '</option>';
+    });
+    html += '  </select>';
+    html += '  <select class="uo-slot-select uo-slot-color" aria-label="Pair ' + i + ' Color">';
+    colors.forEach(function (c) {
+      html += '    <option value="' + c + '"' + (c === pairColor ? ' selected' : '') + '>' + c + '</option>';
+    });
+    html += '  </select>';
+    html += '</div>';
+  }
+
+  container.innerHTML = html;
+
+  // Bind slot change events
+  container.querySelectorAll('.uo-pair-slot').forEach(function (slotEl) {
+    const slotIdx = parseInt(slotEl.getAttribute('data-slot-index'), 10);
+    const sizeSelect = slotEl.querySelector('.uo-slot-size');
+    const colorSelect = slotEl.querySelector('.uo-slot-color');
+
+    function updateSlot() {
+      const s = sizeSelect.value;
+      const c = colorSelect.value;
+      const v = findVariant(s, c);
+      window.uoState.mixMatchSlots[slotIdx] = {
+        pairNum: slotIdx + 1,
+        size: s,
+        color: c,
+        variantId: v ? v.id : window.uoState.activeVariantId
+      };
+      updateStickyBarSummary();
+      computeGroupedCartPayload();
+    }
+
+    if (sizeSelect) sizeSelect.addEventListener('change', updateSlot);
+    if (colorSelect) colorSelect.addEventListener('change', updateSlot);
   });
 
-  function renderMixMatchSlots(count) {
-    if (!slotsContainer) return;
-    var sizes = ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'];
-    var currentSize = 'M';
-    var activeSizeEl = document.querySelector('.uo-size-pill.is-active');
-    if (activeSizeEl) currentSize = activeSizeEl.getAttribute('data-size-value') || 'M';
+  computeGroupedCartPayload();
+}
 
-    var currentColor = 'Plum Noir';
-    var activeColorEl = document.querySelector('.uo-color-swatch.is-active');
-    if (activeColorEl) currentColor = activeColorEl.getAttribute('data-color-name') || 'Plum Noir';
+/**
+ * PHASE 3: Multi-Line Cart Payload Computation
+ * Groups identical variant IDs into quantities and outputs valid Shopify Cart API payload
+ */
+window.getUoCartPayload = function () {
+  return computeGroupedCartPayload();
+};
 
-    var html = '';
-    for (var i = 1; i <= count; i++) {
-      html += '<div class="uo-pair-slot">';
-      html += '  <span class="uo-slot-label">Pair ' + i + ':</span>';
-      html += '  <select class="uo-slot-select uo-slot-size" aria-label="Pair ' + i + ' Size">';
-      for (var s = 0; s < sizes.length; s++) {
-        var sz = sizes[s];
-        html += '    <option value="' + sz + '"' + (sz === currentSize ? ' selected' : '') + '>Size ' + sz + '</option>';
+function computeGroupedCartPayload() {
+  const slots = window.uoState.mixMatchSlots;
+  const tierName = window.uoState.selectedTier === '1-pair' ? '1 Pair' :
+                   (window.uoState.selectedTier === '5-pairs' ? '5 Pairs' : '3 Pairs');
+  const orderMultiplier = window.uoState.currentQty || 1;
+
+  // Map each pair to its variant ID and group identical variants
+  const variantCounts = {};
+  slots.forEach(function (slot) {
+    const v = findVariant(slot.size, slot.color);
+    const vId = v ? v.id : slot.variantId;
+    variantCounts[vId] = (variantCounts[vId] || 0) + (1 * orderMultiplier);
+  });
+
+  const items = Object.keys(variantCounts).map(function (vId) {
+    return {
+      id: parseInt(vId, 10),
+      quantity: variantCounts[vId],
+      properties: {
+        'Pack': tierName,
+        'Brand': 'ULTRA OVERNIGHT™',
+        'Bundle Type': slots.length > 1 ? 'Mix-and-Match Multi-Pack' : 'Single Pair'
       }
-      html += '  </select>';
-      html += '  <select class="uo-slot-select uo-slot-color" aria-label="Pair ' + i + ' Color">';
-      html += '    <option value="Plum Noir"' + (currentColor === 'Plum Noir' ? ' selected' : '') + '>Plum Noir</option>';
-      html += '    <option value="Blush Rose"' + (currentColor === 'Blush Rose' ? ' selected' : '') + '>Blush Rose</option>';
-      html += '  </select>';
-      html += '</div>';
-    }
-    slotsContainer.innerHTML = html;
-  }
+    };
+  });
+
+  const payload = { items: items };
+  
+  // Custom event for external integrations or automated testing
+  window.dispatchEvent(new CustomEvent('uo:cart:payload-updated', { detail: payload }));
+  return payload;
 }
 
-// Update Sticky Bar Text Summary
-function updateStickyBarSummary() {
-  var summaryEl = document.getElementById('uoStickySummary');
-  if (!summaryEl) return;
-
-  var activeTier = document.querySelector('.uo-tier-card.is-selected');
-  var tierName = activeTier ? (activeTier.querySelector('.uo-tier-name') ? activeTier.querySelector('.uo-tier-name').textContent.trim() : '3 Pairs') : '3 Pairs';
-
-  var activeSize = document.querySelector('.uo-size-pill.is-active');
-  var sizeVal = activeSize ? activeSize.getAttribute('data-size-value') : 'M';
-
-  var activeColor = document.querySelector('.uo-color-swatch.is-active');
-  var colorVal = activeColor ? activeColor.getAttribute('data-color-name') : 'Plum Noir';
-
-  summaryEl.textContent = tierName + ' · ' + sizeVal + ' / ' + colorVal;
-}
-
-// Sticky Mobile Buy Bar Scroll Visibility
+// 8. Sticky Mobile Buy Bar
 function initStickyMobileBar() {
-  var stickyBar = document.getElementById('uoStickyMobileBar');
-  var buyBox = document.getElementById('uoBuyBox');
+  const stickyBar = document.getElementById('uoStickyMobileBar');
+  const buyBox = document.getElementById('uoBuyBox');
   if (!stickyBar) return;
 
-  var ticking = false;
+  let ticking = false;
   window.addEventListener('scroll', function () {
     if (!ticking) {
       window.requestAnimationFrame(function () {
-        var scrollY = window.scrollY || window.pageYOffset;
-        var buyBoxBottom = buyBox ? (buyBox.getBoundingClientRect().bottom + scrollY) : 600;
+        const scrollY = window.scrollY || window.pageYOffset;
+        const buyBoxBottom = buyBox ? (buyBox.getBoundingClientRect().bottom + scrollY) : 600;
 
-        if (scrollY > (buyBoxBottom - 100)) {
+        if (scrollY > (buyBoxBottom - 80)) {
           stickyBar.classList.add('is-visible');
           stickyBar.setAttribute('aria-hidden', 'false');
         } else {
@@ -539,14 +468,50 @@ function initStickyMobileBar() {
   });
 }
 
-// Accessible ARIA Keyboard Navigation for Tabs
-function initPdpTabsAria() {
-  var tabBtns = document.querySelectorAll('.uo-tabs-nav [role="tab"]');
+function updateStickyBarSummary() {
+  const summaryEl = document.getElementById('uoStickySummary');
+  if (!summaryEl) return;
+
+  const tierName = window.uoState.selectedTier === '1-pair' ? '1 Pair' :
+                   (window.uoState.selectedTier === '5-pairs' ? '5 Pairs' : '3 Pairs');
+
+  if (window.uoState.isMixMatchExpanded && window.uoState.mixMatchSlots.length > 1) {
+    summaryEl.textContent = tierName + ' · Mix & Match Custom';
+  } else {
+    summaryEl.textContent = tierName + ' · ' + window.uoState.selectedSize + ' / ' + window.uoState.selectedColor;
+  }
+}
+
+// 9. Accessible ARIA Product Tabs
+function initPdpTabs() {
+  const tabBtns = document.querySelectorAll('.uo-tabs-nav [role="tab"]');
+  const tabPanels = document.querySelectorAll('.uo-tab-panel');
+
   if (!tabBtns.length) return;
 
   tabBtns.forEach(function (btn, index) {
+    btn.addEventListener('click', function () {
+      const targetId = this.getAttribute('data-tab-target');
+
+      tabBtns.forEach(function (b) {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      tabPanels.forEach(function (p) {
+        p.classList.remove('is-active');
+      });
+
+      this.classList.add('is-active');
+      this.setAttribute('aria-selected', 'true');
+
+      const activePanel = document.getElementById(targetId);
+      if (activePanel) {
+        activePanel.classList.add('is-active');
+      }
+    });
+
     btn.addEventListener('keydown', function (e) {
-      var targetIndex = -1;
+      let targetIndex = -1;
       if (e.key === 'ArrowRight') {
         targetIndex = (index + 1) % tabBtns.length;
       } else if (e.key === 'ArrowLeft') {
@@ -559,12 +524,23 @@ function initPdpTabsAria() {
         tabBtns[targetIndex].click();
       }
     });
+  });
+}
 
-    btn.addEventListener('click', function () {
-      tabBtns.forEach(function (b) {
-        b.setAttribute('aria-selected', 'false');
-      });
-      this.setAttribute('aria-selected', 'true');
+// 10. Modal Backdrop & ESC Listener
+function initModalListeners() {
+  const modal = document.getElementById('uoSizeGuideModal');
+  if (modal) {
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) {
+        window.closeUoSizeGuide();
+      }
     });
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      window.closeUoSizeGuide();
+    }
   });
 }

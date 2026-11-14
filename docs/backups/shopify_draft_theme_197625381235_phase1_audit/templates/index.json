@@ -1,0 +1,61 @@
+{
+  "sections": {
+    "ultra_hero": {
+      "type": "ultra-hero",
+      "settings": {
+        "eyebrow": "FULL-SPINE ULTRA OVERNIGHT™",
+        "headline": "Sleep Through Heavy-Flow Nights With More Confidence.",
+        "subhead": "An engineered overnight period underwear with full-spine coverage, multi-layer protection, and all-night comfort — so you can rest easier, move freely, and wake up feeling fresh and secure.",
+        "cta_text": "SHOP ULTRA OVERNIGHT",
+        "cta_link": "\/products\/full-spine-ultra-overnight"
+      }
+    },
+    "ultra_benefits": {
+      "type": "ultra-benefit-strip",
+      "settings": {}
+    },
+    "ultra_pillars": {
+      "type": "ultra-seven-pillars",
+      "settings": {
+        "title": "The Seven Pillars of ULTRA OVERNIGHT™",
+        "subhead": "Thoughtfully engineered for overnight protection, lasting comfort, and real peace of mind."
+      }
+    },
+    "ultra_layers": {
+      "type": "ultra-five-layers",
+      "settings": {
+        "title": "5 Layers of Overnight Protection",
+        "description": "A powerful, multi-layer design that absorbs, locks, and helps prevent leaks so you can sleep with confidence."
+      }
+    },
+    "ultra_comfort": {
+      "type": "ultra-lifestyle-comfort",
+      "settings": {
+        "title": "All-Night Comfort for Real Life",
+        "description": "Protection you can trust, so you can sleep deeper, move freely, and wake up feeling your best."
+      }
+    },
+    "ultra_reviews": {
+      "type": "ultra-reviews",
+      "settings": {
+        "title": "Thoughtfully Engineered For Restful Nights",
+        "subhead": "Designed with purpose, tested for comfort, and crafted for women seeking uninterrupted sleep."
+      }
+    },
+    "ultra_faq": {
+      "type": "ultra-faq",
+      "settings": {
+        "title": "Frequently Asked Questions"
+      }
+    }
+  },
+  "order": [
+    "ultra_hero",
+    "ultra_benefits",
+    "ultra_pillars",
+    "ultra_layers",
+    "ultra_comfort",
+    "ultra_reviews",
+    "ultra_faq"
+  ]
+}

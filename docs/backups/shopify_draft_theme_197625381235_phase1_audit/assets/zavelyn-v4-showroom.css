@@ -1,0 +1,1887 @@
+/**
+ * ZAVELYN IMMERSIVE COMMERCE THEME V4.1
+ * ARCHITECTURAL 2.5D RETAIL SHOWROOM & POSITIONAL ZOOM ENGINE
+ */
+
+/* ==========================================================================
+   1. HOMEPAGE REAL-WORLD STORE ENTRANCES (3D ARCHITECTURAL PORTALS)
+   ========================================================================== */
+.zv-store-entrances-section {
+  background: var(--zv-bg);
+  padding: 88px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.zv-stores-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 56px;
+}
+
+.zv-stores-heading {
+  font-family: var(--zv-font-heading);
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--zv-heading);
+  line-height: 1.18;
+  letter-spacing: -0.6px;
+  margin: 0 0 16px;
+}
+
+@media screen and (max-width: 767px) {
+  .zv-stores-heading {
+    font-size: 28px;
+  }
+}
+
+.zv-stores-subheading {
+  font-size: 16.5px;
+  color: var(--zv-body);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 4 Store Entrances Responsive Grid */
+.zv-stores-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .zv-stores-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+}
+
+/* Individual Store Portal Architectural Card */
+.zv-store-portal {
+  position: relative;
+  border-radius: var(--zv-radius-xl);
+  overflow: hidden;
+  box-shadow: 0 16px 36px -10px rgba(23, 53, 43, 0.16);
+  border: 1.5px solid var(--zv-border);
+  transition: transform var(--zv-transition-base), box-shadow var(--zv-transition-base), border-color var(--zv-transition-base);
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+.zv-store-portal:hover {
+  transform: translateY(-8px) scale(1.012);
+  box-shadow: 0 28px 56px -12px rgba(23, 53, 43, 0.28);
+  border-color: var(--zv-primary);
+}
+
+.zv-portal-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+}
+
+/* Atmospheric Store Interior Backdrops */
+.zv-portal-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+
+.zv-store-portal:hover .zv-portal-backdrop {
+  transform: scale(1.05);
+}
+
+/* Store 1: Home & Living (Warm Oak & Brass Boutique) */
+.zv-portal-home .zv-portal-backdrop {
+  background: linear-gradient(180deg, rgba(23, 53, 43, 0.65) 0%, rgba(17, 38, 31, 0.94) 100%),
+              radial-gradient(ellipse at 50% 20%, rgba(212, 163, 89, 0.35) 0%, transparent 70%),
+              #17352B;
+}
+
+/* Store 2: Power & Tools (Industrial Workshop) */
+.zv-portal-tools .zv-portal-backdrop {
+  background: linear-gradient(180deg, rgba(38, 50, 56, 0.7) 0%, rgba(19, 24, 27, 0.96) 100%),
+              radial-gradient(ellipse at 50% 20%, rgba(96, 125, 139, 0.4) 0%, transparent 70%),
+              #212121;
+}
+
+/* Store 3: Wellness & Botanicals (Spa Sanctuary) */
+.zv-portal-wellness .zv-portal-backdrop {
+  background: linear-gradient(180deg, rgba(53, 38, 43, 0.65) 0%, rgba(26, 17, 21, 0.95) 100%),
+              radial-gradient(ellipse at 50% 20%, rgba(188, 231, 106, 0.25) 0%, transparent 70%),
+              #2D1F24;
+}
+
+/* Store 4: Acoustic & Meditation (Midnight Obsidian Studio) */
+.zv-portal-sound .zv-portal-backdrop {
+  background: linear-gradient(180deg, rgba(20, 35, 60, 0.7) 0%, rgba(10, 15, 26, 0.96) 100%),
+              radial-gradient(ellipse at 50% 20%, rgba(79, 134, 247, 0.3) 0%, transparent 70%),
+              #0F172A;
+}
+
+/* Architectural Facade & Neon Signage Header */
+.zv-portal-facade {
+  position: relative;
+  z-index: 5;
+  padding: 32px 32px 20px;
+}
+
+.zv-portal-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.zv-portal-dept-tag {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--zv-accent);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(188, 231, 106, 0.3);
+  padding: 4px 10px;
+  border-radius: var(--zv-radius-full);
+}
+
+.zv-portal-live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #C9D6CE;
+}
+
+.zv-pulse-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--zv-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--zv-accent);
+  animation: zvPulseGlow 2s infinite;
+}
+
+@keyframes zvPulseGlow {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.zv-portal-store-name {
+  font-family: var(--zv-font-heading);
+  font-size: 26px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+
+.zv-portal-store-desc {
+  font-size: 14px;
+  color: #D1DDD6;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 480px;
+}
+
+/* 3D Merchandising Stage Inside Portal */
+.zv-portal-stage {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px 28px 0;
+  margin-top: 20px;
+}
+
+.zv-portal-pedestal-surface {
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+  right: 16px;
+  height: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.zv-portal-merch-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  position: relative;
+  z-index: 6;
+  align-items: flex-end;
+  padding-bottom: 8px;
+}
+
+.zv-portal-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.zv-portal-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--zv-transition-base);
+}
+
+.zv-store-portal:hover .zv-portal-item:nth-child(1) .zv-portal-img-wrap {
+  transform: translateY(-6px);
+}
+.zv-store-portal:hover .zv-portal-item:nth-child(2) .zv-portal-img-wrap {
+  transform: translateY(-10px);
+}
+.zv-store-portal:hover .zv-portal-item:nth-child(3) .zv-portal-img-wrap {
+  transform: translateY(-6px);
+}
+
+.zv-portal-img-wrap img {
+  max-height: 84%;
+  max-width: 84%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.35));
+  position: relative;
+  z-index: 2;
+  border-radius: 6px;
+}
+
+.zv-portal-item-shadow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 10px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, transparent 72%);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.zv-portal-item-tag {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #D1DDD6;
+  margin-top: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90px;
+}
+
+/* Portal Footer Action Button */
+.zv-portal-footer {
+  position: relative;
+  z-index: 6;
+  margin: 20px 28px 28px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  border-radius: var(--zv-radius-full);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #FFFFFF;
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  transition: all var(--zv-transition-fast);
+}
+
+.zv-store-portal:hover .zv-portal-footer {
+  background: var(--zv-accent);
+  color: var(--zv-primary);
+  border-color: var(--zv-accent);
+  box-shadow: 0 4px 18px rgba(188, 231, 106, 0.4);
+}
+
+.zv-portal-action-arrow {
+  transition: transform var(--zv-transition-fast);
+}
+
+.zv-store-portal:hover .zv-portal-action-arrow {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   2. COLLECTION SHOWROOM ENVIRONMENT & ARCHITECTURAL STAGE
+   ========================================================================== */
+.zv-showroom-header {
+  background: linear-gradient(180deg, #3D1027 0%, #2B1B24 100%);
+  color: #FFFFFF;
+  padding: 56px 0 44px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(234, 215, 221, 0.25);
+}
+
+.zv-showroom-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #FBEDE8;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.zv-shelf-style-badge {
+  background: rgba(176, 71, 110, 0.25);
+  border: 1px solid rgba(234, 215, 221, 0.35);
+  color: #FFF8F5;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.zv-showroom-h1 {
+  font-family: var(--zv-font-serif, 'Fraunces', Georgia, serif);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: #FFF8F5;
+  margin: 0;
+}
+
+@media screen and (min-width: 992px) {
+  .zv-showroom-h1 {
+    font-size: 46px;
+  }
+}
+
+.zv-showroom-desc {
+  font-size: 15.5px;
+  color: #EAD7DD;
+  max-width: 640px;
+  line-height: 1.55;
+  margin-top: 10px;
+}
+
+.zv-showroom-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(234, 215, 221, 0.2);
+}
+
+.zv-live-status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #B0476E;
+  border-radius: 50%;
+  margin-right: 6px;
+  box-shadow: 0 0 8px #B0476E;
+}
+
+.zv-view-switcher {
+  display: inline-flex;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(234, 215, 221, 0.2);
+  border-radius: var(--zv-radius-full);
+  padding: 4px;
+  gap: 4px;
+}
+
+.zv-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--zv-radius-full);
+  font-size: 13px;
+  font-weight: 700;
+  color: #EAD7DD;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--zv-transition-fast);
+}
+
+.zv-view-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.zv-view-btn.active {
+  background: #FFF8F5;
+  color: #6B1E46;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   3. 2.5D REALISTIC PHYSICAL SHELF ARCHITECTURE
+   ========================================================================== */
+.zv-showroom-stage {
+  background: #FFF8F5;
+  padding: 48px 0 88px;
+  position: relative;
+  min-height: 520px;
+  overflow: hidden;
+}
+
+/* Store Wall Background Texture (Subtle Vertical Architectural Paneling) */
+.zv-showroom-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(90deg, rgba(107, 30, 70, 0.022) 0px, rgba(107, 30, 70, 0.022) 1px, transparent 1px, transparent 120px);
+  pointer-events: none;
+}
+
+/* Fixture Upright Columns (Structural Beams on Store Walls - Warm Champagne Bronze) */
+.zv-fixture-column {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 22px;
+  background: linear-gradient(90deg, #D4C3B7 0%, #EFE8E2 50%, #C7B5A8 100%);
+  border-right: 1px solid rgba(107, 30, 70, 0.08);
+  border-left: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 4px 0 16px rgba(43, 27, 36, 0.06);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.zv-fixture-left { left: 16px; }
+.zv-fixture-right { right: 16px; }
+
+@media screen and (min-width: 1400px) {
+  .zv-fixture-left { left: 40px; }
+  .zv-fixture-right { right: 40px; }
+}
+
+/* Ceiling Directional Lightbar & Spotlights */
+.zv-fixture-lightbar {
+  position: relative;
+  height: 6px;
+  background: linear-gradient(90deg, #C7B5A8 0%, #EFE8E2 50%, #C7B5A8 100%);
+  border-radius: 3px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 6px rgba(43, 27, 36, 0.1);
+}
+
+.zv-spotlight-beam {
+  position: absolute;
+  top: 6px;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 300px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 245, 238, 0.45) 0%, rgba(255, 245, 238, 0) 70%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ==========================================================================
+   2.5D REALISTIC PHYSICAL CONTINUOUS WOODEN SHELF ARCHITECTURE (V4.4)
+   Shared Coordinate Reference: --zv-prod-h, --zv-shelf-top-y, --zv-tag-top-y
+   ========================================================================== */
+
+/* Individual Shelf Tier */
+.zv-shelf-tier {
+  --zv-prod-h: 260px;
+  --zv-shelf-top-h: 24px;
+  --zv-shelf-fascia-h: 34px;
+  --zv-shelf-shadow-h: 42px;
+  --zv-shelf-top-y: calc(var(--zv-prod-h) - 8px);
+  --zv-tag-top-y: calc(var(--zv-prod-h) + 14px);
+  --zv-cutout-offset: 12px;
+  position: relative;
+  margin-bottom: 72px;
+  perspective: 1200px;
+  z-index: 10;
+}
+
+.zv-shelf-tier:last-child {
+  margin-bottom: 32px;
+}
+
+@media screen and (max-width: 1023px) {
+  .zv-shelf-tier {
+    --zv-prod-h: 170px;
+    --zv-shelf-top-h: 18px;
+    --zv-shelf-fascia-h: 28px;
+    --zv-shelf-shadow-h: 36px;
+    --zv-shelf-top-y: calc(var(--zv-prod-h) - 6px);
+    --zv-tag-top-y: calc(var(--zv-prod-h) + 10px);
+    --zv-cutout-offset: 10px;
+    margin-bottom: 48px;
+  }
+}
+
+/* The Shelf Stage (Container for continuous plank and columns) */
+.zv-shelf-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   CONTINUOUS SOLID WOODEN SHELF PLANK (Behind columns)
+   ========================================================================== */
+.zv-continuous-wooden-shelf {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--zv-shelf-top-y);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Top Perspective Surface of the Wooden Plank */
+.zv-wood-top-surface {
+  height: var(--zv-shelf-top-h);
+  background: linear-gradient(90deg, 
+    #5C2D18 0%, 
+    #7A3E20 15%, 
+    #924B27 35%, 
+    #A85A32 50%, 
+    #924B27 65%, 
+    #7A3E20 85%, 
+    #5C2D18 100%);
+  transform: perspective(700px) rotateX(28deg);
+  transform-origin: bottom center;
+  border-radius: 4px;
+  box-shadow: inset 0 2px 4px rgba(255, 235, 220, 0.45), inset 0 -1px 2px rgba(0, 0, 0, 0.35);
+  border-top: 1px solid rgba(255, 230, 210, 0.55);
+  position: relative;
+}
+
+.zv-wood-grain-texture {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.04) 0px, 
+    rgba(255, 255, 255, 0.04) 2px, 
+    transparent 2px, 
+    transparent 12px);
+  opacity: 0.6;
+}
+
+.zv-wood-top-highlight {
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 240, 225, 0.75), transparent);
+}
+
+/* Front Vertical Fascia Edge of the Wooden Plank */
+.zv-wood-front-fascia {
+  height: var(--zv-shelf-fascia-h);
+  background: linear-gradient(180deg, 
+    #4A2210 0%, 
+    #3D1B0B 35%, 
+    #2E1307 75%, 
+    #1F0C04 100%);
+  border-top: 2px solid #BA7950; /* Crisp beveled highlight edge */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.45);
+  box-shadow: 0 4px 10px rgba(43, 27, 36, 0.25);
+  border-radius: 0 0 4px 4px;
+  position: relative;
+}
+
+.zv-wood-bevel-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 225, 200, 0.55);
+}
+
+.zv-wood-front-grain {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, 
+    rgba(255, 255, 255, 0.03) 0px, 
+    rgba(255, 255, 255, 0.03) 1px, 
+    transparent 1px, 
+    transparent 5px);
+}
+
+.zv-wood-bottom-bevel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Ambient Soft Drop Shadow on Wall Beneath the Shelf */
+.zv-wood-under-shadow {
+  height: var(--zv-shelf-shadow-h);
+  background: linear-gradient(180deg, 
+    rgba(43, 27, 36, 0.32) 0%, 
+    rgba(43, 27, 36, 0.12) 40%, 
+    transparent 100%);
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   STRICT RESPONSIVE SHELF ARCHITECTURE:
+   DESKTOP (>=992px): Exactly 4 products per complete shelf row. Single continuous shelf.
+   TABLET/MOBILE (<992px): Exactly 2 products per complete shelf row. Continuous sub-shelf.
+   INCOMPLETE ROW: Cleanly centered on shelf.
+   ========================================================================== */
+
+/* 1. Dual Shelf Visibility */
+.zv-shelf-desktop-only {
+  display: block;
+}
+.zv-shelf-mobile-only {
+  display: none !important;
+}
+
+/* 2. Desktop Containers */
+.zv-shelf-columns-grid {
+  display: grid;
+  width: 100%;
+  position: relative;
+  z-index: 5;
+  padding: 0 16px;
+  align-items: flex-end;
+}
+
+.zv-shelf-pair {
+  display: contents;
+}
+
+.zv-pair-products {
+  display: contents;
+}
+
+/* 4 Products Full Desktop Row */
+.zv-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  padding: 0 20px;
+}
+
+/* 3 Products Row - Balanced Center Spacing */
+@media screen and (min-width: 1024px) {
+  .zv-grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 270px));
+    justify-content: center;
+    gap: 28px;
+    padding: 0 20px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .zv-grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* 2 Products Row - Symmetrical Centered Duo */
+@media screen and (min-width: 1024px) {
+  .zv-grid--2 {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 40px !important;
+    max-width: 640px !important;
+    margin: 0 auto !important;
+  }
+  .zv-grid--2 .zv-shelf-column {
+    width: 270px !important;
+    max-width: 270px !important;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .zv-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* 1 Product Row - Centered within Retail Shelf Slot (Matching User Acceptance Mockup) */
+.zv-grid--1 {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-end !important;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.zv-grid--1 .zv-shelf-column {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.zv-grid--1 .zv-shelf-item {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.zv-shelf-tier[data-tier-count="1"] {
+  --zv-prod-h: 310px;
+}
+
+/* 3. Mobile / Tablet Responsive Override (< 1024px) */
+@media screen and (max-width: 1023px) {
+  .zv-shelf-desktop-only {
+    display: none !important;
+  }
+
+  .zv-shelf-desktop-only.zv-shelf-force-show {
+    display: block !important;
+    top: var(--zv-shelf-top-y) !important;
+  }
+
+  .zv-shelf-columns-grid {
+    display: block;
+    width: 100%;
+    padding: 0;
+  }
+
+  .zv-shelf-pair {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin-bottom: 48px;
+  }
+
+  .zv-shelf-mobile-only {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--zv-shelf-top-y);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .zv-pair-products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 0 4px;
+    width: 100%;
+    position: relative;
+    z-index: 5;
+    box-sizing: border-box;
+    align-items: flex-end;
+  }
+
+  /* 1 Product on Mobile Shelf: Centered on shelf */
+  .zv-pair--1 .zv-pair-products {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
+    width: 100%;
+  }
+
+  .zv-pair--1 .zv-shelf-column {
+    width: 100%;
+    max-width: 330px;
+    margin: 0 auto;
+  }
+
+  .zv-pair--1 .zv-shelf-item {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .zv-shelf-tier[data-tier-count="1"] {
+    --zv-prod-h: 210px;
+  }
+}
+
+/* Shelf Column: Contains Product (Top) + Hanging Tag (Bottom) */
+.zv-shelf-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.zv-showroom-view-wrap {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 84px; /* Space for the tag hanging over fascia and wall */
+}
+
+@media screen and (max-width: 1023px) {
+  .zv-showroom-view-wrap {
+    padding-bottom: 74px;
+  }
+}
+
+/* ==========================================================================
+   PRODUCT MERCHANDISING DISPLAY ON TOP OF SHELF
+   ========================================================================== */
+.zv-shelf-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+  z-index: 5;
+}
+
+.zv-shelf-item:hover,
+.zv-shelf-item:focus-visible {
+  transform: translateY(-5px);
+}
+
+.zv-shelf-item.zv-shelf-dimmed {
+  opacity: 0.32;
+  filter: blur(1.5px);
+  pointer-events: none;
+  transition: all 0.35s ease;
+}
+
+.zv-merch-display {
+  position: relative;
+  width: 100%;
+  height: var(--zv-prod-h);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+/* Transparent Cutout Container */
+.zv-cutout-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 2;
+  transform-origin: bottom center;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media screen and (max-width: 1023px) {
+  .zv-cutout-container {
+    transform: scale(var(--scale-m, var(--scale-d, 1))) translate(var(--trans-x, 0px), var(--trans-y, 0px));
+  }
+}
+
+.zv-cutout-img {
+  max-width: 95%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom center;
+  transform: translateY(var(--zv-cutout-offset, 14px));
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.22));
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), filter 0.28s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.zv-shelf-item:hover .zv-cutout-img {
+  transform: translateY(calc(var(--zv-cutout-offset, 14px) - 5px)) scale(1.03);
+  filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.28));
+}
+
+/* Restrained Fallback Presentation for Non-Cutout Items */
+.zv-fallback-container {
+  position: relative;
+  width: 86%;
+  height: 86%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 6px 18px rgba(43, 27, 36, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(234, 215, 221, 0.85);
+  backdrop-filter: blur(6px);
+  transition: all 0.28s ease;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.zv-shelf-item:hover .zv-fallback-container {
+  background: #FFFFFF;
+  box-shadow: 0 12px 28px rgba(107, 30, 70, 0.16);
+  border-color: #6B1E46;
+}
+
+.zv-fallback-img {
+  max-width: 88%;
+  max-height: 88%;
+  object-fit: contain;
+  transition: transform 0.28s ease;
+}
+
+.zv-shelf-item:hover .zv-fallback-img {
+  transform: scale(1.06);
+}
+
+/* 2-Layer Realistic Ground Contact Shadow Discs */
+.zv-shelf-contact-shadow {
+  position: absolute;
+  bottom: calc(-1 * var(--zv-cutout-offset, 14px) + 2px);
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: var(--shadow-w, 82%);
+  height: 14px;
+  background: radial-gradient(ellipse at center, rgba(35, 14, 6, var(--shadow-op, 0.85)) 0%, rgba(25, 10, 4, 0.45) 45%, transparent 75%);
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+  filter: blur(1.5px);
+  transition: transform 0.28s ease, opacity 0.28s ease;
+}
+
+.zv-shelf-ambient-shadow {
+  position: absolute;
+  bottom: calc(-1 * var(--zv-cutout-offset, 14px) - 2px);
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 92%;
+  height: 22px;
+  background: radial-gradient(ellipse at center, rgba(43, 27, 36, 0.32) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(4px);
+}
+
+.zv-shelf-item:hover .zv-shelf-contact-shadow {
+  transform: translate(-50%, 50%) scale(0.94);
+  opacity: 0.95;
+}
+
+/* ==========================================================================
+   AUTHENTIC RETAIL SHELF-EDGE PRICE TAG (ATTACHED TO FRONT FASCIA, SHIFTED LEFT)
+   ========================================================================== */
+.zv-shelf-clip-tag {
+  position: absolute;
+  top: var(--zv-tag-top-y);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+  max-width: 190px;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.zv-shelf-clip-tag:hover,
+.zv-shelf-clip-tag:focus-visible,
+.zv-shelf-item:hover ~ .zv-shelf-clip-tag {
+  transform: translate(-50%, -2px);
+}
+
+/* Physical Metallic Clip Bracket */
+.zv-tag-clip-bracket {
+  width: 32px;
+  height: 10px;
+  margin: 0 auto -1px auto;
+  background: linear-gradient(180deg, #FFFFFF 0%, #ECE8E5 50%, #D8D2CD 100%);
+  border-radius: 3px 3px 0 0;
+  border: 1px solid rgba(43, 27, 36, 0.22);
+  border-bottom: none;
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.15), inset 0 1px 1px #FFFFFF;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zv-clip-rivet {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #6B1E46;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+/* Retail Price Label Card Plate */
+.zv-tag-card {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #EAD7DD;
+  border-radius: 7px;
+  padding: 8px 10px 7px;
+  box-shadow: 0 6px 16px -2px rgba(43, 27, 36, 0.12), 0 2px 4px rgba(43, 27, 36, 0.05);
+  transition: all 0.22s ease;
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.zv-shelf-clip-tag:hover .zv-tag-card,
+.zv-shelf-item:hover ~ .zv-shelf-clip-tag .zv-tag-card {
+  border-color: #6B1E46;
+  box-shadow: 0 10px 22px -2px rgba(107, 30, 70, 0.22), 0 4px 8px -1px rgba(43, 27, 36, 0.08);
+}
+
+.zv-tag-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.zv-tag-dept {
+  font-family: var(--zv-font-body);
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #7A6670;
+}
+
+.zv-tag-badge {
+  font-family: var(--zv-font-body);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  padding: 1.5px 5px;
+  border-radius: 3px;
+  background: #F8E4EB;
+  color: #6B1E46;
+  border: 1px solid #EAD7DD;
+}
+
+.zv-tag-badge.sale {
+  background: #FBEDE8;
+  color: #6B1E46;
+}
+
+.zv-tag-title {
+  font-family: var(--zv-font-serif, 'Fraunces', Georgia, serif);
+  font-size: 13px;
+  font-weight: 700;
+  color: #2B1B24;
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  margin: 2px 0 4px;
+}
+
+.zv-tag-pricing-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 3px;
+  padding-bottom: 3px;
+  border-bottom: 1px dashed #F0E2E6;
+}
+
+.zv-tag-price-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+}
+
+.zv-tag-price-curr {
+  font-family: var(--zv-font-body);
+  font-size: 16px;
+  font-weight: 800;
+  color: #6B1E46;
+  letter-spacing: -0.4px;
+  line-height: 1;
+}
+
+.zv-tag-unit {
+  font-family: var(--zv-font-body);
+  font-size: 9px;
+  font-weight: 700;
+  color: #7A6670;
+  text-transform: uppercase;
+}
+
+.zv-tag-rating {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.zv-tag-stars {
+  font-size: 10px;
+  color: #E0A33A;
+  letter-spacing: 0.3px;
+}
+
+.zv-tag-rating-val {
+  font-family: var(--zv-font-body);
+  font-size: 10px;
+  font-weight: 800;
+  color: #2B1B24;
+}
+
+.zv-tag-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zv-tag-action-hint {
+  font-family: var(--zv-font-body);
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #7A6670;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.zv-shelf-clip-tag:hover .zv-tag-action-hint,
+.zv-shelf-item:hover ~ .zv-shelf-clip-tag .zv-tag-action-hint {
+  color: #6B1E46;
+}
+
+@media screen and (max-width: 1023px) {
+  .zv-cutout-img {
+    max-width: 88%;
+  }
+
+  .zv-shelf-clip-tag {
+    max-width: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .zv-shelf-clip-tag:hover,
+  .zv-shelf-clip-tag:focus-visible,
+  .zv-shelf-item:hover ~ .zv-shelf-clip-tag {
+    transform: translate(-50%, -2px);
+  }
+
+  .zv-tag-clip-bracket {
+    width: 24px;
+    height: 7px;
+    margin: 0 auto;
+  }
+
+  .zv-tag-card {
+    padding: 5px 7px 5px;
+  }
+
+  .zv-tag-title {
+    font-size: 11px;
+    margin: 2px 0 3px;
+  }
+
+  .zv-tag-price-curr {
+    font-size: 14px;
+  }
+
+  .zv-tag-unit {
+    font-size: 8px;
+  }
+
+  .zv-tag-stars, .zv-tag-rating-val {
+    font-size: 8.5px;
+  }
+
+  .zv-tag-dept {
+    font-size: 7px;
+  }
+
+  .zv-tag-badge {
+    font-size: 7px;
+    padding: 1px 3px;
+  }
+
+  .zv-tag-action-hint {
+    font-size: 7.5px;
+  }
+}
+
+/* ==========================================================================
+   6. POSITIONAL ZOOM: SPATIAL PRODUCT INSPECTION BAY (DESKTOP)
+   ========================================================================== */
+.zv-spatial-inspect-bay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99990;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.zv-spatial-inspect-bay.active {
+  display: block;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* Atmospheric Dimming Backdrop (Warm plum tint matching PDP V2) */
+.zv-inspect-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(43, 27, 36, 0.52);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 99991;
+  pointer-events: auto;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+/* Inspection Bay & Mobile Sheet Color Sync with PDP V2 */
+.zv-spatial-inspect-bay .zv-badge-forest,
+.zv-mobile-sheet .zv-badge-forest {
+  background: var(--zv-pdp-tint, #F8E4EB);
+  color: var(--zv-pdp-cta, #6B1E46);
+  border: 1px solid var(--zv-pdp-line, #EAD7DD);
+}
+
+.zv-spatial-inspect-bay .zv-btn-primary,
+.zv-mobile-sheet .zv-btn-primary {
+  background: var(--zv-pdp-cta, #6B1E46) !important;
+  color: #FFF8F5 !important;
+  box-shadow: 0 8px 20px -6px rgba(107, 30, 70, 0.45);
+}
+
+.zv-spatial-inspect-bay .zv-btn-primary:hover,
+.zv-mobile-sheet .zv-btn-primary:hover {
+  background: var(--zv-pdp-cta-hover, #541536) !important;
+  box-shadow: 0 12px 28px -8px rgba(107, 30, 70, 0.55);
+}
+
+.zv-spatial-inspect-bay .zv-btn-outline,
+.zv-mobile-sheet .zv-btn-outline {
+  background: #FFFFFF;
+  color: var(--zv-pdp-text, #2B1B24);
+  border: 1px solid var(--zv-pdp-line, #EAD7DD);
+}
+
+.zv-spatial-inspect-bay .zv-btn-outline:hover,
+.zv-mobile-sheet .zv-btn-outline:hover {
+  border-color: var(--zv-pdp-cta, #6B1E46);
+  color: var(--zv-pdp-cta, #6B1E46);
+}
+  transition: opacity 0.28s ease;
+}
+
+.zv-spatial-inspect-bay.active .zv-inspect-backdrop {
+  opacity: 1;
+}
+
+/* Stage Wrap Coordinates Layer */
+.zv-inspect-stage-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 99992;
+  pointer-events: none;
+}
+
+/* Zoomed Product Focal Frame (FLIP animated directly from shelf position) */
+.zv-inspect-focal-frame {
+  position: fixed;
+  z-index: 99995;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  transform-origin: center center;
+}
+
+.zv-focal-img {
+  max-width: 96%;
+  max-height: 96%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  position: relative;
+  z-index: 3;
+}
+
+.zv-focal-ground-shadow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+  height: 16px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.5) 0%, transparent 72%);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Dimmed Shelf Items during Zoom */
+.zv-shelf-item.zv-shelf-dimmed {
+  opacity: 0.35 !important;
+  filter: saturate(0.6) blur(0.5px) !important;
+  pointer-events: none !important;
+  transition: all 0.35s ease !important;
+}
+
+/* Anchored Product Information Panel (Anchored beside expanded product) */
+.zv-inspect-anchored-panel {
+  position: fixed;
+  z-index: 99996;
+  width: 380px;
+  max-width: 92vw;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--zv-pdp-cta, #6B1E46) transparent;
+  background: #FFFFFF;
+  border: 1.5px solid var(--zv-pdp-line, #EAD7DD);
+  border-radius: var(--zv-radius-xl, 20px);
+  padding: 24px;
+  box-shadow: 0 20px 60px rgba(43, 27, 36, 0.35);
+  pointer-events: auto !important;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.32s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media screen and (max-width: 991px) {
+  .zv-inspect-anchored-panel {
+    width: 340px;
+    padding: 20px;
+  }
+}
+
+/* Custom Variant Dropdown */
+.zv-variant-dropdown {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--zv-pdp-text, #2B1B24);
+  background-color: #FFFFFF;
+  border: 1.5px solid var(--zv-pdp-line, #EAD7DD);
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 6px rgba(43, 27, 36, 0.05);
+}
+
+.zv-variant-dropdown:focus {
+  border-color: var(--zv-pdp-cta, #6B1E46);
+  box-shadow: 0 0 0 3px rgba(107, 30, 70, 0.2);
+}
+
+.zv-anchored-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.zv-anchored-close-btn {
+  background: var(--zv-pdp-surface, #FBEDE8);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--zv-pdp-text, #2B1B24);
+  transition: all var(--zv-transition-fast);
+}
+
+.zv-anchored-close-btn:hover {
+  background: var(--zv-pdp-cta, #6B1E46);
+  color: #FFFFFF;
+  transform: scale(1.05);
+}
+
+.zv-anchored-close-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.zv-anchored-title {
+  font-family: var(--zv-font-serif, 'Fraunces', Georgia, serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--zv-pdp-text, #2B1B24);
+  line-height: 1.25;
+  margin: 0 0 12px;
+}
+
+.zv-anchored-price-strip {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.zv-anchored-price-curr {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--zv-pdp-cta, #6B1E46);
+}
+
+.zv-anchored-price-old {
+  font-size: 16px;
+  color: var(--zv-pdp-muted, #7A6670);
+  text-decoration: line-through;
+}
+
+.zv-anchored-benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.zv-anchored-benefits-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--zv-pdp-body, #4A3841);
+}
+
+.zv-anchored-benefits-list svg {
+  width: 16px;
+  height: 16px;
+  color: #2D6A4F;
+  flex-shrink: 0;
+}
+
+.zv-anchored-variants {
+  margin-bottom: 20px;
+}
+
+.zv-anchored-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.zv-anchored-pdp-link {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--zv-pdp-cta, #6B1E46);
+  text-align: center;
+  text-decoration: none;
+  padding: 4px;
+  transition: opacity var(--zv-transition-fast);
+}
+
+.zv-anchored-pdp-link:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+}
+
+.zv-anchored-trust-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-size: 12px;
+  color: var(--zv-muted);
+}
+
+/* ==========================================================================
+   7. MOBILE SHOWROOM BOTTOM SHEET (< 768px Viewports)
+   ========================================================================== */
+.zv-mobile-sheet-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+  align-items: flex-end;
+}
+
+.zv-mobile-sheet-overlay.active {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.zv-mobile-sheet {
+  background: #FFFFFF;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 16px 20px 32px;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.zv-mobile-sheet-overlay.active .zv-mobile-sheet {
+  transform: translateY(0);
+}
+
+.zv-mobile-sheet-handle {
+  width: 48px;
+  height: 5px;
+  background: #D1D5DB;
+  border-radius: 99px;
+  margin: 0 auto 12px;
+}
+
+.zv-mobile-sheet-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.zv-mobile-sheet-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--zv-muted);
+}
+
+.zv-mobile-sheet-img-wrap {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zv-mobile-sheet-img-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.zv-mobile-sheet-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 8px 0 14px;
+}
+
+.zv-mobile-sheet-price {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--zv-pdp-cta, #6B1E46);
+}
+
+.zv-mobile-sheet-compare {
+  font-size: 14px;
+  color: var(--zv-pdp-muted, #7A6670);
+  text-decoration: line-through;
+}
+
+.zv-mobile-sheet-pdp {
+  display: block;
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--zv-pdp-cta, #6B1E46);
+  margin-top: 14px;
+  padding: 8px 4px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.zv-mobile-sheet-pdp:hover,
+.zv-mobile-sheet-pdp:active {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   VIEW MODES: SHOWROOM (2.5D SHELVES) vs CATALOG (GRID)
+   ========================================================================== */
+.zv-showroom-view-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.zv-catalog-view-wrap {
+  display: none;
+}
+
+/* Catalog Grid Mode Activated */
+.zv-showroom-stage.grid-mode .zv-continuous-wooden-shelf,
+.zv-showroom-stage.grid-mode .zv-fixture-lightbar,
+.zv-showroom-stage.grid-mode .zv-fixture-column {
+  display: none !important;
+}
+
+.zv-showroom-stage.grid-mode .zv-shelf-tier {
+  margin-bottom: 24px;
+  padding-top: 0;
+}
+
+.zv-showroom-stage.grid-mode .zv-shelf-pair {
+  margin-bottom: 20px;
+}
+
+.zv-showroom-stage.grid-mode .zv-showroom-view-wrap {
+  display: none !important;
+}
+
+.zv-showroom-stage.grid-mode .zv-catalog-view-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+/* Catalog Product Card Styling */
+.zv-cat-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  height: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.zv-cat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.09);
+  border-color: rgba(0, 0, 0, 0.14);
+}
+
+.zv-cat-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.zv-cat-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 12px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+.zv-cat-card:hover .zv-cat-card-img {
+  transform: scale(1.05);
+}
+
+.zv-cat-sale-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #dc2626;
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+
+.zv-cat-card-body {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.zv-cat-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #d97706;
+  margin-bottom: 6px;
+}
+
+.zv-cat-rating-num {
+  font-weight: 700;
+  color: #111827;
+}
+
+.zv-cat-review-count {
+  color: #6b7280;
+  font-size: 10.5px;
+}
+
+.zv-cat-card-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0 0 8px;
+  color: #111827;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 36px;
+}
+
+.zv-cat-card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.zv-cat-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: auto;
+  margin-bottom: 12px;
+}
+
+.zv-cat-price-curr {
+  font-size: 16px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.zv-cat-price-old {
+  font-size: 12.5px;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+.zv-cat-atc-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 9px 12px;
+  background: #111827;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.zv-cat-atc-btn:hover {
+  background: #1f2937;
+  transform: translateY(-1px);
+}
+
+.zv-cat-atc-btn:active {
+  transform: scale(0.98);
+}
+
+.zv-cat-atc-btn.sold-out {
+  background: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   MOBILE VIEWPORT REFINEMENTS (375px, 390px, 440px)
+   ========================================================================== */
+@media screen and (max-width: 767px) {
+  .zv-merch-display {
+    height: var(--zv-prod-h);
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .zv-cat-card-body {
+    padding: 10px 10px 12px;
+  }
+
+  .zv-cat-card-title {
+    font-size: 12px;
+    min-height: 32px;
+    margin-bottom: 6px;
+  }
+
+  .zv-cat-price-curr {
+    font-size: 14px;
+    color: var(--zv-pdp-cta, #6B1E46);
+  }
+
+  .zv-cat-atc-btn {
+    padding: 8px 10px;
+    font-size: 11.5px;
+    background: var(--zv-pdp-cta, #6B1E46);
+  }
+
+  .zv-cat-atc-btn:hover {
+    background: var(--zv-pdp-cta-hover, #541536);
+  }
+}

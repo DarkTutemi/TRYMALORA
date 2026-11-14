@@ -1,0 +1,100 @@
+<section class="uo-hiw-section" id="ultra-how-it-works">
+  <div class="uo-wrap">
+    <div class="uo-hiw-header">
+      <span class="uo-eyebrow">{{ section.settings.eyebrow | default: 'SIMPLE THREE-STEP RITUAL' }}</span>
+      <h2 class="uo-heading-serif uo-hiw-title">{{ section.settings.title | default: 'How FULL-SPINE ULTRA™ Works' }}</h2>
+      <p class="uo-hiw-subhead">{{ section.settings.subhead | default: 'Designed to integrate effortlessly into your nighttime routine from evening to morning.' }}</p>
+    </div>
+
+    <div class="uo-hiw-steps-grid">
+      <!-- Step 1: Wear -->
+      <div class="uo-hiw-card">
+        <div class="uo-hiw-step-badge">STEP 01</div>
+        <div class="uo-hiw-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path>
+          </svg>
+        </div>
+        <h3 class="uo-hiw-card-title">1. Wear</h3>
+        <p class="uo-hiw-card-desc">Put on FULL-SPINE ULTRA OVERNIGHT™ just like your favorite underwear before bedtime. The soft CloudFlex™ waistband sits gently without pinching.</p>
+        <details class="uo-hiw-expandable">
+          <summary>Learn more about fit &amp; wear</summary>
+          <div class="uo-hiw-expandable-content">
+            Fits smoothly under pajamas, nightgowns, or sleep shorts. The contoured leg openings adapt comfortably to side-sleeping or back-sleeping positions throughout the night.
+          </div>
+        </details>
+      </div>
+
+      <!-- Step 2: Manage -->
+      <div class="uo-hiw-card">
+        <div class="uo-hiw-step-badge">STEP 02</div>
+        <div class="uo-hiw-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+        </div>
+        <h3 class="uo-hiw-card-title">2. Sleep &amp; Protect</h3>
+        <p class="uo-hiw-card-desc">The five-layer absorbent architecture is designed to capture, spread, and lock in menstrual flow while keeping the surface feeling dry against your skin.</p>
+        <details class="uo-hiw-expandable">
+          <summary>Learn more about flow management</summary>
+          <div class="uo-hiw-expandable-content">
+            Extended front-to-rear Full-Spine protection helps catch flow whether you sleep on your back, stomach, or side. Individual flow volume varies; adjust wear based on your unique cycle needs.
+          </div>
+        </details>
+      </div>
+
+      <!-- Step 3: Care -->
+      <div class="uo-hiw-card">
+        <div class="uo-hiw-step-badge">STEP 03</div>
+        <div class="uo-hiw-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="3"></rect>
+            <circle cx="12" cy="13" r="5"></circle>
+            <circle cx="6" cy="6" r="1"></circle>
+          </svg>
+        </div>
+        <h3 class="uo-hiw-card-title">3. Rinse, Wash &amp; Reuse</h3>
+        <p class="uo-hiw-card-desc">Rinse with cold water in the morning until water runs clear, machine wash on cold gentle cycle, and hang to dry for your next restful night.</p>
+        <details class="uo-hiw-expandable">
+          <summary>Learn more about gentle care</summary>
+          <div class="uo-hiw-expandable-content">
+            Avoid bleach, harsh fabric softeners, or high-heat drying to protect the moisture-wicking and waterproof technical membranes. Designed to be reused over multiple cycles.
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ultra How It Works",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "SIMPLE THREE-STEP RITUAL"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "How FULL-SPINE ULTRA™ Works"
+    },
+    {
+      "type": "textarea",
+      "id": "subhead",
+      "label": "Subheadline",
+      "default": "Designed to integrate effortlessly into your nighttime routine from evening to morning."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ultra How It Works"
+    }
+  ]
+}
+{% endschema %}

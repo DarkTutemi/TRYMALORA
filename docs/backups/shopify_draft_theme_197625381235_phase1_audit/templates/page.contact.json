@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "ultra-contact",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

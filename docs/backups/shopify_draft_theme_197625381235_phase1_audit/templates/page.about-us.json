@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "ultra-about-story",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

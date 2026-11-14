@@ -1,0 +1,72 @@
+<section class="uo-hero-section">
+  <div class="uo-wrap">
+    <div class="uo-hero-grid">
+      <div class="uo-hero-content">
+        <span class="uo-eyebrow">{{ section.settings.eyebrow }}</span>
+        <h1 class="uo-heading-serif uo-hero-title">{{ section.settings.headline }}</h1>
+        <p class="uo-hero-desc">{{ section.settings.subhead }}</p>
+        <div class="uo-hero-actions">
+          <a href="{{ section.settings.cta_link | default: '/products/full-spine-ultra-overnight' }}" class="uo-btn-primary">
+            {{ section.settings.cta_text }} ➔
+          </a>
+          <a href="#ultra-technology" class="uo-btn-secondary">
+            LEARN MORE
+          </a>
+        </div>
+      </div>
+      <div class="uo-hero-media-wrap">
+        <img 
+          src="{{ 'ultra-hero-lifestyle.jpg' | asset_url }}" 
+          alt="FULL-SPINE ULTRA OVERNIGHT™ Lifestyle with Luxury Packaging" 
+          class="uo-hero-media"
+          width="520" 
+          height="320"
+          loading="eager"
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ultra Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "FULL-SPINE ULTRA OVERNIGHT™"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Sleep Through Heavy-Flow Nights With More Confidence."
+    },
+    {
+      "type": "textarea",
+      "id": "subhead",
+      "label": "Subheadline",
+      "default": "An engineered overnight period underwear with full-spine coverage, multi-layer protection, and all-night comfort — so you can rest easier, move freely, and wake up feeling fresh and secure."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Primary Button Text",
+      "default": "SHOP ULTRA OVERNIGHT"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Primary Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ultra Hero"
+    }
+  ]
+}
+{% endschema %}
+

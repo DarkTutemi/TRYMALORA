@@ -1,0 +1,517 @@
+{%- liquid
+  assign current_product = nil
+  assign current_variant = nil
+  assign has_real_product = false
+  assign can_purchase = false
+
+  if product != blank and product.handle == 'full-spine-ultra-overnight'
+    assign current_product = product
+    assign has_real_product = true
+  elsif all_products['full-spine-ultra-overnight'] != empty and all_products['full-spine-ultra-overnight'].id != blank
+    assign current_product = all_products['full-spine-ultra-overnight']
+    assign has_real_product = true
+  endif
+
+  if has_real_product
+    assign current_variant = current_product.selected_or_first_available_variant
+    if current_variant == blank
+      assign current_variant = current_product.variants.first
+    endif
+    if current_variant != blank and current_variant.price > 0 and current_variant.available and current_product.published_at != blank
+      assign can_purchase = true
+    endif
+  endif
+-%}
+
+<section class="uo-pdp-section" id="uoPdpSection">
+  <div class="uo-wrap">
+    <div class="uo-pdp-grid">
+      
+      <!-- ================= LEFT: PRODUCT GALLERY ================= -->
+      <div class="uo-gallery-wrap">
+        <!-- Vertical Thumbnails (7 Structured Product Views) -->
+        <div class="uo-thumbnails-col" role="tablist" aria-label="Product Gallery Thumbnails">
+          <!-- 1. Front View -->
+          <button type="button" class="uo-thumb-btn is-active" data-image-src="{{ 'ultra-pdp-main.jpg' | asset_url }}" aria-label="View 1: Front perspective with packaging box" role="tab" aria-selected="true">
+            <img src="{{ 'ultra-thumb-front.jpg' | asset_url }}" alt="Front View" width="70" height="70" loading="eager">
+          </button>
+          <!-- 2. Rear Full-Spine View -->
+          <button type="button" class="uo-thumb-btn" data-image-src="{{ 'ultra-lifestyle-card-2.jpg' | asset_url }}" aria-label="View 2: Rear Full-Spine coverage concept" role="tab" aria-selected="false">
+            <img src="{{ 'ultra-lifestyle-card-2.jpg' | asset_url }}" alt="Full-Spine Rear Coverage" width="70" height="70" loading="lazy">
+          </button>
+          <!-- 3. Side Contour -->
+          <button type="button" class="uo-thumb-btn" data-image-src="{{ 'ultra-lifestyle-card-1.jpg' | asset_url }}" aria-label="View 3: Side-sleeper contour protection" role="tab" aria-selected="false">
+            <img src="{{ 'ultra-lifestyle-card-1.jpg' | asset_url }}" alt="Side-Sleeper Contour" width="70" height="70" loading="lazy">
+          </button>
+          <!-- 4. CloudFlex Knit Close-Up -->
+          <button type="button" class="uo-thumb-btn" data-image-src="{{ 'ultra-thumb-texture.jpg' | asset_url }}" aria-label="View 4: CloudFlex modal fabric texture close-up" role="tab" aria-selected="false">
+            <img src="{{ 'ultra-thumb-texture.jpg' | asset_url }}" alt="Fabric Texture Close-Up" width="70" height="70" loading="lazy">
+          </button>
+          <!-- 5. 5-Layer Composite Concept -->
+          <button type="button" class="uo-thumb-btn" data-image-src="{{ 'ultra-5-layers-exploded.png' | asset_url }}" aria-label="View 5: NOCTÉRA-5 layered construction illustration" role="tab" aria-selected="false">
+            <img src="{{ 'ultra-5-layers-exploded.png' | asset_url }}" alt="5-Layer Construction Concept" width="70" height="70" loading="lazy">
+          </button>
+          <!-- 6. Luxury Packaging -->
+          <button type="button" class="uo-thumb-btn" data-image-src="{{ 'ultra-thumb-box.jpg' | asset_url }}" aria-label="View 6: Luxury retail box packaging" role="tab" aria-selected="false">
+            <img src="{{ 'ultra-thumb-box.jpg' | asset_url }}" alt="Packaging Box" width="70" height="70" loading="lazy">
+          </button>
+          <!-- 7. Bedtime Sleep Lifestyle -->
+          <button type="button" class="uo-thumb-btn" data-image-src="{{ 'ultra-thumb-lifestyle.jpg' | asset_url }}" aria-label="View 7: Bedtime sleep lifestyle" role="tab" aria-selected="false">
+            <img src="{{ 'ultra-thumb-lifestyle.jpg' | asset_url }}" alt="Bedtime Lifestyle" width="70" height="70" loading="lazy">
+          </button>
+        </div>
+
+        <!-- Main Featured Image -->
+        <div class="uo-main-image-wrap">
+          <img 
+            src="{{ 'ultra-pdp-main.jpg' | asset_url }}" 
+            alt="FULL-SPINE ULTRA OVERNIGHT™ Product & Box" 
+            class="uo-main-image"
+            width="600" 
+            height="600"
+            loading="eager"
+          >
+          <span class="uo-gallery-badge">V4 DEVELOPMENT CONCEPT</span>
+        </div>
+      </div>
+
+      <!-- ================= RIGHT: BUY BOX ================= -->
+      <div class="uo-buybox" id="uoBuyBox">
+        <div class="uo-product-category">PREMIUM OVERNIGHT PERIOD UNDERWEAR</div>
+        <h1 class="uo-heading-serif uo-product-title">
+          {%- if has_real_product -%}
+            {{ current_product.title }}
+          {%- else -%}
+            FULL-SPINE ULTRA OVERNIGHT™
+          {%- endif -%}
+        </h1>
+
+        <!-- Premium Headline -->
+        <h2 class="uo-pdp-subhead-serif">Sleep More Comfortably. Worry Less About Leaks.</h2>
+
+        <!-- Price Row -->
+        <div class="uo-price-row">
+          <span class="uo-price-current">
+            {%- if can_purchase and current_variant.price > 0 -%}
+              {{ current_variant.price | money }}
+            {%- else -%}
+              Pricing to be confirmed
+            {%- endif -%}
+          </span>
+          <span class="uo-pdp-prelaunch-tag">Pre-Launch Preview</span>
+        </div>
+
+        <!-- Short Description -->
+        <div class="uo-pdp-desc">
+          Thoughtfully designed for heavy-flow nights, with extended front-to-rear coverage, a five-layer protection concept and a soft, flexible feel.
+        </div>
+
+        <!-- 4 Concise Benefit Highlights with Custom SVGs -->
+        <div class="uo-pdp-highlights-grid">
+          <div class="uo-highlight-item">
+            <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <line x1="12" y1="8" x2="12" y2="16"></line>
+            </svg>
+            <span>Extended Full-Spine Coverage</span>
+          </div>
+
+          <div class="uo-highlight-item">
+            <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            <span>Five-Layer Protection Design</span>
+          </div>
+
+          <div class="uo-highlight-item">
+            <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8l-4 4 4 4"></path>
+              <path d="M6 8l4 4-4 4"></path>
+            </svg>
+            <span>SideSeal Contour</span>
+          </div>
+
+          <div class="uo-highlight-item">
+            <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+            </svg>
+            <span>Soft DryTouch Comfort</span>
+          </div>
+        </div>
+
+        <!-- ================= COLOR & SIZE SELECTORS ================= -->
+        <div class="uo-selectors-panel">
+          <!-- Color Selector -->
+          <div class="uo-option-group uo-color-group" data-option-type="color">
+            <div class="uo-option-header-row">
+              <label class="uo-option-title">Select Color: <span class="uo-selected-color-name" id="uoSelectedColorLabel">Plum Noir</span></label>
+            </div>
+            <div class="uo-color-swatches" role="radiogroup" aria-label="Product Color Options">
+              <!-- Plum Noir -->
+              <button 
+                type="button" 
+                class="uo-color-swatch is-active" 
+                data-color-name="Plum Noir" 
+                data-swatch-hex="#58233D" 
+                role="radio" 
+                aria-checked="true"
+                aria-label="Color: Plum Noir (Deep Plum)"
+              >
+                <span class="uo-swatch-circle" style="background-color: #58233D;"></span>
+                <span class="uo-swatch-text">Plum Noir</span>
+              </button>
+              <!-- Blush Rose -->
+              <button 
+                type="button" 
+                class="uo-color-swatch" 
+                data-color-name="Blush Rose" 
+                data-swatch-hex="#C98F9D" 
+                role="radio" 
+                aria-checked="false"
+                aria-label="Color: Blush Rose (Soft Dusty Rose)"
+              >
+                <span class="uo-swatch-circle" style="background-color: #C98F9D;"></span>
+                <span class="uo-swatch-text">Blush Rose</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Size Selector -->
+          <div class="uo-option-group uo-size-group" data-option-type="size">
+            <div class="uo-option-header-row">
+              <label class="uo-option-title">Select Size: <span class="uo-selected-size-name" id="uoSelectedSizeLabel">M</span></label>
+              <button type="button" class="uo-size-guide-trigger" onclick="openUoSizeGuide()" aria-haspopup="dialog">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 12h20"></path><path d="M6 12v3"></path><path d="M10 12v2"></path><path d="M14 12v3"></path><path d="M18 12v2"></path>
+                </svg>
+                Size Guide ↗
+              </button>
+            </div>
+            
+            <div class="uo-size-pills" role="radiogroup" aria-label="Product Size Options">
+              {% assign sizes = "XS,S,M,L,XL,2XL,3XL,4XL" | split: "," %}
+              {% for s in sizes %}
+                <button 
+                  type="button" 
+                  class="uo-size-pill {% if s == 'M' %}is-active{% endif %}" 
+                  data-size-value="{{ s }}" 
+                  role="radio" 
+                  aria-checked="{% if s == 'M' %}true{% else %}false{% endif %}"
+                  tabindex="{% if s == 'M' %}0{% else %}-1{% endif %}"
+                >
+                  {{ s }}
+                </button>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= PREMIUM BUNDLE SYSTEM ================= -->
+        <div class="uo-bundle-section">
+          <div class="uo-tier-section-title">Pick Your Pack</div>
+          <div class="uo-tier-cards" role="radiogroup" aria-label="Select bundle pack">
+            
+            <!-- Tier 1: 1 Pair (Single Pair) -->
+            <div 
+              class="uo-tier-card" 
+              role="radio" 
+              aria-checked="false" 
+              tabindex="-1"
+              data-tier="1-pair" 
+              data-pack-qty="1"
+            >
+              <span class="uo-tier-badge uo-tier-badge--neutral">SINGLE PAIR</span>
+              <div class="uo-tier-header">
+                <span class="uo-tier-name">1 Pair</span>
+                <div class="uo-tier-radio"></div>
+              </div>
+              <div class="uo-tier-price">
+                {%- if can_purchase and current_variant.price > 0 -%}
+                  {{ current_variant.price | money }}
+                {%- else -%}
+                  TBD
+                {%- endif -%}
+              </div>
+              <div class="uo-tier-unit">
+                {%- if can_purchase and current_variant.price > 0 -%}
+                  ({{ current_variant.price | money }}/each)
+                {%- else -%}
+                  (Pricing to be confirmed)
+                {%- endif -%}
+              </div>
+            </div>
+
+            <!-- Tier 2: 3 Pairs (Multi-Pair) — Selected by Default -->
+            <div 
+              class="uo-tier-card is-selected" 
+              role="radio" 
+              aria-checked="true" 
+              tabindex="0"
+              data-tier="3-pairs" 
+              data-pack-qty="3"
+            >
+              <span class="uo-tier-badge">MULTI-PAIR</span>
+              <div class="uo-tier-header">
+                <span class="uo-tier-name">3 Pairs</span>
+                <div class="uo-tier-radio"></div>
+              </div>
+              <div class="uo-tier-price">
+                {%- if can_purchase and current_variant.price > 0 -%}
+                  {{ current_variant.price | times: 3 | money }}
+                {%- else -%}
+                  TBD
+                {%- endif -%}
+              </div>
+              <div class="uo-tier-unit">
+                {%- if can_purchase and current_variant.price > 0 -%}
+                  ({{ current_variant.price | money }}/each)
+                {%- else -%}
+                  (Pricing to be confirmed)
+                {%- endif -%}
+              </div>
+            </div>
+
+            <!-- Tier 3: 5 Pairs (Larger Pack) -->
+            <div 
+              class="uo-tier-card" 
+              role="radio" 
+              aria-checked="false" 
+              tabindex="-1"
+              data-tier="5-pairs" 
+              data-pack-qty="5"
+            >
+              <span class="uo-tier-badge uo-tier-badge--neutral">VALUE PACK</span>
+              <div class="uo-tier-header">
+                <span class="uo-tier-name">5 Pairs</span>
+                <div class="uo-tier-radio"></div>
+              </div>
+              <div class="uo-tier-price">
+                {%- if can_purchase and current_variant.price > 0 -%}
+                  {{ current_variant.price | times: 5 | money }}
+                {%- else -%}
+                  TBD
+                {%- endif -%}
+              </div>
+              <div class="uo-tier-unit">
+                {%- if can_purchase and current_variant.price > 0 -%}
+                  ({{ current_variant.price | money }}/each)
+                {%- else -%}
+                  (Pricing to be confirmed)
+                {%- endif -%}
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ================= MIX-AND-MATCH CUSTOMIZER ================= -->
+          <div class="uo-mix-match-wrap" id="uoMixMatchWrap">
+            <button type="button" class="uo-mix-match-toggle" id="uoMixMatchToggle" aria-expanded="false">
+              <span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                </svg>
+                Customize Individual Sizes &amp; Colors (Mix &amp; Match)
+              </span>
+              <span class="uo-toggle-chevron">▾</span>
+            </button>
+            <div class="uo-mix-match-body" id="uoMixMatchBody" style="display:none;">
+              <p class="uo-mix-match-note">
+                Select different sizes or colors for each pair in your multi-pack.
+              </p>
+              <div class="uo-mix-match-slots" id="uoMixMatchSlots">
+                <!-- Pair 1 -->
+                <div class="uo-pair-slot">
+                  <span class="uo-slot-label">Pair 1:</span>
+                  <select class="uo-slot-select uo-slot-size" aria-label="Pair 1 Size">
+                    {% for s in sizes %}<option value="{{ s }}" {% if s == 'M' %}selected{% endif %}>Size {{ s }}</option>{% endfor %}
+                  </select>
+                  <select class="uo-slot-select uo-slot-color" aria-label="Pair 1 Color">
+                    <option value="Plum Noir" selected>Plum Noir</option>
+                    <option value="Blush Rose">Blush Rose</option>
+                  </select>
+                </div>
+                <!-- Pair 2 -->
+                <div class="uo-pair-slot">
+                  <span class="uo-slot-label">Pair 2:</span>
+                  <select class="uo-slot-select uo-slot-size" aria-label="Pair 2 Size">
+                    {% for s in sizes %}<option value="{{ s }}" {% if s == 'M' %}selected{% endif %}>Size {{ s }}</option>{% endfor %}
+                  </select>
+                  <select class="uo-slot-select uo-slot-color" aria-label="Pair 2 Color">
+                    <option value="Plum Noir" selected>Plum Noir</option>
+                    <option value="Blush Rose">Blush Rose</option>
+                  </select>
+                </div>
+                <!-- Pair 3 -->
+                <div class="uo-pair-slot">
+                  <span class="uo-slot-label">Pair 3:</span>
+                  <select class="uo-slot-select uo-slot-size" aria-label="Pair 3 Size">
+                    {% for s in sizes %}<option value="{{ s }}" {% if s == 'M' %}selected{% endif %}>Size {{ s }}</option>{% endfor %}
+                  </select>
+                  <select class="uo-slot-select uo-slot-color" aria-label="Pair 3 Color">
+                    <option value="Plum Noir" selected>Plum Noir</option>
+                    <option value="Blush Rose">Blush Rose</option>
+                  </select>
+                </div>
+              </div>
+              <div class="uo-slot-subnote">
+                ⚙️ <em>Architecture Ready: Multi-item line bundling will bind real variant IDs upon commercial launch.</em>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= QUANTITY & CTA AREA ================= -->
+        <div class="uo-atc-row">
+          <div class="uo-qty-wrap">
+            <button type="button" class="uo-qty-btn uo-qty-minus" aria-label="Decrease quantity">−</button>
+            <span class="uo-qty-val">1</span>
+            <button type="button" class="uo-qty-btn uo-qty-plus" aria-label="Increase quantity">+</button>
+          </div>
+
+          {%- if can_purchase -%}
+            <button type="button" class="uo-btn-primary uo-pdp-atc-btn" data-has-product="true">
+              ADD TO BAG ➔
+            </button>
+          {%- else -%}
+            <button 
+              type="button" 
+              class="uo-btn-primary uo-pdp-atc-btn uo-btn-disabled" 
+              disabled="disabled" 
+              aria-disabled="true" 
+              data-has-product="false"
+              style="cursor: not-allowed; opacity: 0.82; background: #6E3B52;"
+            >
+              COMING SOON
+            </button>
+          {%- endif -%}
+        </div>
+
+        <!-- Pre-Launch Development Notice -->
+        <div class="uo-admin-setup-notice" style="margin-top:12px;font-size:12.5px;color:#7A6670;line-height:1.45;text-align:center;padding:11px 14px;background:#F9F2F4;border:1px dashed #D9B8C4;border-radius:6px;">
+          🔒 <strong>Pre-Production Status:</strong> Sizes and colors are development options. Final pricing, commercial publication, and inventory will be activated upon owner authorization.
+        </div>
+
+        <div class="uo-pdp-error-msg" style="display:none;margin-top:10px;padding:8px 12px;background:#fef2f2;border:1px solid #f87171;border-radius:4px;color:#b91c1c;font-size:13px;"></div>
+
+        <!-- Trust Badges Row -->
+        <div class="uo-trust-badges-row">
+          <div class="uo-trust-item">
+            <svg class="uo-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <polyline points="9 12 11 14 15 10"></polyline>
+            </svg>
+            <span class="uo-trust-label">Nighttime<br>Comfort</span>
+          </div>
+
+          <div class="uo-trust-item">
+            <svg class="uo-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span class="uo-trust-label">30-Day<br>Guarantee</span>
+          </div>
+
+          <div class="uo-trust-item">
+            <svg class="uo-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span class="uo-trust-label">Secure<br>Checkout</span>
+          </div>
+
+          <div class="uo-trust-item">
+            <svg class="uo-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="3"></rect>
+              <circle cx="12" cy="13" r="5"></circle>
+              <circle cx="6" cy="6" r="1"></circle>
+            </svg>
+            <span class="uo-trust-label">Gentle<br>Care</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SIZE GUIDE MODAL ================= -->
+<div class="uo-modal-overlay" id="uoSizeGuideModal" role="dialog" aria-modal="true" aria-labelledby="uoSizeGuideTitle" style="display:none;">
+  <div class="uo-modal-container">
+    <div class="uo-modal-header">
+      <div>
+        <span class="uo-eyebrow" style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--uo-plum);">FIT &amp; SIZING GUIDELINE</span>
+        <h3 class="uo-heading-serif" id="uoSizeGuideTitle" style="margin:4px 0 0;font-size:24px;">Full-Spine Ultra™ Sizing Guide</h3>
+      </div>
+      <button type="button" class="uo-modal-close" onclick="closeUoSizeGuide()" aria-label="Close size guide">&times;</button>
+    </div>
+    
+    <div class="uo-modal-body">
+      <div class="uo-size-guide-alert">
+        ⚠️ <strong>Development Guideline:</strong> Measurements below reflect preliminary intimate apparel standards. Final size specifications are pending factory sample verification.
+      </div>
+
+      <div class="uo-size-table-wrap">
+        <table class="uo-size-table">
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>US Dress</th>
+              <th>Waist (Inches)</th>
+              <th>Hips (Inches)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>XS</strong></td><td>0 – 2</td><td>24 – 26"</td><td>34 – 36"</td></tr>
+            <tr><td><strong>S</strong></td><td>4 – 6</td><td>26 – 28"</td><td>36 – 38"</td></tr>
+            <tr><td><strong>M</strong></td><td>8 – 10</td><td>28 – 30"</td><td>38 – 40"</td></tr>
+            <tr><td><strong>L</strong></td><td>12 – 14</td><td>31 – 33"</td><td>41 – 43"</td></tr>
+            <tr><td><strong>XL</strong></td><td>16 – 18</td><td>34 – 36"</td><td>44 – 46"</td></tr>
+            <tr><td><strong>2XL</strong></td><td>20 – 22</td><td>37 – 40"</td><td>47 – 50"</td></tr>
+            <tr><td><strong>3XL</strong></td><td>24 – 26</td><td>41 – 44"</td><td>51 – 54"</td></tr>
+            <tr><td><strong>4XL</strong></td><td>28 – 30</td><td>45 – 48"</td><td>55 – 58"</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="uo-size-guide-tip">
+        <strong>Fit Recommendation:</strong> Designed for an all-night secure contour without pinching or bulk. If you prefer a more relaxed bedtime feel or fall between two sizes, we suggest ordering one size up.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= STICKY MOBILE BUY BAR ================= -->
+<div class="uo-sticky-mobile-bar" id="uoStickyMobileBar" aria-hidden="true">
+  <div class="uo-sticky-inner">
+    <div class="uo-sticky-product-info">
+      <img src="{{ 'ultra-thumb-front.jpg' | asset_url }}" alt="FULL-SPINE ULTRA OVERNIGHT™" class="uo-sticky-thumb" width="44" height="44">
+      <div class="uo-sticky-text">
+        <div class="uo-sticky-title">FULL-SPINE ULTRA™</div>
+        <div class="uo-sticky-summary" id="uoStickySummary">3 Pairs · M / Plum Noir</div>
+      </div>
+    </div>
+    <button type="button" class="uo-btn-primary uo-sticky-btn" onclick="scrollToUoBuyBox()">
+      COMING SOON
+    </button>
+  </div>
+</div>
+
+{%- if has_real_product -%}
+  <script type="application/json" id="uo-product-variants-json">
+    {{ current_product.variants | json }}
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Ultra Product Main",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Ultra Product Main"
+    }
+  ]
+}
+{% endschema %}

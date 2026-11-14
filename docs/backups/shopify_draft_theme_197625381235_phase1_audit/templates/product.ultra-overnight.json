@@ -1,0 +1,134 @@
+{
+  "sections": {
+    "main": {
+      "type": "ultra-product-main",
+      "settings": {}
+    },
+    "editorial": {
+      "type": "ultra-pdp-editorial",
+      "settings": {
+        "eyebrow": "ENGINEERED ARCHITECTURE",
+        "heading": "Protection Designed Beyond the Ordinary Gusset.",
+        "description": "Traditional period underwear relies on a small central gusset that shifts when you toss, turn, or sleep on your side. FULL-SPINE ULTRA OVERNIGHT™ is engineered with continuous front-to-back protective shielding and ergonomic side contours designed to move naturally with your body all night long.",
+        "caption": "Full-Spine™ coverage concept illustration · preliminary factory design",
+        "link_text": "Explore How It Works",
+        "link": "#ultra-how-it-works"
+      },
+      "blocks": {
+        "front": {
+          "type": "benefit",
+          "settings": {
+            "title": "Front Shield Coverage",
+            "body": "Absorbent barrier extends upward past the pelvic zone to protect during restless stomach sleeping and forward shifts."
+          }
+        },
+        "core": {
+          "type": "benefit",
+          "settings": {
+            "title": "Central High-Flow Core",
+            "body": "Concentrated high-absorbency core rapidly pulls in liquid and locks it deep inside to prevent wet skin contact."
+          }
+        },
+        "rear": {
+          "type": "benefit",
+          "settings": {
+            "title": "Extended Rear Full-Spine™ Coverage",
+            "body": "Continuous protective barrier runs across the full rear seat all the way up to the waistband, guarding against nighttime back leaks."
+          }
+        },
+        "side": {
+          "type": "benefit",
+          "settings": {
+            "title": "SideSeal™ Contoured Leg Edges",
+            "body": "Ergonomic leg openings contour smoothly to your thighs to help manage lateral migration as you curl up or sleep on your side."
+          }
+        }
+      },
+      "block_order": [
+        "front",
+        "core",
+        "rear",
+        "side"
+      ]
+    },
+    "benefits": {
+      "type": "ultra-benefit-strip",
+      "settings": {}
+    },
+    "layers": {
+      "type": "ultra-five-layers",
+      "settings": {
+        "title": "5 Layers of Overnight Protection",
+        "description": "A powerful, multi-layer design that absorbs, locks, and helps prevent leaks so you can sleep with confidence."
+      }
+    },
+    "pillars": {
+      "type": "ultra-seven-pillars",
+      "settings": {
+        "eyebrow": "ENGINEERING INNOVATION",
+        "title": "The Seven Pillars of ULTRA OVERNIGHT™",
+        "subhead": "Thoughtfully engineered for overnight protection, lasting comfort, and real peace of mind."
+      }
+    },
+    "comfort": {
+      "type": "ultra-lifestyle-comfort",
+      "settings": {
+        "title": "All-Night Comfort for Real Life",
+        "description": "Protection you can trust, so you can sleep deeper, move freely, and wake up feeling your best."
+      }
+    },
+    "hiw_steps": {
+      "type": "ultra-hiw-steps",
+      "settings": {
+        "eyebrow": "SIMPLE THREE-STEP RITUAL",
+        "title": "How FULL-SPINE ULTRA™ Works",
+        "subhead": "Designed to integrate effortlessly into your nighttime routine from evening to morning."
+      }
+    },
+    "tabs": {
+      "type": "ultra-pdp-tabs",
+      "settings": {
+        "eyebrow": "IN-DEPTH SPECIFICATIONS",
+        "title": "Product Details & Guidance"
+      }
+    },
+    "reviews": {
+      "type": "ultra-reviews",
+      "settings": {
+        "title": "Thoughtfully Engineered For Restful Nights",
+        "subhead": "Designed around the feeling of comfort and the details that matter during nighttime wear.",
+        "enable_review_app": false
+      }
+    },
+    "faq": {
+      "type": "ultra-faq",
+      "settings": {
+        "eyebrow": "CLARITY & DETAILS",
+        "title": "Frequently Asked Questions",
+        "subhead": "Clear, transparent answers about our design, fit, care, and upcoming release."
+      }
+    },
+    "closing_reminder": {
+      "type": "ultra-closing-reminder",
+      "settings": {
+        "eyebrow": "RESTFUL NIGHTS AWAIT",
+        "title": "Full-Spine Protection for Deeper, Worry-Free Sleep.",
+        "description": "Experience thoughtfully engineered coverage from front to back, five-layer fluid security, and CloudFlex™ comfort crafted for every sleeping position.",
+        "cta_text": "COMING SOON — VIEW OPTIONS"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "editorial",
+    "benefits",
+    "layers",
+    "pillars",
+    "comfort",
+    "hiw_steps",
+    "tabs",
+    "reviews",
+    "faq",
+    "closing_reminder"
+  ]
+}
