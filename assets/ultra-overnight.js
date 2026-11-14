@@ -206,7 +206,7 @@ function syncAuthoritativeVariant() {
       activeTierCard.setAttribute('data-variant-id', matched.id);
     }
 
-    // Pricing update (if real price > 0 format money; otherwise Pricing coming soon)
+    // Pricing update (if real price > 0 format money; otherwise fallback to $39.99)
     if (priceDisplay) {
       const priceCents = Number(matched.price || 0);
       const compareCents = Number(matched.compare_at_price || 0);
@@ -229,9 +229,15 @@ function syncAuthoritativeVariant() {
           if (saveBadge) saveBadge.style.display = 'none';
         }
       } else {
-        priceDisplay.textContent = 'Pricing coming soon';
-        if (compareDisplay) compareDisplay.style.display = 'none';
-        if (saveBadge) saveBadge.style.display = 'none';
+        priceDisplay.textContent = '$39.99';
+        if (compareDisplay) {
+          compareDisplay.textContent = '$79.98';
+          compareDisplay.style.display = 'inline';
+        }
+        if (saveBadge) {
+          saveBadge.textContent = 'Save 50%';
+          saveBadge.style.display = 'inline-block';
+        }
       }
     }
   }

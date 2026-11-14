@@ -6,7 +6,8 @@
       "type": "ultra-header",
       "settings": {
         "show_announcement": true,
-        "announcement_text": "FREE US SHIPPING OVER $49 · 30-DAY MONEY-BACK GUARANTEE"
+        "announcement_text": "FREE US SHIPPING ON ORDERS OVER $49 · 30-NIGHT RISK-FREE TRIAL",
+        "primary_menu": "ultra-overnight-nav"
       }
     },
     "willa-header": {
@@ -16,7 +17,7 @@
           "type": "nav_link",
           "settings": {
             "title": "Home",
-            "link": "/",
+            "link": "\/",
             "icon": "🏠",
             "show_desktop": true,
             "show_mobile": true
@@ -26,7 +27,7 @@
           "type": "nav_link",
           "settings": {
             "title": "Track Order",
-            "link": "/pages/track-order",
+            "link": "\/pages\/track-order",
             "icon": "📦",
             "show_desktop": true,
             "show_mobile": true
@@ -45,7 +46,7 @@
         "promo_title": "TRYMALORA Storefront",
         "promo_desc": "Innovative family essentials, automotive restoration care, surface coatings, and smart daily tools.",
         "promo_btn_text": "TRACK YOUR ORDER ➔",
-        "promo_btn_link": "/pages/track-order"
+        "promo_btn_link": "\/pages\/track-order"
       }
     }
   },

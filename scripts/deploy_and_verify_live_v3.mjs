@@ -11,12 +11,15 @@ function sha256(str) {
 }
 
 const filesToDeploy = [
+  'sections/header-group.json',
   'sections/ultra-header.liquid',
+  'sections/ultra-footer.liquid',
   'sections/ultra-about-story.liquid',
   'sections/ultra-track-order.liquid',
   'templates/page.about-us.json',
   'templates/page.track-order.json',
   'sections/ultra-product-main.liquid',
+  'sections/ultra-closing-reminder.liquid',
   'sections/ultra-pdp-problem.liquid',
   'sections/ultra-pdp-editorial.liquid',
   'sections/ultra-five-layers.liquid',
@@ -133,8 +136,19 @@ async function main() {
       const remoteValue = getData.asset?.value || '';
       const remoteHash = sha256(remoteValue);
 
-      if (remoteHash === item.localHash) {
-        console.log(`  [VERIFIED ✓] ${item.file}: HASH MATCH (${remoteHash.substring(0, 10)}...)`);
+      let isMatch = (remoteHash === item.localHash);
+      if (!isMatch && item.file.endsWith('.json')) {
+        try {
+          const localObj = JSON.parse(fs.readFileSync(item.file, 'utf8'));
+          const remoteObj = JSON.parse(remoteValue);
+          if (JSON.stringify(localObj) === JSON.stringify(remoteObj)) {
+            isMatch = true;
+          }
+        } catch (e) {}
+      }
+
+      if (isMatch) {
+        console.log(`  [VERIFIED ✓] ${item.file}: HASH/JSON MATCH (${remoteHash.substring(0, 10)}...)`);
         verifiedList.push({ file: item.file, hash: remoteHash, length: remoteValue.length, status: 'MATCH' });
       } else {
         console.error(`  [MISMATCH ✗] ${item.file}: Local ${item.localHash.substring(0, 10)} !== Remote ${remoteHash.substring(0, 10)}`);

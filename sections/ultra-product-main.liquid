@@ -41,7 +41,6 @@
             loading="eager"
           >
           <div class="uo-gallery-counter-badge" id="uoGalleryCounterBadge">1 / 7</div>
-          <span class="uo-gallery-badge">PRE-LAUNCH PREVIEW</span>
         </div>
 
         <!-- 2. Thumbnails Strip (Directly Below Main Image) -->
@@ -120,10 +119,10 @@
         <!-- 5. Price / Availability Row (With Compare-at Price) -->
         <div class="uo-price-row">
           <span class="uo-price-current">
-            {%- if can_purchase and current_variant.price > 0 -%}
+            {%- if current_variant.price > 0 -%}
               {{ current_variant.price | money }}
             {%- else -%}
-              Pricing coming soon
+              $39.99
             {%- endif -%}
           </span>
           {%- if current_variant.compare_at_price > current_variant.price -%}
@@ -133,8 +132,8 @@
               <span class="uo-price-save-badge" id="uoPriceSaveBadge">Save {{ savings }}%</span>
             {%- endif -%}
           {%- else -%}
-            <s class="uo-price-compare" id="uoPriceCompare" style="display:none;"></s>
-            <span class="uo-price-save-badge" id="uoPriceSaveBadge" style="display:none;"></span>
+            <s class="uo-price-compare" id="uoPriceCompare">$79.98</s>
+            <span class="uo-price-save-badge" id="uoPriceSaveBadge">Save 50%</span>
           {%- endif -%}
         </div>
 
@@ -302,17 +301,17 @@
               </div>
               <div class="uo-tier-pricing-wrap">
                 <div class="uo-tier-price">
-                  {%- if can_purchase and current_variant.price > 0 -%}
+                  {%- if current_variant.price > 0 -%}
                     {{ current_variant.price | money }}
                   {%- else -%}
-                    Pricing coming soon
+                    $39.99
                   {%- endif -%}
                 </div>
                 <div class="uo-tier-unit">
-                  {%- if can_purchase and current_variant.price > 0 -%}
+                  {%- if current_variant.price > 0 -%}
                     ({{ current_variant.price | money }}/each)
                   {%- else -%}
-                    (1 pair total)
+                    ($39.99/each)
                   {%- endif -%}
                 </div>
               </div>
@@ -336,17 +335,17 @@
               </div>
               <div class="uo-tier-pricing-wrap">
                 <div class="uo-tier-price">
-                  {%- if can_purchase and current_variant.price > 0 -%}
+                  {%- if current_variant.price > 0 -%}
                     {{ current_variant.price | times: 3 | money }}
                   {%- else -%}
-                    Pricing coming soon
+                    $119.97
                   {%- endif -%}
                 </div>
                 <div class="uo-tier-unit">
-                  {%- if can_purchase and current_variant.price > 0 -%}
+                  {%- if current_variant.price > 0 -%}
                     ({{ current_variant.price | money }}/each)
                   {%- else -%}
-                    (Full wash rotation)
+                    ($39.99/each)
                   {%- endif -%}
                 </div>
               </div>
@@ -370,17 +369,17 @@
               </div>
               <div class="uo-tier-pricing-wrap">
                 <div class="uo-tier-price">
-                  {%- if can_purchase and current_variant.price > 0 -%}
+                  {%- if current_variant.price > 0 -%}
                     {{ current_variant.price | times: 5 | money }}
                   {%- else -%}
-                    Pricing coming soon
+                    $199.95
                   {%- endif -%}
                 </div>
                 <div class="uo-tier-unit">
-                  {%- if can_purchase and current_variant.price > 0 -%}
+                  {%- if current_variant.price > 0 -%}
                     ({{ current_variant.price | money }}/each)
                   {%- else -%}
-                    (Full cycle coverage)
+                    ($39.99/each)
                   {%- endif -%}
                 </div>
               </div>
@@ -453,22 +452,9 @@
             <button type="button" class="uo-qty-btn uo-qty-plus" aria-label="Increase quantity">+</button>
           </div>
 
-          {%- if can_purchase -%}
-            <button type="button" class="uo-btn-primary uo-pdp-atc-btn" data-has-product="true">
-              ADD TO BAG ➔
-            </button>
-          {%- else -%}
-            <button 
-              type="button" 
-              class="uo-btn-primary uo-pdp-atc-btn uo-btn-disabled" 
-              disabled="disabled" 
-              aria-disabled="true" 
-              data-has-product="false"
-              style="cursor: not-allowed; opacity: 0.88; background: var(--uo-plum);"
-            >
-              COMING SOON
-            </button>
-          {%- endif -%}
+          <button type="button" class="uo-btn-primary uo-pdp-atc-btn" data-has-product="true">
+            ADD TO BAG ➔
+          </button>
         </div>
 
         <!-- ================= 14. REAL SHOPIFY PAYMENT ICONS ================= -->
@@ -681,7 +667,7 @@
       </div>
     </div>
     <button type="button" class="uo-btn-primary uo-sticky-btn" onclick="scrollToUoBuyBox()">
-      COMING SOON
+      ADD TO BAG ➔
     </button>
   </div>
 </div>
