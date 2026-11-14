@@ -1,0 +1,106 @@
+{
+  "timestamp": "2026-11-14T06:45:07.208Z",
+  "draftThemeId": "197625381235",
+  "liveThemeId": "197144805747",
+  "failures": 0,
+  "files": [
+    {
+      "file": "templates/product.ultra-overnight.json",
+      "localHash": "4f7a2a6618bce4125d1510e0a58e19d10bbd52c729a7b18f340c3d8ae9d18da2",
+      "remoteHash": "4f7a2a6618bce4125d1510e0a58e19d10bbd52c729a7b18f340c3d8ae9d18da2",
+      "verified": true,
+      "lines": 135
+    },
+    {
+      "file": "sections/ultra-product-main.liquid",
+      "localHash": "3a7815045f13e5b32ce5815cf91c1f5c007949b292ac7e0b230a820fe801710c",
+      "remoteHash": "3a7815045f13e5b32ce5815cf91c1f5c007949b292ac7e0b230a820fe801710c",
+      "verified": true,
+      "lines": 523
+    },
+    {
+      "file": "sections/ultra-pdp-editorial.liquid",
+      "localHash": "f1c12a25495d48bc4284ae98de28fe0b0709e25fb88d7d0f385052a6b010fa4f",
+      "remoteHash": "f1c12a25495d48bc4284ae98de28fe0b0709e25fb88d7d0f385052a6b010fa4f",
+      "verified": true,
+      "lines": 178
+    },
+    {
+      "file": "sections/ultra-benefit-strip.liquid",
+      "localHash": "3928aaf5d373f240495975b3415ce86fbb622071b3eecb08f80b4d8061791e4b",
+      "remoteHash": "3928aaf5d373f240495975b3415ce86fbb622071b3eecb08f80b4d8061791e4b",
+      "verified": true,
+      "lines": 57
+    },
+    {
+      "file": "sections/ultra-five-layers.liquid",
+      "localHash": "2ac85641784dbfb61e58363e27d6b45f2b0b2685e1e3fbd5e0981f54501a36da",
+      "remoteHash": "2ac85641784dbfb61e58363e27d6b45f2b0b2685e1e3fbd5e0981f54501a36da",
+      "verified": true,
+      "lines": 97
+    },
+    {
+      "file": "sections/ultra-seven-pillars.liquid",
+      "localHash": "270f8c3efe7fa8c17a47f9921d2528b718a9cc49013d462a79669dd62a3c8721",
+      "remoteHash": "270f8c3efe7fa8c17a47f9921d2528b718a9cc49013d462a79669dd62a3c8721",
+      "verified": true,
+      "lines": 133
+    },
+    {
+      "file": "sections/ultra-lifestyle-comfort.liquid",
+      "localHash": "a2e97193d9ac413b761d2b837ff4e2e966e63c260a4954856be0b15b20f99775",
+      "remoteHash": "a2e97193d9ac413b761d2b837ff4e2e966e63c260a4954856be0b15b20f99775",
+      "verified": true,
+      "lines": 84
+    },
+    {
+      "file": "sections/ultra-hiw-steps.liquid",
+      "localHash": "0a5c1801bfe4fafccdacb5efb7a9e712cab8d03a1327e49981aacce605a3f744",
+      "remoteHash": "0a5c1801bfe4fafccdacb5efb7a9e712cab8d03a1327e49981aacce605a3f744",
+      "verified": true,
+      "lines": 102
+    },
+    {
+      "file": "sections/ultra-pdp-tabs.liquid",
+      "localHash": "332e3547bab2076c7a290c47dc06e76ae81ea5f890579898d936d2170c07b0b3",
+      "remoteHash": "332e3547bab2076c7a290c47dc06e76ae81ea5f890579898d936d2170c07b0b3",
+      "verified": true,
+      "lines": 158
+    },
+    {
+      "file": "sections/ultra-reviews.liquid",
+      "localHash": "7b1036fb039b4e7ab2829d61b2089e5945544f8227e780ce1fa1bbde28706b11",
+      "remoteHash": "7b1036fb039b4e7ab2829d61b2089e5945544f8227e780ce1fa1bbde28706b11",
+      "verified": true,
+      "lines": 99
+    },
+    {
+      "file": "sections/ultra-faq.liquid",
+      "localHash": "e15671f00954c3728f6944aed066ea36e9eba21c191ed6ddfa6fda343bfaec98",
+      "remoteHash": "e15671f00954c3728f6944aed066ea36e9eba21c191ed6ddfa6fda343bfaec98",
+      "verified": true,
+      "lines": 171
+    },
+    {
+      "file": "sections/ultra-closing-reminder.liquid",
+      "localHash": "373ea795875b3a6cb2214ad16d25ad0f4a7263d5a46e619ca88d769b4a6f467d",
+      "remoteHash": "373ea795875b3a6cb2214ad16d25ad0f4a7263d5a46e619ca88d769b4a6f467d",
+      "verified": true,
+      "lines": 94
+    },
+    {
+      "file": "assets/ultra-overnight.css",
+      "localHash": "b3c3c4c2e31a84b2056e4b66b7281a5a261340ea5d7bfd7e97887e3b913340e5",
+      "remoteHash": "b3c3c4c2e31a84b2056e4b66b7281a5a261340ea5d7bfd7e97887e3b913340e5",
+      "verified": true,
+      "lines": 2329
+    },
+    {
+      "file": "assets/ultra-overnight.js",
+      "localHash": "f0b9825f790cc933fa1b59d3c79df5a8c11a81b7502216368cd4ad40fc619649",
+      "remoteHash": "f0b9825f790cc933fa1b59d3c79df5a8c11a81b7502216368cd4ad40fc619649",
+      "verified": true,
+      "lines": 533
+    }
+  ]
+}

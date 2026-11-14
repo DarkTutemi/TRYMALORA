@@ -364,8 +364,8 @@
 
         <!-- ================= QUANTITY & CTA AREA ================= -->
         <div class="uo-atc-row">
-          <!-- Hidden Authoritative Variant ID -->
-          <input type="hidden" name="id" id="uoSelectedVariantId" value="67401560129907">
+          <!-- Hidden Authoritative Variant ID (bound exclusively to real Shopify variant) -->
+          <input type="hidden" name="id" id="uoSelectedVariantId" value="{% if current_variant %}{{ current_variant.id }}{% endif %}">
 
           <div class="uo-qty-wrap">
             <button type="button" class="uo-qty-btn uo-qty-minus" aria-label="Decrease quantity">−</button>
@@ -505,24 +505,7 @@
   {%- if has_real_product and current_product.variants.size > 0 -%}
     {{ current_product.variants | json }}
   {%- else -%}
-    [
-      {"id":67401560064371,"title":"XS / Plum Noir","option1":"XS","option2":"Plum Noir","price":0,"available":false},
-      {"id":67401560097139,"title":"S / Plum Noir","option1":"S","option2":"Plum Noir","price":0,"available":false},
-      {"id":67401560129907,"title":"M / Plum Noir","option1":"M","option2":"Plum Noir","price":0,"available":false},
-      {"id":67401560162675,"title":"L / Plum Noir","option1":"L","option2":"Plum Noir","price":0,"available":false},
-      {"id":67401560195443,"title":"XL / Plum Noir","option1":"XL","option2":"Plum Noir","price":0,"available":false},
-      {"id":67401560228211,"title":"2XL / Plum Noir","option1":"2XL","option2":"Plum Noir","price":0,"available":false},
-      {"id":67401560260979,"title":"3XL / Plum Noir","option1":"3XL","option2":"Plum Noir","price":0,"available":false},
-      {"id":67401560293747,"title":"4XL / Plum Noir","option1":"4XL","option2":"Plum Noir","price":0,"available":false},
-      {"id":67401560326515,"title":"XS / Blush Rose","option1":"XS","option2":"Blush Rose","price":0,"available":false},
-      {"id":67401560359283,"title":"S / Blush Rose","option1":"S","option2":"Blush Rose","price":0,"available":false},
-      {"id":67401560392051,"title":"M / Blush Rose","option1":"M","option2":"Blush Rose","price":0,"available":false},
-      {"id":67401560424819,"title":"L / Blush Rose","option1":"L","option2":"Blush Rose","price":0,"available":false},
-      {"id":67401560457587,"title":"XL / Blush Rose","option1":"XL","option2":"Blush Rose","price":0,"available":false},
-      {"id":67401560490355,"title":"2XL / Blush Rose","option1":"2XL","option2":"Blush Rose","price":0,"available":false},
-      {"id":67401560523123,"title":"3XL / Blush Rose","option1":"3XL","option2":"Blush Rose","price":0,"available":false},
-      {"id":67401560555891,"title":"4XL / Blush Rose","option1":"4XL","option2":"Blush Rose","price":0,"available":false}
-    ]
+    []
   {%- endif -%}
 </script>
 

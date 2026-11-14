@@ -3,20 +3,20 @@
  * Single source of truth for variant selection, bundle tiers, multi-line cart payload, and CRO interactions.
  */
 
-// Global State
+// Global State (Authoritative single source of truth; reads exclusively from real Shopify product JSON)
 window.uoState = {
   variants: [],
   selectedSize: 'M',
   selectedColor: 'Plum Noir',
-  activeVariantId: 67401560129907, // Default M / Plum Noir
+  activeVariantId: null,
   selectedTier: '3-pairs',
   packQty: 3,
   currentQty: 1,
   isMixMatchExpanded: false,
   mixMatchSlots: [
-    { pairNum: 1, size: 'M', color: 'Plum Noir', variantId: 67401560129907 },
-    { pairNum: 2, size: 'M', color: 'Plum Noir', variantId: 67401560129907 },
-    { pairNum: 3, size: 'M', color: 'Plum Noir', variantId: 67401560129907 }
+    { pairNum: 1, size: 'M', color: 'Plum Noir', variantId: null },
+    { pairNum: 2, size: 'M', color: 'Plum Noir', variantId: null },
+    { pairNum: 3, size: 'M', color: 'Plum Noir', variantId: null }
   ]
 };
 
@@ -143,29 +143,13 @@ function initAuthoritativeVariants() {
     }
   }
 
-  // Ensure default fallback 16 variants if empty
-  if (!window.uoState.variants || window.uoState.variants.length === 0) {
-    window.uoState.variants = [
-      { id: 67401560064371, title: 'XS / Plum Noir', option1: 'XS', option2: 'Plum Noir', price: 0, available: false },
-      { id: 67401560097139, title: 'S / Plum Noir', option1: 'S', option2: 'Plum Noir', price: 0, available: false },
-      { id: 67401560129907, title: 'M / Plum Noir', option1: 'M', option2: 'Plum Noir', price: 0, available: false },
-      { id: 67401560162675, title: 'L / Plum Noir', option1: 'L', option2: 'Plum Noir', price: 0, available: false },
-      { id: 67401560195443, title: 'XL / Plum Noir', option1: 'XL', option2: 'Plum Noir', price: 0, available: false },
-      { id: 67401560228211, title: '2XL / Plum Noir', option1: '2XL', option2: 'Plum Noir', price: 0, available: false },
-      { id: 67401560260979, title: '3XL / Plum Noir', option1: '3XL', option2: 'Plum Noir', price: 0, available: false },
-      { id: 67401560293747, title: '4XL / Plum Noir', option1: '4XL', option2: 'Plum Noir', price: 0, available: false },
-      { id: 67401560326515, title: 'XS / Blush Rose', option1: 'XS', option2: 'Blush Rose', price: 0, available: false },
-      { id: 67401560359283, title: 'S / Blush Rose', option1: 'S', option2: 'Blush Rose', price: 0, available: false },
-      { id: 67401560392051, title: 'M / Blush Rose', option1: 'M', option2: 'Blush Rose', price: 0, available: false },
-      { id: 67401560424819, title: 'L / Blush Rose', option1: 'L', option2: 'Blush Rose', price: 0, available: false },
-      { id: 67401560457587, title: 'XL / Blush Rose', option1: 'XL', option2: 'Blush Rose', price: 0, available: false },
-      { id: 67401560490355, title: '2XL / Blush Rose', option1: '2XL', option2: 'Blush Rose', price: 0, available: false },
-      { id: 67401560523123, title: '3XL / Blush Rose', option1: '3XL', option2: 'Blush Rose', price: 0, available: false },
-      { id: 67401560555891, title: '4XL / Blush Rose', option1: '4XL', option2: 'Blush Rose', price: 0, available: false }
-    ];
+  // If variants JSON is empty (e.g. unpublished draft product on storefront),
+  // do NOT inject hardcoded fallback IDs into production purchasing logic.
+  if (!window.uoState.variants) {
+    window.uoState.variants = [];
   }
 
-  // Match initial state
+  // Match initial state with real variant data
   syncAuthoritativeVariant();
 }
 
@@ -422,17 +406,19 @@ function computeGroupedCartPayload() {
     variantCounts[vId] = (variantCounts[vId] || 0) + (1 * orderMultiplier);
   });
 
-  const items = Object.keys(variantCounts).map(function (vId) {
-    return {
-      id: parseInt(vId, 10),
-      quantity: variantCounts[vId],
-      properties: {
-        'Pack': tierName,
-        'Brand': 'ULTRA OVERNIGHT™',
-        'Bundle Type': slots.length > 1 ? 'Mix-and-Match Multi-Pack' : 'Single Pair'
-      }
-    };
-  });
+  const items = Object.keys(variantCounts)
+    .filter(function (vId) { return vId && vId !== 'null' && vId !== 'undefined'; })
+    .map(function (vId) {
+      return {
+        id: parseInt(vId, 10),
+        quantity: variantCounts[vId],
+        properties: {
+          'Pack': tierName,
+          'Brand': 'ULTRA OVERNIGHT™',
+          'Bundle Type': slots.length > 1 ? 'Mix-and-Match Multi-Pack' : 'Single Pair'
+        }
+      };
+    });
 
   const payload = { items: items };
   
