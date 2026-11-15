@@ -18,18 +18,14 @@
     <button type="button" class="willa-cart-close" onclick="closeWillaCart()" aria-label="Close cart">&times;</button>
   </div>
 
-  <!-- Free Shipping Progress Bar -->
+  <!-- Free Shipping Progress Bar ($70 USD Policy) -->
   <div class="willa-shipping-bar-wrap">
     <div class="shipping-bar-text" id="willaShippingText">
-      {% if is_legacy_product %}
-        {% assign threshold = 7000 %}
-      {% else %}
-        {% assign threshold = 4900 %}
-      {% endif %}
+      {% assign threshold = 7000 %}
       {% if cart.total_price >= threshold %}
-        🎉 You unlocked <strong>FREE US SHIPPING</strong>!
+        🎉 You've unlocked <strong>FREE US SHIPPING</strong>!
       {% else %}
-        Add <strong>{{ threshold | minus: cart.total_price | money }}</strong> more to unlock <strong>FREE SHIPPING</strong>!
+        You're <strong>{{ threshold | minus: cart.total_price | money }}</strong> away from <strong>FREE SHIPPING</strong>!
       {% endif %}
     </div>
     <div class="shipping-progress-bg">
@@ -478,11 +474,8 @@
 
       const payableTotalCents = Math.max(0, cart.total_price - bundleDeductionCents);
 
-      // Update free shipping bar (Dynamic context: $49 for Ultra, $70 for Legacy)
-      const isUltra = typeof window.__isUltraContext !== 'undefined'
-        ? window.__isUltraContext
-        : (!window.location.pathname.includes('/products/ear-cleaner') && !window.location.pathname.includes('/products/eyvelle') && !window.location.pathname.includes('/products/metallic-silver'));
-      const threshold = isUltra ? 4900 : 7000;
+      // Update free shipping bar ($70 USD Policy)
+      const threshold = 7000;
       const textElem = document.getElementById('willaShippingText');
       const fillElem = document.getElementById('willaShippingFill');
       const percent = Math.min(100, Math.max(0, Math.round((payableTotalCents / threshold) * 100)));
@@ -490,10 +483,10 @@
 
       if (textElem) {
         if (payableTotalCents >= threshold) {
-          textElem.innerHTML = '🎉 You unlocked <strong>FREE US SHIPPING</strong>!';
+          textElem.innerHTML = '🎉 You\'ve unlocked <strong>FREE US SHIPPING</strong>!';
         } else {
           const remaining = (Math.max(0, threshold - payableTotalCents) / 100).toFixed(2);
-          textElem.innerHTML = 'Add <strong>$' + remaining + '</strong> more to unlock <strong>FREE SHIPPING</strong>!';
+          textElem.innerHTML = 'You\'re <strong>$' + remaining + '</strong> away from <strong>FREE SHIPPING</strong>!';
         }
       }
 

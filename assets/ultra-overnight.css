@@ -1221,11 +1221,28 @@
   margin-bottom: 12px;
 }
 
+/* ================= BUNDLE SELECTOR STYLES (PREMIUM FEMININE V3) ================= */
+.uo-tier-section-title {
+  font-family: var(--uo-font-serif);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--uo-plum);
+  margin-bottom: 4px;
+}
+
+.uo-bundle-microcopy {
+  font-family: var(--uo-font-sans);
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--uo-body-text);
+  margin: 0 0 14px;
+}
+
 .uo-tier-cards {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
   width: 100%;
 }
 
@@ -1233,7 +1250,7 @@
   position: relative;
   border: 1.5px solid var(--uo-border);
   border-radius: 12px;
-  padding: 13px 16px;
+  padding: 12px 14px;
   cursor: pointer;
   background-color: var(--uo-white);
   transition: all 0.2s ease;
@@ -1241,7 +1258,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  min-height: 56px;
   box-sizing: border-box;
 }
 
@@ -1251,48 +1267,28 @@
 
 .uo-tier-card.is-selected {
   border-color: var(--uo-plum);
-  background-color: var(--uo-blush-light);
-  box-shadow: 0 0 0 1px var(--uo-plum);
+  background-color: #FAF2F2;
+  box-shadow: 0 0 0 1px var(--uo-plum), 0 3px 12px rgba(75, 32, 56, 0.06);
 }
 
-.uo-tier-badge {
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--uo-plum);
-  color: var(--uo-white);
-  font-family: var(--uo-font-sans);
-  font-size: 10px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: var(--uo-radius-pill);
-  letter-spacing: 0.5px;
-  white-space: nowrap;
-}
-
-.uo-tier-header {
+.uo-tier-left {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-
-.uo-tier-name {
-  font-family: var(--uo-font-sans);
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--uo-charcoal);
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
 }
 
 .uo-tier-radio {
-  width: 16px;
-  height: 16px;
-  border-radius: var(--uo-radius-pill);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
   border: 1.5px solid var(--uo-border);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
 }
 
 .uo-tier-card.is-selected .uo-tier-radio {
@@ -1304,20 +1300,137 @@
   content: '✓';
   color: var(--uo-white);
   font-size: 10px;
+  font-weight: 700;
 }
 
-.uo-tier-price {
+.uo-tier-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.uo-tier-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.uo-tier-name {
   font-family: var(--uo-font-sans);
   font-size: 15px;
   font-weight: 700;
+  color: var(--uo-charcoal);
+}
+
+/* Premium Muted Berry Badges (Never plain black!) */
+.uo-tier-badge {
+  display: inline-block;
+  background-color: #8F5269;
+  color: #ffffff;
+  font-family: var(--uo-font-sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.uo-tier-badge--try {
+  background-color: #A37081;
+}
+
+.uo-tier-badge--recommended {
+  background-color: #8F5269;
+}
+
+.uo-tier-badge--best {
+  background-color: var(--uo-plum);
+}
+
+.uo-tier-save-pill {
+  display: inline-block;
+  background-color: #F8EEF0;
+  color: #8B263E;
+  border: 1px solid rgba(139, 38, 62, 0.2);
+  font-family: var(--uo-font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.uo-tier-save-pill--hot {
+  background-color: #F5DDE3;
+  color: #8B263E;
+  font-weight: 800;
+}
+
+.uo-tier-benefit {
+  font-family: var(--uo-font-sans);
+  font-size: 11.5px;
+  line-height: 1.35;
+  color: var(--uo-body-text);
+  margin: 2px 0 0;
+}
+
+.uo-tier-shipping-tag {
+  font-family: var(--uo-font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  color: #2E7D32;
+  margin-top: 3px;
+}
+
+.uo-tier-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  flex-shrink: 0;
+  padding-left: 8px;
+}
+
+.uo-tier-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.uo-tier-orig-price {
+  font-family: var(--uo-font-sans);
+  font-size: 12px;
+  color: #8E8284;
+  text-decoration: line-through;
+}
+
+.uo-tier-final-price {
+  font-family: var(--uo-font-sans);
+  font-size: 16px;
+  font-weight: 800;
   color: var(--uo-plum);
-  margin-bottom: 2px;
 }
 
 .uo-tier-unit {
   font-family: var(--uo-font-sans);
-  font-size: 11.5px;
+  font-size: 11px;
   color: var(--uo-body-text);
+  margin-top: 1px;
+}
+
+.uo-tier-savings-note {
+  font-family: var(--uo-font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  color: #8B263E;
+  margin-top: 2px;
+}
+
+.uo-tier-savings-note--hot {
+  color: #B91C1C;
 }
 
 /* Quantity & Add to Cart */
@@ -1699,7 +1812,7 @@
 .uo-pdp-editorial-image{width:100%;height:auto;display:block;object-fit:contain;max-height:580px}
 .uo-pdp-editorial-caption{font:400 11px/1.5 var(--uo-font-sans);text-align:center;color:var(--uo-body-text);margin-top:16px}
 .uo-pdp-editorial a:focus-visible,.uo-pdp-section button:focus-visible{outline:3px solid var(--uo-burgundy);outline-offset:3px}
-@media(max-width:1024px){.uo-pdp-grid{grid-template-columns:1fr}.uo-gallery-wrap{position:static}.uo-pdp-editorial-layout{grid-template-columns:1fr}}
+@media(max-width:1024px){.uo-pdp-grid{grid-template-columns:1fr}.uo-gallery-wrap{position:static}.uo-pdp-editorial-layout{display:flex;flex-direction:column}.uo-pdp-editorial-visual{order:-1;margin-bottom:24px}}
 @media(max-width:768px){
   .uo-wrap {
     padding-left: 16px;
@@ -2958,10 +3071,60 @@
   letter-spacing: 0.04em;
   padding: 2px 7px;
   border-radius: 4px;
-  background: #000000;
+  background: #8F5269; /* Muted Berry - Never black */
   color: #FFFFFF;
   line-height: 1.2;
   white-space: nowrap;
+}
+
+.uo-tier-badge--try {
+  background: #A37081;
+}
+
+.uo-tier-badge--recommended {
+  background: #8F5269;
+}
+
+.uo-tier-badge--best {
+  background: var(--uo-plum);
+}
+
+.uo-tier-save-pill {
+  display: inline-flex;
+  align-items: center;
+  background: #F8EEF0;
+  color: #8B263E;
+  border: 1px solid rgba(139, 38, 62, 0.25);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 4px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.uo-tier-save-pill--hot {
+  background: #F4D6DE;
+  color: #8B263E;
+  font-weight: 800;
+}
+
+.uo-tier-benefit {
+  font-family: var(--uo-font-sans);
+  font-size: 11.5px;
+  line-height: 1.35;
+  color: var(--uo-body-text);
+  margin: 2px 0 0;
+  text-align: left;
+}
+
+.uo-tier-shipping-tag {
+  font-family: var(--uo-font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  color: #2E7D32;
+  margin-top: 3px;
+  text-align: left;
 }
 
 .uo-tier-pricing-wrap {
@@ -2971,10 +3134,24 @@
   margin-left: auto;
 }
 
-.uo-tier-price {
+.uo-tier-price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.uo-tier-orig-price {
   font-family: var(--uo-font-sans);
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 12px;
+  color: #8E8284;
+  text-decoration: line-through;
+}
+
+.uo-tier-final-price {
+  font-family: var(--uo-font-sans);
+  font-size: 16px;
+  font-weight: 800;
   color: var(--uo-plum);
   line-height: 1.2;
 }
@@ -2982,9 +3159,21 @@
 .uo-tier-unit {
   font-family: var(--uo-font-sans);
   font-size: 11px;
-  color: var(--uo-burgundy);
+  color: var(--uo-body-text);
   margin-top: 2px;
   line-height: 1.2;
+}
+
+.uo-tier-savings-note {
+  font-family: var(--uo-font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  color: #8B263E;
+  margin-top: 2px;
+}
+
+.uo-tier-savings-note--hot {
+  color: #B91C1C;
 }
 
 /* Real Shopify Payment Icons Strip Under Primary CTA */

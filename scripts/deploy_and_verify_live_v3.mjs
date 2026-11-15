@@ -30,6 +30,8 @@ const filesToDeploy = [
   'sections/ultra-pdp-tabs.liquid',
   'sections/ultra-reviews.liquid',
   'sections/ultra-faq.liquid',
+  'sections/willa-cart-drawer.liquid',
+  'sections/willa-header.liquid',
   'assets/ultra-overnight.css',
   'assets/ultra-overnight.js',
   'assets/doctor-avatar-1.png',

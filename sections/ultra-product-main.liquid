@@ -243,34 +243,63 @@
           <!-- 8. Color Selector -->
           <div class="uo-option-group uo-color-group" data-option-type="color">
             <div class="uo-option-header-row">
-              <label class="uo-option-title">Color: <span class="uo-selected-color-name" id="uoSelectedColorLabel">Plum Noir</span></label>
+              <label class="uo-option-title">Color: <span class="uo-selected-color-name" id="uoSelectedColorLabel">Black</span></label>
             </div>
             <div class="uo-color-swatches" role="radiogroup" aria-label="Product Color Options">
-              <!-- Deep Plum / Plum Noir (#4B2038) -->
+              <!-- Black (#1a1a1a) -->
               <button 
                 type="button" 
                 class="uo-color-swatch is-active" 
-                data-color-name="Plum Noir" 
-                data-swatch-hex="#4B2038" 
+                data-color-name="Black" 
+                data-swatch-hex="#1a1a1a" 
                 role="radio" 
                 aria-checked="true"
-                aria-label="Color: Plum Noir (Deep Plum)"
+                aria-label="Color: Black (Midnight Black)"
               >
-                <span class="uo-swatch-circle" style="background-color: #4B2038;"></span>
-                <span class="uo-swatch-text">Plum Noir</span>
+                <span class="uo-swatch-circle" style="background-color: #1a1a1a;"></span>
+                <span class="uo-swatch-text">Black</span>
               </button>
-              <!-- Blush Rose (#C8879D) -->
+
+              <!-- Orange (#c86a32) -->
               <button 
                 type="button" 
                 class="uo-color-swatch" 
-                data-color-name="Blush Rose" 
-                data-swatch-hex="#C8879D" 
+                data-color-name="Orange" 
+                data-swatch-hex="#c86a32" 
                 role="radio" 
                 aria-checked="false"
-                aria-label="Color: Blush Rose (Soft Dusty Rose)"
+                aria-label="Color: Orange (Terracotta Orange)"
               >
-                <span class="uo-swatch-circle" style="background-color: #C8879D;"></span>
-                <span class="uo-swatch-text">Blush Rose</span>
+                <span class="uo-swatch-circle" style="background-color: #c86a32;"></span>
+                <span class="uo-swatch-text">Orange</span>
+              </button>
+
+              <!-- Red (#8b263e) -->
+              <button 
+                type="button" 
+                class="uo-color-swatch" 
+                data-color-name="Red" 
+                data-swatch-hex="#8b263e" 
+                role="radio" 
+                aria-checked="false"
+                aria-label="Color: Red (Berry Crimson)"
+              >
+                <span class="uo-swatch-circle" style="background-color: #8b263e;"></span>
+                <span class="uo-swatch-text">Red</span>
+              </button>
+
+              <!-- Nude (#d8b99b) -->
+              <button 
+                type="button" 
+                class="uo-color-swatch" 
+                data-color-name="Nude" 
+                data-swatch-hex="#d8b99b" 
+                role="radio" 
+                aria-checked="false"
+                aria-label="Color: Nude (Soft Warm Nude)"
+              >
+                <span class="uo-swatch-circle" style="background-color: #d8b99b;"></span>
+                <span class="uo-swatch-text">Nude</span>
               </button>
             </div>
           </div>
@@ -307,7 +336,10 @@
 
         <!-- ================= 10. BUNDLE SELECTOR (1, 3, 5 PAIRS) ================= -->
         <div class="uo-bundle-section">
-          <div class="uo-tier-section-title">Pick Your Pack</div>
+          <div class="uo-bundle-intro">
+            <div class="uo-tier-section-title">Pick Your Pack</div>
+            <p class="uo-bundle-microcopy">Find your perfect overnight rotation. The more pairs you choose, the more you save.</p>
+          </div>
           <div class="uo-tier-cards" role="radiogroup" aria-label="Select bundle pack">
             
             <!-- Tier 1: 1 Pair -->
@@ -319,32 +351,23 @@
               data-tier="1-pair" 
               data-pack-qty="1"
             >
-              <div class="uo-tier-left-col">
+              <div class="uo-tier-left">
                 <div class="uo-tier-radio"></div>
-                <div class="uo-tier-title-wrap">
-                  <span class="uo-tier-name">1 Pair</span>
-                  <span class="uo-tier-badge uo-tier-badge--neutral">SINGLE PAIR</span>
+                <div class="uo-tier-info">
+                  <div class="uo-tier-title-row">
+                    <span class="uo-tier-name">1 Pair</span>
+                    <span class="uo-tier-badge uo-tier-badge--try">TRY IT FIRST</span>
+                  </div>
+                  <p class="uo-tier-benefit">A simple way to try ULTRA OVERNIGHT.</p>
                 </div>
               </div>
-              <div class="uo-tier-pricing-wrap">
-                <div class="uo-tier-price">
-                  {%- if current_variant.price > 0 -%}
-                    {{ current_variant.price | money }}
-                  {%- else -%}
-                    $39.99
-                  {%- endif -%}
-                </div>
-                <div class="uo-tier-unit">
-                  {%- if current_variant.price > 0 -%}
-                    ({{ current_variant.price | money }}/each)
-                  {%- else -%}
-                    ($39.99/each)
-                  {%- endif -%}
-                </div>
+              <div class="uo-tier-right">
+                <div class="uo-tier-final-price">$39.99</div>
+                <div class="uo-tier-unit">($39.99/each)</div>
               </div>
             </div>
 
-            <!-- Tier 2: 3 Pairs (Selected by Default) -->
+            <!-- Tier 2: 3 Pairs (RECOMMENDED ROTATION - Selected by Default) -->
             <div 
               class="uo-tier-card is-selected" 
               role="radio" 
@@ -353,32 +376,29 @@
               data-tier="3-pairs" 
               data-pack-qty="3"
             >
-              <div class="uo-tier-left-col">
+              <div class="uo-tier-left">
                 <div class="uo-tier-radio"></div>
-                <div class="uo-tier-title-wrap">
-                  <span class="uo-tier-name">3 Pairs</span>
-                  <span class="uo-tier-badge">MULTI-PAIR</span>
+                <div class="uo-tier-info">
+                  <div class="uo-tier-title-row">
+                    <span class="uo-tier-name">3 Pairs</span>
+                    <span class="uo-tier-badge uo-tier-badge--recommended">RECOMMENDED ROTATION</span>
+                    <span class="uo-tier-save-pill">Save 10%</span>
+                  </div>
+                  <p class="uo-tier-benefit">More pairs. Less wash-day pressure.</p>
+                  <div class="uo-tier-shipping-tag">✓ FREE US SHIPPING</div>
                 </div>
               </div>
-              <div class="uo-tier-pricing-wrap">
-                <div class="uo-tier-price">
-                  {%- if current_variant.price > 0 -%}
-                    {{ current_variant.price | times: 3 | money }}
-                  {%- else -%}
-                    $119.97
-                  {%- endif -%}
+              <div class="uo-tier-right">
+                <div class="uo-tier-price-row">
+                  <del class="uo-tier-orig-price">$119.97</del>
+                  <span class="uo-tier-final-price">$107.97</span>
                 </div>
-                <div class="uo-tier-unit">
-                  {%- if current_variant.price > 0 -%}
-                    ({{ current_variant.price | money }}/each)
-                  {%- else -%}
-                    ($39.99/each)
-                  {%- endif -%}
-                </div>
+                <div class="uo-tier-unit">($35.99/each)</div>
+                <div class="uo-tier-savings-note">Save $12.00</div>
               </div>
             </div>
 
-            <!-- Tier 3: 5 Pairs -->
+            <!-- Tier 3: 5 Pairs (BEST VALUE) -->
             <div 
               class="uo-tier-card" 
               role="radio" 
@@ -387,28 +407,25 @@
               data-tier="5-pairs" 
               data-pack-qty="5"
             >
-              <div class="uo-tier-left-col">
+              <div class="uo-tier-left">
                 <div class="uo-tier-radio"></div>
-                <div class="uo-tier-title-wrap">
-                  <span class="uo-tier-name">5 Pairs</span>
-                  <span class="uo-tier-badge uo-tier-badge--neutral">CYCLE PACK</span>
+                <div class="uo-tier-info">
+                  <div class="uo-tier-title-row">
+                    <span class="uo-tier-name">5 Pairs</span>
+                    <span class="uo-tier-badge uo-tier-badge--best">BEST VALUE</span>
+                    <span class="uo-tier-save-pill uo-tier-save-pill--hot">Save 20%</span>
+                  </div>
+                  <p class="uo-tier-benefit">Your complete overnight rotation, for less.</p>
+                  <div class="uo-tier-shipping-tag">✓ FREE US SHIPPING</div>
                 </div>
               </div>
-              <div class="uo-tier-pricing-wrap">
-                <div class="uo-tier-price">
-                  {%- if current_variant.price > 0 -%}
-                    {{ current_variant.price | times: 5 | money }}
-                  {%- else -%}
-                    $199.95
-                  {%- endif -%}
+              <div class="uo-tier-right">
+                <div class="uo-tier-price-row">
+                  <del class="uo-tier-orig-price">$199.95</del>
+                  <span class="uo-tier-final-price">$159.96</span>
                 </div>
-                <div class="uo-tier-unit">
-                  {%- if current_variant.price > 0 -%}
-                    ({{ current_variant.price | money }}/each)
-                  {%- else -%}
-                    ($39.99/each)
-                  {%- endif -%}
-                </div>
+                <div class="uo-tier-unit">(approx. $31.99/each)</div>
+                <div class="uo-tier-savings-note uo-tier-savings-note--hot">Save $39.99 (1 Pair FREE)</div>
               </div>
             </div>
 
@@ -437,8 +454,10 @@
                     {% for s in sizes %}<option value="{{ s }}" {% if s == 'M' %}selected{% endif %}>Size {{ s }}</option>{% endfor %}
                   </select>
                   <select class="uo-slot-select uo-slot-color" aria-label="Pair 1 Color">
-                    <option value="Plum Noir" selected>Plum Noir</option>
-                    <option value="Blush Rose">Blush Rose</option>
+                    <option value="Black" selected>Black</option>
+                    <option value="Orange">Orange</option>
+                    <option value="Red">Red</option>
+                    <option value="Nude">Nude</option>
                   </select>
                 </div>
                 <!-- Pair 2 -->
@@ -448,8 +467,10 @@
                     {% for s in sizes %}<option value="{{ s }}" {% if s == 'M' %}selected{% endif %}>Size {{ s }}</option>{% endfor %}
                   </select>
                   <select class="uo-slot-select uo-slot-color" aria-label="Pair 2 Color">
-                    <option value="Plum Noir" selected>Plum Noir</option>
-                    <option value="Blush Rose">Blush Rose</option>
+                    <option value="Black" selected>Black</option>
+                    <option value="Orange">Orange</option>
+                    <option value="Red">Red</option>
+                    <option value="Nude">Nude</option>
                   </select>
                 </div>
                 <!-- Pair 3 -->
@@ -459,8 +480,10 @@
                     {% for s in sizes %}<option value="{{ s }}" {% if s == 'M' %}selected{% endif %}>Size {{ s }}</option>{% endfor %}
                   </select>
                   <select class="uo-slot-select uo-slot-color" aria-label="Pair 3 Color">
-                    <option value="Plum Noir" selected>Plum Noir</option>
-                    <option value="Blush Rose">Blush Rose</option>
+                    <option value="Black" selected>Black</option>
+                    <option value="Orange">Orange</option>
+                    <option value="Red">Red</option>
+                    <option value="Nude">Nude</option>
                   </select>
                 </div>
               </div>
@@ -479,7 +502,7 @@
             <button type="button" class="uo-qty-btn uo-qty-plus" aria-label="Increase quantity">+</button>
           </div>
 
-          <button type="button" class="uo-btn-primary uo-pdp-atc-btn" data-has-product="true">
+          <button type="button" class="uo-btn-primary uo-pdp-atc-btn" data-has-product="true" onclick="if(typeof handleAddToCart==='function')handleAddToCart(this)">
             ADD TO BAG ➔
           </button>
         </div>
@@ -695,7 +718,7 @@
       {%- endif -%}
       <div class="uo-sticky-text">
         <div class="uo-sticky-title">FULL-SPINE ULTRA™</div>
-        <div class="uo-sticky-summary" id="uoStickySummary">3 Pairs · M / Plum Noir</div>
+        <div class="uo-sticky-summary" id="uoStickySummary">3 Pairs · M / Black</div>
       </div>
     </div>
     <button type="button" class="uo-btn-primary uo-sticky-btn" onclick="scrollToUoBuyBox()">

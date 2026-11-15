@@ -7,16 +7,16 @@
 window.uoState = {
   variants: [],
   selectedSize: 'M',
-  selectedColor: 'Plum Noir',
+  selectedColor: 'Black',
   activeVariantId: null,
   selectedTier: '3-pairs',
   packQty: 3,
   currentQty: 1,
   isMixMatchExpanded: false,
   mixMatchSlots: [
-    { pairNum: 1, size: 'M', color: 'Plum Noir', variantId: null },
-    { pairNum: 2, size: 'M', color: 'Plum Noir', variantId: null },
-    { pairNum: 3, size: 'M', color: 'Plum Noir', variantId: null }
+    { pairNum: 1, size: 'M', color: 'Black', variantId: null },
+    { pairNum: 2, size: 'M', color: 'Black', variantId: null },
+    { pairNum: 3, size: 'M', color: 'Black', variantId: null }
   ]
 };
 
@@ -60,7 +60,7 @@ window.scrollToUoBuyBox = function () {
   }
 };
 
-document.addEventListener('DOMContentLoaded', function () {
+function initAll() {
   initMobileDrawer();
   initFaqAccordions();
   initPdpGallery();
@@ -73,7 +73,14 @@ document.addEventListener('DOMContentLoaded', function () {
   initDetailsAccordion();
   initModalListeners();
   initLiveViewersCounter();
-});
+  initAddToCart();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAll);
+} else {
+  initAll();
+}
 
 // 1. Mobile Drawer Navigation
 function initMobileDrawer() {
@@ -373,14 +380,14 @@ function renderMixMatchSlots(count) {
   if (!container) return;
 
   const sizes = ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'];
-  const colors = ['Plum Noir', 'Blush Rose'];
+  const colors = ['Black', 'Orange', 'Red', 'Nude'];
 
   window.uoState.mixMatchSlots = [];
 
   let html = '';
   for (let i = 1; i <= count; i++) {
     const pairSize = window.uoState.selectedSize || 'M';
-    const pairColor = window.uoState.selectedColor || 'Plum Noir';
+    const pairColor = window.uoState.selectedColor || 'Black';
     const variant = findVariant(pairSize, pairColor);
 
     window.uoState.mixMatchSlots.push({
@@ -450,11 +457,24 @@ function computeGroupedCartPayload() {
 
   // Map each pair to its variant ID and group identical variants
   const variantCounts = {};
-  slots.forEach(function (slot) {
-    const v = findVariant(slot.size, slot.color);
-    const vId = v ? v.id : slot.variantId;
-    variantCounts[vId] = (variantCounts[vId] || 0) + (1 * orderMultiplier);
-  });
+
+  if (window.uoState.isMixMatchExpanded && slots && slots.length > 0) {
+    slots.forEach(function (slot) {
+      const v = findVariant(slot.size, slot.color);
+      const vId = v ? v.id : slot.variantId;
+      if (vId) {
+        variantCounts[vId] = (variantCounts[vId] || 0) + (1 * orderMultiplier);
+      }
+    });
+  } else {
+    // Standard selection: user chose main size and color for the whole pack
+    const v = findVariant(window.uoState.selectedSize, window.uoState.selectedColor);
+    const vId = v ? v.id : window.uoState.activeVariantId;
+    const packQty = window.uoState.packQty || (window.uoState.selectedTier === '1-pair' ? 1 : (window.uoState.selectedTier === '5-pairs' ? 5 : 3));
+    if (vId) {
+      variantCounts[vId] = (variantCounts[vId] || 0) + (packQty * orderMultiplier);
+    }
+  }
 
   const items = Object.keys(variantCounts)
     .filter(function (vId) { return vId && vId !== 'null' && vId !== 'undefined'; })
@@ -465,7 +485,7 @@ function computeGroupedCartPayload() {
         properties: {
           'Pack': tierName,
           'Brand': 'ULTRA OVERNIGHT™',
-          'Bundle Type': slots.length > 1 ? 'Mix-and-Match Multi-Pack' : 'Single Pair'
+          'Bundle Type': window.uoState.isMixMatchExpanded ? 'Mix-and-Match Multi-Pack' : (tierName === '1 Pair' ? 'Single Pair' : 'Curated Multi-Pack')
         }
       };
     });
@@ -634,4 +654,98 @@ function initLiveViewersCounter() {
     if (next > 30) next = 28;
     countEl.textContent = next;
   }, 12000);
+}
+
+// 13. Production Add to Cart & Ajax Cart Integration
+function handleAddToCart(btn) {
+  if (!btn) return;
+  const originalHtml = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<span class="uo-btn-spinner"></span> Adding...';
+
+  const errorEl = document.querySelector('.uo-pdp-error-msg');
+  if (errorEl) errorEl.style.display = 'none';
+
+  const payload = computeGroupedCartPayload();
+  if (!payload.items || payload.items.length === 0) {
+    btn.disabled = false;
+    btn.innerHTML = originalHtml;
+    if (errorEl) {
+      errorEl.textContent = 'Please select a size and color.';
+      errorEl.style.display = 'block';
+    }
+    return;
+  }
+
+  fetch('/cart/add.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  })
+    .then(function (res) {
+      if (!res.ok) {
+        return res.json().then(function (err) { throw err; });
+      }
+      return res.json();
+    })
+    .then(function (data) {
+      btn.innerHTML = '✓ Added to Bag';
+      setTimeout(function () {
+        btn.disabled = false;
+        btn.innerHTML = originalHtml;
+      }, 1500);
+
+      // Refresh and open Willa / Theme Cart Drawer
+      if (typeof window.willaRefreshCart === 'function') {
+        window.willaRefreshCart();
+      }
+      if (typeof window.willaOpenCartDrawer === 'function') {
+        window.willaOpenCartDrawer();
+      } else if (typeof window.openWillaCart === 'function') {
+        window.openWillaCart();
+      } else {
+        document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart: data } }));
+        const cartDrawer = document.getElementById('willaCartDrawer') || document.querySelector('.cart-drawer');
+        if (cartDrawer) {
+          cartDrawer.classList.add('active', 'is-active', 'open');
+          const overlay = document.getElementById('willaCartOverlay');
+          if (overlay) overlay.classList.add('active', 'is-active');
+        } else {
+          window.location.href = '/cart';
+        }
+      }
+    })
+    .catch(function (err) {
+      console.error('Error adding to bag:', err);
+      btn.disabled = false;
+      btn.innerHTML = originalHtml;
+      if (errorEl) {
+        errorEl.textContent = (err && err.description) ? err.description : 'Could not add to bag. Please try again.';
+        errorEl.style.display = 'block';
+      }
+    });
+}
+
+window.handleAddToCart = handleAddToCart;
+
+function initAddToCart() {
+  const atcBtn = document.querySelector('.uo-pdp-atc-btn');
+  if (atcBtn) {
+    atcBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      handleAddToCart(atcBtn);
+    });
+  }
+
+  const stickyBtn = document.querySelector('.uo-sticky-btn');
+  if (stickyBtn) {
+    stickyBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      // On mobile sticky button, scroll to buybox or directly add to cart
+      handleAddToCart(stickyBtn);
+    });
+  }
 }
