@@ -213,40 +213,8 @@ function syncAuthoritativeVariant() {
       activeTierCard.setAttribute('data-variant-id', matched.id);
     }
 
-    // Pricing update (if real price > 0 format money; otherwise fallback to $39.99)
-    if (priceDisplay) {
-      const priceCents = Number(matched.price || 0);
-      const compareCents = Number(matched.compare_at_price || 0);
-      const compareDisplay = document.getElementById('uoPriceCompare');
-      const saveBadge = document.getElementById('uoPriceSaveBadge');
-      const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
-
-      if (priceCents > 0) {
-        priceDisplay.textContent = currency.format(priceCents / 100);
-        if (compareDisplay && compareCents > priceCents) {
-          compareDisplay.textContent = currency.format(compareCents / 100);
-          compareDisplay.style.display = 'inline';
-          if (saveBadge) {
-            const savings = Math.round(((compareCents - priceCents) / compareCents) * 100);
-            saveBadge.textContent = `Save ${savings}%`;
-            saveBadge.style.display = 'inline-block';
-          }
-        } else {
-          if (compareDisplay) compareDisplay.style.display = 'none';
-          if (saveBadge) saveBadge.style.display = 'none';
-        }
-      } else {
-        priceDisplay.textContent = '$39.99';
-        if (compareDisplay) {
-          compareDisplay.textContent = '$79.98';
-          compareDisplay.style.display = 'inline';
-        }
-        if (saveBadge) {
-          saveBadge.textContent = 'Save 50%';
-          saveBadge.style.display = 'inline-block';
-        }
-      }
-    }
+    // Dynamic multi-currency pricing update across PDP & all bundle cards
+    updateDynamicBundlePricing(matched);
   }
 
   // Update labels
@@ -257,6 +225,107 @@ function syncAuthoritativeVariant() {
   if (sizeLabel) sizeLabel.textContent = window.uoState.selectedSize;
 
   updateStickyBarSummary();
+}
+
+// Universal multi-currency money formatter
+function formatMoney(amountCents, currencyCode) {
+  currencyCode = currencyCode || window.Shopify?.currency?.active || window.UO_LOCALIZATION?.currencyCode || window.uoCurrency || 'USD';
+  
+  const zeroDecimalCurrencies = ['VND', 'JPY', 'KRW', 'BIF', 'CLP', 'DJF', 'GNF', 'KMF', 'MGA', 'PYG', 'RWF', 'UGX', 'VUV', 'XAF', 'XOF', 'XPF'];
+  const isZeroDecimal = zeroDecimalCurrencies.includes(currencyCode.toUpperCase());
+  
+  // Shopify AJAX /cart.js and variants JSON ALWAYS output money in 100-based subunits (cents)
+  const baseUnits = (Number(amountCents) || 0) / 100;
+
+  // Select appropriate locale
+  let locale = 'en-US';
+  if (currencyCode === 'VND') locale = 'vi-VN';
+  else if (currencyCode === 'EUR') locale = 'de-DE';
+  else if (currencyCode === 'GBP') locale = 'en-GB';
+  else if (currencyCode === 'AUD') locale = 'en-AU';
+  else if (currencyCode === 'CAD') locale = 'en-CA';
+  else if (currencyCode === 'JPY') locale = 'ja-JP';
+
+  try {
+    return new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency: currencyCode,
+      minimumFractionDigits: isZeroDecimal ? 0 : 2,
+      maximumFractionDigits: isZeroDecimal ? 0 : 2
+    }).format(baseUnits);
+  } catch (e) {
+    if (isZeroDecimal) {
+      return currencyCode === 'VND' ? Math.round(baseUnits).toLocaleString('vi-VN') + ' ₫' : Math.round(baseUnits) + ' ' + currencyCode;
+    }
+    return currencyCode + ' ' + baseUnits.toFixed(2);
+  }
+}
+window.formatMoney = formatMoney;
+window.uoFormatMoney = formatMoney;
+
+// Recalculate dynamic bundle pricing across all cards based on variant price
+function updateDynamicBundlePricing(matched) {
+  if (!matched) return;
+  const currencyCode = window.Shopify?.currency?.active || window.UO_LOCALIZATION?.currencyCode || window.uoCurrency || 'USD';
+  const unitPrice = Number(matched.price || 0);
+  const compareUnit = Number(matched.compare_at_price || (unitPrice * 2));
+
+  // 1. Update main price row
+  const priceDisplay = document.querySelector('.uo-price-current');
+  const compareDisplay = document.getElementById('uoPriceCompare');
+  const saveBadge = document.getElementById('uoPriceSaveBadge');
+
+  if (priceDisplay && unitPrice > 0) {
+    priceDisplay.textContent = formatMoney(unitPrice, currencyCode);
+    if (compareDisplay && compareUnit > unitPrice) {
+      compareDisplay.textContent = formatMoney(compareUnit, currencyCode);
+      compareDisplay.style.display = 'inline';
+      if (saveBadge) {
+        const savings = Math.round(((compareUnit - unitPrice) / compareUnit) * 100);
+        saveBadge.textContent = 'Save ' + savings + '%';
+        saveBadge.style.display = 'inline-block';
+      }
+    } else if (compareDisplay) {
+      compareDisplay.style.display = 'none';
+      if (saveBadge) saveBadge.style.display = 'none';
+    }
+  }
+
+  // 2. Update Tier 1 (1 Pair)
+  const t1Final = document.querySelector('[data-tier-final="1"]');
+  const t1Unit = document.querySelector('[data-tier-unit="1"]');
+  if (t1Final) t1Final.textContent = formatMoney(unitPrice, currencyCode);
+  if (t1Unit) t1Unit.textContent = '(' + formatMoney(unitPrice, currencyCode) + '/each)';
+
+  // 3. Update Tier 2 (3 Pairs: 10% OFF)
+  const t2Orig = document.querySelector('[data-tier-orig="3"]');
+  const t2Final = document.querySelector('[data-tier-final="3"]');
+  const t2Unit = document.querySelector('[data-tier-unit="3"]');
+  const t2Save = document.querySelector('[data-tier-save="3"]');
+  const t2TotalOrig = unitPrice * 3;
+  const t2TotalFinal = Math.round(t2TotalOrig * 0.9);
+  const t2Each = Math.round(unitPrice * 0.9);
+  const t2Savings = t2TotalOrig - t2TotalFinal;
+
+  if (t2Orig) t2Orig.textContent = formatMoney(t2TotalOrig, currencyCode);
+  if (t2Final) t2Final.textContent = formatMoney(t2TotalFinal, currencyCode);
+  if (t2Unit) t2Unit.textContent = '(' + formatMoney(t2Each, currencyCode) + '/each)';
+  if (t2Save) t2Save.textContent = 'Save ' + formatMoney(t2Savings, currencyCode);
+
+  // 4. Update Tier 3 (5 Pairs: 20% OFF)
+  const t3Orig = document.querySelector('[data-tier-orig="5"]');
+  const t3Final = document.querySelector('[data-tier-final="5"]');
+  const t3Unit = document.querySelector('[data-tier-unit="5"]');
+  const t3Save = document.querySelector('[data-tier-save="5"]');
+  const t3TotalOrig = unitPrice * 5;
+  const t3TotalFinal = Math.round(t3TotalOrig * 0.8);
+  const t3Each = Math.round(unitPrice * 0.8);
+  const t3Savings = t3TotalOrig - t3TotalFinal;
+
+  if (t3Orig) t3Orig.textContent = formatMoney(t3TotalOrig, currencyCode);
+  if (t3Final) t3Final.textContent = formatMoney(t3TotalFinal, currencyCode);
+  if (t3Unit) t3Unit.textContent = '(approx. ' + formatMoney(t3Each, currencyCode) + '/each)';
+  if (t3Save) t3Save.textContent = 'Save ' + formatMoney(t3Savings, currencyCode) + ' (1 Pair FREE)';
 }
 
 // 5. Authoritative Selectors (Swatches & Size Pills)
@@ -528,13 +597,23 @@ function updateStickyBarSummary() {
   const summaryEl = document.getElementById('uoStickySummary');
   if (!summaryEl) return;
 
+  const currencyCode = window.Shopify?.currency?.active || window.UO_LOCALIZATION?.currencyCode || window.uoCurrency || 'USD';
   const tierName = window.uoState.selectedTier === '1-pair' ? '1 Pair' :
                    (window.uoState.selectedTier === '5-pairs' ? '5 Pairs' : '3 Pairs');
 
+  const matched = findVariant(window.uoState.selectedSize, window.uoState.selectedColor);
+  let priceStr = '';
+  if (matched && matched.price) {
+    const qty = window.uoState.selectedTier === '1-pair' ? 1 : (window.uoState.selectedTier === '5-pairs' ? 5 : 3);
+    const discountFactor = qty === 5 ? 0.8 : (qty === 3 ? 0.9 : 1.0);
+    const totalPrice = Math.round(matched.price * qty * discountFactor * (window.uoState.currentQty || 1));
+    priceStr = ' · ' + formatMoney(totalPrice, currencyCode);
+  }
+
   if (window.uoState.isMixMatchExpanded && window.uoState.mixMatchSlots.length > 1) {
-    summaryEl.textContent = tierName + ' · Mix & Match Custom';
+    summaryEl.textContent = tierName + ' · Mix & Match Custom' + priceStr;
   } else {
-    summaryEl.textContent = tierName + ' · ' + window.uoState.selectedSize + ' / ' + window.uoState.selectedColor;
+    summaryEl.textContent = tierName + ' · ' + window.uoState.selectedSize + ' / ' + window.uoState.selectedColor + priceStr;
   }
 }
 

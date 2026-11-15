@@ -12,7 +12,11 @@
     <div class="uo-wrap">
       <span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.6 15.5A8.5 8.5 0 0 1 8.5 3.4 8.5 8.5 0 1 0 20.6 15.5Z"/></svg>
-        {{ section.settings.announcement_text }}
+        {%- if localization.country.iso_code == 'US' -%}
+          {{ section.settings.announcement_text }}
+        {%- else -%}
+          ★ FREE WORLDWIDE EXPRESS SHIPPING ELIGIBLE · 30-DAY SATISFACTION GUARANTEE ★
+        {%- endif -%}
       </span>
     </div>
   </div>

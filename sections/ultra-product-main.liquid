@@ -149,7 +149,7 @@
             {%- if current_variant.price > 0 -%}
               {{ current_variant.price | money }}
             {%- else -%}
-              $39.99
+              {{ 3999 | money }}
             {%- endif -%}
           </span>
           {%- if current_variant.compare_at_price > current_variant.price -%}
@@ -159,7 +159,8 @@
               <span class="uo-price-save-badge" id="uoPriceSaveBadge">Save {{ savings }}%</span>
             {%- endif -%}
           {%- else -%}
-            <s class="uo-price-compare" id="uoPriceCompare">$79.98</s>
+            {%- assign fallback_compare = current_variant.price | times: 2 -%}
+            <s class="uo-price-compare" id="uoPriceCompare">{{ fallback_compare | money }}</s>
             <span class="uo-price-save-badge" id="uoPriceSaveBadge">Save 50%</span>
           {%- endif -%}
         </div>
@@ -342,7 +343,14 @@
           </div>
           <div class="uo-tier-cards" role="radiogroup" aria-label="Select bundle pack">
             
+            {%- assign current_unit_price = current_variant.price -%}
+            {%- assign is_us_market = false -%}
+            {%- if localization.country.iso_code == 'US' -%}
+              {%- assign is_us_market = true -%}
+            {%- endif -%}
+
             <!-- Tier 1: 1 Pair -->
+            {%- assign t1_total = current_unit_price -%}
             <div 
               class="uo-tier-card" 
               role="radio" 
@@ -362,12 +370,16 @@
                 </div>
               </div>
               <div class="uo-tier-right">
-                <div class="uo-tier-final-price">$39.99</div>
-                <div class="uo-tier-unit">($39.99/each)</div>
+                <div class="uo-tier-final-price" data-tier-final="1">{{ t1_total | money }}</div>
+                <div class="uo-tier-unit" data-tier-unit="1">({{ current_unit_price | money }}/each)</div>
               </div>
             </div>
 
             <!-- Tier 2: 3 Pairs (RECOMMENDED ROTATION - Selected by Default) -->
+            {%- assign t2_orig = current_unit_price | times: 3 -%}
+            {%- assign t2_final = current_unit_price | times: 3 | times: 90 | divided_by: 100 -%}
+            {%- assign t2_unit = current_unit_price | times: 90 | divided_by: 100 -%}
+            {%- assign t2_save = t2_orig | minus: t2_final -%}
             <div 
               class="uo-tier-card is-selected" 
               role="radio" 
@@ -385,20 +397,28 @@
                     <span class="uo-tier-save-pill">Save 10%</span>
                   </div>
                   <p class="uo-tier-benefit">More pairs. Less wash-day pressure.</p>
-                  <div class="uo-tier-shipping-tag">✓ FREE US SHIPPING</div>
+                  {%- if is_us_market -%}
+                    <div class="uo-tier-shipping-tag">✓ FREE US SHIPPING</div>
+                  {%- else -%}
+                    <div class="uo-tier-shipping-tag">✓ PREMIUM TRACKED SHIPPING</div>
+                  {%- endif -%}
                 </div>
               </div>
               <div class="uo-tier-right">
                 <div class="uo-tier-price-row">
-                  <del class="uo-tier-orig-price">$119.97</del>
-                  <span class="uo-tier-final-price">$107.97</span>
+                  <del class="uo-tier-orig-price" data-tier-orig="3">{{ t2_orig | money }}</del>
+                  <span class="uo-tier-final-price" data-tier-final="3">{{ t2_final | money }}</span>
                 </div>
-                <div class="uo-tier-unit">($35.99/each)</div>
-                <div class="uo-tier-savings-note">Save $12.00</div>
+                <div class="uo-tier-unit" data-tier-unit="3">({{ t2_unit | money }}/each)</div>
+                <div class="uo-tier-savings-note" data-tier-save="3">Save {{ t2_save | money }}</div>
               </div>
             </div>
 
             <!-- Tier 3: 5 Pairs (BEST VALUE) -->
+            {%- assign t3_orig = current_unit_price | times: 5 -%}
+            {%- assign t3_final = current_unit_price | times: 5 | times: 80 | divided_by: 100 -%}
+            {%- assign t3_unit = current_unit_price | times: 80 | divided_by: 100 -%}
+            {%- assign t3_save = t3_orig | minus: t3_final -%}
             <div 
               class="uo-tier-card" 
               role="radio" 
@@ -416,16 +436,20 @@
                     <span class="uo-tier-save-pill uo-tier-save-pill--hot">Save 20%</span>
                   </div>
                   <p class="uo-tier-benefit">Your complete overnight rotation, for less.</p>
-                  <div class="uo-tier-shipping-tag">✓ FREE US SHIPPING</div>
+                  {%- if is_us_market -%}
+                    <div class="uo-tier-shipping-tag">✓ FREE US SHIPPING</div>
+                  {%- else -%}
+                    <div class="uo-tier-shipping-tag">✓ PREMIUM TRACKED SHIPPING</div>
+                  {%- endif -%}
                 </div>
               </div>
               <div class="uo-tier-right">
                 <div class="uo-tier-price-row">
-                  <del class="uo-tier-orig-price">$199.95</del>
-                  <span class="uo-tier-final-price">$159.96</span>
+                  <del class="uo-tier-orig-price" data-tier-orig="5">{{ t3_orig | money }}</del>
+                  <span class="uo-tier-final-price" data-tier-final="5">{{ t3_final | money }}</span>
                 </div>
-                <div class="uo-tier-unit">(approx. $31.99/each)</div>
-                <div class="uo-tier-savings-note uo-tier-savings-note--hot">Save $39.99 (1 Pair FREE)</div>
+                <div class="uo-tier-unit" data-tier-unit="5">(approx. {{ t3_unit | money }}/each)</div>
+                <div class="uo-tier-savings-note uo-tier-savings-note--hot" data-tier-save="5">Save {{ t3_save | money }} (1 Pair FREE)</div>
               </div>
             </div>
 
@@ -726,6 +750,16 @@
     </button>
   </div>
 </div>
+
+<script>
+  window.UO_LOCALIZATION = {
+    countryCode: {{ localization.country.iso_code | json }},
+    countryName: {{ localization.country.name | json }},
+    currencyCode: {{ localization.country.currency.iso_code | json }},
+    currencySymbol: {{ localization.country.currency.symbol | json }},
+    isUS: {% if localization.country.iso_code == 'US' %}true{% else %}false{% endif %}
+  };
+</script>
 
 <script type="application/json" id="uo-product-variants-json">
   {%- if has_real_product and current_product.variants.size > 0 -%}
