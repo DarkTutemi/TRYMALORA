@@ -1,4 +1,4 @@
-<!-- Willa Style Slide-Out Cart Drawer -->
+<!-- ULTRA OVERNIGHT™ Premium Feminine Slide-Out Cart Drawer -->
 {%- liquid
   assign is_legacy_product = false
   if template.name == 'product' and template.suffix != 'ultra-overnight' and product.handle != 'full-spine-ultra-overnight' and product.handle != 'ultra-overnight'
@@ -7,25 +7,38 @@
 -%}
 <script>
   window.__isUltraContext = {% if is_legacy_product %}false{% else %}true{% endif %};
+  window.uoCurrency = {{ cart.currency.iso_code | json }};
 </script>
+
 <div class="willa-cart-drawer-overlay" id="willaCartOverlay" onclick="closeWillaCart()"></div>
 
-<div class="willa-cart-drawer" id="willaCartDrawer">
+<div class="willa-cart-drawer uo-cart-drawer-v3" id="willaCartDrawer" aria-modal="true" role="dialog" aria-label="Shopping Bag">
+  <!-- 1. Header -->
   <div class="willa-cart-drawer-header">
     <div class="willa-cart-title">
-      <span>🛒</span> Your Cart (<span id="willaDrawerCount">{{ cart.item_count }}</span>)
+      <svg class="uo-cart-bag-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <path d="M16 10a4 4 0 0 1-8 0"></path>
+      </svg>
+      <span>Your Shopping Bag (<span id="willaDrawerCount">{{ cart.item_count }}</span>)</span>
     </div>
-    <button type="button" class="willa-cart-close" onclick="closeWillaCart()" aria-label="Close cart">&times;</button>
+    <button type="button" class="willa-cart-close" onclick="closeWillaCart()" aria-label="Close bag">&times;</button>
   </div>
 
-  <!-- Free Shipping Progress Bar ($70 USD Policy) -->
+  <!-- 2. Free Shipping Progress Bar ($70 USD Policy) -->
+  {%- liquid
+    assign threshold = 7000
+    if cart.currency.iso_code == 'VND'
+      assign threshold = 185000000
+    endif
+  -%}
   <div class="willa-shipping-bar-wrap">
     <div class="shipping-bar-text" id="willaShippingText">
-      {% assign threshold = 7000 %}
       {% if cart.total_price >= threshold %}
-        🎉 You've unlocked <strong>FREE US SHIPPING</strong>!
+        🎉 You've unlocked <strong>FREE US EXPRESS SHIPPING</strong>!
       {% else %}
-        You're <strong>{{ threshold | minus: cart.total_price | money }}</strong> away from <strong>FREE SHIPPING</strong>!
+        Only <strong>{{ threshold | minus: cart.total_price | money }}</strong> away from <strong>FREE US SHIPPING</strong>!
       {% endif %}
     </div>
     <div class="shipping-progress-bg">
@@ -35,104 +48,188 @@
     </div>
   </div>
 
-  <!-- Cart Items List -->
+  <!-- 3. Cart Items & Dynamic Upsell Body -->
   <div class="willa-cart-drawer-body" id="willaCartItemsBody">
     {% if cart.item_count > 0 %}
-      {% for item in cart.items %}
-        <div class="willa-cart-item" data-line-key="{{ item.key }}">
-          <div class="cart-item-img">
-            <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}">
-          </div>
-          <div class="cart-item-details">
-            <div class="cart-item-title-row">
-              <h4>{{ item.product.title }}</h4>
-              <button type="button" class="cart-remove-btn" onclick="willaUpdateLineItem('{{ item.key }}', 0)">&times;</button>
+      <!-- Items List -->
+      <div class="willa-cart-items-list" id="willaCartList">
+        {% for item in cart.items %}
+          <div class="willa-cart-item" data-line-key="{{ item.key }}">
+            <div class="cart-item-img">
+              <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}">
             </div>
-            {% unless item.product.has_only_default_variant %}
-              <div class="cart-item-variant">{{ item.variant.title }}</div>
-            {% endunless %}
-            {% if item.selling_plan_allocation %}
-              <div style="display:inline-block;background:#eff6ff;color:#1d4ed8;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;margin-top:3px;">
-                🔄 Auto-Ship: {{ item.selling_plan_allocation.selling_plan.name }}
+            <div class="cart-item-details">
+              <div class="cart-item-title-row">
+                <h4>{{ item.product.title }}</h4>
+                <button type="button" class="cart-remove-btn" onclick="willaUpdateLineItem('{{ item.key }}', 0)" aria-label="Remove item">&times;</button>
               </div>
-            {% endif %}
-            {% if item.properties.Package %}
-              <div style="display:inline-block;background:#ecfdf5;color:#047857;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;margin-top:3px;">
-                {% if item.properties._free_qty %}🎁 {{ item.properties.Package }}{% else %}📦 {{ item.properties.Package }}{% endif %}
-              </div>
-            {% elsif item.properties._upsell %}
-              <div style="display:inline-block;background:#fdf2f8;color:#be185d;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;margin-top:3px;">
-                ✨ Companion: {{ item.properties._upsell }}
-              </div>
-            {% elsif item.properties._box %}
-              <div class="cart-item-prop" style="font-size: 11px; color: #7A6670; margin-top: 2px;">{{ item.properties._box }}</div>
-            {% endif %}
-            <div class="cart-item-bottom-row">
-              <div class="cart-qty-ctrl">
-                <button type="button" onclick="willaUpdateLineItem('{{ item.key }}', {{ item.quantity | minus: 1 }})">-</button>
-                <span>{{ item.quantity }}</span>
-                <button type="button" onclick="willaUpdateLineItem('{{ item.key }}', {{ item.quantity | plus: 1 }})">+</button>
-              </div>
-              {% assign free_q = item.properties._free_qty | plus: 0 %}
-              {% if free_q > 0 and item.product.handle == 'metallic-silver-anti-rust-renovation-coating' %}
-                {% assign free_cents = item.price | times: free_q %}
-                {% assign payable_line = item.final_line_price | minus: free_cents %}
-                <div class="cart-item-price">
-                  <span style="color:#047857;font-weight:700;">{{ payable_line | money }}</span>
-                  <span style="font-size:12px;color:#858380;text-decoration:line-through;margin-left:4px;">{{ item.final_line_price | money }}</span>
-                </div>
-              {% else %}
-                <div class="cart-item-price">{{ item.final_line_price | money }}</div>
+
+              {% unless item.product.has_only_default_variant %}
+                <div class="cart-item-variant">{{ item.variant.title }}</div>
+              {% endunless %}
+
+              {% if item.properties.Pack %}
+                <div class="cart-item-pack-badge">✨ {{ item.properties.Pack }}</div>
               {% endif %}
+
+              <div class="cart-item-bottom-row">
+                <div class="cart-qty-ctrl">
+                  <button type="button" onclick="willaUpdateLineItem('{{ item.key }}', {{ item.quantity | minus: 1 }})" aria-label="Decrease quantity">−</button>
+                  <span>{{ item.quantity }}</span>
+                  <button type="button" onclick="willaUpdateLineItem('{{ item.key }}', {{ item.quantity | plus: 1 }})" aria-label="Increase quantity">+</button>
+                </div>
+
+                <div class="cart-item-pricing-col">
+                  {% if item.original_line_price > item.final_line_price %}
+                    <del class="cart-orig-price">{{ item.original_line_price | money }}</del>
+                    <span class="cart-item-price">{{ item.final_line_price | money }}</span>
+                    <span class="cart-saved-pill">Save {{ item.original_line_price | minus: item.final_line_price | money }}</span>
+                  {% else %}
+                    <span class="cart-item-price">{{ item.final_line_price | money }}</span>
+                  {% endif %}
+                </div>
+              </div>
             </div>
           </div>
+        {% endfor %}
+      </div>
+
+      <!-- Savings Banner if discounts exist -->
+      {% assign total_saved = cart.original_total_price | minus: cart.total_price %}
+      {% if total_saved > 0 %}
+        <div class="cart-savings-banner" id="willaCartSavingsBanner">
+          🎉 Bundle Discount Applied: You're saving <strong>{{ total_saved | money }}</strong> on this order!
         </div>
-      {% endfor %}
-    {% else %}
-      <div class="willa-empty-cart">
-        <div class="empty-icon">🛒</div>
-        <h3>Your cart is empty</h3>
-        {% if is_legacy_product %}
-          <p>Explore our best-selling smart innovations, wellness gear, and daily essentials.</p>
-          <a href="/" class="willa-btn-primary" onclick="closeWillaCart()">
-            CONTINUE SHOPPING ➔
-          </a>
-        {% else %}
-          <p>Explore FULL-SPINE ULTRA OVERNIGHT™ for leak-free, restful sleep.</p>
-          <a href="/products/full-spine-ultra-overnight" class="willa-btn-primary" style="background-color:var(--uo-plum,#58233D);color:#ffffff !important;" onclick="closeWillaCart()">
-            SHOP ULTRA OVERNIGHT ➔
-          </a>
+      {% endif %}
+
+      <!-- In-Cart Upsell Card: Wash Bag ($9.99) -->
+      {% assign has_wash_bag = false %}
+      {% for item in cart.items %}
+        {% if item.variant_id == 67417070174579 or item.product.handle contains 'wash-bag' %}
+          {% assign has_wash_bag = true %}
         {% endif %}
+      {% endfor %}
+
+      <div class="willa-cart-upsell-card" id="willaUpsellCard" {% if has_wash_bag %}style="display: none;"{% endif %}>
+        <div class="willa-upsell-header">
+          <span class="willa-upsell-tag">RECOMMENDED COMPANION</span>
+          <div class="willa-upsell-title">ULTRA™ Delicate Care Wash Bag</div>
+          <p class="willa-upsell-desc">Protects multi-layer bamboo fibers and leakproof seals in machine wash cycles.</p>
+        </div>
+        <div class="willa-upsell-row">
+          <div class="willa-upsell-pricing">
+            <span class="willa-upsell-price">$9.99</span>
+            <del class="willa-upsell-compare">$16.00</del>
+            <span class="willa-upsell-save">Save 38%</span>
+          </div>
+          <button type="button" class="willa-upsell-add-btn" onclick="willaAddUpsell('67417070174579', this)">
+            + Add to Bag
+          </button>
+        </div>
+      </div>
+
+      <!-- Trust Badges Strip inside Drawer -->
+      <div class="willa-cart-trust-grid">
+        <div class="willa-trust-col">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span>OEKO-TEX® Safe</span>
+        </div>
+        <div class="willa-trust-col">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+          <span>Discreet Box</span>
+        </div>
+        <div class="willa-trust-col">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span>30-Day Trial</span>
+        </div>
+      </div>
+
+    {% else %}
+      <!-- Empty Cart State -->
+      <div class="willa-empty-cart">
+        <div class="empty-icon-wrap">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4B2038" stroke-width="1.5">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </div>
+        <h3>Your shopping bag is empty</h3>
+        <p>Explore FULL-SPINE ULTRA OVERNIGHT™ for leak-free, restful sleep through every heavy cycle.</p>
+        <a href="/products/full-spine-ultra-overnight" class="willa-btn-primary uo-empty-shop-btn" onclick="closeWillaCart()">
+          EXPLORE ULTRA OVERNIGHT ➔
+        </a>
       </div>
     {% endif %}
   </div>
 
-  <!-- Cart Footer / Checkout -->
+  <!-- 4. Cart Footer / Sticky Checkout -->
   <div class="willa-cart-drawer-footer" id="willaCartFooter" {% if cart.item_count == 0 %}style="display: none;"{% endif %}>
-    <div class="willa-cart-subtotal-row">
-      <span>Subtotal</span>
-      <span class="subtotal-val" id="willaDrawerSubtotal">{{ cart.total_price | money }}</span>
+    <div class="willa-subtotal-breakdown" id="willaSubtotalBreakdown">
+      {% assign total_saved = cart.original_total_price | minus: cart.total_price %}
+      {% if total_saved > 0 %}
+        <div class="willa-subtotal-line">
+          <span>Original Value</span>
+          <del id="willaOrigSubtotal">{{ cart.original_total_price | money }}</del>
+        </div>
+        <div class="willa-subtotal-line willa-subtotal-savings">
+          <span>Bundle Savings</span>
+          <span id="willaSavingsVal">-{{ total_saved | money }}</span>
+        </div>
+      {% endif %}
+      <div class="willa-subtotal-line willa-subtotal-shipping">
+        <span>Shipping</span>
+        <span id="willaShippingStatus" style="color: #2E7D32; font-weight: 700;">
+          {% if cart.total_price >= threshold %}FREE (US $70+){% else %}Standard Calculated{% endif %}
+        </span>
+      </div>
+      <div class="willa-subtotal-line willa-subtotal-final">
+        <span>Estimated Total</span>
+        <span class="subtotal-val" id="willaDrawerSubtotal">{{ cart.total_price | money }}</span>
+      </div>
     </div>
-    <p class="shipping-subtext">Taxes and shipping calculated at checkout.</p>
+
+    <p class="shipping-subtext">Sales taxes calculated at secure checkout.</p>
+
     <a href="/checkout" class="willa-checkout-btn">
-      🔒 PROCEED TO CHECKOUT ➔
+      PROCEED TO SECURE CHECKOUT ➔
     </a>
+
+    <!-- Authentic Payment Icons -->
+    <div class="willa-cart-payment-icons">
+      <svg class="uo-pay-svg" viewBox="0 0 38 24" fill="none"><rect width="38" height="24" rx="3" fill="#00579F"/><path d="M15.5 16.5L17.5 7.5H19.5L17.5 16.5H15.5Z" fill="white"/><path d="M24 7.7C23.5 7.5 22.8 7.3 22 7.3C19.7 7.3 18.2 8.5 18.2 10.2C18.2 11.5 19.3 12.2 20.2 12.6C21.1 13 21.4 13.3 21.4 13.7C21.4 14.3 20.7 14.6 20 14.6C19.2 14.6 18.7 14.4 18.1 14.2L17.8 15.6C18.4 15.9 19.3 16.1 20.2 16.1C22.6 16.1 24.1 14.9 24.1 13.2C24.1 12.1 23.4 11.3 22 10.6C21.2 10.2 20.7 9.9 20.7 9.4C20.7 8.9 21.3 8.6 22 8.6C22.6 8.6 23.2 8.7 23.7 8.9L24 7.7Z" fill="white"/><path d="M28.5 7.5H27C26.5 7.5 26.2 7.8 26 8.2L23 16.5H25.2L25.6 15.3H28.2L28.5 16.5H30.5L28.5 7.5ZM26.2 13.7L27.3 10.2L27.9 13.7H26.2Z" fill="white"/><path d="M13.5 7.5L11.5 13.7L11.3 12.6C10.9 11.3 9.8 9.9 8.5 9.2L10.3 16.5H12.5L15.7 7.5H13.5Z" fill="white"/><path d="M9.8 7.5H6.5L6.4 7.7C8.9 8.3 10.9 9.9 11.5 12.4L10.7 8.3C10.6 7.7 10.2 7.5 9.8 7.5Z" fill="#FAA61A"/></svg>
+      <svg class="uo-pay-svg" viewBox="0 0 38 24" fill="none"><rect width="38" height="24" rx="3" fill="#252525"/><circle cx="15" cy="12" r="7" fill="#EB001B"/><circle cx="23" cy="12" r="7" fill="#F79E1B" fill-opacity="0.9"/></svg>
+      <svg class="uo-pay-svg" viewBox="0 0 38 24" fill="none"><rect width="38" height="24" rx="3" fill="#002970"/><circle cx="14" cy="12" r="6" fill="#0079C1"/><path d="M21 7H24C26.5 7 28 8.5 28 10.5C28 12.5 26.5 14 24 14H22.5V17H21V7Z" fill="white"/></svg>
+      <svg class="uo-pay-svg" viewBox="0 0 38 24" fill="none"><rect width="38" height="24" rx="3" fill="#000000"/><path d="M15.5 10.2C15.9 9.7 16.1 9 16 8.3C15.4 8.3 14.6 8.7 14.2 9.2C13.8 9.6 13.5 10.3 13.6 11C14.3 11 15 10.6 15.5 10.2ZM16 11.2C15.1 11.2 14.7 10.7 14 10.7C13.3 10.7 12.8 11.2 12.1 11.2C11.1 11.2 10.2 12.2 10.2 13.7C10.2 15.6 11.9 18 13.2 18C13.8 18 14.1 17.6 14.8 17.6C15.6 17.6 15.8 18 16.5 18C17.7 18 18.8 16.1 18.8 14.8C18.8 14.7 17.5 14.2 17.5 12.8C17.5 11.6 18.5 11 18.6 10.9C17.9 9.9 16.8 9.8 16.4 9.8C15.3 9.8 14.6 10.4 14.2 10.4C13.8 10.4 13.2 9.8 12.3 9.8C11.1 9.8 10 10.7 9.5 11.8C8.3 13.8 9.2 16.9 10.4 18.6C11 19.4 11.7 20.3 12.6 20.3C13.4 20.3 13.7 19.8 14.8 19.8C15.8 19.8 16.1 20.3 17 20.3C17.9 20.3 18.5 19.5 19.1 18.6C19.8 17.6 20.1 16.6 20.1 16.5C20.1 16.4 18.5 15.8 18.5 14C18.5 12.5 19.7 11.8 19.8 11.7C19 10.5 17.8 10.4 17.3 10.4C16.8 10.4 16.4 10.8 16 11.2Z" fill="white"/></svg>
+      <svg class="uo-pay-svg" viewBox="0 0 38 24" fill="none"><rect width="38" height="24" rx="3" fill="#5A31F4"/><text x="19" y="15" text-anchor="middle" fill="white" font-family="-apple-system, sans-serif" font-size="9" font-weight="800" letter-spacing="0.5">shopPay</text></svg>
+    </div>
+
     <div class="cart-guarantee-badges">
-      <span>🛡️ 30-Day Money-Back Guarantee</span>
-      <span>🔒 100% Encrypted</span>
+      <span>🔒 256-Bit SSL Encrypted Checkout</span>
+      <span>•</span>
+      <span>Discreet Tamper-Proof Box</span>
     </div>
   </div>
 </div>
 
 <style>
+  /* Base Drawer Overlay */
   .willa-cart-drawer-overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(35, 31, 32, 0.5);
-    backdrop-filter: blur(2px);
+    background: rgba(35, 20, 28, 0.55);
+    backdrop-filter: blur(3px);
     z-index: 999998;
     opacity: 0;
     pointer-events: none;
@@ -143,254 +240,487 @@
     pointer-events: auto;
   }
 
-  .willa-cart-drawer {
+  /* Slide-Out Drawer Frame */
+  .uo-cart-drawer-v3 {
     position: fixed;
     top: 0;
     right: 0;
-    width: 90%;
-    max-width: 420px;
+    width: 92%;
+    max-width: 440px;
     height: 100%;
-    background-color: #faf7f4;
+    background-color: #FAF7F5;
     z-index: 999999;
-    box-shadow: -4px 0 24px rgba(0,0,0,0.15);
+    box-shadow: -6px 0 32px rgba(75, 32, 56, 0.18);
     transform: translateX(100%);
     visibility: hidden;
     pointer-events: none;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   }
-  @media (max-width: 480px) {
-    .willa-cart-drawer {
-      width: 100% !important;
-      max-width: 100% !important;
-    }
-    .willa-cart-drawer-body {
-      padding: 14px 16px !important;
-    }
-  }
-  .willa-cart-drawer.active {
+  .uo-cart-drawer-v3.active {
     transform: translateX(0);
     visibility: visible;
     pointer-events: auto;
   }
 
+  /* Drawer Header */
   .willa-cart-drawer-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 20px;
-    border-bottom: 1px solid #e7e4df;
-    background-color: #ffffff;
+    padding: 16px 20px;
+    border-bottom: 1px solid #EFE8E9;
+    background-color: #FFFFFF;
   }
   .willa-cart-title {
-    font-size: 17px;
-    font-weight: 800;
-    color: #231f20;
+    font-family: 'Cormorant Garamond', Didot, 'Playfair Display', Georgia, serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: #4B2038;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px;
+  }
+  .uo-cart-bag-icon {
+    color: #4B2038;
   }
   .willa-cart-close {
     background: none;
     border: none;
-    font-size: 28px;
-    color: #231f20;
+    font-size: 26px;
+    color: #7A6670;
     cursor: pointer;
     line-height: 1;
+    padding: 4px;
+    border-radius: 50%;
+    transition: color 0.2s, background 0.2s;
+  }
+  .willa-cart-close:hover {
+    color: #4B2038;
+    background-color: #FAF2F2;
   }
 
-  /* Free Shipping Bar */
+  /* Free Shipping Progress Bar */
   .willa-shipping-bar-wrap {
-    background-color: #fbeee9;
-    padding: 12px 20px;
-    border-bottom: 1px solid #e7e4df;
+    background-color: #FAF2F2;
+    padding: 11px 20px;
+    border-bottom: 1px solid #EFE8E9;
     font-size: 12px;
-    color: #231f20;
+    color: #4B2038;
     text-align: center;
   }
   .shipping-bar-text strong {
-    color: #8a2c13;
+    color: #8B263E;
   }
   .shipping-progress-bg {
     width: 100%;
     height: 6px;
-    background: #e7e4df;
+    background: #E8D9DE;
     border-radius: 9999px;
-    margin-top: 8px;
+    margin-top: 7px;
     overflow: hidden;
   }
   .shipping-progress-fill {
     height: 100%;
-    background: #8a2c13;
+    background: linear-gradient(90deg, #A37081 0%, #4B2038 100%);
     border-radius: 9999px;
-    transition: width 0.3s ease;
+    transition: width 0.35s ease;
   }
 
-  /* Items */
+  /* Drawer Scrollable Body */
   .willa-cart-drawer-body {
     padding: 16px 20px;
     flex: 1;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
+
+  /* Cart Item Card */
   .willa-cart-item {
     display: flex;
     gap: 14px;
-    padding: 14px 0;
-    border-bottom: 1px solid #e7e4df;
+    padding: 14px;
+    background: #FFFFFF;
+    border: 1px solid #EFE8E9;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(75, 32, 56, 0.04);
   }
   .cart-item-img {
-    width: 70px;
-    height: 70px;
-    border-radius: 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
     overflow: hidden;
-    border: 1px solid #e7e4df;
-    background: #ffffff;
+    border: 1px solid #EFE8E9;
+    background: #FAF7F5;
     flex-shrink: 0;
   }
   .cart-item-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
   }
   .cart-item-details {
     flex: 1;
+    min-width: 0;
   }
   .cart-item-title-row {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
   .cart-item-title-row h4 {
     margin: 0;
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 700;
-    color: #231f20;
+    color: #231F20;
     line-height: 1.3;
+    font-family: inherit;
   }
   .cart-remove-btn {
     background: none;
     border: none;
-    color: #8e847f;
+    color: #A3969B;
     font-size: 18px;
     cursor: pointer;
     line-height: 1;
     padding: 0 4px;
+    transition: color 0.2s;
   }
   .cart-remove-btn:hover {
-    color: #8a2c13;
+    color: #8B263E;
   }
   .cart-item-variant {
-    font-size: 11px;
-    color: #645a55;
+    font-size: 12px;
+    color: #6E5C65;
+    margin-bottom: 6px;
+  }
+  .cart-item-pack-badge {
+    display: inline-block;
+    background: #FAF2F2;
+    color: #4B2038;
+    border: 1px solid rgba(75, 32, 56, 0.15);
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 4px;
     margin-bottom: 8px;
   }
   .cart-item-bottom-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 4px;
   }
   .cart-qty-ctrl {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    border: 1px solid #e7e4df;
-    border-radius: 6px;
-    background: #ffffff;
+    border: 1.5px solid #E8D9DE;
+    border-radius: 20px;
+    background: #FAF7F5;
     overflow: hidden;
   }
   .cart-qty-ctrl button {
-    background: #faf7f4;
+    background: transparent;
     border: none;
     width: 26px;
     height: 26px;
     font-weight: 700;
+    font-size: 14px;
     cursor: pointer;
-    color: #231f20;
+    color: #4B2038;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+  }
+  .cart-qty-ctrl button:hover {
+    background: #EFE8E9;
   }
   .cart-qty-ctrl span {
-    width: 28px;
+    width: 26px;
     text-align: center;
-    font-size: 12px;
+    font-size: 12.5px;
     font-weight: 700;
+    color: #231F20;
+  }
+  .cart-item-pricing-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
   .cart-item-price {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 800;
-    color: #8a2c13;
+    color: #4B2038;
+  }
+  .cart-orig-price {
+    font-size: 11.5px;
+    color: #8E8284;
+    text-decoration: line-through;
+  }
+  .cart-saved-pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    color: #8B263E;
+    background: #FAF2F2;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-top: 2px;
+  }
+
+  /* Savings Celebration Banner */
+  .cart-savings-banner {
+    background: #FAF2F2;
+    border: 1px dashed #C98F9D;
+    color: #4B2038;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  /* In-Cart Upsell Companion Card */
+  .willa-cart-upsell-card {
+    background: #FFFFFF;
+    border: 1px solid #E8D9DE;
+    border-radius: 12px;
+    padding: 14px 16px;
+    box-shadow: 0 2px 10px rgba(75, 32, 56, 0.05);
+  }
+  .willa-upsell-tag {
+    display: inline-block;
+    font-size: 9.5px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #8B263E;
+    background: #FAF2F2;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+  }
+  .willa-upsell-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #231F20;
+    margin-bottom: 3px;
+  }
+  .willa-upsell-desc {
+    font-size: 11.5px;
+    color: #6E5C65;
+    line-height: 1.35;
+    margin: 0 0 10px 0;
+  }
+  .willa-upsell-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .willa-upsell-pricing {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .willa-upsell-price {
+    font-size: 15px;
+    font-weight: 800;
+    color: #4B2038;
+  }
+  .willa-upsell-compare {
+    font-size: 12px;
+    color: #8E8284;
+    text-decoration: line-through;
+  }
+  .willa-upsell-save {
+    font-size: 10px;
+    font-weight: 700;
+    color: #2E7D32;
+  }
+  .willa-upsell-add-btn {
+    background-color: #FAF2F2;
+    color: #4B2038;
+    border: 1.5px solid #4B2038;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .willa-upsell-add-btn:hover {
+    background-color: #4B2038;
+    color: #FFFFFF;
+  }
+
+  /* Micro Trust Badges Grid */
+  .willa-cart-trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 12px 6px;
+    border-top: 1px solid #EFE8E9;
+    border-bottom: 1px solid #EFE8E9;
+  }
+  .willa-trust-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #6E5C65;
+  }
+  .willa-trust-col svg {
+    color: #8F5269;
   }
 
   /* Empty Cart */
   .willa-empty-cart {
     text-align: center;
-    padding: 60px 20px;
+    padding: 50px 20px;
   }
-  .empty-icon {
-    font-size: 48px;
-    margin-bottom: 12px;
+  .empty-icon-wrap {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #FAF2F2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
   }
   .willa-empty-cart h3 {
     margin: 0 0 8px 0;
-    font-size: 18px;
-    color: #231f20;
+    font-family: 'Cormorant Garamond', Didot, Georgia, serif;
+    font-size: 21px;
+    font-weight: 600;
+    color: #4B2038;
   }
   .willa-empty-cart p {
     font-size: 13px;
-    color: #59514f;
-    margin: 0 0 20px 0;
+    color: #6E5C65;
+    line-height: 1.45;
+    margin: 0 0 22px 0;
+  }
+  .uo-empty-shop-btn {
+    display: inline-block;
+    background: #4B2038;
+    color: #FFFFFF !important;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    padding: 13px 26px;
+    border-radius: 30px;
+    box-shadow: 0 4px 14px rgba(75, 32, 56, 0.25);
+    transition: all 0.2s ease;
+  }
+  .uo-empty-shop-btn:hover {
+    background: #3B152A;
+    transform: translateY(-2px);
   }
 
-  /* Footer */
+  /* Drawer Footer */
   .willa-cart-drawer-footer {
-    padding: 20px;
-    background-color: #ffffff;
-    border-top: 1px solid #e7e4df;
+    padding: 16px 20px 20px;
+    background-color: #FFFFFF;
+    border-top: 1px solid #EFE8E9;
+    box-shadow: 0 -4px 16px rgba(75, 32, 56, 0.04);
   }
-  .willa-cart-subtotal-row {
+  .willa-subtotal-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+  .willa-subtotal-line {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    font-size: 16px;
+    font-size: 13px;
+    color: #6E5C65;
+  }
+  .willa-subtotal-savings {
+    color: #8B263E;
+    font-weight: 700;
+  }
+  .willa-subtotal-final {
+    font-size: 16.5px;
     font-weight: 800;
-    color: #231f20;
-    margin-bottom: 4px;
+    color: #231F20;
+    padding-top: 6px;
+    border-top: 1px solid #EFE8E9;
+    margin-top: 4px;
   }
   .subtotal-val {
     font-size: 20px;
-    color: #8a2c13;
+    font-weight: 800;
+    color: #4B2038;
   }
   .shipping-subtext {
     font-size: 11px;
-    color: #8e847f;
-    margin: 0 0 14px 0;
-  }
-  .willa-checkout-btn {
-    display: block;
-    width: 100%;
-    background-color: #8a2c13;
-    color: #ffffff;
+    color: #8E8284;
+    margin: 0 0 12px 0;
     text-align: center;
-    padding: 15px 20px;
+  }
+
+  /* Primary Checkout Button */
+  .willa-checkout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background: linear-gradient(135deg, #58233D 0%, #4B2038 100%);
+    color: #FFFFFF;
+    text-align: center;
+    padding: 16px 20px;
     border-radius: 9999px;
     font-weight: 800;
     font-size: 14px;
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 0.5px;
-    box-shadow: 0 4px 14px rgba(138, 44, 19, 0.3);
+    box-shadow: 0 4px 18px rgba(75, 32, 56, 0.32);
     box-sizing: border-box;
-    transition: all 0.2s;
+    transition: all 0.25s ease;
   }
   .willa-checkout-btn:hover {
-    background-color: #71230e;
+    background: linear-gradient(135deg, #4A1B32 0%, #3B152A 100%);
     transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(75, 32, 56, 0.42);
+  }
+
+  /* Payment Icons Row */
+  .willa-cart-payment-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .uo-pay-svg {
+    height: 18px;
+    width: auto;
+    border-radius: 3px;
   }
   .cart-guarantee-badges {
     display: flex;
-    justify-content: space-between;
-    font-size: 10px;
-    color: #645a55;
-    margin-top: 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #7A6670;
+    margin-top: 8px;
   }
 </style>
 
@@ -412,173 +742,191 @@
     document.body.style.overflow = '';
   };
 
-  window.willaQuickAddToCart = async function(variantId, btn) {
-    let originalText = 'Add to cart';
+  window.willaAddUpsell = async function(variantId, btn) {
+    if (!variantId) return;
+    const origText = btn ? btn.innerText : '+ Add';
     if (btn) {
-      originalText = btn.innerText;
       btn.disabled = true;
-      btn.innerText = 'ADDING...';
+      btn.innerText = 'Adding...';
     }
 
     try {
-      const res = await fetch('/cart/add.js', {
+      await fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          items: [{ id: variantId, quantity: 1 }]
+          items: [{
+            id: parseInt(variantId, 10),
+            quantity: 1,
+            properties: {
+              '_Companion': 'Delicate Care Wash Bag'
+            }
+          }]
         })
       });
-
-      if (res.ok) {
-        await window.willaRefreshCart();
-        window.willaOpenCartDrawer();
-        if (btn) {
-          btn.disabled = false;
-          btn.innerText = originalText;
-        }
-      } else {
-        window.location.href = '/cart/' + variantId + ':1';
+      if (btn) {
+        btn.innerText = '✓ Added';
+        setTimeout(function() {
+          const card = document.getElementById('willaUpsellCard');
+          if (card) card.style.display = 'none';
+        }, 1000);
       }
+      await window.willaRefreshCart();
     } catch (e) {
-      window.location.href = '/cart/' + variantId + ':1';
+      console.error('Upsell add error:', e);
+      if (btn) {
+        btn.disabled = false;
+        btn.innerText = origText;
+      }
     }
   };
+
+  function uoFormatMoney(amount, currencyCode) {
+    currencyCode = currencyCode || window.uoCurrency || 'USD';
+    const zeroDecimal = ['VND', 'JPY', 'KRW', 'BIF', 'CLP', 'DJF', 'GNF', 'KMF', 'MGA', 'PYG', 'RWF', 'UGX', 'VUV', 'XAF', 'XOF', 'XPF'].includes(currencyCode);
+    
+    // Shopify cart.js prices are ALWAYS multiplied by 100 in cents/subunits
+    const baseValue = (amount || 0) / 100;
+
+    try {
+      if (zeroDecimal) {
+        return new Intl.NumberFormat(currencyCode === 'VND' ? 'vi-VN' : 'ja-JP', {
+          style: 'currency',
+          currency: currencyCode,
+          maximumFractionDigits: 0
+        }).format(baseValue);
+      } else {
+        return new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: currencyCode,
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).format(baseValue);
+      }
+    } catch (e) {
+      if (zeroDecimal) {
+        return currencyCode === 'VND' ? Math.round(baseValue).toLocaleString('vi-VN') + ' ₫' : Math.round(baseValue) + ' ' + currencyCode;
+      }
+      return '$' + baseValue.toFixed(2);
+    }
+  }
+  window.uoFormatMoney = uoFormatMoney;
 
   window.willaRefreshCart = async function() {
     try {
       const res = await fetch('/cart.js');
       const cart = await res.json();
       
+      const curr = cart.currency || window.uoCurrency || 'USD';
+
       // Update count
       const headerCount = document.getElementById('willaCartCount');
       if (headerCount) headerCount.innerText = cart.item_count;
       const drawerCount = document.getElementById('willaDrawerCount');
       if (drawerCount) drawerCount.innerText = cart.item_count;
 
-      // Calculate payable subtotal accounting for discounts
-      let bundleDeductionCents = 0;
-      let appliedDiscount = window._activeBundleDiscount || '';
-
-      if (cart.items) {
-        cart.items.forEach(item => {
-          if (item.properties && item.properties._bundle) {
-            const b = item.properties._bundle;
-            if (b.includes('15%')) {
-              if (!appliedDiscount) appliedDiscount = 'TILE15';
-            } else if (b.includes('5%')) {
-              if (!appliedDiscount) appliedDiscount = 'TILE5';
-            }
-          }
-        });
-      }
-
-      const payableTotalCents = Math.max(0, cart.total_price - bundleDeductionCents);
-
-      // Update free shipping bar ($70 USD Policy)
-      const threshold = 7000;
+      const threshold = curr === 'VND' ? 185000000 : 7000;
       const textElem = document.getElementById('willaShippingText');
       const fillElem = document.getElementById('willaShippingFill');
-      const percent = Math.min(100, Math.max(0, Math.round((payableTotalCents / threshold) * 100)));
+      const percent = Math.min(100, Math.max(0, Math.round((cart.total_price / threshold) * 100)));
       if (fillElem) fillElem.style.width = percent + '%';
 
       if (textElem) {
-        if (payableTotalCents >= threshold) {
-          textElem.innerHTML = '🎉 You\'ve unlocked <strong>FREE US SHIPPING</strong>!';
+        if (cart.total_price >= threshold) {
+          textElem.innerHTML = '🎉 You\'ve unlocked <strong>FREE US EXPRESS SHIPPING</strong>!';
         } else {
-          const remaining = (Math.max(0, threshold - payableTotalCents) / 100).toFixed(2);
-          textElem.innerHTML = 'You\'re <strong>$' + remaining + '</strong> away from <strong>FREE SHIPPING</strong>!';
+          const remaining = threshold - cart.total_price;
+          textElem.innerHTML = 'Only <strong>' + uoFormatMoney(remaining, curr) + '</strong> away from <strong>FREE US SHIPPING</strong>!';
         }
       }
 
-      // Update Subtotal & Footer
-      const subtotalElem = document.getElementById('willaDrawerSubtotal');
-      if (subtotalElem) {
-        if (bundleDeductionCents > 0) {
-          subtotalElem.innerHTML = '$' + (payableTotalCents / 100).toFixed(2) + ' <span style="font-size:12px;color:#858380;text-decoration:line-through;margin-left:4px;">$' + (cart.total_price / 100).toFixed(2) + '</span>';
-        } else {
-          subtotalElem.innerText = '$' + (payableTotalCents / 100).toFixed(2);
+      // Check if wash bag is already in cart
+      let hasWashBag = false;
+      cart.items.forEach(function(i) {
+        if (i.id === 67417070174579 || (i.handle && i.handle.includes('wash-bag'))) {
+          hasWashBag = true;
         }
+      });
+      const upsellCard = document.getElementById('willaUpsellCard');
+      if (upsellCard) {
+        upsellCard.style.display = hasWashBag ? 'none' : 'block';
       }
+
+      // Re-render subtotal breakdown
+      const origTotal = cart.original_total_price || cart.total_price;
+      const finalTotal = cart.total_price;
+      const totalSaved = Math.max(0, origTotal - finalTotal);
+
+      const subtotalBreakdown = document.getElementById('willaSubtotalBreakdown');
+      if (subtotalBreakdown) {
+        let breakdownHtml = '';
+        if (totalSaved > 0) {
+          breakdownHtml += `
+            <div class="willa-subtotal-line">
+              <span>Original Value</span>
+              <del id="willaOrigSubtotal">${uoFormatMoney(origTotal, curr)}</del>
+            </div>
+            <div class="willa-subtotal-line willa-subtotal-savings">
+              <span>Bundle Savings</span>
+              <span id="willaSavingsVal">-${uoFormatMoney(totalSaved, curr)}</span>
+            </div>
+          `;
+        }
+        breakdownHtml += `
+          <div class="willa-subtotal-line willa-subtotal-shipping">
+            <span>Shipping</span>
+            <span id="willaShippingStatus" style="color: #2E7D32; font-weight: 700;">
+              ${cart.total_price >= threshold ? 'FREE (US $70+)' : 'Standard Calculated'}
+            </span>
+          </div>
+          <div class="willa-subtotal-line willa-subtotal-final">
+            <span>Estimated Total</span>
+            <span class="subtotal-val" id="willaDrawerSubtotal">${uoFormatMoney(finalTotal, curr)}</span>
+          </div>
+        `;
+        subtotalBreakdown.innerHTML = breakdownHtml;
+      }
+
       const footerElem = document.getElementById('willaCartFooter');
       if (footerElem) footerElem.style.display = cart.item_count > 0 ? 'block' : 'none';
 
-      // Update checkout URL with bundle discount if applicable
-      const checkoutBtn = document.querySelector('.willa-checkout-btn');
-      if (checkoutBtn) {
-        if (appliedDiscount) {
-          checkoutBtn.href = '/checkout?discount=' + encodeURIComponent(appliedDiscount);
-        } else {
-          checkoutBtn.href = '/checkout';
-        }
-        if (!checkoutBtn._hasFbqTrack) {
-          checkoutBtn._hasFbqTrack = true;
-          checkoutBtn.addEventListener('click', function() {
-            if (window.fbq) {
-              try {
-                window.fbq('track', 'InitiateCheckout', {
-                  num_items: cart.item_count || 1,
-                  value: (payableTotalCents || cart.total_price || 0) / 100,
-                  currency: 'USD'
-                });
-              } catch(e) {}
-            }
-          });
-        }
-      }
-
-      // Re-render items
+      // Re-render body items
       const bodyElem = document.getElementById('willaCartItemsBody');
       if (bodyElem) {
         if (cart.item_count === 0) {
-          const emptyCtaUrl = isUltra ? '/products/full-spine-ultra-overnight' : '/';
-          const emptyCtaText = isUltra ? 'SHOP ULTRA OVERNIGHT ➔' : 'CONTINUE SHOPPING ➔';
-          const emptyDesc = isUltra ? 'Explore FULL-SPINE ULTRA OVERNIGHT™ for leak-free, restful sleep.' : 'Explore our best-selling smart innovations, wellness gear, and daily essentials.';
-          const btnStyle = isUltra ? 'style="background-color:var(--uo-plum,#58233D);color:#ffffff !important;"' : '';
           bodyElem.innerHTML = `
             <div class="willa-empty-cart">
-              <div class="empty-icon">🛒</div>
-              <h3>Your cart is empty</h3>
-              <p>${emptyDesc}</p>
-              <a href="${emptyCtaUrl}" class="willa-btn-primary" ${btnStyle} onclick="closeWillaCart()">
-                ${emptyCtaText}
+              <div class="empty-icon-wrap">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#4B2038" stroke-width="1.5">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+              </div>
+              <h3>Your shopping bag is empty</h3>
+              <p>Explore FULL-SPINE ULTRA OVERNIGHT™ for leak-free, restful sleep through every heavy cycle.</p>
+              <a href="/products/full-spine-ultra-overnight" class="willa-btn-primary uo-empty-shop-btn" onclick="closeWillaCart()">
+                EXPLORE ULTRA OVERNIGHT ➔
               </a>
             </div>`;
         } else {
-          let html = '';
-          cart.items.forEach(item => {
-            let payableLineCents = item.final_line_price;
-            let bundleBadgeHtml = '';
-
-            if (item.properties && item.properties._bundle) {
-              const b = item.properties._bundle;
-              if (b.includes('Buy 5 Get 3') || b === 'Buy 5 Get 3 FREE') {
-                bundleBadgeHtml = `<div style="display:inline-block;background:#ecfdf5;color:#047857;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;margin-top:4px;">🎁 FREE 3 CANS · Pay for 5 · Receive 8 Cans (50g)</div>`;
-              } else if (b.includes('Buy 3 Get 1') || b === 'Buy 3 Get 1 FREE') {
-                bundleBadgeHtml = `<div style="display:inline-block;background:#ecfdf5;color:#047857;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;margin-top:4px;">🎁 FREE 1 CAN · Pay for 3 · Receive 4 Cans (50g)</div>`;
-              } else if (b.includes('Buy 2 Get 2') || b === 'Buy 2 Get 2 FREE') {
-                bundleBadgeHtml = `<div style="display:inline-block;background:#ecfdf5;color:#047857;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;margin-top:4px;">🎁 BUY 2 GET 2 FREE · Extra 10% OFF · 4 Bottles</div>`;
-              } else if (b.includes('Buy 4 Get 4') || b === 'Buy 4 Get 4 FREE') {
-                bundleBadgeHtml = `<div style="display:inline-block;background:#ecfdf5;color:#047857;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;margin-top:4px;">👑 BUY 4 GET 4 FREE · Extra 20% OFF · 8 Bottles</div>`;
-              } else if (item.properties.Package) {
-                bundleBadgeHtml = `<div style="display:inline-block;background:#f3f4f6;color:#374151;font-size:11px;font-weight:600;padding:2px 6px;border-radius:4px;margin-top:4px;">📦 ${item.properties.Package}</div>`;
-              }
-            } else if (item.properties && item.properties._upsell) {
-              bundleBadgeHtml = `<div style="display:inline-block;background:#fdf2f8;color:#be185d;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;margin-top:4px;">✨ Companion: ${item.properties._upsell}</div>`;
-            }
-
-            if (item.selling_plan_allocation) {
-              bundleBadgeHtml += `<div style="display:inline-block;background:#eff6ff;color:#1d4ed8;font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px;margin-top:4px;margin-left:4px;">🔄 Auto-Ship: Every 30 Days</div>`;
-            }
-
-            const itemPrice = payableLineCents < item.final_line_price
-              ? `<div><span style="color:#047857;font-weight:700;">$${(payableLineCents / 100).toFixed(2)}</span> <span style="font-size:12px;color:#858380;text-decoration:line-through;margin-left:4px;">$${(item.final_line_price / 100).toFixed(2)}</span></div>`
-              : `$${(payableLineCents / 100).toFixed(2)}`;
-
+          let listHtml = '<div class="willa-cart-items-list" id="willaCartList">';
+          cart.items.forEach(function(item) {
+            const hasDiscount = item.original_line_price > item.final_line_price;
+            const savedCents = item.original_line_price - item.final_line_price;
+            const packBadge = item.properties && item.properties.Pack ? `<div class="cart-item-pack-badge">✨ ${item.properties.Pack}</div>` : '';
             const variantText = item.variant_title ? `<div class="cart-item-variant">${item.variant_title}</div>` : '';
-            const propText = (item.properties && item.properties._box) 
-              ? `<div class="cart-item-prop" style="font-size: 11px; color: #7A6670; margin-top: 2px;">${item.properties._box}</div>` 
-              : '';
-            html += `
+
+            let pricingHtml = `<span class="cart-item-price">${uoFormatMoney(item.final_line_price, curr)}</span>`;
+            if (hasDiscount) {
+              pricingHtml = `
+                <del class="cart-orig-price">${uoFormatMoney(item.original_line_price, curr)}</del>
+                <span class="cart-item-price">${uoFormatMoney(item.final_line_price, curr)}</span>
+                <span class="cart-saved-pill">Save ${uoFormatMoney(savedCents, curr)}</span>
+              `;
+            }
+
+            listHtml += `
               <div class="willa-cart-item" data-line-key="${item.key}">
                 <div class="cart-item-img">
                   <img src="${item.featured_image?.url || item.image}" alt="${item.title}">
@@ -586,23 +934,83 @@
                 <div class="cart-item-details">
                   <div class="cart-item-title-row">
                     <h4>${item.product_title}</h4>
-                    <button type="button" class="cart-remove-btn" onclick="willaUpdateLineItem('${item.key}', 0)">&times;</button>
+                    <button type="button" class="cart-remove-btn" onclick="willaUpdateLineItem('${item.key}', 0)" aria-label="Remove item">&times;</button>
                   </div>
                   ${variantText}
-                  ${propText}
-                  ${bundleBadgeHtml}
+                  ${packBadge}
                   <div class="cart-item-bottom-row">
                     <div class="cart-qty-ctrl">
-                      <button type="button" onclick="willaUpdateLineItem('${item.key}', ${item.quantity - 1})">-</button>
+                      <button type="button" onclick="willaUpdateLineItem('${item.key}', ${item.quantity - 1})" aria-label="Decrease quantity">−</button>
                       <span>${item.quantity}</span>
-                      <button type="button" onclick="willaUpdateLineItem('${item.key}', ${item.quantity + 1})">+</button>
+                      <button type="button" onclick="willaUpdateLineItem('${item.key}', ${item.quantity + 1})" aria-label="Increase quantity">+</button>
                     </div>
-                    <div class="cart-item-price">${itemPrice}</div>
+                    <div class="cart-item-pricing-col">
+                      ${pricingHtml}
+                    </div>
                   </div>
                 </div>
               </div>`;
           });
-          bodyElem.innerHTML = html;
+          listHtml += '</div>';
+
+          // Savings Banner
+          let savingsBannerHtml = '';
+          if (totalSaved > 0) {
+            savingsBannerHtml = `
+              <div class="cart-savings-banner" id="willaCartSavingsBanner">
+                🎉 Bundle Discount Applied: You're saving <strong>${uoFormatMoney(totalSaved, curr)}</strong> on this order!
+              </div>`;
+          }
+
+          // Upsell card HTML
+          const upsellPriceStr = curr === 'VND' ? '260.000 ₫' : '$9.99';
+          const upsellCompareStr = curr === 'VND' ? '420.000 ₫' : '$16.00';
+          const upsellDisplay = hasWashBag ? 'style="display:none;"' : '';
+          const upsellHtml = `
+            <div class="willa-cart-upsell-card" id="willaUpsellCard" ${upsellDisplay}>
+              <div class="willa-upsell-header">
+                <span class="willa-upsell-tag">RECOMMENDED COMPANION</span>
+                <div class="willa-upsell-title">ULTRA™ Delicate Care Wash Bag</div>
+                <p class="willa-upsell-desc">Protects multi-layer bamboo fibers and leakproof seals in machine wash cycles.</p>
+              </div>
+              <div class="willa-upsell-row">
+                <div class="willa-upsell-pricing">
+                  <span class="willa-upsell-price">${upsellPriceStr}</span>
+                  <del class="willa-upsell-compare">${upsellCompareStr}</del>
+                  <span class="willa-upsell-save">Save 38%</span>
+                </div>
+                <button type="button" class="willa-upsell-add-btn" onclick="willaAddUpsell('67417070174579', this)">
+                  + Add to Bag
+                </button>
+              </div>
+            </div>`;
+
+          // Trust Badges Grid
+          const trustHtml = `
+            <div class="willa-cart-trust-grid">
+              <div class="willa-trust-col">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <span>OEKO-TEX® Safe</span>
+              </div>
+              <div class="willa-trust-col">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+                <span>Discreet Box</span>
+              </div>
+              <div class="willa-trust-col">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>30-Day Trial</span>
+              </div>
+            </div>`;
+
+          bodyElem.innerHTML = listHtml + savingsBannerHtml + upsellHtml + trustHtml;
         }
       }
     } catch (e) {
@@ -623,9 +1031,8 @@
     }
   };
 
-  // Intercept any cart links/buttons across the store to open slide-out drawer
   function initWillaCartInterceptors() {
-    document.querySelectorAll('a[href="/cart"], a[href="' + (window.Sakerplus?.routes?.cart_url || '/cart') + '"], .header__icon--cart, .cart-icon-bubble').forEach(el => {
+    document.querySelectorAll('a[href="/cart"], .header__icon--cart, .uo-header-icon-btn[aria-label*="cart"], .uo-header-icon-btn:last-child').forEach(el => {
       if (!el.dataset.willaCartBound) {
         el.dataset.willaCartBound = 'true';
         el.addEventListener('click', (e) => {
@@ -642,8 +1049,6 @@
   } else {
     initWillaCartInterceptors();
   }
-  window.willaCartGlobalListener = true;
-
 </script>
 
 {% schema %}

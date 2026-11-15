@@ -484,8 +484,8 @@ function computeGroupedCartPayload() {
         quantity: variantCounts[vId],
         properties: {
           'Pack': tierName,
-          'Brand': 'ULTRA OVERNIGHT™',
-          'Bundle Type': window.uoState.isMixMatchExpanded ? 'Mix-and-Match Multi-Pack' : (tierName === '1 Pair' ? 'Single Pair' : 'Curated Multi-Pack')
+          '_Brand': 'ULTRA OVERNIGHT™',
+          '_Bundle Type': window.uoState.isMixMatchExpanded ? 'Mix-and-Match Multi-Pack' : (tierName === '1 Pair' ? 'Single Pair' : 'Curated Multi-Pack')
         }
       };
     });
