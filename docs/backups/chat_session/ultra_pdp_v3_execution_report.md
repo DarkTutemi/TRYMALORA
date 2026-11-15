@@ -1,76 +1,88 @@
 # BÁO CÁO CẬP NHẬT ULTRA OVERNIGHT™ STOREFRONT
-## XÓA FAQ FOOTER · LOẠI BỎ PRE-LAUNCH PREVIEW & COMING SOON · XÓA CÂU HỎI FAQ ĐẶT HÀNG
-### LIVE THEME 197625381235 · ĐÃ TRIỂN KHAI VÀ XÁC NHẬN TRÊN STORE THẬT (TRYMALORA.COM)
+## TRIỂN KHAI TOÀN BỘ HÌNH ẢNH SẢN PHẨM & CÁC SECTION TRỰC QUAN MỚI NHẤT
+### LIVE THEME 197625381235 · ĐÃ XÁC NHẬN TRÊN STORE THẬT (TRYMALORA.COM)
 
 ---
 
-### 1. CHI TIẾT CÁC ĐIỀU CHỈNH THEO YÊU CẦU MỚI NHẤT
+### 1. CHI TIẾT CÁC ĐIỀU CHỈNH ĐÃ HOÀN TẤT THEO YÊU CẦU
 
-#### 1. Xóa luôn mục FAQ khỏi menu Footer
-- **File thực hiện**: `sections/ultra-footer.liquid`.
-- **Thay đổi**:
-  - Gỡ bỏ hoàn toàn liên kết `<li><a href="/pages/faq">FAQ</a></li>` trong cột **Support**.
-  - Cột Support hiện chỉ còn lại các chính sách quan trọng: *Shipping & Delivery*, *Returns & Refunds*, *Contact Us*.
-  - Đồng bộ liên kết `About Us` thành `Our Story` để đồng nhất với menu header trên toàn bộ site.
-
----
-
-#### 2. Xóa sạch mọi chữ "PRE-LAUNCH PREVIEW", "COMING SOON" & Các từ ngữ thử nghiệm
-Sản phẩm **FULL-SPINE ULTRA OVERNIGHT™** trên Shopify Admin hiện đã ở trạng thái **Active** và có cấu hình giá chính thức `$39.99` (Compare-at `$79.98`, Save 50%). Vì vậy, toàn bộ các nhãn thử nghiệm đã được loại bỏ và chuyển sang trạng thái bán hàng chính thức:
-
-1. **Giao diện Hero Product Main (`sections/ultra-product-main.liquid`)**:
-   - Xóa bỏ huy hiệu `<span class="uo-gallery-badge">PRE-LAUNCH PREVIEW</span>` đè trên góc ảnh sản phẩm chính, trả lại khung hình gallery tinh tế, sang trọng.
-   - Thay thế các đoạn văn bản giữ chỗ `Pricing coming soon` bằng giá thật `$39.99` (kèm giá so sánh gạch ngang `$79.98` và huy hiệu `Save 50%`).
-   - Cập nhật các gói Pack (1 Pair, 3 Pairs, 5 Pairs) hiển thị chuẩn giá `$39.99`, `$119.97`, `$199.95`.
-   - Nút mua hàng chính chuyển từ `COMING SOON` sang **`ADD TO BAG ➔`**.
-   - Nút mua hàng trên thanh Sticky Mobile Bar khi cuộn trang chuyển từ `COMING SOON` sang **`ADD TO BAG ➔`**.
-
-2. **Thanh thông báo đầu trang (`sections/header-group.json` & `sections/ultra-header.liquid`)**:
-   - Thay thế dòng thông báo cũ `"ULTRA OVERNIGHT™ · Pre-production collection in development"` thành:
-     **`FREE US SHIPPING ON ORDERS OVER $49 · 30-NIGHT RISK-FREE TRIAL`**.
-
-3. **Thẻ nhắc nhở cuối trang (`sections/ultra-closing-reminder.liquid`)**:
-   - Xóa bỏ huy hiệu `PRE-LAUNCH PREVIEW` trên ảnh sản phẩm thẻ đóng.
-   - Thay thế nút bấm từ `COMING SOON — VIEW OPTIONS` thành **`ORDER FULL-SPINE ULTRA™ ➔`**.
-   - Cập nhật dòng chú thích cam kết: **`🔒 30-Night Risk-Free Trial · 100% Leak-Free Guarantee`** (loại bỏ hoàn toàn câu thông báo bản nháp).
-
-4. **Thẻ chi tiết kỹ thuật (`sections/ultra-pdp-tabs.liquid`)**:
-   - Nâng cấp accordion thứ 5 từ *"Product Development & Validation Status"* (chứa nội dung thử nghiệm sampling) thành **`Clinical Validation & Quality Standards`**, khẳng định tiêu chuẩn chứng nhận ISO 9001, OEKO-TEX® Standard 100 và không chứa PFAS.
-
-5. **Logic JavaScript Client-Side (`assets/ultra-overnight.js`)**:
-   - Loại bỏ chuỗi gán `'Pricing coming soon'` trong hàm cập nhật biến thể, thay bằng định dạng tiền tệ tự động hoặc giá cơ sở `$39.99` / `$79.98`.
+#### 1. Ảnh hiển thị sản phẩm lấy trực tiếp từ Shopify Admin (Product 15664431104371)
+- **Vị trí**: `sections/ultra-product-main.liquid`.
+- **Thực hiện**:
+  - Đọc dữ liệu ảnh trực tiếp qua Admin API và Liquid: `current_product.featured_image` và `current_product.images`.
+  - Thay thế toàn bộ ảnh placeholder cũ bằng 6 ảnh sản phẩm thật độ phân giải cao (1254x1254) được tải từ Shopify CDN của sản phẩm:
+    1. Ảnh chính: Bao bì ULTRA OVERNIGHT™ cùng 4 màu quần trên giường lụa (`D_lot_ng_qua_dem_Ultra_Overnight-1.png`).
+    2. Ảnh 2: Bảo vệ toàn diện từ trước ra sau (`B_o_v_toan_di_n_t_tr_c_ra_sau-2.png`).
+    3. Ảnh 3: Thiết kế bảo vệ cho người ngủ nghiêng SideSeal™ (`Qu_ng_cao_Ultra_Overnight_cho_ng_i_ng_nghieng-3.png`).
+    4. Ảnh 4: Thiết kế 5 lớp thoải mái suốt đêm (`Thi_t_k_nam_l_p_tho_i_mai_su_t_dem-4.png`).
+    5. Ảnh 5: Thiết kế êm ái chống tràn ban đêm (`Qu_ng_Cao_D_Lot_K_Kinh_Qua_Dem-5.png`).
+    6. Ảnh 6: Gói đa sắc màu 1, 3, 5 pack (`Goi_d_lot_k_kinh_da_s_c_mau-6.png`).
+  - Badge đếm ảnh tự động hiển thị: `1 / 6`.
+  - Thumbnail strip dạng horizontal scroll mượt mà, thumbnail được chọn viền Deep Plum sang trọng.
+  - Ảnh thumbnail trên thanh Sticky Mobile Bar cũng được tự động đồng bộ sang ảnh thật của sản phẩm.
 
 ---
 
-#### 3. Xóa câu hỏi FAQ: "When will official orders open?"
-- **File thực hiện**: `sections/ultra-faq.liquid`.
-- **Thay đổi**:
-  - Xóa bỏ toàn bộ khối câu hỏi số 6 (Q6): `When will official orders open?` cùng câu trả lời về giai đoạn pre-production.
-  - Cập nhật nút CTA ở thẻ cuối section FAQ từ `COMING SOON — VIEW OPTIONS ➔` thành **`ORDER FULL-SPINE ULTRA™ ➔`**.
+#### 2. Cập nhật ảnh minh họa cho các Section nội dung trên trang
+
+1. **Section "Protection Designed Beyond the Ordinary Gusset"**:
+   - **File**: `sections/ultra-pdp-editorial.liquid`.
+   - **Ảnh mới**: `Screenshot_2026-11-15_100058.png` (minh họa các vùng bảo vệ: Front Shield Coverage, Central High-Flow Core, Extended Rear Full-Spine™ Coverage, SideSeal™ Contoured Leg Edges).
+   - Tương thích và khớp 100% với danh sách 4 tính năng chi tiết hiển thị bên cạnh.
+
+2. **Section "5 Layers of Overnight Protection"**:
+   - **File**: `sections/ultra-five-layers.liquid`.
+   - **Ảnh mới**: `Qu_n_lot_k_kinh_Ultra_Overnight_5_l_p.png` (hình ảnh mặt cắt chi tiết 5 lớp bóc tách của sản phẩm).
+   - Đánh số trực quan từ 1 đến 5 khớp hoàn toàn với danh sách chú giải bên cạnh.
+
+3. **Section "Full-Spine Protection for Deeper, Worry-Free Sleep"**:
+   - **File**: `sections/ultra-closing-reminder.liquid` và `sections/ultra-faq.liquid`.
+   - **Ảnh mới**: `Goi_d_lot_k_kinh_da_s_c_mau-6.png` (bộ sưu tập gói sản phẩm đa màu cao cấp kèm bao bì sang trọng).
+
+4. **Section "Product Details & Technical Specifications"**:
+   - **File**: `sections/ultra-pdp-tabs.liquid` & `assets/ultra-overnight.css`.
+   - **Ảnh mới**: `Thi_t_k_nam_l_p_tho_i_mai_su_t_dem-4.png` (Five Layers. One Thoughtful Design - phân tích cấu trúc vật liệu).
+   - **Bố cục mới**: Thiết kế lưới 2 cột cao cấp (Desktop: ảnh phân tích trực quan bên trái, hệ thống Accordion kỹ thuật bên phải; Mobile: ảnh hiển thị nổi bật phía trên Accordion).
+
+5. **Section "Crafted for Pure Skin-to-Skin Softness"**:
+   - **File**: `sections/ultra-fabric-experience.liquid`.
+   - **Ảnh mới**: `M_m_m_i_su_t_dem_Ultra_Overnight.png` (chất liệu vải modal siêu mềm mại, cận cảnh từng thớ vải MicroModal).
+
+6. **Section "Engineered for Every Way You Sleep"**:
+   - **File**: `sections/ultra-lifestyle-comfort.liquid`.
+   - **3 Ảnh mới cho 3 tư thế ngủ**:
+     1. Back Sleeper: `Screenshot_2026-11-15_101359.png`
+     2. Side Sleeper: `Screenshot_2026-11-15_101405.png`
+     3. Active Sleeper: `Screenshot_2026-11-15_101412.png`
 
 ---
 
 ### 2. HÌNH ẢNH KIỂM CHỨNG TRỰC QUAN TRÊN TRÌNH DUYỆT THẬT
 
 ````carousel
-![Desktop PDP Buy Box - Đã xóa PRE-LAUNCH PREVIEW, hiển thị $39.99 & ADD TO BAG](/C:/Users/Admin/.gemini/antigravity/brain/d284d670-0cfd-4f12-bbed-f8eeaea36551/qa_pdp_buybox_clean_desktop.png)
+![Product Gallery Mobile (390px) - 6 ảnh thật từ Shopify Product, huy hiệu 1/6, rating Trustpilot chuẩn 1 dòng](/C:/Users/Admin/.gemini/antigravity/brain/d284d670-0cfd-4f12-bbed-f8eeaea36551/qa_live_v3_gallery_mobile.png)
 <!-- slide -->
-![Mobile PDP Buy Box (390px) - Bố cục chuẩn chỉnh, không còn bất kỳ nhãn Coming Soon nào](/C:/Users/Admin/.gemini/antigravity/brain/d284d670-0cfd-4f12-bbed-f8eeaea36551/qa_pdp_mobile_buybox_clean.png)
+![Product Gallery Desktop - Ảnh sản phẩm thật và buy box cân đối](/C:/Users/Admin/.gemini/antigravity/brain/d284d670-0cfd-4f12-bbed-f8eeaea36551/qa_live_v3_gallery_desktop.png)
 <!-- slide -->
-![Footer & Thẻ CTA - Menu Footer hoàn toàn không còn FAQ, nút mua hàng chính thức](/C:/Users/Admin/.gemini/antigravity/brain/d284d670-0cfd-4f12-bbed-f8eeaea36551/qa_footer_no_faq.png)
+![Protection Designed Beyond the Ordinary Gusset - Ảnh minh họa bóc tách vùng bảo vệ khớp 100% nội dung](/C:/Users/Admin/.gemini/antigravity/brain/d284d670-0cfd-4f12-bbed-f8eeaea36551/qa_sec_editorial.png)
+<!-- slide -->
+![5 Layers of Overnight Protection - Ảnh cắt lớp 5 tầng thực tế](/C:/Users/Admin/.gemini/antigravity/brain/d284d670-0cfd-4f12-bbed-f8eeaea36551/qa_sec_layers.png)
+<!-- slide -->
+![Engineered for Every Way You Sleep - 3 hình ảnh cho 3 tư thế ngủ Back, Side, Active](/C:/Users/Admin/.gemini/antigravity/brain/d284d670-0cfd-4f12-bbed-f8eeaea36551/qa_sec_comfort.png)
+<!-- slide -->
+![Crafted for Pure Skin-to-Skin Softness - Ảnh vải Modal cận cảnh](/C:/Users/Admin/.gemini/antigravity/brain/d284d670-0cfd-4f12-bbed-f8eeaea36551/qa_sec_fabric.png)
+<!-- slide -->
+![Product Details & Technical Specifications (Desktop) - Bố cục 2 cột kèm ảnh cấu trúc kỹ thuật](/C:/Users/Admin/.gemini/antigravity/brain/d284d670-0cfd-4f12-bbed-f8eeaea36551/qa_sec_tabs_specs.png)
+<!-- slide -->
+![Product Details & Technical Specifications (Mobile) - Hiển thị gọn gàng trên điện thoại](/C:/Users/Admin/.gemini/antigravity/brain/d284d670-0cfd-4f12-bbed-f8eeaea36551/qa_sec_mobile_tabs.png)
+<!-- slide -->
+![Thẻ CTA cuối trang - Ảnh gói sản phẩm đa màu sắc và nút đặt hàng](/C:/Users/Admin/.gemini/antigravity/brain/d284d670-0cfd-4f12-bbed-f8eeaea36551/qa_sec_final_cta.png)
 ````
 
 ---
 
-### 3. KẾT QUẢ TRIỂN KHAI VÀ READ-AFTER-WRITE AUDIT
-
-Toàn bộ **25 file** giao diện của theme đã được triển khai lên Live Theme `197625381235` và vượt qua kiểm tra mã hash SHA-256 đối soát với máy chủ Shopify:
-
-```
-================================================================
-✓ 100% READ-AFTER-WRITE AUDIT PASSED: ALL 25 PDP V3 ASSETS VERIFIED ON SHOPIFY LIVE THEME 197625381235
-================================================================
-```
-Mã nguồn đã được commit và push lên remote repository:
-- **Commit**: `7e365ca`
-- **Branch**: `feat/ultra-overnight-premium-storefront`
+### 3. KIỂM TOÁN DEPLOYMENT & READ-AFTER-WRITE
+- **Theme ID**: `197625381235` (Live / Role: `main`)
+- **Tổng số file deploy**: 25 files
+- **Kết quả xác thực mã băm SHA-256 sau khi ghi**: **100% khớp tuyệt đối (25/25 file)**.
+- **Git Commit**: `b0c121c` đã được đẩy lên nhánh `feat/ultra-overnight-premium-storefront`.
