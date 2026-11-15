@@ -12,3 +12,4 @@ async function check() {
   console.log('Variants price:', data.product.variants.slice(0, 4).map(v => ({ id: v.id, title: v.title, price: v.price, compare_at_price: v.compare_at_price })));
 }
 check();
+

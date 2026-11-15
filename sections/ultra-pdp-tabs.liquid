@@ -6,8 +6,22 @@
       <p class="uo-details-subhead">{{ section.settings.subhead | default: 'Complete transparency into our materials, sizing standards, care rituals, and production roadmap.' }}</p>
     </div>
 
-    <!-- Accordion Container -->
-    <div class="uo-details-accordion" role="region" aria-label="Product Details Accordion">
+    <!-- 2-Column Layout: Visual + Accordion -->
+    <div class="uo-details-layout">
+      <!-- Left Visual: Technical Specification Architecture -->
+      <div class="uo-details-visual">
+        <img 
+          src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/Thi_t_k_nam_l_p_tho_i_mai_su_t_dem-4.png?v=1794711196" 
+          alt="FULL-SPINE ULTRA OVERNIGHT™ Product Details &amp; Technical Specifications" 
+          class="uo-details-img"
+          width="540" 
+          height="540"
+          loading="lazy"
+        >
+      </div>
+
+      <!-- Right: Interactive Accordion Container -->
+      <div class="uo-details-accordion" role="region" aria-label="Product Details Accordion">
       
       <!-- Accordion 1: Materials & Construction -->
       <div class="uo-accordion-item is-open">
@@ -122,6 +136,7 @@
         </div>
       </div>
 
+    </div>
     </div>
   </div>
 </section>

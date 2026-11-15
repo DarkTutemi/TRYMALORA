@@ -31,48 +31,75 @@
       <div class="uo-gallery-wrap">
         <!-- 1. Main Featured Image (First in Mobile DOM) -->
         <div class="uo-main-image-wrap">
-          <img 
-            src="{{ 'ultra-pdp-main.jpg' | asset_url }}" 
-            alt="FULL-SPINE ULTRA OVERNIGHT™ Product & Packaging Box" 
-            class="uo-main-image"
-            id="uoMainProductImage"
-            width="600" 
-            height="600"
-            loading="eager"
-          >
-          <div class="uo-gallery-counter-badge" id="uoGalleryCounterBadge">1 / 7</div>
+          {%- assign featured_media = current_product.featured_image | default: current_product.images.first -%}
+          {%- if featured_media != blank -%}
+            <img 
+              src="{{ featured_media | image_url: width: 1200 }}" 
+              alt="{{ featured_media.alt | default: current_product.title | escape }}" 
+              class="uo-main-image"
+              id="uoMainProductImage"
+              width="600" 
+              height="600"
+              loading="eager"
+            >
+            <div class="uo-gallery-counter-badge" id="uoGalleryCounterBadge">1 / {{ current_product.images.size }}</div>
+          {%- else -%}
+            <img 
+              src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/D_lot_ng_qua_dem_Ultra_Overnight-1.png?v=1794711196" 
+              alt="FULL-SPINE ULTRA OVERNIGHT™" 
+              class="uo-main-image"
+              id="uoMainProductImage"
+              width="600" 
+              height="600"
+              loading="eager"
+            >
+            <div class="uo-gallery-counter-badge" id="uoGalleryCounterBadge">1 / 6</div>
+          {%- endif -%}
         </div>
 
         <!-- 2. Thumbnails Strip (Directly Below Main Image) -->
         <div class="uo-thumbnails-strip" id="uoThumbnailsStrip" role="tablist" aria-label="Product Gallery Thumbnails">
-          <!-- 1. Front View -->
-          <button type="button" class="uo-thumb-btn is-active" data-index="1" data-image-src="{{ 'ultra-pdp-main.jpg' | asset_url }}" aria-label="View 1: Front perspective with box" role="tab" aria-selected="true">
-            <img src="{{ 'ultra-thumb-front.jpg' | asset_url }}" alt="Front View" width="76" height="76" loading="eager">
-          </button>
-          <!-- 2. Rear Full-Spine View -->
-          <button type="button" class="uo-thumb-btn" data-index="2" data-image-src="{{ 'ultra-lifestyle-card-2.jpg' | asset_url }}" aria-label="View 2: Rear Full-Spine coverage concept" role="tab" aria-selected="false">
-            <img src="{{ 'ultra-lifestyle-card-2.jpg' | asset_url }}" alt="Full-Spine Rear Coverage" width="76" height="76" loading="lazy">
-          </button>
-          <!-- 3. Side Contour -->
-          <button type="button" class="uo-thumb-btn" data-index="3" data-image-src="{{ 'ultra-lifestyle-card-1.jpg' | asset_url }}" aria-label="View 3: Side-sleeper contour protection" role="tab" aria-selected="false">
-            <img src="{{ 'ultra-lifestyle-card-1.jpg' | asset_url }}" alt="Side-Sleeper Contour" width="76" height="76" loading="lazy">
-          </button>
-          <!-- 4. Fabric Close-Up -->
-          <button type="button" class="uo-thumb-btn" data-index="4" data-image-src="{{ 'ultra-thumb-texture.jpg' | asset_url }}" aria-label="View 4: CloudFlex modal fabric texture" role="tab" aria-selected="false">
-            <img src="{{ 'ultra-thumb-texture.jpg' | asset_url }}" alt="Fabric Texture Close-Up" width="76" height="76" loading="lazy">
-          </button>
-          <!-- 5. 5-Layer Construction Concept -->
-          <button type="button" class="uo-thumb-btn" data-index="5" data-image-src="{{ 'ultra-5-layers-exploded.png' | asset_url }}" aria-label="View 5: 5-Layer fluid management illustration" role="tab" aria-selected="false">
-            <img src="{{ 'ultra-5-layers-exploded.png' | asset_url }}" alt="5-Layer Construction Concept" width="76" height="76" loading="lazy">
-          </button>
-          <!-- 6. Packaging Box -->
-          <button type="button" class="uo-thumb-btn" data-index="6" data-image-src="{{ 'ultra-thumb-box.jpg' | asset_url }}" aria-label="View 6: Luxury retail box packaging" role="tab" aria-selected="false">
-            <img src="{{ 'ultra-thumb-box.jpg' | asset_url }}" alt="Packaging Box" width="76" height="76" loading="lazy">
-          </button>
-          <!-- 7. Bedtime Lifestyle -->
-          <button type="button" class="uo-thumb-btn" data-index="7" data-image-src="{{ 'ultra-thumb-lifestyle.jpg' | asset_url }}" aria-label="View 7: Bedtime sleep lifestyle" role="tab" aria-selected="false">
-            <img src="{{ 'ultra-thumb-lifestyle.jpg' | asset_url }}" alt="Bedtime Lifestyle" width="76" height="76" loading="lazy">
-          </button>
+          {%- if current_product.images.size > 0 -%}
+            {%- for image in current_product.images -%}
+              <button 
+                type="button" 
+                class="uo-thumb-btn{% if forloop.first %} is-active{% endif %}" 
+                data-index="{{ forloop.index }}" 
+                data-image-src="{{ image | image_url: width: 1200 }}" 
+                aria-label="View {{ forloop.index }}: {{ image.alt | default: current_product.title | escape }}" 
+                role="tab" 
+                aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+              >
+                <img 
+                  src="{{ image | image_url: width: 160, height: 160, crop: 'center' }}" 
+                  alt="{{ image.alt | default: current_product.title | escape }}" 
+                  width="76" 
+                  height="76" 
+                  loading="{% if forloop.index <= 2 %}eager{% else %}lazy{% endif %}"
+                >
+              </button>
+            {%- endfor -%}
+          {%- else -%}
+            <!-- Fallback to the 6 real Shopify product images -->
+            <button type="button" class="uo-thumb-btn is-active" data-index="1" data-image-src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/D_lot_ng_qua_dem_Ultra_Overnight-1.png?v=1794711196" aria-label="View 1" role="tab" aria-selected="true">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/D_lot_ng_qua_dem_Ultra_Overnight-1.png?v=1794711196" alt="View 1" width="76" height="76" loading="eager">
+            </button>
+            <button type="button" class="uo-thumb-btn" data-index="2" data-image-src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/B_o_v_toan_di_n_t_tr_c_ra_sau-2.png?v=1794711196" aria-label="View 2" role="tab" aria-selected="false">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/B_o_v_toan_di_n_t_tr_c_ra_sau-2.png?v=1794711196" alt="View 2" width="76" height="76" loading="lazy">
+            </button>
+            <button type="button" class="uo-thumb-btn" data-index="3" data-image-src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/Qu_ng_cao_Ultra_Overnight_cho_ng_i_ng_nghieng-3.png?v=1794711196" aria-label="View 3" role="tab" aria-selected="false">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/Qu_ng_cao_Ultra_Overnight_cho_ng_i_ng_nghieng-3.png?v=1794711196" alt="View 3" width="76" height="76" loading="lazy">
+            </button>
+            <button type="button" class="uo-thumb-btn" data-index="4" data-image-src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/Thi_t_k_nam_l_p_tho_i_mai_su_t_dem-4.png?v=1794711196" aria-label="View 4" role="tab" aria-selected="false">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/Thi_t_k_nam_l_p_tho_i_mai_su_t_dem-4.png?v=1794711196" alt="View 4" width="76" height="76" loading="lazy">
+            </button>
+            <button type="button" class="uo-thumb-btn" data-index="5" data-image-src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/Qu_ng_Cao_D_Lot_K_Kinh_Qua_Dem-5.png?v=1794711196" aria-label="View 5" role="tab" aria-selected="false">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/Qu_ng_Cao_D_Lot_K_Kinh_Qua_Dem-5.png?v=1794711196" alt="View 5" width="76" height="76" loading="lazy">
+            </button>
+            <button type="button" class="uo-thumb-btn" data-index="6" data-image-src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/Goi_d_lot_k_kinh_da_s_c_mau-6.png?v=1794711196" aria-label="View 6" role="tab" aria-selected="false">
+              <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/Goi_d_lot_k_kinh_da_s_c_mau-6.png?v=1794711196" alt="View 6" width="76" height="76" loading="lazy">
+            </button>
+          {%- endif -%}
         </div>
       </div>
 
@@ -660,7 +687,12 @@
 <div class="uo-sticky-mobile-bar" id="uoStickyMobileBar" aria-hidden="true">
   <div class="uo-sticky-inner">
     <div class="uo-sticky-product-info">
-      <img src="{{ 'ultra-thumb-front.jpg' | asset_url }}" alt="FULL-SPINE ULTRA OVERNIGHT™" class="uo-sticky-thumb" width="44" height="44">
+      {%- assign sticky_thumb = current_product.featured_image | default: current_product.images.first -%}
+      {%- if sticky_thumb != blank -%}
+        <img src="{{ sticky_thumb | image_url: width: 120, height: 120, crop: 'center' }}" alt="FULL-SPINE ULTRA OVERNIGHT™" class="uo-sticky-thumb" width="44" height="44">
+      {%- else -%}
+        <img src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/D_lot_ng_qua_dem_Ultra_Overnight-1.png?v=1794711196" alt="FULL-SPINE ULTRA OVERNIGHT™" class="uo-sticky-thumb" width="44" height="44">
+      {%- endif -%}
       <div class="uo-sticky-text">
         <div class="uo-sticky-title">FULL-SPINE ULTRA™</div>
         <div class="uo-sticky-summary" id="uoStickySummary">3 Pairs · M / Plum Noir</div>
