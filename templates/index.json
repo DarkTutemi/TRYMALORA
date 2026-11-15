@@ -14,6 +14,14 @@
       "type": "ultra-benefit-strip",
       "settings": {}
     },
+    "ultra_shop_by_style": {
+      "type": "ultra-shop-by-style",
+      "settings": {
+        "eyebrow": "THE COMPLETE ULTRA™ COLLECTION",
+        "title": "Find Your Perfect Period Underwear",
+        "subhead": "Thoughtfully engineered for every body, every flow, and every way you rest."
+      }
+    },
     "ultra_pillars": {
       "type": "ultra-seven-pillars",
       "settings": {
@@ -52,6 +60,7 @@
   "order": [
     "ultra_hero",
     "ultra_benefits",
+    "ultra_shop_by_style",
     "ultra_pillars",
     "ultra_layers",
     "ultra_comfort",

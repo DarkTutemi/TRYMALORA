@@ -1,7 +1,7 @@
 <!-- ULTRA OVERNIGHT™ Premium Feminine Slide-Out Cart Drawer -->
 {%- liquid
   assign is_legacy_product = false
-  if template.name == 'product' and template.suffix != 'ultra-overnight' and product.handle != 'full-spine-ultra-overnight' and product.handle != 'ultra-overnight'
+  if template.name == 'product' and template.suffix != 'ultra-overnight' and template.suffix != 'ultra-lace' and template.suffix != 'ultra-shorts' and product.handle != 'full-spine-ultra-overnight' and product.handle != 'ultra-lace-period-briefs' and product.handle != 'ultra-comfort-period-shorts' and product.handle != 'ultra-overnight'
     assign is_legacy_product = true
   endif
 -%}

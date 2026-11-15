@@ -98,6 +98,14 @@
         "subhead": "Designed to integrate effortlessly into your nighttime routine from evening to morning."
       }
     },
+    "explore_styles": {
+      "type": "ultra-shop-by-style",
+      "settings": {
+        "eyebrow": "EXPLORE OTHER SILHOUETTES",
+        "title": "Discover More From The ULTRA™ Collection",
+        "subhead": "Choose the right cut for your day, flow, and bedtime routine."
+      }
+    },
     "tabs": {
       "type": "ultra-pdp-tabs",
       "settings": {
@@ -132,6 +140,7 @@
     "fabric",
     "choose_pack",
     "hiw_steps",
+    "explore_styles",
     "tabs",
     "reviews",
     "faq"

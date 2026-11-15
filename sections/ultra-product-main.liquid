@@ -4,7 +4,7 @@
   assign has_real_product = false
   assign can_purchase = false
 
-  if product != blank and product.handle == 'full-spine-ultra-overnight'
+  if product != blank
     assign current_product = product
     assign has_real_product = true
   elsif all_products['full-spine-ultra-overnight'] != empty and all_products['full-spine-ultra-overnight'].id != blank
@@ -129,7 +129,15 @@
         </div>
 
         <!-- 2. Product Category Label -->
-        <div class="uo-product-category">PREMIUM OVERNIGHT PERIOD UNDERWEAR</div>
+        <div class="uo-product-category">
+          {%- if current_product.handle == 'ultra-lace-period-briefs' -%}
+            ELEGANT FEMININE PERIOD BRIEFS
+          {%- elsif current_product.handle == 'ultra-comfort-period-shorts' -%}
+            HIGH-WAISTED PERIOD SHORTS
+          {%- else -%}
+            PREMIUM OVERNIGHT PERIOD UNDERWEAR
+          {%- endif -%}
+        </div>
 
         <!-- 3. Product Title (Compact on Mobile, Serif) -->
         <h1 class="uo-heading-serif uo-product-title">
@@ -141,7 +149,15 @@
         </h1>
 
         <!-- 4. Short Emotional Headline -->
-        <h2 class="uo-pdp-subhead-serif">Sleep Through Heavy-Flow Nights With More Confidence.</h2>
+        <h2 class="uo-pdp-subhead-serif">
+          {%- if current_product.handle == 'ultra-lace-period-briefs' -%}
+            Everyday Elegance. Thoughtful Period Protection.
+          {%- elsif current_product.handle == 'ultra-comfort-period-shorts' -%}
+            More Coverage. More Comfort. More Freedom.
+          {%- else -%}
+            Sleep Through Heavy-Flow Nights With More Confidence.
+          {%- endif -%}
+        </h2>
 
         <!-- 5. Price / Availability Row (With Compare-at Price) -->
         <div class="uo-price-row">
@@ -199,116 +215,177 @@
           </div>
         </div>
 
-        <!-- 6. Short Value Proposition (Exact Approved Copy: 2–3 Lines on Mobile) -->
+        <!-- 6. Short Value Proposition -->
         <div class="uo-pdp-desc">
-          Extended overnight coverage. Five thoughtfully designed layers. Comfort made for your most demanding nights.
+          {%- if current_product.handle == 'ultra-lace-period-briefs' -%}
+            Everyday elegance meets thoughtful period protection. Feminine scalloped lace with our signature 5-layer leakproof core.
+          {%- elsif current_product.handle == 'ultra-comfort-period-shorts' -%}
+            More coverage. More comfort. More freedom. High-waisted gentle smoothing band with extended anti-chafe thigh protection.
+          {%- else -%}
+            Extended overnight coverage. Five thoughtfully designed layers. Comfort made for your most demanding nights.
+          {%- endif -%}
         </div>
 
         <!-- 7. Four Concise Benefit Highlights Near Price -->
         <div class="uo-pdp-highlights-grid">
-          <div class="uo-highlight-item">
-            <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              <line x1="12" y1="8" x2="12" y2="16"></line>
-            </svg>
-            <span>Full-Spine Coverage</span>
-          </div>
-
-          <div class="uo-highlight-item">
-            <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-              <polyline points="2 17 12 22 22 17"></polyline>
-              <polyline points="2 12 12 17 22 12"></polyline>
-            </svg>
-            <span>Five-Layer Design</span>
-          </div>
-
-          <div class="uo-highlight-item">
-            <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 8l-4 4 4 4"></path>
-              <path d="M6 8l4 4-4 4"></path>
-            </svg>
-            <span>SideSeal Contour</span>
-          </div>
-
-          <div class="uo-highlight-item">
-            <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
-            </svg>
-            <span>Soft DryTouch Comfort</span>
-          </div>
+          {%- if current_product.handle == 'ultra-lace-period-briefs' -%}
+            <div class="uo-highlight-item">
+              <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <span>Floral Lace Panels</span>
+            </div>
+            <div class="uo-highlight-item">
+              <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+              <span>Five-Layer Core</span>
+            </div>
+            <div class="uo-highlight-item">
+              <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8l-4 4 4 4"></path>
+                <path d="M6 8l4 4-4 4"></path>
+              </svg>
+              <span>Mid-Waist Anti-Roll</span>
+            </div>
+            <div class="uo-highlight-item">
+              <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+              </svg>
+              <span>Modal Softness</span>
+            </div>
+          {%- elsif current_product.handle == 'ultra-comfort-period-shorts' -%}
+            <div class="uo-highlight-item">
+              <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <span>Extended Leg Shield</span>
+            </div>
+            <div class="uo-highlight-item">
+              <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+              <span>50ml High Retention</span>
+            </div>
+            <div class="uo-highlight-item">
+              <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8l-4 4 4 4"></path>
+                <path d="M6 8l4 4-4 4"></path>
+              </svg>
+              <span>High-Waist Band</span>
+            </div>
+            <div class="uo-highlight-item">
+              <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+              </svg>
+              <span>Anti-Chafe Comfort</span>
+            </div>
+          {%- else -%}
+            <div class="uo-highlight-item">
+              <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <line x1="12" y1="8" x2="12" y2="16"></line>
+              </svg>
+              <span>Full-Spine Coverage</span>
+            </div>
+            <div class="uo-highlight-item">
+              <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+              <span>Five-Layer Design</span>
+            </div>
+            <div class="uo-highlight-item">
+              <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8l-4 4 4 4"></path>
+                <path d="M6 8l4 4-4 4"></path>
+              </svg>
+              <span>SideSeal Contour</span>
+            </div>
+            <div class="uo-highlight-item">
+              <svg class="uo-highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+              </svg>
+              <span>Soft DryTouch Comfort</span>
+            </div>
+          {%- endif -%}
         </div>
 
         <!-- ================= 8 & 9. COLOR & SIZE SELECTORS ================= -->
         <div class="uo-selectors-panel">
           <!-- 8. Color Selector -->
+          {%- assign color_option = nil -%}
+          {%- for opt in current_product.options_with_values -%}
+            {%- assign down_name = opt.name | downcase -%}
+            {%- if down_name == 'color' or down_name == 'colour' -%}
+              {%- assign color_option = opt -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- assign active_color = current_variant.option2 | default: color_option.values.first | default: 'Black' -%}
+
           <div class="uo-option-group uo-color-group" data-option-type="color">
             <div class="uo-option-header-row">
-              <label class="uo-option-title">Color: <span class="uo-selected-color-name" id="uoSelectedColorLabel">Black</span></label>
+              <label class="uo-option-title">Color: <span class="uo-selected-color-name" id="uoSelectedColorLabel">{{ active_color }}</span></label>
             </div>
             <div class="uo-color-swatches" role="radiogroup" aria-label="Product Color Options">
-              <!-- Black (#1a1a1a) -->
-              <button 
-                type="button" 
-                class="uo-color-swatch is-active" 
-                data-color-name="Black" 
-                data-swatch-hex="#1a1a1a" 
-                role="radio" 
-                aria-checked="true"
-                aria-label="Color: Black (Midnight Black)"
-              >
-                <span class="uo-swatch-circle" style="background-color: #1a1a1a;"></span>
-                <span class="uo-swatch-text">Black</span>
-              </button>
+              {%- if color_option != blank and color_option.values.size > 0 -%}
+                {%- for c_val in color_option.values -%}
+                  {%- assign c_hex = '#1a1a1a' -%}
+                  {%- assign c_down = c_val | downcase -%}
+                  {%- if c_down == 'black' -%}{%- assign c_hex = '#1a1a1a' -%}
+                  {%- elsif c_down == 'orange' -%}{%- assign c_hex = '#c86a32' -%}
+                  {%- elsif c_down == 'red' -%}{%- assign c_hex = '#8b263e' -%}
+                  {%- elsif c_down == 'nude' -%}{%- assign c_hex = '#d8b99b' -%}
+                  {%- elsif c_down == 'skin' -%}{%- assign c_hex = '#e8c4a2' -%}
+                  {%- elsif c_down == 'grey' or c_down == 'gray' -%}{%- assign c_hex = '#8a8a8e' -%}
+                  {%- elsif c_down == 'pink' -%}{%- assign c_hex = '#e4a4b2' -%}
+                  {%- elsif c_down == 'green' -%}{%- assign c_hex = '#3e6b52' -%}
+                  {%- elsif c_down == 'yellow' -%}{%- assign c_hex = '#e8b948' -%}
+                  {%- endif -%}
 
-              <!-- Orange (#c86a32) -->
-              <button 
-                type="button" 
-                class="uo-color-swatch" 
-                data-color-name="Orange" 
-                data-swatch-hex="#c86a32" 
-                role="radio" 
-                aria-checked="false"
-                aria-label="Color: Orange (Terracotta Orange)"
-              >
-                <span class="uo-swatch-circle" style="background-color: #c86a32;"></span>
-                <span class="uo-swatch-text">Orange</span>
-              </button>
-
-              <!-- Red (#8b263e) -->
-              <button 
-                type="button" 
-                class="uo-color-swatch" 
-                data-color-name="Red" 
-                data-swatch-hex="#8b263e" 
-                role="radio" 
-                aria-checked="false"
-                aria-label="Color: Red (Berry Crimson)"
-              >
-                <span class="uo-swatch-circle" style="background-color: #8b263e;"></span>
-                <span class="uo-swatch-text">Red</span>
-              </button>
-
-              <!-- Nude (#d8b99b) -->
-              <button 
-                type="button" 
-                class="uo-color-swatch" 
-                data-color-name="Nude" 
-                data-swatch-hex="#d8b99b" 
-                role="radio" 
-                aria-checked="false"
-                aria-label="Color: Nude (Soft Warm Nude)"
-              >
-                <span class="uo-swatch-circle" style="background-color: #d8b99b;"></span>
-                <span class="uo-swatch-text">Nude</span>
-              </button>
+                  <button 
+                    type="button" 
+                    class="uo-color-swatch{% if c_val == active_color %} is-active{% endif %}" 
+                    data-color-name="{{ c_val }}" 
+                    data-swatch-hex="{{ c_hex }}" 
+                    role="radio" 
+                    aria-checked="{% if c_val == active_color %}true{% else %}false{% endif %}"
+                    aria-label="Color: {{ c_val }}"
+                  >
+                    <span class="uo-swatch-circle" style="background-color: {{ c_hex }};"></span>
+                    <span class="uo-swatch-text">{{ c_val }}</span>
+                  </button>
+                {%- endfor -%}
+              {%- else -%}
+                <button type="button" class="uo-color-swatch is-active" data-color-name="Black" data-swatch-hex="#1a1a1a" role="radio" aria-checked="true" aria-label="Color: Black">
+                  <span class="uo-swatch-circle" style="background-color: #1a1a1a;"></span>
+                  <span class="uo-swatch-text">Black</span>
+                </button>
+              {%- endif -%}
             </div>
           </div>
 
           <!-- 9. Size Selector + Size Guide -->
+          {%- assign size_option = nil -%}
+          {%- for opt in current_product.options_with_values -%}
+            {%- assign down_name = opt.name | downcase -%}
+            {%- if down_name == 'size' -%}
+              {%- assign size_option = opt -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+          {%- assign active_size = current_variant.option1 | default: 'M' -%}
+
           <div class="uo-option-group uo-size-group" data-option-type="size">
             <div class="uo-option-header-row">
-              <label class="uo-option-title">Size: <span class="uo-selected-size-name" id="uoSelectedSizeLabel">M</span></label>
+              <label class="uo-option-title">Size: <span class="uo-selected-size-name" id="uoSelectedSizeLabel">{{ active_size }}</span></label>
               <button type="button" class="uo-size-guide-trigger" onclick="openUoSizeGuide()" aria-haspopup="dialog">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M2 12h20"></path><path d="M6 12v3"></path><path d="M10 12v2"></path><path d="M14 12v3"></path><path d="M18 12v2"></path>
@@ -318,19 +395,27 @@
             </div>
             
             <div class="uo-size-pills" role="radiogroup" aria-label="Product Size Options">
-              {% assign sizes = "XS,S,M,L,XL,2XL,3XL,4XL" | split: "," %}
-              {% for s in sizes %}
-                <button 
-                  type="button" 
-                  class="uo-size-pill {% if s == 'M' %}is-active{% endif %}" 
-                  data-size-value="{{ s }}" 
-                  role="radio" 
-                  aria-checked="{% if s == 'M' %}true{% else %}false{% endif %}"
-                  tabindex="{% if s == 'M' %}0{% else %}-1{% endif %}"
-                >
-                  {{ s }}
-                </button>
-              {% endfor %}
+              {%- if size_option != blank and size_option.values.size > 0 -%}
+                {%- for s_val in size_option.values -%}
+                  <button 
+                    type="button" 
+                    class="uo-size-pill{% if s_val == active_size %} is-active{% endif %}" 
+                    data-size-value="{{ s_val }}" 
+                    role="radio" 
+                    aria-checked="{% if s_val == active_size %}true{% else %}false{% endif %}"
+                    tabindex="{% if s_val == active_size %}0{% else %}-1{% endif %}"
+                  >
+                    {{ s_val }}
+                  </button>
+                {%- endfor -%}
+              {%- else -%}
+                {% assign fallback_sizes = "XS,S,M,L,XL,2XL,3XL,4XL" | split: "," %}
+                {% for s in fallback_sizes %}
+                  <button type="button" class="uo-size-pill {% if s == 'M' %}is-active{% endif %}" data-size-value="{{ s }}" role="radio" aria-checked="{% if s == 'M' %}true{% else %}false{% endif %}" tabindex="{% if s == 'M' %}0{% else %}-1{% endif %}">
+                    {{ s }}
+                  </button>
+                {% endfor %}
+              {%- endif -%}
             </div>
           </div>
         </div>

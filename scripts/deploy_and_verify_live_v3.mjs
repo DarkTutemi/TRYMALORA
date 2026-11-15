@@ -16,6 +16,8 @@ const filesToDeploy = [
   'sections/ultra-footer.liquid',
   'sections/ultra-about-story.liquid',
   'sections/ultra-track-order.liquid',
+  'sections/ultra-shop-by-style.liquid',
+  'templates/index.json',
   'templates/page.about-us.json',
   'templates/page.track-order.json',
   'sections/ultra-product-main.liquid',
@@ -39,7 +41,19 @@ const filesToDeploy = [
   'assets/doctor-avatar-1.png',
   'assets/doctor-avatar-2.png',
   'assets/doctor-avatar-3.png',
-  'templates/product.ultra-overnight.json'
+  'templates/product.ultra-overnight.json',
+  'templates/product.ultra-lace.json',
+  'templates/product.ultra-shorts.json',
+  'assets/ultra-lace-hero.jpg',
+  'assets/ultra-lace-detail.jpg',
+  'assets/ultra-lace-fit.jpg',
+  'assets/ultra-lace-five-layers.jpg',
+  'assets/ultra-lace-colors.jpg',
+  'assets/ultra-shorts-hero.jpg',
+  'assets/ultra-shorts-waistband.jpg',
+  'assets/ultra-shorts-leg-coverage.jpg',
+  'assets/ultra-shorts-five-layers.jpg',
+  'assets/ultra-shorts-colors.jpg'
 ];
 
 async function main() {

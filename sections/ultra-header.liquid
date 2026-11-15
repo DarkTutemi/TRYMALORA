@@ -1,6 +1,6 @@
 {%- liquid
   assign is_legacy_product = false
-  if template.name == 'product' and template.suffix != 'ultra-overnight' and product.handle != 'full-spine-ultra-overnight' and product.handle != 'ultra-overnight'
+  if template.name == 'product' and template.suffix != 'ultra-overnight' and template.suffix != 'ultra-lace' and template.suffix != 'ultra-shorts' and product.handle != 'full-spine-ultra-overnight' and product.handle != 'ultra-lace-period-briefs' and product.handle != 'ultra-comfort-period-shorts' and product.handle != 'ultra-overnight'
     assign is_legacy_product = true
   endif
 -%}
@@ -48,10 +48,12 @@
           {%- endfor -%}
         {%- else -%}
           <a href="/" class="uo-nav-link {% if request.page_type == 'index' %}is-active{% endif %}">Home</a>
-          <a href="/products/full-spine-ultra-overnight" class="uo-nav-link {% if template.suffix == 'ultra-overnight' or product.handle contains 'ultra' %}is-active{% endif %}">ULTRA OVERNIGHT</a>
+          <a href="/collections/ultra-period-underwear" class="uo-nav-link {% if request.path contains '/collections/ultra' %}is-active{% endif %}">Shop All</a>
+          <a href="/products/full-spine-ultra-overnight" class="uo-nav-link {% if product.handle == 'full-spine-ultra-overnight' %}is-active{% endif %}">ULTRA OVERNIGHT</a>
+          <a href="/products/ultra-lace-period-briefs" class="uo-nav-link {% if product.handle == 'ultra-lace-period-briefs' %}is-active{% endif %}">ULTRA LACE</a>
+          <a href="/products/ultra-comfort-period-shorts" class="uo-nav-link {% if product.handle == 'ultra-comfort-period-shorts' %}is-active{% endif %}">ULTRA COMFORT SHORTS</a>
           <a href="/pages/about-us" class="uo-nav-link {% if request.path contains '/pages/about' %}is-active{% endif %}">Our Story</a>
           <a href="/pages/track-order" class="uo-nav-link {% if request.path contains '/pages/track' %}is-active{% endif %}">Track Order</a>
-          <a href="/pages/contact" class="uo-nav-link {% if request.path contains '/pages/contact' %}is-active{% endif %}">Contact</a>
         {%- endif -%}
       </nav>
 
@@ -93,10 +95,12 @@
       {%- endfor -%}
     {%- else -%}
       <a href="/" class="uo-mobile-nav-link">Home <span aria-hidden="true">→</span></a>
-      <a href="/products/full-spine-ultra-overnight" class="uo-mobile-nav-link">ULTRA OVERNIGHT <span aria-hidden="true">→</span></a>
+      <a href="/collections/ultra-period-underwear" class="uo-mobile-nav-link">Shop All Collection <span aria-hidden="true">→</span></a>
+      <a href="/products/full-spine-ultra-overnight" class="uo-mobile-nav-link">ULTRA OVERNIGHT™ <span aria-hidden="true">→</span></a>
+      <a href="/products/ultra-lace-period-briefs" class="uo-mobile-nav-link">ULTRA LACE™ <span aria-hidden="true">→</span></a>
+      <a href="/products/ultra-comfort-period-shorts" class="uo-mobile-nav-link">ULTRA COMFORT SHORTS™ <span aria-hidden="true">→</span></a>
       <a href="/pages/about-us" class="uo-mobile-nav-link">Our Story <span aria-hidden="true">→</span></a>
       <a href="/pages/track-order" class="uo-mobile-nav-link">Track Order <span aria-hidden="true">→</span></a>
-      <a href="/pages/contact" class="uo-mobile-nav-link">Contact <span aria-hidden="true">→</span></a>
     {%- endif -%}
   </nav>
 </aside>

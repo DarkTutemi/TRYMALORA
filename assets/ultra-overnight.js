@@ -182,6 +182,19 @@ function initAuthoritativeVariants() {
     window.uoState.variants = [];
   }
 
+  // Dynamically detect active color and size from DOM swatches
+  const activeColorEl = document.querySelector('.uo-color-swatch.is-active');
+  if (activeColorEl) {
+    window.uoState.selectedColor = activeColorEl.getAttribute('data-color-name');
+  } else if (document.querySelector('.uo-color-swatch')) {
+    window.uoState.selectedColor = document.querySelector('.uo-color-swatch').getAttribute('data-color-name');
+  }
+
+  const activeSizeEl = document.querySelector('.uo-size-pill.is-active');
+  if (activeSizeEl) {
+    window.uoState.selectedSize = activeSizeEl.getAttribute('data-size-value');
+  }
+
   // Match initial state with real variant data
   syncAuthoritativeVariant();
 }
@@ -448,8 +461,15 @@ function renderMixMatchSlots(count) {
   const container = document.getElementById('uoMixMatchSlots');
   if (!container) return;
 
-  const sizes = ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'];
-  const colors = ['Black', 'Orange', 'Red', 'Nude'];
+  const sizePills = document.querySelectorAll('.uo-size-pill');
+  const sizes = sizePills.length > 0
+    ? Array.from(sizePills).map(function(el) { return el.getAttribute('data-size-value'); })
+    : ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL', '4XL'];
+
+  const colorSwatches = document.querySelectorAll('.uo-color-swatch');
+  const colors = colorSwatches.length > 0
+    ? Array.from(colorSwatches).map(function(el) { return el.getAttribute('data-color-name'); })
+    : ['Black', 'Orange', 'Red', 'Nude'];
 
   window.uoState.mixMatchSlots = [];
 
@@ -545,6 +565,7 @@ function computeGroupedCartPayload() {
     }
   }
 
+  const brandTitle = document.querySelector('.uo-product-title')?.textContent?.trim() || 'ULTRA OVERNIGHT™';
   const items = Object.keys(variantCounts)
     .filter(function (vId) { return vId && vId !== 'null' && vId !== 'undefined'; })
     .map(function (vId) {
@@ -553,6 +574,7 @@ function computeGroupedCartPayload() {
         quantity: variantCounts[vId],
         properties: {
           'Pack': tierName,
+          'Style': brandTitle,
           '_Brand': 'ULTRA OVERNIGHT™',
           '_Bundle Type': window.uoState.isMixMatchExpanded ? 'Mix-and-Match Multi-Pack' : (tierName === '1 Pair' ? 'Single Pair' : 'Curated Multi-Pack')
         }

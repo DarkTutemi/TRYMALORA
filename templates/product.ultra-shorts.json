@@ -1,0 +1,148 @@
+{
+  "sections": {
+    "main": {
+      "type": "ultra-product-main",
+      "settings": {}
+    },
+    "problem": {
+      "type": "ultra-pdp-problem",
+      "settings": {
+        "eyebrow": "ALL-NIGHT SECURITY",
+        "title": "Why Briefs Fall Short for Active Sleepers & Restless Nights",
+        "subhead": "Traditional brief cuts shift and gap as you move, curl up, or sleep on your side, creating vulnerable leak paths."
+      }
+    },
+    "editorial": {
+      "type": "ultra-pdp-editorial",
+      "settings": {
+        "eyebrow": "HIGH-WAISTED ERGONOMICS",
+        "heading": "Extended Thigh Coverage with Anti-Chafe Support.",
+        "description": "ULTRA COMFORT SHORTS™ feature a boy-short cut with extended thigh coverage and a wide ribbed waistband that stays anchored no matter how much you toss and turn.",
+        "caption": "ULTRA COMFORT SHORTS™ high-waisted ribbed band & extended thigh contours",
+        "link_text": "Explore How It Works",
+        "link": "#ultra-how-it-works"
+      },
+      "blocks": {
+        "front": {
+          "type": "benefit",
+          "settings": {
+            "title": "High-Waist Ribbed Band",
+            "body": "Gentle core compression smooths the tummy and keeps the waistband locked in place without rolling down."
+          }
+        },
+        "core": {
+          "type": "benefit",
+          "settings": {
+            "title": "50ml Heavy-Duty Retention",
+            "body": "Expanded absorption core covers the full pelvic floor and extends lower to eliminate gapping."
+          }
+        },
+        "rear": {
+          "type": "benefit",
+          "settings": {
+            "title": "Extended Thigh Leak Guard",
+            "body": "Leg cuffs contour smoothly to thighs to prevent side leaks and inner-thigh friction during sleep."
+          }
+        },
+        "side": {
+          "type": "benefit",
+          "settings": {
+            "title": "Dual Loungewear Versatility",
+            "body": "Wear as bedtime sleep shorts or under oversized pajamas with complete freedom of movement."
+          }
+        }
+      },
+      "block_order": [
+        "front",
+        "core",
+        "rear",
+        "side"
+      ]
+    },
+    "layers": {
+      "type": "ultra-five-layers",
+      "settings": {
+        "title": "5 Layers of Extended Overnight Protection",
+        "description": "Engineered with 360° leakproof shielding and high-capacity absorbency for the most demanding flows."
+      }
+    },
+    "comfort": {
+      "type": "ultra-lifestyle-comfort",
+      "settings": {
+        "eyebrow": "UNRESTRICTED FREEDOM",
+        "title": "Move, Curl Up, and Sleep in Any Position",
+        "description": "Whether you sleep on your side, back, or stomach, the extended boy-short silhouette hugs without binding."
+      }
+    },
+    "fabric": {
+      "type": "ultra-fabric-experience",
+      "settings": {
+        "eyebrow": "ZERO-CHAFE LUXURY KNIT",
+        "title": "Seamless Microfiber Softness",
+        "description": "Frictionless fabric prevents inner thigh irritation, paired with breathable modal for cooling comfort all night."
+      }
+    },
+    "choose_pack": {
+      "type": "ultra-choose-pack",
+      "settings": {
+        "eyebrow": "CYCLE ROTATION PACKS",
+        "title": "Why Women Choose Multi-Pair Bundles",
+        "subhead": "Stock your drawer with our 3-Pack (Save 10%) or 5-Pack (Save 20%) for stress-free wash days."
+      }
+    },
+    "hiw_steps": {
+      "type": "ultra-hiw-steps",
+      "settings": {
+        "eyebrow": "THREE-STEP CARE RITUAL",
+        "title": "How ULTRA COMFORT SHORTS™ Work",
+        "subhead": "Simple wear, cold rinse, gentle wash, and hang to dry. Designed to last over 100 cycles."
+      }
+    },
+    "explore_styles": {
+      "type": "ultra-shop-by-style",
+      "settings": {
+        "eyebrow": "EXPLORE OTHER SILHOUETTES",
+        "title": "Discover More From The ULTRA™ Collection",
+        "subhead": "Choose the right cut for your day, flow, and bedtime routine."
+      }
+    },
+    "tabs": {
+      "type": "ultra-pdp-tabs",
+      "settings": {
+        "eyebrow": "IN-DEPTH SPECIFICATIONS",
+        "title": "Product Details & Technical Specifications",
+        "subhead": "Complete transparency into our materials, sizing standards, care rituals, and production roadmap."
+      }
+    },
+    "reviews": {
+      "type": "ultra-reviews",
+      "settings": {
+        "title": "Exceptional Coverage & Peace of Mind",
+        "subhead": "Designed around the feeling of comfort and the details that matter during nighttime wear.",
+        "enable_review_app": false
+      }
+    },
+    "faq": {
+      "type": "ultra-faq",
+      "settings": {
+        "eyebrow": "CLARITY & DETAILS",
+        "title": "Frequently Asked Questions",
+        "subhead": "Clear, transparent answers about sizing, leg fit, care instructions, and wash durability."
+      }
+    }
+  },
+  "order": [
+    "main",
+    "problem",
+    "editorial",
+    "layers",
+    "comfort",
+    "fabric",
+    "choose_pack",
+    "hiw_steps",
+    "explore_styles",
+    "tabs",
+    "reviews",
+    "faq"
+  ]
+}

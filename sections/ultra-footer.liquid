@@ -1,6 +1,6 @@
 {%- liquid
   assign is_legacy_product = false
-  if template.name == 'product' and template.suffix != 'ultra-overnight' and product.handle != 'full-spine-ultra-overnight' and product.handle != 'ultra-overnight'
+  if template.name == 'product' and template.suffix != 'ultra-overnight' and template.suffix != 'ultra-lace' and template.suffix != 'ultra-shorts' and product.handle != 'full-spine-ultra-overnight' and product.handle != 'ultra-lace-period-briefs' and product.handle != 'ultra-comfort-period-shorts' and product.handle != 'ultra-overnight'
     assign is_legacy_product = true
   endif
 -%}
@@ -19,10 +19,13 @@
 
       <!-- Col 2: Shop Links -->
       <div class="uo-footer-col">
-        <h4>Shop</h4>
+        <h4>Shop Collection</h4>
         <ul>
           <li><a href="/">Home</a></li>
-          <li><a href="/products/full-spine-ultra-overnight">Product</a></li>
+          <li><a href="/collections/ultra-period-underwear">Shop All Styles</a></li>
+          <li><a href="/products/full-spine-ultra-overnight">ULTRA OVERNIGHT™</a></li>
+          <li><a href="/products/ultra-lace-period-briefs">ULTRA LACE™</a></li>
+          <li><a href="/products/ultra-comfort-period-shorts">ULTRA COMFORT SHORTS™</a></li>
           <li><a href="/pages/about-us">Our Story</a></li>
           <li><a href="/pages/track-order">Track Order</a></li>
         </ul>

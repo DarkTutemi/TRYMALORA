@@ -1,0 +1,370 @@
+<!-- ULTRA OVERNIGHT™ — Shop By Style / Find Your Perfect Period Underwear -->
+<section class="uo-shop-styles-section" id="uoShopByStyle">
+  <div class="uo-wrap">
+    <div class="uo-shop-styles-header">
+      <span class="uo-section-eyebrow">{{ section.settings.eyebrow | default: 'THE ULTRA™ COLLECTION' }}</span>
+      <h2 class="uo-heading-serif uo-shop-styles-title">{{ section.settings.title | default: 'Find Your Perfect Period Underwear' }}</h2>
+      <p class="uo-shop-styles-subhead">{{ section.settings.subhead | default: 'Thoughtfully engineered for every body, every flow, and every way you rest.' }}</p>
+    </div>
+
+    <div class="uo-styles-grid">
+      <!-- 1. ULTRA OVERNIGHT™ (Flagship) -->
+      {%- assign p1 = all_products['full-spine-ultra-overnight'] -%}
+      <div class="uo-style-card uo-style-card--flagship">
+        <div class="uo-style-badge uo-style-badge--flagship">FLAGSHIP · HEAVY NIGHTS</div>
+        <a href="/products/full-spine-ultra-overnight" class="uo-style-img-link" aria-label="View FULL-SPINE ULTRA OVERNIGHT™">
+          <img 
+            src="https://cdn.shopify.com/s/files/1/1032/4541/4771/files/D_lot_ng_qua_dem_Ultra_Overnight-1.png?v=1794715058" 
+            alt="FULL-SPINE ULTRA OVERNIGHT™" 
+            class="uo-style-img"
+            width="400"
+            height="400"
+            loading="lazy"
+          >
+        </a>
+        <div class="uo-style-content">
+          <h3 class="uo-style-name">ULTRA OVERNIGHT™</h3>
+          <p class="uo-style-tagline">Full-Spine Overnight Protection</p>
+          <p class="uo-style-desc">
+            Continuous front-to-back protective barrier designed for restless, toss-and-turn sleep through your most demanding heavy-cycle nights.
+          </p>
+          <div class="uo-style-price-row">
+            <span class="uo-style-price-label">From</span>
+            <span class="uo-style-price-val">{% if p1 != empty and p1.price > 0 %}{{ p1.price | money }}{% else %}{{ 3999 | money }}{% endif %}</span>
+            <del class="uo-style-price-compare">{% if p1 != empty and p1.compare_at_price > p1.price %}{{ p1.compare_at_price | money }}{% else %}{{ 7998 | money }}{% endif %}</del>
+          </div>
+          <div class="uo-style-features">
+            <span>✓ Full-Spine™ Rear Shield</span>
+            <span>✓ 5-Layer Rapid Absorption</span>
+            <span>✓ Leakproof SideSeal™ Contour</span>
+          </div>
+          <a href="/products/full-spine-ultra-overnight" class="uo-btn-primary uo-style-cta">
+            SHOP ULTRA OVERNIGHT ➔
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. ULTRA LACE™ (Elegant Period Briefs) -->
+      {%- assign p2 = all_products['ultra-lace-period-briefs'] -%}
+      <div class="uo-style-card">
+        <div class="uo-style-badge">NEW RELEASE · ELEGANCE</div>
+        <a href="/products/ultra-lace-period-briefs" class="uo-style-img-link" aria-label="View ULTRA LACE™ — Elegant Period Briefs">
+          <img 
+            src="{{ 'ultra-lace-hero.jpg' | asset_url }}" 
+            onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/1032/4541/4771/files/ultra-lace-hero.jpg';"
+            alt="ULTRA LACE™ — Elegant Period Briefs" 
+            class="uo-style-img"
+            width="400"
+            height="400"
+            loading="lazy"
+          >
+        </a>
+        <div class="uo-style-content">
+          <h3 class="uo-style-name">ULTRA LACE™</h3>
+          <p class="uo-style-tagline">Everyday Feminine Comfort</p>
+          <p class="uo-style-desc">
+            Feminine floral lace detailing paired with a five-layer moisture locking core. Effortless daytime and overnight elegance with zero bulk.
+          </p>
+          <div class="uo-style-price-row">
+            <span class="uo-style-price-label">From</span>
+            <span class="uo-style-price-val">{% if p2 != empty and p2.price > 0 %}{{ p2.price | money }}{% else %}{{ 3499 | money }}{% endif %}</span>
+            <del class="uo-style-price-compare">{% if p2 != empty and p2.compare_at_price > p2.price %}{{ p2.compare_at_price | money }}{% else %}{{ 6998 | money }}{% endif %}</del>
+          </div>
+          <div class="uo-style-features">
+            <span>✓ Scalloped Floral Lace Panels</span>
+            <span>✓ Mid-Waist Anti-Roll Fit</span>
+            <span>✓ 40ml Heavy Flow Absorbency</span>
+          </div>
+          <a href="/products/ultra-lace-period-briefs" class="uo-btn-primary uo-style-cta">
+            SHOP ULTRA LACE ➔
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. ULTRA COMFORT SHORTS™ (High-Waisted Period Shorts) -->
+      {%- assign p3 = all_products['ultra-comfort-period-shorts'] -%}
+      <div class="uo-style-card">
+        <div class="uo-style-badge">NEW RELEASE · COVERAGE</div>
+        <a href="/products/ultra-comfort-period-shorts" class="uo-style-img-link" aria-label="View ULTRA COMFORT SHORTS™">
+          <img 
+            src="{{ 'ultra-shorts-hero.jpg' | asset_url }}" 
+            onerror="this.onerror=null; this.src='https://cdn.shopify.com/s/files/1/1032/4541/4771/files/ultra-shorts-hero.jpg';"
+            alt="ULTRA COMFORT SHORTS™ — High-Waisted Period Shorts" 
+            class="uo-style-img"
+            width="400"
+            height="400"
+            loading="lazy"
+          >
+        </a>
+        <div class="uo-style-content">
+          <h3 class="uo-style-name">ULTRA COMFORT SHORTS™</h3>
+          <p class="uo-style-tagline">High-Waisted Coverage &amp; Comfort</p>
+          <p class="uo-style-desc">
+            High-waisted gentle compression with extended anti-chafe leg coverage. Ultimate freedom of movement for sleeping and lounging.
+          </p>
+          <div class="uo-style-price-row">
+            <span class="uo-style-price-label">From</span>
+            <span class="uo-style-price-val">{% if p3 != empty and p3.price > 0 %}{{ p3.price | money }}{% else %}{{ 4499 | money }}{% endif %}</span>
+            <del class="uo-style-price-compare">{% if p3 != empty and p3.compare_at_price > p3.price %}{{ p3.compare_at_price | money }}{% else %}{{ 8998 | money }}{% endif %}</del>
+          </div>
+          <div class="uo-style-features">
+            <span>✓ High-Waist Ribbed Elastic Band</span>
+            <span>✓ Extended Thigh Anti-Chafe Fit</span>
+            <span>✓ 50ml High-Retention Core</span>
+          </div>
+          <a href="/products/ultra-comfort-period-shorts" class="uo-btn-primary uo-style-cta">
+            SHOP COMFORT SHORTS ➔
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collection Link Banner -->
+    <div class="uo-shop-styles-footer">
+      <a href="/collections/ultra-period-underwear" class="uo-view-collection-link">
+        Explore All Styles in the ULTRA™ Period Underwear Collection ➔
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+.uo-shop-styles-section {
+  padding: 64px 0 72px;
+  background-color: #FAF4F4;
+  border-top: 1px solid #EEDBDD;
+  border-bottom: 1px solid #EEDBDD;
+}
+.uo-shop-styles-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 40px;
+}
+.uo-shop-styles-header .uo-section-eyebrow {
+  display: inline-block;
+  font-family: var(--uo-font-sans, system-ui, sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7A344F;
+  margin-bottom: 10px;
+}
+.uo-shop-styles-title {
+  font-family: var(--uo-font-serif, "Playfair Display", Georgia, serif);
+  font-size: clamp(26px, 3.5vw, 36px);
+  color: #4B2038;
+  margin: 0 0 12px;
+  line-height: 1.25;
+}
+.uo-shop-styles-subhead {
+  font-family: var(--uo-font-sans, system-ui, sans-serif);
+  font-size: 15px;
+  color: #5C4A52;
+  line-height: 1.5;
+  margin: 0;
+}
+.uo-styles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 40px;
+}
+.uo-style-card {
+  background: #FFFFFF;
+  border: 1px solid #E5D5DA;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.uo-style-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(75, 32, 56, 0.08);
+  border-color: #7A344F;
+}
+.uo-style-card--flagship {
+  border: 2px solid #7A344F;
+  box-shadow: 0 6px 20px rgba(75, 32, 56, 0.06);
+}
+.uo-style-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  background: #FAF4F4;
+  color: #7A344F;
+  border: 1px solid #D8BAC3;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-family: var(--uo-font-sans, system-ui, sans-serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.uo-style-badge--flagship {
+  background: #4B2038;
+  color: #FFFFFF;
+  border-color: #4B2038;
+}
+.uo-style-img-link {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #FDF9F8;
+  overflow: hidden;
+}
+.uo-style-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.uo-style-card:hover .uo-style-img {
+  transform: scale(1.03);
+}
+.uo-style-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.uo-style-name {
+  font-family: var(--uo-font-serif, "Playfair Display", Georgia, serif);
+  font-size: 20px;
+  color: #4B2038;
+  margin: 0 0 6px;
+  line-height: 1.3;
+}
+.uo-style-tagline {
+  font-family: var(--uo-font-sans, system-ui, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  color: #7A344F;
+  margin: 0 0 12px;
+}
+.uo-style-desc {
+  font-family: var(--uo-font-sans, system-ui, sans-serif);
+  font-size: 13px;
+  color: #5C4A52;
+  line-height: 1.5;
+  margin: 0 0 16px;
+  flex-grow: 1;
+}
+.uo-style-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed #EEDBDD;
+}
+.uo-style-price-label {
+  font-size: 12px;
+  color: #77656D;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.uo-style-price-val {
+  font-family: var(--uo-font-sans, system-ui, sans-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: #4B2038;
+}
+.uo-style-price-compare {
+  font-size: 14px;
+  color: #99878E;
+  text-decoration: line-through;
+}
+.uo-style-features {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.uo-style-features span {
+  font-family: var(--uo-font-sans, system-ui, sans-serif);
+  font-size: 12px;
+  color: #4B2038;
+}
+.uo-style-cta {
+  width: 100%;
+  text-align: center;
+  padding: 13px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: #4B2038;
+  color: #FFFFFF;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  display: block;
+}
+.uo-style-cta:hover {
+  background: #622B4A;
+}
+.uo-shop-styles-footer {
+  text-align: center;
+}
+.uo-view-collection-link {
+  display: inline-block;
+  font-family: var(--uo-font-sans, system-ui, sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: #4B2038;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.2s ease;
+}
+.uo-view-collection-link:hover {
+  color: #7A344F;
+}
+
+@media (max-width: 900px) {
+  .uo-styles-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 480px;
+    margin: 0 auto 36px;
+  }
+  .uo-shop-styles-section {
+    padding: 48px 0 56px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Ultra Shop By Style",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "THE ULTRA™ COLLECTION"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Find Your Perfect Period Underwear"
+    },
+    {
+      "type": "textarea",
+      "id": "subhead",
+      "label": "Subhead",
+      "default": "Thoughtfully engineered for every body, every flow, and every way you rest."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ultra Shop By Style"
+    }
+  ]
+}
+{% endschema %}

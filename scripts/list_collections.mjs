@@ -1,30 +1,12 @@
-import { adminGraphql } from './config.mjs';
+import { getAccessToken, SHOP, API_VERSION } from './config.mjs';
 
-async function listCollections() {
-  const data = await adminGraphql(`
-    query {
-      collections(first: 50) {
-        edges {
-          node {
-            id
-            title
-            handle
-            templateSuffix
-            productsCount {
-              count
-            }
-          }
-        }
-      }
-    }
-  `);
-
-  const colls = data.collections.edges.map(e => e.node);
-  console.log(`Found ${colls.length} collections:`);
-  for (const c of colls) {
-    console.log(`- [${c.id}] ${c.title} (handle: "${c.handle}", templateSuffix: "${c.templateSuffix}", products: ${c.productsCount?.count})`);
-  }
+async function main() {
+  const token = await getAccessToken();
+  const res = await fetch(`https://${SHOP}/admin/api/${API_VERSION}/custom_collections.json`, {
+    headers: { 'X-Shopify-Access-Token': token }
+  });
+  const data = await res.json();
+  console.log('Custom Collections:', data.custom_collections.map(c => ({ id: c.id, handle: c.handle, title: c.title })));
 }
 
-listCollections().catch(console.error);
-
+main().catch(console.error);

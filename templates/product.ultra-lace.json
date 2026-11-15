@@ -1,0 +1,148 @@
+{
+  "sections": {
+    "main": {
+      "type": "ultra-product-main",
+      "settings": {}
+    },
+    "problem": {
+      "type": "ultra-pdp-problem",
+      "settings": {
+        "eyebrow": "EVERYDAY INTIMATE ELEGANCE",
+        "title": "Period Underwear Should Feel Beautiful, Not Bulky",
+        "subhead": "You shouldn't have to choose between delicate feminine style and dependable leakproof security."
+      }
+    },
+    "editorial": {
+      "type": "ultra-pdp-editorial",
+      "settings": {
+        "eyebrow": "DELICATE CRAFT & ENGINEERING",
+        "heading": "Luxury Scalloped Lace with Invisible 5-Layer Core.",
+        "description": "ULTRA LACE™ is designed to celebrate your body with graceful floral lace detailing while providing the same clinically tested 40ml moisture management system as our overnight flagship.",
+        "caption": "ULTRA LACE™ floral lace detailing & mid-waist ergonomic contour",
+        "link_text": "Explore How It Works",
+        "link": "#ultra-how-it-works"
+      },
+      "blocks": {
+        "front": {
+          "type": "benefit",
+          "settings": {
+            "title": "Breathable Floral Lace",
+            "body": "Soft scalloped lace along the hips and rear adds feminine beauty with zero chafing or restrictive bands."
+          }
+        },
+        "core": {
+          "type": "benefit",
+          "settings": {
+            "title": "40ml High-Capacity Core",
+            "body": "Whisper-thin absorbent core locks fluid deep inside within seconds, keeping the skin-facing surface dry."
+          }
+        },
+        "rear": {
+          "type": "benefit",
+          "settings": {
+            "title": "Seamless Rear Fit",
+            "body": "Contours effortlessly under trousers, skirts, or loungewear without visible panty lines."
+          }
+        },
+        "side": {
+          "type": "benefit",
+          "settings": {
+            "title": "Anti-Roll Comfort Band",
+            "body": "Gentle mid-waist stretch band stays securely in place without digging into your hips."
+          }
+        }
+      },
+      "block_order": [
+        "front",
+        "core",
+        "rear",
+        "side"
+      ]
+    },
+    "layers": {
+      "type": "ultra-five-layers",
+      "settings": {
+        "title": "5 Layers of Invisible Protection",
+        "description": "Engineered with whisper-thin absorption technology so you feel dry, fresh, and confident all day."
+      }
+    },
+    "comfort": {
+      "type": "ultra-lifestyle-comfort",
+      "settings": {
+        "eyebrow": "DAYTIME & BEDTIME VERSATILITY",
+        "title": "Designed for Pure Feminine Confidence",
+        "description": "From morning meetings to relaxing evenings, ULTRA LACE™ moves gracefully with your day without feeling like protective gear."
+      }
+    },
+    "fabric": {
+      "type": "ultra-fabric-experience",
+      "settings": {
+        "eyebrow": "INTIMATE SENSORY SOFTNESS",
+        "title": "Crafted for Skin-to-Skin Silkiness",
+        "description": "Ultra-soft modal knit top sheet paired with delicate non-scratch lace designed for sensitive skin during every day of your cycle."
+      }
+    },
+    "choose_pack": {
+      "type": "ultra-choose-pack",
+      "settings": {
+        "eyebrow": "YOUR DAILY ROTATION",
+        "title": "Why Women Choose Multi-Pair Bundles",
+        "subhead": "Stock your drawer with our 3-Pack (Save 10%) or 5-Pack (Save 20%) for stress-free wash days."
+      }
+    },
+    "hiw_steps": {
+      "type": "ultra-hiw-steps",
+      "settings": {
+        "eyebrow": "EASY CARE RITUAL",
+        "title": "How ULTRA LACE™ Works",
+        "subhead": "Wear, rinse, gentle machine wash, and air dry. Built to last through 100+ cycles."
+      }
+    },
+    "explore_styles": {
+      "type": "ultra-shop-by-style",
+      "settings": {
+        "eyebrow": "EXPLORE OTHER SILHOUETTES",
+        "title": "Discover More From The ULTRA™ Collection",
+        "subhead": "Choose the right cut for your day, flow, and bedtime routine."
+      }
+    },
+    "tabs": {
+      "type": "ultra-pdp-tabs",
+      "settings": {
+        "eyebrow": "IN-DEPTH SPECIFICATIONS",
+        "title": "Product Details & Technical Specifications",
+        "subhead": "Complete transparency into our materials, sizing standards, care rituals, and production roadmap."
+      }
+    },
+    "reviews": {
+      "type": "ultra-reviews",
+      "settings": {
+        "title": "Loved For Elegance & True Reliability",
+        "subhead": "Designed around the feeling of comfort and the details that matter.",
+        "enable_review_app": false
+      }
+    },
+    "faq": {
+      "type": "ultra-faq",
+      "settings": {
+        "eyebrow": "CLARITY & DETAILS",
+        "title": "Frequently Asked Questions",
+        "subhead": "Clear, transparent answers about sizing, absorbency, lace care, and returns."
+      }
+    }
+  },
+  "order": [
+    "main",
+    "problem",
+    "editorial",
+    "layers",
+    "comfort",
+    "fabric",
+    "choose_pack",
+    "hiw_steps",
+    "explore_styles",
+    "tabs",
+    "reviews",
+    "faq"
+  ]
+}
