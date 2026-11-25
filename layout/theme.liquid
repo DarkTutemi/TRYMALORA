@@ -107,10 +107,7 @@
       }
     {% endstyle %}
 
-    {{ 'zavelyn-base.css' | asset_url | stylesheet_tag }}
-    {{ 'zavelyn-layout.css' | asset_url | stylesheet_tag }}
-    {{ 'zavelyn-components.css' | asset_url | stylesheet_tag }}
-    {{ 'zavelyn.css' | asset_url | stylesheet_tag }}
+    {% comment %} Removed conflicting zavelyn CSS — using 8sheep Showcase theme CSS only {% endcomment %}
 
     <script>
       document.documentElement.classList.replace('no-js', 'js');
@@ -163,8 +160,9 @@
     {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
     {{ 'pdp-upsell.css' | asset_url | stylesheet_tag }}
     <style>
-      html, body { overflow-x: hidden !important; max-width: 100vw !important; }
-      #MainContent { display: block !important; width: 100% !important; }
+      html, body { overflow-x: hidden !important; max-width: 100vw !important; opacity: 1 !important; visibility: visible !important; }
+      #MainContent, .main-content, .shopify-section { display: block !important; width: 100% !important; opacity: 1 !important; visibility: visible !important; }
+      .skip-link { position: absolute !important; left: -9999px !important; }
     </style>
     <script src="{{ 'vendor.min.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
