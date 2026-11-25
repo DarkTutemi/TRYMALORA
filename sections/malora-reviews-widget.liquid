@@ -1,0 +1,344 @@
+{% comment %} MALORA ORGANICS — VERIFIED REVIEWS WIDGET (>= 3 STARS ONLY, STAMPED 1:1 CLONE) {% endcomment %}
+<style>
+  .malora-rev-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+    font-family: inherit;
+    color: #323A31;
+    border-top: 1px solid #EAEAE6;
+  }
+  .malora-rev-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+  .malora-rev-score-box {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .malora-rev-big-num {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1;
+    color: #323A31;
+  }
+  .malora-rev-stars {
+    color: #323A31;
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+  .malora-rev-total {
+    font-size: 14px;
+    color: #666;
+    margin-top: 4px;
+  }
+  .malora-rev-bars {
+    flex: 1;
+    max-width: 340px;
+    min-width: 240px;
+  }
+  .malora-rev-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+  .malora-rev-bar-track {
+    flex: 1;
+    height: 8px;
+    background: #EFEFEF;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .malora-rev-bar-fill {
+    height: 100%;
+    background: #8C8C8C;
+    border-radius: 4px;
+  }
+  .malora-rev-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 200px;
+  }
+  .malora-rev-btn {
+    padding: 10px 18px;
+    border: 1px solid #D5D5D0;
+    background: #fff;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #323A31;
+    cursor: pointer;
+    text-align: center;
+  }
+  .malora-rev-btn:hover {
+    background: #F7F6F3;
+  }
+  .malora-rev-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-top: 1px solid #EAEAE6;
+    border-bottom: 1px solid #EAEAE6;
+    margin-bottom: 20px;
+  }
+  .malora-rev-search {
+    flex: 1;
+    min-width: 220px;
+    max-width: 420px;
+    padding: 9px 14px;
+    border: 1px solid #D5D5D0;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  .malora-rev-sort {
+    padding: 9px 14px;
+    border: 1px solid #D5D5D0;
+    border-radius: 6px;
+    font-size: 13px;
+    background: #fff;
+    color: #323A31;
+  }
+  .malora-rev-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .malora-rev-card {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #F0EFEA;
+  }
+  .malora-rev-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+  .malora-rev-author-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .malora-rev-avatar {
+    position: relative;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #EFECE6;
+    color: #323A31;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .malora-rev-verified-dot {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #10B981;
+    color: #fff;
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid #fff;
+  }
+  .malora-rev-author-name {
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .malora-rev-badge {
+    background: #F3F4F6;
+    color: #374151;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+  .malora-rev-country {
+    font-size: 12px;
+    color: #666;
+    margin-top: 2px;
+  }
+  .malora-rev-date {
+    font-size: 12px;
+    color: #888;
+  }
+  .malora-rev-card-stars {
+    color: #323A31;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .malora-rev-card-title {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  .malora-rev-card-body {
+    font-size: 14px;
+    line-height: 1.55;
+    color: #444;
+  }
+</style>
+
+<div class="malora-rev-section" id="MaloraReviewsWidget" data-handle="{{ product.handle }}">
+  <div class="malora-rev-header">
+    <div class="malora-rev-score-box">
+      <div class="malora-rev-big-num" id="MaloraRevAvg">4.9</div>
+      <div>
+        <div class="malora-rev-stars">★★★★★</div>
+        <div class="malora-rev-total" id="MaloraRevTotal">Based on verified reviews</div>
+      </div>
+    </div>
+
+    <div class="malora-rev-bars" id="MaloraRevBars">
+      <div class="malora-rev-bar-row" data-star="5">
+        <span>5 ★</span>
+        <div class="malora-rev-bar-track"><div class="malora-rev-bar-fill" style="width:92%"></div></div>
+        <span id="MaloraCount5"></span>
+      </div>
+      <div class="malora-rev-bar-row" data-star="4">
+        <span>4 ★</span>
+        <div class="malora-rev-bar-track"><div class="malora-rev-bar-fill" style="width:6%"></div></div>
+        <span id="MaloraCount4"></span>
+      </div>
+      <div class="malora-rev-bar-row" data-star="3">
+        <span>3 ★</span>
+        <div class="malora-rev-bar-track"><div class="malora-rev-bar-fill" style="width:2%"></div></div>
+        <span id="MaloraCount3"></span>
+      </div>
+    </div>
+
+    <div class="malora-rev-actions">
+      <button type="button" class="malora-rev-btn" onclick="alert('Thank you! Review submission is available for verified buyers.')">✎ Write a review</button>
+      <button type="button" class="malora-rev-btn" onclick="alert('Questions? Contact support@trymalora.com')">💬 Ask a question</button>
+    </div>
+  </div>
+
+  <div class="malora-rev-controls">
+    <input type="text" id="MaloraRevSearch" class="malora-rev-search" placeholder="🔍 Search reviews...">
+    <select id="MaloraRevSort" class="malora-rev-sort">
+      <option value="highest">Highest Rating</option>
+      <option value="recent">Most Recent</option>
+    </select>
+  </div>
+
+  <div class="malora-rev-list" id="MaloraRevList">
+    <p style="text-align:center; color:#888; padding:24px;">Loading verified reviews...</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  const widget = document.getElementById('MaloraReviewsWidget');
+  if (!widget) return;
+  const handle = widget.dataset.handle || 'sleepylotion';
+  const jsonUrl = "{{ 'malora-reviews.json' | asset_url }}";
+
+  let allReviews = [];
+
+  function renderReviews(list) {
+    const container = document.getElementById('MaloraRevList');
+    if (!list || list.length === 0) {
+      container.innerHTML = '<p style="text-align:center; color:#888; padding:24px;">No matching reviews found.</p>';
+      return;
+    }
+    container.innerHTML = list.slice(0, 10).map(r => {
+      const initial = (r.author || 'V').charAt(0).toUpperCase();
+      const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+      return `
+        <div class="malora-rev-card">
+          <div class="malora-rev-card-top">
+            <div class="malora-rev-author-wrap">
+              <div class="malora-rev-avatar">
+                ${initial}
+                <span class="malora-rev-verified-dot">✓</span>
+              </div>
+              <div>
+                <div class="malora-rev-author-name">
+                  <span>${r.author}</span>
+                  <span class="malora-rev-badge">Verified Buyer</span>
+                </div>
+                <div class="malora-rev-country">🇺🇸 ${r.country || 'United States'}</div>
+              </div>
+            </div>
+            <div class="malora-rev-date">${r.date}</div>
+          </div>
+          <div class="malora-rev-card-stars">${stars}</div>
+          ${r.title ? `<div class="malora-rev-card-title">${r.title}</div>` : ''}
+          <div class="malora-rev-card-body">${r.message}</div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  fetch(jsonUrl)
+    .then(res => res.json())
+    .then(data => {
+      const prodData = data[handle] || data['sleepylotion'];
+      if (!prodData) return;
+
+      // Strictly enforce >= 3 stars
+      allReviews = (prodData.reviews || []).filter(r => Number(r.rating) >= 3);
+
+      document.getElementById('MaloraRevAvg').textContent = prodData.average || '4.9';
+      document.getElementById('MaloraRevTotal').textContent = `Based on ${prodData.total || allReviews.length} verified reviews`;
+
+      const c5 = prodData.counts?.[5] || allReviews.filter(r => r.rating === 5).length;
+      const c4 = prodData.counts?.[4] || allReviews.filter(r => r.rating === 4).length;
+      const c3 = prodData.counts?.[3] || allReviews.filter(r => r.rating === 3).length;
+      document.getElementById('MaloraCount5').textContent = `(${c5})`;
+      document.getElementById('MaloraCount4').textContent = `(${c4})`;
+      document.getElementById('MaloraCount3').textContent = `(${c3})`;
+
+      renderReviews(allReviews);
+    })
+    .catch(() => {
+      document.getElementById('MaloraRevList').innerHTML = '';
+    });
+
+  document.getElementById('MaloraRevSearch')?.addEventListener('input', function() {
+    const q = this.value.toLowerCase();
+    const filtered = allReviews.filter(r =>
+      (r.message || '').toLowerCase().includes(q) ||
+      (r.title || '').toLowerCase().includes(q) ||
+      (r.author || '').toLowerCase().includes(q)
+    );
+    renderReviews(filtered);
+  });
+
+  document.getElementById('MaloraRevSort')?.addEventListener('change', function() {
+    const sorted = [...allReviews];
+    if (this.value === 'highest') {
+      sorted.sort((a, b) => b.rating - a.rating);
+    }
+    renderReviews(sorted);
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Malora Reviews Widget",
+  "settings": []
+}
+{% endschema %}

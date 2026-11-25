@@ -4,6 +4,10 @@
       "type": "malora-product-main",
       "settings": {}
     },
+    "reviews_widget": {
+      "type": "malora-reviews-widget",
+      "settings": {}
+    },
     "testimonials": {
       "type": "malora-testimonials",
       "settings": {}
@@ -23,6 +27,7 @@
   },
   "order": [
     "main",
+    "reviews_widget",
     "testimonials",
     "reviews_swiper",
     "faq",
