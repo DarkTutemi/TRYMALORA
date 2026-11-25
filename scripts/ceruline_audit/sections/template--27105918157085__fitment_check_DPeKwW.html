@@ -1,0 +1,348 @@
+<div id="shopify-section-template--27105918157085__fitment_check_DPeKwW" class="shopify-section"><!-- ============================================================
+     CERULINE FITMENT CHECK — full-page section (Shopify)
+     Paste into a Custom Liquid block / section placed above the FAQ.
+     Desktop: selects in a row. Mobile: stacked. No external services
+     except the free NHTSA VIN decoder (only used if you re-enable VIN).
+     ============================================================ -->
+<div class="cfs" id="cfs">
+  <div class="cfs-eyebrow">Compatibility Checker</div>
+  <h2 class="cfs-title">Check If It Fits Your Vehicle</h2>
+  <p class="cfs-sub">Pick your make, model and year &mdash; we&rsquo;ll tell you instantly whether this module works with your vehicle.</p>
+
+  <div class="cfs-form">
+    <div class="cfs-field">
+      <label for="cfsMake">Make</label>
+      <select id="cfsMake"><option value="">Select make</option></select>
+    </div>
+    <div class="cfs-field">
+      <label for="cfsModel">Model</label>
+      <select id="cfsModel" disabled><option value="">Select model</option></select>
+    </div>
+    <div class="cfs-field">
+      <label for="cfsYear">Year</label>
+      <select id="cfsYear" disabled><option value="">Select year</option></select>
+    </div>
+    <div class="cfs-field cfs-btnwrap">
+      <button type="button" id="cfsBtn">Check Compatibility</button>
+    </div>
+  </div>
+
+  <div class="cfs-extra" id="cfsEngineRow" style="display:none">
+    <label for="cfsEngine">Which engine do you have? <span>(badged on the fender or tailgate)</span></label>
+    <select id="cfsEngine"><option value="">Select engine</option></select>
+  </div>
+  <div class="cfs-extra" id="cfsTransRow" style="display:none">
+    <label for="cfsTrans">Which transmission do you have?</label>
+    <select id="cfsTrans">
+      <option value="">Select transmission</option>
+      <option value="6">6-speed automatic</option>
+      <option value="8">8-speed automatic</option>
+      <option value="10">10-speed automatic</option>
+      <option value="unsure">Not sure</option>
+    </select>
+  </div>
+  <div class="cfs-extra" id="cfsLtdRow" style="display:none">
+    <label for="cfsLtd">Which 2022 model do you have?</label>
+    <select id="cfsLtd">
+      <option value="">Select model type</option>
+      <option value="ltd">Carry-over model (small 8&Prime; dash screen)</option>
+      <option value="refresh">Refreshed model (large 13.4&Prime; touchscreen)</option>
+      <option value="unsure">Not sure</option>
+    </select>
+  </div>
+
+  <div class="cfs-card" id="cfsResult" style="display:none"></div>
+
+  <p class="cfs-foot">Not sure about your vehicle? Email us at <span class="cfs-email" title="Click to copy">info@ceruline.com</span> &mdash; we&rsquo;ll confirm for free. Every order is covered by our 30-day money-back guarantee.</p>
+</div>
+
+<style>
+.cfs{max-width:1050px;margin:0 auto;padding:44px 34px;font-family:inherit;text-align:center;background:#faf5e9;border-radius:16px}
+.cfs-eyebrow{color:#b8912f;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.cfs-title{font-size:45px;margin:0 0 12px;color:#000}
+.cfs-sub{font-size:14px;color:#000;margin:0 auto 28px;max-width:560px;line-height:1.5}
+.cfs-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:14px;text-align:left}
+.cfs-field label{display:block;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#000;margin-bottom:7px}
+.cfs select{width:100%;padding:12px;font-size:14px;border:1px solid #d5d0c3;border-radius:9px;background:#fff;color:#111}
+.cfs select:disabled{background:#f4f2ec;color:#9a917d}
+.cfs-btnwrap{align-self:end}
+.cfs-btnwrap button{width:100%;padding:12px 24px;font-size:14px;font-weight:700;border:none;border-radius:9px;background:#b8912f;color:#fff;cursor:pointer;white-space:nowrap;transition:filter .15s}
+.cfs-btnwrap button:hover{filter:brightness(1.07)}
+.cfs-extra{margin-top:14px;text-align:left;max-width:480px}
+.cfs-extra label{display:block;font-size:13.5px;font-weight:700;color:#000;margin-bottom:7px}
+.cfs-extra label span{font-weight:400;color:#888;font-size:12.5px}
+.cfs-card{margin-top:22px;border-radius:12px;padding:20px 22px;text-align:left;line-height:1.55;font-size:14px}
+.cfs-card.ok{background:#e9f7ee;border:1px solid #bfe6cf;color:#0b5c33}
+.cfs-card.no{background:#fdecec;border:1px solid #f3c1c1;color:#8e1f1f}
+.cfs-card.warn{background:#fff6df;border:1px solid #ecd9a0;color:#7a5200}
+.cfs-card .c-title{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:700;margin-bottom:8px}
+.cfs-card .c-dot{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:14px;flex:none}
+.cfs-card.ok .c-dot{background:#189a52}
+.cfs-card.no .c-dot{background:#c62828}
+.cfs-card.warn .c-dot{background:#c99a1f}
+.cfs-card .c-cta{display:inline-block;margin-top:14px;padding:12px 24px;font-size:14px;font-weight:700;border:none;border-radius:9px;background:#b8912f;color:#fff;cursor:pointer}
+.cfs-foot{font-size:13px;color:#000;margin-top:22px}
+.cfs-email{font-weight:700;text-decoration:underline dotted;cursor:pointer;white-space:nowrap;color:#444}
+@media (max-width:749px){
+  .cfs{padding:34px 16px;border-radius:0}
+  .cfs-title{font-size:35px}
+  .cfs-form{grid-template-columns:1fr}
+  .cfs-extra{max-width:none}
+}
+</style>
+
+<script>
+(function(){
+/* ---------- COMPATIBILITY DATA — generated from chart v16 ---------- */
+/* status: 'yes' | 'no' | 'trans' (ask transmission) | 'ltd' (2022 carryover check) */
+function pickups(make, model){
+  return [
+    {make, model, engine:'4.3L V6',  from:2007, to:2021, status:'yes'},
+    {make, model, engine:'5.3L V8',  from:2007, to:2018, status:'yes'},
+    {make, model, engine:'5.3L V8',  from:2019, to:2021, status:'trans'},
+    {make, model, engine:'5.3L V8',  from:2022, to:2022, status:'ltd'},
+    {make, model, engine:'6.0L V8',  from:2007, to:2013, status:'yes', note:'1500 models only — HD (2500/3500) trucks are not supported.'},
+    {make, model, engine:'6.2L V8',  from:(make==='GMC'?2010:2009), to:2018, status:'yes'},
+    {make, model, engine:'6.2L V8',  from:2019, to:2026, status:'no',
+      note:'All 2019+ '+model+' 6.2L trucks use Dynamic Fuel Management with the 10-speed transmission, which this module does not support.'},
+    {make, model, engine:'5.3L V8',  from:2023, to:2026, status:'no',
+      note:'2023+ refreshed trucks are not supported by this module.'},
+  ];
+}
+function suvNo(make, model, engines){
+  return engines.map(e => ({make, model, engine:e, from:2021, to:2026, status:'no',
+    note:'2021+ '+model+' models use Dynamic Fuel Management, which this module does not support.'}));
+}
+var RULES = [].concat(
+  pickups('Chevrolet','Silverado'), pickups('GMC','Sierra'),
+  [
+  /* Chevrolet */
+  {make:'Chevrolet',model:'Tahoe',engine:'5.3L V8',from:2007,to:2020,status:'yes'},
+  {make:'Chevrolet',model:'Tahoe',engine:'6.2L V8',from:2018,to:2020,status:'yes'},
+  {make:'Chevrolet',model:'Suburban',engine:'5.3L V8',from:2007,to:2020,status:'yes'},
+  {make:'Chevrolet',model:'Suburban',engine:'6.0L V8',from:2007,to:2018,status:'yes'},
+  {make:'Chevrolet',model:'Suburban',engine:'6.2L V8',from:2019,to:2020,status:'yes'},
+  {make:'Chevrolet',model:'Avalanche',engine:'5.3L V8',from:2007,to:2013,status:'yes'},
+  {make:'Chevrolet',model:'Avalanche',engine:'6.0L V8',from:2007,to:2009,status:'yes'},
+  {make:'Chevrolet',model:'Camaro',engine:'3.6L V6',from:2016,to:2024,status:'yes'},
+  {make:'Chevrolet',model:'Camaro',engine:'6.2L V8',from:2010,to:2024,status:'yes'},
+  {make:'Chevrolet',model:'Corvette',engine:'6.2L V8',from:2014,to:2019,status:'yes'},
+  {make:'Chevrolet',model:'Colorado',engine:'3.6L V6',from:2015,to:2020,status:'yes'},
+  {make:'Chevrolet',model:'Caprice PPV',engine:'6.0L V8',from:2011,to:2017,status:'yes'},
+  {make:'Chevrolet',model:'Express 1500',engine:'5.3L V8',from:2014,to:2014,status:'yes'},
+  {make:'Chevrolet',model:'Impala',engine:'3.9L V6',from:2007,to:2009,status:'yes'},
+  {make:'Chevrolet',model:'Impala',engine:'5.3L V8',from:2006,to:2009,status:'yes'},
+  {make:'Chevrolet',model:'Monte Carlo',engine:'5.3L V8',from:2006,to:2007,status:'yes'},
+  {make:'Chevrolet',model:'SS',engine:'6.2L V8',from:2014,to:2017,status:'yes'},
+  {make:'Chevrolet',model:'Malibu',engine:'3.6L V6',from:2008,to:2012,status:'yes'},
+  {make:'Chevrolet',model:'Malibu',engine:'3.9L V6',from:2006,to:2007,status:'yes'},
+  {make:'Chevrolet',model:'Uplander',engine:'3.9L V6',from:2006,to:2009,status:'yes'},
+  {make:'Chevrolet',model:'Equinox Sport',engine:'3.6L V6',from:2008,to:2009,status:'yes'},
+  {make:'Chevrolet',model:'Trailblazer',engine:'5.3L V8',from:2006,to:2008,status:'yes'},
+  /* GMC */
+  {make:'GMC',model:'Yukon',engine:'5.3L V8',from:2007,to:2020,status:'yes'},
+  {make:'GMC',model:'Yukon',engine:'6.2L V8',from:2010,to:2020,status:'yes'},
+  {make:'GMC',model:'Yukon XL',engine:'5.3L V8',from:2015,to:2020,status:'yes'},
+  {make:'GMC',model:'Yukon XL',engine:'6.2L V8',from:2014,to:2020,status:'yes'},
+  {make:'GMC',model:'Acadia',engine:'3.6L V6',from:2007,to:2008,status:'yes'},
+  {make:'GMC',model:'Canyon',engine:'3.6L V6',from:2015,to:2020,status:'yes'},
+  {make:'GMC',model:'Envoy',engine:'5.3L V8',from:2005,to:2009,status:'yes'},
+  /* Cadillac */
+  {make:'Cadillac',model:'Escalade / ESV',engine:'6.0L/6.2L V8',from:2010,to:2020,status:'yes'},
+  {make:'Cadillac',model:'ATS',engine:'3.6L V6',from:2013,to:2019,status:'yes'},
+  {make:'Cadillac',model:'CT6',engine:'3.6L V6',from:2016,to:2018,status:'yes'},
+  {make:'Cadillac',model:'CT6 (non-Hybrid)',engine:'3.0L V6',from:2016,to:2018,status:'yes'},
+  {make:'Cadillac',model:'CTS',engine:'3.6L V6',from:2004,to:2019,status:'yes'},
+  {make:'Cadillac',model:'CTS',engine:'6.0L V8',from:2006,to:2007,status:'yes'},
+  {make:'Cadillac',model:'CTS',engine:'6.2L V8',from:2009,to:2019,status:'yes'},
+  {make:'Cadillac',model:'SRX',engine:'3.6L V6',from:2004,to:2009,status:'yes'},
+  {make:'Cadillac',model:'STS',engine:'3.6L V6',from:2005,to:2007,status:'yes'},
+  {make:'Cadillac',model:'XT5',engine:'3.6L V6',from:2017,to:2019,status:'yes'},
+  {make:'Cadillac',model:'XTS',engine:'3.6L V6',from:2013,to:2019,status:'yes'},
+  /* Buick */
+  {make:'Buick',model:'Enclave',engine:'3.6L V6',from:2008,to:2020,status:'yes'},
+  {make:'Buick',model:'LaCrosse',engine:'3.6L V6',from:2005,to:2019,status:'yes'},
+  {make:'Buick',model:'LaCrosse',engine:'5.3L V8',from:2008,to:2009,status:'yes'},
+  {make:'Buick',model:'Rendezvous',engine:'3.5L/3.6L V6',from:2006,to:2007,status:'yes'},
+  {make:'Buick',model:'Terraza',engine:'3.9L V6',from:2006,to:2007,status:'yes'},
+  {make:'Buick',model:'Rainier',engine:'5.3L V8',from:2005,to:2007,status:'yes'},
+  {make:'Buick',model:'Envision',engine:'2.5L L4',from:2017,to:2018,status:'yes'},
+  /* Pontiac */
+  {make:'Pontiac',model:'G6',engine:'3.9L V6',from:2007,to:2007,status:'yes'},
+  {make:'Pontiac',model:'G6',engine:'3.6L V6',from:2008,to:2009,status:'yes'},
+  {make:'Pontiac',model:'G8',engine:'3.6L V6',from:2008,to:2009,status:'yes'},
+  {make:'Pontiac',model:'G8',engine:'6.0L V8',from:2008,to:2009,status:'yes'},
+  {make:'Pontiac',model:'G8',engine:'6.2L V8',from:2009,to:2009,status:'yes'},
+  {make:'Pontiac',model:'Grand Prix',engine:'3.8L V6',from:2007,to:2007,status:'yes'},
+  {make:'Pontiac',model:'Grand Prix',engine:'5.3L V8',from:2005,to:2008,status:'yes'},
+  {make:'Pontiac',model:'Montana',engine:'3.9L V6',from:2006,to:2009,status:'yes'},
+  {make:'Pontiac',model:'Torrent',engine:'3.6L V6',from:2008,to:2009,status:'yes'},
+  /* Saturn */
+  {make:'Saturn',model:'Outlook XE',engine:'3.6L V6',from:2007,to:2008,status:'yes'},
+  {make:'Saturn',model:'Relay',engine:'3.9L V6',from:2006,to:2008,status:'yes'},
+  {make:'Saturn',model:'Aura XR',engine:'3.6L V6',from:2007,to:2009,status:'yes'},
+  {make:'Saturn',model:'Vue XR / Red Line',engine:'3.6L V6',from:2008,to:2009,status:'yes'},
+  /* Saab / Isuzu / Suzuki / Holden */
+  {make:'Saab',model:'9-7X',engine:'5.3L V8',from:2005,to:2009,status:'yes'},
+  {make:'Isuzu',model:'Ascender',engine:'5.3L V8',from:2005,to:2009,status:'yes'},
+  {make:'Suzuki',model:'XL7',engine:'3.6L V6',from:2007,to:2009,status:'yes'},
+  {make:'Holden',model:'Commodore (VZ/Calais/Crewman/Ute)',engine:'3.6L V6',from:2006,to:2018,status:'yes'},
+  {make:'Holden',model:'Commodore 9C1 (Police)',engine:'6.0L V8',from:2015,to:2018,status:'yes'},
+  {make:'Holden',model:'VE Commodore Omega',engine:'3.6L V6',from:2006,to:2009,status:'yes'},
+  {make:'Holden',model:'Rodeo',engine:'3.6L V6',from:2006,to:2011,status:'yes'},
+  {make:'Holden',model:'Colorado',engine:'3.6L V6',from:2006,to:2011,status:'yes'},
+  {make:'Holden',model:'Statesman / Caprice (WL/WM)',engine:'3.6L V6',from:2006,to:2017,status:'yes'}
+  ],
+  suvNo('Chevrolet','Tahoe',['5.3L V8','6.2L V8']),
+  suvNo('Chevrolet','Suburban',['5.3L V8','6.2L V8']),
+  suvNo('GMC','Yukon',['5.3L V8','6.2L V8']),
+  suvNo('GMC','Yukon XL',['5.3L V8','6.2L V8']),
+  suvNo('Cadillac','Escalade / ESV',['6.2L V8'])
+);
+
+/* ---------- UI wiring (full-section version) ---------- */
+var $ = function(id){ return document.getElementById(id); };
+var makeSel=$('cfsMake'), modelSel=$('cfsModel'), yearSel=$('cfsYear'), engineSel=$('cfsEngine'),
+    engineRow=$('cfsEngineRow'), transRow=$('cfsTransRow'), transSel=$('cfsTrans'),
+    ltdRow=$('cfsLtdRow'), ltdSel=$('cfsLtd'), resultEl=$('cfsResult'), btn=$('cfsBtn'), root=$('cfs');
+
+root.addEventListener('click', function(e){
+  var el = e.target.closest ? e.target.closest('.cfs-email') : null;
+  if(!el) return;
+  var addr='info@ceruline.com';
+  function done(){ el.textContent='Copied ✓'; setTimeout(function(){ el.textContent=addr; },1500); }
+  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(addr).then(done,function(){}); }
+  else { try{ var ta=document.createElement('textarea'); ta.value=addr; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); done(); }catch(err){} }
+});
+
+function fill(sel, items, ph, extra){
+  sel.innerHTML=''; sel.add(new Option(ph,''));
+  items.forEach(function(v){ sel.add(new Option(v,v)); });
+  if(extra) sel.add(new Option(extra[0],extra[1]));
+  sel.disabled = items.length===0;
+}
+function uniq(a){ return a.filter(function(v,i){ return a.indexOf(v)===i; }); }
+function rulesFor(m,mo,y){
+  return RULES.filter(function(r){ return r.make===m && r.model===mo && (!y || (y>=r.from && y<=r.to)); });
+}
+function hideAll(){
+  resultEl.style.display='none';
+  engineRow.style.display='none'; engineSel.value='';
+  transRow.style.display='none'; transSel.value='';
+  ltdRow.style.display='none'; ltdSel.value='';
+}
+
+fill(makeSel, uniq(RULES.map(function(r){return r.make;})).sort(), 'Select make');
+makeSel.onchange=function(){
+  hideAll();
+  var m=makeSel.value;
+  fill(modelSel, m?uniq(RULES.filter(function(r){return r.make===m;}).map(function(r){return r.model;})).sort():[], 'Select model');
+  fill(yearSel,[],'Select year');
+};
+modelSel.onchange=function(){
+  hideAll();
+  var yrs=[];
+  rulesFor(makeSel.value, modelSel.value).forEach(function(r){ for(var y=r.from;y<=r.to;y++) if(yrs.indexOf(y)<0) yrs.push(y); });
+  yrs.sort(function(a,b){return b-a;});
+  fill(yearSel, modelSel.value?yrs:[], 'Select year');
+};
+yearSel.onchange=function(){ hideAll(); };
+engineSel.onchange=function(){ evaluate(); };
+transSel.onchange=function(){ evaluate(); };
+ltdSel.onchange=function(){ evaluate(); };
+btn.addEventListener('click', function(){
+  if(!makeSel.value || !modelSel.value || !yearSel.value){
+    card('warn','Almost there','Please select your make, model and year above, then hit Check Compatibility.');
+    return;
+  }
+  evaluate();
+});
+
+function verdictLine(r){
+  if(r.status==='yes') return '✅ '+r.engine+' — Compatible';
+  if(r.status==='no') return '❌ '+r.engine+' — Not compatible';
+  if(r.status==='trans') return '⚠️ '+r.engine+' — 6 & 8-speed: compatible · 10-speed: not compatible';
+  return '⚠️ '+r.engine+' — carry-over “LTD” model: compatible · refreshed model: not compatible';
+}
+var REASSURE = 'Plugs in under your dash in 10 seconds — fully reversible, never voids your warranty.';
+function okCard(descLine){
+  card('ok','Compatible ✓', descLine+'<br><br>'+REASSURE+
+    '<br><button type="button" class="c-cta" id="cfsCta">Get yours now</button>');
+  var cta=$('cfsCta');
+  if(cta) cta.addEventListener('click', function(){
+    var t=document.querySelector('form[action*="/cart/add"]') || document.body;
+    t.scrollIntoView({behavior:'smooth', block:'center'});
+  });
+}
+function emailBit(){ return 'email us at <span class="cfs-email" title="Click to copy">info@ceruline.com</span>'; }
+
+function evaluate(){
+  var m=makeSel.value, mo=modelSel.value, y=+yearSel.value;
+  var seen={}, list=[];
+  rulesFor(m,mo,y).forEach(function(r){ if(!seen[r.engine]){ seen[r.engine]=1; list.push(r); } });
+  if(!list.length){ card('no','Not compatible','This module does not support the '+y+' '+m+' '+mo+'. Questions? '+emailBit()+'.'); return; }
+  var allYes=list.every(function(r){return r.status==='yes';});
+  var allNo=list.every(function(r){return r.status==='no';});
+
+  if(allYes){
+    var engTxt = list.length===1 ? ' with the '+list[0].engine : ' — all engine options are supported';
+    okCard('Your '+y+' '+m+' '+mo+' is compatible'+engTxt+'.');
+    return;
+  }
+  if(allNo){
+    var notes = uniq(list.map(function(r){return r.note||'';}));
+    var note = notes.length===1 && notes[0] ? notes[0] : 'This module does not support '+y+' '+mo+' models.';
+    card('no','Not compatible', note+' Questions? '+emailBit()+'.');
+    return;
+  }
+  /* mixed verdicts -> need engine */
+  var engs=list.map(function(r){return r.engine;}).sort();
+  if(!engineSel.value){
+    fill(engineSel, engs, 'Select engine', ['Not sure','__ALL__']);
+    engineRow.style.display='block';
+    card('warn','One more question','Your answer depends on the engine — select it above.');
+    return;
+  }
+  if(engineSel.value==='__ALL__'){
+    transRow.style.display='none'; transSel.value='';
+    ltdRow.style.display='none'; ltdSel.value='';
+    card('warn','Depends on your engine', list.map(verdictLine).join('<br>')+
+      '<br><span style="font-size:13px">Tip: the engine size is usually badged on the fender or tailgate. Questions? '+emailBit()+'.</span>');
+    return;
+  }
+  var rule=list.filter(function(r){return r.engine===engineSel.value;})[0];
+  if(!rule){ card('no','Not compatible','This configuration is not supported.'); return; }
+  var desc=y+' '+m+' '+mo+' '+engineSel.value;
+
+  if(rule.status==='yes'){ okCard('This module fits your '+desc+'.'); }
+  else if(rule.status==='no'){ card('no','Not compatible', (rule.note||'This configuration is not supported.')+' Questions? '+emailBit()+'.'); }
+  else if(rule.status==='trans'){
+    transRow.style.display='block';
+    var t=transSel.value;
+    if(!t){ card('warn','One more question','2019–2021 5.3L trucks came with three different transmissions — select yours above.'); return; }
+    if(t==='6'||t==='8') okCard('Your '+desc+' with the '+t+'-speed transmission is supported.');
+    else if(t==='10') card('no','Not compatible','The 10-speed transmission version is not supported by this module. Questions? '+emailBit()+'.');
+    else card('warn','We’ll confirm it for you','No problem — '+emailBit()+' with your year and model and we’ll confirm for free, usually within a day. You’re always covered by our 30-day guarantee.');
+  }
+  else if(rule.status==='ltd'){
+    ltdRow.style.display='block';
+    var name = m==='GMC' ? '“Limited”' : '“LTD”';
+    var l=ltdSel.value;
+    if(!l){ card('warn','One more question','Two different trucks were sold as 2022 models — select yours above. (The compatible one is often badged '+name+'.)'); return; }
+    if(l==='ltd') okCard('Your 2022 '+name+' (carry-over model) with the 6- or 8-speed transmission is supported.');
+    else if(l==='refresh') card('no','Not compatible','The refreshed 2022 model is not supported by this module. Questions? '+emailBit()+'.');
+    else card('warn','We’ll confirm it for you','No problem — '+emailBit()+' with your year and model and we’ll confirm for free, usually within a day. You’re always covered by our 30-day guarantee.');
+  }
+}
+
+function card(kind,title,body){
+  var mark = kind==='no' ? '<span class="c-dot">✕</span>' : (kind==='warn' ? '<span class="c-dot">!</span>' : '');
+  resultEl.className='cfs-card '+kind;
+  resultEl.style.display='block';
+  resultEl.innerHTML='<div class="c-title">'+mark+title+'</div><div>'+body+'</div>';
+}
+})();
+</script>
+
+
+</div>

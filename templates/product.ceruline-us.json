@@ -1,0 +1,61 @@
+{
+  "sections": {
+    "main": {
+      "type": "ceruline-us-product-main",
+      "settings": {}
+    },
+    "marquee": {
+      "type": "ceruline-us-marquee",
+      "settings": {}
+    },
+    "benefits_1": {
+      "type": "ceruline-us-benefits-1",
+      "settings": {}
+    },
+    "benefits_2": {
+      "type": "ceruline-us-benefits-2",
+      "settings": {}
+    },
+    "benefits_3": {
+      "type": "ceruline-us-benefits-3",
+      "settings": {}
+    },
+    "benefits_4": {
+      "type": "ceruline-us-benefits-4",
+      "settings": {}
+    },
+    "compatibility": {
+      "type": "ceruline-us-compatibility",
+      "settings": {}
+    },
+    "comparison": {
+      "type": "ceruline-us-comparison",
+      "settings": {}
+    },
+    "results": {
+      "type": "ceruline-us-results",
+      "settings": {}
+    },
+    "faq": {
+      "type": "ceruline-us-faq",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "ceruline-us-reviews",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "marquee",
+    "benefits_1",
+    "benefits_2",
+    "benefits_3",
+    "benefits_4",
+    "compatibility",
+    "comparison",
+    "results",
+    "faq",
+    "reviews"
+  ]
+}

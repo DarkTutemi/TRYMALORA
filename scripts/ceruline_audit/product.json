@@ -1,0 +1,264 @@
+{
+  "product": {
+    "id": 10211877552413,
+    "title": "AFM/DFM Disabler",
+    "body_html": "",
+    "vendor": "Ceruline",
+    "product_type": "",
+    "created_at": "2026-05-30T13:37:27-04:00",
+    "handle": "afm-dfm-disabler",
+    "updated_at": "2026-11-25T08:35:46-05:00",
+    "published_at": "2026-05-30T13:37:28-04:00",
+    "template_suffix": "",
+    "published_scope": "global",
+    "tags": "",
+    "variants": [
+      {
+        "id": 51812467671325,
+        "product_id": 10211877552413,
+        "title": "1x AFM/DFM Disabler",
+        "price": "89.00",
+        "sku": null,
+        "position": 1,
+        "compare_at_price": "178.00",
+        "fulfillment_service": "manual",
+        "inventory_management": null,
+        "option1": "1x AFM/DFM Disabler",
+        "option2": null,
+        "option3": null,
+        "created_at": "2026-06-03T06:40:38-04:00",
+        "updated_at": "2026-11-25T08:35:46-05:00",
+        "taxable": false,
+        "barcode": "",
+        "grams": 0,
+        "image_id": 64749869269277,
+        "weight": 0,
+        "weight_unit": "lb",
+        "requires_shipping": true,
+        "quantity_rule": {
+          "min": 1,
+          "max": null,
+          "increment": 1
+        },
+        "price_currency": "USD",
+        "compare_at_price_currency": "USD",
+        "quantity_price_breaks": []
+      },
+      {
+        "id": 51812467704093,
+        "product_id": 10211877552413,
+        "title": "2x AFM/DFM Disabler",
+        "price": "135.00",
+        "sku": null,
+        "position": 2,
+        "compare_at_price": "356.00",
+        "fulfillment_service": "manual",
+        "inventory_management": null,
+        "option1": "2x AFM/DFM Disabler",
+        "option2": null,
+        "option3": null,
+        "created_at": "2026-06-03T06:40:38-04:00",
+        "updated_at": "2026-11-25T08:35:46-05:00",
+        "taxable": false,
+        "barcode": "",
+        "grams": 0,
+        "image_id": 64749873004829,
+        "weight": 0,
+        "weight_unit": "lb",
+        "requires_shipping": true,
+        "quantity_rule": {
+          "min": 1,
+          "max": null,
+          "increment": 1
+        },
+        "price_currency": "USD",
+        "compare_at_price_currency": "USD",
+        "quantity_price_breaks": []
+      },
+      {
+        "id": 51812467736861,
+        "product_id": 10211877552413,
+        "title": "3x AFM/DFM Disabler",
+        "price": "179.00",
+        "sku": null,
+        "position": 3,
+        "compare_at_price": "534.00",
+        "fulfillment_service": "manual",
+        "inventory_management": null,
+        "option1": "3x AFM/DFM Disabler",
+        "option2": null,
+        "option3": null,
+        "created_at": "2026-06-03T06:40:38-04:00",
+        "updated_at": "2026-11-25T08:35:46-05:00",
+        "taxable": false,
+        "barcode": "",
+        "grams": 0,
+        "image_id": 64749883359517,
+        "weight": 0,
+        "weight_unit": "lb",
+        "requires_shipping": true,
+        "quantity_rule": {
+          "min": 1,
+          "max": null,
+          "increment": 1
+        },
+        "price_currency": "USD",
+        "compare_at_price_currency": "USD",
+        "quantity_price_breaks": []
+      }
+    ],
+    "options": [
+      {
+        "id": 12847710568733,
+        "product_id": 10211877552413,
+        "name": "Quantity",
+        "position": 1,
+        "values": [
+          "1x AFM/DFM Disabler",
+          "2x AFM/DFM Disabler",
+          "3x AFM/DFM Disabler"
+        ]
+      }
+    ],
+    "images": [
+      {
+        "id": 64731165425949,
+        "product_id": 10211877552413,
+        "position": 1,
+        "created_at": "2026-05-31T05:23:29-04:00",
+        "updated_at": "2026-05-31T05:23:31-04:00",
+        "alt": null,
+        "width": 800,
+        "height": 800,
+        "src": "https://cdn.shopify.com/s/files/1/0976/3540/2013/files/mainimage_5.webp?v=1780219411",
+        "variant_ids": []
+      },
+      {
+        "id": 64745429008669,
+        "product_id": 10211877552413,
+        "position": 2,
+        "created_at": "2026-06-02T17:06:29-04:00",
+        "updated_at": "2026-06-02T17:06:30-04:00",
+        "alt": null,
+        "width": 800,
+        "height": 800,
+        "src": "https://cdn.shopify.com/s/files/1/0976/3540/2013/files/installation_1.webp?v=1780434390",
+        "variant_ids": []
+      },
+      {
+        "id": 65300014760221,
+        "product_id": 10211877552413,
+        "position": 3,
+        "created_at": "2026-08-07T18:53:04-04:00",
+        "updated_at": "2026-08-07T18:53:05-04:00",
+        "alt": null,
+        "width": 2240,
+        "height": 2186,
+        "src": "https://cdn.shopify.com/s/files/1/0976/3540/2013/files/chart-page1-v16.png?v=1786143185",
+        "variant_ids": []
+      },
+      {
+        "id": 65300014727453,
+        "product_id": 10211877552413,
+        "position": 4,
+        "created_at": "2026-08-07T18:53:04-04:00",
+        "updated_at": "2026-08-07T18:53:05-04:00",
+        "alt": null,
+        "width": 2240,
+        "height": 2230,
+        "src": "https://cdn.shopify.com/s/files/1/0976/3540/2013/files/chart-page2-v16.png?v=1786143185",
+        "variant_ids": []
+      },
+      {
+        "id": 64745429041437,
+        "product_id": 10211877552413,
+        "position": 5,
+        "created_at": "2026-06-02T17:06:29-04:00",
+        "updated_at": "2026-06-02T17:06:30-04:00",
+        "alt": null,
+        "width": 800,
+        "height": 800,
+        "src": "https://cdn.shopify.com/s/files/1/0976/3540/2013/files/guarantee.webp?v=1780434390",
+        "variant_ids": []
+      },
+      {
+        "id": 64745429074205,
+        "product_id": 10211877552413,
+        "position": 6,
+        "created_at": "2026-06-02T17:06:29-04:00",
+        "updated_at": "2026-06-02T17:06:30-04:00",
+        "alt": null,
+        "width": 800,
+        "height": 800,
+        "src": "https://cdn.shopify.com/s/files/1/0976/3540/2013/files/comparison.webp?v=1780434390",
+        "variant_ids": []
+      },
+      {
+        "id": 64745429172509,
+        "product_id": 10211877552413,
+        "position": 7,
+        "created_at": "2026-06-02T17:06:29-04:00",
+        "updated_at": "2026-06-02T17:06:30-04:00",
+        "alt": null,
+        "width": 800,
+        "height": 800,
+        "src": "https://cdn.shopify.com/s/files/1/0976/3540/2013/files/afm-lifters.webp?v=1780434390",
+        "variant_ids": []
+      },
+      {
+        "id": 64749869269277,
+        "product_id": 10211877552413,
+        "position": 8,
+        "created_at": "2026-06-03T06:44:13-04:00",
+        "updated_at": "2026-06-03T06:44:14-04:00",
+        "alt": null,
+        "width": 300,
+        "height": 300,
+        "src": "https://cdn.shopify.com/s/files/1/0976/3540/2013/files/1quantity.png?v=1780483454",
+        "variant_ids": [
+          51812467671325
+        ]
+      },
+      {
+        "id": 64749873004829,
+        "product_id": 10211877552413,
+        "position": 9,
+        "created_at": "2026-06-03T06:44:30-04:00",
+        "updated_at": "2026-06-03T06:44:31-04:00",
+        "alt": null,
+        "width": 300,
+        "height": 300,
+        "src": "https://cdn.shopify.com/s/files/1/0976/3540/2013/files/2x_91a56e18-2a03-48d2-80e1-5d32aad9ddb3.png?v=1780483471",
+        "variant_ids": [
+          51812467704093
+        ]
+      },
+      {
+        "id": 64749883359517,
+        "product_id": 10211877552413,
+        "position": 10,
+        "created_at": "2026-06-03T06:44:44-04:00",
+        "updated_at": "2026-06-03T06:44:46-04:00",
+        "alt": null,
+        "width": 300,
+        "height": 300,
+        "src": "https://cdn.shopify.com/s/files/1/0976/3540/2013/files/3x_bc74a9df-7240-4c9d-bc47-06dac7e58ab5.png?v=1780483486",
+        "variant_ids": [
+          51812467736861
+        ]
+      }
+    ],
+    "image": {
+      "id": 64731165425949,
+      "product_id": 10211877552413,
+      "position": 1,
+      "created_at": "2026-05-31T05:23:29-04:00",
+      "updated_at": "2026-05-31T05:23:31-04:00",
+      "alt": null,
+      "width": 800,
+      "height": 800,
+      "src": "https://cdn.shopify.com/s/files/1/0976/3540/2013/files/mainimage_5.webp?v=1780219411",
+      "variant_ids": []
+    }
+  }
+}
