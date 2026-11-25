@@ -34,16 +34,11 @@
   }
   @media (max-width: 900px) {
     .malora-pdp-grid {
-      grid-template-columns: 1fr;
-      gap: 28px;
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 24px !important;
     }
-    .malora-pdp-wrapper,
-  .malora-pdp-wrapper * {
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
-  .malora-pdp-wrapper {
-      padding: 16px 16px 40px;
+    .malora-pdp-wrapper {
+      padding: 16px 16px 40px !important;
     }
   }
   /* Gallery */
