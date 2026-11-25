@@ -162,6 +162,10 @@
     {{ 'a11y.css' | asset_url | stylesheet_tag }}
     {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
     {{ 'pdp-upsell.css' | asset_url | stylesheet_tag }}
+    <style>
+      html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+      #MainContent { display: block !important; width: 100% !important; }
+    </style>
     <script src="{{ 'vendor.min.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'a11y.js' | asset_url }}" defer="defer"></script>
