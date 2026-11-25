@@ -152,37 +152,68 @@
       }
     </script>
     <script src="{{ 'zavelyn.js' | asset_url }}" type="module"></script>
-    {{ 'styles.css' | asset_url | stylesheet_tag }}
-    {{ 'new-homepage.css' | asset_url | stylesheet_tag }}
-    {{ 'c-global.css' | asset_url | stylesheet_tag }}
-    {{ 'custom-sl.css' | asset_url | stylesheet_tag }}
-    {{ 'a11y.css' | asset_url | stylesheet_tag }}
-    {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
-    {{ 'pdp-upsell.css' | asset_url | stylesheet_tag }}
-    <style>
-      html, body { overflow-x: hidden !important; max-width: 100vw !important; opacity: 1 !important; visibility: visible !important; }
-      #MainContent, .main-content, .shopify-section { display: block !important; width: 100% !important; opacity: 1 !important; visibility: visible !important; }
-      .skip-link { position: absolute !important; left: -9999px !important; }
-    </style>
-    <script src="{{ 'vendor.min.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'a11y.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'upgrade-to-subscription.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+    {%- if template.suffix == 'ceruline-us' or product.handle == 'ceruline-us-afm-dfm-disabler' -%}
+      {{ 'ceruline-us-base.css' | asset_url | stylesheet_tag }}
+      <script src="{{ 'ceruline-us-secondary.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'ceruline-us-scripts.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'ceruline-us-media-gallery.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'ceruline-us-product-image-zoom.js' | asset_url }}" defer="defer"></script>
+    {%- else -%}
+      {{ 'styles.css' | asset_url | stylesheet_tag }}
+      {{ 'new-homepage.css' | asset_url | stylesheet_tag }}
+      {{ 'c-global.css' | asset_url | stylesheet_tag }}
+      {{ 'custom-sl.css' | asset_url | stylesheet_tag }}
+      {{ 'a11y.css' | asset_url | stylesheet_tag }}
+      {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+      {{ 'pdp-upsell.css' | asset_url | stylesheet_tag }}
+      <style>
+        html, body { overflow-x: hidden !important; max-width: 100vw !important; opacity: 1 !important; visibility: visible !important; }
+        #MainContent, .main-content, .shopify-section { display: block !important; width: 100% !important; opacity: 1 !important; visibility: visible !important; }
+        .skip-link { position: absolute !important; left: -9999px !important; }
+      </style>
+      <script src="{{ 'vendor.min.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'a11y.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'upgrade-to-subscription.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
   </head>
 
   <body class="template-{{ template.name }}{% if template.suffix %} template-{{ template.name }}-{{ template.suffix }}{% endif %}">
     <a class="skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
-    {% sections 'header-group' %}
+    {%- if template.suffix == 'ceruline-us' or product.handle == 'ceruline-us-afm-dfm-disabler' -%}
+      <div id="top"></div>
+      {% section 'ceruline-us-announcement' %}
+      {% section 'ceruline-us-header' %}
 
-    <main id="MainContent" class="main-content" role="main" tabindex="-1">
-      {{ content_for_layout }}
-    </main>
+      <main id="MainContent" class="main-content" role="main" tabindex="-1">
+        {{ content_for_layout }}
+      </main>
 
-    {% sections 'footer-group' %}
+      {% section 'ceruline-us-footer' %}
+      {% section 'ceruline-us-cart-drawer' %}
+      <script>
+        document.addEventListener('click', function(e) {
+          var a = e.target.closest('a');
+          if (!a) return;
+          var href = a.getAttribute('href') || '';
+          if (href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.includes('/checkout') || href.includes('/cart')) return;
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      </script>
+    {%- else -%}
+      {% sections 'header-group' %}
 
-    {% section 'willa-cart-drawer' %}
+      <main id="MainContent" class="main-content" role="main" tabindex="-1">
+        {{ content_for_layout }}
+      </main>
+
+      {% sections 'footer-group' %}
+
+      {% section 'willa-cart-drawer' %}
+    {%- endif -%}
 
     <div id="zavelyn-live-region" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
   
