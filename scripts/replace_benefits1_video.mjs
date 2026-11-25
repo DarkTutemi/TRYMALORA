@@ -2,7 +2,7 @@ import fs from 'fs';
 import { getAccessToken, SHOP, API_VERSION } from './config.mjs';
 
 let html = fs.readFileSync('sections/ceruline-us-benefits-1.liquid', 'utf8');
-html = html.replace('<video autoplay loop muted playsinline', '<video id="CerulineBenefitsVideo" autoplay loop muted playsinline controls');
+html = html.replace('style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;"', 'style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;pointer-events:auto!important;position:relative!important;z-index:10!important;"');
 if (!html.includes('CerulineBenefitsVideo')) {
   html = html.replace('<video ', '<video id="CerulineBenefitsVideo" controls ');
 }
