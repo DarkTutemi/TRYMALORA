@@ -1,1384 +1,157 @@
-{% comment %} MALORA ORGANICS - 8SHEEP 1:1 CLONE {% endcomment %}
-<div id="shopify-section-c-header2" class="shopify-section c-header2-wrapper"><style data-shopify>
-   /* =============================================
-      C - Header 2  —  Scoped styles
-      ============================================= */
-
-   /* --- CSS Variables --- */
-   #c-header2.c-header2 {
-     --ch2-bg: rgba(0,0,0,0);
-     --ch2-text: #ffffff;
-     --ch2-text-bold: #ffffff;
-     --ch2-icon-color: #ffffff;
-     --ch2-dropdown-bg: rgba(0,0,0,0.26);
-     --ch2-dropdown-text: #ffffff;
-     --ch2-dropdown-blur: 32px;
-     --ch2-mobile-bg: rgba(0,0,0,0.26);
-     --ch2-mobile-text: #ffffff;
-     --ch2-badge-bg: #bc635b;
-     --ch2-badge-text: #ffffff;
-     --ch2-height: 84px;
-
-     position: fixed;
-     top: 35px;
-     left: 0;
-     right: 0;
-     z-index: 1000;
-     background-color: var(--ch2-bg);
-     width: 100%;
-     overflow: visible;
-   }
-
-   /* Wrapper: height 0 so fixed header doesn't push content down.
-      Prevent Shopify wrapper from clipping dropdown */
-   .cc-animate-enabled .shopify-section.c-header2-wrapper,
-   .c-header2-wrapper {
-     overflow: visible;
-     height: 0;
-   }
-
-   :root {
-     --nav-height: 84px;
-   }
-
-   /* --- Main bar --- */
-   #c-header2 .c-header2__bar {
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
-     max-width: 1312px;
-     margin: 0 auto;
-     padding: 12px 16px;
-     height: var(--ch2-height);
-     position: relative;
-     overflow: visible;
-   }
-
-   /* --- Logo --- */
-   #c-header2 .c-header2__logo {
-     display: flex;
-     align-items: center;
-     flex-shrink: 0;
-     text-decoration: none;
-   }
-
-   #c-header2 .c-header2__logo img {
-     display: block;
-     width: 120px;
-     height: auto;
-   }
-
-   @media (width >= 768px) {
-     #c-header2 .c-header2__logo img {
-       width: 180px;
-     }
-   }
-
-   #c-header2 .c-header2__logo-text {
-     font-family: var(--font-heading-bold);
-     font-size: 20px;
-     color: var(--ch2-text);
-     text-decoration: none;
-   }
-
-   /* --- Desktop nav --- */
-   #c-header2 .c-header2__nav {
-     display: none;
-     align-items: center;
-     gap: 32px;
-     list-style: none;
-     margin: 0;
-     padding: 0;
-   }
-
-   @media (width >= 978px) {
-     #c-header2 .c-header2__nav {
-       display: flex;
-     }
-   }
-
-   #c-header2 .c-header2__nav-item {
-     position: relative;
-   }
-
-   #c-header2 .c-header2__nav-link {
-     font-family: var(--font-body);
-     font-size: 16px;
-     line-height: 1.5;
-     color: var(--ch2-text);
-     text-decoration: none;
-     text-transform: uppercase;
-     letter-spacing: 0.5px;
-     white-space: nowrap;
-     background: none;
-     border: none;
-     cursor: pointer;
-     padding: 0;
-     display: flex;
-     align-items: center;
-     gap: 4px;
-     transition: color 0.2s ease;
-   }
-
-   #c-header2 .c-header2__nav-link:hover,
-   #c-header2 .c-header2__nav-link:focus-visible {
-     color: var(--ch2-text-bold);
-   }
-
-   #c-header2 .c-header2__nav-link--has-children {
-     font-family: var(--font-heading-bold);
-     color: var(--ch2-text-bold);
-   }
-
-   #c-header2 .c-header2__nav-link--has-children .c-header2__chevron {
-     width: 10px;
-     height: 10px;
-     transition: transform 0.25s ease;
-   }
-
-   #c-header2 .c-header2__nav-item.is-open .c-header2__nav-link--has-children .c-header2__chevron {
-     transform: rotate(180deg);
-   }
-
-   /* --- "Product-card" dropdown (glassmorphism) --- */
-   #c-header2 .c-header2__dropdown {
-     position: absolute;
-     top: calc(100% + 20px);
-     left: 50%;
-     transform: translateX(-50%);
-     min-width: 379px;
-     background: var(--ch2-dropdown-bg);
-     backdrop-filter: blur(var(--ch2-dropdown-blur));
-     -webkit-backdrop-filter: blur(var(--ch2-dropdown-blur));
-     border-radius: 8px;
-     padding: 24px;
-     display: flex;
-     flex-direction: column;
-     gap: 12px;
-     opacity: 0;
-     visibility: hidden;
-     pointer-events: none;
-     transition: opacity 0.25s ease, visibility 0.25s ease;
-     z-index: 100;
-   }
-
-   #c-header2 .c-header2__nav-item:hover > .c-header2__dropdown,
-   #c-header2 .c-header2__nav-item.is-open > .c-header2__dropdown {
-     opacity: 1;
-     visibility: visible;
-     pointer-events: auto;
-   }
-
-   /* --- Product card inside dropdown --- */
-   #c-header2 .c-header2__product-card {
-     display: flex;
-     align-items: center;
-     gap: 12px;
-     text-decoration: none;
-     color: var(--ch2-dropdown-text);
-     padding: 4px;
-     border-radius: 8px;
-     transition: background 0.2s ease;
-   }
-
-   #c-header2 .c-header2__product-card:hover {
-     background: rgba(255, 255, 255, 0.08);
-   }
-
-   #c-header2 .c-header2__product-img-wrap {
-     width: 71px;
-     height: 71px;
-     flex-shrink: 0;
-     border-radius: 8px;
-     background: rgba(0, 0, 0, 0.12);
-     overflow: hidden;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-   }
-
-   #c-header2 .c-header2__product-img-wrap img {
-     width: 100%;
-     height: 100%;
-     object-fit: cover;
-     display: block;
-   }
-
-   #c-header2 .c-header2__product-info {
-     display: flex;
-     flex-direction: column;
-     gap: 4px;
-     min-width: 0;
-   }
-
-   #c-header2 .c-header2__product-badge {
-     display: inline-block;
-     font-family: "Inter", sans-serif;
-     font-size: 12px;
-     font-weight: 400;
-     text-transform: uppercase;
-     letter-spacing: 0.36px;
-     line-height: 1.4;
-     padding: 4px 8px;
-     border-radius: 8px;
-     width: fit-content;
-   }
-
-   #c-header2 .c-header2__product-title {
-     font-family: var(--font-heading-bold);
-     font-size: 17px;
-     font-weight: 700;
-     letter-spacing: 0.9px;
-     line-height: 1.2;
-     color: var(--ch2-dropdown-text);
-     margin: 0;
-   }
-
-   #c-header2 .c-header2__product-tagline {
-     font-family: var(--font-body);
-     font-size: 12px;
-     letter-spacing: 0.3px;
-     line-height: 1.3;
-     color: var(--ch2-dropdown-text);
-     opacity: 0.8;
-     margin: 0;
-     display: block;
-     width: 264px;
-     max-width: 264px;
-     white-space: nowrap;
-     overflow: hidden;
-     text-overflow: ellipsis;
-   }
-
-   #c-header2 .c-header2__product-supertitle {
-     font-family: var(--font-body);
-     font-size: 14px;
-     font-weight: 400;
-     letter-spacing: 0.5px;
-     text-transform: uppercase;
-     line-height: 1.2;
-     color: var(--ch2-dropdown-text);
-     opacity: 0.7;
-     margin: 0;
-   }
-
-   /* --- Shop All link --- */
-   #c-header2 .c-header2__shop-all {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     background-color: rgba(255, 255, 255, 0.17);
-     border-radius: 8px;
-     padding: 8px;
-     font-family: var(--font-heading-bold);
-     font-size: 14px;
-     text-transform: capitalize;
-     letter-spacing: 0.7px;
-     color: var(--ch2-dropdown-text);
-     text-decoration: underline;
-     text-decoration-skip-ink: none;
-     margin-top: 8px;
-     transition: opacity 0.2s ease;
-     width: 100%;
-   }
-
-   #c-header2 .c-header2__shop-all:hover {
-     opacity: 0.7;
-   }
-
-   /* --- Utility icons --- */
-   #c-header2 .c-header2__utilities {
-     display: flex;
-     align-items: center;
-     gap: 4px;
-     flex-shrink: 0;
-   }
-
-   #c-header2 .c-header2__utility-btn {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     padding: 8px;
-     background: none;
-     border: none;
-     cursor: pointer;
-     color: var(--ch2-icon-color);
-     text-decoration: none;
-     position: relative;
-     transition: color 0.2s ease;
-   }
-
-   #c-header2 .c-header2__utility-btn:hover,
-   #c-header2 .c-header2__utility-btn:focus-visible {
-     color: var(--ch2-text-bold);
-   }
-
-   #c-header2 .c-header2__utility-btn svg {
-     width: 24px;
-     height: 24px;
-   }
-
-   #c-header2 .c-header2__cart-count {
-     position: absolute;
-     top: 2px;
-     right: 0;
-     background-color: var(--ch2-text-bold);
-     color: var(--ch2-bg);
-     font-family: var(--font-body);
-     font-size: 10px;
-     font-weight: 700;
-     line-height: 1;
-     min-width: 16px;
-     height: 16px;
-     border-radius: 50%;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     padding: 0 4px;
-   }
-
-   /* --- Hamburger (mobile) --- */
-   #c-header2 .c-header2__hamburger {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     padding: 8px;
-     background: none;
-     border: none;
-     cursor: pointer;
-     color: var(--ch2-icon-color);
-   }
-
-   @media (width >= 978px) {
-     #c-header2 .c-header2__hamburger {
-       display: none;
-     }
-   }
-
-   #c-header2 .c-header2__hamburger svg {
-     width: 24px;
-     height: 24px;
-   }
-
-   /* --- Mobile overlay --- */
-   #c-header2 .c-header2__overlay {
-     position: fixed;
-     inset: 0;
-     background-color: rgba(0, 0, 0, 0.4);
-     z-index: 999;
-     opacity: 0;
-     visibility: hidden;
-     transition: opacity 0.3s ease, visibility 0.3s ease;
-   }
-
-   #c-header2 .c-header2__overlay.is-active {
-     opacity: 1;
-     visibility: visible;
-   }
-
-   /* --- Mobile drawer (seed.com style — full-width slide from left) --- */
-   #c-header2 .c-header2__drawer {
-     position: fixed;
-     top: 5%;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     background: var(--ch2-mobile-bg);
-     backdrop-filter: blur(var(--ch2-dropdown-blur));
-     -webkit-backdrop-filter: blur(var(--ch2-dropdown-blur));
-     z-index: 1001;
-     transform: translateX(-100%);
-     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-     overflow-y: auto;
-     -webkit-overflow-scrolling: touch;
-     display: flex;
-     flex-direction: column;
-   }
-
-   @media (width >= 978px) {
-     #c-header2 .c-header2__drawer {
-       max-width: 420px;
-     }
-   }
-
-   #c-header2 .c-header2__drawer.is-active {
-     transform: translateX(0);
-   }
-
-   #c-header2 .c-header2__drawer-header {
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
-     padding: 20px 24px;
-     flex-shrink: 0;
-   }
-
-   #c-header2 .c-header2__drawer-close {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     background: none;
-     border: none;
-     cursor: pointer;
-     padding: 8px;
-     color: var(--ch2-mobile-text);
-   }
-
-   #c-header2 .c-header2__drawer-close svg {
-     width: 24px;
-     height: 24px;
-   }
-
-   #c-header2 .c-header2__drawer-logo img {
-     display: block;
-     width: 120px;
-     height: auto;
-   }
-
-   /* --- Mobile drawer nav --- */
-   #c-header2 .c-header2__drawer-nav {
-     list-style: none;
-     margin: 0;
-     padding: 0 24px;
-     flex: 1;
-     display: flex;
-     flex-direction: column;
-     gap: 0;
-   }
-
-   #c-header2 .c-header2__drawer-item {
-     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-   }
-
-   #c-header2 .c-header2__drawer-link {
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
-     padding: 16px 0;
-     font-family: var(--font-heading-bold);
-     font-size: 18px;
-     line-height: 1.3;
-     color: var(--ch2-mobile-text);
-     text-decoration: none;
-     text-transform: uppercase;
-     letter-spacing: 0.9px;
-     background: none;
-     border: none;
-     width: 100%;
-     cursor: pointer;
-     transition: opacity 0.2s ease;
-   }
-
-   #c-header2 .c-header2__drawer-link:hover {
-     opacity: 0.7;
-   }
-
-   #c-header2 .c-header2__drawer-link .c-header2__chevron {
-     width: 12px;
-     height: 12px;
-     transition: transform 0.25s ease;
-     flex-shrink: 0;
-   }
-
-   #c-header2 .c-header2__drawer-item.is-open .c-header2__drawer-link .c-header2__chevron {
-     transform: rotate(180deg);
-   }
-
-   /* --- Mobile drawer product cards sub-section --- */
-   #c-header2 .c-header2__drawer-products {
-     list-style: none;
-     margin: 0;
-     padding: 0 0 16px 0;
-     display: none;
-     flex-direction: column;
-     gap: 12px;
-   }
-
-   #c-header2 .c-header2__drawer-item.is-open .c-header2__drawer-products {
-     display: flex;
-   }
-
-   /* --- Search overlay --- */
-   #c-header2 .c-header2__search-overlay {
-     position: fixed;
-     inset: 0;
-     background-color: rgba(0, 0, 0, 0.5);
-     z-index: 1002;
-     opacity: 0;
-     visibility: hidden;
-     transition: opacity 0.3s ease, visibility 0.3s ease;
-     display: flex;
-     align-items: flex-start;
-     justify-content: center;
-     padding-top: 120px;
-   }
-
-   #c-header2 .c-header2__search-overlay.is-active {
-     opacity: 1;
-     visibility: visible;
-   }
-
-   #c-header2 .c-header2__search-box {
-     background: #fff;
-     border-radius: 8px;
-     padding: 24px;
-     width: 90%;
-     max-width: 600px;
-     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-     position: relative;
-   }
-
-   #c-header2 .c-header2__search-form {
-     display: flex;
-     align-items: center;
-     gap: 12px;
-   }
-
-   #c-header2 .c-header2__search-input {
-     flex: 1;
-     border: 1px solid #ddd;
-     border-radius: 4px;
-     padding: 12px 16px;
-     font-family: var(--font-body);
-     font-size: 16px;
-     outline: none;
-     transition: border-color 0.2s ease;
-   }
-
-   #c-header2 .c-header2__search-input:focus {
-     border-color: var(--ch2-text-bold);
-   }
-
-   #c-header2 .c-header2__search-submit {
-     background: var(--ch2-text-bold);
-     color: #fff;
-     border: none;
-     border-radius: 4px;
-     padding: 12px 20px;
-     font-family: var(--font-heading-bold);
-     font-size: 16px;
-     cursor: pointer;
-     transition: opacity 0.2s ease;
-   }
-
-   #c-header2 .c-header2__search-submit:hover {
-     opacity: 0.85;
-   }
-
-   #c-header2 .c-header2__search-close {
-     position: absolute;
-     top: 12px;
-     right: 12px;
-     background: none;
-     border: none;
-     cursor: pointer;
-     padding: 4px;
-     color: #666;
-   }
-
-   #c-header2 .c-header2__search-close svg {
-     width: 18px;
-     height: 18px;
-   }
-
-   /* --- Screen reader only --- */
-   #c-header2 .c-header2__sr-only {
-     position: absolute;
-     width: 1px;
-     height: 1px;
-     padding: 0;
-     margin: -1px;
-     overflow: hidden;
-     clip: rect(0, 0, 0, 0);
-     white-space: nowrap;
-     border: 0;
-   }
-
-   /* =============================================
-      MOBILE OVERRIDES
-      ============================================= */
-
-   /* --- Mobile bar: only hamburger + logo --- */
-   @media (max-width: 977px) {
-     #c-header2 .c-header2__bar {
-       display: flex;
-       align-items: center;
-       justify-content: flex-start;
-       gap: 0;
-     }
-
-     #c-header2 .c-header2__hamburger {
-       order: -1;
-       flex-shrink: 0;
-     }
-
-     #c-header2 .c-header2__bar .c-header2__logo {
-       position: absolute;
-       left: -28%;
-       transform: translateX(-50%);
-     }
-
-
-     #c-header2 .c-header2__bar nav,
-     #c-header2 .c-header2__utilities {
-       display: none;
-     }
-   }
-
-  /* --- Mobile drawer style only  --- */
-   @media (max-width: 977px) {
-     #c-header2 .c-header2__drawer {
-       height: auto;
-       max-height: 90vh;
-       border-radius: 0;
-       left: 3%;
-       width: 94%;
-       background: transparent;
-       backdrop-filter: none;
-       -webkit-backdrop-filter: none;
-       gap: 9px;
-       transform: translateX(calc(-100% - 3vw));
-     }
-
-     #c-header2 .c-header2__drawer.is-active {
-       transform: translateX(0);
-     }
-
-     /* Nav bar card */
-     #c-header2 .c-header2__drawer-header {
-       background: var(--ch2-mobile-bg);
-       backdrop-filter: blur(var(--ch2-dropdown-blur));
-       -webkit-backdrop-filter: blur(var(--ch2-dropdown-blur));
-       border-radius: 8px;
-     }
-   }
-
-   /* --- Drawer header — flat horizontal row (Figma 1618-4695) --- */
-   @media (max-width: 977px) {
-     #c-header2 .c-header2__drawer-header {
-       display: flex;
-       flex-wrap: wrap;
-       align-items: center;
-       justify-content: space-between;
-       padding: 16px 20px;
-       gap: 0;
-     }
-
-     /* Small drawer logo with rounded corners */
-     #c-header2 .c-header2__drawer-logo {
-       flex-shrink: 0;
-     }
-
-     #c-header2 .c-header2__drawer-logo img {
-       width: 39px;
-       height: auto;
-       border-radius: 5px;
-       display: block;
-     }
-
-     #c-header2 .c-header2__drawer-header-link {
-       font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-       font-size: 16px;
-       font-weight: 400;
-       color: var(--ch2-mobile-text);
-       text-transform: uppercase;
-       text-decoration: none;
-       letter-spacing: 0.5px;
-       line-height: 1.5;
-       white-space: nowrap;
-       background: none;
-       border: none;
-       cursor: pointer;
-       padding: 0;
-       transition: opacity 0.2s ease;
-     }
-
-     #c-header2 .c-header2__drawer-header-link:hover {
-       opacity: 0.7;
-     }
-
-     #c-header2 .c-header2__drawer-header-link--bold {
-       font-weight: 700;
-     }
-
-     /* Close button — 32×32 to match Figma */
-     #c-header2 .c-header2__drawer-close {
-       flex-shrink: 0;
-       padding: 4px;
-     }
-
-     #c-header2 .c-header2__drawer-close svg {
-       width: 32px;
-       height: 32px;
-     }
-   }
-
-   /* --- Products panel \u2014 separate card below nav bar --- */
-   @media (max-width: 977px) {
-     #c-header2 .c-header2__drawer-products {
-       display: none;
-       flex-direction: column;
-       gap: 16px;
-       padding: 20px;
-       margin: 0;
-       list-style: none;
-       background: var(--ch2-mobile-bg);
-       backdrop-filter: blur(var(--ch2-dropdown-blur));
-       -webkit-backdrop-filter: blur(var(--ch2-dropdown-blur));
-       border-radius: 8px;
-     }
-
-     #c-header2 .c-header2__drawer-products.is-open {
-       display: flex;
-     }
-
-     /* Product card in mobile drawer */
-     #c-header2 .c-header2__drawer-products .c-header2__product-card {
-       display: flex;
-       align-items: center;
-       gap: 12px;
-       text-decoration: none;
-       color: var(--ch2-mobile-text);
-       padding: 4px;
-       border-radius: 8px;
-       transition: background 0.2s ease;
-     }
-
-     #c-header2 .c-header2__drawer-products .c-header2__product-card:hover {
-       background: rgba(255, 255, 255, 0.08);
-     }
-
-     #c-header2 .c-header2__drawer-products .c-header2__product-img-wrap {
-       width: 71px;
-       height: 71px;
-       flex-shrink: 0;
-       border-radius: 8px;
-       background: rgba(0, 0, 0, 0.12);
-       overflow: hidden;
-     }
-
-     #c-header2 .c-header2__drawer-products .c-header2__product-badge {
-       font-family: "Inter", sans-serif;
-       font-size: 12px;
-       font-weight: 400;
-       text-transform: uppercase;
-       letter-spacing: 0.36px;
-       border-radius: 8px;
-       padding: 4px 8px;
-     }
-
-     #c-header2 .c-header2__drawer-products .c-header2__product-title {
-       font-family: var(--font-heading-bold);
-       font-size: 18px;
-       font-weight: 700;
-       letter-spacing: 0.9px;
-       color: #eeeeee;
-     }
-
-     #c-header2 .c-header2__drawer-products .c-header2__product-supertitle {
-       font-family: var(--font-body);
-       font-size: 14px;
-       font-weight: 400;
-       text-transform: uppercase;
-       letter-spacing: 0.5px;
-     }
-
-     #c-header2 .c-header2__drawer-products .c-header2__shop-all {
-       background: rgba(255, 255, 255, 0.17);
-       border-radius: 8px;
-       padding: 8px;
-       text-decoration: underline;
-       text-decoration-skip-ink: none;
-     }
-
-     #c-header2 .c-header2__drawer-products .c-header2__product-tagline {
-       width: auto;
-       max-width: 100%;
-       white-space: normal;
-       overflow: visible;
-       text-overflow: unset;
-       font-size: 11px;
-       line-height: 1.4;
-     }
-   }
-
-   /* --- Problem 4: Desktop safety — hide drawer & overlay --- */
-   @media (width >= 978px) {
-     #c-header2 .c-header2__drawer,
-     #c-header2 .c-header2__overlay {
-       display: none !important;
-     }
-   }
-
-   /* --- Mobile logo wrapper (centered) --- */
-   #c-header2 .c-header2__logo-icons-wrap {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     position: absolute;
-     left: 50%;
-     transform: translateX(-50%);
-     width: auto;
-   }
-
-   /* --- Mobile icons — right side of bar --- */
-   #c-header2 .c-header2__mobile-icons {
-     display: flex;
-     align-items: center;
-     gap: 8px;
-     position: absolute;
-     right: 16px;
-     top: 50%;
-     transform: translateY(-50%);
-   }
-
-   #c-header2 .c-header2__mobile-icon {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     width: 32px;
-     height: 32px;
-     border-radius: 50%;
-     background: none;
-     border: none;
-     padding: 0;
-     cursor: pointer;
-     color: var(--ch2-icon-color);
-     text-decoration: none;
-     transition: background 0.2s;
-   }
-
-   #c-header2 .c-header2__mobile-icon:hover {
-     background: rgba(0, 0, 0, 0.06);
-   }
-
-   #c-header2 .c-header2__mobile-icon svg {
-     width: 20px;
-     height: 20px;
-     fill: #FFFFFF;
-   }
-
-   /* Desktop: restore logo wrapper to normal flow + hide mobile icons */
-   @media (width >= 978px) {
-     #c-header2 .c-header2__logo-icons-wrap {
-       position: static;
-       left: auto;
-       transform: none;
-     }
-
-     #c-header2 .c-header2__mobile-icons {
-       display: none;
-     }
-   }
-
-   /* Mobile: prevent old rule from double-centering the logo inside the wrapper */
-   @media (max-width: 977px) {
-     #c-header2 .c-header2__bar .c-header2__logo {
-       position: relative;
-       left: -28%-;
-       transform: none;
-     }
-   }
-
-   .c-header2 {
-     display: none;
-   }
-
+{% comment %} MALORA ORGANICS — VISIBLE STICKY HEADER & MENU (8SHEEP 1:1 CLONE) {% endcomment %}
+<style>
+  .malora-ann-bar {
+    background: #323A31;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 9px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+  .malora-site-header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: #FFFFFF;
+    border-bottom: 1px solid #EAEAE6;
+    width: 100%;
+  }
+  .malora-header-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .malora-logo {
+    font-family: 'Canela', Georgia, serif;
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: #323A31;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .malora-nav {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+  }
+  .malora-nav-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: #323A31;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .malora-nav-link:hover {
+    color: #B36A42;
+  }
+  .malora-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .malora-cart-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #323A31;
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid #D5D5D0;
+    border-radius: 99px;
+  }
+  .malora-mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #323A31;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .malora-mobile-drawer {
+    display: none;
+    background: #FFFFFF;
+    border-top: 1px solid #EAEAE6;
+    padding: 16px 24px 24px;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .malora-mobile-drawer.is-open {
+    display: flex;
+  }
+  @media (max-width: 900px) {
+    .malora-nav {
+      display: none;
+    }
+    .malora-mobile-toggle {
+      display: block;
+    }
+  }
 </style>
-<section id="c-header2" class="c-section c-header2" role="banner">
-  <div class="c-header2__bar"><button
-      class="c-header2__hamburger"
-      aria-label="Open menu"
-      aria-expanded="false"
-      aria-controls="c-header2-drawer-c-header2"
-      data-header2-open-drawer
-    >
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="18" x2="21" y2="18"></line>
-      </svg>
-    </button><div class="c-header2__logo-icons-wrap">
-      <a href="/" class="c-header2__logo" aria-label="Malora Organics"><img src="https://8sheep.com/cdn/shop/files/logo-white.png?v=1774982014&amp;width=400" alt="Malora Organics" srcset="https://8sheep.com/cdn/shop/files/logo-white.png?v=1774982014&amp;width=120 120w, https://8sheep.com/cdn/shop/files/logo-white.png?v=1774982014&amp;width=179 179w, https://8sheep.com/cdn/shop/files/logo-white.png?v=1774982014&amp;width=240 240w, https://8sheep.com/cdn/shop/files/logo-white.png?v=1774982014&amp;width=358 358w, https://8sheep.com/cdn/shop/files/logo-white.png?v=1774982014&amp;width=400 400w" width="400" height="156" loading="eager" class="c-header2__logo-img" style="object-position:50.488% 48.242%;">
-</a>
-    </div><div class="c-header2__mobile-icons">
-      <a href="/account" class="c-header2__mobile-icon" aria-label="Account">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path d="M18.0769 10.0069C18.0769 5.57154 14.4353 1.93 9.99995 1.93C5.52841 1.93 1.92302 5.57154 1.92302 10.0069C1.92302 12.4585 2.96918 14.6223 4.69995 16.1008L5.96149 12.3146H14.0384L15.2999 16.1008C16.1734 15.3441 16.8735 14.4081 17.3527 13.3566C17.8319 12.305 18.0789 11.1625 18.0769 10.0069ZM14.3269 16.8577L13.173 13.4685H6.79072L5.67302 16.8577C6.89918 17.6508 8.37764 18.0838 9.99995 18.0838C11.5869 18.0838 13.0646 17.6146 14.3269 16.8223V16.8577ZM0.769178 10.0069C0.766492 8.38939 1.19211 6.79998 2.00277 5.40024C2.81342 4.0005 3.98022 2.84035 5.38456 2.03769C8.23302 0.379231 11.7307 0.379231 14.6153 2.03769C17.4638 3.69692 19.2307 6.72539 19.2307 10.0069C19.2307 13.3238 17.4638 16.3531 14.6153 18.0115C11.7307 19.67 8.23302 19.67 5.38456 18.0115C2.49995 16.3531 0.769178 13.3238 0.769178 10.0069ZM8.26918 8.27615C8.26918 8.92462 8.59379 9.46615 9.13456 9.79C9.63918 10.1146 10.3246 10.1146 10.8653 9.79C11.3699 9.46615 11.7307 8.92462 11.7307 8.27615C11.7307 7.66308 11.3699 7.12231 10.8653 6.79769C10.3246 6.47308 9.63918 6.47308 9.13456 6.79769C8.59379 7.12231 8.26918 7.66308 8.26918 8.27615ZM9.99995 11.1608C8.95379 11.1608 8.01687 10.62 7.4761 9.71846C6.97149 8.85308 6.97149 7.73538 7.4761 6.83385C8.01687 5.96846 8.95456 5.39154 9.99995 5.39154C11.0099 5.39154 11.9469 5.96846 12.4876 6.83385C12.993 7.73538 12.993 8.85308 12.4876 9.71846C11.9469 10.62 11.0092 11.1608 9.99995 11.1608Z" fill="#ffffff"/>
-        </svg>
+
+<div class="malora-ann-bar">
+  FREE US SHIPPING ON ORDERS $50+ · 100% ORGANIC &amp; PREGNANCY-SAFE · 90-DAY GUARANTEE
+</div>
+
+<header class="malora-site-header">
+  <div class="malora-header-inner">
+    <button type="button" class="malora-mobile-toggle" id="MaloraMobileMenuBtn" aria-label="Open Menu">☰</button>
+
+    <a href="/" class="malora-logo">MALORA</a>
+
+    <nav class="malora-nav" aria-label="Main Navigation">
+      <a href="/collections/our-best-sellers" class="malora-nav-link">Best Sellers</a>
+      <a href="/collections/bundle" class="malora-nav-link">Bundles &amp; Save</a>
+      <a href="/collections/sleep-products" class="malora-nav-link">Sleep</a>
+      <a href="/collections/organic-pregnancy-products" class="malora-nav-link">Pregnancy</a>
+      <a href="/collections/stretch-marks" class="malora-nav-link">Stretch Marks</a>
+      <a href="/collections/baby" class="malora-nav-link">Baby &amp; Kids</a>
+    </nav>
+
+    <div class="malora-header-actions">
+      <a href="/cart" class="malora-cart-link" aria-label="Cart">
+        <span>🛒</span>
+        <span id="MaloraCartCount">{{ cart.item_count }}</span>
       </a>
-      <a href="/search" class="c-header2__mobile-icon" aria-label="Search">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path d="M18.0845 17.2001L14.1727 13.2891C15.3065 11.928 15.8719 10.1821 15.7512 8.41472C15.6305 6.64733 14.8331 4.9945 13.5249 3.80006C12.2166 2.60562 10.4982 1.96153 8.7272 2.00178C6.95615 2.04203 5.2688 2.76352 4.01616 4.01616C2.76352 5.2688 2.04203 6.95615 2.00178 8.7272C1.96153 10.4982 2.60562 12.2166 3.80006 13.5249C4.9945 14.8331 6.64733 15.6305 8.41472 15.7512C10.1821 15.8719 11.928 15.3065 13.2891 14.1727L17.2001 18.0845C17.2582 18.1425 17.3271 18.1886 17.403 18.22C17.4788 18.2514 17.5601 18.2676 17.6423 18.2676C17.7244 18.2676 17.8057 18.2514 17.8816 18.22C17.9575 18.1886 18.0264 18.1425 18.0845 18.0845C18.1425 18.0264 18.1886 17.9575 18.22 17.8816C18.2514 17.8057 18.2676 17.7244 18.2676 17.6423C18.2676 17.5601 18.2514 17.4788 18.22 17.403C18.1886 17.3271 18.1425 17.2582 18.0845 17.2001ZM3.26727 8.89227C3.26727 7.77975 3.59717 6.69221 4.21525 5.76719C4.83333 4.84216 5.71184 4.12119 6.73967 3.69545C7.76751 3.2697 8.89851 3.15831 9.98965 3.37535C11.0808 3.59239 12.0831 4.12812 12.8697 4.91479C13.6564 5.70146 14.1921 6.70374 14.4092 7.79489C14.6262 8.88603 14.5148 10.017 14.0891 11.0449C13.6634 12.0727 12.9424 12.9512 12.0174 13.5693C11.0923 14.1874 10.0048 14.5173 8.89227 14.5173C7.40093 14.5156 5.97115 13.9225 4.91662 12.8679C3.86209 11.8134 3.26892 10.3836 3.26727 8.89227Z" fill="#ffffff"/>
-        </svg>
-      </a>
-      <button class="c-header2__mobile-icon" aria-label="Cart" data-header2-mobile-cart-open>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-          <path d="M9.52385 6.91154V1.43539H10.9523V6.91154H20L16.3638 18.34H3.63615L0 6.91154H9.52385ZM1.95308 8.34L4.68077 16.9115H15.3192L18.0469 8.34H1.95308Z" fill="#ffffff"/>
-        </svg>
-      </button>
-    </div><nav aria-label="Main navigation">
-      <ul class="c-header2__nav"><li class="c-header2__nav-item" data-header2-dropdown>
-              <button
-                class="c-header2__nav-link c-header2__nav-link--has-children"
-                aria-expanded="false"
-                aria-haspopup="true"
-                data-header2-dropdown-toggle
-              >
-                Shop
-                <svg
-                  class="c-header2__chevron"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </button>
-              <div class="c-header2__dropdown" role="menu"><a
-                      href="/products/true-belly-serum"
-                      class="c-header2__product-card"
-                      role="menuitem"
-                      
-                    >
-                      <div class="c-header2__product-img-wrap"><img src="https://8sheep.com/cdn/shop/files/99.png?crop=center&amp;height=142&amp;v=1762198364&amp;width=142" alt="True Belly Serum" srcset="https://8sheep.com/cdn/shop/files/99.png?crop=center&amp;height=71&amp;v=1762198364&amp;width=71 71w, https://8sheep.com/cdn/shop/files/99.png?crop=center&amp;height=142&amp;v=1762198364&amp;width=142 142w" width="142" height="142" loading="lazy">
-</div>
-                      <div class="c-header2__product-info"><span class="c-header2__product-supertitle">STRETCH MARK</span><span class="c-header2__product-title">True Belly Serum</span></div>
-                    </a><a
-                      href="/products/sleepylotion"
-                      class="c-header2__product-card"
-                      role="menuitem"
-                      
-                    >
-                      <div class="c-header2__product-img-wrap"><img src="https://8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?crop=center&amp;height=142&amp;v=1762197935&amp;width=142" alt="Organic Sleepy Body Lotion" srcset="https://8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?crop=center&amp;height=71&amp;v=1762197935&amp;width=71 71w, https://8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?crop=center&amp;height=142&amp;v=1762197935&amp;width=142 142w" width="142" height="142" loading="lazy">
-</div>
-                      <div class="c-header2__product-info"><span class="c-header2__product-supertitle">PREGNANCY</span><span class="c-header2__product-title">Organic Sleepy Body Lotion</span></div>
-                    </a><a
-                      href="/products/juniors-bedtime-lotion"
-                      class="c-header2__product-card"
-                      role="menuitem"
-                      
-                    >
-                      <div class="c-header2__product-img-wrap"><img src="https://8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?crop=center&amp;height=142&amp;v=1762198197&amp;width=142" alt="Junior&#39;s Bedtime Lotion" srcset="https://8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?crop=center&amp;height=71&amp;v=1762198197&amp;width=71 71w, https://8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?crop=center&amp;height=142&amp;v=1762198197&amp;width=142 142w" width="142" height="142" loading="lazy">
-</div>
-                      <div class="c-header2__product-info"><span
-                            class="c-header2__product-badge"
-                            style="background-color: #bc825b; color: #ffffff;"
-                          >
-                            MOST POPULAR
-                          </span><span class="c-header2__product-title">Junior's Bedtime Lotion</span></div>
-                    </a><a
-                      href="/products/stretch-mark-bundle"
-                      class="c-header2__product-card"
-                      role="menuitem"
-                      
-                    >
-                      <div class="c-header2__product-img-wrap"><img src="https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=142&amp;v=1762198391&amp;width=142" alt="2-Step Stretch Mark Prevention Bundle" srcset="https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=71&amp;v=1762198391&amp;width=71 71w, https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=142&amp;v=1762198391&amp;width=142 142w" width="142" height="142" loading="lazy">
-</div>
-                      <div class="c-header2__product-info"><span
-                            class="c-header2__product-badge"
-                            style="background-color: #bc635b; color: #ffffff;"
-                          >
-                            SALE
-                          </span><span class="c-header2__product-title">2-Step Stretch Mark Prevention Bundle</span></div>
-                    </a><a
-                      href="/products/pregnancy-survival-kit"
-                      class="c-header2__product-card"
-                      role="menuitem"
-                      
-                    >
-                      <div class="c-header2__product-img-wrap"><img src="https://8sheep.com/cdn/shop/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?crop=center&amp;height=142&amp;v=1792550881&amp;width=142" alt="Pregnancy Survival Kit" srcset="https://8sheep.com/cdn/shop/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?crop=center&amp;height=71&amp;v=1792550881&amp;width=71 71w, https://8sheep.com/cdn/shop/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?crop=center&amp;height=142&amp;v=1792550881&amp;width=142 142w" width="142" height="142" loading="lazy">
-</div>
-                      <div class="c-header2__product-info"><span
-                            class="c-header2__product-badge"
-                            style="background-color: #bc635b; color: #ffffff;"
-                          >
-                            SALE
-                          </span><span class="c-header2__product-title">Pregnancy Survival Kit</span></div>
-                    </a><a href="/collections/all" class="c-header2__shop-all"> Shop All </a></div>
-            </li><li class="c-header2__nav-item">
-              <a
-                href="/pages/about-us"
-                class="c-header2__nav-link"
-                
-              >
-                About
-              </a>
-            </li><li class="c-header2__nav-item">
-              <a
-                href="/pages/contact-us"
-                class="c-header2__nav-link"
-                
-              >
-                Contact
-              </a>
-            </li></ul>
-    </nav><div class="c-header2__utilities"><button
-        class="c-header2__utility-btn"
-        aria-label="Search"
-        data-header2-search-open
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="34" viewBox="0 0 24 34" fill="none">
-          <path d="M17.5385 14.9314C17.5385 12.2489 16.0671 9.73909 13.7308 8.35447C11.3511 7.01324 8.45171 7.01324 6.1154 8.35447C4.96014 9.02103 4.0003 9.97945 3.33203 11.1337C2.66376 12.288 2.31053 13.5976 2.30771 14.9314C2.30469 16.2722 2.65506 17.5901 3.32353 18.7523C3.992 19.9145 4.95496 20.8801 6.1154 21.5517C8.45171 22.8929 11.3511 22.8929 13.7308 21.5517C16.0671 20.1662 17.5385 17.6554 17.5385 14.9314ZM15.7643 21.7677C14.2071 23.1523 12.1302 23.9314 9.9231 23.9314C4.94771 23.9314 0.923096 19.9068 0.923096 14.9314C0.923096 9.99847 4.94771 5.9314 9.9231 5.9314C14.856 5.9314 18.9231 9.99847 18.9231 14.9314C18.9231 17.1809 18.1016 19.2145 16.7594 20.816L22.9902 27.0468L21.9951 28.0419L15.7643 21.7677Z" fill="#ffffff"/>
-          <path d="M13.7308 8.35443L13.7899 8.25474L13.7871 8.25382L13.7308 8.35443ZM13.7308 21.5517L13.7871 21.6523L13.7899 21.6504L13.7308 21.5517ZM15.7644 21.7677L15.8465 21.6864L15.769 21.6089L15.6877 21.6818L15.7644 21.7677ZM16.7594 20.816L16.6708 20.7421L16.6034 20.8224L16.6773 20.8972L16.7594 20.816ZM22.9902 27.0467L23.0724 27.128L23.1536 27.0467L23.0724 26.9646L22.9902 27.0467ZM21.9951 28.0418L21.913 28.123L21.9951 28.2052L22.0764 28.123L21.9951 28.0418ZM17.6539 14.9314C17.6539 12.2064 16.1604 9.65966 13.7899 8.25474L13.6717 8.4532C15.9748 9.81843 17.4231 12.2904 17.4231 14.9314H17.6539ZM13.7871 8.25382C11.3724 6.8932 8.43051 6.89228 6.0582 8.25382L6.17267 8.45413C8.4739 7.13413 11.329 7.1332 13.6745 8.45413L13.7871 8.25382ZM6.05728 8.25382C4.88446 8.93062 3.91008 9.90374 3.23176 11.0757C2.55344 12.2476 2.19501 13.5773 2.19236 14.9314H2.42313C2.42595 13.6178 2.7739 12.328 3.43213 11.1912C4.09035 10.0544 5.03574 9.11052 6.17359 8.45413L6.05728 8.25382ZM2.19236 14.9323C2.18933 16.2932 2.54498 17.6309 3.2235 18.8107C3.90201 19.9904 4.87942 20.9705 6.05728 21.6523L6.17359 21.4529C5.03057 20.7915 4.08206 19.8405 3.42363 18.6957C2.7652 17.5509 2.42011 16.2529 2.42313 14.9323H2.19236ZM6.0582 21.6523C8.43051 23.0147 11.3724 23.0138 13.7871 21.6523L13.6745 21.452C11.3299 22.7738 8.4739 22.7729 6.17267 21.452L6.0582 21.6523ZM13.7899 21.6523C16.1604 20.2464 17.6539 17.6997 17.6539 14.9323H17.4231C17.4231 17.6166 15.9739 20.0886 13.6717 21.4529L13.7899 21.6504V21.6523ZM15.6877 21.6818C14.1517 23.0461 12.1025 23.8169 9.92313 23.8169V24.0477C12.157 24.0477 14.2616 23.2594 15.841 21.8554L15.6877 21.6818ZM9.92313 23.8169C8.75614 23.8177 7.60044 23.5885 6.52213 23.1423C5.44381 22.6961 4.46404 22.0417 3.63886 21.2165C2.81368 20.3914 2.15927 19.4116 1.71308 18.3333C1.26689 17.255 1.03766 16.0993 1.03851 14.9323H0.807742C0.806771 16.1296 1.04188 17.3154 1.49963 18.4217C1.95738 19.5281 2.62878 20.5334 3.47541 21.38C4.32205 22.2266 5.3273 22.898 6.43367 23.3558C7.54004 23.8135 8.7258 24.0486 9.92313 24.0477V23.8169ZM1.03851 14.9323C1.03851 10.063 5.01143 6.04766 9.92313 6.04766V5.81689C4.88313 5.81597 0.807742 9.93474 0.807742 14.9314H1.03851V14.9323ZM9.92313 6.04766C14.7924 6.04766 18.8077 10.063 18.8077 14.9323H19.0385C19.0385 9.93566 14.9197 5.81689 9.92313 5.81689V6.04766ZM18.8077 14.9323C18.8077 17.1532 17.9964 19.1609 16.6708 20.7421L16.8481 20.8907C18.205 19.2707 19.0385 17.2114 19.0385 14.9323H18.8077ZM16.6782 20.8981L22.909 27.1289L23.0724 26.9646L16.8416 20.7347L16.6782 20.8981ZM22.909 26.9655L21.9139 27.9606L22.0773 28.124L23.0724 27.128L22.909 26.9655ZM22.0773 27.9615L15.8465 21.6864L15.6822 21.8498L21.913 28.124L22.0773 27.9615Z" fill="#ffffff"/>
-        </svg>
-      </button><a href="/account" class="c-header2__utility-btn" aria-label="Account">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M21.6923 12.0083C21.6923 6.68587 17.3225 2.31602 12 2.31602C6.63419 2.31602 2.30773 6.68587 2.30773 12.0083C2.30773 14.9502 3.56311 17.5468 5.64003 19.3209L7.15388 14.7776H16.8462L18.36 19.3209C19.4082 18.413 20.2483 17.2898 20.8234 16.0279C21.3984 14.766 21.6948 13.3951 21.6923 12.0083ZM17.1923 20.2293L15.8077 16.1622H8.14896L6.80773 20.2293C8.27911 21.1809 10.0533 21.7006 12 21.7006C13.9043 21.7006 15.6776 21.1376 17.1923 20.1868V20.2293ZM0.923111 12.0083C0.919888 10.0673 1.43063 8.15999 2.40342 6.48031C3.37621 4.80063 4.77636 3.40844 6.46157 2.44525C9.87973 0.455098 14.077 0.455098 17.5385 2.44525C20.9566 4.43633 23.077 8.07048 23.077 12.0083C23.077 15.9886 20.9566 19.6237 17.5385 21.6139C14.077 23.604 9.87973 23.604 6.46157 21.6139C3.00003 19.6237 0.923111 15.9886 0.923111 12.0083ZM9.92311 9.93141C9.92311 10.7096 10.3126 11.3594 10.9616 11.748C11.5671 12.1376 12.3896 12.1376 13.0385 11.748C13.644 11.3594 14.077 10.7096 14.077 9.93141C14.077 9.19571 13.644 8.54679 13.0385 8.15725C12.3896 7.76771 11.5671 7.76771 10.9616 8.15725C10.3126 8.54679 9.92311 9.19571 9.92311 9.93141ZM12 13.3929C10.7446 13.3929 9.62034 12.744 8.97142 11.6622C8.36588 10.6237 8.36588 9.28248 8.97142 8.20064C9.62034 7.16218 10.7456 6.46987 12 6.46987C13.212 6.46987 14.3363 7.16218 14.9853 8.20064C15.5917 9.28248 15.5917 10.6237 14.9853 11.6622C14.3363 12.744 13.2111 13.3929 12 13.3929Z" fill="#ffffff"/>
-            <path d="M5.63994 19.32L5.56425 19.4086L5.6944 19.5194L5.74886 19.3569L5.63994 19.32ZM7.15379 14.7775V14.6621H7.07071L7.04394 14.7406L7.15379 14.7775ZM16.8461 14.7775L16.9559 14.7406L16.9292 14.6621H16.8461V14.7775ZM18.3599 19.3209L18.251 19.3578L18.3064 19.5212L18.4356 19.4077L18.3609 19.3209H18.3599ZM17.1922 20.2292L17.0833 20.2661L17.3076 20.2292H17.1922ZM15.8076 16.1621L15.9166 16.1252L15.8907 16.0468H15.8076V16.1621ZM8.14886 16.1621V16.0468H8.06579L8.03902 16.1261L8.14979 16.1621H8.14886ZM6.80763 20.2292L6.69779 20.1923L6.67009 20.2781L6.74486 20.3261L6.80763 20.2292ZM17.1922 20.1858H17.3076V19.9772L17.1304 20.088L17.1922 20.1858ZM6.46148 2.44615L6.51871 2.54676L6.46148 2.4443V2.44615ZM10.9615 11.7489L11.0242 11.652L11.0206 11.6501L10.9615 11.7489ZM13.0384 11.7489L13.0975 11.8486L13.1012 11.8468L13.0384 11.7489ZM13.0384 8.15815L13.1012 8.06123L13.0975 8.05938L13.0384 8.15815ZM10.9615 8.15815L11.0206 8.25692L11.0242 8.25507L10.9615 8.15815ZM8.97132 11.6631L8.87163 11.7212V11.7221L8.97132 11.6631ZM8.97132 8.20153L8.87348 8.13969L8.87071 8.14523L8.97132 8.20061V8.20153ZM14.9852 8.20153L15.0867 8.14523L15.083 8.14061L14.9852 8.20153ZM14.9852 11.6631L15.0849 11.7221V11.7212L14.9852 11.6631ZM21.8076 12.0092C21.8076 6.62307 17.3861 2.20153 11.9999 2.20153V2.4323C17.2587 2.4323 21.5769 6.75046 21.5769 12.0092H21.8076ZM11.9999 2.20153C6.5704 2.20153 2.19225 6.62215 2.19225 12.0083H2.42302C2.42302 6.74953 6.69871 2.4323 11.9999 2.4323V2.20153ZM2.19225 12.0083C2.19225 14.9843 3.4624 17.6123 5.56425 19.4086L5.71471 19.2332C3.66271 17.4803 2.42302 14.916 2.42302 12.0083H2.19225ZM5.74886 19.3569L7.26271 14.8135L7.04394 14.7406L5.53009 19.284L5.74886 19.3578V19.3569ZM7.15379 14.8929H16.8461V14.6621H7.15379V14.8929ZM16.7362 14.8135L18.251 19.3569L18.4698 19.284L16.9559 14.7406L16.7362 14.8135ZM18.4356 19.4077C19.496 18.4888 20.3469 17.3523 20.9286 16.0754C21.5103 14.7986 21.8101 13.4114 21.8076 12.0083H21.5769C21.5769 14.916 20.2938 17.4803 18.2842 19.2341L18.4356 19.4077ZM17.3012 20.1923L15.9166 16.1252L15.6987 16.1991L17.0833 20.2661L17.3012 20.1923ZM15.8076 16.0468H8.14886V16.2775H15.8076V16.0468ZM8.03902 16.1261L6.69779 20.1923L6.91748 20.2652L8.25871 16.1981L8.03902 16.1261ZM6.74486 20.3261C8.23563 21.2908 10.0319 21.816 11.9999 21.816V21.5852C10.0735 21.5852 8.32148 21.0711 6.8704 20.1323L6.74486 20.3261ZM11.9999 21.816C13.9273 21.816 15.7218 21.2465 17.2541 20.2837L17.1304 20.088C15.5963 21.0623 13.8173 21.5814 11.9999 21.5852V21.816ZM17.0769 20.1858V20.2292H17.3076V20.1858H17.0769ZM1.0384 12.0074C1.0384 8.112 3.09317 4.51569 6.51871 2.54584L6.40425 2.34553C4.70137 3.31892 3.28655 4.72577 2.30355 6.42311C1.32055 8.12046 0.804429 10.0478 0.807632 12.0092H1.0384V12.0074ZM6.51963 2.54584C9.90179 0.575995 14.0547 0.575995 17.4812 2.54584L17.5956 2.34553C14.099 0.335072 9.8584 0.334149 6.40332 2.34553L6.51963 2.54584ZM17.4812 2.54584C20.8642 4.51569 22.9615 8.112 22.9615 12.0074H23.1922C23.1922 8.02892 21.0489 4.35692 17.5956 2.34553L17.4802 2.54492L17.4812 2.54584ZM22.9615 12.0074C22.9615 15.9471 20.8633 19.5443 17.4802 21.5141L17.5966 21.7135C19.298 20.7281 20.7105 19.3128 21.6926 17.6094C22.6747 15.9061 23.1919 13.9736 23.1922 12.0074H22.9615ZM17.4802 21.5141C14.0538 23.484 9.90179 23.484 6.51963 21.5141L6.40332 21.7135C9.85748 23.7258 14.099 23.7258 17.5956 21.7145L17.4802 21.5141ZM6.51871 21.5141C3.09409 19.5443 1.0384 15.9471 1.0384 12.0074L0.807632 12.0083C0.807632 16.0301 2.90579 19.7031 6.40425 21.7135L6.51871 21.5141ZM9.80763 9.93138C9.80763 10.7529 10.2202 11.4378 10.9024 11.8477L11.0206 11.6492C10.4049 11.28 10.0384 10.668 10.0384 9.93138H9.80763ZM10.8987 11.8458C11.5449 12.2603 12.4135 12.2585 13.0975 11.8477L12.9793 11.6492C12.3655 12.0185 11.5901 12.0157 11.0242 11.6511L10.8987 11.8449V11.8458ZM13.1012 11.8468C13.7335 11.4397 14.1922 10.7566 14.1922 9.93138H13.9615C13.9615 10.6643 13.5553 11.2791 12.9756 11.6511L13.1012 11.8449V11.8468ZM14.1922 9.93138C14.1922 9.14861 13.7326 8.46738 13.1012 8.06123L12.9756 8.25415C13.5553 8.62707 13.9615 9.24184 13.9615 9.93138H14.1922ZM13.0975 8.05753C12.4135 7.64769 11.5439 7.64584 10.8987 8.0603L11.0242 8.25507C11.5901 7.89138 12.3655 7.88769 12.9793 8.256L13.0975 8.05753ZM10.9024 8.05753C10.2212 8.46646 9.80763 9.1523 9.80763 9.93138H10.0384C10.0384 9.23907 10.4039 8.62707 11.0206 8.25692L10.9024 8.05753ZM11.9999 13.2785C10.7861 13.2785 9.69871 12.6508 9.07009 11.6031L8.87256 11.7231C9.54179 12.8381 10.7039 13.5092 11.9999 13.5092V13.2785ZM9.07009 11.6031C8.48579 10.6015 8.48486 9.30369 9.07102 8.256L8.87071 8.14338C8.24579 9.25938 8.24394 10.6449 8.87071 11.7194L9.07009 11.6031ZM9.06917 8.26153C9.69871 7.25353 10.7889 6.58523 11.9999 6.58523V6.35446C10.7012 6.35446 9.54086 7.07076 8.87348 8.13969L9.06917 8.26153ZM11.9999 6.58523C13.1667 6.58523 14.2569 7.25261 14.8873 8.26153L15.083 8.13969C14.4156 7.07076 13.2553 6.35446 11.9999 6.35446V6.58523ZM14.8846 8.256C15.4716 9.30461 15.4698 10.6015 14.8855 11.604L15.0849 11.7203C15.7126 10.6449 15.7107 9.2603 15.0858 8.1443L14.8846 8.256ZM14.8864 11.6021C14.2578 12.6508 13.1695 13.2775 11.9999 13.2775V13.5083C13.2535 13.5083 14.4156 12.8363 15.0849 11.7212L14.8864 11.6021Z" fill="#ffffff"/>
-          </svg>
-        </a><button class="c-header2__utility-btn" aria-label="Cart (0 items)" data-header2-cart-open>
-        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
-          <path d="M12.381 8.98503V1.86603H14.238V8.98503H26L21.273 23.842H4.727L0 8.98503H12.381ZM2.539 10.842L6.085 21.985H19.915L23.461 10.842H2.539Z" fill="#ffffff"/>
-        </svg></button>
-    </div>
-  </div><div class="c-header2__overlay" data-header2-overlay aria-hidden="true"></div><nav
-    id="c-header2-drawer-c-header2"
-    class="c-header2__drawer"
-    aria-label="Mobile menu"
-    data-header2-drawer
-  >
-    <div class="c-header2__drawer-header" data-header2-accordion>
-      <a href="/" class="c-header2__drawer-logo" aria-label="Malora Organics"><img src="https://8sheep.com/cdn/shop/files/Link_-_Logo_JazzUpCo_400_x_200_px_4_png.png?v=1774532600&amp;width=200" alt="Malora Organics" srcset="https://8sheep.com/cdn/shop/files/Link_-_Logo_JazzUpCo_400_x_200_px_4_png.png?v=1774532600&amp;width=39 39w, https://8sheep.com/cdn/shop/files/Link_-_Logo_JazzUpCo_400_x_200_px_4_png.png?v=1774532600&amp;width=78 78w, https://8sheep.com/cdn/shop/files/Link_-_Logo_JazzUpCo_400_x_200_px_4_png.png?v=1774532600&amp;width=120 120w, https://8sheep.com/cdn/shop/files/Link_-_Logo_JazzUpCo_400_x_200_px_4_png.png?v=1774532600&amp;width=200 200w" width="200" height="108" loading="lazy">
-</a><button
-            class="c-header2__drawer-header-link c-header2__drawer-header-link--bold"
-            aria-expanded="false"
-            data-header2-accordion-toggle
-          >
-            Shop
-          </button><a
-            href="/pages/about-us"
-            class="c-header2__drawer-header-link"
-            
-          >
-            About
-          </a><a
-            href="/pages/contact-us"
-            class="c-header2__drawer-header-link"
-            
-          >
-            Contact
-          </a><button class="c-header2__drawer-close" aria-label="Close menu" data-header2-close-drawer>
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-    </div><ul class="c-header2__drawer-products" data-header2-drawer-products><li>
-            <a
-              href="/products/true-belly-serum"
-              class="c-header2__product-card"
-              
-            >
-              <div class="c-header2__product-img-wrap"><img src="https://8sheep.com/cdn/shop/files/99.png?crop=center&amp;height=142&amp;v=1762198364&amp;width=142" alt="True Belly Serum" srcset="https://8sheep.com/cdn/shop/files/99.png?crop=center&amp;height=71&amp;v=1762198364&amp;width=71 71w, https://8sheep.com/cdn/shop/files/99.png?crop=center&amp;height=142&amp;v=1762198364&amp;width=142 142w" width="142" height="142" loading="lazy">
-</div>
-              <div class="c-header2__product-info"><span class="c-header2__product-supertitle">STRETCH MARK</span><span class="c-header2__product-title">True Belly Serum</span></div>
-            </a>
-          </li><li>
-            <a
-              href="/products/sleepylotion"
-              class="c-header2__product-card"
-              
-            >
-              <div class="c-header2__product-img-wrap"><img src="https://8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?crop=center&amp;height=142&amp;v=1762197935&amp;width=142" alt="Organic Sleepy Body Lotion" srcset="https://8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?crop=center&amp;height=71&amp;v=1762197935&amp;width=71 71w, https://8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?crop=center&amp;height=142&amp;v=1762197935&amp;width=142 142w" width="142" height="142" loading="lazy">
-</div>
-              <div class="c-header2__product-info"><span class="c-header2__product-supertitle">PREGNANCY</span><span class="c-header2__product-title">Organic Sleepy Body Lotion</span></div>
-            </a>
-          </li><li>
-            <a
-              href="/products/juniors-bedtime-lotion"
-              class="c-header2__product-card"
-              
-            >
-              <div class="c-header2__product-img-wrap"><img src="https://8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?crop=center&amp;height=142&amp;v=1762198197&amp;width=142" alt="Junior&#39;s Bedtime Lotion" srcset="https://8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?crop=center&amp;height=71&amp;v=1762198197&amp;width=71 71w, https://8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?crop=center&amp;height=142&amp;v=1762198197&amp;width=142 142w" width="142" height="142" loading="lazy">
-</div>
-              <div class="c-header2__product-info"><span
-                    class="c-header2__product-badge"
-                    style="background-color: #bc825b; color: #ffffff;"
-                  >
-                    MOST POPULAR
-                  </span><span class="c-header2__product-title">Junior's Bedtime Lotion</span></div>
-            </a>
-          </li><li>
-            <a
-              href="/products/stretch-mark-bundle"
-              class="c-header2__product-card"
-              
-            >
-              <div class="c-header2__product-img-wrap"><img src="https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=142&amp;v=1762198391&amp;width=142" alt="2-Step Stretch Mark Prevention Bundle" srcset="https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=71&amp;v=1762198391&amp;width=71 71w, https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=142&amp;v=1762198391&amp;width=142 142w" width="142" height="142" loading="lazy">
-</div>
-              <div class="c-header2__product-info"><span
-                    class="c-header2__product-badge"
-                    style="background-color: #bc635b; color: #ffffff;"
-                  >
-                    SALE
-                  </span><span class="c-header2__product-title">2-Step Stretch Mark Prevention Bundle</span></div>
-            </a>
-          </li><li>
-            <a
-              href="/products/pregnancy-survival-kit"
-              class="c-header2__product-card"
-              
-            >
-              <div class="c-header2__product-img-wrap"><img src="https://8sheep.com/cdn/shop/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?crop=center&amp;height=142&amp;v=1792550881&amp;width=142" alt="Pregnancy Survival Kit" srcset="https://8sheep.com/cdn/shop/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?crop=center&amp;height=71&amp;v=1792550881&amp;width=71 71w, https://8sheep.com/cdn/shop/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?crop=center&amp;height=142&amp;v=1792550881&amp;width=142 142w" width="142" height="142" loading="lazy">
-</div>
-              <div class="c-header2__product-info"><span
-                    class="c-header2__product-badge"
-                    style="background-color: #bc635b; color: #ffffff;"
-                  >
-                    SALE
-                  </span><span class="c-header2__product-title">Pregnancy Survival Kit</span></div>
-            </a>
-          </li><li>
-          <a href="/collections/all" class="c-header2__shop-all"> Shop All </a>
-        </li></ul>
-  </nav><div class="c-header2__search-overlay" data-header2-search-overlay aria-hidden="true">
-    <div class="c-header2__search-box" role="dialog" aria-label="Search">
-      <button class="c-header2__search-close" aria-label="Close search" data-header2-search-close>
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-      <form action="/search" method="get" class="c-header2__search-form" role="search">
-        <label for="c-header2-search-c-header2" class="c-header2__sr-only">Search</label>
-        <input
-          id="c-header2-search-c-header2"
-          class="c-header2__search-input"
-          type="search"
-          name="q"
-          placeholder="Search..."
-          autocomplete="off"
-          aria-label="Search"
-        >
-        <button type="submit" class="c-header2__search-submit">Search</button>
-      </form>
     </div>
   </div>
-</section>
+
+  <div class="malora-mobile-drawer" id="MaloraMobileDrawer">
+    <a href="/collections/our-best-sellers" class="malora-nav-link">Best Sellers</a>
+    <a href="/collections/bundle" class="malora-nav-link">Bundles &amp; Save</a>
+    <a href="/collections/sleep-products" class="malora-nav-link">Sleep</a>
+    <a href="/collections/organic-pregnancy-products" class="malora-nav-link">Pregnancy</a>
+    <a href="/collections/stretch-marks" class="malora-nav-link">Stretch Marks</a>
+    <a href="/collections/baby" class="malora-nav-link">Baby &amp; Kids</a>
+  </div>
+</header>
 
 <script>
-  (function () {
-    const section = document.querySelector('[data-header2-open-drawer]')?.closest('.c-header2');
-    if (!section) return;
-
-    /* --- Position below announcement bar / site-control --- */
-    var siteControl = document.getElementById('site-control');
-    if (siteControl) {
-      function updateHeaderTop() {
-        var h = siteControl.offsetHeight > 0 ? siteControl.getBoundingClientRect().height : 0;
-        var selfHeight = section.offsetHeight > 0 ? section.getBoundingClientRect().height : 0;
-        if (h > 0) {
-          section.style.top = h + 'px';
-          document.documentElement.style.setProperty('--nav-height', (h + selfHeight) + 'px');
-        } else {
-          section.style.removeProperty('top');
-          document.documentElement.style.setProperty('--nav-height', selfHeight + 'px');
-        }
-      }
-      updateHeaderTop();
-      if (typeof ResizeObserver !== 'undefined') {
-        new ResizeObserver(updateHeaderTop).observe(siteControl);
-        new ResizeObserver(updateHeaderTop).observe(section);
-      }
-      window.addEventListener('resize', updateHeaderTop);
-      new MutationObserver(updateHeaderTop).observe(siteControl.closest('.c-header') || siteControl, { attributes: true, attributeFilter: ['style', 'class'] });
-    }
-
-    /* --- Desktop dropdown: hover + click --- */
-    const dropdownItems = section.querySelectorAll('[data-header2-dropdown]');
-
-    dropdownItems.forEach(function (item) {
-      const toggle = item.querySelector('[data-header2-dropdown-toggle]');
-      let hoverTimeout;
-
-      item.addEventListener('mouseenter', function () {
-        clearTimeout(hoverTimeout);
-        item.classList.add('is-open');
-        toggle.setAttribute('aria-expanded', 'true');
-      });
-
-      item.addEventListener('mouseleave', function () {
-        hoverTimeout = setTimeout(function () {
-          item.classList.remove('is-open');
-          toggle.setAttribute('aria-expanded', 'false');
-        }, 150);
-      });
-
-      toggle.addEventListener('click', function (e) {
-        e.preventDefault();
-        const isOpen = item.classList.contains('is-open');
-        dropdownItems.forEach(function (other) {
-          if (other !== item) {
-            other.classList.remove('is-open');
-            other.querySelector('[data-header2-dropdown-toggle]').setAttribute('aria-expanded', 'false');
-          }
-        });
-        item.classList.toggle('is-open', !isOpen);
-        toggle.setAttribute('aria-expanded', String(!isOpen));
-      });
-
-      item.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
-          item.classList.remove('is-open');
-          toggle.setAttribute('aria-expanded', 'false');
-          toggle.focus();
-        }
-      });
+(function() {
+  const btn = document.getElementById('MaloraMobileMenuBtn');
+  const drawer = document.getElementById('MaloraMobileDrawer');
+  if (btn && drawer) {
+    btn.addEventListener('click', () => {
+      drawer.classList.toggle('is-open');
     });
-
-    document.addEventListener('click', function (e) {
-      if (!e.target.closest('[data-header2-dropdown]')) {
-        dropdownItems.forEach(function (item) {
-          item.classList.remove('is-open');
-          item.querySelector('[data-header2-dropdown-toggle]').setAttribute('aria-expanded', 'false');
-        });
-      }
-    });
-
-    /* --- Mobile drawer --- */
-    const openBtn = section.querySelector('[data-header2-open-drawer]');
-    const closeBtn = section.querySelector('[data-header2-close-drawer]');
-    const drawer = section.querySelector('[data-header2-drawer]');
-    const overlay = section.querySelector('[data-header2-overlay]');
-
-    /* --- Mobile accordion (show/hide product cards) --- */
-    var accordionToggles = section.querySelectorAll('[data-header2-accordion-toggle]');
-    var drawerProducts = section.querySelector('[data-header2-drawer-products]');
-
-    function openDrawer() {
-      drawer.classList.add('is-active');
-      overlay.classList.add('is-active');
-      openBtn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-
-      /* Auto-expand the Shop accordion on mobile */
-      if (drawerProducts && !drawerProducts.classList.contains('is-open')) {
-        drawerProducts.classList.add('is-open');
-        accordionToggles.forEach(function (t) {
-          t.setAttribute('aria-expanded', 'true');
-        });
-      }
-
-      var firstFocusable = drawer.querySelector('a, button');
-      if (firstFocusable) firstFocusable.focus();
-    }
-
-    function closeDrawer() {
-      drawer.classList.remove('is-active');
-      overlay.classList.remove('is-active');
-      openBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-      openBtn.focus();
-    }
-
-    openBtn.addEventListener('click', openDrawer);
-    closeBtn.addEventListener('click', closeDrawer);
-    overlay.addEventListener('click', closeDrawer);
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && drawer.classList.contains('is-active')) {
-        closeDrawer();
-      }
-    });
-
-    /* --- Mobile accordion (show/hide product cards) --- */
-    accordionToggles.forEach(function (toggle) {
-      toggle.addEventListener('click', function (e) {
-        e.preventDefault();
-        var isOpen = drawerProducts && drawerProducts.classList.contains('is-open');
-        if (drawerProducts) {
-          drawerProducts.classList.toggle('is-open', !isOpen);
-        }
-        toggle.setAttribute('aria-expanded', String(!isOpen));
-      });
-    });
-
-    /* --- Search overlay --- */
-    var searchOpenBtns = section.querySelectorAll('[data-header2-search-open]');
-    var searchOverlay = section.querySelector('[data-header2-search-overlay]');
-    var searchCloseBtn = section.querySelector('[data-header2-search-close]');
-    var searchInput = section.querySelector('.c-header2__search-input');
-
-    function openSearch() {
-      searchOverlay.classList.add('is-active');
-      searchOverlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      if (searchInput) searchInput.focus();
-    }
-
-    function closeSearch() {
-      searchOverlay.classList.remove('is-active');
-      searchOverlay.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-
-    searchOpenBtns.forEach(function (btn) {
-      btn.addEventListener('click', openSearch);
-    });
-
-    if (searchCloseBtn) searchCloseBtn.addEventListener('click', closeSearch);
-
-    searchOverlay.addEventListener('click', function (e) {
-      if (e.target === searchOverlay) closeSearch();
-    });
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && searchOverlay.classList.contains('is-active')) {
-        closeSearch();
-      }
-    });
-
-    /* --- Cart — open Rebuy Smart Cart flyout --- */
-    var cartBtn = section.querySelector('[data-header2-cart-open]');
-    if (cartBtn) {
-      cartBtn.addEventListener('click', function () {
-        if (window.Rebuy && window.Rebuy.SmartCart) {
-          window.Rebuy.SmartCart.show();
-        } else {
-          window.location.href = '/cart';
-        }
-      });
-    }
-
-    var mobileCartBtn = section.querySelector('[data-header2-mobile-cart-open]');
-    if (mobileCartBtn) {
-      mobileCartBtn.addEventListener('click', function () {
-        if (window.Rebuy && window.Rebuy.SmartCart) {
-          window.Rebuy.SmartCart.show();
-        } else {
-          window.location.href = '/cart';
-        }
-      });
-    }
-  })();
+  }
+})();
 </script>
 
-
-</div>
-    
-{% schema %}{ "name": "Malora Header", "settings": [] }{% endschema %}
+{% schema %}
+{
+  "name": "Malora Header",
+  "settings": []
+}
+{% endschema %}
