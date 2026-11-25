@@ -3,21 +3,37 @@
   .c-hero-wrapper,
   .c-hero-simple {
     position: relative !important;
-    min-height: 560px !important;
+    height: 580px !important;
+    min-height: 580px !important;
+    max-height: 680px !important;
+    overflow: hidden !important;
     opacity: 1 !important;
     visibility: visible !important;
-    display: block !important;
+    display: flex !important;
+    align-items: center !important;
     margin-top: 0 !important;
   }
-  .c-hero-simple__media,
+  .c-hero-simple__media {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
+  }
   .c-hero-simple__media picture,
   .c-hero-simple__media img {
     opacity: 1 !important;
     visibility: visible !important;
     display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
   }
   .c-hero-simple__inner,
   .c-hero-simple__content {
+    position: relative !important;
     opacity: 1 !important;
     visibility: visible !important;
     z-index: 3 !important;

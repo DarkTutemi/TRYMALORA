@@ -2,8 +2,9 @@
 <style>
   .malora-page-wrap { max-width: 1120px; margin: 0 auto; padding: 48px 24px 72px; color: #323A31; }
   .malora-about-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-bottom: 56px; }
+  .malora-about-hero > div { min-width: 0; }
   @media (max-width: 768px) { .malora-about-hero { grid-template-columns: 1fr; gap: 28px; } }
-  .malora-about-img { width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 4/3; }
+  .malora-about-img { width: 100%; max-width: 520px; height: 380px; border-radius: 12px; object-fit: cover; display: block; }
   .malora-page-title { font-family: 'Canela', Georgia, serif; font-size: clamp(30px, 4vw, 44px); font-weight: 500; margin: 0 0 16px; }
   .malora-page-text { font-size: 16px; line-height: 1.7; color: #4A5249; margin-bottom: 16px; }
   .malora-values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
