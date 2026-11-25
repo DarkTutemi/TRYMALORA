@@ -1,0 +1,52 @@
+{% comment %} MALORA ORGANICS — ABOUT US PAGE {% endcomment %}
+<style>
+  .malora-page-wrap { max-width: 1120px; margin: 0 auto; padding: 48px 24px 72px; color: #323A31; }
+  .malora-about-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-bottom: 56px; }
+  @media (max-width: 768px) { .malora-about-hero { grid-template-columns: 1fr; gap: 28px; } }
+  .malora-about-img { width: 100%; border-radius: 12px; object-fit: cover; aspect-ratio: 4/3; }
+  .malora-page-title { font-family: 'Canela', Georgia, serif; font-size: clamp(30px, 4vw, 44px); font-weight: 500; margin: 0 0 16px; }
+  .malora-page-text { font-size: 16px; line-height: 1.7; color: #4A5249; margin-bottom: 16px; }
+  .malora-values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 768px) { .malora-values-grid { grid-template-columns: 1fr; } }
+  .malora-value-card { background: #F8F7F4; padding: 28px; border-radius: 10px; border: 1px solid #ECEAE4; }
+  .malora-value-card h3 { font-family: 'Canela', Georgia, serif; font-size: 22px; margin: 0 0 10px; }
+</style>
+
+<div class="malora-page-wrap">
+  <div class="malora-about-hero">
+    <div>
+      <h1 class="malora-page-title">Our Story: Pure, Organic Care for Mama &amp; Baby</h1>
+      <p class="malora-page-text">
+        Malora Organics was founded with one simple mission: to create 100% natural, pregnancy-safe skincare and sleep essentials that actually work—without synthetic chemicals, parabens, or artificial fragrances.
+      </p>
+      <p class="malora-page-text">
+        Crafted in small batches in the USA using deep sea magnesium, organic shea butter, and soothing botanical oils, our formulas are trusted by over 168,000+ mothers and recommended by OB-GYNs nationwide.
+      </p>
+    </div>
+    <div>
+      <img src="https://8sheep.com/cdn/shop/files/anthony-tran--0lGtjmcVG4-unsplash.webp?v=1769120126&width=1200" alt="Malora Organics Mama and Baby" class="malora-about-img">
+    </div>
+  </div>
+
+  <div class="malora-values-grid">
+    <div class="malora-value-card">
+      <h3>🌿 100% Clean Ingredients</h3>
+      <p class="malora-page-text" style="margin:0;">Every ingredient is carefully vetted for pregnancy and baby safety. Zero toxins, zero fillers.</p>
+    </div>
+    <div class="malora-value-card">
+      <h3>🧪 Small-Batch Craft</h3>
+      <p class="malora-page-text" style="margin:0;">Handcrafted in small batches in the USA to preserve maximum potency and freshness.</p>
+    </div>
+    <div class="malora-value-card">
+      <h3>💛 90-Day Guarantee</h3>
+      <p class="malora-page-text" style="margin:0;">Try any Malora Organics product risk-free for 3 full months. Love it or get a full refund.</p>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Malora About Page",
+  "settings": []
+}
+{% endschema %}

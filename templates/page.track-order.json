@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "ultra-track-order",
+      "type": "malora-track-order-page",
       "settings": {}
     }
   },

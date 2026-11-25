@@ -1,0 +1,42 @@
+{% comment %} MALORA ORGANICS — CONTACT PAGE {% endcomment %}
+<style>
+  .malora-contact-wrap { max-width: 960px; margin: 0 auto; padding: 56px 24px 80px; color: #323A31; }
+  .malora-contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; margin-top: 32px; }
+  @media (max-width: 768px) { .malora-contact-grid { grid-template-columns: 1fr; } }
+  .malora-contact-box { background: #F8F7F4; border: 1px solid #ECEAE4; border-radius: 12px; padding: 28px; }
+  .malora-contact-input { width: 100%; padding: 12px 14px; border: 1px solid #D5D5D0; border-radius: 6px; font-size: 14px; margin-bottom: 14px; background: #fff; }
+  .malora-contact-btn { width: 100%; padding: 14px; background: #B36A42; color: #fff; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; }
+</style>
+
+<div class="malora-contact-wrap">
+  <h1 style="font-family: 'Canela', Georgia, serif; font-size: clamp(28px, 4vw, 40px); text-align: center; margin: 0 0 10px;">Contact Malora Organics</h1>
+  <p style="text-align: center; color: #555; font-size: 15px;">Questions about our organic formulas or your order? Our care team is here 7 days a week.</p>
+
+  <div class="malora-contact-grid">
+    <div class="malora-contact-box">
+      <img src="https://8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3_1024x1024.png?v=1762197935" alt="Malora Organics" style="width:100%; border-radius:8px; margin-bottom:18px;">
+      <p style="font-size:14px; margin:0 0 8px;"><strong>Email:</strong> support@trymalora.com</p>
+      <p style="font-size:14px; margin:0 0 8px;"><strong>Hours:</strong> Monday – Sunday, 9am – 6pm EST</p>
+      <p style="font-size:14px; margin:0;"><strong>Guarantee:</strong> 90-Day Risk-Free Trial</p>
+    </div>
+
+    <div class="malora-contact-box">
+      <form onsubmit="event.preventDefault(); document.getElementById('MaloraContactSuccess').style.display='block';">
+        <input type="text" class="malora-contact-input" placeholder="Your Name" required>
+        <input type="email" class="malora-contact-input" placeholder="Your Email" required>
+        <textarea class="malora-contact-input" rows="5" placeholder="How can we help you?" required></textarea>
+        <button type="submit" class="malora-contact-btn">Send Message</button>
+      </form>
+      <div id="MaloraContactSuccess" style="display:none; margin-top:16px; padding:12px; background:#EAF5EA; color:#2E7D32; border-radius:6px; font-size:14px;">
+        ✓ Thank you! Your message has been sent to our Malora Organics care team.
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Malora Contact Page",
+  "settings": []
+}
+{% endschema %}

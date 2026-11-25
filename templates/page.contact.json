@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "ultra-contact",
+      "type": "malora-contact-page",
       "settings": {}
     }
   },
