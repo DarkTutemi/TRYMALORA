@@ -154,8 +154,15 @@
     <script src="{{ 'zavelyn.js' | asset_url }}" type="module"></script>
     {%- if template.suffix == 'ceruline-us' or product.handle == 'ceruline-us-afm-dfm-disabler' -%}
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap">
       <style>
         :root {
+          --font-heading-family: 'Oswald', sans-serif;
+          --font-body-family: 'Poppins', sans-serif;
+          --font-heading-style: normal;
+          --font-heading-weight: 700;
+          --font-body-style: normal;
+          --font-body-weight: 400;
           --color-base-text: 26, 26, 26;
           --color-base-background-1: 255, 255, 255;
           --color-base-background-2: 247, 245, 240;
