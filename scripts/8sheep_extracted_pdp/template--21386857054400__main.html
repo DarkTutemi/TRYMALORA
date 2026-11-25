@@ -1,0 +1,2538 @@
+<div id="shopify-section-template--21386857054400__main" class="shopify-section section-product-template"><link href="//8sheep.com/cdn/shop/t/158/assets/pdp-upsell.css?v=33856514729185858101784531778" rel="stylesheet" type="text/css" media="all" />
+
+<style data-shopify>
+  @media(max-width: 767px){
+    .product-area__media .swiper-container:not(.swiper-container-horizontal) {
+      padding-bottom: 100.0%;
+    }
+  }
+  /* Thumbs-left "desktop only" mode: show thumbs-left layout >= 768px,
+     fall back to the default one-column gallery on mobile. */
+  .tl-desktop-only { display: none; }
+  .tl-mobile-only { display: block; }
+  @media (min-width: 768px) {
+    .tl-desktop-only { display: block; }
+    .tl-mobile-only { display: none; }
+  }/* Mobile gallery — bypass Swiper with native CSS scroll-snap.
+     Height model:
+     - The container keeps its aspect-ratio `padding-bottom` (from line 36-38)
+       so it has a real, known height.
+     - The wrapper is absolutely positioned inside that padded container,
+       filling it with `inset: 0`, and becomes the horizontal scroller.
+     - Each slide is `flex: 0 0 100%` and `height: 100%` so it fills the box.
+     All !important flags fight Swiper's inline styles if it hydrates. */
+  @media (max-width: 767px) {
+    .product-area__media .theme-gallery {
+      overflow: visible !important;
+    }
+    /* Force aspect-ratio padding to ALWAYS apply on mobile (even after Swiper
+       adds .swiper-container-horizontal), so the container has real height. */
+    .product-area__media .theme-gallery .theme-viewport.swiper-container {
+      overflow: visible !important;
+      padding-bottom: 100.0% !important;
+      margin-bottom: 12px;
+      position: relative !important;
+    }
+    /* Wrapper: fills the padded container and becomes the horizontal scroller. */
+    .product-area__media .theme-gallery .theme-images.swiper-wrapper {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      scroll-snap-type: x mandatory !important;
+      -webkit-overflow-scrolling: touch;
+      transform: none !important;
+      scrollbar-width: none;
+      touch-action: pan-x pan-y pinch-zoom;
+    }
+    .product-area__media .theme-gallery .theme-images.swiper-wrapper::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+    /* Each slide: full-width column, snap point, always visible. */
+    .product-area__media .theme-gallery .swiper-slide,
+    .product-area__media .theme-gallery .theme-img {
+      flex: 0 0 100% !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: 100% !important;
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+      display: block !important;
+      position: relative !important;
+      transform: none !important;
+      touch-action: pan-x pan-y pinch-zoom;
+    }
+    .product-area__media .theme-gallery .swiper-slide .product-media,
+    .product-area__media .theme-gallery .theme-img .product-media {
+      pointer-events: auto;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    /* The rimage-wrapper uses padding-top for aspect ratio. On mobile we
+       want it to fill the slide instead so slides align visually. */
+    .product-area__media .theme-gallery .swiper-slide .rimage-wrapper {
+      padding-top: 0 !important;
+      height: 100% !important;
+      width: 100% !important;
+    }
+    .product-area__media .theme-gallery .swiper-slide .rimage__image {
+      position: absolute !important;
+      top: 0; left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover;
+    }
+    /* Kill the legacy "hide non-first slide" rule from styles.css.liquid:9594. */
+    .product-area .product-area__media .swiper-container .theme-img:not(.theme-img-1),
+    .product-area .product-area__media .swiper-container:not(.swiper-container-horizontal) .theme-img:not(.theme-img-1) {
+      display: block !important;
+    }
+    /* Hide Swiper's own pagination + arrows on mobile — we render our own. */
+    .product-area__media .theme-gallery .swiper-pagination,
+    .product-area__media .theme-gallery .swiper-button-prev,
+    .product-area__media .theme-gallery .swiper-button-next {
+      display: none !important;
+    }
+    /* Native dots we inject as a sibling BELOW the gallery. Positioned
+       inside the image area (bottom: 3rem from its natural spot) so they
+       overlay the image bottom edge. */
+    .product-area__media {
+      position: relative;
+    }
+    .product-area__media .cc-native-dots {
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 16px auto 8px;
+      padding: 6px 0;
+      list-style: none;
+      position: relative;
+      bottom: 3rem;
+      z-index: 5;
+      background: transparent;
+    }
+    .product-area__media .cc-native-dots__track {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+      will-change: transform;
+    }
+    .product-area__media .cc-native-dots__dot {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      margin: 0;
+      background: #111;
+      opacity: 0.35;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease;
+      -webkit-appearance: none;
+      appearance: none;
+      flex: 0 0 8px;
+      transform: scale(0.33);
+    }
+    .product-area__media .cc-native-dots__dot--near {
+      transform: scale(0.66);
+      opacity: 0.45;
+    }
+    .product-area__media .cc-native-dots__dot--adjacent {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    .product-area__media .cc-native-dots__dot[aria-current="true"] {
+      transform: scale(1);
+      opacity: 1;
+      background: #fff;
+    }
+  }
+</style>
+
+<div
+  class="
+    product-area
+    
+    
+    product-area--one-col header-overlap-section 
+    
+    
+    
+    
+    
+  "
+  data-section-type="product-template"
+  data-components="tabs,accordion,sticky-scroll-direction"
+  data-is-featured-product="false"
+  data-ajax-add-to-cart="true"
+  data-is-preorder=""
+  data-product-id="1825437253732"
+  data-enable-history-state="true"
+>
+  <style data-shopify>
+    
+      @media(max-width:767px){
+        .product-area__thumbs__thumb-1 .rimage-outer-wrapper {
+            width: 70px;
+        }
+      }
+    
+      @media(max-width:767px){
+        .product-area__thumbs__thumb-2 .rimage-outer-wrapper {
+            width: 70px;
+        }
+      }
+    
+      @media(max-width:767px){
+        .product-area__thumbs__thumb-3 .rimage-outer-wrapper {
+            width: 70px;
+        }
+      }
+    
+      @media(max-width:767px){
+        .product-area__thumbs__thumb-4 .rimage-outer-wrapper {
+            width: 70px;
+        }
+      }
+    
+  </style>
+
+  
+<div
+    class="product-area__media "
+    data-cc-animate
+    data-cc-animate-duration="1s"
+  ><div class="product-area__thumbs" data-cc-animate>
+        <div class="carousel-wrapper">
+          <div class="carousel">
+            
+              <div
+                class="product-area__thumbs__thumb product-area__thumbs__thumb-1 theme-gallery-thumb"
+                data-media-thumb-id="28088659411136"
+              >
+                <a
+                  href="//8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?v=1762197935"
+                  
+                    class="thumb-active"
+                  
+                  aria-label="A jar of Organic Sleepy Body Lotion with a white lid beside it. The 8oz (227ml) label notes it&#39;s pregnancy-safe, 100% organic, handcrafted, and made in the USA. Soft natural light creates gentle shadows. - Product Thumbnail 1 of 4"
+                >
+                  <div class="rimage-outer-wrapper" style="max-width: 2000px"
+  
+>
+  <div class="rimage-wrapper lazyload--placeholder" style="padding-top:100.0%">
+    
+    
+    <img class="rimage__image lazyload fade-in "
+      data-src="//8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3_{width}x.png?v=1762197935"
+      data-widths="[460, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+      data-aspectratio="1.0"
+      data-sizes="auto"
+      alt="A jar of Organic Sleepy Body Lotion with a white lid beside it. The 8oz (227ml) label notes it&#39;s pregnancy-safe, 100% organic, handcrafted, and made in the USA. Soft natural light creates gentle shadows."
+      width="2000"
+      height="2000"
+      >
+
+    <noscript>
+      
+      <img src="//8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3_1024x1024.png?v=1762197935" alt="A jar of Organic Sleepy Body Lotion with a white lid beside it. The 8oz (227ml) label notes it&#39;s pregnancy-safe, 100% organic, handcrafted, and made in the USA. Soft natural light creates gentle shadows." class="rimage__image">
+    </noscript>
+  </div>
+</div>
+
+
+
+</a>
+              </div>
+            
+              <div
+                class="product-area__thumbs__thumb product-area__thumbs__thumb-2 theme-gallery-thumb"
+                data-media-thumb-id="28088659443904"
+              >
+                <a
+                  href="//8sheep.com/cdn/shop/products/38_66963ef4-78af-4751-94c9-0ae1e6217624.png?v=1672746059"
+                  
+                  aria-label="An open jar of Organic Sleepy Body Lotion sits on a light marble surface next to its lid. The creamy lotion inside the clear jar is visible as sunlight casts gentle shadows across the scene. - Product Thumbnail 2 of 4"
+                >
+                  <div class="rimage-outer-wrapper" style="max-width: 2000px"
+  
+>
+  <div class="rimage-wrapper lazyload--placeholder" style="padding-top:100.0%">
+    
+    
+    <img class="rimage__image lazyload fade-in "
+      data-src="//8sheep.com/cdn/shop/products/38_66963ef4-78af-4751-94c9-0ae1e6217624_{width}x.png?v=1672746059"
+      data-widths="[460, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+      data-aspectratio="1.0"
+      data-sizes="auto"
+      alt="An open jar of Organic Sleepy Body Lotion sits on a light marble surface next to its lid. The creamy lotion inside the clear jar is visible as sunlight casts gentle shadows across the scene."
+      width="2000"
+      height="2000"
+      >
+
+    <noscript>
+      
+      <img src="//8sheep.com/cdn/shop/products/38_66963ef4-78af-4751-94c9-0ae1e6217624_1024x1024.png?v=1672746059" alt="An open jar of Organic Sleepy Body Lotion sits on a light marble surface next to its lid. The creamy lotion inside the clear jar is visible as sunlight casts gentle shadows across the scene." class="rimage__image">
+    </noscript>
+  </div>
+</div>
+
+
+
+</a>
+              </div>
+            
+              <div
+                class="product-area__thumbs__thumb product-area__thumbs__thumb-3 theme-gallery-thumb"
+                data-media-thumb-id="42320982671552"
+              >
+                <a
+                  href="//8sheep.com/cdn/shop/files/2_606c6bc9-d31b-48e6-9963-9c3c52a77f70.png?v=1775037811"
+                  
+                  aria-label="A person scoops creamy Organic Sleepy Body Lotion from a jar with their fingers, displaying well-manicured nails and a silver ring. This gentle, organic body lotion is safe to use during pregnancy. - Product Thumbnail 3 of 4"
+                >
+                  <div class="rimage-outer-wrapper" style="max-width: 2000px"
+  
+>
+  <div class="rimage-wrapper lazyload--placeholder" style="padding-top:100.0%">
+    
+    
+    <img class="rimage__image lazyload fade-in "
+      data-src="//8sheep.com/cdn/shop/files/2_606c6bc9-d31b-48e6-9963-9c3c52a77f70_{width}x.png?v=1775037811"
+      data-widths="[460, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+      data-aspectratio="1.0"
+      data-sizes="auto"
+      alt="A person scoops creamy Organic Sleepy Body Lotion from a jar with their fingers, displaying well-manicured nails and a silver ring. This gentle, organic body lotion is safe to use during pregnancy."
+      width="2000"
+      height="2000"
+      >
+
+    <noscript>
+      
+      <img src="//8sheep.com/cdn/shop/files/2_606c6bc9-d31b-48e6-9963-9c3c52a77f70_1024x1024.png?v=1775037811" alt="A person scoops creamy Organic Sleepy Body Lotion from a jar with their fingers, displaying well-manicured nails and a silver ring. This gentle, organic body lotion is safe to use during pregnancy." class="rimage__image">
+    </noscript>
+  </div>
+</div>
+
+
+
+</a>
+              </div>
+            
+              <div
+                class="product-area__thumbs__thumb product-area__thumbs__thumb-4 theme-gallery-thumb"
+                data-media-thumb-id="42320982704320"
+              >
+                <a
+                  href="//8sheep.com/cdn/shop/files/3_235aa0e9-259d-4956-9abf-a49de2793aae.png?v=1775037810"
+                  
+                  aria-label="A person in a beige shirt holds a jar of Organic Sleepy Body Lotion, while their other hand gently rests on their pregnant belly in the background. - Product Thumbnail 4 of 4"
+                >
+                  <div class="rimage-outer-wrapper" style="max-width: 2000px"
+  
+>
+  <div class="rimage-wrapper lazyload--placeholder" style="padding-top:100.0%">
+    
+    
+    <img class="rimage__image lazyload fade-in "
+      data-src="//8sheep.com/cdn/shop/files/3_235aa0e9-259d-4956-9abf-a49de2793aae_{width}x.png?v=1775037810"
+      data-widths="[460, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+      data-aspectratio="1.0"
+      data-sizes="auto"
+      alt="A person in a beige shirt holds a jar of Organic Sleepy Body Lotion, while their other hand gently rests on their pregnant belly in the background."
+      width="2000"
+      height="2000"
+      >
+
+    <noscript>
+      
+      <img src="//8sheep.com/cdn/shop/files/3_235aa0e9-259d-4956-9abf-a49de2793aae_1024x1024.png?v=1775037810" alt="A person in a beige shirt holds a jar of Organic Sleepy Body Lotion, while their other hand gently rests on their pregnant belly in the background." class="rimage__image">
+    </noscript>
+  </div>
+</div>
+
+
+
+</a>
+              </div>
+            
+          </div>
+        </div>
+      </div><div
+      class="
+        theme-gallery product-slider
+        
+        
+        theme-gallery--zoom-enabled cursor-plus-light
+        theme-gallery--thumbs-enabled
+      "
+      data-product-id="1825437253732"
+      data-column-count="1"
+      data-media-count="4"
+      data-media-crop="center"
+      data-layout="one-column"
+      data-scroll-to-variant-media="true"
+      data-variant-image-grouping="false"
+      data-variant-image-grouping-option=""color,colour,couleur,farbe""
+    >
+      <div class="theme-viewport swiper-container" data-swiper-nav-style="dots">
+        <div class="theme-images swiper-wrapper">
+          
+            
+              <div
+                class="theme-img theme-img-1 swiper-slide current-img"
+                
+                  data-full-size="//8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?v=1762197935"
+                
+              >
+<div class="product-media product-media--image"
+         data-media-id="28088659411136"
+         data-media-type="image" role="button" tabindex="0" aria-label="A jar of Organic Sleepy Body Lotion with a white lid beside it. The 8oz (227ml) label notes it&#39;s pregnancy-safe, 100% organic, handcrafted, and made in the USA. Soft natural light creates gentle shadows. - Open in a modal">
+
+      <div class="rimage-wrapper lazyload--placeholder"
+           style="padding-top:99.9%">
+        
+        <img class="rimage__image lazyload--manual "
+             
+               src="//8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3_360x.png?v=1762197935"
+             
+             data-src="//8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3_{width}x.png?v=1762197935"
+             data-widths="[460, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+             data-aspectratio="1.0"
+             data-sizes="auto"
+             height="2000"
+             width="2000"
+             alt="A jar of Organic Sleepy Body Lotion with a white lid beside it. The 8oz (227ml) label notes it&#39;s pregnancy-safe, 100% organic, handcrafted, and made in the USA. Soft natural light creates gentle shadows."
+             
+        >
+        <noscript>
+          <img data-src="//8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3_1024x1024.png?v=1762197935" alt="A jar of Organic Sleepy Body Lotion with a white lid beside it. The 8oz (227ml) label notes it&#39;s pregnancy-safe, 100% organic, handcrafted, and made in the USA. Soft natural light creates gentle shadows.">
+        </noscript>
+      </div>
+
+    </div>
+
+  
+
+</div>
+            
+              <div
+                class="theme-img theme-img-2 swiper-slide "
+                
+                  data-full-size="//8sheep.com/cdn/shop/products/38_66963ef4-78af-4751-94c9-0ae1e6217624.png?v=1672746059"
+                
+              >
+<div class="product-media product-media--image"
+         data-media-id="28088659443904"
+         data-media-type="image" role="button" tabindex="0" aria-label="An open jar of Organic Sleepy Body Lotion sits on a light marble surface next to its lid. The creamy lotion inside the clear jar is visible as sunlight casts gentle shadows across the scene. - Open in a modal">
+
+      <div class="rimage-wrapper lazyload--placeholder"
+           style="padding-top:99.9%">
+        
+        <img class="rimage__image lazyload--manual fade-in"
+             
+             data-src="//8sheep.com/cdn/shop/products/38_66963ef4-78af-4751-94c9-0ae1e6217624_{width}x.png?v=1672746059"
+             data-widths="[460, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+             data-aspectratio="1.0"
+             data-sizes="auto"
+             height="2000"
+             width="2000"
+             alt="An open jar of Organic Sleepy Body Lotion sits on a light marble surface next to its lid. The creamy lotion inside the clear jar is visible as sunlight casts gentle shadows across the scene."
+             
+        >
+        <noscript>
+          <img data-src="//8sheep.com/cdn/shop/products/38_66963ef4-78af-4751-94c9-0ae1e6217624_1024x1024.png?v=1672746059" alt="An open jar of Organic Sleepy Body Lotion sits on a light marble surface next to its lid. The creamy lotion inside the clear jar is visible as sunlight casts gentle shadows across the scene.">
+        </noscript>
+      </div>
+
+    </div>
+
+  
+
+</div>
+            
+              <div
+                class="theme-img theme-img-3 swiper-slide "
+                
+                  data-full-size="//8sheep.com/cdn/shop/files/2_606c6bc9-d31b-48e6-9963-9c3c52a77f70.png?v=1775037811"
+                
+              >
+<div class="product-media product-media--image"
+         data-media-id="42320982671552"
+         data-media-type="image" role="button" tabindex="0" aria-label="A person scoops creamy Organic Sleepy Body Lotion from a jar with their fingers, displaying well-manicured nails and a silver ring. This gentle, organic body lotion is safe to use during pregnancy. - Open in a modal">
+
+      <div class="rimage-wrapper lazyload--placeholder"
+           style="padding-top:99.9%">
+        
+        <img class="rimage__image lazyload--manual fade-in"
+             
+             data-src="//8sheep.com/cdn/shop/files/2_606c6bc9-d31b-48e6-9963-9c3c52a77f70_{width}x.png?v=1775037811"
+             data-widths="[460, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+             data-aspectratio="1.0"
+             data-sizes="auto"
+             height="2000"
+             width="2000"
+             alt="A person scoops creamy Organic Sleepy Body Lotion from a jar with their fingers, displaying well-manicured nails and a silver ring. This gentle, organic body lotion is safe to use during pregnancy."
+             
+        >
+        <noscript>
+          <img data-src="//8sheep.com/cdn/shop/files/2_606c6bc9-d31b-48e6-9963-9c3c52a77f70_1024x1024.png?v=1775037811" alt="A person scoops creamy Organic Sleepy Body Lotion from a jar with their fingers, displaying well-manicured nails and a silver ring. This gentle, organic body lotion is safe to use during pregnancy.">
+        </noscript>
+      </div>
+
+    </div>
+
+  
+
+</div>
+            
+              <div
+                class="theme-img theme-img-4 swiper-slide "
+                
+                  data-full-size="//8sheep.com/cdn/shop/files/3_235aa0e9-259d-4956-9abf-a49de2793aae.png?v=1775037810"
+                
+              >
+<div class="product-media product-media--image"
+         data-media-id="42320982704320"
+         data-media-type="image" role="button" tabindex="0" aria-label="A person in a beige shirt holds a jar of Organic Sleepy Body Lotion, while their other hand gently rests on their pregnant belly in the background. - Open in a modal">
+
+      <div class="rimage-wrapper lazyload--placeholder"
+           style="padding-top:99.9%">
+        
+        <img class="rimage__image lazyload--manual fade-in"
+             
+             data-src="//8sheep.com/cdn/shop/files/3_235aa0e9-259d-4956-9abf-a49de2793aae_{width}x.png?v=1775037810"
+             data-widths="[460, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+             data-aspectratio="1.0"
+             data-sizes="auto"
+             height="2000"
+             width="2000"
+             alt="A person in a beige shirt holds a jar of Organic Sleepy Body Lotion, while their other hand gently rests on their pregnant belly in the background."
+             
+        >
+        <noscript>
+          <img data-src="//8sheep.com/cdn/shop/files/3_235aa0e9-259d-4956-9abf-a49de2793aae_1024x1024.png?v=1775037810" alt="A person in a beige shirt holds a jar of Organic Sleepy Body Lotion, while their other hand gently rests on their pregnant belly in the background.">
+        </noscript>
+      </div>
+
+    </div>
+
+  
+
+</div>
+            
+          
+        </div>
+        <div class="swiper-pagination"></div>
+        <a href="#" class="swiper-button-prev" aria-label="Previous"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M0-.25H24v24H0Z" transform="translate(0 0.25)" style="fill:none"/>
+  <polyline points="14.4 7.03 9 12.43 14.4 17.83"
+            style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:8;stroke-width:2px"/>
+</svg>
+</a>
+        <a href="#" class="swiper-button-next" aria-label="Next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path d="M0-.25H24v24H0Z" transform="translate(0 0.25)" style="fill:none"/>
+  <polyline points="10 17.83 15.4 12.43 10 7.03"
+            style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-miterlimit:8;stroke-width:2px"/>
+</svg>
+</a>
+      </div>
+    </div>
+  </div><div class="product-area__details product-detail">
+    <div
+      class="product-area__details__inner "
+      
+    >
+      <div
+        class="product-area__details__header"
+        data-cc-animate
+        data-cc-animate-delay="0.8s"
+        data-cc-animate-duration="1.2s"
+      >
+        <div class="product-detail__form">
+          
+            
+
+
+<h1
+                      class="product-area__details__title product-detail__gap-sm h2"
+                      
+                    >Organic Sleepy Body Lotion</h1>
+                  
+                  <!-- Stamped - Begin Star Rating Badge -->
+                  <span
+                    class="stamped-product-reviews-badge stamped-main-badge"
+                    data-id="1825437253732"
+                    data-product-sku="sleepylotion"
+                    data-product-title="Organic Sleepy Body Lotion"
+                    data-product-type=""
+                    style="display: block;"
+                  >
+                    <span class="stamped-badge" data-rating="4.8" data-lang=""><span class="stamped-starrating stamped-badge-starrating" role="img" aria-label="Rated 4.8 out of 5 stars 2937 reviews"><i class="stamped-fa stamped-fa-star" aria-hidden="true"></i><i class="stamped-fa stamped-fa-star" aria-hidden="true"></i><i class="stamped-fa stamped-fa-star" aria-hidden="true"></i><i class="stamped-fa stamped-fa-star" aria-hidden="true"></i><i class="stamped-fa stamped-fa-star" aria-hidden="true"></i></span><span class="stamped-badge-caption" data-reviews="2937" data-rating="4.8"  data-label="reviews" data-version="2" data-version="2">2937<span style="display:none;"> reviews</span></span></span>
+                  </span>
+                  <!-- Stamped - End Star Rating Badge --><div
+                      class="product-area__rich-text-block product-detail__gap-sm rte"
+                      
+                    >
+                      <p><span class="metafield-multi_line_text_field">•  Promotes deeper, more restful sleep<br />
+•  Eases lower back and hip pains<br />
+•  Helps with restless legs and leg cramps<br />
+•  Made with clean, all-natural ingredients<br />
+•  Loved by 168,000+ happy mamas</span></p><p></p>
+                    </div>
+                  
+                    <p class="see-ingredients">See Ingredients</p>
+                    <div class="ingredients-modal-container">
+                      <div class="modal-bg"></div>
+                      <div class="modal">
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0098/2138/8900/files/ingredientsModalButton.png?v=1688149822"
+                          class="close-button"
+                        >
+                        <p>Every item is handcrafted with all natural ingredients in small batches!</p>
+<p class="full-ingredient-list-heading">Full Ingredient List: </p> 
+<p>
+Organic Mango Butter, Organic Coconut Oil, Deep Sea Magnesium Chloride Brine, Organic Beeswax, Organic Essential Oils, Distilled Water</p>
+
+                      </div>
+                    </div>
+                  
+<div
+                    class="price-area product-detail__gap-sm"
+                    
+                    data-product-id="1825437253732"
+                  >
+                    
+                    <div class="price theme-money">
+                      <span class="visually-hidden">Discounted price</span>$29</div>
+
+                    
+                  </div>
+
+                  <div class="ig-volume-quantity-outer-container" style="display:flex;"><ig-volume-quantity-widget data-product-id="1825437253732"></ig-volume-quantity-widget></div>
+                
+<style>
+                    .product-detail__form__options .option-selectors .selector-wrapper {
+                      border: 1px solid #d7d6d6;
+                      padding: 13px 0 13px 16px;
+                    }
+                  </style>
+                  
+                    <style>
+                      .product-detail__form__options .option-selectors .selector-wrapper {
+                        border: none;
+                        padding: 0px;
+                      }
+                    </style>
+                  
+                  
+                    <div
+                      class="
+                        product-detail__form__options product-detail__gap-lg
+                        sleepy-lotion-seniors
+                                product-detail__form__options--dropdown
+                      "
+                      data-show-realtime-availability="true"
+                    >
+                      <div class="option-selectors options-2">
+                        
+                        
+                          <div class="selector-wrapper has-pretty-select" data-option-name="Size">
+                            <div class="pretty-select id-option-size-7488888438976">
+                              <select
+                                id="option-Size-7488888438976"
+                                class="replaced"
+                                aria-label="Size"
+                              >
+                                
+                                  <option value="4 oz">4 oz</option>
+                                
+                                  <option value="8 oz">8 oz</option>
+                                
+                              </select>
+                              <span class="text size_text">
+                                <span class="label">Size:</span>
+                                <span class="value">4 oz</span>
+                              </span>
+                            </div>
+                            
+                              <ul
+                                id="newyearfilter"
+                                
+                                name="newyearfilter"
+                              >
+                                
+                                  
+                                  <li
+                                    
+                                      class="active"
+                                    
+                                    value="4 oz"
+                                  >
+                                    4 oz
+                                  </li>
+                                
+                                  
+                                  <li
+                                    
+                                    value="8 oz"
+                                  >
+                                    8 oz
+                                  </li>
+                                
+                              </ul>
+                            
+                          </div>
+                          
+                        
+                          <div class="selector-wrapper has-pretty-select" data-option-name="Scent">
+                            <div class="pretty-select id-option-size-7488888438976">
+                              <select
+                                id="option-Scent-7488888438976"
+                                class="replaced"
+                                aria-label="Scent"
+                              >
+                                
+                                  <option value="Lavender">Lavender</option>
+                                
+                                  <option value="Vanilla">Vanilla</option>
+                                
+                                  <option value="Unscented">Unscented</option>
+                                
+                              </select>
+                              <span class="text scent_text">
+                                <span class="label">Scent:</span>
+                                <span class="value">Lavender</span>
+                              </span>
+                            </div>
+                            
+                              <ul
+                                id="newyearfilter1"
+                                
+                                  class="newyear-percent"
+                                
+                                name="newyearfilter1"
+                              >
+                                
+                                  
+                                  <li
+                                    
+                                      class="active"
+                                    
+                                    value="Lavender"
+                                  >
+                                    Lavender
+                                  </li>
+                                
+                                  
+                                  <li
+                                    
+                                    value="Vanilla"
+                                  >
+                                    Vanilla
+                                  </li>
+                                
+                                  
+                                  <li
+                                    
+                                    value="Unscented"
+                                  >
+                                    Unscented
+                                  </li>
+                                
+                              </ul>
+                            
+                          </div>
+                          
+                        
+                      </div>
+                    </div>
+                  
+<form method="post" action="/cart/add" id="product-form-template--21386857054400__main-1825437253732" accept-charset="UTF-8" class="product-purchase-form feedback-" enctype="multipart/form-data"><input type="hidden" name="form_type" value="product" /><input type="hidden" name="utf8" value="✓" />
+                    <select
+                      name="id"
+                      class="original-selector"
+                      aria-label="Options"
+                    >
+                      
+                        <option
+                          value="17594384646244"
+                          
+                            selected="selected"
+                          
+                          
+                            data-inventory="863"
+                          
+                          data-stock=""
+                        >
+                          4 oz / Lavender
+                        </option>
+                      
+                        <option
+                          value="41579444306112"
+                          
+                          
+                            data-inventory="411"
+                          
+                          data-stock=""
+                        >
+                          4 oz / Vanilla
+                        </option>
+                      
+                        <option
+                          value="31753751232586"
+                          
+                          
+                            data-inventory="384"
+                          
+                          data-stock=""
+                        >
+                          4 oz / Unscented
+                        </option>
+                      
+                        <option
+                          value="17595301331044"
+                          
+                          
+                            data-inventory="2427"
+                          
+                          data-stock=""
+                        >
+                          8 oz / Lavender
+                        </option>
+                      
+                        <option
+                          value="41579444338880"
+                          
+                          
+                            data-inventory="772"
+                          
+                          data-stock=""
+                        >
+                          8 oz / Vanilla
+                        </option>
+                      
+                        <option
+                          value="31753751429194"
+                          
+                          
+                            data-inventory="594"
+                          
+                          data-stock=""
+                        >
+                          8 oz / Unscented
+                        </option>
+                      
+                    </select><div class="product-status-message"></div><div
+                      class="
+                        product-detail__form__action product-detail__gap-lg
+                        product-detail__form__options--with-quantity
+                        
+                      "
+                    >
+                      
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+
+                        
+                      
+                      
+                        <div class="quantity-wrapper border-radius-slightly_rounded">
+                          <label for="quantity-1825437253732">Quantity</label>
+                          <a href="#" data-quantity="down">&minus;</a>
+                          <input id="quantity-1825437253732" class="select-on-focus" name="quantity" value="1">
+                          <a href="#" data-quantity="up">&plus;</a>
+                        </div>
+                      
+
+                      <button
+                        class="button "
+                        type="submit"
+                        name="add"
+                      >Add to Cart
+</button>
+
+                      <div id="osf_bis"></div>
+
+                      
+                    </div>
+
+                    
+                      <div class="badge_area hide-second-badge">
+  <svg width="56" height="52" viewBox="0 0 56 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="28.1455" cy="25.9658" r="24.9658" fill="#FFFBF2" stroke="#423F3F" stroke-width="2" />
+    <mask id="path-2-outside-1_4486_42" maskUnits="userSpaceOnUse" x="-0.765625" y="6.38318" width="57" height="40"
+      fill="black">
+      <rect fill="white" x="-0.765625" y="6.38318" width="57" height="40" />
+      <path
+        d="M13.7952 30.6116C13.613 31.2913 13.7056 31.9996 14.0558 32.6061L16.7046 37.194C16.9429 37.6069 17.471 37.7484 17.8839 37.51C18.2968 37.2716 18.4383 36.7436 18.1999 36.3307L17.3072 34.7843L18.8705 33.8818L19.7633 35.4281C20.0016 35.841 20.5296 35.9825 20.9426 35.7441C21.3555 35.5057 21.497 34.9778 21.2586 34.5648L18.6098 29.9769C17.8849 28.7214 16.2737 28.2897 15.0184 29.0146C14.4116 29.3648 13.9773 29.9319 13.7952 30.6116ZM17.1143 30.8403L18.0071 32.3865L16.4438 33.289L15.551 31.7428C14.9971 30.684 16.4734 29.8271 17.1143 30.8403Z" />
+      <path
+        d="M45.4521 19.5992L44.5496 18.0359L45.6848 17.3805C46.0977 17.142 46.2392 16.6141 46.0008 16.2011C45.7625 15.7882 45.2345 15.6468 44.8215 15.8851L43.6862 16.5405L42.7836 14.9772L44.7123 13.8638C45.1253 13.6253 45.2667 13.0975 45.0283 12.6844C44.7899 12.2715 44.2619 12.13 43.849 12.3684L41.1727 13.9136C40.7665 14.1376 40.617 14.6958 40.8567 15.0929L44.3885 21.2102C44.6125 21.6163 45.1708 21.7659 45.5679 21.5262L48.2441 19.981C48.657 19.7425 48.7985 19.2146 48.5601 18.8017C48.3218 18.3888 47.7938 18.2473 47.3809 18.4857L45.4521 19.5992Z" />
+      <path
+        d="M42.3391 23.0988C42.3963 22.8853 42.3721 22.6502 42.2528 22.4437L39.1528 17.0742L39.7433 16.7334C40.1562 16.4949 40.2976 15.9671 40.0593 15.554C39.8209 15.1412 39.2929 14.9997 38.8799 15.238L36.2036 16.7832C35.7908 17.0216 35.6493 17.5494 35.8876 17.9625C36.126 18.3754 36.654 18.5169 37.0669 18.2785L37.6574 17.9376L40.7575 23.3071C40.9959 23.72 41.5239 23.8614 41.9368 23.6231C42.1434 23.5038 42.2819 23.3122 42.3391 23.0988Z" />
+      <path
+        d="M8.90579 39.6572L8.25383 38.528C8.02983 38.1219 7.47157 37.9722 7.07445 38.2121L6.30988 38.6536C5.89711 38.8919 5.75561 39.42 5.99398 39.8329C6.23244 40.2458 6.76037 40.3873 7.17336 40.1488L7.19028 40.1391L7.41053 40.5205C7.66003 40.9316 7.50171 41.5221 7.08017 41.7534C6.66916 42.0029 6.0786 41.8446 5.84728 41.4231L4.08139 38.3645C3.83247 37.9336 3.98076 37.3805 4.41175 37.1316C4.70598 36.9618 5.06824 36.9723 5.35716 37.1592C5.75756 37.4181 6.29197 37.3035 6.55092 36.9032C6.80993 36.5025 6.69516 35.9682 6.29485 35.7094C5.45906 35.1689 4.40674 35.1409 3.54846 35.6363C2.29298 36.3612 1.86121 37.9723 2.58611 39.2278L4.3519 42.2865C5.03059 43.5214 6.73821 43.9789 7.94333 43.2488C9.17829 42.5702 9.63576 40.8625 8.90579 39.6572Z" />
+      <path
+        d="M38.5346 24.5902L35.0029 18.4731C34.7645 18.0602 34.2365 17.9187 33.8235 18.1571C33.4106 18.3955 33.2691 18.9234 33.5075 19.3364L35.2108 22.2865L31.6722 19.9501C31.3381 19.7296 30.8961 19.7677 30.6047 20.0421C30.3133 20.3166 30.2487 20.7553 30.449 21.1023L33.9807 27.2194C34.2191 27.6322 34.7471 27.7737 35.1601 27.5354C35.573 27.2969 35.7144 26.7691 35.4761 26.356L33.7728 23.406L37.3114 25.7423C37.6454 25.9628 38.0874 25.9248 38.3789 25.6504C38.499 25.5373 38.5805 25.3965 38.6209 25.2456C38.6785 25.0301 38.6524 24.7942 38.5346 24.5902Z" />
+      <path
+        d="M19.2242 26.5866C18.818 26.8107 18.6685 27.3688 18.9082 27.766L22.4401 33.8832C22.6784 34.2961 23.2065 34.4376 23.6193 34.1992C24.0322 33.9607 24.1737 33.4328 23.9353 33.0198L22.601 30.7088L22.9205 30.5243L25.7706 32.4061C26.1685 32.6688 26.704 32.5591 26.9667 32.1613C27.2259 31.775 27.1241 31.2281 26.722 30.9652L24.3017 29.3672C24.4352 29.1508 24.5378 28.9135 24.6056 28.6606C25.2259 26.4261 22.752 24.5328 20.7534 25.7037L19.2242 26.5866ZM22.8497 27.5294C23.0975 27.9379 22.9429 28.5245 22.5262 28.7581C22.5194 28.7619 22.5127 28.7659 22.506 28.7699L21.7377 29.2136L20.8351 27.6503L21.6168 27.199C22.0478 26.9501 22.6009 27.0983 22.8497 27.5294Z" />
+      <path
+        d="M13.6793 39.9382C14.9143 39.2596 15.3718 37.5519 14.6417 36.3467L11.9928 31.7588C11.7545 31.3459 11.2265 31.2044 10.8135 31.4428C10.4006 31.6812 10.2591 32.2091 10.4975 32.6221L13.1463 37.2101C13.7003 38.2689 12.224 39.1258 11.5831 38.1126L8.93423 33.5247C8.69586 33.1118 8.16784 32.9703 7.75488 33.2087C7.34197 33.4471 7.20054 33.975 7.43887 34.388L10.0879 38.9759C10.8127 40.2314 12.4239 40.6631 13.6793 39.9382Z" />
+      <path
+        d="M32.4117 29.1222C32.8246 28.8837 32.966 28.3558 32.7277 27.9428L30.0788 23.3549C29.3539 22.0994 27.7428 21.6677 26.4874 22.3926C25.2524 23.0712 24.7949 24.779 25.525 25.9841L28.1738 30.572C28.4122 30.9849 28.9402 31.1264 29.3532 30.888C29.7661 30.6495 29.9075 30.1215 29.6692 29.7086L28.7764 28.1623L30.3397 27.2597L31.2325 28.8061C31.4708 29.2191 31.9988 29.3605 32.4117 29.1222ZM27.9129 26.667L27.0202 25.1208C26.7708 24.7097 26.929 24.1192 27.3506 23.8879C27.7815 23.6391 28.3347 23.7873 28.5835 24.2182L29.4762 25.7644L27.9129 26.667Z" />
+      <path
+        d="M48.8207 9.49898L46.1444 11.0441C45.7381 11.2682 45.5887 11.8263 45.8284 12.2235L49.3602 18.3406C49.5986 18.7535 50.1266 18.895 50.5395 18.6566L53.2158 17.1115C53.6287 16.873 53.7701 16.3451 53.5318 15.9321C53.2934 15.5192 52.7654 15.3777 52.3524 15.6161L50.4238 16.7295L49.5212 15.1663L50.6565 14.5108C51.0694 14.2724 51.2108 13.7444 50.9725 13.3315C50.7341 12.9186 50.2061 12.7771 49.7931 13.0155L48.6579 13.6709L47.7553 12.1076L49.6839 10.9941C50.0969 10.7557 50.2383 10.2278 49.9999 9.81477C49.7616 9.40208 49.2336 9.2606 48.8207 9.49898Z" />
+    </mask>
+    <path
+      d="M13.7952 30.6116C13.613 31.2913 13.7056 31.9996 14.0558 32.6061L16.7046 37.194C16.9429 37.6069 17.471 37.7484 17.8839 37.51C18.2968 37.2716 18.4383 36.7436 18.1999 36.3307L17.3072 34.7843L18.8705 33.8818L19.7633 35.4281C20.0016 35.841 20.5296 35.9825 20.9426 35.7441C21.3555 35.5057 21.497 34.9778 21.2586 34.5648L18.6098 29.9769C17.8849 28.7214 16.2737 28.2897 15.0184 29.0146C14.4116 29.3648 13.9773 29.9319 13.7952 30.6116ZM17.1143 30.8403L18.0071 32.3865L16.4438 33.289L15.551 31.7428C14.9971 30.684 16.4734 29.8271 17.1143 30.8403Z"
+      fill="#423F3F" />
+    <path
+      d="M45.4521 19.5992L44.5496 18.0359L45.6848 17.3805C46.0977 17.142 46.2392 16.6141 46.0008 16.2011C45.7625 15.7882 45.2345 15.6468 44.8215 15.8851L43.6862 16.5405L42.7836 14.9772L44.7123 13.8638C45.1253 13.6253 45.2667 13.0975 45.0283 12.6844C44.7899 12.2715 44.2619 12.13 43.849 12.3684L41.1727 13.9136C40.7665 14.1376 40.617 14.6958 40.8567 15.0929L44.3885 21.2102C44.6125 21.6163 45.1708 21.7659 45.5679 21.5262L48.2441 19.981C48.657 19.7425 48.7985 19.2146 48.5601 18.8017C48.3218 18.3888 47.7938 18.2473 47.3809 18.4857L45.4521 19.5992Z"
+      fill="#423F3F" />
+    <path
+      d="M42.3391 23.0988C42.3963 22.8853 42.3721 22.6502 42.2528 22.4437L39.1528 17.0742L39.7433 16.7334C40.1562 16.4949 40.2976 15.9671 40.0593 15.554C39.8209 15.1412 39.2929 14.9997 38.8799 15.238L36.2036 16.7832C35.7908 17.0216 35.6493 17.5494 35.8876 17.9625C36.126 18.3754 36.654 18.5169 37.0669 18.2785L37.6574 17.9376L40.7575 23.3071C40.9959 23.72 41.5239 23.8614 41.9368 23.6231C42.1434 23.5038 42.2819 23.3122 42.3391 23.0988Z"
+      fill="#423F3F" />
+    <path
+      d="M8.90579 39.6572L8.25383 38.528C8.02983 38.1219 7.47157 37.9722 7.07445 38.2121L6.30988 38.6536C5.89711 38.8919 5.75561 39.42 5.99398 39.8329C6.23244 40.2458 6.76037 40.3873 7.17336 40.1488L7.19028 40.1391L7.41053 40.5205C7.66003 40.9316 7.50171 41.5221 7.08017 41.7534C6.66916 42.0029 6.0786 41.8446 5.84728 41.4231L4.08139 38.3645C3.83247 37.9336 3.98076 37.3805 4.41175 37.1316C4.70598 36.9618 5.06824 36.9723 5.35716 37.1592C5.75756 37.4181 6.29197 37.3035 6.55092 36.9032C6.80993 36.5025 6.69516 35.9682 6.29485 35.7094C5.45906 35.1689 4.40674 35.1409 3.54846 35.6363C2.29298 36.3612 1.86121 37.9723 2.58611 39.2278L4.3519 42.2865C5.03059 43.5214 6.73821 43.9789 7.94333 43.2488C9.17829 42.5702 9.63576 40.8625 8.90579 39.6572Z"
+      fill="#423F3F" />
+    <path
+      d="M38.5346 24.5902L35.0029 18.4731C34.7645 18.0602 34.2365 17.9187 33.8235 18.1571C33.4106 18.3955 33.2691 18.9234 33.5075 19.3364L35.2108 22.2865L31.6722 19.9501C31.3381 19.7296 30.8961 19.7677 30.6047 20.0421C30.3133 20.3166 30.2487 20.7553 30.449 21.1023L33.9807 27.2194C34.2191 27.6322 34.7471 27.7737 35.1601 27.5354C35.573 27.2969 35.7144 26.7691 35.4761 26.356L33.7728 23.406L37.3114 25.7423C37.6454 25.9628 38.0874 25.9248 38.3789 25.6504C38.499 25.5373 38.5805 25.3965 38.6209 25.2456C38.6785 25.0301 38.6524 24.7942 38.5346 24.5902Z"
+      fill="#423F3F" />
+    <path
+      d="M19.2242 26.5866C18.818 26.8107 18.6685 27.3688 18.9082 27.766L22.4401 33.8832C22.6784 34.2961 23.2065 34.4376 23.6193 34.1992C24.0322 33.9607 24.1737 33.4328 23.9353 33.0198L22.601 30.7088L22.9205 30.5243L25.7706 32.4061C26.1685 32.6688 26.704 32.5591 26.9667 32.1613C27.2259 31.775 27.1241 31.2281 26.722 30.9652L24.3017 29.3672C24.4352 29.1508 24.5378 28.9135 24.6056 28.6606C25.2259 26.4261 22.752 24.5328 20.7534 25.7037L19.2242 26.5866ZM22.8497 27.5294C23.0975 27.9379 22.9429 28.5245 22.5262 28.7581C22.5194 28.7619 22.5127 28.7659 22.506 28.7699L21.7377 29.2136L20.8351 27.6503L21.6168 27.199C22.0478 26.9501 22.6009 27.0983 22.8497 27.5294Z"
+      fill="#423F3F" />
+    <path
+      d="M13.6793 39.9382C14.9143 39.2596 15.3718 37.5519 14.6417 36.3467L11.9928 31.7588C11.7545 31.3459 11.2265 31.2044 10.8135 31.4428C10.4006 31.6812 10.2591 32.2091 10.4975 32.6221L13.1463 37.2101C13.7003 38.2689 12.224 39.1258 11.5831 38.1126L8.93423 33.5247C8.69586 33.1118 8.16784 32.9703 7.75488 33.2087C7.34197 33.4471 7.20054 33.975 7.43887 34.388L10.0879 38.9759C10.8127 40.2314 12.4239 40.6631 13.6793 39.9382Z"
+      fill="#423F3F" />
+    <path
+      d="M32.4117 29.1222C32.8246 28.8837 32.966 28.3558 32.7277 27.9428L30.0788 23.3549C29.3539 22.0994 27.7428 21.6677 26.4874 22.3926C25.2524 23.0712 24.7949 24.779 25.525 25.9841L28.1738 30.572C28.4122 30.9849 28.9402 31.1264 29.3532 30.888C29.7661 30.6495 29.9075 30.1215 29.6692 29.7086L28.7764 28.1623L30.3397 27.2597L31.2325 28.8061C31.4708 29.2191 31.9988 29.3605 32.4117 29.1222ZM27.9129 26.667L27.0202 25.1208C26.7708 24.7097 26.929 24.1192 27.3506 23.8879C27.7815 23.6391 28.3347 23.7873 28.5835 24.2182L29.4762 25.7644L27.9129 26.667Z"
+      fill="#423F3F" />
+    <path
+      d="M48.8207 9.49898L46.1444 11.0441C45.7381 11.2682 45.5887 11.8263 45.8284 12.2235L49.3602 18.3406C49.5986 18.7535 50.1266 18.895 50.5395 18.6566L53.2158 17.1115C53.6287 16.873 53.7701 16.3451 53.5318 15.9321C53.2934 15.5192 52.7654 15.3777 52.3524 15.6161L50.4238 16.7295L49.5212 15.1663L50.6565 14.5108C51.0694 14.2724 51.2108 13.7444 50.9725 13.3315C50.7341 12.9186 50.2061 12.7771 49.7931 13.0155L48.6579 13.6709L47.7553 12.1076L49.6839 10.9941C50.0969 10.7557 50.2383 10.2278 49.9999 9.81477C49.7616 9.40208 49.2336 9.2606 48.8207 9.49898Z"
+      fill="#423F3F" />
+    <path
+      d="M13.7952 30.6116C13.613 31.2913 13.7056 31.9996 14.0558 32.6061L16.7046 37.194C16.9429 37.6069 17.471 37.7484 17.8839 37.51C18.2968 37.2716 18.4383 36.7436 18.1999 36.3307L17.3072 34.7843L18.8705 33.8818L19.7633 35.4281C20.0016 35.841 20.5296 35.9825 20.9426 35.7441C21.3555 35.5057 21.497 34.9778 21.2586 34.5648L18.6098 29.9769C17.8849 28.7214 16.2737 28.2897 15.0184 29.0146C14.4116 29.3648 13.9773 29.9319 13.7952 30.6116ZM17.1143 30.8403L18.0071 32.3865L16.4438 33.289L15.551 31.7428C14.9971 30.684 16.4734 29.8271 17.1143 30.8403Z"
+      stroke="#FFFBF2" stroke-width="4" mask="url(#path-2-outside-1_4486_42)" />
+    <path
+      d="M45.4521 19.5992L44.5496 18.0359L45.6848 17.3805C46.0977 17.142 46.2392 16.6141 46.0008 16.2011C45.7625 15.7882 45.2345 15.6468 44.8215 15.8851L43.6862 16.5405L42.7836 14.9772L44.7123 13.8638C45.1253 13.6253 45.2667 13.0975 45.0283 12.6844C44.7899 12.2715 44.2619 12.13 43.849 12.3684L41.1727 13.9136C40.7665 14.1376 40.617 14.6958 40.8567 15.0929L44.3885 21.2102C44.6125 21.6163 45.1708 21.7659 45.5679 21.5262L48.2441 19.981C48.657 19.7425 48.7985 19.2146 48.5601 18.8017C48.3218 18.3888 47.7938 18.2473 47.3809 18.4857L45.4521 19.5992Z"
+      stroke="#FFFBF2" stroke-width="4" mask="url(#path-2-outside-1_4486_42)" />
+    <path
+      d="M42.3391 23.0988C42.3963 22.8853 42.3721 22.6502 42.2528 22.4437L39.1528 17.0742L39.7433 16.7334C40.1562 16.4949 40.2976 15.9671 40.0593 15.554C39.8209 15.1412 39.2929 14.9997 38.8799 15.238L36.2036 16.7832C35.7908 17.0216 35.6493 17.5494 35.8876 17.9625C36.126 18.3754 36.654 18.5169 37.0669 18.2785L37.6574 17.9376L40.7575 23.3071C40.9959 23.72 41.5239 23.8614 41.9368 23.6231C42.1434 23.5038 42.2819 23.3122 42.3391 23.0988Z"
+      stroke="#FFFBF2" stroke-width="4" mask="url(#path-2-outside-1_4486_42)" />
+    <path
+      d="M8.90579 39.6572L8.25383 38.528C8.02983 38.1219 7.47157 37.9722 7.07445 38.2121L6.30988 38.6536C5.89711 38.8919 5.75561 39.42 5.99398 39.8329C6.23244 40.2458 6.76037 40.3873 7.17336 40.1488L7.19028 40.1391L7.41053 40.5205C7.66003 40.9316 7.50171 41.5221 7.08017 41.7534C6.66916 42.0029 6.0786 41.8446 5.84728 41.4231L4.08139 38.3645C3.83247 37.9336 3.98076 37.3805 4.41175 37.1316C4.70598 36.9618 5.06824 36.9723 5.35716 37.1592C5.75756 37.4181 6.29197 37.3035 6.55092 36.9032C6.80993 36.5025 6.69516 35.9682 6.29485 35.7094C5.45906 35.1689 4.40674 35.1409 3.54846 35.6363C2.29298 36.3612 1.86121 37.9723 2.58611 39.2278L4.3519 42.2865C5.03059 43.5214 6.73821 43.9789 7.94333 43.2488C9.17829 42.5702 9.63576 40.8625 8.90579 39.6572Z"
+      stroke="#FFFBF2" stroke-width="4" mask="url(#path-2-outside-1_4486_42)" />
+    <path
+      d="M38.5346 24.5902L35.0029 18.4731C34.7645 18.0602 34.2365 17.9187 33.8235 18.1571C33.4106 18.3955 33.2691 18.9234 33.5075 19.3364L35.2108 22.2865L31.6722 19.9501C31.3381 19.7296 30.8961 19.7677 30.6047 20.0421C30.3133 20.3166 30.2487 20.7553 30.449 21.1023L33.9807 27.2194C34.2191 27.6322 34.7471 27.7737 35.1601 27.5354C35.573 27.2969 35.7144 26.7691 35.4761 26.356L33.7728 23.406L37.3114 25.7423C37.6454 25.9628 38.0874 25.9248 38.3789 25.6504C38.499 25.5373 38.5805 25.3965 38.6209 25.2456C38.6785 25.0301 38.6524 24.7942 38.5346 24.5902Z"
+      stroke="#FFFBF2" stroke-width="4" mask="url(#path-2-outside-1_4486_42)" />
+    <path
+      d="M19.2242 26.5866C18.818 26.8107 18.6685 27.3688 18.9082 27.766L22.4401 33.8832C22.6784 34.2961 23.2065 34.4376 23.6193 34.1992C24.0322 33.9607 24.1737 33.4328 23.9353 33.0198L22.601 30.7088L22.9205 30.5243L25.7706 32.4061C26.1685 32.6688 26.704 32.5591 26.9667 32.1613C27.2259 31.775 27.1241 31.2281 26.722 30.9652L24.3017 29.3672C24.4352 29.1508 24.5378 28.9135 24.6056 28.6606C25.2259 26.4261 22.752 24.5328 20.7534 25.7037L19.2242 26.5866ZM22.8497 27.5294C23.0975 27.9379 22.9429 28.5245 22.5262 28.7581C22.5194 28.7619 22.5127 28.7659 22.506 28.7699L21.7377 29.2136L20.8351 27.6503L21.6168 27.199C22.0478 26.9501 22.6009 27.0983 22.8497 27.5294Z"
+      stroke="#FFFBF2" stroke-width="4" mask="url(#path-2-outside-1_4486_42)" />
+    <path
+      d="M13.6793 39.9382C14.9143 39.2596 15.3718 37.5519 14.6417 36.3467L11.9928 31.7588C11.7545 31.3459 11.2265 31.2044 10.8135 31.4428C10.4006 31.6812 10.2591 32.2091 10.4975 32.6221L13.1463 37.2101C13.7003 38.2689 12.224 39.1258 11.5831 38.1126L8.93423 33.5247C8.69586 33.1118 8.16784 32.9703 7.75488 33.2087C7.34197 33.4471 7.20054 33.975 7.43887 34.388L10.0879 38.9759C10.8127 40.2314 12.4239 40.6631 13.6793 39.9382Z"
+      stroke="#FFFBF2" stroke-width="4" mask="url(#path-2-outside-1_4486_42)" />
+    <path
+      d="M32.4117 29.1222C32.8246 28.8837 32.966 28.3558 32.7277 27.9428L30.0788 23.3549C29.3539 22.0994 27.7428 21.6677 26.4874 22.3926C25.2524 23.0712 24.7949 24.779 25.525 25.9841L28.1738 30.572C28.4122 30.9849 28.9402 31.1264 29.3532 30.888C29.7661 30.6495 29.9075 30.1215 29.6692 29.7086L28.7764 28.1623L30.3397 27.2597L31.2325 28.8061C31.4708 29.2191 31.9988 29.3605 32.4117 29.1222ZM27.9129 26.667L27.0202 25.1208C26.7708 24.7097 26.929 24.1192 27.3506 23.8879C27.7815 23.6391 28.3347 23.7873 28.5835 24.2182L29.4762 25.7644L27.9129 26.667Z"
+      stroke="#FFFBF2" stroke-width="4" mask="url(#path-2-outside-1_4486_42)" />
+    <path
+      d="M48.8207 9.49898L46.1444 11.0441C45.7381 11.2682 45.5887 11.8263 45.8284 12.2235L49.3602 18.3406C49.5986 18.7535 50.1266 18.895 50.5395 18.6566L53.2158 17.1115C53.6287 16.873 53.7701 16.3451 53.5318 15.9321C53.2934 15.5192 52.7654 15.3777 52.3524 15.6161L50.4238 16.7295L49.5212 15.1663L50.6565 14.5108C51.0694 14.2724 51.2108 13.7444 50.9725 13.3315C50.7341 12.9186 50.2061 12.7771 49.7931 13.0155L48.6579 13.6709L47.7553 12.1076L49.6839 10.9941C50.0969 10.7557 50.2383 10.2278 49.9999 9.81477C49.7616 9.40208 49.2336 9.2606 48.8207 9.49898Z"
+      stroke="#FFFBF2" stroke-width="4" mask="url(#path-2-outside-1_4486_42)" />
+    <path
+      d="M9.13263 29.5749L11.2644 25.8325C11.3954 25.6024 11.4137 25.3247 11.3137 25.0795L9.93564 21.6972L12.8202 19.4569C13.0295 19.2945 13.1523 19.045 13.1541 18.7801L13.1753 15.1279L16.6977 14.1621C16.9531 14.0921 17.1623 13.9086 17.265 13.6645L18.6822 10.2983L22.3061 10.7539C22.569 10.787 22.8324 10.6976 23.0207 10.5114L25.6181 7.94394L28.7918 9.7517C29.0219 9.88281 29.2996 9.90099 29.5449 9.8011L32.9271 8.42295L35.1673 11.3076C35.3298 11.5169 35.5792 11.6398 35.8442 11.6414L40.1509 11.6664C40.552 11.6687 40.8907 11.3973 40.9899 11.0272C41.0086 10.9573 41.0188 10.8839 41.0193 10.8081C41.0221 10.3314 40.6378 9.94266 40.1609 9.93983L36.2736 9.9172L33.8893 6.84698C33.652 6.54135 33.2401 6.43099 32.8818 6.577L29.2819 8.04377L25.9041 6.11972C25.5678 5.92809 25.1451 5.98376 24.8699 6.25589L22.1053 8.9885L18.2483 8.5036C17.8643 8.45524 17.4951 8.66849 17.3449 9.02516L15.8365 12.6078L12.0876 13.6357C11.7143 13.738 11.4548 14.0763 11.4526 14.4632L11.4299 18.3506L8.35974 20.735C8.05403 20.9723 7.94378 21.3841 8.08979 21.7425L9.55645 25.3424L7.63239 28.7203C7.3966 29.1343 7.54091 29.6618 7.95521 29.8977C8.36952 30.1337 8.89667 29.9892 9.13263 29.5749Z"
+      fill="#423F3F" />
+    <path
+      d="M47.0035 23.5368L44.8718 27.2792C44.7405 27.5096 44.7224 27.7871 44.8225 28.0322L46.2005 31.4146L43.3159 33.6548C43.1067 33.8173 42.9838 34.0667 42.9821 34.3316L42.9609 37.9838L39.4385 38.9496C39.183 39.0196 38.9739 39.2031 38.8711 39.4473L37.4539 42.8133L33.83 42.3577C33.5672 42.3247 33.3038 42.4141 33.1154 42.6002L30.5179 45.1678L27.3443 43.36C27.1141 43.2289 26.8365 43.2107 26.5912 43.3106L23.2088 44.6887L20.9687 41.8041C20.8062 41.5948 20.5568 41.4719 20.2918 41.4703L15.9851 41.4453C15.5083 41.4424 15.1193 41.8269 15.1167 42.3036C15.1139 42.7803 15.4982 43.169 15.9751 43.1719L19.8624 43.1945L22.2466 46.2647C22.484 46.5703 22.8959 46.6807 23.2542 46.5347L26.8542 45.0679L30.2321 46.9919C30.5684 47.1836 30.991 47.1279 31.2664 46.8558L34.031 44.1231L37.8879 44.6082C38.2719 44.6564 38.6411 44.4432 38.7913 44.0865L40.2997 40.5038L44.0487 39.476C44.4219 39.3736 44.6813 39.0353 44.6837 38.6484L44.7063 34.7612L47.7765 32.3768C48.0822 32.1394 48.1924 31.7276 48.0464 31.3693L46.5798 27.7693L48.5038 24.3915C48.7398 23.9776 48.5953 23.45 48.181 23.2141C47.7666 22.978 47.2395 23.1226 47.0035 23.5368Z"
+      fill="#423F3F" />
+    <path
+      d="M34.9411 13.5851C25.5589 8.48468 13.6737 15.3482 13.4004 26.0218C13.3651 26.6861 14.122 27.1452 14.6947 26.8014L34.9692 15.0959C35.2424 14.9387 35.4072 14.6429 35.4007 14.3321C35.3949 14.018 35.2188 13.7319 34.9411 13.5851ZM32.6481 14.4423L15.2892 24.4646C16.5116 16.4899 25.1309 11.5138 32.6481 14.4423Z"
+      fill="#FFB825" />
+    <path
+      d="M21.1963 39.5267C30.5776 44.6275 42.4641 37.7631 42.7371 27.0902C42.7731 26.4244 42.0143 25.9675 41.4427 26.3103L21.1681 38.0158C20.8961 38.1729 20.7308 38.4654 20.7367 38.7796C20.7425 39.0937 20.9186 39.3798 21.1963 39.5267ZM23.4892 38.6695L40.8482 28.6473C39.6257 36.6219 31.0064 41.598 23.4892 38.6695Z"
+      fill="#FFB825" />
+  </svg>
+  <div class="badge_content">
+    <h5 aria-level="2">Try Risk-Free For 3 Months</h5>
+    <a href="javascript:;" onclick="smoothScroll('#readbadge');">
+      Read More
+    </a>
+  </div>
+</div>
+
+<style>
+  .badge_area {
+  display: flex;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid rgba(66, 63, 63, 0.05);
+  background: #fffbf2;
+  padding: 14px 20px;
+  align-items: center;
+}
+
+.badge_area > svg {
+  width: 56px;
+  height: 56px;
+  margin-right: 14px;
+}
+
+.badge_content {
+  display: flex;
+  width: calc(100% - 70px);
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.badge_content h5 {
+  color: #423f3f;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+.badge_content a {
+  color: #423f3f;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration-line: underline;
+  text-transform: capitalize;
+  margin-top: 7px;
+}
+</style>
+
+<script>
+function smoothScroll(targetId) {
+  const targetElement = document.querySelector(targetId);
+
+  if (targetElement) {
+    // Scroll to the target element with smooth behavior
+    targetElement.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+</script>
+                    
+
+                    <shopify-payment-terms variant-id="17594384646244" shopify-meta="{&quot;type&quot;:&quot;product&quot;,&quot;currency_code&quot;:&quot;USD&quot;,&quot;country_code&quot;:&quot;US&quot;,&quot;variants&quot;:[{&quot;id&quot;:17594384646244,&quot;price_per_term&quot;:&quot;$15&quot;,&quot;price_per_term_amount&quot;:14.5,&quot;full_price&quot;:&quot;$29&quot;,&quot;full_price_amount&quot;:29.0,&quot;eligible&quot;:false,&quot;available&quot;:true,&quot;number_of_payment_terms&quot;:2},{&quot;id&quot;:41579444306112,&quot;price_per_term&quot;:&quot;$15&quot;,&quot;price_per_term_amount&quot;:14.5,&quot;full_price&quot;:&quot;$29&quot;,&quot;full_price_amount&quot;:29.0,&quot;eligible&quot;:false,&quot;available&quot;:true,&quot;number_of_payment_terms&quot;:2},{&quot;id&quot;:31753751232586,&quot;price_per_term&quot;:&quot;$15&quot;,&quot;price_per_term_amount&quot;:14.5,&quot;full_price&quot;:&quot;$29&quot;,&quot;full_price_amount&quot;:29.0,&quot;eligible&quot;:false,&quot;available&quot;:true,&quot;number_of_payment_terms&quot;:2},{&quot;id&quot;:17595301331044,&quot;price_per_term&quot;:&quot;$20&quot;,&quot;price_per_term_amount&quot;:19.5,&quot;full_price&quot;:&quot;$39&quot;,&quot;full_price_amount&quot;:39.0,&quot;eligible&quot;:true,&quot;available&quot;:true,&quot;number_of_payment_terms&quot;:2},{&quot;id&quot;:41579444338880,&quot;price_per_term&quot;:&quot;$20&quot;,&quot;price_per_term_amount&quot;:19.5,&quot;full_price&quot;:&quot;$39&quot;,&quot;full_price_amount&quot;:39.0,&quot;eligible&quot;:true,&quot;available&quot;:true,&quot;number_of_payment_terms&quot;:2},{&quot;id&quot;:31753751429194,&quot;price_per_term&quot;:&quot;$20&quot;,&quot;price_per_term_amount&quot;:19.5,&quot;full_price&quot;:&quot;$39&quot;,&quot;full_price_amount&quot;:39.0,&quot;eligible&quot;:true,&quot;available&quot;:true,&quot;number_of_payment_terms&quot;:2}],&quot;min_price&quot;:&quot;$35&quot;,&quot;min_price_amount&quot;:35.0,&quot;max_price&quot;:&quot;$30,000&quot;,&quot;max_price_amount&quot;:30000.0,&quot;financing_plans&quot;:[{&quot;min_price&quot;:&quot;$35&quot;,&quot;max_price&quot;:&quot;$50&quot;,&quot;terms&quot;:[{&quot;apr&quot;:0,&quot;loan_type&quot;:&quot;split_pay&quot;,&quot;installments_count&quot;:2}],&quot;min_price_amount&quot;:35.0,&quot;max_price_amount&quot;:49.99},{&quot;min_price&quot;:&quot;$50&quot;,&quot;max_price&quot;:&quot;$150&quot;,&quot;terms&quot;:[{&quot;apr&quot;:0,&quot;loan_type&quot;:&quot;split_pay&quot;,&quot;installments_count&quot;:3},{&quot;apr&quot;:0,&quot;loan_type&quot;:&quot;split_pay&quot;,&quot;installments_count&quot;:4},{&quot;apr&quot;:15,&quot;loan_type&quot;:&quot;interest&quot;,&quot;installments_count&quot;:3},{&quot;apr&quot;:15,&quot;loan_type&quot;:&quot;interest&quot;,&quot;installments_count&quot;:6}],&quot;min_price_amount&quot;:50.0,&quot;max_price_amount&quot;:149.99},{&quot;min_price&quot;:&quot;$150&quot;,&quot;max_price&quot;:&quot;$250&quot;,&quot;terms&quot;:[{&quot;apr&quot;:0,&quot;loan_type&quot;:&quot;split_pay&quot;,&quot;installments_count&quot;:3},{&quot;apr&quot;:0,&quot;loan_type&quot;:&quot;split_pay&quot;,&quot;installments_count&quot;:4},{&quot;apr&quot;:15,&quot;loan_type&quot;:&quot;interest&quot;,&quot;installments_count&quot;:3},{&quot;apr&quot;:15,&quot;loan_type&quot;:&quot;interest&quot;,&quot;installments_count&quot;:6},{&quot;apr&quot;:15,&quot;loan_type&quot;:&quot;interest&quot;,&quot;installments_count&quot;:12}],&quot;min_price_amount&quot;:150.0,&quot;max_price_amount&quot;:249.99},{&quot;min_price&quot;:&quot;$250&quot;,&quot;max_price&quot;:&quot;$1,000&quot;,&quot;terms&quot;:[{&quot;apr&quot;:0,&quot;loan_type&quot;:&quot;split_pay&quot;,&quot;installments_count&quot;:3},{&quot;apr&quot;:0,&quot;loan_type&quot;:&quot;split_pay&quot;,&quot;installments_count&quot;:4},{&quot;apr&quot;:0,&quot;loan_type&quot;:&quot;interest&quot;,&quot;installments_count&quot;:6},{&quot;apr&quot;:15,&quot;loan_type&quot;:&quot;interest&quot;,&quot;installments_count&quot;:3},{&quot;apr&quot;:15,&quot;loan_type&quot;:&quot;interest&quot;,&quot;installments_count&quot;:12}],&quot;min_price_amount&quot;:250.0,&quot;max_price_amount&quot;:999.99},{&quot;min_price&quot;:&quot;$1,000&quot;,&quot;max_price&quot;:&quot;$1,700&quot;,&quot;terms&quot;:[{&quot;apr&quot;:0,&quot;loan_type&quot;:&quot;interest&quot;,&quot;installments_count&quot;:6},{&quot;apr&quot;:15,&quot;loan_type&quot;:&quot;interest&quot;,&quot;installments_count&quot;:12},{&quot;apr&quot;:15,&quot;loan_type&quot;:&quot;interest&quot;,&quot;installments_count&quot;:18}],&quot;min_price_amount&quot;:1000.0,&quot;max_price_amount&quot;:1699.99},{&quot;min_price&quot;:&quot;$1,700&quot;,&quot;max_price&quot;:&quot;$30,000&quot;,&quot;terms&quot;:[{&quot;apr&quot;:0,&quot;loan_type&quot;:&quot;interest&quot;,&quot;installments_count&quot;:6},{&quot;apr&quot;:15,&quot;loan_type&quot;:&quot;interest&quot;,&quot;installments_count&quot;:12},{&quot;apr&quot;:15,&quot;loan_type&quot;:&quot;interest&quot;,&quot;installments_count&quot;:24}],&quot;min_price_amount&quot;:1700.0,&quot;max_price_amount&quot;:30000.0}],&quot;installments_buyer_prequalification_enabled&quot;:false,&quot;seller_id&quot;:1202064}"></shopify-payment-terms>
+
+                    
+
+                    
+                  <input type="hidden" name="product-id" value="1825437253732" /><input type="hidden" name="section-id" value="template--21386857054400__main" /></form>
+
+                
+                  
+
+
+
+                <div class="product-detail__gap-lg product-detail__trust-icons" >
+                    
+                      <figure class="product-detail__trust-icon">
+                        <div
+                          class="product-detail__trust-img"
+                          style="height: 30px;width: 30px;"
+                        >
+                          
+                            <svg
+    class="cc-icon"
+    aria-hidden="true"
+    focusable="false"
+    role="presentation"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 16 16"
+    
+      style="width: 30px;height: 30px;"
+    
+  ><path d="M14.63.98a1 1 0 00-.78-.3h-.03l-.07.01-.25.03a41.89 41.89 0 00-3.87.52c-1.1.2-2.31.48-3.38.83a7.15 7.15 0 00-2.74 1.48 6.04 6.04 0 00-.36 8.15L1.53 13.3a.5.5 0 00.71.7l1.61-1.6a6.04 6.04 0 008.2-.31 7.15 7.15 0 001.48-2.74c.36-1.07.63-2.27.83-3.39a46.92 46.92 0 00.53-3.86l.02-.26.01-.07v-.02a1 1 0 00-.29-.78zm-1.72.8l.17-.02-4.89 4.9v-4.1c1.76-.41 3.61-.66 4.72-.78zM8.45 7.81h4.5c-.21.8-.45 1.56-.74 2.2H6.24l2.21-2.2zM7.7 2.68v4.46L5.5 9.35V3.43c.64-.3 1.4-.54 2.2-.75zM4.22 4.26c.2-.2.47-.4.78-.57v6.15L3.86 11a5.04 5.04 0 01.36-6.73zm.34 7.44l1.19-1.18h6.22c-.2.35-.4.65-.62.87a5.04 5.04 0 01-6.8.31zm8.5-4.4h-4.1l4.9-4.9-.03.3a41.1 41.1 0 01-.76 4.6z"/></svg>
+                          
+                        </div>
+
+                        
+                          <figcaption class="product-detail__trust-caption rte">
+                            <p>Clean Ingredients</p>
+                          </figcaption>
+                        
+                      </figure>
+                    
+
+                    
+                      <figure class="product-detail__trust-icon">
+                        <div
+                          class="product-detail__trust-img"
+                          style="height: 30px;width: 30px;"
+                        >
+                          
+                            <svg
+    class="cc-icon"
+    aria-hidden="true"
+    focusable="false"
+    role="presentation"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 16 16"
+    
+      style="width: 30px;height: 30px;"
+    
+  ><path d="M8.86 4.38a2.78 2.78 0 013.72-.3c1.4 1.2 1.2 3.11.19 4.13L7.98 13.1c-.05.06-.1.06-.19 0L3.01 8.2a2.8 2.8 0 01.19-4.1c1.06-.9 2.7-.76 3.74.28l.96.98.96-.98zm-.96-.45l.24-.25a3.78 3.78 0 015.07-.38l.01.01v.01a3.82 3.82 0 01.26 5.59l-4.79 4.9a1.12 1.12 0 01-1.45.12l-.1-.06L2.3 8.91a3.8 3.8 0 01.26-5.57 3.79 3.79 0 015.1.33l.01.01.24.25z" fill-rule="evenodd"/></svg>
+                          
+                        </div>
+
+                        
+                          <figcaption class="product-detail__trust-caption rte">
+                            <p>Made in Indiana, USA</p>
+                          </figcaption>
+                        
+                      </figure>
+                    
+
+                    
+                      <figure class="product-detail__trust-icon">
+                        <div
+                          class="product-detail__trust-img"
+                          style="height: 30px;width: 30px;"
+                        >
+                          
+                            <svg
+    class="cc-icon"
+    aria-hidden="true"
+    focusable="false"
+    role="presentation"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 16 16"
+    
+      style="width: 30px;height: 30px;"
+    
+  ><path d="M15.64 6.92L9.5 5.12V4a.5.5 0 00-.5-.5H1a.5.5 0 00-.5.5v8.5c0 .28.22.5.5.5h1.27a2.1 2.1 0 004.06 0h3.94a2.1 2.1 0 004.06 0h1.17a.5.5 0 00.5-.5V7.4a.5.5 0 00-.36-.48zM4.3 13.6a1.1 1.1 0 110-2.2 1.1 1.1 0 010 2.2zM6.33 12a2.1 2.1 0 00-4.06 0H1.5V4.5h7V12H6.33zm5.97 1.6a1.1 1.1 0 110-2.2 1.1 1.1 0 010 2.2zM15 12h-.67a2.1 2.1 0 00-4.06 0H9.5V6.17l5.5 1.6V12z"/></svg>
+                          
+                        </div>
+
+                        
+                          <figcaption class="product-detail__trust-caption rte">
+                            <p>Ships In 5-7 Days</p>
+                          </figcaption>
+                        
+                      </figure>
+                    
+
+                    
+                      <figure class="product-detail__trust-icon">
+                        <div
+                          class="product-detail__trust-img"
+                          style="height: 30px;width: 30px;"
+                        >
+                          
+                            <svg
+    class="cc-icon"
+    aria-hidden="true"
+    focusable="false"
+    role="presentation"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 16 16"
+    
+      style="width: 30px;height: 30px;"
+    
+  ><circle stroke="currentColor" fill="none" cx="8.1081667" cy="5.6658235" r="4.3742652"/>
+        <polyline stroke="currentColor" fill="none" points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" transform="matrix(0.624895,0,0,0.624895,0.60942571,0.66666362)" /></svg>
+                          
+                        </div>
+
+                        
+                          <figcaption class="product-detail__trust-caption rte">
+                            <p>100-Day Happiness Guarantee</p>
+                          </figcaption>
+                        
+                      </figure>
+                    
+                  </div>
+                  
+                    <div
+                      class="product-detail__gap-sm inline-width-container"
+                      style="max-width: 380px"
+                      
+                    >
+                      
+                      <div class="rimage-outer-wrapper" style="max-width: 521px"
+  
+>
+  <div class="rimage-wrapper lazyload--placeholder" style="padding-top:18.61804222648753%">
+    
+    
+    <img class="rimage__image lazyload fade-in "
+      data-src="//8sheep.com/cdn/shop/files/download_{width}x.jpeg?v=1613527118"
+      data-widths="[460, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+      data-aspectratio="5.371134020618556"
+      data-sizes="auto"
+      alt="This is a &quot;Guaranteed SAFE Checkout&quot; banner, displaying logos for Visa, Mastercard, American Express, Discover, and PayPal for secure payments."
+      width="521"
+      height="97"
+      >
+
+    <noscript>
+      
+      <img src="//8sheep.com/cdn/shop/files/download_1024x1024.jpeg?v=1613527118" alt="This is a &quot;Guaranteed SAFE Checkout&quot; banner, displaying logos for Visa, Mastercard, American Express, Discover, and PayPal for secure payments." class="rimage__image">
+    </noscript>
+  </div>
+</div>
+
+
+
+                      
+                    </div>
+                  
+
+                <div class="product-detail__tab-container product-detail__gap-lg" >
+<div class="cc-tabs cc-tabs--tab-mode" data-cc-tab-allow-multi-open=""><div class="cc-tabs__tab-headers-container">
+      <ul class="cc-tabs__tab-headers" role="tablist"><li role="presentation">
+            <button type="button" class="cc-tabs__tab-headers__header" role="tab" aria-selected="true" tabindex="0"
+               aria-controls="product-tab-panel1_1825437253732" data-cc-toggle-panel="1_1825437253732" id="product-tab-1_1825437253732">
+              Description
+            </button>
+          </li></ul>
+    </div><div class="cc-tabs__tab"><div class="cc-tabs__tab__panel rte" aria-hidden="false" role="tabpanel" id="product-tab-panel1_1825437253732"
+           aria-labelledby="product-tab-1_1825437253732">
+        <p><span class="metafield-multi_line_text_field">Did you know that 3 out of 4 women struggle to sleep during pregnancy?<br />
+<br />
+It&#39;s a familiar feeling for most moms.<br />
+<br />
+Night after night, you toss and turn, not being able to sleep for more than 2 hours at a time.<br />
+<br />
+You&#39;re exhausted, but you just can’t seem to fall or stay asleep!<br />
+<br />
+That&#39;s why we created the Sleepy Body Lotion, an organic lotion specially made to help ease the aches and discomforts associated with pregnancy — so you can finally get a good night&#39;s rest!<br />
+<br />
+This lotion has helped over 168,000+ mamas sleep through the night!<br />
+<br />
+Try it for yourself completely risk free for 3 months!</span></p>
+      </div>
+    </div></div>
+
+                  </div>
+
+                
+
+<div class="product-detail-accordion" >
+                      
+<div class="cc-accordion" data-allow-multi-open="true">
+<details class="cc-accordion-item">
+  <summary class="cc-accordion-item__title">Ingredients</summary>
+  <div class="cc-accordion-item__panel">
+    <div class="cc-accordion-item__content rte"><p><span class="metafield-multi_line_text_field">Organic Mango Butter, Organic Coconut Oil, Deep Sea Magnesium Chloride Brine, Organic Beeswax, Organic Essential Oils, Distilled Water</span></p>
+    </div>
+  </div>
+</details>
+</div>
+
+                    </div>
+
+<div class="product-detail-accordion" >
+                      
+<div class="cc-accordion" data-allow-multi-open="true">
+<details class="cc-accordion-item">
+  <summary class="cc-accordion-item__title">Directions</summary>
+  <div class="cc-accordion-item__panel">
+    <div class="cc-accordion-item__content rte"><p><span class="metafield-multi_line_text_field">Apply 2-3 teaspoons of lotion onto areas of pain or tension after a warm evening shower for a good night&#39;s sleep!</span></p>
+    </div>
+  </div>
+</details>
+</div>
+
+                    </div>
+
+<div class="product-detail-accordion" >
+                      
+<div class="cc-accordion" data-allow-multi-open="true">
+<details class="cc-accordion-item">
+  <summary class="cc-accordion-item__title">Handmade In Small Batches</summary>
+  <div class="cc-accordion-item__panel">
+    <div class="cc-accordion-item__content rte"><p>Every item from 8 Sheep Organics is handmade in small batches out of Indiana, USA. We use only the best ingredients we can find to make products that are 100% clean, natural, and effective.</p>
+      <img src="//8sheep.com/cdn/shop/files/v3_465ce91f-3453-4cea-8fa5-3561d9e38cb2.jpg?v=1719397078" width="" height="" alt="A person wearing an apron is slicing something on a cutting board in a kitchen. There are small bottles with red caps and a green bottle, possibly olive oil, on the countertop.">
+      
+    </div>
+  </div>
+</details>
+</div>
+
+                    </div>
+
+<div class="product-detail-accordion" >
+                      
+<div class="cc-accordion" data-allow-multi-open="true">
+<details class="cc-accordion-item">
+  <summary class="cc-accordion-item__title">3-Month Risk Free Guarantee</summary>
+  <div class="cc-accordion-item__panel">
+    <div class="cc-accordion-item__content rte"><p>Yes! You can try any product from 8 Sheep Organics completely risk free for 3 months!</p><p>And if you find that our products have not worked for you, or aren't to your liking for any reason, no worries!</p><p>Just send me an email at contact@8sheep.com with your order number and I will provide you with a full refund, no questions asked.</p>
+    </div>
+  </div>
+</details>
+</div>
+
+                    </div><div data-show-in-quickbuy="false">
+                    <div id="shopify-block-AWDFzTHFXbURqYnhaO__a7526e9b-5bf7-41fa-99cd-23f8fdc79183" class="shopify-block shopify-app-block">
+  <div
+    data-rebuy-id="26756"
+    data-rebuy-shopify-product-ids="1825437253732"
+    >
+  </div>
+
+
+</div>
+                  </div><div class="align-left product-detail__more_details">
+              <a data-cc-animate-click href="/products/sleepylotion" title="Organic Sleepy Body Lotion">
+                More details
+              </a>
+            </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* Mobile gallery — native CSS scroll-snap carousel that bypasses Swiper.
+     Reason: swiper-bundle.min.js (v12) overwrites the theme's Swiper v4,
+     breaking the legacy init. Instead of patching Swiper, on mobile we:
+       1. Force-load every image (kill lazyload — we want them all ready).
+       2. Destroy any Swiper instance that already claimed the container.
+       3. Inject our own pagination dots that sync via IntersectionObserver.
+     Desktop is untouched. */
+  (function () {
+    var SECTION_ID = 'template--21386857054400__main';
+    var IS_FEATURED = false;
+
+    function forceLoadImages(root) {
+      var imgs = root.querySelectorAll('img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        img.classList.remove('lazyload--manual');
+        img.classList.remove('lazyload');
+        img.classList.add('lazyloaded');
+        var currentSrc = img.getAttribute('src') || '';
+        var dataSrc = img.getAttribute('data-src') || '';
+        if (dataSrc && (!currentSrc || currentSrc.indexOf('data:') === 0 || currentSrc.indexOf('{width}') !== -1)) {
+          img.setAttribute('src', dataSrc.replace(/\{width\}/g, '1080'));
+        }
+        var dataSrcset = img.getAttribute('data-srcset');
+        if (dataSrcset && !img.getAttribute('srcset')) {
+          img.setAttribute('srcset', dataSrcset);
+        }
+        if (img.getAttribute('data-sizes') === 'auto') {
+          img.removeAttribute('data-sizes');
+        }
+      }
+    }
+
+    function destroySwiperOn(el) {
+      // Swiper 12 exposes the instance via `.swiper`. Kill it so it stops
+      // fighting our native scroll layout and clearing our inline overrides.
+      try {
+        if (el && el.swiper && typeof el.swiper.destroy === 'function') {
+          el.swiper.destroy(true, true);
+        }
+      } catch (e) {}
+      // Also strip Swiper's own classes/inline styles it may have applied.
+      if (el) {
+        el.classList.remove('swiper-initialized', 'swiper-horizontal', 'swiper-vertical', 'swiper-container-initialized', 'swiper-container-horizontal');
+      }
+      var wrapper = el && el.querySelector('.swiper-wrapper');
+      if (wrapper) {
+        wrapper.style.transform = '';
+        wrapper.style.transitionDuration = '';
+      }
+    }
+
+    function initNativeCarousel() {
+      if (IS_FEATURED) return;
+      if (window.innerWidth >= 768) return;
+
+      var section = document.getElementById('shopify-section-' + SECTION_ID);
+      if (!section) return;
+
+      var container = section.querySelector('.product-area__media .theme-gallery .theme-viewport.swiper-container');
+      if (!container) return;
+
+      var wrapper = container.querySelector('.swiper-wrapper');
+      if (!wrapper) return;
+
+      // Always force-load images and destroy Swiper on every call — the
+      // theme (or Swiper's auto-init) may re-hydrate later.
+      forceLoadImages(container);
+      destroySwiperOn(container);
+
+      if (container.dataset.nativeCarouselInit === '1') return;
+
+      var slides = wrapper.querySelectorAll('.swiper-slide');
+      if (slides.length <= 1) {
+        container.dataset.nativeCarouselInit = '1';
+        return;
+      }
+
+      container.dataset.nativeCarouselInit = '1';
+
+      // Build the dots list (viewport with an inner track that translates
+      // to keep the active dot centered — Swiper dynamic-bullets style).
+      var dotsList = document.createElement('div');
+      dotsList.className = 'cc-native-dots';
+      dotsList.setAttribute('role', 'tablist');
+      dotsList.setAttribute('aria-label', 'Product gallery navigation');
+      var dotsTrack = document.createElement('div');
+      dotsTrack.className = 'cc-native-dots__track';
+      for (var i = 0; i < slides.length; i++) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'cc-native-dots__dot';
+        btn.setAttribute('data-slide-index', i);
+        btn.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        if (i === 0) btn.setAttribute('aria-current', 'true');
+        dotsTrack.appendChild(btn);
+      }
+      dotsList.appendChild(dotsTrack);
+      // Insert OUTSIDE .theme-gallery — as a sibling below it — so the dots
+      // never sit inside the gallery's aspect-ratio box on top of the image.
+      var gallery = section.querySelector('.product-area__media .theme-gallery');
+      if (gallery && gallery.parentNode) {
+        gallery.parentNode.insertBefore(dotsList, gallery.nextSibling);
+      } else {
+        container.parentNode.insertBefore(dotsList, container.nextSibling);
+      }
+
+      dotsList.addEventListener('click', function (e) {
+        var target = e.target.closest('.cc-native-dots__dot');
+        if (!target) return;
+        var idx = parseInt(target.getAttribute('data-slide-index'), 10);
+        var slide = slides[idx];
+        if (!slide) return;
+        wrapper.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
+      });
+
+      // Track geometry — kept in sync with the CSS above.
+      var DOT_SIZE = 8;
+      var DOT_GAP = 10;
+      var DOT_SLOT = DOT_SIZE + DOT_GAP;
+      var VIEWPORT_W = 88;
+      var TOTAL_DOTS = slides.length;
+      var TRACK_W = TOTAL_DOTS * DOT_SIZE + Math.max(0, TOTAL_DOTS - 1) * DOT_GAP;
+
+      function setActive(idx) {
+        var dots = dotsList.querySelectorAll('.cc-native-dots__dot');
+        for (var k = 0; k < dots.length; k++) {
+          dots[k].classList.remove('cc-native-dots__dot--adjacent', 'cc-native-dots__dot--near');
+          if (k === idx) {
+            dots[k].setAttribute('aria-current', 'true');
+          } else {
+            dots[k].removeAttribute('aria-current');
+            var dist = Math.abs(k - idx);
+            if (dist === 1) dots[k].classList.add('cc-native-dots__dot--adjacent');
+            else if (dist === 2) dots[k].classList.add('cc-native-dots__dot--near');
+          }
+        }
+        if (TRACK_W <= VIEWPORT_W) {
+          dotsTrack.style.transform = 'translateX(0)';
+          return;
+        }
+        // Center the active dot in the viewport, then clamp so the track
+        // never scrolls past its edges (empty space on the sides).
+        var rawOffset = (VIEWPORT_W / 2) - (DOT_SIZE / 2) - (idx * DOT_SLOT);
+        var minOffset = VIEWPORT_W - TRACK_W;
+        var clamped = Math.max(minOffset, Math.min(0, rawOffset));
+        dotsTrack.style.transform = 'translateX(' + clamped + 'px)';
+      }
+
+      // Set initial track position for slide 0.
+      setActive(0);
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          var best = null;
+          for (var m = 0; m < entries.length; m++) {
+            var entry = entries[m];
+            if (!entry.isIntersecting) continue;
+            if (!best || entry.intersectionRatio > best.intersectionRatio) {
+              best = entry;
+            }
+          }
+          if (best) {
+            var idx = Array.prototype.indexOf.call(slides, best.target);
+            if (idx >= 0) setActive(idx);
+          }
+        }, { root: wrapper, threshold: [0.5, 0.75, 0.9] });
+        for (var n = 0; n < slides.length; n++) {
+          io.observe(slides[n]);
+        }
+      } else {
+        // Fallback: sync on scroll end.
+        var scrollTimer;
+        wrapper.addEventListener('scroll', function () {
+          clearTimeout(scrollTimer);
+          scrollTimer = setTimeout(function () {
+            var scrollLeft = wrapper.scrollLeft;
+            var slideWidth = wrapper.clientWidth;
+            var idx = Math.round(scrollLeft / slideWidth);
+            setActive(idx);
+          }, 100);
+        });
+      }
+    }
+
+    function schedule() {
+      initNativeCarousel();
+      // Re-run after the theme's async init in case Swiper hydrated late.
+      setTimeout(initNativeCarousel, 400);
+      setTimeout(initNativeCarousel, 1200);
+      setTimeout(initNativeCarousel, 2500);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', schedule);
+    } else {
+      schedule();
+    }
+
+    var lastMobile = window.innerWidth < 768;
+    window.addEventListener('resize', function () {
+      var isMobile = window.innerWidth < 768;
+      if (isMobile && !lastMobile) {
+        setTimeout(initNativeCarousel, 200);
+      }
+      lastMobile = isMobile;
+    });
+  })();
+</script>
+
+<script>
+  (function () {
+    function domCheckradio() {
+      let radio = document.querySelector('.rc_widget__option__selector input[value="onetime"]');
+      if (radio !== null) {
+        clearInterval(doDomCheckradio);
+        const radioInputs = document.querySelectorAll('.rc_widget__option__selector input[type="radio"]');
+        radioInputs.forEach((radio) => {
+          radio.addEventListener('change', updatePrice);
+        });
+      }
+    }
+
+    let doDomCheckradio = setInterval(domCheckradio, 200);
+
+    function updatePrice(event) {
+      if (event.target.checked) {
+        const priceElement = document.querySelector('.activer .priceCross');
+        if (priceElement && priceElement.textContent !== undefined) {
+          if (event.target.value === 'onetime') {
+            priceElement.textContent = '$42';
+          } else if (event.target.value === 'subsave') {
+            priceElement.textContent = '$38';
+          }
+        }
+      }
+    }
+
+    // Mutation Observer to check for the presence of the radio button
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        if (mutation.addedNodes) {
+          mutation.addedNodes.forEach(function (node) {
+            if (node.classList && node.classList.contains('rc_widget__option__selector')) {
+              clearInterval(doDomCheckradio);
+              const radioInputs = node.querySelectorAll('input[type="radio"]');
+              radioInputs.forEach((radio) => {
+                radio.addEventListener('change', updatePrice);
+              });
+            }
+          });
+        }
+      });
+    });
+  })();
+
+  (function () {
+    let domCheck;
+    const doDomCheck2 = function () {
+      const addBtn = document.querySelector('.add-btn');
+      if (addBtn !== null) {
+        clearInterval(domCheck2);
+        //console.log("btn is available now!");
+
+        const selectOnFocusInput = document.querySelector('.product-purchase-form input.select-on-focus');
+        const addButton = document.querySelector('.product-detail__form__action button.button');
+        const selectorWrapperSelect = document.querySelector('.selector-wrapper:first-child select');
+
+        const clickHandler = function () {
+          selectOnFocusInput.value = '2';
+
+          if (addButton) {
+            addButton.click();
+          } else {
+            console.error('addButton is null. Check your selector.');
+          }
+        };
+
+        addBtn.addEventListener('click', clickHandler);
+      }
+    };
+
+    domCheck2 = setInterval(doDomCheck2, 200);
+  })();
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.sugest-box').forEach(function (sugestBox) {
+      sugestBox.addEventListener('click', function () {
+        document.querySelector('.rc-template__legacy-radio .rc-radio.rc-option__subsave').style.display = 'none';
+
+        var VarID = this.getAttribute('data-variant-id');
+        var QanID = this.getAttribute('quantity-variant');
+
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            quantity: QanID,
+            id: VarID,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // window.location.href = "/cart";
+          })
+          .catch((error) => console.error('Error:', error));
+      });
+    });
+    document.querySelectorAll('.add-btn').forEach(function (addBtn) {
+      addBtn.addEventListener('click', function () {
+        var parent = this.parentElement;
+        var VarID = parent.getAttribute('data-variant-id');
+        var QanID = parent.getAttribute('quantity-variant');
+
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            quantity: QanID,
+            id: VarID,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // window.location.href = "/cart";
+          })
+          .catch((error) => console.error('Error:', error));
+      });
+    });
+  });
+</script>
+
+<style>
+  .upsellHidden {
+    display: none !important;
+  }
+
+  #testimonial {
+    margin-top: 26px;
+    padding: 41px 10px 15px 10px;
+    position: relative;
+    border-radius: 5.057px;
+    background: rgb(239, 239, 239);
+    display: flex;
+    flex-direction: column;
+  }
+
+  #testimonial > svg.testimonial-mark {
+    position: absolute;
+    width: 46.8px;
+    height: 40.6px;
+    left: calc(50% - 23px);
+    top: -8px;
+  }
+
+  #testimonial > h3 {
+    color: rgb(36, 36, 36);
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Century Gothic';
+    font-weight: 700;
+    line-height: 24.274px;
+    margin: 3px 0px;
+  }
+
+  #testimonial > p {
+    margin: 3px 0px;
+    color: rgb(36, 36, 36);
+    text-align: center;
+    font-size: 12px;
+    font-family: 'Century Gothic';
+    line-height: 19.723px;
+  }
+
+  #testimonial > h4 {
+    color: rgba(36, 36, 36, 0.5);
+    text-align: center;
+    font-size: 13px;
+    font-family: 'Century Gothic';
+    font-weight: 700;
+    line-height: 24.274px;
+    margin: 3px 0px;
+  }
+
+  #testimonial > svg.stars {
+    width: 76px;
+    height: 10.978px;
+    margin-top: 14px;
+    margin-bottom: 2px;
+  }
+</style>
+
+<!-- Ingredients Copy -->
+<style>
+  .see-ingredients {
+    text-decoration-line: underline;
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    cursor: pointer;
+  }
+
+  .ingredients-modal-container > .modal p {
+    margin: 5px 0px;
+  }
+
+  .ingredients-modal-container {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 15px;
+    background: rgba(119, 119, 119, 0.6);
+    z-index: 20;
+    display: none;
+  }
+
+  .ingredients-modal-container > .modal-bg {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .ingredients-modal-container > .modal {
+    background-color: white;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 15px;
+    max-width: 800px;
+    max-height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;
+  }
+
+  .ingredients-modal-container > .modal .close-button {
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    margin-right: -8px;
+    margin-top: -8px;
+  }
+
+  .ingredients-modal-container > .modal .modal-scroll {
+    overflow-y: auto;
+  }
+
+  .ingredients-modal-container > .modal .modal-scroll::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .ingredients-modal-container > .modal .modal-scroll::-webkit-scrollbar-track {
+    box-shadow: rgb(51, 51, 51) 0px 0px 2px inset;
+    border-radius: 10px;
+  }
+
+  .ingredients-modal-container > .modal .modal-scroll::-webkit-scrollbar-thumb {
+    background: rgba(51, 51, 51, 0.8);
+    opacity: 0.6;
+    border-radius: 10px;
+  }
+
+  .bundleItemTitle {
+    font-weight: bold;
+  }
+
+  .bundleItemTitle::after {
+    content: ':';
+  }
+
+  .full-ingredient-list-heading {
+    font-family: Nunito Sans, sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    font-style: normal;
+    line-height: 1.5em;
+    color: #5e5c5c;
+  }
+</style>
+
+<script>
+  document.addEventListener('click', function (event) {
+    // Check if the clicked element has the class 'see-ingredients'
+    if (event.target.classList.contains('see-ingredients')) {
+      // Display the ingredients modal container
+      document.querySelector('.ingredients-modal-container').style.display = 'flex';
+    }
+
+    // Check if the clicked element is the close button inside the modal
+    if (event.target.classList.contains('close-button')) {
+      // Hide the ingredients modal container
+      document.querySelector('.ingredients-modal-container').style.display = 'none';
+    }
+
+    // Check if the clicked element is the modal background
+    if (event.target.classList.contains('modal-bg')) {
+      // Hide the ingredients modal container
+      document.querySelector('.ingredients-modal-container').style.display = 'none';
+    }
+  });
+</script>
+<!-- End Ingredients Copy -->
+
+<script type="application/json" id="cc-product-json-1825437253732">
+  {"id":1825437253732,"title":"Organic Sleepy Body Lotion","handle":"sleepylotion","description":"\u003cp\u003eSleepy Body Lotion — This organic creamy body lotion was made specially for pregnant moms. It contains deep sea magnesium and plant-based essential oils which helps to relax the mind and body for a better night's sleep.\u003c\/p\u003e\n\u003cp\u003e• Rich in deep sea magnesium which helps promote deeper, more restful sleep\u2028\u003cbr\u003e\u003cbr\u003e• Magnesium has also been shown to relieve aches and muscle tension\u2028\u003cbr\u003e\u003cbr\u003e• Made in small batches with 100% natural, pregnancy-safe ingredients \u2028\u003cbr\u003e\u003cbr\u003e• Available in a 4oz and 8oz jar\u003cbr\u003e\u003cbr\u003e\u003cbr\u003e\u003cstrong\u003eOur 3-Month Risk Free Guarantee\u003c\/strong\u003e\u2028\u003cbr\u003eEvery one of our products comes with a 3-Month Risk Free Guarantee. If you are not absolutely thrilled with your purchase, simply send us an email at contact@8sheep.com any time within 3 months of receiving your product and we will get you a full refund within a day — no returns needed, no questions asked! \u003cbr\u003e\u003cbr\u003eWe truly want every mama to love our products as much as we do! \u003cbr\u003e\u003c\/p\u003e","published_at":"2018-12-17T21:51:46+08:00","created_at":"2018-12-17T22:06:06+08:00","vendor":"8Sheep","type":"","tags":["Best Sellers","Body Pains","Pregnancy","sleep","Upsell Tag"],"price":2900,"price_min":2900,"price_max":3900,"available":true,"price_varies":true,"compare_at_price":5000,"compare_at_price_min":5000,"compare_at_price_max":5000,"compare_at_price_varies":false,"variants":[{"id":17594384646244,"title":"4 oz \/ Lavender","option1":"4 oz","option2":"Lavender","option3":null,"sku":"40","requires_shipping":true,"taxable":true,"featured_image":null,"available":true,"name":"Organic Sleepy Body Lotion - 4 oz \/ Lavender","public_title":"4 oz \/ Lavender","options":["4 oz","Lavender"],"price":2900,"weight":198,"compare_at_price":null,"inventory_management":"shopify","barcode":"676737536435","requires_selling_plan":false,"selling_plan_allocations":[{"price_adjustments":[{"position":1,"price":2610}],"price":2610,"compare_at_price":2900,"per_delivery_price":2610,"selling_plan_id":518521024,"selling_plan_group_id":"58bb80b74dcc5d6405915f9c478b594397bd05b9"},{"price_adjustments":[{"position":1,"price":2610}],"price":2610,"compare_at_price":2900,"per_delivery_price":2610,"selling_plan_id":2793341120,"selling_plan_group_id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0"},{"price_adjustments":[{"position":1,"price":2610}],"price":2610,"compare_at_price":2900,"per_delivery_price":2610,"selling_plan_id":518619328,"selling_plan_group_id":"58bb80b74dcc5d6405915f9c478b594397bd05b9"},{"price_adjustments":[{"position":1,"price":2610}],"price":2610,"compare_at_price":2900,"per_delivery_price":2610,"selling_plan_id":2793373888,"selling_plan_group_id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0"},{"price_adjustments":[{"position":1,"price":2610}],"price":2610,"compare_at_price":2900,"per_delivery_price":2610,"selling_plan_id":518652096,"selling_plan_group_id":"58bb80b74dcc5d6405915f9c478b594397bd05b9"},{"price_adjustments":[{"position":1,"price":2610}],"price":2610,"compare_at_price":2900,"per_delivery_price":2610,"selling_plan_id":2793406656,"selling_plan_group_id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0"}],"quantity_rule":{"min":1,"max":null,"increment":1}},{"id":41579444306112,"title":"4 oz \/ Vanilla","option1":"4 oz","option2":"Vanilla","option3":null,"sku":"41","requires_shipping":true,"taxable":true,"featured_image":null,"available":true,"name":"Organic Sleepy Body Lotion - 4 oz \/ Vanilla","public_title":"4 oz \/ Vanilla","options":["4 oz","Vanilla"],"price":2900,"weight":198,"compare_at_price":null,"inventory_management":"shopify","barcode":"669185408164","requires_selling_plan":false,"selling_plan_allocations":[{"price_adjustments":[{"position":1,"price":2610}],"price":2610,"compare_at_price":2900,"per_delivery_price":2610,"selling_plan_id":518521024,"selling_plan_group_id":"58bb80b74dcc5d6405915f9c478b594397bd05b9"},{"price_adjustments":[{"position":1,"price":2610}],"price":2610,"compare_at_price":2900,"per_delivery_price":2610,"selling_plan_id":2793341120,"selling_plan_group_id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0"},{"price_adjustments":[{"position":1,"price":2610}],"price":2610,"compare_at_price":2900,"per_delivery_price":2610,"selling_plan_id":518619328,"selling_plan_group_id":"58bb80b74dcc5d6405915f9c478b594397bd05b9"},{"price_adjustments":[{"position":1,"price":2610}],"price":2610,"compare_at_price":2900,"per_delivery_price":2610,"selling_plan_id":2793373888,"selling_plan_group_id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0"},{"price_adjustments":[{"position":1,"price":2610}],"price":2610,"compare_at_price":2900,"per_delivery_price":2610,"selling_plan_id":518652096,"selling_plan_group_id":"58bb80b74dcc5d6405915f9c478b594397bd05b9"},{"price_adjustments":[{"position":1,"price":2610}],"price":2610,"compare_at_price":2900,"per_delivery_price":2610,"selling_plan_id":2793406656,"selling_plan_group_id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0"}],"quantity_rule":{"min":1,"max":null,"increment":1}},{"id":31753751232586,"title":"4 oz \/ Unscented","option1":"4 oz","option2":"Unscented","option3":null,"sku":"44","requires_shipping":true,"taxable":true,"featured_image":null,"available":true,"name":"Organic Sleepy Body Lotion - 4 oz \/ Unscented","public_title":"4 oz \/ Unscented","options":["4 oz","Unscented"],"price":2900,"weight":198,"compare_at_price":null,"inventory_management":"shopify","barcode":"669185408171","requires_selling_plan":false,"selling_plan_allocations":[{"price_adjustments":[{"position":1,"price":2610}],"price":2610,"compare_at_price":2900,"per_delivery_price":2610,"selling_plan_id":518521024,"selling_plan_group_id":"58bb80b74dcc5d6405915f9c478b594397bd05b9"},{"price_adjustments":[{"position":1,"price":2610}],"price":2610,"compare_at_price":2900,"per_delivery_price":2610,"selling_plan_id":2793341120,"selling_plan_group_id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0"},{"price_adjustments":[{"position":1,"price":2610}],"price":2610,"compare_at_price":2900,"per_delivery_price":2610,"selling_plan_id":518619328,"selling_plan_group_id":"58bb80b74dcc5d6405915f9c478b594397bd05b9"},{"price_adjustments":[{"position":1,"price":2610}],"price":2610,"compare_at_price":2900,"per_delivery_price":2610,"selling_plan_id":2793373888,"selling_plan_group_id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0"},{"price_adjustments":[{"position":1,"price":2610}],"price":2610,"compare_at_price":2900,"per_delivery_price":2610,"selling_plan_id":518652096,"selling_plan_group_id":"58bb80b74dcc5d6405915f9c478b594397bd05b9"},{"price_adjustments":[{"position":1,"price":2610}],"price":2610,"compare_at_price":2900,"per_delivery_price":2610,"selling_plan_id":2793406656,"selling_plan_group_id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0"}],"quantity_rule":{"min":1,"max":null,"increment":1}},{"id":17595301331044,"title":"8 oz \/ Lavender","option1":"8 oz","option2":"Lavender","option3":null,"sku":"80","requires_shipping":true,"taxable":true,"featured_image":null,"available":true,"name":"Organic Sleepy Body Lotion - 8 oz \/ Lavender","public_title":"8 oz \/ Lavender","options":["8 oz","Lavender"],"price":3900,"weight":312,"compare_at_price":5000,"inventory_management":"shopify","barcode":"713091488298","requires_selling_plan":false,"selling_plan_allocations":[{"price_adjustments":[{"position":1,"price":3510}],"price":3510,"compare_at_price":3900,"per_delivery_price":3510,"selling_plan_id":518521024,"selling_plan_group_id":"58bb80b74dcc5d6405915f9c478b594397bd05b9"},{"price_adjustments":[{"position":1,"price":3510}],"price":3510,"compare_at_price":3900,"per_delivery_price":3510,"selling_plan_id":2793341120,"selling_plan_group_id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0"},{"price_adjustments":[{"position":1,"price":3510}],"price":3510,"compare_at_price":3900,"per_delivery_price":3510,"selling_plan_id":518619328,"selling_plan_group_id":"58bb80b74dcc5d6405915f9c478b594397bd05b9"},{"price_adjustments":[{"position":1,"price":3510}],"price":3510,"compare_at_price":3900,"per_delivery_price":3510,"selling_plan_id":2793373888,"selling_plan_group_id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0"},{"price_adjustments":[{"position":1,"price":3510}],"price":3510,"compare_at_price":3900,"per_delivery_price":3510,"selling_plan_id":518652096,"selling_plan_group_id":"58bb80b74dcc5d6405915f9c478b594397bd05b9"},{"price_adjustments":[{"position":1,"price":3510}],"price":3510,"compare_at_price":3900,"per_delivery_price":3510,"selling_plan_id":2793406656,"selling_plan_group_id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0"}],"quantity_rule":{"min":1,"max":null,"increment":1}},{"id":41579444338880,"title":"8 oz \/ Vanilla","option1":"8 oz","option2":"Vanilla","option3":null,"sku":"81","requires_shipping":true,"taxable":true,"featured_image":null,"available":true,"name":"Organic Sleepy Body Lotion - 8 oz \/ Vanilla","public_title":"8 oz \/ Vanilla","options":["8 oz","Vanilla"],"price":3900,"weight":198,"compare_at_price":5000,"inventory_management":"shopify","barcode":"669185408188","requires_selling_plan":false,"selling_plan_allocations":[{"price_adjustments":[{"position":1,"price":3510}],"price":3510,"compare_at_price":3900,"per_delivery_price":3510,"selling_plan_id":518521024,"selling_plan_group_id":"58bb80b74dcc5d6405915f9c478b594397bd05b9"},{"price_adjustments":[{"position":1,"price":3510}],"price":3510,"compare_at_price":3900,"per_delivery_price":3510,"selling_plan_id":2793341120,"selling_plan_group_id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0"},{"price_adjustments":[{"position":1,"price":3510}],"price":3510,"compare_at_price":3900,"per_delivery_price":3510,"selling_plan_id":518619328,"selling_plan_group_id":"58bb80b74dcc5d6405915f9c478b594397bd05b9"},{"price_adjustments":[{"position":1,"price":3510}],"price":3510,"compare_at_price":3900,"per_delivery_price":3510,"selling_plan_id":2793373888,"selling_plan_group_id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0"},{"price_adjustments":[{"position":1,"price":3510}],"price":3510,"compare_at_price":3900,"per_delivery_price":3510,"selling_plan_id":518652096,"selling_plan_group_id":"58bb80b74dcc5d6405915f9c478b594397bd05b9"},{"price_adjustments":[{"position":1,"price":3510}],"price":3510,"compare_at_price":3900,"per_delivery_price":3510,"selling_plan_id":2793406656,"selling_plan_group_id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0"}],"quantity_rule":{"min":1,"max":null,"increment":1}},{"id":31753751429194,"title":"8 oz \/ Unscented","option1":"8 oz","option2":"Unscented","option3":null,"sku":"84","requires_shipping":true,"taxable":true,"featured_image":null,"available":true,"name":"Organic Sleepy Body Lotion - 8 oz \/ Unscented","public_title":"8 oz \/ Unscented","options":["8 oz","Unscented"],"price":3900,"weight":312,"compare_at_price":5000,"inventory_management":"shopify","barcode":"669185408195","requires_selling_plan":false,"selling_plan_allocations":[{"price_adjustments":[{"position":1,"price":3510}],"price":3510,"compare_at_price":3900,"per_delivery_price":3510,"selling_plan_id":518521024,"selling_plan_group_id":"58bb80b74dcc5d6405915f9c478b594397bd05b9"},{"price_adjustments":[{"position":1,"price":3510}],"price":3510,"compare_at_price":3900,"per_delivery_price":3510,"selling_plan_id":2793341120,"selling_plan_group_id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0"},{"price_adjustments":[{"position":1,"price":3510}],"price":3510,"compare_at_price":3900,"per_delivery_price":3510,"selling_plan_id":518619328,"selling_plan_group_id":"58bb80b74dcc5d6405915f9c478b594397bd05b9"},{"price_adjustments":[{"position":1,"price":3510}],"price":3510,"compare_at_price":3900,"per_delivery_price":3510,"selling_plan_id":2793373888,"selling_plan_group_id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0"},{"price_adjustments":[{"position":1,"price":3510}],"price":3510,"compare_at_price":3900,"per_delivery_price":3510,"selling_plan_id":518652096,"selling_plan_group_id":"58bb80b74dcc5d6405915f9c478b594397bd05b9"},{"price_adjustments":[{"position":1,"price":3510}],"price":3510,"compare_at_price":3900,"per_delivery_price":3510,"selling_plan_id":2793406656,"selling_plan_group_id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0"}],"quantity_rule":{"min":1,"max":null,"increment":1}}],"images":["\/\/8sheep.com\/cdn\/shop\/products\/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?v=1762197935","\/\/8sheep.com\/cdn\/shop\/products\/38_66963ef4-78af-4751-94c9-0ae1e6217624.png?v=1672746059","\/\/8sheep.com\/cdn\/shop\/files\/2_606c6bc9-d31b-48e6-9963-9c3c52a77f70.png?v=1775037811","\/\/8sheep.com\/cdn\/shop\/files\/3_235aa0e9-259d-4956-9abf-a49de2793aae.png?v=1775037810"],"featured_image":"\/\/8sheep.com\/cdn\/shop\/products\/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?v=1762197935","options":["Size","Scent"],"media":[{"alt":"A jar of Organic Sleepy Body Lotion with a white lid beside it. The 8oz (227ml) label notes it's pregnancy-safe, 100% organic, handcrafted, and made in the USA. Soft natural light creates gentle shadows.","id":28088659411136,"position":1,"preview_image":{"aspect_ratio":1.0,"height":2000,"width":2000,"src":"\/\/8sheep.com\/cdn\/shop\/products\/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?v=1762197935"},"aspect_ratio":1.0,"height":2000,"media_type":"image","src":"\/\/8sheep.com\/cdn\/shop\/products\/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?v=1762197935","width":2000},{"alt":"An open jar of Organic Sleepy Body Lotion sits on a light marble surface next to its lid. The creamy lotion inside the clear jar is visible as sunlight casts gentle shadows across the scene.","id":28088659443904,"position":2,"preview_image":{"aspect_ratio":1.0,"height":2000,"width":2000,"src":"\/\/8sheep.com\/cdn\/shop\/products\/38_66963ef4-78af-4751-94c9-0ae1e6217624.png?v=1672746059"},"aspect_ratio":1.0,"height":2000,"media_type":"image","src":"\/\/8sheep.com\/cdn\/shop\/products\/38_66963ef4-78af-4751-94c9-0ae1e6217624.png?v=1672746059","width":2000},{"alt":"A person scoops creamy Organic Sleepy Body Lotion from a jar with their fingers, displaying well-manicured nails and a silver ring. This gentle, organic body lotion is safe to use during pregnancy.","id":42320982671552,"position":3,"preview_image":{"aspect_ratio":1.0,"height":2000,"width":2000,"src":"\/\/8sheep.com\/cdn\/shop\/files\/2_606c6bc9-d31b-48e6-9963-9c3c52a77f70.png?v=1775037811"},"aspect_ratio":1.0,"height":2000,"media_type":"image","src":"\/\/8sheep.com\/cdn\/shop\/files\/2_606c6bc9-d31b-48e6-9963-9c3c52a77f70.png?v=1775037811","width":2000},{"alt":"A person in a beige shirt holds a jar of Organic Sleepy Body Lotion, while their other hand gently rests on their pregnant belly in the background.","id":42320982704320,"position":4,"preview_image":{"aspect_ratio":1.0,"height":2000,"width":2000,"src":"\/\/8sheep.com\/cdn\/shop\/files\/3_235aa0e9-259d-4956-9abf-a49de2793aae.png?v=1775037810"},"aspect_ratio":1.0,"height":2000,"media_type":"image","src":"\/\/8sheep.com\/cdn\/shop\/files\/3_235aa0e9-259d-4956-9abf-a49de2793aae.png?v=1775037810","width":2000}],"requires_selling_plan":false,"selling_plan_groups":[{"id":"58bb80b74dcc5d6405915f9c478b594397bd05b9","name":"Organic Sleepy Body Lotion","options":[{"name":"30 Day(s), 60 Day(s), 90 Day(s)","position":1,"values":["30 Day(s)","60 Day(s)","90 Day(s)"]}],"selling_plans":[{"id":518521024,"name":"Delivery every 30 Days","description":null,"options":[{"name":"30 Day(s), 60 Day(s), 90 Day(s)","position":1,"value":"30 Day(s)"}],"recurring_deliveries":true,"price_adjustments":[{"order_count":null,"position":1,"value_type":"percentage","value":10}],"checkout_charge":{"value_type":"percentage","value":100}},{"id":518619328,"name":"Delivery every 60 Days","description":null,"options":[{"name":"30 Day(s), 60 Day(s), 90 Day(s)","position":1,"value":"60 Day(s)"}],"recurring_deliveries":true,"price_adjustments":[{"order_count":null,"position":1,"value_type":"percentage","value":10}],"checkout_charge":{"value_type":"percentage","value":100}},{"id":518652096,"name":"Delivery every 90 Days","description":null,"options":[{"name":"30 Day(s), 60 Day(s), 90 Day(s)","position":1,"value":"90 Day(s)"}],"recurring_deliveries":true,"price_adjustments":[{"order_count":null,"position":1,"value_type":"percentage","value":10}],"checkout_charge":{"value_type":"percentage","value":100}}],"app_id":null},{"id":"c3da3b2a5d9fda4d3103a78d1d8929a3d9746be0","name":"Organic Sleepy Body Lotion","options":[{"name":"Recharge Plan ID","position":1,"values":["101171","101188","101189"]},{"name":"Order Frequency and Unit","position":2,"values":["30-day","60-day","90-day"]}],"selling_plans":[{"id":2793341120,"name":"Delivery every 30 days","description":null,"options":[{"name":"Recharge Plan ID","position":1,"value":"101171"},{"name":"Order Frequency and Unit","position":2,"value":"30-day"}],"recurring_deliveries":true,"price_adjustments":[{"order_count":null,"position":1,"value_type":"percentage","value":10}],"checkout_charge":{"value_type":"percentage","value":100}},{"id":2793373888,"name":"Delivery every 60 days","description":null,"options":[{"name":"Recharge Plan ID","position":1,"value":"101188"},{"name":"Order Frequency and Unit","position":2,"value":"60-day"}],"recurring_deliveries":true,"price_adjustments":[{"order_count":null,"position":1,"value_type":"percentage","value":10}],"checkout_charge":{"value_type":"percentage","value":100}},{"id":2793406656,"name":"Delivery every 90 days","description":null,"options":[{"name":"Recharge Plan ID","position":1,"value":"101189"},{"name":"Order Frequency and Unit","position":2,"value":"90-day"}],"recurring_deliveries":true,"price_adjustments":[{"order_count":null,"position":1,"value_type":"percentage","value":10}],"checkout_charge":{"value_type":"percentage","value":100}}],"app_id":"294517"}],"content":"\u003cp\u003eSleepy Body Lotion — This organic creamy body lotion was made specially for pregnant moms. It contains deep sea magnesium and plant-based essential oils which helps to relax the mind and body for a better night's sleep.\u003c\/p\u003e\n\u003cp\u003e• Rich in deep sea magnesium which helps promote deeper, more restful sleep\u2028\u003cbr\u003e\u003cbr\u003e• Magnesium has also been shown to relieve aches and muscle tension\u2028\u003cbr\u003e\u003cbr\u003e• Made in small batches with 100% natural, pregnancy-safe ingredients \u2028\u003cbr\u003e\u003cbr\u003e• Available in a 4oz and 8oz jar\u003cbr\u003e\u003cbr\u003e\u003cbr\u003e\u003cstrong\u003eOur 3-Month Risk Free Guarantee\u003c\/strong\u003e\u2028\u003cbr\u003eEvery one of our products comes with a 3-Month Risk Free Guarantee. If you are not absolutely thrilled with your purchase, simply send us an email at contact@8sheep.com any time within 3 months of receiving your product and we will get you a full refund within a day — no returns needed, no questions asked! \u003cbr\u003e\u003cbr\u003eWe truly want every mama to love our products as much as we do! \u003cbr\u003e\u003c\/p\u003e"}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Product",
+  "name": "Organic Sleepy Body Lotion",
+  "url": "https:\/\/8sheep.com\/products\/sleepylotion","image": [
+      "https:\/\/8sheep.com\/cdn\/shop\/products\/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3_2000x.png?v=1762197935"
+    ],"description": "Sleepy Body Lotion — This organic creamy body lotion was made specially for pregnant moms. It contains deep sea magnesium and plant-based essential oils which helps to relax the mind and body for a better night's sleep.\n• Rich in deep sea magnesium which helps promote deeper, more restful sleep\u2028• Magnesium has also been shown to relieve aches and muscle tension\u2028• Made in small batches with 100% natural, pregnancy-safe ingredients \u2028• Available in a 4oz and 8oz jarOur 3-Month Risk Free Guarantee\u2028Every one of our products comes with a 3-Month Risk Free Guarantee. If you are not absolutely thrilled with your purchase, simply send us an email at contact@8sheep.com any time within 3 months of receiving your product and we will get you a full refund within a day — no returns needed, no questions asked! We truly want every mama to love our products as much as we do! ","sku": "40","brand": {
+    "@type": "Brand",
+    "name": "8Sheep"
+  },
+  
+    "mpn": "676737536435",
+  
+  
+   "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.783112019",
+    "reviewCount": "2937",
+    "worstRating": "1.0",
+    "bestRating": "5.0"
+  },
+  
+  "offers": [{
+        "@type" : "Offer","sku": "40","availability" : "http://schema.org/InStock",
+        "price" : 29.0,
+        "priceCurrency" : "USD",
+        "url" : "https:\/\/8sheep.com\/products\/sleepylotion?variant=17594384646244",
+        "seller": {
+          "@type": "Organization",
+          "name": "8 Sheep Organics"
+        }
+      },
+{
+        "@type" : "Offer","sku": "41","availability" : "http://schema.org/InStock",
+        "price" : 29.0,
+        "priceCurrency" : "USD",
+        "url" : "https:\/\/8sheep.com\/products\/sleepylotion?variant=41579444306112",
+        "seller": {
+          "@type": "Organization",
+          "name": "8 Sheep Organics"
+        }
+      },
+{
+        "@type" : "Offer","sku": "44","availability" : "http://schema.org/InStock",
+        "price" : 29.0,
+        "priceCurrency" : "USD",
+        "url" : "https:\/\/8sheep.com\/products\/sleepylotion?variant=31753751232586",
+        "seller": {
+          "@type": "Organization",
+          "name": "8 Sheep Organics"
+        }
+      },
+{
+        "@type" : "Offer","sku": "80","availability" : "http://schema.org/InStock",
+        "price" : 39.0,
+        "priceCurrency" : "USD",
+        "url" : "https:\/\/8sheep.com\/products\/sleepylotion?variant=17595301331044",
+        "seller": {
+          "@type": "Organization",
+          "name": "8 Sheep Organics"
+        }
+      },
+{
+        "@type" : "Offer","sku": "81","availability" : "http://schema.org/InStock",
+        "price" : 39.0,
+        "priceCurrency" : "USD",
+        "url" : "https:\/\/8sheep.com\/products\/sleepylotion?variant=41579444338880",
+        "seller": {
+          "@type": "Organization",
+          "name": "8 Sheep Organics"
+        }
+      },
+{
+        "@type" : "Offer","sku": "84","availability" : "http://schema.org/InStock",
+        "price" : 39.0,
+        "priceCurrency" : "USD",
+        "url" : "https:\/\/8sheep.com\/products\/sleepylotion?variant=31753751429194",
+        "seller": {
+          "@type": "Organization",
+          "name": "8 Sheep Organics"
+        }
+      }
+]
+}
+</script>
+
+
+<script>
+  let domCheck;
+  const doDomCheck = function () {
+    el1 = document.querySelector('.product-area .product-area__details__title');
+    if (el1) {
+      clearInterval(domCheck);
+      let navList = document.createElement('p');
+      navList.classList.add('free_shipping_badge');
+      navList.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M5.76761 9.85737C5.76765 9.85741 5.76769 9.85745 5.76773 9.85749L7.57751 11.668L7.57753 11.6681C7.86342 11.954 8.32691 11.954 8.6128 11.6681L8.61281 11.6681L12.2328 8.04732C12.5187 7.76143 12.5187 7.29794 12.2328 7.01205C11.9477 6.72693 11.4834 6.72693 11.1983 7.01205L8.09478 10.1155L6.80223 8.82299C6.80217 8.82294 6.80212 8.82289 6.80207 8.82284C6.51696 8.53692 6.05267 8.53691 5.76755 8.82281C5.48163 9.10794 5.48165 9.57227 5.76761 9.85737Z" fill="#423F3F" stroke="#423F3F" stroke-width="0.3"/>
+        <mask id="path-2-outside-1_4354_776" maskUnits="userSpaceOnUse" x="0" y="0" width="18" height="18" fill="black">
+        <rect fill="white" width="18" height="18"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.01626 1.4073C8.27694 1.14663 8.63071 1 9 1C9.36929 1 9.72306 1.14663 9.98374 1.4073L11.1048 2.52836C11.156 2.57957 11.2289 2.60362 11.3011 2.59198L12.8667 2.34449C13.2313 2.28631 13.6037 2.3763 13.9024 2.59275C14.2003 2.80998 14.4005 3.1366 14.4587 3.50046L14.7061 5.06606C14.7178 5.13821 14.7628 5.20028 14.8279 5.23364L16.2399 5.95282C16.5689 6.1204 16.8179 6.41211 16.932 6.76278C17.046 7.11345 17.0158 7.49592 16.8482 7.82409L16.129 9.23686C16.0956 9.30203 16.0956 9.37806 16.129 9.44323L16.8482 10.856C17.0158 11.1842 17.046 11.5666 16.932 11.9173C16.8179 12.268 16.5689 12.5597 16.2399 12.7273L14.8279 13.4464C14.7628 13.4798 14.7178 13.5419 14.7061 13.614L14.4587 15.1796C14.4005 15.5435 14.2003 15.8701 13.9024 16.0873C13.6037 16.3038 13.2313 16.3938 12.8667 16.3356L11.3011 16.0881C11.2289 16.0765 11.156 16.1005 11.1048 16.1517L9.98374 17.2728C9.72306 17.5335 9.36929 17.6801 9 17.6801C8.63071 17.6801 8.27694 17.5335 8.01626 17.2728L6.89521 16.1517C6.844 16.1005 6.77107 16.0765 6.69892 16.0881L5.13332 16.3356C4.76869 16.3938 4.3963 16.3038 4.09761 16.0873C3.79969 15.8701 3.59953 15.5435 3.54134 15.1796L3.29386 13.614C3.28222 13.5419 3.23722 13.4798 3.17205 13.4464L1.76007 12.7273C1.43112 12.5597 1.18208 12.268 1.06804 11.9173C0.953991 11.5666 0.984248 11.1842 1.15182 10.856L1.87101 9.44323C1.90437 9.37806 1.90437 9.30203 1.87101 9.23686L1.15182 7.82409C0.984248 7.49592 0.953991 7.11345 1.06804 6.76278C1.18208 6.41211 1.43112 6.1204 1.76007 5.95282L3.17205 5.23364C3.23722 5.20028 3.28222 5.13821 3.29386 5.06606L3.54134 3.50046C3.59953 3.1366 3.79969 2.80998 4.09761 2.59275C4.3963 2.3763 4.76869 2.28631 5.13332 2.34449L6.69892 2.59198C6.77107 2.60362 6.844 2.57957 6.89521 2.52836L8.01626 1.4073ZM8.83941 2.23045L7.71835 3.3515C7.40337 3.66649 6.95649 3.81156 6.51661 3.74174L4.95101 3.49348C4.89127 3.48417 4.83075 3.49891 4.78188 3.5346C4.733 3.56951 4.70042 3.62304 4.69111 3.68278L4.44284 5.24838C4.37302 5.68827 4.09761 6.06842 3.70039 6.27013L2.28762 6.99009C2.23409 7.01724 2.19375 7.06534 2.17513 7.12276C2.15651 7.18017 2.16116 7.24223 2.18832 7.29576L2.90828 8.70853C3.11077 9.10497 3.11077 9.57512 2.90828 9.97156L2.18832 11.3843C2.16116 11.4379 2.15651 11.4999 2.17513 11.5573C2.19375 11.6147 2.23409 11.6628 2.28762 11.69L3.70039 12.41C4.09761 12.6117 4.37302 12.9918 4.44284 13.4317L4.69111 14.9973C4.70042 15.057 4.733 15.1106 4.78188 15.1455C4.83075 15.1812 4.89127 15.1959 4.95101 15.1866L6.51661 14.9383C6.95649 14.8685 7.40337 15.0136 7.71835 15.3286L8.83941 16.4496C8.88208 16.4923 8.93949 16.5164 9 16.5164C9.06051 16.5164 9.11792 16.4923 9.16059 16.4496L10.2817 15.3286C10.5966 15.0136 11.0435 14.8685 11.4834 14.9383L13.049 15.1866C13.1087 15.1959 13.1692 15.1812 13.2181 15.1455C13.267 15.1106 13.2996 15.057 13.3089 14.9973L13.5572 13.4317C13.627 12.9918 13.9024 12.6117 14.2996 12.41L15.7124 11.69C15.7659 11.6628 15.8063 11.6147 15.8249 11.5573C15.8435 11.4999 15.8388 11.4379 15.8117 11.3843L15.0917 9.97156C14.8892 9.57512 14.8892 9.10497 15.0917 8.70853L15.8117 7.29576C15.8388 7.24223 15.8435 7.18017 15.8249 7.12276C15.8063 7.06534 15.7659 7.01724 15.7124 6.99009L14.2996 6.27013C13.9024 6.06842 13.627 5.68827 13.5572 5.24838L13.3089 3.68278C13.2996 3.62304 13.267 3.56951 13.2181 3.5346C13.1692 3.49891 13.1087 3.48417 13.049 3.49348L11.4834 3.74174C11.0435 3.81156 10.5966 3.66649 10.2817 3.3515L9.16059 2.23045C9.11792 2.18778 9.06051 2.16373 9 2.16373C8.93949 2.16373 8.88208 2.18778 8.83941 2.23045Z"/>
+        </mask>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.01626 1.4073C8.27694 1.14663 8.63071 1 9 1C9.36929 1 9.72306 1.14663 9.98374 1.4073L11.1048 2.52836C11.156 2.57957 11.2289 2.60362 11.3011 2.59198L12.8667 2.34449C13.2313 2.28631 13.6037 2.3763 13.9024 2.59275C14.2003 2.80998 14.4005 3.1366 14.4587 3.50046L14.7061 5.06606C14.7178 5.13821 14.7628 5.20028 14.8279 5.23364L16.2399 5.95282C16.5689 6.1204 16.8179 6.41211 16.932 6.76278C17.046 7.11345 17.0158 7.49592 16.8482 7.82409L16.129 9.23686C16.0956 9.30203 16.0956 9.37806 16.129 9.44323L16.8482 10.856C17.0158 11.1842 17.046 11.5666 16.932 11.9173C16.8179 12.268 16.5689 12.5597 16.2399 12.7273L14.8279 13.4464C14.7628 13.4798 14.7178 13.5419 14.7061 13.614L14.4587 15.1796C14.4005 15.5435 14.2003 15.8701 13.9024 16.0873C13.6037 16.3038 13.2313 16.3938 12.8667 16.3356L11.3011 16.0881C11.2289 16.0765 11.156 16.1005 11.1048 16.1517L9.98374 17.2728C9.72306 17.5335 9.36929 17.6801 9 17.6801C8.63071 17.6801 8.27694 17.5335 8.01626 17.2728L6.89521 16.1517C6.844 16.1005 6.77107 16.0765 6.69892 16.0881L5.13332 16.3356C4.76869 16.3938 4.3963 16.3038 4.09761 16.0873C3.79969 15.8701 3.59953 15.5435 3.54134 15.1796L3.29386 13.614C3.28222 13.5419 3.23722 13.4798 3.17205 13.4464L1.76007 12.7273C1.43112 12.5597 1.18208 12.268 1.06804 11.9173C0.953991 11.5666 0.984248 11.1842 1.15182 10.856L1.87101 9.44323C1.90437 9.37806 1.90437 9.30203 1.87101 9.23686L1.15182 7.82409C0.984248 7.49592 0.953991 7.11345 1.06804 6.76278C1.18208 6.41211 1.43112 6.1204 1.76007 5.95282L3.17205 5.23364C3.23722 5.20028 3.28222 5.13821 3.29386 5.06606L3.54134 3.50046C3.59953 3.1366 3.79969 2.80998 4.09761 2.59275C4.3963 2.3763 4.76869 2.28631 5.13332 2.34449L6.69892 2.59198C6.77107 2.60362 6.844 2.57957 6.89521 2.52836L8.01626 1.4073ZM8.83941 2.23045L7.71835 3.3515C7.40337 3.66649 6.95649 3.81156 6.51661 3.74174L4.95101 3.49348C4.89127 3.48417 4.83075 3.49891 4.78188 3.5346C4.733 3.56951 4.70042 3.62304 4.69111 3.68278L4.44284 5.24838C4.37302 5.68827 4.09761 6.06842 3.70039 6.27013L2.28762 6.99009C2.23409 7.01724 2.19375 7.06534 2.17513 7.12276C2.15651 7.18017 2.16116 7.24223 2.18832 7.29576L2.90828 8.70853C3.11077 9.10497 3.11077 9.57512 2.90828 9.97156L2.18832 11.3843C2.16116 11.4379 2.15651 11.4999 2.17513 11.5573C2.19375 11.6147 2.23409 11.6628 2.28762 11.69L3.70039 12.41C4.09761 12.6117 4.37302 12.9918 4.44284 13.4317L4.69111 14.9973C4.70042 15.057 4.733 15.1106 4.78188 15.1455C4.83075 15.1812 4.89127 15.1959 4.95101 15.1866L6.51661 14.9383C6.95649 14.8685 7.40337 15.0136 7.71835 15.3286L8.83941 16.4496C8.88208 16.4923 8.93949 16.5164 9 16.5164C9.06051 16.5164 9.11792 16.4923 9.16059 16.4496L10.2817 15.3286C10.5966 15.0136 11.0435 14.8685 11.4834 14.9383L13.049 15.1866C13.1087 15.1959 13.1692 15.1812 13.2181 15.1455C13.267 15.1106 13.2996 15.057 13.3089 14.9973L13.5572 13.4317C13.627 12.9918 13.9024 12.6117 14.2996 12.41L15.7124 11.69C15.7659 11.6628 15.8063 11.6147 15.8249 11.5573C15.8435 11.4999 15.8388 11.4379 15.8117 11.3843L15.0917 9.97156C14.8892 9.57512 14.8892 9.10497 15.0917 8.70853L15.8117 7.29576C15.8388 7.24223 15.8435 7.18017 15.8249 7.12276C15.8063 7.06534 15.7659 7.01724 15.7124 6.99009L14.2996 6.27013C13.9024 6.06842 13.627 5.68827 13.5572 5.24838L13.3089 3.68278C13.2996 3.62304 13.267 3.56951 13.2181 3.5346C13.1692 3.49891 13.1087 3.48417 13.049 3.49348L11.4834 3.74174C11.0435 3.81156 10.5966 3.66649 10.2817 3.3515L9.16059 2.23045C9.11792 2.18778 9.06051 2.16373 9 2.16373C8.93949 2.16373 8.88208 2.18778 8.83941 2.23045Z" fill="#423F3F"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.01626 1.4073C8.27694 1.14663 8.63071 1 9 1C9.36929 1 9.72306 1.14663 9.98374 1.4073L11.1048 2.52836C11.156 2.57957 11.2289 2.60362 11.3011 2.59198L12.8667 2.34449C13.2313 2.28631 13.6037 2.3763 13.9024 2.59275C14.2003 2.80998 14.4005 3.1366 14.4587 3.50046L14.7061 5.06606C14.7178 5.13821 14.7628 5.20028 14.8279 5.23364L16.2399 5.95282C16.5689 6.1204 16.8179 6.41211 16.932 6.76278C17.046 7.11345 17.0158 7.49592 16.8482 7.82409L16.129 9.23686C16.0956 9.30203 16.0956 9.37806 16.129 9.44323L16.8482 10.856C17.0158 11.1842 17.046 11.5666 16.932 11.9173C16.8179 12.268 16.5689 12.5597 16.2399 12.7273L14.8279 13.4464C14.7628 13.4798 14.7178 13.5419 14.7061 13.614L14.4587 15.1796C14.4005 15.5435 14.2003 15.8701 13.9024 16.0873C13.6037 16.3038 13.2313 16.3938 12.8667 16.3356L11.3011 16.0881C11.2289 16.0765 11.156 16.1005 11.1048 16.1517L9.98374 17.2728C9.72306 17.5335 9.36929 17.6801 9 17.6801C8.63071 17.6801 8.27694 17.5335 8.01626 17.2728L6.89521 16.1517C6.844 16.1005 6.77107 16.0765 6.69892 16.0881L5.13332 16.3356C4.76869 16.3938 4.3963 16.3038 4.09761 16.0873C3.79969 15.8701 3.59953 15.5435 3.54134 15.1796L3.29386 13.614C3.28222 13.5419 3.23722 13.4798 3.17205 13.4464L1.76007 12.7273C1.43112 12.5597 1.18208 12.268 1.06804 11.9173C0.953991 11.5666 0.984248 11.1842 1.15182 10.856L1.87101 9.44323C1.90437 9.37806 1.90437 9.30203 1.87101 9.23686L1.15182 7.82409C0.984248 7.49592 0.953991 7.11345 1.06804 6.76278C1.18208 6.41211 1.43112 6.1204 1.76007 5.95282L3.17205 5.23364C3.23722 5.20028 3.28222 5.13821 3.29386 5.06606L3.54134 3.50046C3.59953 3.1366 3.79969 2.80998 4.09761 2.59275C4.3963 2.3763 4.76869 2.28631 5.13332 2.34449L6.69892 2.59198C6.77107 2.60362 6.844 2.57957 6.89521 2.52836L8.01626 1.4073ZM8.83941 2.23045L7.71835 3.3515C7.40337 3.66649 6.95649 3.81156 6.51661 3.74174L4.95101 3.49348C4.89127 3.48417 4.83075 3.49891 4.78188 3.5346C4.733 3.56951 4.70042 3.62304 4.69111 3.68278L4.44284 5.24838C4.37302 5.68827 4.09761 6.06842 3.70039 6.27013L2.28762 6.99009C2.23409 7.01724 2.19375 7.06534 2.17513 7.12276C2.15651 7.18017 2.16116 7.24223 2.18832 7.29576L2.90828 8.70853C3.11077 9.10497 3.11077 9.57512 2.90828 9.97156L2.18832 11.3843C2.16116 11.4379 2.15651 11.4999 2.17513 11.5573C2.19375 11.6147 2.23409 11.6628 2.28762 11.69L3.70039 12.41C4.09761 12.6117 4.37302 12.9918 4.44284 13.4317L4.69111 14.9973C4.70042 15.057 4.733 15.1106 4.78188 15.1455C4.83075 15.1812 4.89127 15.1959 4.95101 15.1866L6.51661 14.9383C6.95649 14.8685 7.40337 15.0136 7.71835 15.3286L8.83941 16.4496C8.88208 16.4923 8.93949 16.5164 9 16.5164C9.06051 16.5164 9.11792 16.4923 9.16059 16.4496L10.2817 15.3286C10.5966 15.0136 11.0435 14.8685 11.4834 14.9383L13.049 15.1866C13.1087 15.1959 13.1692 15.1812 13.2181 15.1455C13.267 15.1106 13.2996 15.057 13.3089 14.9973L13.5572 13.4317C13.627 12.9918 13.9024 12.6117 14.2996 12.41L15.7124 11.69C15.7659 11.6628 15.8063 11.6147 15.8249 11.5573C15.8435 11.4999 15.8388 11.4379 15.8117 11.3843L15.0917 9.97156C14.8892 9.57512 14.8892 9.10497 15.0917 8.70853L15.8117 7.29576C15.8388 7.24223 15.8435 7.18017 15.8249 7.12276C15.8063 7.06534 15.7659 7.01724 15.7124 6.99009L14.2996 6.27013C13.9024 6.06842 13.627 5.68827 13.5572 5.24838L13.3089 3.68278C13.2996 3.62304 13.267 3.56951 13.2181 3.5346C13.1692 3.49891 13.1087 3.48417 13.049 3.49348L11.4834 3.74174C11.0435 3.81156 10.5966 3.66649 10.2817 3.3515L9.16059 2.23045C9.11792 2.18778 9.06051 2.16373 9 2.16373C8.93949 2.16373 8.88208 2.18778 8.83941 2.23045Z" stroke="#423F3F" stroke-width="0.6" mask="url(#path-2-outside-1_4354_776)"/>
+      </svg>
+      Qualifies for Free Shipping`;
+
+      var element1 = document.querySelector('.price.theme-money');
+      if (element1) {
+        var price = element1.textContent;
+        price = price.replace('$', '');
+        var numericPrice = parseFloat(price);
+        if (numericPrice > 50) {
+          el1.append(navList);
+        }
+      }
+
+      var element = document.querySelector('.current-price.theme-money');
+      if (element) {
+        var price1 = element.textContent;
+        price1 = price1.replace('$', '');
+        var numericPrice1 = parseFloat(price1);
+        if (numericPrice1 > 50) {
+          el1.append(navList);
+        }
+      }
+    }
+  };
+  domCheck = setInterval(doDomCheck, 200);
+</script>
+<script>
+  const sizeOptions = (function () {
+    function addEventListenerAll(selector, event, handler) {
+      var elements = document.querySelectorAll(selector);
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].addEventListener(event, handler);
+      }
+    }
+
+    function resetRecharge() {
+      if (document.querySelector('.new_selector_value')) document.querySelector('.new_selector_value').remove();
+      var recurringPriceSpan = document.querySelector(
+        '.rc-radio.rc-option__subsave label span[aria-label="recurring price"]'
+      );
+      if (recurringPriceSpan) {
+        if (recurringPriceSpan.querySelector('span.strike')) recurringPriceSpan.querySelector('span.strike').remove();
+        clearInterval(subscribeSave);
+        subscribeSave = setInterval(doSubscribeSaveCheck, 200);
+      }
+    }
+
+    function handleSizeFilterClick() {
+      resetRecharge();
+      var getValue = this.getAttribute('value');
+      var sizeOptions = document.querySelectorAll(
+        '.product-detail__form__options .option-selectors.options-2 select[aria-label="Size"] option'
+      );
+
+      sizeOptions.forEach(function (option) {
+        var getValueSelect = option.value;
+        if (getValue == getValueSelect) {
+          option.selected = true;
+          document
+            .querySelector('.product-detail__form__options .option-selectors.options-2 select[aria-label="Size"]')
+            .dispatchEvent(new Event('change', { bubbles: true }));
+          document.querySelector('.size_text span.value').textContent = option.text;
+        }
+      });
+
+      setTimeout(function () {
+        let size = getValue.replace(/\s+/g, '');
+        let scent = document.querySelector('#newyearfilter1 > li[class="active"]').getAttribute('value');
+        document.querySelector('.price-add-wrapper.upsellActive').classList.add('upsellHidden');
+        document.querySelector('.price-add-wrapper.upsellActive').classList.remove('upsellActive');
+        document.querySelector('#price-' + size + '_' + scent).classList.remove('upsellHidden');
+        document.querySelector('#price-' + size + '_' + scent).classList.add('upsellActive');
+      }, 500);
+    }
+
+    function handleScentFilterClick() {
+      resetRecharge();
+      var getValue = this.getAttribute('value');
+      var scentOptions = document.querySelectorAll(
+        '.product-detail__form__options .option-selectors.options-2 select[aria-label="Scent"] option'
+      );
+
+      scentOptions.forEach(function (option) {
+        var getValueSelect = option.value;
+        if (getValue == getValueSelect) {
+          option.selected = true;
+          document
+            .querySelector('.product-detail__form__options .option-selectors.options-2 select[aria-label="Scent"]')
+            .dispatchEvent(new Event('change', { bubbles: true }));
+          document.querySelector('.scent_text span.value').textContent = option.text;
+        }
+      });
+
+      setTimeout(function () {
+        let size = document
+          .querySelector('#newyearfilter > li[class="active"]')
+          .getAttribute('value')
+          .replace(/\s+/g, '');
+        let scent = document.querySelector('#newyearfilter1 > li[class="active"]').getAttribute('value');
+        document.querySelector('.price-add-wrapper.upsellActive').classList.add('upsellHidden');
+        document.querySelector('.price-add-wrapper.upsellActive').classList.remove('upsellActive');
+        document.querySelector('#price-' + size + '_' + scent).classList.remove('upsellHidden');
+        document.querySelector('#price-' + size + '_' + scent).classList.add('upsellActive');
+      }, 500);
+    }
+
+    addEventListenerAll('#newyearfilter li', 'click', handleSizeFilterClick);
+    addEventListenerAll('#newyearfilter1 li', 'click', handleScentFilterClick);
+
+    document.querySelectorAll('ul#newyearfilter li').forEach(function (item) {
+      item.addEventListener('click', function () {
+        document.querySelectorAll('ul#newyearfilter li').forEach(function (el) {
+          el.classList.remove('active');
+        });
+        this.classList.add('active');
+      });
+    });
+
+    document.querySelectorAll('ul#newyearfilter1 li').forEach(function (item) {
+      item.addEventListener('click', function () {
+        document.querySelectorAll('ul#newyearfilter1 li').forEach(function (el) {
+          el.classList.remove('active');
+        });
+        this.classList.add('active');
+      });
+    });
+  })();
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Select the active list item within the ul with id newyearfilter1
+    const activeItem1 = document.querySelector('ul#newyearfilter li.active');
+
+    // Check if the activeItem exists
+    if (activeItem1) {
+      activeItem1.click();
+    } else {
+      console.log('No active list item found.');
+    }
+
+    // Select the active list item within the ul with id newyearfilter1
+    const activeItem = document.querySelector('ul#newyearfilter1 li.active');
+
+    // Check if the activeItem exists
+    if (activeItem) {
+      // Trigger the click event on the active list item
+      activeItem.click();
+    } else {
+      console.log('No active list item found.');
+    }
+  });
+</script>
+<script>
+  let subscribeSave;
+  const doSubscribeSaveCheck = function () {
+    let rechargeOptions = document.querySelector('.rc-radio.rc-option__subsave select');
+    if (rechargeOptions) {
+      clearInterval(subscribeSave);
+      var countSelect = document.querySelectorAll('.rc-radio.rc-option__subsave select option').length;
+      var otp_price = document.querySelector(
+        '.rc-radio.rc-option__onetime label span[aria-label="original price"]'
+      ).textContent;
+      var recurringPriceSpan = document.querySelector(
+        '.rc-radio.rc-option__subsave label span[aria-label="recurring price"]'
+      );
+      if (recurringPriceSpan.querySelector('span.strike'))
+        recurringPriceSpan.querySelector('span.strike').textContent = otp_price;
+      else recurringPriceSpan.innerHTML += '<span class="strike">' + otp_price + '</span>';
+      let rechargeSelectors = document.querySelectorAll('.rc_widget__option__selector');
+      for (let o = 0; o < rechargeSelectors.length; o++) {
+        rechargeSelectors[o].addEventListener(
+          'click',
+          function (e) {
+            if (document.querySelector('.new_selector_value')) document.querySelector('.new_selector_value').remove();
+            var recurringPriceSpan = document.querySelector(
+              '.rc-radio.rc-option__subsave label span[aria-label="recurring price"]'
+            );
+            if (recurringPriceSpan.querySelector('span.strike'))
+              recurringPriceSpan.querySelector('span.strike').remove();
+            clearInterval(subscribeSave);
+            subscribeSave = setInterval(doSubscribeSaveCheck, 200);
+          },
+          true
+        );
+      }
+      var sellingPlansContainer = document.querySelector('.rc-radio.rc-option__subsave .rc-selling-plans');
+      if (!sellingPlansContainer.querySelector('.uspText')) {
+        sellingPlansContainer.innerHTML += `
+          <ul class="uspText">
+            <li>Try risk free for 3 months</li>
+            <li>Pause or cancel anytime</li>
+            <li>Free shipping every 30 days</li>
+          </ul>
+        `;
+      }
+      if (countSelect > 1) {
+        if (!sellingPlansContainer.querySelector('.new_selector_value')) {
+          sellingPlansContainer.innerHTML += `
+            <div class="new_selector_value">
+              <p>Delivers Every</p>
+              <ul class="new_selector_value_list"></ul>
+            </div>
+          `;
+        }
+        var selectOptions = document.querySelectorAll(
+          '.rc-option__subsave select.rc_widget__option__plans__dropdown option'
+        );
+        var newSelectorValueList = document.querySelector(
+          '.rc-radio.rc-option__subsave .rc-selling-plans .new_selector_value .new_selector_value_list'
+        );
+        newSelectorValueList.innerHTML = '';
+        selectOptions.forEach(function (option) {
+          var getSelectValue = option.textContent;
+          var getSelectOptionValue = option.value;
+          var NewgetSelectValue = getSelectValue.replace('Delivery every ', '');
+          var NewgetSelectValue1 = NewgetSelectValue.replace('Days', '');
+          var listItem = document.createElement('li');
+          listItem.setAttribute('value', getSelectOptionValue);
+          listItem.setAttribute('data-value', getSelectValue);
+          listItem.textContent = NewgetSelectValue1;
+          newSelectorValueList.appendChild(listItem);
+        });
+        document.addEventListener('click', function (event) {
+          if (event.target.matches('.new_selector_value ul.new_selector_value_list li')) {
+            var listItems = document.querySelectorAll('.new_selector_value ul.new_selector_value_list li');
+            listItems.forEach(function (item) {
+              item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            var getLiValue = event.target.getAttribute('value');
+            var selectOptions = document.querySelectorAll(
+              '.rc-option__subsave select.rc_widget__option__plans__dropdown option'
+            );
+            selectOptions.forEach(function (option) {
+              var getSelectOptionValue = option.value;
+              if (getSelectOptionValue == getLiValue) {
+                document.querySelector('.rc-option__subsave select.rc_widget__option__plans__dropdown').value =
+                  getSelectOptionValue;
+              }
+            });
+          }
+        });
+        document.querySelector('.new_selector_value ul.new_selector_value_list li:first-child').classList.add('active');
+      }
+
+      let typeToggle = document.querySelectorAll('.rc_widget__option__selector input');
+      let upsellBlock = document.querySelector('.suug-prod-box.V1-code');
+      for (let k = 0; k < typeToggle.length; k++) {
+        typeToggle[k].addEventListener('click', function () {
+          let type = typeToggle[k].getAttribute('value');
+          if (type === 'onetime') {
+            if (upsellBlock.classList.contains('upsellHidden')) upsellBlock.classList.remove('upsellHidden');
+          } else {
+            if (!upsellBlock.classList.contains('upsellHidden')) upsellBlock.classList.add('upsellHidden');
+          }
+        });
+      }
+
+      /*setTimeout(function(){
+        let upsellBlock = document.querySelector('.suug-prod-box.V1-code');
+        if(getValue == '8 oz'){
+          if(!upsellBlock.classList.contains('upsellHidden')) document.querySelector('.suug-prod-box.V1-code').classList.add('upsellHidden');
+        } else {
+          if(upsellBlock.classList.contains('upsellHidden')) document.querySelector('.suug-prod-box.V1-code').classList.remove('upsellHidden');
+          let size = getValue.replace(/\s+/g, '');
+          let scent = document.querySelector('#newyearfilter1 > li[class="active"]').getAttribute('value');
+          document.querySelector('.price-add-wrapper.upsellActive').classList.add('upsellHidden');
+          document.querySelector('.price-add-wrapper.upsellActive').classList.remove('upsellActive');
+          document.querySelector('#price-'+size+'_'+scent).classList.remove('upsellHidden');
+          document.querySelector('#price-'+size+'_'+scent).classList.add('upsellActive');
+        }
+      },500);*/
+    }
+  };
+  //wait for recharge to load
+  subscribeSave = setInterval(doSubscribeSaveCheck, 200);
+</script>
+<style>
+  div.rc_popup {
+    display: none !important;
+  }
+  .product-detail__form form {
+  }
+
+  .product-detail__form form .rc-template__legacy-radio {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 16px;
+  }
+
+  .product-detail__form form .rc-template__legacy-radio > .rc-radio {
+    border-radius: 2px;
+    border: 1px solid rgba(66, 63, 63, 0.25);
+    background: #fff;
+    padding: 15px 20px;
+    position: relative;
+  }
+
+  .product-detail__form form .rc-template__legacy-radio > .rc-radio .rc_widget__option__selector {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .product-detail__form form .rc-template__legacy-radio > .rc-radio .rc_widget__option__selector label {
+    margin: 0;
+    line-height: 1;
+    margin-left: 8px;
+    color: #423f3f;
+    font-family: Nunito Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding-left: 20px;
+  }
+
+  .product-detail__form form .rc-template__legacy-radio > .rc-radio .rc_widget__option__selector input {
+    line-height: 1;
+    min-height: 16px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+  .product-detail__form form .rc-template__legacy-radio > .rc-radio .rc_widget__option__selector label::before {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #bc825b;
+    left: 0;
+  }
+  .product-detail__form form .rc-template__legacy-radio > .rc-radio .rc_widget__option__selector label::before,
+  .product-detail__form
+    form
+    .rc-template__legacy-radio
+    > .rc-radio
+    .rc_widget__option__selector
+    input:checked
+    + label::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+  }
+  .product-detail__form
+    form
+    .rc-template__legacy-radio
+    > .rc-radio
+    .rc_widget__option__selector
+    input:checked
+    + label::after {
+    background: #bc825b;
+    width: 10px;
+    height: 10px;
+    left: 5px;
+  }
+
+  .product-detail__form
+    form
+    .rc-template__legacy-radio
+    > .rc-radio
+    .rc_widget__option__selector
+    label
+    span.rc-option__price {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .product-detail__form
+    form
+    .rc-template__legacy-radio
+    > .rc-radio
+    .rc_widget__option__selector
+    label
+    span.rc-option__price
+    .strike {
+    color: #bc825b;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 126%;
+    text-transform: capitalize;
+    text-decoration: line-through;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+
+  .product-detail__form form .rc-template__legacy-radio > .rc-radio .rc_widget__option__selector + .rc-selling-plans {
+    padding: 0 !important;
+    margin-top: 20px;
+  }
+  .product-detail__form
+    form
+    .rc-template__legacy-radio
+    > .rc-radio
+    .rc_widget__option__selector
+    + .rc-selling-plans
+    .rc_widget__option__plans__dropdown {
+    display: none;
+  }
+
+  .product-detail__form
+    form
+    .rc-template__legacy-radio
+    > .rc-radio
+    .rc_widget__option__selector
+    + .rc-selling-plans
+    > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .product-detail__form
+    form
+    .rc-template__legacy-radio
+    > .rc-radio
+    .rc_widget__option__selector
+    + .rc-selling-plans
+    > ul
+    li {
+    position: relative;
+    padding-left: 25px;
+    color: #262626;
+    font-family: Nunito Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    margin-bottom: 10px;
+  }
+  .product-detail__form
+    form
+    .rc-template__legacy-radio
+    > .rc-radio
+    .rc_widget__option__selector
+    + .rc-selling-plans
+    > ul
+    li:before {
+    content: '';
+    background-image: url("data:image/svg+xml;charset=UTF-8, %3csvg width='12' height='10' viewBox='0 0 12 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.05258 10C5.0509 10 5.04894 10 5.04726 10C4.97786 9.9987 4.91238 9.97109 4.86536 9.9237L0.0671715 5.06859C-0.0151024 4.98526 -0.0226581 4.85974 0.0492616 4.76834C0.121181 4.67719 0.252148 4.64594 0.362406 4.69386L4.75398 6.60736C4.79092 6.62351 4.83458 6.6157 4.86284 6.58835L11.5617 0.0731228C11.6524 -0.0151566 11.8007 -0.0247919 11.9037 0.0512482C12.0067 0.127288 12.0305 0.263744 11.9585 0.366085L5.29492 9.86537C5.28541 9.87917 5.27421 9.89167 5.2619 9.90339L5.23252 9.93073C5.18466 9.975 5.11974 10 5.05258 10Z' fill='%23423F3F'/%3e%3c/svg%3e ");
+    position: absolute;
+    height: 10px;
+    width: 12px;
+    left: 5px;
+    top: 5px;
+  }
+
+  .new_selector_value {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .new_selector_value p {
+    color: #423f3f;
+    font-family: Nunito Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 126%; /* 17.64px */
+    text-transform: capitalize;
+  }
+
+  .new_selector_value ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .new_selector_value ul.new_selector_value_list li {
+    margin-left: 10px;
+    border-radius: 2px;
+    border: 1px solid rgba(66, 63, 63, 0.25);
+    background: #fff;
+    width: 47px;
+    height: 32px;
+    display: inline-block;
+    padding: 4px 3px 3px;
+    color: #423f3f;
+    text-align: center;
+    font-family: Nunito Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 90%;
+    text-transform: capitalize;
+  }
+
+  .new_selector_value ul.new_selector_value_list li:after {
+    content: 'Days';
+    color: #423f3f;
+    font-family: Nunito Sans;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 90%;
+    text-transform: uppercase;
+    display: block;
+  }
+
+  .product-detail__form
+    form
+    .rc-template__legacy-radio
+    > .rc-radio.rc-option__subsave.rc_widget__option--active.rc-option--active {
+    border-radius: 0px 2px 2px 2px;
+    border: 1px solid #423f3f;
+    background: #f8f8f8;
+  }
+
+  .product-detail__form form .rc-template__legacy-radio > .rc-radio.rc-option__subsave::before {
+    content: 'best deal';
+    color: #fff;
+    text-align: center;
+    font-family: Century Gothic;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 126%;
+    text-transform: uppercase;
+    border-radius: 0px 5px 0px 0px;
+    background: #bc825b;
+    padding: 6.5px 17.24px;
+    position: absolute;
+    left: -1.5px;
+    top: -34px;
+    pointer-events: none;
+  }
+
+  .product-detail__form form .rc-template__legacy-radio > .rc-radio.rc-option__subsave {
+    margin-top: 33px;
+  }
+
+  .new_selector_value ul.new_selector_value_list li.active {
+    border-radius: 2px;
+    border: 1px solid #bc825b;
+  }
+  .product-detail__form form .rc-template__legacy-radio > .rc-radio .rc_widget__option__selector + .rc-selling-plans {
+    display: block !important;
+  }
+  .product-detail__form
+    form
+    .rc-template__legacy-radio
+    > .rc-radio.rc-option__onetime.rc_widget__option--active.rc-option--active {
+    border-radius: 0px 2px 2px 2px;
+    border: 1px solid #423f3f;
+    background: #f8f8f8;
+  }
+</style>
+<style>
+  p.free_shipping_badge {
+    color: #423f3f;
+    text-align: center;
+    font-family: Nunito Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px; /* 200% */
+    text-transform: uppercase;
+    margin: 0;
+    display: table;
+    border-radius: 2px;
+    background: #ffb825;
+    padding: 5px 11px 3px;
+    margin-top: 5px;
+  }
+
+  p.free_shipping_badge svg {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
+  @media (max-width: 767px) {
+    p.free_shipping_badge {
+      font-size: 14px;
+    }
+
+    p.free_shipping_badge svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+</style>
+
+
+</div>

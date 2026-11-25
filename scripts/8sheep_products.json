@@ -1,0 +1,1417 @@
+{
+  "products": [
+    {
+      "id": 8593894146240,
+      "title": "Second Skin Barrier Cream",
+      "handle": "second-skin-barrier-cream",
+      "body_html": "<p>Did you know that babies are born with an underdeveloped skin barrier that does not fully mature until they are around 3–4 years old?</p>\n<p>Our skin barrier is made up of hardened skin cells (corneocytes) and lipids. The skin cells act like “bricks,” while the lipids are the “cement” that seals up the gaps between the skin cells.</p>\n<p>A baby's skin does not produce enough “cement”, and this causes gaps in between their skin cells. Through these gaps, germs and bacteria can easily enter their skin, causing inflammation and flare ups. </p>\n<p>This is why babies are so prone to acne, eczema and other skin issues.</p>\n<p>Second Skin is a barrier cream that provides the “cement” baby’s skin is missing. It helps to seal the gaps and make it harder for germs and bacteria to enter the skin. </p>\n<p>The result: clearer, healthier-looking baby skin within 2–4 weeks of use.</p>",
+      "published_at": "2026-07-22T15:48:13+08:00",
+      "created_at": "2026-06-03T14:47:38+08:00",
+      "updated_at": "2026-11-25T16:22:24+08:00",
+      "vendor": "8 Sheep Organics",
+      "product_type": "",
+      "tags": [],
+      "variants": [
+        {
+          "id": 48357670650048,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "SECONDSKIN",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "27.00",
+          "grams": 150,
+          "compare_at_price": null,
+          "position": 1,
+          "product_id": 8593894146240,
+          "created_at": "2026-06-03T14:47:38+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        }
+      ],
+      "images": [
+        {
+          "id": 56658453168320,
+          "created_at": "2026-07-18T16:06:22+08:00",
+          "position": 1,
+          "updated_at": "2026-07-18T16:12:07+08:00",
+          "product_id": 8593894146240,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/2_9d9aa4b9-d661-43df-a2ef-7f0285e606d8.png?v=1784362327",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 56658453201088,
+          "created_at": "2026-07-18T16:06:22+08:00",
+          "position": 2,
+          "updated_at": "2026-07-18T16:12:04+08:00",
+          "product_id": 8593894146240,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/3_0a5dc5b3-5370-4a5f-9b8a-6b7e12ca434a.png?v=1784362324",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 56658453233856,
+          "created_at": "2026-07-18T16:06:22+08:00",
+          "position": 3,
+          "updated_at": "2026-07-18T16:12:02+08:00",
+          "product_id": 8593894146240,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/4.png?v=1784362322",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 56658453266624,
+          "created_at": "2026-07-18T16:06:22+08:00",
+          "position": 4,
+          "updated_at": "2026-07-18T16:12:01+08:00",
+          "product_id": 8593894146240,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/5.png?v=1784362321",
+          "width": 2000,
+          "height": 2000
+        }
+      ],
+      "options": [
+        {
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6944320913600,
+      "title": "Mama & Baby Bundle",
+      "handle": "mama-and-baby-bundle",
+      "body_html": "<div data-region=\"main\" data-shogun-variant-id=\"617930a188bd1b00c23e5987\" data-shogun-platform-type=\"shopify\" data-shogun-page-version-id=\"617930a188bd1b00c23e596f\" data-shogun-page-id=\"6179307b9b3d1600cd9a279d\" data-shogun-site-id=\"2269d096-f4b1-4e6c-9853-caf2ad9e2618\" data-shogun-id=\"6179307b9b3d1600cd9a279d\" class=\"shogun-root\">\n<script async=\"\" src=\"https://lib.getshogun.com/lazysizes/2.0.0/shogun-lazysizes.js\" type=\"text/javascript\"></script>\n<div id=\"s-488d36b2-56be-4277-b87f-36f5c9c730d9\" style=\"opacity: 1;\" class=\"shg-c shogun-image-container\" data-mce-style=\"opacity: 1;\">\n<p><strong>For a limited time only, we’re offering the Mama &amp; Baby Bundle! </strong></p>\n<p>This is the perfect gift for new moms and babies who both need a restful night’s sleep! </p>\n<p>The bundle features two of our best-selling products that have helped thousands of moms and babies sleep through the night!</p>\n<p>Set includes:<br>1 x Sleepy Body Lotion - 8oz, Lavender<br>1 x Junior’s Bedtime Lotion - 8oz</p>\n<p>Get the bundle and try it completely risk free for 3 months. </p>\n<p>We guarantee better sleep for both mama and baby, or your money back!</p>\n</div>\n</div>",
+      "published_at": "2024-10-04T18:05:37+08:00",
+      "created_at": "2021-10-10T16:49:28+08:00",
+      "updated_at": "2026-11-25T16:22:24+08:00",
+      "vendor": "8 Sheep Organics",
+      "product_type": "",
+      "tags": [],
+      "variants": [
+        {
+          "id": 40972205949120,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "MAMABABYBUNDLE",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "65.00",
+          "grams": 510,
+          "compare_at_price": "72.00",
+          "position": 1,
+          "product_id": 6944320913600,
+          "created_at": "2021-10-10T16:59:58+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        }
+      ],
+      "images": [
+        {
+          "id": 39946359898304,
+          "created_at": "2024-10-04T18:04:30+08:00",
+          "position": 1,
+          "updated_at": "2025-11-04T03:30:35+08:00",
+          "product_id": 6944320913600,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/164.png?v=1762198235",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 39946359931072,
+          "created_at": "2024-10-04T18:04:31+08:00",
+          "position": 2,
+          "updated_at": "2024-10-04T18:04:32+08:00",
+          "product_id": 6944320913600,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/163.png?v=1728036272",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 39946359963840,
+          "created_at": "2024-10-04T18:04:31+08:00",
+          "position": 3,
+          "updated_at": "2024-10-04T18:04:32+08:00",
+          "product_id": 6944320913600,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/165.png?v=1728036272",
+          "width": 2000,
+          "height": 2000
+        }
+      ],
+      "options": [
+        {
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3718636961866,
+      "title": "Unwind Pillow Mist",
+      "handle": "pillowmist",
+      "body_html": "<meta charset=\"utf-8\">\n<p><img src=\"https://cdn.shopify.com/s/files/1/0098/2138/8900/files/download_large.jpeg?v=1545056072\" alt=\"\"></p>\n<p><strong>Breathe in the delicate scents of the \"unwind\" pillow mist as you gently drift off to a deep, blissful sleep...</strong></p>\n<p>\"Unwind\" is a 100% organic pillow mist handmade in small batches.</p>\n<p>It is infused with Lavender, Bergamot, Chamomile and Vanilla essential oils to help calm an anxious mind and lift away any tension in your body.</p>\n<ul>\n<li>Lavender/ Bergamot: Promotes restful sleep and relaxes your mind and body</li>\n<li>Roman Chamomile: Reduces stress, anxiety and tension</li>\n<li>Vanilla: Quiets the mind so you fall asleep more easily, and stay asleep for longer</li>\n</ul>\n<p><img src=\"//cdn.shopify.com/s/files/1/0098/2138/8900/files/Screen_Shot_2018-12-21_at_10.24.28_PM_large.png?v=1545402309\" alt=\"\" width=\"90\" height=\"32\"> </p>\n<p style=\"padding-left: 30px;\"><em>\"… With this pillow spray, as soon as my head touches the pillow, I'm out!” - Jenna D.</em></p>\n<p style=\"padding-left: 30px;\"><em>\"Love this spray! It has an amazing scent that calms and soothes me to sleep!</em>\"<em> - Helene</em></p>\n<p><strong>Order yours risk-free today with our 60 day money-back guarantee! </strong></p>\n<div>Ingredients: Distilled Water, Organic Natural Cane Alcohol (Food Grade), Organic Lavender Essential Oil, Organic Bergamot Essential Oil, Organic Roman Chamomile Essential Oil, Organic Vanilla Extract, Organic Jojoba Oil</div>",
+      "published_at": "2024-04-20T13:13:07+08:00",
+      "created_at": "2019-06-29T09:24:54+08:00",
+      "updated_at": "2026-11-25T16:22:24+08:00",
+      "vendor": "8Sheep",
+      "product_type": "",
+      "tags": [
+        "Pregnancy",
+        "sleep"
+      ],
+      "variants": [
+        {
+          "id": 29386752786506,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "52",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "19.00",
+          "grams": 283,
+          "compare_at_price": "29.00",
+          "position": 1,
+          "product_id": 3718636961866,
+          "created_at": "2019-09-01T12:18:19+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        }
+      ],
+      "images": [
+        {
+          "id": 35645034791104,
+          "created_at": "2023-01-03T19:38:06+08:00",
+          "position": 1,
+          "updated_at": "2025-11-04T03:26:21+08:00",
+          "product_id": 3718636961866,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/products/22_db177ac6-e68e-4455-bfdc-28d7ad5c349d.png?v=1762197981",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 35645034692800,
+          "created_at": "2023-01-03T19:38:03+08:00",
+          "position": 2,
+          "updated_at": "2023-01-03T19:38:03+08:00",
+          "product_id": 3718636961866,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/products/BathSKUs-2000x2000px_8cf3b844-9a8c-4ebd-80fb-d2c0a3d2c9a1.png?v=1672745883",
+          "width": 2000,
+          "height": 2000
+        }
+      ],
+      "options": [
+        {
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7635673546944,
+      "title": "Baby Shampoo & Body Wash",
+      "handle": "baby-wash",
+      "body_html": "<p>This organic 2-in-1 shampoo and body wash leaves baby’s hair and skin feeling soft and clean. It is extra gentle, and suitable for sensitive or delicate skin.<br><br>Made only with 100% clean, plant-based ingredients. No sulfates, parabens, artificial fragrances, petroleum by-products, or any other nasty chemicals.<br><br>Comes mildly scented with organic lavender essential oils, or unscented with no essential oils.</p>",
+      "published_at": "2023-11-23T22:09:36+08:00",
+      "created_at": "2023-11-23T22:09:36+08:00",
+      "updated_at": "2026-11-25T16:22:24+08:00",
+      "vendor": "8 Sheep Organics",
+      "product_type": "",
+      "tags": [
+        "Baby"
+      ],
+      "variants": [
+        {
+          "id": 44202060611776,
+          "title": "Lavender",
+          "option1": "Lavender",
+          "option2": null,
+          "option3": null,
+          "sku": "BABYSHAMPOOWASHLAVENDER",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "17.00",
+          "grams": 227,
+          "compare_at_price": null,
+          "position": 1,
+          "product_id": 7635673546944,
+          "created_at": "2023-11-23T22:09:36+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        },
+        {
+          "id": 44202060644544,
+          "title": "Unscented",
+          "option1": "Unscented",
+          "option2": null,
+          "option3": null,
+          "sku": "BABYSHAMPOOWASHUNSCENTED",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "17.00",
+          "grams": 227,
+          "compare_at_price": null,
+          "position": 2,
+          "product_id": 7635673546944,
+          "created_at": "2023-11-23T22:09:37+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        }
+      ],
+      "images": [
+        {
+          "id": 36846211956928,
+          "created_at": "2023-11-23T22:09:36+08:00",
+          "position": 1,
+          "updated_at": "2025-11-04T03:37:16+08:00",
+          "product_id": 7635673546944,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/124.png?v=1762198636",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 36846211989696,
+          "created_at": "2023-11-23T22:09:36+08:00",
+          "position": 2,
+          "updated_at": "2023-12-20T13:43:56+08:00",
+          "product_id": 7635673546944,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/123.png?v=1703051036",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 36846212055232,
+          "created_at": "2023-11-23T22:09:36+08:00",
+          "position": 3,
+          "updated_at": "2023-11-23T22:18:58+08:00",
+          "product_id": 7635673546944,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/125.png?v=1700749138",
+          "width": 2000,
+          "height": 2000
+        }
+      ],
+      "options": [
+        {
+          "name": "Scent",
+          "position": 1,
+          "values": [
+            "Lavender",
+            "Unscented"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6104346296512,
+      "title": "Gift Card",
+      "handle": "gift-card",
+      "body_html": "<p><meta charset=\"utf-8\"><span></span>If you're shopping for someone else but aren't sure what to get them, then this gift card is perfect!<br></p>\n<p>Give the gift of sleep to your loved ones with uniquely handcrafted products from 8 Sheep Organics.</p>\n<p>Gift cards are delivered by email and contain instructions to redeem them at checkout. </p>",
+      "published_at": "2023-09-28T13:52:53+08:00",
+      "created_at": "2020-12-09T19:05:25+08:00",
+      "updated_at": "2026-11-25T16:22:24+08:00",
+      "vendor": "8 Sheep Organics",
+      "product_type": "Gift Cards",
+      "tags": [],
+      "variants": [
+        {
+          "id": 43488839172288,
+          "title": "$50",
+          "option1": "$50",
+          "option2": null,
+          "option3": null,
+          "sku": "",
+          "requires_shipping": false,
+          "taxable": false,
+          "featured_image": null,
+          "available": true,
+          "price": "50.00",
+          "grams": 0,
+          "compare_at_price": null,
+          "position": 1,
+          "product_id": 6104346296512,
+          "created_at": "2023-02-26T11:02:43+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        },
+        {
+          "id": 43488839205056,
+          "title": "$75",
+          "option1": "$75",
+          "option2": null,
+          "option3": null,
+          "sku": "",
+          "requires_shipping": false,
+          "taxable": false,
+          "featured_image": null,
+          "available": true,
+          "price": "75.00",
+          "grams": 0,
+          "compare_at_price": null,
+          "position": 2,
+          "product_id": 6104346296512,
+          "created_at": "2023-02-26T11:02:43+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        },
+        {
+          "id": 43488839237824,
+          "title": "$100",
+          "option1": "$100",
+          "option2": null,
+          "option3": null,
+          "sku": "",
+          "requires_shipping": false,
+          "taxable": false,
+          "featured_image": null,
+          "available": true,
+          "price": "100.00",
+          "grams": 0,
+          "compare_at_price": null,
+          "position": 3,
+          "product_id": 6104346296512,
+          "created_at": "2023-02-26T11:02:43+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        }
+      ],
+      "images": [
+        {
+          "id": 35924359119040,
+          "created_at": "2023-02-26T11:04:23+08:00",
+          "position": 1,
+          "updated_at": "2025-11-04T03:29:35+08:00",
+          "product_id": 6104346296512,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/products/BlushBotanicalAestheticGiftCardVoucher.png?v=1762198175",
+          "width": 1748,
+          "height": 1240
+        }
+      ],
+      "options": [
+        {
+          "name": "Value",
+          "position": 1,
+          "values": [
+            "$50",
+            "$75",
+            "$100"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7488888438976,
+      "title": "Sleepy Body Lotion for Seniors 60+",
+      "handle": "sleepylotionseniors",
+      "body_html": "<p><meta charset=\"utf-8\">Sleepy Lotion 60+ is an organic magnesium lotion specially made for seniors. It contains deep sea magnesium and plant-based essential oils which helps to relax the mind and body for a better night's sleep.  <br><br>• Rich in deep sea magnesium which helps promote deeper, more restful sleep  <br><br>• Easily absorbed through the skin to replenish our body’s stores of magnesium  <br><br>• Made in small batches with 100% natural, pregnancy-safe ingredients   <br><br>• Available in a 4oz and 8oz jar   <br><br><br><strong>Our 3-Month Risk Free Guarantee</strong> <br>Every one of our products comes with a 3-Month Risk Free Guarantee. If you are not absolutely thrilled with your purchase, simply send us an email at contact@8sheep.com any time within 3 months of receiving your product and we will get you a full refund within a day — no returns needed, no questions asked!   <br><br>We truly want you to love our products as much as we do! <br></p>",
+      "published_at": "2023-05-31T11:54:11+08:00",
+      "created_at": "2023-05-30T12:34:31+08:00",
+      "updated_at": "2026-11-25T16:22:24+08:00",
+      "vendor": "8Sheep",
+      "product_type": "",
+      "tags": [
+        "Seniors",
+        "sleep"
+      ],
+      "variants": [
+        {
+          "id": 43673884655808,
+          "title": "4 oz / Lavender",
+          "option1": "4 oz",
+          "option2": "Lavender",
+          "option3": null,
+          "sku": "400",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "29.00",
+          "grams": 198,
+          "compare_at_price": null,
+          "position": 1,
+          "product_id": 7488888438976,
+          "created_at": "2023-05-30T12:34:32+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        },
+        {
+          "id": 43673884688576,
+          "title": "4 oz / Vanilla",
+          "option1": "4 oz",
+          "option2": "Vanilla",
+          "option3": null,
+          "sku": "401",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "29.00",
+          "grams": 198,
+          "compare_at_price": null,
+          "position": 2,
+          "product_id": 7488888438976,
+          "created_at": "2023-05-30T12:34:32+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        },
+        {
+          "id": 43673884786880,
+          "title": "4 oz / Unscented",
+          "option1": "4 oz",
+          "option2": "Unscented",
+          "option3": null,
+          "sku": "404",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "29.00",
+          "grams": 198,
+          "compare_at_price": null,
+          "position": 3,
+          "product_id": 7488888438976,
+          "created_at": "2023-05-30T12:34:32+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        },
+        {
+          "id": 43673884819648,
+          "title": "8 oz / Lavender",
+          "option1": "8 oz",
+          "option2": "Lavender",
+          "option3": null,
+          "sku": "800",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "39.00",
+          "grams": 312,
+          "compare_at_price": "50.00",
+          "position": 4,
+          "product_id": 7488888438976,
+          "created_at": "2023-05-30T12:34:32+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        },
+        {
+          "id": 43673884852416,
+          "title": "8 oz / Vanilla",
+          "option1": "8 oz",
+          "option2": "Vanilla",
+          "option3": null,
+          "sku": "801",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "39.00",
+          "grams": 198,
+          "compare_at_price": "50.00",
+          "position": 5,
+          "product_id": 7488888438976,
+          "created_at": "2023-05-30T12:34:32+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        },
+        {
+          "id": 43673884950720,
+          "title": "8 oz / Unscented",
+          "option1": "8 oz",
+          "option2": "Unscented",
+          "option3": null,
+          "sku": "804",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "39.00",
+          "grams": 312,
+          "compare_at_price": "50.00",
+          "position": 6,
+          "product_id": 7488888438976,
+          "created_at": "2023-05-30T12:34:32+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        }
+      ],
+      "images": [
+        {
+          "id": 36253998579904,
+          "created_at": "2023-05-30T12:34:37+08:00",
+          "position": 1,
+          "updated_at": "2025-11-04T03:35:10+08:00",
+          "product_id": 7488888438976,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/37_96e2eccf-fafc-4483-a691-99141e44f372.png?v=1762198510",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 36253998612672,
+          "created_at": "2023-05-30T12:34:37+08:00",
+          "position": 2,
+          "updated_at": "2023-05-31T10:15:14+08:00",
+          "product_id": 7488888438976,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/38_2e6e08dc-62dd-4883-b3a4-5d0794959719.png?v=1685499314",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 36256104677568,
+          "created_at": "2023-05-31T10:14:45+08:00",
+          "position": 3,
+          "updated_at": "2023-05-31T10:15:20+08:00",
+          "product_id": 7488888438976,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/ShopifyPDPImages-2000x2000px_2a1c6819-b413-4a9a-ac3c-f7c6a664f336.png?v=1685499320",
+          "width": 2000,
+          "height": 2000
+        }
+      ],
+      "options": [
+        {
+          "name": "Size",
+          "position": 1,
+          "values": [
+            "4 oz",
+            "8 oz"
+          ]
+        },
+        {
+          "name": "Scent",
+          "position": 2,
+          "values": [
+            "Lavender",
+            "Vanilla",
+            "Unscented"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7463779664064,
+      "title": "Pregnancy Survival Kit",
+      "handle": "pregnancy-survival-kit",
+      "body_html": "<p>The Pregnancy Survival Kit is a must-have for every pregnant mom! <br data-mce-fragment=\"1\"><br data-mce-fragment=\"1\">It contains 4 of our best-selling products that have helped over 168,550+ moms get through their pregnancy with ease!<br data-mce-fragment=\"1\"><br>Every item is handmade in small batches by a mom-owned business based out of Indiana, USA with clean, natural ingredients.<br><br>For a limited time only, get the Pregnancy Survival Kit at $30 off and delivered straight to your doorstep in 5-7 days with FREE shipping (only available within the US).<br data-mce-fragment=\"1\"></p>",
+      "published_at": "2023-03-15T09:14:01+08:00",
+      "created_at": "2023-03-15T09:14:01+08:00",
+      "updated_at": "2026-11-25T16:22:24+08:00",
+      "vendor": "8 Sheep Organics",
+      "product_type": "",
+      "tags": [
+        "Best Sellers",
+        "Body Pains",
+        "Gift Sets",
+        "Pregnancy",
+        "sleep"
+      ],
+      "variants": [
+        {
+          "id": 43533627031744,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "1006",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "110.00",
+          "grams": 595,
+          "compare_at_price": "140.00",
+          "position": 1,
+          "product_id": 7463779664064,
+          "created_at": "2023-03-15T09:14:01+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        }
+      ],
+      "images": [
+        {
+          "id": 60326297338048,
+          "created_at": "2026-10-21T10:47:00+08:00",
+          "position": 1,
+          "updated_at": "2026-10-21T10:48:01+08:00",
+          "product_id": 7463779664064,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?v=1792550881",
+          "width": 2000,
+          "height": 2000
+        }
+      ],
+      "options": [
+        {
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7391885951168,
+      "title": "2-Step Stretch Mark Prevention Bundle",
+      "handle": "stretch-mark-bundle",
+      "body_html": "<div class=\"shogun-root\" data-shogun-id=\"5e3ebbd06ee5840069511537\" data-shogun-site-id=\"2269d096-f4b1-4e6c-9853-caf2ad9e2618\" data-shogun-page-id=\"5e3ebbd06ee5840069511537\" data-shogun-page-version-id=\"6113b0fc64014500d2dfbf93\" data-shogun-platform-type=\"shopify\" data-shogun-variant-id=\"6113b0fc64014500d2dfbfab\" data-region=\"main\">\n<script async=\"\" src=\"https://lib.getshogun.com/lazysizes/2.0.0/shogun-lazysizes.js\" type=\"text/javascript\"></script>\n<div class=\"shg-c shogun-image-container\" style=\"opacity: 1;\" id=\"s-3cecd228-c2c3-4889-a615-c084b29d92bd\">Minimize the risk of getting stretch marks and loose skin with our 2-Step Stretch Mark Prevention Bundle!<br><br>What's included:<br>1 x True Belly Serum (4oz)<br>1 x Immortelle Nourishing Balm (4oz)<br>\n</div>\n<div class=\"shg-c shogun-image-container\" style=\"opacity: 1;\"><br></div>\n<div class=\"shg-c shogun-image-container\" style=\"opacity: 1;\"><br></div>\n<div class=\"shg-c shogun-image-container\" style=\"opacity: 1;\">\n<br><strong>Note: These items are made in small batches and may run out of stock from time to time. Please bear with us if that happens, we're doing our best to keep them in stock.</strong>\n</div>\n<div id=\"s-570378a1-0db3-4e6d-adf9-1141c4c6eca6\" class=\"shg-c\">\n<div class=\"shg-rich-text shg-theme-text-content\">\n<div class=\"shg-c\" id=\"s-570378a1-0db3-4e6d-adf9-1141c4c6eca6\">\n<div class=\"shg-rich-text shg-theme-text-content\"><br></div>\n</div>\n</div>\n</div>\n</div>",
+      "published_at": "2023-03-04T19:34:46+08:00",
+      "created_at": "2022-10-29T18:40:14+08:00",
+      "updated_at": "2026-11-25T16:22:24+08:00",
+      "vendor": "8 Sheep Organics",
+      "product_type": "",
+      "tags": [
+        "antohernewtag",
+        "bath",
+        "Best Sellers",
+        "Gift Sets",
+        "newtag",
+        "Pregnancy",
+        "Stretch Marks"
+      ],
+      "variants": [
+        {
+          "id": 43262015865024,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "1004",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "69.00",
+          "grams": 255,
+          "compare_at_price": "82.00",
+          "position": 1,
+          "product_id": 7391885951168,
+          "created_at": "2022-10-29T18:40:14+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        }
+      ],
+      "images": [
+        {
+          "id": 35953534763200,
+          "created_at": "2023-03-04T19:31:57+08:00",
+          "position": 1,
+          "updated_at": "2025-11-04T03:33:11+08:00",
+          "product_id": 7391885951168,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/products/89.png?v=1762198391",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 36415408046272,
+          "created_at": "2023-07-28T10:48:44+08:00",
+          "position": 2,
+          "updated_at": "2024-05-08T02:37:37+08:00",
+          "product_id": 7391885951168,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/114_07a67890-8581-4b13-8d99-55b1b4c6ffab.png?v=1715107057",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 35953542922432,
+          "created_at": "2023-03-04T19:34:31+08:00",
+          "position": 3,
+          "updated_at": "2024-05-08T02:37:34+08:00",
+          "product_id": 7391885951168,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/products/64.png?v=1715107054",
+          "width": 2000,
+          "height": 2000
+        }
+      ],
+      "options": [
+        {
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7338355884224,
+      "title": "True Belly Serum",
+      "handle": "true-belly-serum",
+      "body_html": "<p>Most stretch mark products like belly butters, creams and lotions simply do not work.</p>\n<p>While these products may help to moisturize your skin, they do not penetrate deep enough to help prevent stretch marks, which happens at the dermis or middle layer of our skin.</p>\n<p>The True Belly Serum was specially formulated to absorb into the deeper layers of our skin and boost skin elasticity at the dermis layer, effectively reducing the risk of stretch marks and loose skin.</p>\n<p>The True Belly Serum contains Centella Asiatica and Triple-Weighted Hyaluronic Acid, ingredients which have been shown in clinical studies to help prevent stretch marks, and are recommended by the American Academy of Dermatology.</p>",
+      "published_at": "2022-08-23T19:21:34+08:00",
+      "created_at": "2022-08-23T18:09:16+08:00",
+      "updated_at": "2026-11-25T16:22:24+08:00",
+      "vendor": "8 Sheep Organics",
+      "product_type": "",
+      "tags": [
+        "Best Sellers",
+        "Pregnancy",
+        "Stretch Marks"
+      ],
+      "variants": [
+        {
+          "id": 43112884797632,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "305",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "47.00",
+          "grams": 142,
+          "compare_at_price": null,
+          "position": 1,
+          "product_id": 7338355884224,
+          "created_at": "2022-08-23T18:09:16+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        }
+      ],
+      "images": [
+        {
+          "id": 36175808790720,
+          "created_at": "2023-04-30T10:18:02+08:00",
+          "position": 1,
+          "updated_at": "2025-11-04T03:32:44+08:00",
+          "product_id": 7338355884224,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/99.png?v=1762198364",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 36175808692416,
+          "created_at": "2023-04-30T10:18:02+08:00",
+          "position": 2,
+          "updated_at": "2023-04-30T10:46:12+08:00",
+          "product_id": 7338355884224,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/100.png?v=1682822772",
+          "width": 2000,
+          "height": 2000
+        }
+      ],
+      "options": [
+        {
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7296391250112,
+      "title": "Peppermint Foot & Leg Rub",
+      "handle": "peppermint-foot-leg-rub",
+      "body_html": "<p>This cooling leg rub was specially formulated to help with tired, aching and swollen legs and feet during pregnancy. <br><br>The rub is infused with organic matcha green tea to ease swelling and inflammation. It also contains magnesium salt flakes and peppermint essential oils to provide quick relief from any leg pains, cramps, or restlessness.</p>",
+      "published_at": "2022-06-23T17:09:20+08:00",
+      "created_at": "2022-06-23T17:07:30+08:00",
+      "updated_at": "2026-11-25T16:22:24+08:00",
+      "vendor": "8 Sheep Organics",
+      "product_type": "",
+      "tags": [
+        "Pregnancy"
+      ],
+      "variants": [
+        {
+          "id": 42926173978816,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "90",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "24.00",
+          "grams": 142,
+          "compare_at_price": "0.00",
+          "position": 1,
+          "product_id": 7296391250112,
+          "created_at": "2022-06-23T17:07:30+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        }
+      ],
+      "images": [
+        {
+          "id": 35645072638144,
+          "created_at": "2023-01-03T19:53:18+08:00",
+          "position": 1,
+          "updated_at": "2025-11-04T03:31:55+08:00",
+          "product_id": 7296391250112,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/products/87.png?v=1762198315",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 35645072670912,
+          "created_at": "2023-01-03T19:53:18+08:00",
+          "position": 2,
+          "updated_at": "2023-01-03T19:54:48+08:00",
+          "product_id": 7296391250112,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/products/86.png?v=1672746888",
+          "width": 2000,
+          "height": 2000
+        }
+      ],
+      "options": [
+        {
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7296373260480,
+      "title": "Immortelle Overnight Nourishing Balm",
+      "handle": "nourishing-balm",
+      "body_html": "<p>Immortelle or “everlasting flower” has been highly valued since the time of the ancient Greeks for its amazing wound healing abilities. </p>\n<p>Its essential oil is also rich in molecules which support skin cell turnover and has strong anti-aging properties — which is why it is used today in many high-end cosmetic products. </p>\n<p>What most people don’t know is that this precious essential oil is also effective in soothing dry, irritated skin and improving our skin’s natural elasticity! </p>\n<p>This is why Immortelle Essential Oil is one of the key ingredient in our Overnight Nourishing Balm. </p>\n<p>Simply apply a thin layer of Overnight Nourishing Balm onto your baby bump before bed, and wake up to soft, supple skin.</p>",
+      "published_at": "2022-06-23T17:02:15+08:00",
+      "created_at": "2022-06-23T16:53:20+08:00",
+      "updated_at": "2026-11-25T16:22:24+08:00",
+      "vendor": "8 Sheep Organics",
+      "product_type": "",
+      "tags": [
+        "Pregnancy",
+        "Stretch Marks"
+      ],
+      "variants": [
+        {
+          "id": 42926151205056,
+          "title": "Default Title",
+          "option1": "Default Title",
+          "option2": null,
+          "option3": null,
+          "sku": "304",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "35.00",
+          "grams": 142,
+          "compare_at_price": null,
+          "position": 1,
+          "product_id": 7296373260480,
+          "created_at": "2022-06-23T16:53:20+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        }
+      ],
+      "images": [
+        {
+          "id": 36413823156416,
+          "created_at": "2023-07-27T18:02:29+08:00",
+          "position": 1,
+          "updated_at": "2025-11-04T03:31:53+08:00",
+          "product_id": 7296373260480,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/114.png?v=1762198313",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 36413823123648,
+          "created_at": "2023-07-27T18:02:29+08:00",
+          "position": 2,
+          "updated_at": "2023-07-28T10:49:54+08:00",
+          "product_id": 7296373260480,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/113.png?v=1690512594",
+          "width": 2000,
+          "height": 2000
+        }
+      ],
+      "options": [
+        {
+          "name": "Title",
+          "position": 1,
+          "values": [
+            "Default Title"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7147129077952,
+      "title": "Organic Lip Balm",
+      "handle": "organic-lip-balm",
+      "body_html": "<p>These all-natural hand poured lip balms will keep your lips soft and moisturized. You won’t be able to go back to using store-brand lip balms after trying this!<br><br>Our lip balms are available in peppermint, lavender, or unscented (no essential oils).</p>",
+      "published_at": "2022-02-25T22:03:58+08:00",
+      "created_at": "2022-02-25T22:02:44+08:00",
+      "updated_at": "2026-11-25T16:22:24+08:00",
+      "vendor": "8 Sheep Organics",
+      "product_type": "",
+      "tags": [],
+      "variants": [
+        {
+          "id": 41687796515008,
+          "title": "Peppermint",
+          "option1": "Peppermint",
+          "option2": null,
+          "option3": null,
+          "sku": "702",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "4.00",
+          "grams": 6,
+          "compare_at_price": null,
+          "position": 1,
+          "product_id": 7147129077952,
+          "created_at": "2022-02-25T22:03:52+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        },
+        {
+          "id": 45296578232512,
+          "title": "Lavender",
+          "option1": "Lavender",
+          "option2": null,
+          "option3": null,
+          "sku": "701",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": false,
+          "price": "4.00",
+          "grams": 6,
+          "compare_at_price": null,
+          "position": 2,
+          "product_id": 7147129077952,
+          "created_at": "2024-06-21T10:39:58+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        },
+        {
+          "id": 41687796547776,
+          "title": "Unscented",
+          "option1": "Unscented",
+          "option2": null,
+          "option3": null,
+          "sku": "703",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": false,
+          "price": "4.00",
+          "grams": 6,
+          "compare_at_price": null,
+          "position": 3,
+          "product_id": 7147129077952,
+          "created_at": "2022-02-25T22:03:52+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        }
+      ],
+      "images": [
+        {
+          "id": 35645043081408,
+          "created_at": "2023-01-03T19:41:17+08:00",
+          "position": 1,
+          "updated_at": "2025-11-04T03:31:12+08:00",
+          "product_id": 7147129077952,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/products/46_e64ca988-6afb-4997-b971-fb3d5190f202.png?v=1762198272",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 35645043048640,
+          "created_at": "2023-01-03T19:41:14+08:00",
+          "position": 2,
+          "updated_at": "2023-01-03T19:41:14+08:00",
+          "product_id": 7147129077952,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/products/45_f8959446-68a5-4cd0-885f-921a76932791.png?v=1672746074",
+          "width": 2000,
+          "height": 2000
+        }
+      ],
+      "options": [
+        {
+          "name": "Scent",
+          "position": 1,
+          "values": [
+            "Peppermint",
+            "Lavender",
+            "Unscented"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6652650651840,
+      "title": "Junior's Bedtime Lotion",
+      "handle": "juniors-bedtime-lotion",
+      "body_html": "<p>Junior’s Bedtime Lotion—an organic body lotion for the perfect bedtime routine! This creamy body lotion made with deep sea magnesium which naturally helps to get your baby or toddler calm, relaxed and ready for bed.</p>\n<p><meta charset=\"utf-8\">• Rich in deep sea magnesium which helps to promote deeper, more restful sleep<br><br>• Safe for babies 3 months and up and toddlers<br><meta charset=\"utf-8\"><br>• Made in small batches with 100% natural ingredients <br><meta charset=\"utf-8\"><br>• Available in a 4oz and 8oz jar</p>\n<p><br><strong>Our 3-Month Risk Free Guarantee</strong><br>Every one of our products comes with a 3-Month Risk Free Guarantee. If you are not absolutely thrilled with your purchase, simply send us an email at contact@8sheep.com any time within 3 months of receiving your product and we will get you a full refund within a day — no returns needed, no questions asked! </p>\n<p>We truly want you to love our products as much as we do! </p>",
+      "published_at": "2021-05-18T19:26:01+08:00",
+      "created_at": "2021-05-06T09:20:38+08:00",
+      "updated_at": "2026-11-25T16:22:24+08:00",
+      "vendor": "8Sheep",
+      "product_type": "",
+      "tags": [
+        "Baby",
+        "Best Sellers",
+        "sleep",
+        "Upsell Tag"
+      ],
+      "variants": [
+        {
+          "id": 39736830165184,
+          "title": "4 oz / Soft Baby Blend",
+          "option1": "4 oz",
+          "option2": "Soft Baby Blend",
+          "option3": null,
+          "sku": "77",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "23.00",
+          "grams": 198,
+          "compare_at_price": null,
+          "position": 1,
+          "product_id": 6652650651840,
+          "created_at": "2021-05-06T09:20:39+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        },
+        {
+          "id": 44694420553920,
+          "title": "8 oz / Soft Baby Blend",
+          "option1": "8 oz",
+          "option2": "Soft Baby Blend",
+          "option3": null,
+          "sku": "78",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "33.00",
+          "grams": 198,
+          "compare_at_price": "46.00",
+          "position": 2,
+          "product_id": 6652650651840,
+          "created_at": "2024-03-22T00:53:07+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        }
+      ],
+      "images": [
+        {
+          "id": 35645043704000,
+          "created_at": "2023-01-03T19:41:42+08:00",
+          "position": 1,
+          "updated_at": "2025-11-04T03:29:57+08:00",
+          "product_id": 6652650651840,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?v=1762198197",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 37234943230144,
+          "created_at": "2024-02-29T01:10:23+08:00",
+          "position": 2,
+          "updated_at": "2024-03-15T19:23:38+08:00",
+          "product_id": 6652650651840,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/jbl-desktopimage_28497051-9602-4b6b-9e6d-7765794e7336.jpg?v=1710501818",
+          "width": 1105,
+          "height": 1105
+        },
+        {
+          "id": 35645043605696,
+          "created_at": "2023-01-03T19:41:37+08:00",
+          "position": 3,
+          "updated_at": "2024-02-29T01:10:50+08:00",
+          "product_id": 6652650651840,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/products/40_b98c0dc2-b35a-484f-9669-28ed99b49793.png?v=1709140250",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 35645043769536,
+          "created_at": "2023-01-03T19:41:45+08:00",
+          "position": 4,
+          "updated_at": "2024-02-29T01:10:50+08:00",
+          "product_id": 6652650651840,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/products/21_922a71e8-2b64-4b04-b772-2e62bb2ca918.png?v=1709140250",
+          "width": 2048,
+          "height": 2048
+        },
+        {
+          "id": 35645043867840,
+          "created_at": "2023-01-03T19:41:49+08:00",
+          "position": 5,
+          "updated_at": "2024-02-29T01:10:50+08:00",
+          "product_id": 6652650651840,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/products/IMG_0973_1x1_933f17b9-a9a7-4ee8-82c4-7780041132af.png?v=1709140250",
+          "width": 3456,
+          "height": 3456
+        },
+        {
+          "id": 35645043638464,
+          "created_at": "2023-01-03T19:41:40+08:00",
+          "position": 6,
+          "updated_at": "2024-02-29T01:10:50+08:00",
+          "product_id": 6652650651840,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/products/20_974a0865-283e-4e90-b462-c3309f9d330a.png?v=1709140250",
+          "width": 2048,
+          "height": 2048
+        }
+      ],
+      "options": [
+        {
+          "name": "Size",
+          "position": 1,
+          "values": [
+            "4 oz",
+            "8 oz"
+          ]
+        },
+        {
+          "name": "Scent",
+          "position": 2,
+          "values": [
+            "Soft Baby Blend"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1825437253732,
+      "title": "Organic Sleepy Body Lotion",
+      "handle": "sleepylotion",
+      "body_html": "<p>Sleepy Body Lotion — This organic creamy body lotion was made specially for pregnant moms. It contains deep sea magnesium and plant-based essential oils which helps to relax the mind and body for a better night's sleep.</p>\n<p>• Rich in deep sea magnesium which helps promote deeper, more restful sleep <br><br>• Magnesium has also been shown to relieve aches and muscle tension <br><br>• Made in small batches with 100% natural, pregnancy-safe ingredients  <br><br>• Available in a 4oz and 8oz jar<br><br><br><strong>Our 3-Month Risk Free Guarantee</strong> <br>Every one of our products comes with a 3-Month Risk Free Guarantee. If you are not absolutely thrilled with your purchase, simply send us an email at contact@8sheep.com any time within 3 months of receiving your product and we will get you a full refund within a day — no returns needed, no questions asked! <br><br>We truly want every mama to love our products as much as we do! <br></p>",
+      "published_at": "2018-12-17T21:51:46+08:00",
+      "created_at": "2018-12-17T22:06:06+08:00",
+      "updated_at": "2026-11-25T16:22:24+08:00",
+      "vendor": "8Sheep",
+      "product_type": "",
+      "tags": [
+        "Best Sellers",
+        "Body Pains",
+        "Pregnancy",
+        "sleep",
+        "Upsell Tag"
+      ],
+      "variants": [
+        {
+          "id": 17594384646244,
+          "title": "4 oz / Lavender",
+          "option1": "4 oz",
+          "option2": "Lavender",
+          "option3": null,
+          "sku": "40",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "29.00",
+          "grams": 198,
+          "compare_at_price": null,
+          "position": 1,
+          "product_id": 1825437253732,
+          "created_at": "2018-12-17T22:06:06+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        },
+        {
+          "id": 41579444306112,
+          "title": "4 oz / Vanilla",
+          "option1": "4 oz",
+          "option2": "Vanilla",
+          "option3": null,
+          "sku": "41",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "29.00",
+          "grams": 198,
+          "compare_at_price": null,
+          "position": 2,
+          "product_id": 1825437253732,
+          "created_at": "2022-02-01T11:26:58+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        },
+        {
+          "id": 31753751232586,
+          "title": "4 oz / Unscented",
+          "option1": "4 oz",
+          "option2": "Unscented",
+          "option3": null,
+          "sku": "44",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "29.00",
+          "grams": 198,
+          "compare_at_price": null,
+          "position": 3,
+          "product_id": 1825437253732,
+          "created_at": "2020-02-13T07:51:16+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        },
+        {
+          "id": 17595301331044,
+          "title": "8 oz / Lavender",
+          "option1": "8 oz",
+          "option2": "Lavender",
+          "option3": null,
+          "sku": "80",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "39.00",
+          "grams": 312,
+          "compare_at_price": "50.00",
+          "position": 4,
+          "product_id": 1825437253732,
+          "created_at": "2018-12-17T22:17:10+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        },
+        {
+          "id": 41579444338880,
+          "title": "8 oz / Vanilla",
+          "option1": "8 oz",
+          "option2": "Vanilla",
+          "option3": null,
+          "sku": "81",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "39.00",
+          "grams": 198,
+          "compare_at_price": "50.00",
+          "position": 5,
+          "product_id": 1825437253732,
+          "created_at": "2022-02-01T11:26:58+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        },
+        {
+          "id": 31753751429194,
+          "title": "8 oz / Unscented",
+          "option1": "8 oz",
+          "option2": "Unscented",
+          "option3": null,
+          "sku": "84",
+          "requires_shipping": true,
+          "taxable": true,
+          "featured_image": null,
+          "available": true,
+          "price": "39.00",
+          "grams": 312,
+          "compare_at_price": "50.00",
+          "position": 6,
+          "product_id": 1825437253732,
+          "created_at": "2020-02-13T07:51:44+08:00",
+          "updated_at": "2026-11-25T16:22:24+08:00"
+        }
+      ],
+      "images": [
+        {
+          "id": 35645042393280,
+          "created_at": "2023-01-03T19:40:56+08:00",
+          "position": 1,
+          "updated_at": "2025-11-04T03:25:35+08:00",
+          "product_id": 1825437253732,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?v=1762197935",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 35645042426048,
+          "created_at": "2023-01-03T19:40:59+08:00",
+          "position": 2,
+          "updated_at": "2023-01-03T19:40:59+08:00",
+          "product_id": 1825437253732,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/products/38_66963ef4-78af-4751-94c9-0ae1e6217624.png?v=1672746059",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 53511395901632,
+          "created_at": "2026-04-01T18:02:38+08:00",
+          "position": 3,
+          "updated_at": "2026-04-01T18:03:31+08:00",
+          "product_id": 1825437253732,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/2_606c6bc9-d31b-48e6-9963-9c3c52a77f70.png?v=1775037811",
+          "width": 2000,
+          "height": 2000
+        },
+        {
+          "id": 53511395934400,
+          "created_at": "2026-04-01T18:02:38+08:00",
+          "position": 4,
+          "updated_at": "2026-04-01T18:03:30+08:00",
+          "product_id": 1825437253732,
+          "variant_ids": [],
+          "src": "https://cdn.shopify.com/s/files/1/0098/2138/8900/files/3_235aa0e9-259d-4956-9abf-a49de2793aae.png?v=1775037810",
+          "width": 2000,
+          "height": 2000
+        }
+      ],
+      "options": [
+        {
+          "name": "Size",
+          "position": 1,
+          "values": [
+            "4 oz",
+            "8 oz"
+          ]
+        },
+        {
+          "name": "Scent",
+          "position": 2,
+          "values": [
+            "Lavender",
+            "Vanilla",
+            "Unscented"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,764 @@
+{% comment %} MALORA ORGANICS - 8SHEEP 1:1 CLONE {% endcomment %}
+<div id="shopify-section-template--21386858561728__c_faq_tabs_xxktn4" class="shopify-section">
+
+<style>
+  #template--21386858561728__c_faq_tabs_xxktn4 {
+    font-size: 16px;
+    padding: 112px 0;
+    background-color: #ffffff;
+
+    /* === CTAs: variables de color (Base + Hover) === */
+    --cta1-bg: rgba(0,0,0,0);
+    --cta1-border: #423f3f;
+    --cta1-text: #000000;
+    --cta1-hover-bg: #000000;
+    --cta1-hover-border: #000000;
+    --cta1-hover-text: #ffffff;
+
+    --cta2-bg: #ffffff;
+    --cta2-border: #902239;
+    --cta2-text: #000000;
+    --cta2-hover-bg: #000000;
+    --cta2-hover-border: #000000;
+    --cta2-hover-text: #ffffff;
+  }
+
+    #template--21386858561728__c_faq_tabs_xxktn4 h1, #template--21386858561728__c_faq_tabs_xxktn4 h2, #template--21386858561728__c_faq_tabs_xxktn4 h3, #template--21386858561728__c_faq_tabs_xxktn4 strong {
+      font-family: var(--font-heading)!important;
+    }
+
+     #template--21386858561728__c_faq_tabs_xxktn4 strong {
+      font-family: var(--font-heading-bold)!important;
+    }
+
+     #template--21386858561728__c_faq_tabs_xxktn4 p,  #template--21386858561728__c_faq_tabs_xxktn4 button{
+      font-family: var(--font-body)!important;
+    }
+
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-cta-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-section-top-subheading,
+  #template--21386858561728__c_faq_tabs_xxktn4 div,
+  #template--21386858561728__c_faq_tabs_xxktn4 h2,
+  #template--21386858561728__c_faq_tabs_xxktn4 h3 {
+    color: #000000;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-section-top {
+    align-items: flex-start;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 0 112px 0;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 h2 {
+    color: #050d37;
+    text-align: left;
+    font-size: 36px;
+    font-weight: 400 !important;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-container {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 64px;
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-faqs-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+    overflow: auto;
+    scrollbar-width: thin;
+  }
+
+  /* IMPORTANT: avoid double lines (rail handled by .c-tabs::after) */
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-accordion-list {
+    width: 100%;
+    border-bottom: none !important;
+  }
+
+  /* =============================
+    Tabs Styles
+  ============================== */
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-tabs {
+    display: flex;
+    width: 100%;
+    margin-bottom: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+    user-select: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+
+    border-bottom: none !important;
+    position: relative; /* stacking context for ::after */
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-tabs::-webkit-scrollbar { display: none; }
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-tabs.dragging { cursor: grabbing; }
+
+  /* Rail line under tabs (behind) */
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-tabs::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: rgba(46, 44, 43, 0.3);
+    z-index: 0;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-tab-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    height: 55px;
+
+    background: transparent;
+
+    border: 1px solid transparent;
+    border-bottom: 0 !important;
+    border-radius: 8px 8px 0 0;
+
+    cursor: pointer;
+
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #000000;
+
+    transition: background 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    margin-bottom: -1px;
+
+    position: relative;
+    z-index: 1;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-tab-button.active {
+    border-color: rgba(46, 44, 43, 0.3);
+    border-bottom: 0 !important;
+    background: #ffffff;
+    z-index: 2;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-tab-button:hover {
+    background: rgba(5, 13, 55, 0.08);
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-tab-button.active:hover {
+    background: #ffffff;
+  }
+
+  /* =============================
+    FAQ Styles
+  ============================== */
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-faq-list {
+    width: 100%;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-faq-item {
+    border-top: 1px solid rgba(46, 44, 43, 0.3);
+    border-bottom: none;
+    display: none;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-faq-item.use-border-bottom {
+    border-top: none;
+    border-bottom: 1px solid rgba(46, 44, 43, 0.3);
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-faq-item.is-first-visible {
+    border-top: none !important;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-faq-item.active-tab {
+    display: block;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-faq-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 20px 0;
+    cursor: pointer;
+    list-style: none;
+    outline: none;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-faq-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-faq-question {
+    font-size: 16px;
+    font-weight: 400 !important;
+    line-height: 140%;
+    letter-spacing: 0.54px;
+    color: #101010;
+    margin: 0;
+    flex: 1;
+    text-align: left;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-faq-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-faq-icon svg {
+    width: 16.79px;
+    height: 9.5px;
+    stroke: #101010;
+    stroke-width: 1px;
+    transition: transform 0.3s ease;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 details[open] .c-faq-icon svg {
+    transform: rotate(180deg);
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-faq-answer {
+    padding: 0 0 24px 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #000000;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-faq-answer > * {
+    margin: 0 0 16px 0;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-faq-answer > *:last-child {
+    margin-bottom: 0;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .c-faq-answer a {
+    color: #050d37;
+    text-decoration: underline;
+  }
+
+  /* =============================
+    Mobile Styles
+  ============================== */
+  @media (max-width: 768px) {
+    #template--21386858561728__c_faq_tabs_xxktn4 {
+      padding: 64px 0;
+    }
+
+    #template--21386858561728__c_faq_tabs_xxktn4 .c-section-top {
+      align-items: flex-start;
+      text-align: left;
+      padding: 0;
+    }
+
+    #template--21386858561728__c_faq_tabs_xxktn4 .c-container {
+      padding: 0 20px;
+      flex-direction: column;
+      
+    }
+
+    #template--21386858561728__c_faq_tabs_xxktn4 h2 {
+      font-size: 32px;
+    }
+
+    #template--21386858561728__c_faq_tabs_xxktn4 .c-faqs-container {
+      gap: 24px;
+    }
+
+    #template--21386858561728__c_faq_tabs_xxktn4 .c-tab-button {
+      min-width: fit-content;
+      font-size: 18px;
+    }
+
+    #template--21386858561728__c_faq_tabs_xxktn4 .c-faq-question {
+      font-size: 16px;
+    }
+
+    #template--21386858561728__c_faq_tabs_xxktn4 .c-faq-answer {
+      font-size: 16px;
+    }
+  }
+
+  /* =============================
+    CTA Buttons (Fixed)
+    - Uses base + hover variables
+    - Ensures border/background/text all make sense
+  ============================== */
+  #template--21386858561728__c_faq_tabs_xxktn4 .btn {
+    width: max-content;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 8px;
+
+    border-width: 1px;
+    border-style: solid;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .btn:before { background: transparent; }
+
+  /* CTA 1 */
+  #template--21386858561728__c_faq_tabs_xxktn4 .btn.first {
+    background-color: var(--cta1-bg);
+    border-color: var(--cta1-border);
+    color: var(--cta1-text) !important;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .btn.first:hover {
+    background-color: var(--cta1-hover-bg);
+    border-color: var(--cta1-hover-border);
+    color: var(--cta1-hover-text) !important;
+  }
+
+  /* CTA 2 */
+  #template--21386858561728__c_faq_tabs_xxktn4 .btn.second {
+    background-color: var(--cta2-bg);
+    border-color: var(--cta2-border);
+    color: var(--cta2-text) !important;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .btn.second:hover {
+    background-color: var(--cta2-hover-bg);
+    border-color: var(--cta2-hover-border);
+    color: var(--cta2-hover-text) !important;
+  }
+
+  #template--21386858561728__c_faq_tabs_xxktn4 .btn.second:before { background: transparent; }
+</style>
+
+<section id="template--21386858561728__c_faq_tabs_xxktn4" class="c-section">
+  <div class="container c-container">
+    <div class="c-section-top"><h2>Questions? We’ve Got You, Mama.</h2><div class="c-t-80"><p>Everything you need to know before you try Malora.</p></div>
+        <div class="c-cta-buttons">
+          
+            <a href="/pages/faq" class="btn btn--primary first">
+              See all FAQs
+            </a>
+          
+          
+        </div>
+      
+    </div>
+
+    <div class="c-faqs-container">
+      <div class="c-accordion-list">
+        <!-- Tabs -->
+        <div class="c-tabs"><button
+              class="c-tab-button active"
+              data-tab-id="products"
+              
+            >
+              Products
+            </button><button
+              class="c-tab-button "
+              data-tab-id="shipping"
+              
+            >
+              Shipping
+            </button><button
+              class="c-tab-button "
+              data-tab-id="guarantee"
+              
+            >
+              Guarantee
+            </button></div>
+
+        <!-- FAQs -->
+        <div class="c-faq-list"><details
+              class="c-faq-item active-tab "
+              data-faq-tab="products"
+              
+            >
+              <summary class="c-faq-summary">
+                <h3 class="c-faq-question">Are your products allergen free?</h3>
+                <div class="c-faq-icon">
+                  <svg viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L8.5 8.5L16 1" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </summary>
+              <div class="c-faq-answer">
+                <p>Yes, our products are all nut-free, gluten-free, and plant-based (with the exception of the Immortelle Belly Balm which contains argan oil).  <br/><br/>Our products are also cruelty-free. We do not test any products on animals, and never will.</p>
+
+</div>
+            </details><details
+              class="c-faq-item active-tab "
+              data-faq-tab="products"
+              
+            >
+              <summary class="c-faq-summary">
+                <h3 class="c-faq-question">What is the shelf life of your products?</h3>
+                <div class="c-faq-icon">
+                  <svg viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L8.5 8.5L16 1" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </summary>
+              <div class="c-faq-answer">
+                <p>Our lotions and balms have a shelf life of around 3-4 months, while our skincare products like the Glow Body Oil, True Belly Serum, and Phyto-Retinol Serum will last for around 1 year.</p>
+
+</div>
+            </details><details
+              class="c-faq-item active-tab "
+              data-faq-tab="products"
+              
+            >
+              <summary class="c-faq-summary">
+                <h3 class="c-faq-question">How do I use the Junior’s Bedtime Lotion?</h3>
+                <div class="c-faq-icon">
+                  <svg viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L8.5 8.5L16 1" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </summary>
+              <div class="c-faq-answer">
+                <p>If you’re using the Junior’s Bedtime Lotion to help your little one sleep better, or to reduce temper tantrums / emotional meltdowns, simply apply 1-2 teaspoons of lotion onto their feet before bedtime every evening. <br/><br/>You should notice a calmer, happier, and more well-rested baby / toddler within 2-3 weeks of consistent use.<br/><br/>If you’re using the Junior’s Bedtime Lotion for growing pains, cramps, or restless legs instead, you can apply the lotion directly onto the areas where your baby or child is experiencing pain, cramping, or tension.</p>
+
+</div>
+            </details><details
+              class="c-faq-item active-tab "
+              data-faq-tab="products"
+              
+            >
+              <summary class="c-faq-summary">
+                <h3 class="c-faq-question">What age can I start using the Junior’s Bedtime Lotion?</h3>
+                <div class="c-faq-icon">
+                  <svg viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L8.5 8.5L16 1" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </summary>
+              <div class="c-faq-answer">
+                <p>The Junior’s Bedtime Lotion is good to use for babies 3 months and older, up to kids aged 10 years old. <br/><br/>For kids 11 years and older, I would recommend using our regular Sleepy Body Lotion instead!</p>
+
+</div>
+            </details><details
+              class="c-faq-item active-tab "
+              data-faq-tab="products"
+              
+            >
+              <summary class="c-faq-summary">
+                <h3 class="c-faq-question">What is the difference between the regular Sleepy Body Lotion, the Sleepy Lotion Senior 60+, and MenoCalm?</h3>
+                <div class="c-faq-icon">
+                  <svg viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L8.5 8.5L16 1" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </summary>
+              <div class="c-faq-answer">
+                <p>These lotions are very similar, and contain almost exactly the same ingredients.<br/><br/>The main difference is in the amount of magnesium per teaspoon of lotion, and the concentration of essential oils.<br/><br/>The Sleepy Lotion Senior 60+ contains around 15% more magnesium than the regular Sleepy Body Lotion due to lower absorption rates and magnesium retention rates for seniors.<br/><br/>Whereas the MenoCalm lotions contain roughly the same amount of magnesium as the Sleepy Body Lotion, but a higher concentration of lavender essential oils to help combat menopausal symptoms like anxiety and night-time wakings.<br/><br/>All 3 lotions are priced exactly the same though!</p>
+
+</div>
+            </details><details
+              class="c-faq-item active-tab "
+              data-faq-tab="products"
+              
+            >
+              <summary class="c-faq-summary">
+                <h3 class="c-faq-question">Will I be dependent on the Sleepy Lotion to sleep?</h3>
+                <div class="c-faq-icon">
+                  <svg viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L8.5 8.5L16 1" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </summary>
+              <div class="c-faq-answer">
+                <p>Nope, our lotions are completely natural and non-habit forming.<br/><br/>Unlike sleeping pills and even melatonin which becomes less and less effective over time, our lotions continue to be effective even when used daily over long periods of time.<br/><br/>That’s because our lotion does not rely on any supranormal levels of chemicals or hormones to “force” sleep. Instead, it simply restores our natural ability to fall and stay asleep by regulating GABA (a neurotransmitter in our brain that helps turn off our “fight or flight” response and promotes deeper, more restful sleep).</p>
+
+</div>
+            </details><details
+              class="c-faq-item  "
+              data-faq-tab="shipping"
+              
+            >
+              <summary class="c-faq-summary">
+                <h3 class="c-faq-question">Where do you ship from?</h3>
+                <div class="c-faq-icon">
+                  <svg viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L8.5 8.5L16 1" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </summary>
+              <div class="c-faq-answer">
+                <p>Our products are made and shipped from the US.</p>
+
+</div>
+            </details><details
+              class="c-faq-item  "
+              data-faq-tab="shipping"
+              
+            >
+              <summary class="c-faq-summary">
+                <h3 class="c-faq-question">How long will it take to receive my order?</h3>
+                <div class="c-faq-icon">
+                  <svg viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L8.5 8.5L16 1" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </summary>
+              <div class="c-faq-answer">
+                <p>After we receive your order, it takes one day for us to make your products, and another 5-7 working days for USPS or DHL to get it to you. You will receive a tracking number once your order has been shipped out.</p>
+
+</div>
+            </details><details
+              class="c-faq-item  "
+              data-faq-tab="shipping"
+              
+            >
+              <summary class="c-faq-summary">
+                <h3 class="c-faq-question">Do you ship internationally?</h3>
+                <div class="c-faq-icon">
+                  <svg viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L8.5 8.5L16 1" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </summary>
+              <div class="c-faq-answer">
+                <p>Unfortunately, we only ship within the US at the moment. Our products are made fresh, and we want to get them in the hands of our customers within 5-7 days.</p>
+
+</div>
+            </details><details
+              class="c-faq-item  "
+              data-faq-tab="guarantee"
+              
+            >
+              <summary class="c-faq-summary">
+                <h3 class="c-faq-question">What is Malora Organic’s 100-Day Happiness Guarantee?</h3>
+                <div class="c-faq-icon">
+                  <svg viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L8.5 8.5L16 1" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </summary>
+              <div class="c-faq-answer">
+                <p>Every item we make comes with a 100-Day Happiness Guarantee. <br/><br/>If you are not absolutely thrilled with your purchase for any reason at all, simply send us an email at contact@Malora.com with your order number and we will get you a full refund within a day.<br/><br/>There are no hidden terms and conditions here. Even if the item has been open and used up, we will still get you a refund. We truly want every mama to be happy with her purchase from Malora Organics!</p>
+
+</div>
+            </details></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const sectionId = 'template--21386858561728__c_faq_tabs_xxktn4';
+    const tabButtons = document.querySelectorAll(`#${sectionId} .c-tab-button`);
+    const faqItems = document.querySelectorAll(`#${sectionId} .c-faq-item`);
+    const tabsContainer = document.querySelector(`#${sectionId} .c-tabs`);
+
+    function markFirstVisibleFaq(tabId) {
+      faqItems.forEach((item) => item.classList.remove('is-first-visible'));
+      const visibleFaqs = document.querySelectorAll(`#${sectionId} .c-faq-item[data-faq-tab="${tabId}"]`);
+      if (visibleFaqs.length > 0) visibleFaqs[0].classList.add('is-first-visible');
+    }
+
+    function initializeTabs() {
+      if (tabButtons.length > 0) {
+        const firstTab = tabButtons[0];
+        const firstTabId = firstTab.getAttribute('data-tab-id');
+
+        tabButtons.forEach((btn) => btn.classList.remove('active'));
+        firstTab.classList.add('active');
+
+        faqItems.forEach((item) => {
+          item.classList.remove('active-tab', 'is-first-visible');
+          if (item.hasAttribute('open')) item.removeAttribute('open');
+        });
+
+        const firstTabFaqs = document.querySelectorAll(`#${sectionId} .c-faq-item[data-faq-tab="${firstTabId}"]`);
+        firstTabFaqs.forEach((faq) => faq.classList.add('active-tab'));
+
+        markFirstVisibleFaq(firstTabId);
+      }
+    }
+
+    // Drag functionality for desktop (768px and above)
+    let dragState = { isDragging: false, hasDragged: false, startX: 0, scrollLeft: 0, threshold: 5 };
+
+    // Touch state for mobile swipe
+    let touchState = { isTouching: false, hasSwiped: false, startX: 0, startY: 0, scrollLeft: 0, threshold: 10 };
+
+    if (tabsContainer) {
+      // Desktop mouse drag events (only on larger screens)
+      if (window.innerWidth > 768) {
+        tabsContainer.addEventListener('mousedown', function (e) {
+          dragState.isDragging = true;
+          dragState.hasDragged = false;
+          dragState.startX = e.pageX;
+          dragState.scrollLeft = tabsContainer.scrollLeft;
+          tabsContainer.classList.add('dragging');
+          e.preventDefault();
+        });
+
+        tabsContainer.addEventListener('mouseleave', function () {
+          dragState.isDragging = false;
+          dragState.hasDragged = false;
+          tabsContainer.classList.remove('dragging');
+        });
+
+        tabsContainer.addEventListener('mouseup', function () {
+          dragState.isDragging = false;
+          setTimeout(
+            () => {
+              tabsContainer.classList.remove('dragging');
+              dragState.hasDragged = false;
+            },
+            dragState.hasDragged ? 150 : 0
+          );
+        });
+
+        tabsContainer.addEventListener('mousemove', function (e) {
+          if (!dragState.isDragging) return;
+
+          const currentX = e.pageX;
+          const diffX = Math.abs(currentX - dragState.startX);
+
+          if (diffX > dragState.threshold) {
+            dragState.hasDragged = true;
+            e.preventDefault();
+            const walk = (currentX - dragState.startX) * 1.5;
+            tabsContainer.scrollLeft = dragState.scrollLeft - walk;
+          }
+        });
+      }
+
+      // Mobile touch swipe events
+      tabsContainer.addEventListener(
+        'touchstart',
+        function (e) {
+          touchState.isTouching = true;
+          touchState.hasSwiped = false;
+          touchState.startX = e.touches[0].clientX;
+          touchState.startY = e.touches[0].clientY;
+          touchState.scrollLeft = tabsContainer.scrollLeft;
+        },
+        { passive: true }
+      );
+
+      tabsContainer.addEventListener(
+        'touchmove',
+        function (e) {
+          if (!touchState.isTouching) return;
+
+          const currentX = e.touches[0].clientX;
+          const currentY = e.touches[0].clientY;
+          const diffX = Math.abs(currentX - touchState.startX);
+          const diffY = Math.abs(currentY - touchState.startY);
+
+          // Only handle horizontal swipes (when horizontal movement is greater than vertical)
+          if (diffX > diffY && diffX > touchState.threshold) {
+            touchState.hasSwiped = true;
+            const walk = currentX - touchState.startX;
+            tabsContainer.scrollLeft = touchState.scrollLeft - walk;
+          }
+        },
+        { passive: true }
+      );
+
+      tabsContainer.addEventListener(
+        'touchend',
+        function () {
+          touchState.isTouching = false;
+          setTimeout(() => {
+            touchState.hasSwiped = false;
+          }, 150);
+        },
+        { passive: true }
+      );
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth <= 768) {
+          tabsContainer.classList.remove('dragging');
+          dragState.isDragging = false;
+          dragState.hasDragged = false;
+        }
+      });
+    }
+
+    tabButtons.forEach((button) => {
+      button.addEventListener('click', function (e) {
+        if (dragState.hasDragged || touchState.hasSwiped) {
+          e.preventDefault();
+          e.stopPropagation();
+          return;
+        }
+
+        const targetTabId = this.getAttribute('data-tab-id');
+
+        tabButtons.forEach((btn) => btn.classList.remove('active'));
+        this.classList.add('active');
+
+        faqItems.forEach((item) => {
+          item.classList.remove('active-tab', 'is-first-visible');
+          if (item.hasAttribute('open')) item.removeAttribute('open');
+        });
+
+        const targetFaqs = document.querySelectorAll(`#${sectionId} .c-faq-item[data-faq-tab="${targetTabId}"]`);
+        targetFaqs.forEach((faq) => faq.classList.add('active-tab'));
+
+        markFirstVisibleFaq(targetTabId);
+      });
+    });
+
+    // Accordion behavior within the same tab
+    faqItems.forEach((item) => {
+      item.addEventListener('toggle', function () {
+        if (this.hasAttribute('open')) {
+          const currentTab = this.getAttribute('data-faq-tab');
+          const sameLevelFaqs = document.querySelectorAll(`#${sectionId} .c-faq-item[data-faq-tab="${currentTab}"]`);
+          sameLevelFaqs.forEach((faq) => {
+            if (faq !== this && faq.hasAttribute('open')) faq.removeAttribute('open');
+          });
+        }
+      });
+    });
+
+    initializeTabs();
+  });
+</script>
+
+
+</div>
+{% schema %}{ "name": "Malora FAQ Tabs", "settings": [] }{% endschema %}

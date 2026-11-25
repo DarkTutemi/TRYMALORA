@@ -1,0 +1,802 @@
+{% comment %} MALORA ORGANICS - 8SHEEP 1:1 CLONE {% endcomment %}
+<section id="shopify-section-template--21386858561728__c_collection_GMfQyC" class="shopify-section c-collection-wrapper">
+
+<style data-shopify>
+  /* IMPORTANT: Always use these exact media query breakpoints */
+  /* Mobile first (without media query) */
+  /* Tablet: @media (width >= 768px) {} */
+  /* Laptop: @media (width >= 978px) {} */
+  /* Desktop: @media (width >= 1200px) {} */
+  /* TV: @media (width >= 1980px) {} */
+
+  #template--21386858561728__c_collection_GMfQyC.c-collection {
+    --c-collection-bg: #ffffff;
+    --c-collection-title-color: #151515;
+    --c-collection-subtitle-color: #000000;
+    --c-collection-product-title-color: #151515;
+    --c-collection-price-color: #151515;
+    --c-collection-compare-price-color: #151515;
+    --c-collection-reviews-color: #151515;
+    --c-collection-cta-bg: #bc825b;
+    --c-collection-cta-text: #ffffff;
+    --c-collection-cta-hover-bg: #a87248;
+    --c-collection-cta-hover-text: #ffffff;
+    --c-collection-cta-radius: 8px;
+    --c-collection-image-radius: 8px;
+    --c-collection-pagination-active: #151515;
+    --c-collection-pagination-inactive: #d9d9d9;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 64px 20px 64px 20px;
+    background-color: var(--c-collection-bg);
+    width: 100%;
+  }
+
+   #template--21386858561728__c_collection_GMfQyC h1, #template--21386858561728__c_collection_GMfQyC h2, #template--21386858561728__c_collection_GMfQyC h3, #template--21386858561728__c_collection_GMfQyC strong {
+      font-family: var(--font-heading)!important;
+    }
+
+     #template--21386858561728__c_collection_GMfQyC strong {
+      font-family: var(--font-heading-bold)!important;
+    }
+
+     #template--21386858561728__c_collection_GMfQyC p,  #template--21386858561728__c_collection_GMfQyC button{
+      font-family: var(--font-body)!important;
+    }
+
+  /* Header section */
+  #template--21386858561728__c_collection_GMfQyC .c-collection__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__title {
+    margin: 0;
+
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.2;
+    color: var(--c-collection-title-color);
+    text-align: left!important;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__subtitle {
+    margin: 0;
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.17;
+    color: var(--c-collection-subtitle-color);
+  }
+
+  /* Swiper container */
+  #template--21386858561728__c_collection_GMfQyC .c-collection__swiper-container {
+    position: relative;
+    width: 100%;
+    /* overflow: hidden; */
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__swiper {
+    width: 100%;
+    overflow: visible;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__swiper .swiper-wrapper {
+    display: flex;
+    align-items: stretch;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__swiper .swiper-slide {
+    height: auto;
+    width: 317px;
+    flex-shrink: 0;
+  }
+
+  /* Product card */
+  #template--21386858561728__c_collection_GMfQyC .c-collection__product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    gap: 8px;
+    overflow: hidden;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__product-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    flex: 1;
+  }
+
+  /* Product image */
+  #template--21386858561728__c_collection_GMfQyC .c-collection__product-image-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--c-collection-image-radius);
+    background-color: #ffffff;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__product-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__product-card:hover .c-collection__product-image {
+    transform: scale(1.05);
+  }
+
+  /* Product info */
+  #template--21386858561728__c_collection_GMfQyC .c-collection__product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    padding: 0 16px;
+    text-align: center;
+  }
+
+  /* Reviews */
+  #template--21386858561728__c_collection_GMfQyC .c-collection__product-reviews {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__stars {
+    display: flex;
+    gap: 4px;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__star {
+    width: 16px;
+    height: 16px;
+    fill: var(--c-collection-reviews-color);
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__reviews-text {
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--c-collection-title-color);
+    margin: 0;
+  }
+
+  /* Product title and price row */
+  #template--21386858561728__c_collection_GMfQyC .c-collection__product-title-price {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__product-title {
+    margin: 0;
+
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--c-collection-product-title-color);
+    text-align: center;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__product-prices {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__product-price {
+    font-family: "Sofia Pro", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--c-collection-price-color);
+    margin: 0;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__product-compare-price {
+    font-family: "Sofia Pro", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--c-collection-compare-price-color);
+    text-decoration: line-through;
+    margin: 0;
+  }
+
+  /* CTA Button */
+  #template--21386858561728__c_collection_GMfQyC .c-collection__product-cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 12px 24px;
+    background-color: var(--c-collection-cta-bg);
+    color: var(--c-collection-cta-text);
+    border: 1px solid var(--c-collection-cta-bg);
+    border-radius: var(--c-collection-cta-radius);
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: normal;
+
+    letter-spacing: 0.7px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    text-transform: uppercase;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__product-cta:hover {
+    background-color: var(--c-collection-cta-hover-bg);
+    color: var(--c-collection-cta-hover-text);
+    border-color: var(--c-collection-cta-hover-bg);
+  }
+
+  /* Pagination */
+  #template--21386858561728__c_collection_GMfQyC .c-collection__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding-top: 25px;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--c-collection-pagination-inactive);
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__pagination .swiper-pagination-bullet-active {
+    background-color: var(--c-collection-pagination-active);
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  /* Navigation arrows - hidden by default, shown via setting */
+  #template--21386858561728__c_collection_GMfQyC .c-collection__navigation {
+    display: none;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__navigation--visible {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__nav-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__nav-button:hover {
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__nav-button.swiper-button-disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__nav-icon {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: #151515;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Stamped badge container */
+  #template--21386858561728__c_collection_GMfQyC .c-collection__stamped-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 24px;
+    width: 100%;
+  }
+
+  /* Keep the Stamped badge on a single line.
+     Overrides the global `.stamped-badge-starrating { max-width: 60px !important }`
+     from new-homepage.css (mobile only), which forces the 5 stars to wrap. */
+  #template--21386858561728__c_collection_GMfQyC .c-collection__stamped-badge .stamped-product-reviews-badge,
+  #template--21386858561728__c_collection_GMfQyC .c-collection__stamped-badge .stamped-badge {
+    display: inline-flex !important;
+    align-items: center;
+    flex-wrap: nowrap !important;
+    gap: 6px;
+    max-width: 100%;
+    white-space: nowrap;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__stamped-badge .stamped-badge-starrating {
+    display: inline-flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    max-width: none !important;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Normalize every star to the same size. The global rule in new-homepage.css
+     only sizes `.stamped-fa-star` and `.stamped-fa-star-o`, so the half star
+     (`.stamped-fa-star-half-o`) renders larger than its siblings. */
+  #template--21386858561728__c_collection_GMfQyC .c-collection__stamped-badge [class*='stamped-fa-star'],
+  #template--21386858561728__c_collection_GMfQyC .c-collection__stamped-badge [class*='stamped-fa-star']::before {
+    font-size: 12px !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    vertical-align: middle;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__stamped-badge .stamped-badge-caption {
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin: 0 !important;
+  }
+
+  /* Shop All CTA Slide */
+  #template--21386858561728__c_collection_GMfQyC .c-collection__shop-all-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 400px;
+    background: linear-gradient(180deg, rgba(248, 248, 248, 0.8) 0%, rgba(240, 240, 240, 0.9) 100%);
+    border-radius: var(--c-collection-image-radius);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__shop-all-slide:hover {
+    background: linear-gradient(180deg, rgba(248, 248, 248, 0.9) 0%, rgba(235, 235, 235, 1) 100%);
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__shop-all-cta {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 32px;
+    background-color: #FFFFFF;
+    color: #151515;
+    border: 1px solid #E0E0E0;
+    border-radius: 50px;
+    font-family: "Century Gothic", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: normal;
+    text-transform: none;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  #template--21386858561728__c_collection_GMfQyC .c-collection__shop-all-cta:hover {
+    background-color: #F5F5F5;
+    border-color: #D0D0D0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Tablet */
+  @media (width >= 768px) {
+    #template--21386858561728__c_collection_GMfQyC.c-collection {
+      padding: 64px 40px 64px 40px;
+    }
+
+    #template--21386858561728__c_collection_GMfQyC .c-collection__swiper .swiper-slide {
+      width: 280px;
+    }
+
+    #template--21386858561728__c_collection_GMfQyC .c-collection__title {
+      font-size: 32px;
+    }
+  }
+
+  /* Laptop */
+  @media (width >= 978px) {
+    #template--21386858561728__c_collection_GMfQyC.c-collection {
+      padding: 64px 64px 64px 64px;
+    }
+
+    #template--21386858561728__c_collection_GMfQyC .c-collection__swiper .swiper-slide {
+      width: 235px;
+    }
+
+    #template--21386858561728__c_collection_GMfQyC .c-collection__title {
+      font-size: 42px;
+    }
+
+    #template--21386858561728__c_collection_GMfQyC .c-collection__header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    #template--21386858561728__c_collection_GMfQyC .c-collection__header-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 60%;
+    }
+  }
+
+  /* Desktop */
+  @media (width >= 1200px) {
+    #template--21386858561728__c_collection_GMfQyC.c-collection {
+      padding: 64px 64px 64px 64px;
+    }
+
+    #template--21386858561728__c_collection_GMfQyC .c-collection__swiper .swiper-slide {
+      width: 260px;
+    }
+  }
+
+  /* TV */
+  @media (width >= 1980px) {
+    #template--21386858561728__c_collection_GMfQyC.c-collection {
+      padding: 64px 80px 64px 80px;
+    }
+
+    #template--21386858561728__c_collection_GMfQyC .c-collection__swiper .swiper-slide {
+      width: 300px;
+    }
+  }
+</style>
+
+<section id="template--21386858561728__c_collection_GMfQyC" class="c-section c-collection"><header class="c-collection__header">
+    <div class="c-collection__header-content"><h2 class="c-collection__title">Comfort in Every Touch.</h2><p class="c-collection__subtitle">Explore our handcrafted creams and lotions made to comfort body and mind.</p></div>
+  </header>
+
+  <div class="c-collection__swiper-container">
+    <div class="c-collection__swiper swiper">
+      <div class="swiper-wrapper"><div class="swiper-slide">
+              <article class="c-collection__product-card">
+                <div class="c-collection__product-content">
+                  <a
+                    href="/products/juniors-bedtime-lotion"
+                    class="c-collection__product-image-wrapper"
+                    aria-label="Junior's Bedtime Lotion"
+                  ><img src="https://8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?crop=center&amp;height=800&amp;v=1762198197&amp;width=800" alt="An open jar of Junior&#39;s Bedtime Lotion rests on a white surface, its lid removed. The light blue label with a sheep illustration highlights this gentle organic bedtime lotion as soft light and shadows move across the scene." srcset="https://8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?crop=center&amp;height=352&amp;v=1762198197&amp;width=352 352w, https://8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?crop=center&amp;height=800&amp;v=1762198197&amp;width=800 800w" width="800" height="800" loading="lazy">
+</a>
+
+                  <div class="c-collection__product-info"><div class="c-collection__stamped-badge" data-product-id="6652650651840">
+                        <span
+                          class="stamped-product-reviews-badge stamped-main-badge"
+                          data-id="6652650651840"
+                          data-product-sku="juniors-bedtime-lotion"
+                          data-product-type=""
+                          data-product-title="Junior&#39;s Bedtime Lotion"
+                          style="display: inline-block;"
+                        ></span>
+                      </div><div class="c-collection__product-title-price">
+                      <h3 class="c-collection__product-title">
+                        <a href="/products/juniors-bedtime-lotion" style="color: inherit; text-decoration: none;">
+                          Junior's Bedtime Lotion
+                        </a>
+                      </h3>
+
+                      <div class="c-collection__product-prices">
+                        <span class="c-collection__product-price">
+                          $23
+                        </span><span class="c-collection__product-compare-price">
+                            $46
+                          </span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <a href="/products/juniors-bedtime-lotion" class="c-collection__product-cta">
+                  Shop Now
+                </a>
+              </article>
+            </div><div class="swiper-slide">
+              <article class="c-collection__product-card">
+                <div class="c-collection__product-content">
+                  <a
+                    href="/products/sleepylotion"
+                    class="c-collection__product-image-wrapper"
+                    aria-label="Organic Sleepy Body Lotion"
+                  ><img src="https://8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?crop=center&amp;height=800&amp;v=1762197935&amp;width=800" alt="A jar of Organic Sleepy Body Lotion with a white lid beside it. The 8oz (227ml) label notes it&#39;s pregnancy-safe, 100% organic, handcrafted, and made in the USA. Soft natural light creates gentle shadows." srcset="https://8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?crop=center&amp;height=352&amp;v=1762197935&amp;width=352 352w, https://8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?crop=center&amp;height=800&amp;v=1762197935&amp;width=800 800w" width="800" height="800" loading="lazy">
+</a>
+
+                  <div class="c-collection__product-info"><div class="c-collection__stamped-badge" data-product-id="1825437253732">
+                        <span
+                          class="stamped-product-reviews-badge stamped-main-badge"
+                          data-id="1825437253732"
+                          data-product-sku="sleepylotion"
+                          data-product-type=""
+                          data-product-title="Organic Sleepy Body Lotion"
+                          style="display: inline-block;"
+                        ></span>
+                      </div><div class="c-collection__product-title-price">
+                      <h3 class="c-collection__product-title">
+                        <a href="/products/sleepylotion" style="color: inherit; text-decoration: none;">
+                          Organic Sleepy Body Lotion
+                        </a>
+                      </h3>
+
+                      <div class="c-collection__product-prices">
+                        <span class="c-collection__product-price">
+                          $29
+                        </span><span class="c-collection__product-compare-price">
+                            $50
+                          </span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <a href="/products/sleepylotion" class="c-collection__product-cta">
+                  Shop Now
+                </a>
+              </article>
+            </div><div class="swiper-slide">
+              <article class="c-collection__product-card">
+                <div class="c-collection__product-content">
+                  <a
+                    href="/products/stretch-mark-bundle"
+                    class="c-collection__product-image-wrapper"
+                    aria-label="2-Step Stretch Mark Prevention Bundle"
+                  ><img src="https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=800&amp;v=1762198391&amp;width=800" alt="2-Step Stretch Mark Prevention Bundle" srcset="https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=352&amp;v=1762198391&amp;width=352 352w, https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=800&amp;v=1762198391&amp;width=800 800w" width="800" height="800" loading="lazy">
+</a>
+
+                  <div class="c-collection__product-info"><div class="c-collection__stamped-badge" data-product-id="7391885951168">
+                        <span
+                          class="stamped-product-reviews-badge stamped-main-badge"
+                          data-id="7391885951168"
+                          data-product-sku="stretch-mark-bundle"
+                          data-product-type=""
+                          data-product-title="2-Step Stretch Mark Prevention Bundle"
+                          style="display: inline-block;"
+                        ></span>
+                      </div><div class="c-collection__product-title-price">
+                      <h3 class="c-collection__product-title">
+                        <a href="/products/stretch-mark-bundle" style="color: inherit; text-decoration: none;">
+                          2-Step Stretch Mark Prevention Bundle
+                        </a>
+                      </h3>
+
+                      <div class="c-collection__product-prices">
+                        <span class="c-collection__product-price">
+                          $69
+                        </span><span class="c-collection__product-compare-price">
+                            $82
+                          </span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <a href="/products/stretch-mark-bundle" class="c-collection__product-cta">
+                  Shop Now
+                </a>
+              </article>
+            </div><div class="swiper-slide">
+              <article class="c-collection__product-card">
+                <div class="c-collection__product-content">
+                  <a
+                    href="/products/true-belly-serum"
+                    class="c-collection__product-image-wrapper"
+                    aria-label="True Belly Serum"
+                  ><img src="https://8sheep.com/cdn/shop/files/99.png?crop=center&amp;height=800&amp;v=1762198364&amp;width=800" alt="A clear glass True Belly Serum bottle with a white dropper cap holds a creamy white liquid to boost skin elasticity. Some serum is visible in the dropper. The background is plain white." srcset="https://8sheep.com/cdn/shop/files/99.png?crop=center&amp;height=352&amp;v=1762198364&amp;width=352 352w, https://8sheep.com/cdn/shop/files/99.png?crop=center&amp;height=800&amp;v=1762198364&amp;width=800 800w" width="800" height="800" loading="lazy">
+</a>
+
+                  <div class="c-collection__product-info"><div class="c-collection__stamped-badge" data-product-id="7338355884224">
+                        <span
+                          class="stamped-product-reviews-badge stamped-main-badge"
+                          data-id="7338355884224"
+                          data-product-sku="true-belly-serum"
+                          data-product-type=""
+                          data-product-title="True Belly Serum"
+                          style="display: inline-block;"
+                        ></span>
+                      </div><div class="c-collection__product-title-price">
+                      <h3 class="c-collection__product-title">
+                        <a href="/products/true-belly-serum" style="color: inherit; text-decoration: none;">
+                          True Belly Serum
+                        </a>
+                      </h3>
+
+                      <div class="c-collection__product-prices">
+                        <span class="c-collection__product-price">
+                          $47
+                        </span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <a href="/products/true-belly-serum" class="c-collection__product-cta">
+                  Shop Now
+                </a>
+              </article>
+            </div><div class="swiper-slide">
+              <article class="c-collection__product-card">
+                <div class="c-collection__product-content">
+                  <a
+                    href="/products/pregnancy-survival-kit"
+                    class="c-collection__product-image-wrapper"
+                    aria-label="Pregnancy Survival Kit"
+                  ><img src="https://8sheep.com/cdn/shop/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?crop=center&amp;height=800&amp;v=1792550881&amp;width=800" alt="Pregnancy Survival Kit" srcset="https://8sheep.com/cdn/shop/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?crop=center&amp;height=352&amp;v=1792550881&amp;width=352 352w, https://8sheep.com/cdn/shop/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?crop=center&amp;height=800&amp;v=1792550881&amp;width=800 800w" width="800" height="800" loading="lazy">
+</a>
+
+                  <div class="c-collection__product-info"><div class="c-collection__stamped-badge" data-product-id="7463779664064">
+                        <span
+                          class="stamped-product-reviews-badge stamped-main-badge"
+                          data-id="7463779664064"
+                          data-product-sku="pregnancy-survival-kit"
+                          data-product-type=""
+                          data-product-title="Pregnancy Survival Kit"
+                          style="display: inline-block;"
+                        ></span>
+                      </div><div class="c-collection__product-title-price">
+                      <h3 class="c-collection__product-title">
+                        <a href="/products/pregnancy-survival-kit" style="color: inherit; text-decoration: none;">
+                          Pregnancy Survival Kit
+                        </a>
+                      </h3>
+
+                      <div class="c-collection__product-prices">
+                        <span class="c-collection__product-price">
+                          $110
+                        </span><span class="c-collection__product-compare-price">
+                            $140
+                          </span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <a href="/products/pregnancy-survival-kit" class="c-collection__product-cta">
+                  Shop Now
+                </a>
+              </article>
+            </div><div class="swiper-slide">
+              <a
+                href="/collections/our-best-sellers"
+                class="c-collection__shop-all-slide"
+                aria-label="Shop All"
+              >
+                <span class="c-collection__shop-all-cta">Shop All</span>
+              </a>
+            </div></div>
+    </div>
+
+    <div class="c-collection__pagination"></div></div>
+</section>
+
+<script>
+  (function () {
+    var sectionId = 'template--21386858561728__c_collection_GMfQyC';
+
+    function initCollectionSwiper() {
+      var sectionEl = document.getElementById(sectionId);
+      if (!sectionEl) return;
+
+      var swiperEl = sectionEl.querySelector('.c-collection__swiper');
+      var paginationEl = sectionEl.querySelector('.c-collection__pagination');
+      var prevEl = sectionEl.querySelector('.c-collection__nav-prev');
+      var nextEl = sectionEl.querySelector('.c-collection__nav-next');
+
+      if (!swiperEl || typeof Swiper === 'undefined') return;
+
+      new Swiper(swiperEl, {
+        slidesPerView: 'auto',
+        spaceBetween: 13,
+        grabCursor: true,
+        loop: false,
+        pagination: {
+          el: paginationEl,
+          clickable: true,
+        },
+        navigation: {
+          prevEl: prevEl,
+          nextEl: nextEl,
+        },
+        breakpoints: {
+          768: {
+            spaceBetween: 16,
+          },
+          978: {
+            spaceBetween: 20,
+          },
+          1200: {
+            spaceBetween: 24,
+          },
+        },
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCollectionSwiper);
+    } else {
+      initCollectionSwiper();
+    }
+
+    document.addEventListener('shopify:section:load', function (event) {
+      if (event.detail.sectionId === sectionId) {
+        setTimeout(initCollectionSwiper, 100);
+      }
+    });
+  })();
+</script>
+
+
+</section>
+</main>
+
+    <script>
+      window.ALBSS = {
+        event_key: '57a184cb-13ac-416a-bba6-61d0df43b5f1',
+      };
+    </script>
+    <script src="https://c.albss.com/p/l/loader.iife.js" async></script>
+
+    <script>
+      var firstSection = document.body.querySelector('#page-content .shopify-section:first-child');
+      if (firstSection) {
+        var firstBgSet = firstSection.querySelector('[data-bgset]');
+
+        if (firstBgSet) {
+          var bgSets = firstBgSet.dataset.bgset.split(',');
+          if (bgSets) {
+            for (var i = 0; i < bgSets.length; i++) {
+              var widthMatch = bgSets[i].match(/ [0-9]+w/g);
+              var heightMatch = bgSets[i].match(/ [0-9]+h/g);
+
+              if (widthMatch && heightMatch) {
+                var width = parseInt(widthMatch[0].replace('w', '').trim());
+                var height = parseInt(heightMatch[0].replace('h', '').trim());
+
+                if (width >= window.innerWidth && height >= window.innerHeight) {
+                  firstBgSet.style.backgroundImage = "url('" + bgSets[i].trim().split(' ')[0] + "')";
+                  firstBgSet.classList.remove('fade-in');
+                  break;
+                }
+              }
+            }
+          }
+        } else if (firstSection.querySelector('[data-src]')) {
+          var firstDataSrc = firstSection.querySelector('[data-src]');
+          var widths = JSON.parse(firstDataSrc.dataset.widths);
+          for (var i = 0; i < widths.length; i++) {
+            var width = parseInt(widths[i]);
+            if (width >= window.innerWidth) {
+              firstDataSrc.setAttribute('src', firstDataSrc.dataset.src.replace('{width}', width));
+              firstDataSrc.classList.remove('fade-in');
+              break;
+            }
+          }
+        }
+      }
+    </script>
+
+    
+{% schema %}{ "name": "Malora Collection", "settings": [] }{% endschema %}

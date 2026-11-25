@@ -115,3 +115,4 @@ async function testVariantSwitch() {
 }
 
 testVariantSwitch();
+

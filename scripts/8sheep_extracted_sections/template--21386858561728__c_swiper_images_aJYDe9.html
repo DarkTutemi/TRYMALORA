@@ -1,0 +1,898 @@
+<section id="shopify-section-template--21386858561728__c_swiper_images_aJYDe9" class="shopify-section c-swiper-images-section-wrapper">
+
+
+
+<style data-shopify>
+    /* IMPORTANT: Always use these exact media query breakpoints */
+    /* Mobile first (without media query) */
+    /* Tablet: @media (width >= 768px) {} */
+    /* Laptop: @media (width >= 978px) {} */
+    /* Desktop: @media (width >= 1200px) {} */
+    /* TV: @media (width >= 1980px) {} */
+
+    #template--21386858561728__c_swiper_images_aJYDe9.c-swiper-images-section {
+      /* Global CTA vars (no inline) */
+      --cta-primary-bg: #bc825b;
+      --cta-primary-text: #ffffff;
+      --cta-primary-hover-bg: #bc825b;
+      --cta-primary-hover-text: #ffffff;
+      --cta-primary-radius: 8px;
+
+      /* Product card vars */
+      --product-card-radius: 12px;
+      --product-card-padding: 18px;
+      --product-card-bg: rgba(255, 255, 255, 0.24);
+      --product-card-border: rgba(255, 255, 255, 0.35);
+      --product-card-text: #FFFFFF;
+      --product-card-shadow: 0 12px 30px rgba(0,0,0,0.22);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: stretch;
+      align-items: stretch;
+      gap: 48px;
+      padding: 60px 20px 60px 20px;
+      background-color: #ffffff;
+      width: 100%;
+      min-height: 400px;
+
+      
+        background-image: url(//8sheep.com/cdn/shop/files/bg-section-carousel.jpg?v=1769042652&width=2400);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      
+    }
+
+     #template--21386858561728__c_swiper_images_aJYDe9 h1, #template--21386858561728__c_swiper_images_aJYDe9 h2, #template--21386858561728__c_swiper_images_aJYDe9 h3, #template--21386858561728__c_swiper_images_aJYDe9 strong {
+      font-family: var(--font-heading)!important;
+    }
+
+     #template--21386858561728__c_swiper_images_aJYDe9 strong {
+      font-family: var(--font-heading-bold)!important;
+    }
+
+     #template--21386858561728__c_swiper_images_aJYDe9 p{
+      font-family: var(--font-body)!important;
+    }
+
+    /* Header (centered) */
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      text-align: center;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__header-content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      align-items: center;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__title,
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__subtitle {
+      width: 100%;
+      text-align: center;
+      margin: 0;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__title h1,
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__title h2,
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__title h3 {
+      font-weight: 400;
+
+      line-height: 1.2;
+      color: #000000;
+      margin: 0;
+      text-align: center;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__subtitle p {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #000000;
+      margin: 0;
+      text-align: center;
+    }
+
+    /* Tabs (optional) */
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__tabs {
+      display: flex;
+      flex-direction: row;
+      overflow-x: scroll;
+      scroll-behavior: smooth;
+      align-items: center;
+      gap: 15px;
+      width: 100%;
+      padding-bottom: 12px;
+      justify-content: left;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__tabs::-webkit-scrollbar { height: 6px; }
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__tabs::-webkit-scrollbar-track {
+      background: #c1c1c1;
+      border-radius: 10px;
+    }
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__tabs::-webkit-scrollbar-thumb {
+      background: var(--scroll-thumb, #000);
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__tab {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      border: 0.75px solid #B03E3E;
+      border-radius: 30px;
+      background-color: transparent;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      flex: 1 1 auto;
+      min-width: 140px;
+      max-width: 187.5px;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__tab-text {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.2;
+      text-transform: uppercase;
+      text-align: center;
+      color: #B03E3E;
+      margin: 0;
+      transition: all 0.25s ease;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__tab.active .c-swiper-images-section__tab-text {
+      color: #FFFFFF;
+    }
+
+    /* Content wrapper */
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      width: 100%;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      gap: 0;
+    }
+
+    /* LEFT: Content-only swiper */
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__left {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      min-height: 300px;
+      padding: 20px;
+      transition: background-color 0.6s ease;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+
+    /* Arrows bottom corners */
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__arrows-container {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      pointer-events: none;
+      padding: 0 16px;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__arrow {
+    pointer-events: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 42px;
+    height: 42px;
+    aspect-ratio: 1 / 1;
+    flex: 0 0 42px;
+
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.06);
+    border-radius: 999px;
+    border: none;
+
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    color: #111;
+    line-height: 0;
+    box-sizing: border-box;
+  }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__arrow:hover { transform: scale(1.08); }
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__arrow:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__arrow-icon {
+      display: block;
+      width: 22px !important;
+      min-width: 22px;
+      height: 22px !important;
+      min-height: 22px;
+      flex: 0 0 22px;
+      fill: currentColor;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__text-swiper-wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      flex: 1;
+      max-height: 636px;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__text-swiper {
+      width: 100%;
+      height: 100%;
+      max-height: 636px;
+    }
+
+    /* Content slide */
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__text-swiper .swiper-slide {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      padding: 24px 12px 64px;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__slide-copy {
+      width: 100%;
+      max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__slide-copy h1,
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__slide-copy h2,
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__slide-copy h3 {
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.2;
+      color: #111;
+      margin: 0;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__slide-copy p {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.45;
+      color: #222;
+      margin: 0;
+    }
+
+    /* CTA bottom */
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__cta-container {
+      margin-top: 8px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* CTA primary (global) */
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__cta--primary {
+      display: flex;
+      padding: 15px 20px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4.227px;
+      border-radius: var(--cta-primary-radius);
+      background: var(--cta-primary-bg);
+      color: var(--cta-primary-text);
+      border: 0;
+      text-decoration: none;
+      cursor: pointer;
+      transition: filter 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+      width: 100%;
+      max-width: 311px;
+      white-space: nowrap;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+      text-transform: uppercase;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__cta--primary:hover {
+      background: var(--cta-primary-hover-bg);
+      color: var(--cta-primary-hover-text);
+      filter: brightness(0.97);
+    }
+
+    /* RIGHT: Image-only swiper */
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__right {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      min-height: 400px;
+      max-height: 636px;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__image-swiper {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      max-height: 636px;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__image-swiper .swiper-wrapper {
+      padding: 0;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__image-swiper .swiper-slide {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      max-height: 636px;
+      display: flex;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__slide-background {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      overflow: hidden;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__slide-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Product thumbnail card (bottom-center on the right image) */
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__product-card {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 18px;
+      z-index: 2;
+      width: calc(100% - 36px);
+      max-width: 420px;
+
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      padding: var(--product-card-padding);
+      border-radius: var(--product-card-radius);
+      background: var(--product-card-bg);
+      border: 1px solid var(--product-card-border);
+      box-shadow: var(--product-card-shadow);
+
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow: hidden;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__product-thumb {
+      width: 64px;
+      height: 64px;
+      border-radius: 10px;
+      overflow: hidden;
+      flex: 0 0 64px;
+      background: rgba(255,255,255,0.18);
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__product-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__product-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__product-title {
+      font-size: 16px;
+      line-height: 1.2;
+      font-weight: 400;
+      color: var(--product-card-text);
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__product-price {
+      font-size: 22px;
+      line-height: 1.1;
+      font-weight: 600;
+      color: var(--product-card-text);
+      margin: 0;
+      font-family: var(--font-heading-bold)!important;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__product-cart {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      border: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 44px;
+      cursor: pointer;
+      text-decoration: none;
+      background: rgba(188, 130, 91, 0.95);
+      transition: transform 0.18s ease, filter 0.18s ease;
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__product-cart:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
+    }
+
+    #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__product-cart svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+      display: block;
+    }
+
+    /* Tablet */
+    @media (width >= 768px) {
+      #template--21386858561728__c_swiper_images_aJYDe9.c-swiper-images-section {
+        padding: 60px 40px 60px 40px;
+      }
+
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__tabs {
+        overflow-x: hidden;
+        scroll-behavior: auto;
+      }
+
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__title h1,
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__title h2,
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__title h3 {
+        font-size: 36px;
+      }
+
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__subtitle p {
+        font-size: 18px;
+      }
+
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__tab-text {
+        font-size: 16px;
+      }
+
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__slide-copy h1,
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__slide-copy h2,
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__slide-copy h3 {
+        font-size: 36px;
+      }
+
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__slide-copy p {
+        font-size: 16px;
+      }
+    }
+
+    /* Laptop */
+    @media (width >= 978px) {
+      #template--21386858561728__c_swiper_images_aJYDe9.c-swiper-images-section {
+        padding: 90px 90px 90px 90px;
+      }
+
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__container {
+        flex-direction: row;
+        min-height: 636px;
+        max-height: 636px;
+      }
+
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__left {
+        width: 50%;
+        padding: 0 64px;
+        min-height: 636px;
+        max-height: 636px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        border-top-right-radius: 0;
+      }
+
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__right {
+        width: 50%;
+        min-height: 636px;
+        max-height: 636px;
+      }
+
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__image-swiper {
+        min-height: 636px;
+        max-height: 636px;
+      }
+
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__image-swiper .swiper-slide {
+        min-height: 636px;
+        max-height: 636px;
+      }
+
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__slide-background {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 15px;
+        border-top-right-radius: 15px;
+      }
+
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__arrow {
+        width: 54px;
+        height: 54px;
+      }
+
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__arrows-container {
+        bottom: 28px;
+        padding: 0 28px;
+      }
+
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__product-card {
+        bottom: 20px;
+        width: auto;
+        max-width: 520px;
+      }
+
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__product-thumb {
+        width: 72px;
+        height: 72px;
+        flex-basis: 72px;
+      }
+
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__product-title {
+        font-size: 18px;
+      }
+
+      #template--21386858561728__c_swiper_images_aJYDe9 .c-swiper-images-section__product-price {
+        font-size: 24px;
+      }
+    }
+
+    /* Desktop */
+    @media (width >= 1200px) {
+      #template--21386858561728__c_swiper_images_aJYDe9.c-swiper-images-section {
+        padding: 90px 90px 90px 90px;
+      }
+    }
+
+    /* TV */
+    @media (width >= 1980px) {
+      #template--21386858561728__c_swiper_images_aJYDe9.c-swiper-images-section {
+        padding: 60px 80px 60px 80px;
+      }
+    }
+</style>
+
+<section id="template--21386858561728__c_swiper_images_aJYDe9" class="c-swiper-images-section"><div class="c-swiper-images-section__header">
+      <div class="c-swiper-images-section__header-content"><div class="c-swiper-images-section__title">
+            <h2>Why Moms Trust 8 Sheep</h2>
+          </div></div>
+    </div><div class="c-swiper-images-section__content"><div class="c-swiper-images-section__container">
+      <div class="c-swiper-images-section__left">
+        <div class="c-swiper-images-section__arrows-container">
+          <button
+            class="c-swiper-images-section__arrow c-swiper-images-section__arrow--prev"
+            data-swiper-prev="template--21386858561728__c_swiper_images_aJYDe9"
+            aria-label="Previous slide"
+            type="button"
+          >
+            <svg
+              class="c-swiper-images-section__arrow-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+          </button>
+
+          <button
+            class="c-swiper-images-section__arrow c-swiper-images-section__arrow--next"
+            data-swiper-next="template--21386858561728__c_swiper_images_aJYDe9"
+            aria-label="Next slide"
+            type="button"
+          >
+            <svg
+              class="c-swiper-images-section__arrow-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="c-swiper-images-section__text-swiper-wrapper">
+          <div class="c-swiper-images-section__text-swiper swiper" data-text-swiper="template--21386858561728__c_swiper_images_aJYDe9">
+            <div class="swiper-wrapper"><div
+                  class="swiper-slide"
+                  data-bg-color="rgba(255, 255, 255, 0.37)"
+                  
+                >
+                  <div class="c-swiper-images-section__slide-copy"><h3>Naturally relieves pregnancy pains & supports better sleep</h3>
+<p>Clean ingredients, real relief, and over 168,000<br/> happy, well-rested mamas.</p>
+</div><div class="c-swiper-images-section__cta-container">
+                      <a
+                        href="/products/juniors-bedtime-lotion"
+                        class="c-swiper-images-section__cta c-swiper-images-section__cta--primary"
+                      >
+                        See products
+                      </a>
+                    </div></div><div
+                  class="swiper-slide"
+                  data-bg-color="rgba(255, 255, 255, 0.37)"
+                  
+                >
+                  <div class="c-swiper-images-section__slide-copy"><h3>Thoughtful care for skin as it stretches and changes</h3>
+<p>Clean, lightweight hydration made for daily use trusted by moms as their bellies grow and their skin needs extra support.</p>
+</div><div class="c-swiper-images-section__cta-container">
+                      <a
+                        href="/products/true-belly-serum"
+                        class="c-swiper-images-section__cta c-swiper-images-section__cta--primary"
+                      >
+                        See products
+                      </a>
+                    </div></div><div
+                  class="swiper-slide"
+                  data-bg-color="rgba(255, 255, 255, 0.37)"
+                  
+                >
+                  <div class="c-swiper-images-section__slide-copy"><h3>Made to bring relaxation and rest at the end of the day</h3>
+<p>A thoughtfully made lotion for the end of the day, created with clean ingredients for nightly use.</p>
+</div><div class="c-swiper-images-section__cta-container">
+                      <a
+                        href="/products/sleepylotion"
+                        class="c-swiper-images-section__cta c-swiper-images-section__cta--primary"
+                      >
+                        See products
+                      </a>
+                    </div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-swiper-images-section__right">
+        <div class="c-swiper-images-section__image-swiper swiper" data-image-swiper="template--21386858561728__c_swiper_images_aJYDe9">
+          <div class="swiper-wrapper"><div class="swiper-slide" >
+                <div class="c-swiper-images-section__slide-background"><img src="//8sheep.com/cdn/shop/files/01img.png?v=1769037846&amp;width=1400" alt="An adult dips a finger into a jar of lotion while holding a baby on their lap. The baby is undressed except for a diaper, and the jar label reads JUNEAS BEDTIME LOTION." srcset="//8sheep.com/cdn/shop/files/01img.png?v=1769037846&amp;width=600 600w, //8sheep.com/cdn/shop/files/01img.png?v=1769037846&amp;width=800 800w, //8sheep.com/cdn/shop/files/01img.png?v=1769037846&amp;width=1000 1000w, //8sheep.com/cdn/shop/files/01img.png?v=1769037846&amp;width=1200 1200w, //8sheep.com/cdn/shop/files/01img.png?v=1769037846&amp;width=1400 1400w" width="1400" height="1196" loading="lazy" class="c-swiper-images-section__slide-image" sizes="(max-width: 977px) 100vw, 50vw" style="object-position:50.488% 53.613%;">
+</div><a class="c-swiper-images-section__product-card" href="/products/juniors-bedtime-lotion">
+                    <div class="c-swiper-images-section__product-thumb"><img src="//8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?v=1762198197&amp;width=200" alt="Junior&#39;s Bedtime Lotion" srcset="//8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?v=1762198197&amp;width=200 200w" width="200" height="200" loading="lazy">
+</div>
+
+                    <div class="c-swiper-images-section__product-meta">
+                      <p class="c-swiper-images-section__product-title">Junior's Bedtime Lotion</p>
+                      <p class="c-swiper-images-section__product-price">
+                        $23
+                      </p>
+                    </div>
+
+                    <span class="c-swiper-images-section__product-cart" aria-label="View product">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.16 14h9.45c.75 0 1.4-.41 1.74-1.03l3.24-6.15A1 1 0 0 0 20.7 5H6.21L5.27 3H2v2h2l3.6 7.59-1.35 2.44C5.52 16.37 6.48 18 8 18h12v-2H8l1.16-2z"/>
+                      </svg>
+                    </span>
+                  </a></div><div class="swiper-slide" >
+                <div class="c-swiper-images-section__slide-background"><img src="//8sheep.com/cdn/shop/files/tbs.png?v=1769174434&amp;width=1400" alt="A clear glass dropper with a white cap lies next to an open bottle, with creamy white liquid spilled onto a smooth, light surface." srcset="//8sheep.com/cdn/shop/files/tbs.png?v=1769174434&amp;width=600 600w, //8sheep.com/cdn/shop/files/tbs.png?v=1769174434&amp;width=800 800w, //8sheep.com/cdn/shop/files/tbs.png?v=1769174434&amp;width=1000 1000w, //8sheep.com/cdn/shop/files/tbs.png?v=1769174434&amp;width=1200 1200w, //8sheep.com/cdn/shop/files/tbs.png?v=1769174434&amp;width=1400 1400w" width="1400" height="1196" loading="lazy" class="c-swiper-images-section__slide-image" sizes="(max-width: 977px) 100vw, 50vw" style="object-position:98.34% 2.246%;">
+</div><a class="c-swiper-images-section__product-card" href="/products/true-belly-serum">
+                    <div class="c-swiper-images-section__product-thumb"><img src="//8sheep.com/cdn/shop/files/99.png?v=1762198364&amp;width=200" alt="True Belly Serum" srcset="//8sheep.com/cdn/shop/files/99.png?v=1762198364&amp;width=200 200w" width="200" height="200" loading="lazy">
+</div>
+
+                    <div class="c-swiper-images-section__product-meta">
+                      <p class="c-swiper-images-section__product-title">True Belly Serum</p>
+                      <p class="c-swiper-images-section__product-price">
+                        $47
+                      </p>
+                    </div>
+
+                    <span class="c-swiper-images-section__product-cart" aria-label="View product">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.16 14h9.45c.75 0 1.4-.41 1.74-1.03l3.24-6.15A1 1 0 0 0 20.7 5H6.21L5.27 3H2v2h2l3.6 7.59-1.35 2.44C5.52 16.37 6.48 18 8 18h12v-2H8l1.16-2z"/>
+                      </svg>
+                    </span>
+                  </a></div><div class="swiper-slide" >
+                <div class="c-swiper-images-section__slide-background"><img src="//8sheep.com/cdn/shop/files/bl.png?v=1769174490&amp;width=1400" alt="A jar of 8 Sheep Organics Sleepy Body Lotion with the lid off, sitting on a light surface with soft shadows. The label highlights that it is 100% organic, handcrafted, and made in the USA." srcset="//8sheep.com/cdn/shop/files/bl.png?v=1769174490&amp;width=600 600w, //8sheep.com/cdn/shop/files/bl.png?v=1769174490&amp;width=800 800w, //8sheep.com/cdn/shop/files/bl.png?v=1769174490&amp;width=1000 1000w, //8sheep.com/cdn/shop/files/bl.png?v=1769174490&amp;width=1200 1200w, //8sheep.com/cdn/shop/files/bl.png?v=1769174490&amp;width=1400 1400w" width="1400" height="1196" loading="lazy" class="c-swiper-images-section__slide-image" sizes="(max-width: 977px) 100vw, 50vw" style="object-position:50.0% 49.414%;">
+</div><a class="c-swiper-images-section__product-card" href="/products/sleepylotion">
+                    <div class="c-swiper-images-section__product-thumb"><img src="//8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?v=1762197935&amp;width=200" alt="Organic Sleepy Body Lotion" srcset="//8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?v=1762197935&amp;width=200 200w" width="200" height="200" loading="lazy">
+</div>
+
+                    <div class="c-swiper-images-section__product-meta">
+                      <p class="c-swiper-images-section__product-title">Organic Sleepy Body Lotion</p>
+                      <p class="c-swiper-images-section__product-price">
+                        $29
+                      </p>
+                    </div>
+
+                    <span class="c-swiper-images-section__product-cart" aria-label="View product">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.16 14h9.45c.75 0 1.4-.41 1.74-1.03l3.24-6.15A1 1 0 0 0 20.7 5H6.21L5.27 3H2v2h2l3.6 7.59-1.35 2.44C5.52 16.37 6.48 18 8 18h12v-2H8l1.16-2z"/>
+                      </svg>
+                    </span>
+                  </a></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    function initSwiperImages() {
+      const sectionId = 'template--21386858561728__c_swiper_images_aJYDe9';
+      const root = document.getElementById(sectionId);
+      if (!root) return;
+
+      const textSwiperElement = root.querySelector('[data-text-swiper="' + sectionId + '"]');
+      const imageSwiperElement = root.querySelector('[data-image-swiper="' + sectionId + '"]');
+      const leftContainer = root.querySelector('.c-swiper-images-section__left');
+      const tabs = root.querySelectorAll('.c-swiper-images-section__tab');
+
+      if (!textSwiperElement || !imageSwiperElement || !leftContainer || typeof Swiper === 'undefined') {
+        console.error('Swiper elements not found or Swiper not loaded');
+        return;
+      }
+
+      const prevButton = root.querySelector('[data-swiper-prev="' + sectionId + '"]');
+      const nextButton = root.querySelector('[data-swiper-next="' + sectionId + '"]');
+
+      function extractColorFromBg(bgColor) {
+        if (!bgColor) return null;
+        const match = bgColor.match(/rgba?\([^)]+\)|#[0-9a-fA-F]{3,6}/);
+        return match ? match[0] : bgColor;
+      }
+
+      function updateTheme(swiper) {
+        const activeSlide = swiper.slides[swiper.activeIndex];
+        if (!activeSlide) return;
+
+        const bgColor = activeSlide.getAttribute('data-bg-color');
+        if (bgColor && leftContainer) {
+          leftContainer.style.background = bgColor;
+
+          const solidColor = extractColorFromBg(bgColor);
+          const tabsContainer = root.querySelector('.c-swiper-images-section__tabs');
+          if (tabsContainer) {
+            tabsContainer.style.setProperty('--scroll-thumb', solidColor || bgColor);
+          }
+
+          if (tabs && tabs.length && solidColor) {
+            tabs.forEach(function (tab, idx) {
+              const textEl = tab.querySelector('.c-swiper-images-section__tab-text');
+              if (!textEl) return;
+
+              tab.onmouseenter = function () {
+                if (idx !== swiper.activeIndex) {
+                  tab.style.backgroundColor = solidColor;
+                  tab.style.borderColor = solidColor;
+                  textEl.style.color = '#FFFFFF';
+                }
+              };
+
+              tab.onmouseleave = function () {
+                if (idx !== swiper.activeIndex) {
+                  tab.style.backgroundColor = 'transparent';
+                  tab.style.borderColor = solidColor;
+                  textEl.style.color = solidColor;
+                }
+              };
+
+              if (idx === swiper.activeIndex) {
+                tab.style.backgroundColor = solidColor;
+                tab.style.borderColor = solidColor;
+                textEl.style.color = '#FFFFFF';
+              } else {
+                tab.style.backgroundColor = 'transparent';
+                tab.style.borderColor = solidColor;
+                textEl.style.color = solidColor;
+              }
+            });
+          }
+        }
+      }
+
+      function updateActiveTab(index) {
+        if (!tabs || !tabs.length) return;
+        tabs.forEach(function (tab, i) {
+          tab.classList.toggle('active', i === index);
+        });
+      }
+
+      const imageSwiper = new Swiper(imageSwiperElement, {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: false,
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        speed: 600,
+      });
+
+      const textSwiper = new Swiper(textSwiperElement, {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: false,
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        speed: 600,
+        navigation: {
+          nextEl: nextButton,
+          prevEl: prevButton,
+        },
+        on: {
+          init: function () {
+            updateTheme(this);
+            updateActiveTab(0);
+          },
+          slideChange: function () {
+            updateTheme(this);
+            updateActiveTab(this.activeIndex);
+          },
+        },
+      });
+
+      imageSwiper.controller.control = textSwiper;
+      textSwiper.controller.control = imageSwiper;
+
+      if (tabs && tabs.length) {
+        tabs.forEach(function (tab) {
+          tab.addEventListener('click', function () {
+            const slideIndex = parseInt(this.getAttribute('data-slide-index'), 10);
+            if (!isNaN(slideIndex)) textSwiper.slideTo(slideIndex);
+          });
+        });
+      }
+
+      console.log('Swiper Images (v3) initialized');
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSwiperImages);
+    } else {
+      initSwiperImages();
+    }
+
+    document.addEventListener('shopify:section:load', function (event) {
+      if (event.detail.sectionId === 'template--21386858561728__c_swiper_images_aJYDe9') {
+        setTimeout(initSwiperImages, 100);
+      }
+    });
+  })();
+</script>
+
+
+</section>

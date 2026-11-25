@@ -1,41 +1,31 @@
 {
   "sections": {
     "main": {
-      "type": "zavelyn-v4-pdp-main",
+      "type": "malora-product-main",
       "settings": {}
     },
-    "marquee": {
-      "type": "trymalora-pdp-marquee",
+    "testimonials": {
+      "type": "malora-testimonials",
       "settings": {}
     },
-    "package": {
-      "type": "trymalora-pdp-package",
-      "settings": {}
-    },
-    "how_it_works": {
-      "type": "trymalora-pdp-how-it-works",
+    "reviews_swiper": {
+      "type": "malora-reviews-swiper",
       "settings": {}
     },
     "faq": {
-      "type": "trymalora-pdp-faq",
+      "type": "malora-faq",
       "settings": {}
     },
-    "shipping": {
-      "type": "zavelyn-pdp-shipping",
-      "settings": {}
-    },
-    "reviews": {
-      "type": "trymalora-pdp-reviews",
+    "featured_collection": {
+      "type": "malora-featured-collection",
       "settings": {}
     }
   },
   "order": [
     "main",
-    "marquee",
-    "package",
-    "how_it_works",
+    "testimonials",
+    "reviews_swiper",
     "faq",
-    "shipping",
-    "reviews"
+    "featured_collection"
   ]
 }

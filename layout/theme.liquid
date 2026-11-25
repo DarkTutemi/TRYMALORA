@@ -17,10 +17,10 @@
     {%- endif -%}
 
     {%- liquid
-      assign brand_name = 'Trymalora'
+      assign brand_name = 'Malora Organics'
       assign meta_title = page_title
-      if request.page_type == 'index' or meta_title == blank or meta_title == shop.name or meta_title == 'My Store' or meta_title contains 'Sakerplus'
-        assign meta_title = 'Trymalora Official Store — Premium Lifestyle & Homestead Essentials'
+      if request.page_type == 'index' or meta_title == blank or meta_title == shop.name or meta_title == 'My Store' or meta_title contains 'Sakerplus' or meta_title contains 'Trymalora'
+        assign meta_title = 'Malora Organics — 100% Natural, Organic Sleep & Pregnancy Care'
       endif
     -%}
     <title>
@@ -155,11 +155,18 @@
       }
     </script>
     <script src="{{ 'zavelyn.js' | asset_url }}" type="module"></script>
-    {{ 'zavelyn-elixir.css' | asset_url | stylesheet_tag }}
-    {{ 'zavelyn-pdp-body.css' | asset_url | stylesheet_tag }}
-    {{ 'zavelyn-v4-tokens.css' | asset_url | stylesheet_tag }}
-    {{ 'ultra-overnight.css' | asset_url | stylesheet_tag }}
-    <script src="{{ 'ultra-overnight.js' | asset_url }}" defer="defer"></script>
+    {{ 'styles.css' | asset_url | stylesheet_tag }}
+    {{ 'new-homepage.css' | asset_url | stylesheet_tag }}
+    {{ 'c-global.css' | asset_url | stylesheet_tag }}
+    {{ 'custom-sl.css' | asset_url | stylesheet_tag }}
+    {{ 'a11y.css' | asset_url | stylesheet_tag }}
+    {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+    {{ 'pdp-upsell.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'vendor.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'a11y.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'upgrade-to-subscription.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
   </head>
 
   <body class="template-{{ template.name }}{% if template.suffix %} template-{{ template.name }}-{{ template.suffix }}{% endif %}">

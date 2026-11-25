@@ -1,0 +1,1818 @@
+{% comment %} MALORA ORGANICS - 8SHEEP 1:1 CLONE {% endcomment %}
+<section id="shopify-section-template--21386858561728__c_collection_tabs_e3kFnY" class="shopify-section c-collection-tabs-wrapper">
+
+<style data-shopify>
+      /* IMPORTANT: Always use these exact media query breakpoints */
+      /* Mobile first (without media query) */
+      /* Tablet: @media (width >= 768px) {} */
+      /* Laptop: @media (width >= 978px) {} */
+      /* Desktop: @media (width >= 1200px) {} */
+      /* TV: @media (width >= 1980px) {} */
+
+      #template--21386858561728__c_collection_tabs_e3kFnY.c-collection-tabs {
+        --c-ct-bg: #ffffff;
+        --c-ct-title-color: #151515;
+        --c-ct-subtitle-color: #000000;
+        --c-ct-tab-color: #666666;
+        --c-ct-tab-active-color: #151515;
+        --c-ct-tab-underline: #151515;
+        --c-ct-product-title-color: #151515;
+        --c-ct-price-color: #151515;
+        --c-ct-compare-price-color: #151515;
+        --c-ct-reviews-color: #151515;
+        --c-ct-cta-bg: #bc825b;
+        --c-ct-cta-text: #ffffff;
+        --c-ct-cta-hover-bg: #a87248;
+        --c-ct-cta-hover-text: #ffffff;
+        --c-ct-cta-radius: 8px;
+        --c-ct-image-radius: 8px;
+        --c-ct-pagination-active: #151515;
+        --c-ct-pagination-inactive: #d9d9d9;
+        --c-ct-arrow-bg: #f5f1ea;
+        --c-ct-arrow-color: #bc825b;
+
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        padding: 64px 20px 64px 20px;
+        background-color: var(--c-ct-bg);
+        width: 100%;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY h1, #template--21386858561728__c_collection_tabs_e3kFnY h2, #template--21386858561728__c_collection_tabs_e3kFnY h3 {
+      font-family: var(--font-heading)!important;
+    }
+
+
+
+      /* Header section */
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__header {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__header-content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__title {
+        margin: 0;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 1.2;
+        color: var(--c-ct-title-color);
+        text-align: left;
+        width: 100%;
+
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__subtitle {
+        margin: 0;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 1.17;
+        color: var(--c-ct-subtitle-color);
+      }
+
+      /* Tabs navigation */
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__tab {
+        position: relative;
+        padding: 12px 16px;
+        background: none;
+        border: none;
+  font-family: var(--font-heading)!important;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.4;
+        color: var(--c-ct-tab-color);
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__tab::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--c-ct-tab-underline);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__tab:hover {
+        color: var(--c-ct-tab-active-color);
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__tab.is-active {
+        color: var(--c-ct-tab-active-color);
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__tab.is-active::after {
+        transform: scaleX(1);
+      }
+
+      /* Tab panels */
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__panels {
+        position: relative;
+        width: 100%;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__panel {
+        display: none;
+        width: 100%;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__panel.is-active {
+        display: block;
+      }
+
+      /* Swiper container */
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__swiper-container {
+        position: relative;
+        width: 100%;
+        /* overflow: hidden; */
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__swiper {
+        width: 100%;
+        overflow: visible;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__swiper .swiper-wrapper {
+        display: flex;
+        align-items: stretch;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__swiper .swiper-slide {
+        height: auto;
+        width: 317px;
+        flex-shrink: 0;
+      }
+
+      /* Product card */
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__product-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        gap: 8px;
+        overflow: hidden;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__product-content {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        flex: 1;
+      }
+
+      /* Product image */
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__product-image-wrapper {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-radius: var(--c-ct-image-radius);
+        background-color: #ffffff;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__product-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__product-card:hover .c-collection-tabs__product-image {
+        transform: scale(1.05);
+      }
+
+      /* Product info */
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__product-info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+        padding: 0 16px;
+        text-align: center;
+      }
+
+      /* Reviews */
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__stamped-badge {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 24px;
+        width: 100%;
+      }
+
+      /* Keep the Stamped badge on a single line.
+         Overrides the global `.stamped-badge-starrating { max-width: 60px !important }`
+         from new-homepage.css (mobile only), which forces the 5 stars to wrap. */
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__stamped-badge .stamped-product-reviews-badge,
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__stamped-badge .stamped-badge {
+        display: inline-flex !important;
+        align-items: center;
+        flex-wrap: nowrap !important;
+        gap: 6px;
+        max-width: 100%;
+        white-space: nowrap;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__stamped-badge .stamped-badge-starrating {
+        display: inline-flex !important;
+        flex-wrap: nowrap !important;
+        align-items: center;
+        max-width: none !important;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      /* Normalize every star to the same size. The global rule in new-homepage.css
+         only sizes `.stamped-fa-star` and `.stamped-fa-star-o`, so the half star
+         (`.stamped-fa-star-half-o`) renders larger than its siblings. */
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__stamped-badge [class*='stamped-fa-star'],
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__stamped-badge [class*='stamped-fa-star']::before {
+        font-size: 12px !important;
+        line-height: 1 !important;
+        margin: 0 !important;
+        vertical-align: middle;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__stamped-badge .stamped-badge-caption {
+        white-space: nowrap;
+        flex-shrink: 0;
+        margin: 0 !important;
+      }
+
+      /* Product title and price row */
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__product-title-price {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+        width: 100%;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__product-title {
+        margin: 0;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 1.5;
+        color: var(--c-ct-product-title-color);
+        text-align: center;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__product-title a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__product-prices {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__product-price {
+        font-family: "Sofia Pro", sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.5;
+        color: var(--c-ct-price-color);
+        margin: 0;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__product-compare-price {
+        font-family: "Sofia Pro", sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 1.5;
+        color: var(--c-ct-compare-price-color);
+        text-decoration: line-through;
+        margin: 0;
+      }
+
+      /* CTA Button */
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__product-cta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 12px 24px;
+        background-color: var(--c-ct-cta-bg);
+        color: var(--c-ct-cta-text);
+        border: 1px solid var(--c-ct-cta-bg);
+        border-radius: var(--c-ct-cta-radius);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: normal;
+        letter-spacing: 0.7px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        text-transform: uppercase;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__product-cta:hover {
+        background-color: var(--c-ct-cta-hover-bg);
+        color: var(--c-ct-cta-hover-text);
+        border-color: var(--c-ct-cta-hover-bg);
+      }
+
+      /* Navigation wrapper - dots left, arrows right */
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__navigation-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 24px;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__navigation-wrapper.has-arrows {
+        justify-content: space-between;
+      }
+
+      /* Pagination - dots on the left */
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__pagination {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__pagination .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: var(--c-ct-pagination-inactive);
+        opacity: 1;
+        transition: all 0.3s ease;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__pagination .swiper-pagination-bullet-active {
+        background-color: var(--c-ct-pagination-active);
+        width: 24px;
+        border-radius: 4px;
+      }
+
+      /* Navigation arrows - hidden on mobile */
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__arrows {
+        display: none;
+        gap: 12px;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__nav-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        min-height: 48px;
+        max-width: 48px;
+        max-height: 48px;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        background-color: var(--c-ct-arrow-bg);
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__nav-button:hover {
+        opacity: 0.85;
+        transform: scale(1.05);
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__nav-button.swiper-button-disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__nav-button.swiper-button-disabled:hover {
+        transform: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__nav-icon {
+        width: 16px;
+        height: 16px;
+        fill: none;
+        stroke: #BC825B;
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      /* Shop All CTA Slide */
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__shop-all-slide {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        min-height: 400px;
+        background: linear-gradient(180deg, rgba(248, 248, 248, 0.8) 0%, rgba(240, 240, 240, 0.9) 100%);
+        border-radius: var(--c-ct-image-radius);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__shop-all-slide:hover {
+        background: linear-gradient(180deg, rgba(248, 248, 248, 0.9) 0%, rgba(235, 235, 235, 1) 100%);
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__shop-all-cta {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 14px 32px;
+        background-color: #FFFFFF;
+        color: #151515;
+        border: 1px solid #E0E0E0;
+        border-radius: 50px;
+        font-family: "Century Gothic", sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: normal;
+        text-transform: none;
+        letter-spacing: 0.3px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__shop-all-cta:hover {
+        background-color: #F5F5F5;
+        border-color: #D0D0D0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      }
+
+      /* Tablet */
+      @media (width >= 768px) {
+        #template--21386858561728__c_collection_tabs_e3kFnY.c-collection-tabs {
+          padding: 64px 40px 64px 40px;
+        }
+
+        #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__swiper .swiper-slide {
+          width: 280px;
+        }
+
+        #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__title {
+          font-size: 32px;
+        }
+
+        #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__tab {
+          padding: 12px 24px;
+          font-size: 16px;
+        }
+      }
+
+      /* Laptop */
+      @media (width >= 978px) {
+        #template--21386858561728__c_collection_tabs_e3kFnY.c-collection-tabs {
+          padding: 64px 64px 64px 64px;
+        }
+
+        #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__swiper .swiper-slide {
+          width: 235px;
+        }
+
+        #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__title {
+          font-size: 42px;
+        }
+
+        #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__tabs {
+          border-bottom: none;
+          gap: 0;
+        }
+
+        #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__arrows.is-visible {
+          display: flex;
+        }
+      }
+
+      /* Desktop */
+      @media (width >= 1200px) {
+        #template--21386858561728__c_collection_tabs_e3kFnY.c-collection-tabs {
+          padding: 64px 64px 64px 64px;
+        }
+
+        #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__swiper .swiper-slide {
+          width: 260px;
+        }
+      }
+
+      /* TV */
+      @media (width >= 1980px) {
+        #template--21386858561728__c_collection_tabs_e3kFnY.c-collection-tabs {
+          padding: 64px 80px 64px 80px;
+        }
+
+        #template--21386858561728__c_collection_tabs_e3kFnY .c-collection-tabs__swiper .swiper-slide {
+          width: 300px;
+        }
+      }
+</style>
+
+<section id="template--21386858561728__c_collection_tabs_e3kFnY" class="c-section c-collection-tabs"><header class="c-collection-tabs__header">
+    <div class="c-collection-tabs__header-content"><h2 class="c-collection-tabs__title">Made for Every Stage of Motherhood</h2></div>
+  </header><nav class="c-collection-tabs__tabs" role="tablist" aria-label="Collection tabs"><button
+          type="button"
+          class="c-collection-tabs__tab is-active"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-template--21386858561728__c_collection_tabs_e3kFnY-tab_K47HLe"
+          id="tab-template--21386858561728__c_collection_tabs_e3kFnY-tab_K47HLe"
+          data-tab-index="0"
+          
+        >
+          Best Sellers
+        </button><button
+          type="button"
+          class="c-collection-tabs__tab"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-template--21386858561728__c_collection_tabs_e3kFnY-tab_KCjKnJ"
+          id="tab-template--21386858561728__c_collection_tabs_e3kFnY-tab_KCjKnJ"
+          data-tab-index="1"
+          
+        >
+          Pregnancy
+        </button><button
+          type="button"
+          class="c-collection-tabs__tab"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-template--21386858561728__c_collection_tabs_e3kFnY-tab_fYWEFw"
+          id="tab-template--21386858561728__c_collection_tabs_e3kFnY-tab_fYWEFw"
+          data-tab-index="2"
+          
+        >
+          Baby
+        </button><button
+          type="button"
+          class="c-collection-tabs__tab"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-template--21386858561728__c_collection_tabs_e3kFnY-tab_Pk6z3A"
+          id="tab-template--21386858561728__c_collection_tabs_e3kFnY-tab_Pk6z3A"
+          data-tab-index="3"
+          
+        >
+          Gift Sets & Bundles
+        </button><button
+          type="button"
+          class="c-collection-tabs__tab"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-template--21386858561728__c_collection_tabs_e3kFnY-tab_VYYMgn"
+          id="tab-template--21386858561728__c_collection_tabs_e3kFnY-tab_VYYMgn"
+          data-tab-index="4"
+          
+        >
+          Stretch Marks
+        </button></nav><div class="c-collection-tabs__panels"><div
+        class="c-collection-tabs__panel is-active"
+        role="tabpanel"
+        id="panel-template--21386858561728__c_collection_tabs_e3kFnY-tab_K47HLe"
+        aria-labelledby="tab-template--21386858561728__c_collection_tabs_e3kFnY-tab_K47HLe"
+        data-panel-index="0"
+      >
+        <div class="c-collection-tabs__swiper-container">
+          <div class="c-collection-tabs__swiper swiper" data-swiper-id="tab_K47HLe">
+            <div class="swiper-wrapper"><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/juniors-bedtime-lotion"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="Junior's Bedtime Lotion"
+                        ><img src="https://8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?crop=center&amp;height=800&amp;v=1762198197&amp;width=800" alt="An open jar of Junior&#39;s Bedtime Lotion rests on a white surface, its lid removed. The light blue label with a sheep illustration highlights this gentle organic bedtime lotion as soft light and shadows move across the scene." srcset="https://8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?crop=center&amp;height=352&amp;v=1762198197&amp;width=352 352w, https://8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?crop=center&amp;height=800&amp;v=1762198197&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="6652650651840">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="6652650651840"
+                                data-product-sku="juniors-bedtime-lotion"
+                                data-product-type=""
+                                data-product-title="Junior&#39;s Bedtime Lotion"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/juniors-bedtime-lotion">Junior's Bedtime Lotion</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $23
+                              </span><span class="c-collection-tabs__product-compare-price">
+                                  $46
+                                </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/juniors-bedtime-lotion" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/sleepylotion"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="Organic Sleepy Body Lotion"
+                        ><img src="https://8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?crop=center&amp;height=800&amp;v=1762197935&amp;width=800" alt="A jar of Organic Sleepy Body Lotion with a white lid beside it. The 8oz (227ml) label notes it&#39;s pregnancy-safe, 100% organic, handcrafted, and made in the USA. Soft natural light creates gentle shadows." srcset="https://8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?crop=center&amp;height=352&amp;v=1762197935&amp;width=352 352w, https://8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?crop=center&amp;height=800&amp;v=1762197935&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="1825437253732">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="1825437253732"
+                                data-product-sku="sleepylotion"
+                                data-product-type=""
+                                data-product-title="Organic Sleepy Body Lotion"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/sleepylotion">Organic Sleepy Body Lotion</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $29
+                              </span><span class="c-collection-tabs__product-compare-price">
+                                  $50
+                                </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/sleepylotion" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/stretch-mark-bundle"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="2-Step Stretch Mark Prevention Bundle"
+                        ><img src="https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=800&amp;v=1762198391&amp;width=800" alt="2-Step Stretch Mark Prevention Bundle" srcset="https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=352&amp;v=1762198391&amp;width=352 352w, https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=800&amp;v=1762198391&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="7391885951168">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="7391885951168"
+                                data-product-sku="stretch-mark-bundle"
+                                data-product-type=""
+                                data-product-title="2-Step Stretch Mark Prevention Bundle"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/stretch-mark-bundle">2-Step Stretch Mark Prevention Bundle</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $69
+                              </span><span class="c-collection-tabs__product-compare-price">
+                                  $82
+                                </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/stretch-mark-bundle" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/true-belly-serum"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="True Belly Serum"
+                        ><img src="https://8sheep.com/cdn/shop/files/99.png?crop=center&amp;height=800&amp;v=1762198364&amp;width=800" alt="A clear glass True Belly Serum bottle with a white dropper cap holds a creamy white liquid to boost skin elasticity. Some serum is visible in the dropper. The background is plain white." srcset="https://8sheep.com/cdn/shop/files/99.png?crop=center&amp;height=352&amp;v=1762198364&amp;width=352 352w, https://8sheep.com/cdn/shop/files/99.png?crop=center&amp;height=800&amp;v=1762198364&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="7338355884224">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="7338355884224"
+                                data-product-sku="true-belly-serum"
+                                data-product-type=""
+                                data-product-title="True Belly Serum"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/true-belly-serum">True Belly Serum</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $47
+                              </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/true-belly-serum" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/pregnancy-survival-kit"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="Pregnancy Survival Kit"
+                        ><img src="https://8sheep.com/cdn/shop/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?crop=center&amp;height=800&amp;v=1792550881&amp;width=800" alt="Pregnancy Survival Kit" srcset="https://8sheep.com/cdn/shop/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?crop=center&amp;height=352&amp;v=1792550881&amp;width=352 352w, https://8sheep.com/cdn/shop/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?crop=center&amp;height=800&amp;v=1792550881&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="7463779664064">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="7463779664064"
+                                data-product-sku="pregnancy-survival-kit"
+                                data-product-type=""
+                                data-product-title="Pregnancy Survival Kit"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/pregnancy-survival-kit">Pregnancy Survival Kit</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $110
+                              </span><span class="c-collection-tabs__product-compare-price">
+                                  $140
+                                </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/pregnancy-survival-kit" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <a
+                      href="/collections/our-best-sellers"
+                      class="c-collection-tabs__shop-all-slide"
+                      aria-label="Shop All"
+                    >
+                      <span class="c-collection-tabs__shop-all-cta">Shop All</span>
+                    </a>
+                  </div></div>
+          </div>
+
+          <div class="c-collection-tabs__navigation-wrapper has-arrows">
+            <div class="c-collection-tabs__pagination" data-pagination-id="tab_K47HLe"></div>
+
+            <nav
+              class="c-collection-tabs__arrows is-visible"
+              aria-label="Product carousel navigation"
+            >
+              <button
+                type="button"
+                class="c-collection-tabs__nav-button c-collection-tabs__nav-prev"
+                data-prev-id="tab_K47HLe"
+                aria-label="Previous products"
+              >
+                <svg class="c-collection-tabs__nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button
+                type="button"
+                class="c-collection-tabs__nav-button c-collection-tabs__nav-next"
+                data-next-id="tab_K47HLe"
+                aria-label="Next products"
+              >
+                <svg class="c-collection-tabs__nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </nav>
+          </div>
+        </div>
+      </div><div
+        class="c-collection-tabs__panel"
+        role="tabpanel"
+        id="panel-template--21386858561728__c_collection_tabs_e3kFnY-tab_KCjKnJ"
+        aria-labelledby="tab-template--21386858561728__c_collection_tabs_e3kFnY-tab_KCjKnJ"
+        data-panel-index="1"
+      >
+        <div class="c-collection-tabs__swiper-container">
+          <div class="c-collection-tabs__swiper swiper" data-swiper-id="tab_KCjKnJ">
+            <div class="swiper-wrapper"><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/pregnancy-survival-kit"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="Pregnancy Survival Kit"
+                        ><img src="https://8sheep.com/cdn/shop/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?crop=center&amp;height=800&amp;v=1792550881&amp;width=800" alt="Pregnancy Survival Kit" srcset="https://8sheep.com/cdn/shop/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?crop=center&amp;height=352&amp;v=1792550881&amp;width=352 352w, https://8sheep.com/cdn/shop/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?crop=center&amp;height=800&amp;v=1792550881&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="7463779664064">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="7463779664064"
+                                data-product-sku="pregnancy-survival-kit"
+                                data-product-type=""
+                                data-product-title="Pregnancy Survival Kit"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/pregnancy-survival-kit">Pregnancy Survival Kit</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $110
+                              </span><span class="c-collection-tabs__product-compare-price">
+                                  $140
+                                </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/pregnancy-survival-kit" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/stretch-mark-bundle"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="2-Step Stretch Mark Prevention Bundle"
+                        ><img src="https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=800&amp;v=1762198391&amp;width=800" alt="2-Step Stretch Mark Prevention Bundle" srcset="https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=352&amp;v=1762198391&amp;width=352 352w, https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=800&amp;v=1762198391&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="7391885951168">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="7391885951168"
+                                data-product-sku="stretch-mark-bundle"
+                                data-product-type=""
+                                data-product-title="2-Step Stretch Mark Prevention Bundle"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/stretch-mark-bundle">2-Step Stretch Mark Prevention Bundle</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $69
+                              </span><span class="c-collection-tabs__product-compare-price">
+                                  $82
+                                </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/stretch-mark-bundle" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/juniors-bedtime-lotion"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="Junior's Bedtime Lotion"
+                        ><img src="https://8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?crop=center&amp;height=800&amp;v=1762198197&amp;width=800" alt="An open jar of Junior&#39;s Bedtime Lotion rests on a white surface, its lid removed. The light blue label with a sheep illustration highlights this gentle organic bedtime lotion as soft light and shadows move across the scene." srcset="https://8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?crop=center&amp;height=352&amp;v=1762198197&amp;width=352 352w, https://8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?crop=center&amp;height=800&amp;v=1762198197&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="6652650651840">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="6652650651840"
+                                data-product-sku="juniors-bedtime-lotion"
+                                data-product-type=""
+                                data-product-title="Junior&#39;s Bedtime Lotion"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/juniors-bedtime-lotion">Junior's Bedtime Lotion</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $23
+                              </span><span class="c-collection-tabs__product-compare-price">
+                                  $46
+                                </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/juniors-bedtime-lotion" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/sleepylotion"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="Organic Sleepy Body Lotion"
+                        ><img src="https://8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?crop=center&amp;height=800&amp;v=1762197935&amp;width=800" alt="A jar of Organic Sleepy Body Lotion with a white lid beside it. The 8oz (227ml) label notes it&#39;s pregnancy-safe, 100% organic, handcrafted, and made in the USA. Soft natural light creates gentle shadows." srcset="https://8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?crop=center&amp;height=352&amp;v=1762197935&amp;width=352 352w, https://8sheep.com/cdn/shop/products/37_d17b3185-e3d0-4a60-9f46-88a00bdbe8e3.png?crop=center&amp;height=800&amp;v=1762197935&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="1825437253732">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="1825437253732"
+                                data-product-sku="sleepylotion"
+                                data-product-type=""
+                                data-product-title="Organic Sleepy Body Lotion"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/sleepylotion">Organic Sleepy Body Lotion</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $29
+                              </span><span class="c-collection-tabs__product-compare-price">
+                                  $50
+                                </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/sleepylotion" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/true-belly-serum"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="True Belly Serum"
+                        ><img src="https://8sheep.com/cdn/shop/files/99.png?crop=center&amp;height=800&amp;v=1762198364&amp;width=800" alt="A clear glass True Belly Serum bottle with a white dropper cap holds a creamy white liquid to boost skin elasticity. Some serum is visible in the dropper. The background is plain white." srcset="https://8sheep.com/cdn/shop/files/99.png?crop=center&amp;height=352&amp;v=1762198364&amp;width=352 352w, https://8sheep.com/cdn/shop/files/99.png?crop=center&amp;height=800&amp;v=1762198364&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="7338355884224">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="7338355884224"
+                                data-product-sku="true-belly-serum"
+                                data-product-type=""
+                                data-product-title="True Belly Serum"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/true-belly-serum">True Belly Serum</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $47
+                              </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/true-belly-serum" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/nourishing-balm"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="Immortelle Overnight Nourishing Balm"
+                        ><img src="https://8sheep.com/cdn/shop/files/114.png?crop=center&amp;height=800&amp;v=1762198313&amp;width=800" alt="A jar of pale yellow face balm, infused with Immortelle essential oil for anti-aging, sits on a white marble surface with its white lid nearby. The label reads Immortelle Overnight Nourishing Balm." srcset="https://8sheep.com/cdn/shop/files/114.png?crop=center&amp;height=352&amp;v=1762198313&amp;width=352 352w, https://8sheep.com/cdn/shop/files/114.png?crop=center&amp;height=800&amp;v=1762198313&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="7296373260480">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="7296373260480"
+                                data-product-sku="nourishing-balm"
+                                data-product-type=""
+                                data-product-title="Immortelle Overnight Nourishing Balm"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/nourishing-balm">Immortelle Overnight Nourishing Balm</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $35
+                              </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/nourishing-balm" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/mama-and-baby-bundle"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="Mama & Baby Bundle"
+                        ><img src="https://8sheep.com/cdn/shop/files/164.png?crop=center&amp;height=800&amp;v=1762198235&amp;width=800" alt="Two jars from the Mama &amp; Baby Bundle are shown on a white surface: Junior’s Bedtime Lotion and Sleepy Body Lotion with an open lid, both ideal as gentle sleep aids." srcset="https://8sheep.com/cdn/shop/files/164.png?crop=center&amp;height=352&amp;v=1762198235&amp;width=352 352w, https://8sheep.com/cdn/shop/files/164.png?crop=center&amp;height=800&amp;v=1762198235&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="6944320913600">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="6944320913600"
+                                data-product-sku="mama-and-baby-bundle"
+                                data-product-type=""
+                                data-product-title="Mama &amp; Baby Bundle"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/mama-and-baby-bundle">Mama & Baby Bundle</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $65
+                              </span><span class="c-collection-tabs__product-compare-price">
+                                  $72
+                                </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/mama-and-baby-bundle" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/peppermint-foot-leg-rub"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="Peppermint Foot & Leg Rub"
+                        ><img src="https://8sheep.com/cdn/shop/products/87.png?crop=center&amp;height=800&amp;v=1762198315&amp;width=800" alt="A clear jar of Peppermint Foot &amp; Leg Rub with an open white lid sits on a light surface, showing creamy yellow balm inside. This cooling rub soothes swelling and is ideal for pregnancy comfort. Soft shadows complete the scene." srcset="https://8sheep.com/cdn/shop/products/87.png?crop=center&amp;height=352&amp;v=1762198315&amp;width=352 352w, https://8sheep.com/cdn/shop/products/87.png?crop=center&amp;height=800&amp;v=1762198315&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="7296391250112">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="7296391250112"
+                                data-product-sku="peppermint-foot-leg-rub"
+                                data-product-type=""
+                                data-product-title="Peppermint Foot &amp; Leg Rub"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/peppermint-foot-leg-rub">Peppermint Foot & Leg Rub</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $24
+                              </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/peppermint-foot-leg-rub" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <a
+                      href="/collections/organic-pregnancy-products"
+                      class="c-collection-tabs__shop-all-slide"
+                      aria-label="Shop All"
+                    >
+                      <span class="c-collection-tabs__shop-all-cta">Shop All</span>
+                    </a>
+                  </div></div>
+          </div>
+
+          <div class="c-collection-tabs__navigation-wrapper has-arrows">
+            <div class="c-collection-tabs__pagination" data-pagination-id="tab_KCjKnJ"></div>
+
+            <nav
+              class="c-collection-tabs__arrows is-visible"
+              aria-label="Product carousel navigation"
+            >
+              <button
+                type="button"
+                class="c-collection-tabs__nav-button c-collection-tabs__nav-prev"
+                data-prev-id="tab_KCjKnJ"
+                aria-label="Previous products"
+              >
+                <svg class="c-collection-tabs__nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button
+                type="button"
+                class="c-collection-tabs__nav-button c-collection-tabs__nav-next"
+                data-next-id="tab_KCjKnJ"
+                aria-label="Next products"
+              >
+                <svg class="c-collection-tabs__nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </nav>
+          </div>
+        </div>
+      </div><div
+        class="c-collection-tabs__panel"
+        role="tabpanel"
+        id="panel-template--21386858561728__c_collection_tabs_e3kFnY-tab_fYWEFw"
+        aria-labelledby="tab-template--21386858561728__c_collection_tabs_e3kFnY-tab_fYWEFw"
+        data-panel-index="2"
+      >
+        <div class="c-collection-tabs__swiper-container">
+          <div class="c-collection-tabs__swiper swiper" data-swiper-id="tab_fYWEFw">
+            <div class="swiper-wrapper"><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/juniors-bedtime-lotion"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="Junior's Bedtime Lotion"
+                        ><img src="https://8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?crop=center&amp;height=800&amp;v=1762198197&amp;width=800" alt="An open jar of Junior&#39;s Bedtime Lotion rests on a white surface, its lid removed. The light blue label with a sheep illustration highlights this gentle organic bedtime lotion as soft light and shadows move across the scene." srcset="https://8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?crop=center&amp;height=352&amp;v=1762198197&amp;width=352 352w, https://8sheep.com/cdn/shop/products/39_aa302756-0991-42dd-af11-c34e03778d22.png?crop=center&amp;height=800&amp;v=1762198197&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="6652650651840">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="6652650651840"
+                                data-product-sku="juniors-bedtime-lotion"
+                                data-product-type=""
+                                data-product-title="Junior&#39;s Bedtime Lotion"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/juniors-bedtime-lotion">Junior's Bedtime Lotion</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $23
+                              </span><span class="c-collection-tabs__product-compare-price">
+                                  $46
+                                </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/juniors-bedtime-lotion" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/baby-wash"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="Baby Shampoo & Body Wash"
+                        ><img src="https://8sheep.com/cdn/shop/files/124.png?crop=center&amp;height=800&amp;v=1762198636&amp;width=800" alt="A clear plastic bottle of Baby Shampoo &amp; Body Wash with a light blue label, featuring a simple sheep illustration, rests on white marble in soft natural light—organic, plant-based, and gentle for sensitive skin." srcset="https://8sheep.com/cdn/shop/files/124.png?crop=center&amp;height=352&amp;v=1762198636&amp;width=352 352w, https://8sheep.com/cdn/shop/files/124.png?crop=center&amp;height=800&amp;v=1762198636&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="7635673546944">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="7635673546944"
+                                data-product-sku="baby-wash"
+                                data-product-type=""
+                                data-product-title="Baby Shampoo &amp; Body Wash"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/baby-wash">Baby Shampoo & Body Wash</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $17
+                              </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/baby-wash" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/mama-and-baby-bundle"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="Mama & Baby Bundle"
+                        ><img src="https://8sheep.com/cdn/shop/files/164.png?crop=center&amp;height=800&amp;v=1762198235&amp;width=800" alt="Two jars from the Mama &amp; Baby Bundle are shown on a white surface: Junior’s Bedtime Lotion and Sleepy Body Lotion with an open lid, both ideal as gentle sleep aids." srcset="https://8sheep.com/cdn/shop/files/164.png?crop=center&amp;height=352&amp;v=1762198235&amp;width=352 352w, https://8sheep.com/cdn/shop/files/164.png?crop=center&amp;height=800&amp;v=1762198235&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="6944320913600">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="6944320913600"
+                                data-product-sku="mama-and-baby-bundle"
+                                data-product-type=""
+                                data-product-title="Mama &amp; Baby Bundle"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/mama-and-baby-bundle">Mama & Baby Bundle</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $65
+                              </span><span class="c-collection-tabs__product-compare-price">
+                                  $72
+                                </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/mama-and-baby-bundle" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/second-skin-barrier-cream"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="Second Skin Barrier Cream"
+                        ><img src="https://8sheep.com/cdn/shop/files/2_9d9aa4b9-d661-43df-a2ef-7f0285e606d8.png?crop=center&amp;height=800&amp;v=1784362327&amp;width=800" alt="Second Skin Barrier Cream" srcset="https://8sheep.com/cdn/shop/files/2_9d9aa4b9-d661-43df-a2ef-7f0285e606d8.png?crop=center&amp;height=352&amp;v=1784362327&amp;width=352 352w, https://8sheep.com/cdn/shop/files/2_9d9aa4b9-d661-43df-a2ef-7f0285e606d8.png?crop=center&amp;height=800&amp;v=1784362327&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="8593894146240">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="8593894146240"
+                                data-product-sku="second-skin-barrier-cream"
+                                data-product-type=""
+                                data-product-title="Second Skin Barrier Cream"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/second-skin-barrier-cream">Second Skin Barrier Cream</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $27
+                              </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/second-skin-barrier-cream" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <a
+                      href="/collections/baby"
+                      class="c-collection-tabs__shop-all-slide"
+                      aria-label="Shop All"
+                    >
+                      <span class="c-collection-tabs__shop-all-cta">Shop All</span>
+                    </a>
+                  </div></div>
+          </div>
+
+          <div class="c-collection-tabs__navigation-wrapper has-arrows">
+            <div class="c-collection-tabs__pagination" data-pagination-id="tab_fYWEFw"></div>
+
+            <nav
+              class="c-collection-tabs__arrows is-visible"
+              aria-label="Product carousel navigation"
+            >
+              <button
+                type="button"
+                class="c-collection-tabs__nav-button c-collection-tabs__nav-prev"
+                data-prev-id="tab_fYWEFw"
+                aria-label="Previous products"
+              >
+                <svg class="c-collection-tabs__nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button
+                type="button"
+                class="c-collection-tabs__nav-button c-collection-tabs__nav-next"
+                data-next-id="tab_fYWEFw"
+                aria-label="Next products"
+              >
+                <svg class="c-collection-tabs__nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </nav>
+          </div>
+        </div>
+      </div><div
+        class="c-collection-tabs__panel"
+        role="tabpanel"
+        id="panel-template--21386858561728__c_collection_tabs_e3kFnY-tab_Pk6z3A"
+        aria-labelledby="tab-template--21386858561728__c_collection_tabs_e3kFnY-tab_Pk6z3A"
+        data-panel-index="3"
+      >
+        <div class="c-collection-tabs__swiper-container">
+          <div class="c-collection-tabs__swiper swiper" data-swiper-id="tab_Pk6z3A">
+            <div class="swiper-wrapper"><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/stretch-mark-bundle"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="2-Step Stretch Mark Prevention Bundle"
+                        ><img src="https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=800&amp;v=1762198391&amp;width=800" alt="2-Step Stretch Mark Prevention Bundle" srcset="https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=352&amp;v=1762198391&amp;width=352 352w, https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=800&amp;v=1762198391&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="7391885951168">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="7391885951168"
+                                data-product-sku="stretch-mark-bundle"
+                                data-product-type=""
+                                data-product-title="2-Step Stretch Mark Prevention Bundle"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/stretch-mark-bundle">2-Step Stretch Mark Prevention Bundle</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $69
+                              </span><span class="c-collection-tabs__product-compare-price">
+                                  $82
+                                </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/stretch-mark-bundle" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/pregnancy-survival-kit"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="Pregnancy Survival Kit"
+                        ><img src="https://8sheep.com/cdn/shop/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?crop=center&amp;height=800&amp;v=1792550881&amp;width=800" alt="Pregnancy Survival Kit" srcset="https://8sheep.com/cdn/shop/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?crop=center&amp;height=352&amp;v=1792550881&amp;width=352 352w, https://8sheep.com/cdn/shop/files/PSK_Shopify_PDP_Images_-_2000_x_2000_px.png?crop=center&amp;height=800&amp;v=1792550881&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="7463779664064">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="7463779664064"
+                                data-product-sku="pregnancy-survival-kit"
+                                data-product-type=""
+                                data-product-title="Pregnancy Survival Kit"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/pregnancy-survival-kit">Pregnancy Survival Kit</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $110
+                              </span><span class="c-collection-tabs__product-compare-price">
+                                  $140
+                                </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/pregnancy-survival-kit" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <a
+                      href="/collections/bundle"
+                      class="c-collection-tabs__shop-all-slide"
+                      aria-label="Shop All"
+                    >
+                      <span class="c-collection-tabs__shop-all-cta">Shop All</span>
+                    </a>
+                  </div></div>
+          </div>
+
+          <div class="c-collection-tabs__navigation-wrapper has-arrows">
+            <div class="c-collection-tabs__pagination" data-pagination-id="tab_Pk6z3A"></div>
+
+            <nav
+              class="c-collection-tabs__arrows is-visible"
+              aria-label="Product carousel navigation"
+            >
+              <button
+                type="button"
+                class="c-collection-tabs__nav-button c-collection-tabs__nav-prev"
+                data-prev-id="tab_Pk6z3A"
+                aria-label="Previous products"
+              >
+                <svg class="c-collection-tabs__nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button
+                type="button"
+                class="c-collection-tabs__nav-button c-collection-tabs__nav-next"
+                data-next-id="tab_Pk6z3A"
+                aria-label="Next products"
+              >
+                <svg class="c-collection-tabs__nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </nav>
+          </div>
+        </div>
+      </div><div
+        class="c-collection-tabs__panel"
+        role="tabpanel"
+        id="panel-template--21386858561728__c_collection_tabs_e3kFnY-tab_VYYMgn"
+        aria-labelledby="tab-template--21386858561728__c_collection_tabs_e3kFnY-tab_VYYMgn"
+        data-panel-index="4"
+      >
+        <div class="c-collection-tabs__swiper-container">
+          <div class="c-collection-tabs__swiper swiper" data-swiper-id="tab_VYYMgn">
+            <div class="swiper-wrapper"><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/stretch-mark-bundle"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="2-Step Stretch Mark Prevention Bundle"
+                        ><img src="https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=800&amp;v=1762198391&amp;width=800" alt="2-Step Stretch Mark Prevention Bundle" srcset="https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=352&amp;v=1762198391&amp;width=352 352w, https://8sheep.com/cdn/shop/products/89.png?crop=center&amp;height=800&amp;v=1762198391&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="7391885951168">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="7391885951168"
+                                data-product-sku="stretch-mark-bundle"
+                                data-product-type=""
+                                data-product-title="2-Step Stretch Mark Prevention Bundle"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/stretch-mark-bundle">2-Step Stretch Mark Prevention Bundle</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $69
+                              </span><span class="c-collection-tabs__product-compare-price">
+                                  $82
+                                </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/stretch-mark-bundle" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/true-belly-serum"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="True Belly Serum"
+                        ><img src="https://8sheep.com/cdn/shop/files/99.png?crop=center&amp;height=800&amp;v=1762198364&amp;width=800" alt="A clear glass True Belly Serum bottle with a white dropper cap holds a creamy white liquid to boost skin elasticity. Some serum is visible in the dropper. The background is plain white." srcset="https://8sheep.com/cdn/shop/files/99.png?crop=center&amp;height=352&amp;v=1762198364&amp;width=352 352w, https://8sheep.com/cdn/shop/files/99.png?crop=center&amp;height=800&amp;v=1762198364&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="7338355884224">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="7338355884224"
+                                data-product-sku="true-belly-serum"
+                                data-product-type=""
+                                data-product-title="True Belly Serum"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/true-belly-serum">True Belly Serum</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $47
+                              </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/true-belly-serum" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <article class="c-collection-tabs__product-card">
+                      <div class="c-collection-tabs__product-content">
+                        <a
+                          href="/products/nourishing-balm"
+                          class="c-collection-tabs__product-image-wrapper"
+                          aria-label="Immortelle Overnight Nourishing Balm"
+                        ><img src="https://8sheep.com/cdn/shop/files/114.png?crop=center&amp;height=800&amp;v=1762198313&amp;width=800" alt="A jar of pale yellow face balm, infused with Immortelle essential oil for anti-aging, sits on a white marble surface with its white lid nearby. The label reads Immortelle Overnight Nourishing Balm." srcset="https://8sheep.com/cdn/shop/files/114.png?crop=center&amp;height=352&amp;v=1762198313&amp;width=352 352w, https://8sheep.com/cdn/shop/files/114.png?crop=center&amp;height=800&amp;v=1762198313&amp;width=800 800w" width="800" height="800">
+</a>
+
+                        <div class="c-collection-tabs__product-info"><div class="c-collection-tabs__stamped-badge" data-product-id="7296373260480">
+                              <span
+                                class="stamped-product-reviews-badge stamped-main-badge"
+                                data-id="7296373260480"
+                                data-product-sku="nourishing-balm"
+                                data-product-type=""
+                                data-product-title="Immortelle Overnight Nourishing Balm"
+                                style="display: inline-block;"
+                              ></span>
+                            </div><div class="c-collection-tabs__product-title-price">
+                            <h3 class="c-collection-tabs__product-title">
+                              <a href="/products/nourishing-balm">Immortelle Overnight Nourishing Balm</a>
+                            </h3>
+
+                            <div class="c-collection-tabs__product-prices">
+                              <span class="c-collection-tabs__product-price">
+                                $35
+                              </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="/products/nourishing-balm" class="c-collection-tabs__product-cta">
+                        Shop Now
+                      </a>
+                    </article>
+                  </div><div class="swiper-slide">
+                    <a
+                      href="/collections/stretch-marks"
+                      class="c-collection-tabs__shop-all-slide"
+                      aria-label="Shop All"
+                    >
+                      <span class="c-collection-tabs__shop-all-cta">Shop All</span>
+                    </a>
+                  </div></div>
+          </div>
+
+          <div class="c-collection-tabs__navigation-wrapper has-arrows">
+            <div class="c-collection-tabs__pagination" data-pagination-id="tab_VYYMgn"></div>
+
+            <nav
+              class="c-collection-tabs__arrows is-visible"
+              aria-label="Product carousel navigation"
+            >
+              <button
+                type="button"
+                class="c-collection-tabs__nav-button c-collection-tabs__nav-prev"
+                data-prev-id="tab_VYYMgn"
+                aria-label="Previous products"
+              >
+                <svg class="c-collection-tabs__nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button
+                type="button"
+                class="c-collection-tabs__nav-button c-collection-tabs__nav-next"
+                data-next-id="tab_VYYMgn"
+                aria-label="Next products"
+              >
+                <svg class="c-collection-tabs__nav-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </nav>
+          </div>
+        </div>
+      </div></div>
+</section>
+
+<script>
+  (function () {
+    var sectionId = 'template--21386858561728__c_collection_tabs_e3kFnY';
+    var swiperInstances = {};
+
+    function initCollectionTabsSwiper(blockId) {
+      var sectionEl = document.getElementById(sectionId);
+      if (!sectionEl) return;
+
+      var swiperEl = sectionEl.querySelector('[data-swiper-id="' + blockId + '"]');
+      var paginationEl = sectionEl.querySelector('[data-pagination-id="' + blockId + '"]');
+      var prevEl = sectionEl.querySelector('[data-prev-id="' + blockId + '"]');
+      var nextEl = sectionEl.querySelector('[data-next-id="' + blockId + '"]');
+
+      if (!swiperEl || typeof Swiper === 'undefined') return;
+
+      if (swiperInstances[blockId]) {
+        swiperInstances[blockId].destroy(true, true);
+      }
+
+      swiperInstances[blockId] = new Swiper(swiperEl, {
+        slidesPerView: 'auto',
+        spaceBetween: 13,
+        grabCursor: true,
+        loop: false,
+        pagination: {
+          el: paginationEl,
+          clickable: true,
+        },
+        navigation: {
+          prevEl: prevEl,
+          nextEl: nextEl,
+        },
+        breakpoints: {
+          768: {
+            spaceBetween: 16,
+          },
+          978: {
+            spaceBetween: 20,
+          },
+          1200: {
+            spaceBetween: 24,
+          },
+        },
+      });
+    }
+
+    function initAllSwipers() {
+      var sectionEl = document.getElementById(sectionId);
+      if (!sectionEl) return;
+
+      var swipers = sectionEl.querySelectorAll('.c-collection-tabs__swiper');
+      swipers.forEach(function (swiper) {
+        var blockId = swiper.getAttribute('data-swiper-id');
+        if (blockId) {
+          initCollectionTabsSwiper(blockId);
+        }
+      });
+    }
+
+    function initTabs() {
+      var sectionEl = document.getElementById(sectionId);
+      if (!sectionEl) return;
+
+      var tabs = sectionEl.querySelectorAll('.c-collection-tabs__tab');
+      var panels = sectionEl.querySelectorAll('.c-collection-tabs__panel');
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var tabIndex = this.getAttribute('data-tab-index');
+
+          tabs.forEach(function (t) {
+            t.classList.remove('is-active');
+            t.setAttribute('aria-selected', 'false');
+          });
+
+          panels.forEach(function (p) {
+            p.classList.remove('is-active');
+          });
+
+          this.classList.add('is-active');
+          this.setAttribute('aria-selected', 'true');
+
+          var activePanel = sectionEl.querySelector('[data-panel-index="' + tabIndex + '"]');
+          if (activePanel) {
+            activePanel.classList.add('is-active');
+
+            var swiperEl = activePanel.querySelector('.c-collection-tabs__swiper');
+            if (swiperEl) {
+              var blockId = swiperEl.getAttribute('data-swiper-id');
+              if (blockId && swiperInstances[blockId]) {
+                swiperInstances[blockId].update();
+              }
+            }
+          }
+        });
+
+        tab.addEventListener('keydown', function (e) {
+          var currentIndex = parseInt(this.getAttribute('data-tab-index'));
+          var newIndex;
+
+          if (e.key === 'ArrowRight') {
+            newIndex = currentIndex + 1;
+            if (newIndex >= tabs.length) newIndex = 0;
+          } else if (e.key === 'ArrowLeft') {
+            newIndex = currentIndex - 1;
+            if (newIndex < 0) newIndex = tabs.length - 1;
+          } else if (e.key === 'Home') {
+            newIndex = 0;
+          } else if (e.key === 'End') {
+            newIndex = tabs.length - 1;
+          } else {
+            return;
+          }
+
+          e.preventDefault();
+          tabs[newIndex].click();
+          tabs[newIndex].focus();
+        });
+      });
+    }
+
+    function init() {
+      initTabs();
+      initAllSwipers();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+
+    document.addEventListener('shopify:section:load', function (event) {
+      if (event.detail.sectionId === sectionId) {
+        setTimeout(init, 100);
+      }
+    });
+
+    document.addEventListener('shopify:block:select', function (event) {
+      if (event.detail.sectionId === sectionId) {
+        var sectionEl = document.getElementById(sectionId);
+        if (!sectionEl) return;
+
+        var tab = sectionEl.querySelector('#tab-' + sectionId + '-' + event.detail.blockId);
+        if (tab) {
+          tab.click();
+        }
+      }
+    });
+  })();
+</script>
+
+
+</section>
+{% schema %}{ "name": "Malora Collection Tabs", "settings": [] }{% endschema %}

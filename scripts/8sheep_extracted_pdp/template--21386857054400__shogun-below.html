@@ -1,0 +1,55 @@
+<div id="shopify-section-template--21386857054400__shogun-below" class="shopify-section">
+
+
+
+
+</div>
+</main>
+
+    <script>
+      window.ALBSS = {
+        event_key: '57a184cb-13ac-416a-bba6-61d0df43b5f1',
+      };
+    </script>
+    <script src="https://c.albss.com/p/l/loader.iife.js" async></script>
+
+    <script>
+      var firstSection = document.body.querySelector('#page-content .shopify-section:first-child');
+      if (firstSection) {
+        var firstBgSet = firstSection.querySelector('[data-bgset]');
+
+        if (firstBgSet) {
+          var bgSets = firstBgSet.dataset.bgset.split(',');
+          if (bgSets) {
+            for (var i = 0; i < bgSets.length; i++) {
+              var widthMatch = bgSets[i].match(/ [0-9]+w/g);
+              var heightMatch = bgSets[i].match(/ [0-9]+h/g);
+
+              if (widthMatch && heightMatch) {
+                var width = parseInt(widthMatch[0].replace('w', '').trim());
+                var height = parseInt(heightMatch[0].replace('h', '').trim());
+
+                if (width >= window.innerWidth && height >= window.innerHeight) {
+                  firstBgSet.style.backgroundImage = "url('" + bgSets[i].trim().split(' ')[0] + "')";
+                  firstBgSet.classList.remove('fade-in');
+                  break;
+                }
+              }
+            }
+          }
+        } else if (firstSection.querySelector('[data-src]')) {
+          var firstDataSrc = firstSection.querySelector('[data-src]');
+          var widths = JSON.parse(firstDataSrc.dataset.widths);
+          for (var i = 0; i < widths.length; i++) {
+            var width = parseInt(widths[i]);
+            if (width >= window.innerWidth) {
+              firstDataSrc.setAttribute('src', firstDataSrc.dataset.src.replace('{width}', width));
+              firstDataSrc.classList.remove('fade-in');
+              break;
+            }
+          }
+        }
+      }
+    </script>
+
+    

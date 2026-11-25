@@ -2,56 +2,17 @@
   "name": "Header group",
   "type": "header",
   "sections": {
-    "ultra-header": {
-      "type": "ultra-header",
-      "settings": {
-        "show_announcement": true,
-        "announcement_text": "FREE US SHIPPING ON ORDERS $70+ · OEKO-TEX® CERTIFIED COMFORT",
-        "primary_menu": "ultra-overnight-nav"
-      }
+    "malora-announcement-bar": {
+      "type": "malora-announcement-bar",
+      "settings": {}
     },
-    "willa-header": {
-      "type": "willa-header",
-      "blocks": {
-        "nav_home": {
-          "type": "nav_link",
-          "settings": {
-            "title": "Home",
-            "link": "\/",
-            "icon": "🏠",
-            "show_desktop": true,
-            "show_mobile": true
-          }
-        },
-        "nav_track": {
-          "type": "nav_link",
-          "settings": {
-            "title": "Track Order",
-            "link": "\/pages\/track-order",
-            "icon": "📦",
-            "show_desktop": true,
-            "show_mobile": true
-          }
-        }
-      },
-      "block_order": [
-        "nav_home",
-        "nav_track"
-      ],
-      "settings": {
-        "logo_text": "TRYMALORA",
-        "announcement_desktop": "★ FREE WORLDWIDE EXPRESS SHIPPING OVER $70 · 100% SATISFACTION GUARANTEED · 30-DAY RETURN POLICY ★",
-        "announcement_mobile": "★ FREE WORLDWIDE SHIPPING OVER $70 · 30-DAY RETURN POLICY ★",
-        "promo_tag": "CURATED ESSENTIALS",
-        "promo_title": "TRYMALORA Storefront",
-        "promo_desc": "Innovative family essentials, automotive restoration care, surface coatings, and smart daily tools.",
-        "promo_btn_text": "TRACK YOUR ORDER ➔",
-        "promo_btn_link": "\/pages\/track-order"
-      }
+    "malora-header": {
+      "type": "malora-header",
+      "settings": {}
     }
   },
   "order": [
-    "ultra-header",
-    "willa-header"
+    "malora-announcement-bar",
+    "malora-header"
   ]
 }

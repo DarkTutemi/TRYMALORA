@@ -1,0 +1,254 @@
+<section id="shopify-section-template--21386858561728__c_two_columns_AEfBQz" class="shopify-section c-two-columns-wrapper">
+
+<style data-shopify>
+  /* IMPORTANT: Always use these exact media query breakpoints */
+
+  #template--21386858561728__c_two_columns_AEfBQz.c-two-columns {
+    --c2c-bg: #bc825b;
+    --c2c-text: #ffffff;
+
+    --c2c-cta-bg: #ffffff;
+    --c2c-cta-text: #bc825b;
+
+    --c2c-max-width: 1200px;
+
+    --c2c-pad-top-d: 80px;
+    --c2c-pad-bottom-d: 80px;
+    --c2c-pad-x-d: 64px;
+
+    --c2c-pad-top-m: 64px;
+    --c2c-pad-bottom-m: 64px;
+    --c2c-pad-x-m: 24px;
+
+    --c2c-gap-d: 64px;
+    --c2c-gap-m: 24px;
+
+    --c2c-img-w: 50%;
+    --c2c-text-w: 50%;
+
+    /* NEW: Typography + alignment */
+    --c2c-heading-size-d: 40px;
+    --c2c-heading-size-m: 28px;
+
+    --c2c-richtext-size-d: 16px;
+    --c2c-richtext-size-m: 16px;
+
+    --c2c-align: left;
+
+    background: var(--c2c-bg);
+    color: var(--c2c-text);
+  }
+
+    #template--21386858561728__c_two_columns_AEfBQz h1, #template--21386858561728__c_two_columns_AEfBQz h2, #template--21386858561728__c_two_columns_AEfBQz h3, #template--21386858561728__c_two_columns_AEfBQz strong {
+      font-family: var(--font-heading)!important;
+    }
+
+     #template--21386858561728__c_two_columns_AEfBQz strong {
+      font-family: var(--font-heading-bold)!important;
+    }
+
+     #template--21386858561728__c_two_columns_AEfBQz p{
+      font-family: var(--font-body)!important;
+    }
+
+  #template--21386858561728__c_two_columns_AEfBQz .c2c__container {
+    max-width: var(--c2c-max-width);
+    margin: 0 auto;
+    padding: var(--c2c-pad-top-m) var(--c2c-pad-x-m) var(--c2c-pad-bottom-m);
+  }
+
+  /* Mobile first: Flex column layout for reliable ordering */
+  #template--21386858561728__c_two_columns_AEfBQz .c2c__grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--c2c-gap-m);
+  }
+
+  #template--21386858561728__c_two_columns_AEfBQz .c2c__content {
+    order: 2;
+    text-align: var(--c2c-align);
+  }
+
+  #template--21386858561728__c_two_columns_AEfBQz .c2c__image {
+    order: 1;
+    position: relative;
+    line-height: 0;
+  }
+
+  #template--21386858561728__c_two_columns_AEfBQz .c2c__image-wrapper {
+    border-radius: 20px;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  #template--21386858561728__c_two_columns_AEfBQz .c2c__trust-badge {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 120px;
+    height: 120px;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  #template--21386858561728__c_two_columns_AEfBQz .c2c__trust-badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  #template--21386858561728__c_two_columns_AEfBQz .c2c__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  #template--21386858561728__c_two_columns_AEfBQz .c2c__heading {
+    margin: 0 0 16px;
+    font-size: var(--c2c-heading-size-m);
+    line-height: 120%;
+    text-align: var(--c2c-align);
+  }
+
+  #template--21386858561728__c_two_columns_AEfBQz .c2c__richtext {
+    margin: 0 0 24px;
+    font-size: var(--c2c-richtext-size-m);
+    line-height: 160%;
+    text-align: var(--c2c-align);
+  }
+
+  /* Ensure all text uses section text color */
+  #template--21386858561728__c_two_columns_AEfBQz .c2c__content,
+  #template--21386858561728__c_two_columns_AEfBQz .c2c__content * {
+    color: var(--c2c-text);
+  }
+
+  /* CTA (exact CSS you provided) */
+  #template--21386858561728__c_two_columns_AEfBQz .c2c__cta {
+    display: inline-block;
+    background: var(--c2c-cta-bg);
+    color: var(--c2c-cta-text);
+
+    padding: 16px 40px;
+    border-radius: 8px;
+    text-align: center;
+
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    text-transform: uppercase;
+
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  #template--21386858561728__c_two_columns_AEfBQz .c2c__cta:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  /* Tablet and up: Grid layout */
+  @media (width >= 768px) {
+    #template--21386858561728__c_two_columns_AEfBQz .c2c__container {
+      padding: var(--c2c-pad-top-d) var(--c2c-pad-x-d) var(--c2c-pad-bottom-d);
+    }
+
+    #template--21386858561728__c_two_columns_AEfBQz .c2c__grid {
+      display: grid;
+      align-items: center;
+      column-gap: var(--c2c-gap-d);
+      grid-template-columns:
+        minmax(0, var(--c2c-img-w))
+        minmax(0, var(--c2c-text-w));
+      grid-template-areas: "image content";
+    }
+
+    #template--21386858561728__c_two_columns_AEfBQz .c2c__content {
+      order: unset;
+      grid-area: content;
+    }
+
+    #template--21386858561728__c_two_columns_AEfBQz .c2c__image {
+      order: unset;
+      grid-area: image;
+    }
+
+    /* Swap columns on desktop */
+    #template--21386858561728__c_two_columns_AEfBQz.c-two-columns--swap .c2c__grid {
+      grid-template-areas: "content image";
+    }
+
+    #template--21386858561728__c_two_columns_AEfBQz .c2c__heading {
+      font-size: var(--c2c-heading-size-d);
+    }
+
+    #template--21386858561728__c_two_columns_AEfBQz .c2c__richtext {
+      font-size: var(--c2c-richtext-size-d);
+    }
+
+    #template--21386858561728__c_two_columns_AEfBQz .c2c__cta {
+      width: auto;
+    }
+
+    #template--21386858561728__c_two_columns_AEfBQz .c2c__trust-badge {
+      top: -40px;
+      right: -40px;
+      bottom: auto;
+      width: 167px;
+      height: 167px;
+      transform: rotate(-32deg);
+    }
+  }
+</style>
+<section
+  id="template--21386858561728__c_two_columns_AEfBQz"
+  class="c-two-columns c-two-columns--swap"
+  role="region"
+  aria-label="Two columns content section"
+>
+  <div class="c2c__container">
+    <div class="c2c__grid">
+      <div class="c2c__image">
+        <div class="c2c__image-wrapper">
+          
+            <img
+              src="//8sheep.com/cdn/shop/files/Placeholder_Image_6bd89eb2-d8cf-4cc0-bffb-04608bd8ff8e.jpg?v=1769014317&width=1500"
+              srcset="//8sheep.com/cdn/shop/files/Placeholder_Image_6bd89eb2-d8cf-4cc0-bffb-04608bd8ff8e.jpg?v=1769014317&width=375 375w, //8sheep.com/cdn/shop/files/Placeholder_Image_6bd89eb2-d8cf-4cc0-bffb-04608bd8ff8e.jpg?v=1769014317&width=550 550w, //8sheep.com/cdn/shop/files/Placeholder_Image_6bd89eb2-d8cf-4cc0-bffb-04608bd8ff8e.jpg?v=1769014317&width=750 750w, //8sheep.com/cdn/shop/files/Placeholder_Image_6bd89eb2-d8cf-4cc0-bffb-04608bd8ff8e.jpg?v=1769014317&width=1100 1100w, //8sheep.com/cdn/shop/files/Placeholder_Image_6bd89eb2-d8cf-4cc0-bffb-04608bd8ff8e.jpg?v=1769014317&width=1500 1500w, //8sheep.com/cdn/shop/files/Placeholder_Image_6bd89eb2-d8cf-4cc0-bffb-04608bd8ff8e.jpg?v=1769014317&width=1800 1800w, //8sheep.com/cdn/shop/files/Placeholder_Image_6bd89eb2-d8cf-4cc0-bffb-04608bd8ff8e.jpg?v=1769014317&width=2200 2200w"
+              sizes="(max-width: 749px) 100vw, 50vw"
+              alt="Section image"
+              loading="lazy"
+              width="1232"
+              height="744"
+            >
+          
+        </div>
+
+        
+      </div>
+
+      <div class="c2c__content">
+        
+          <h2 class="c2c__heading">From Sleepless Nights to Soothing Relief</h2>
+        
+
+        
+          <div class="c2c__richtext rte"><p>The Original Magnesium Sleepy Lotion — crafted to help you rest deeply and wake refreshed.</p><p>• Promotes deeper, more restful sleep <br/>• Eases lower back and hip pains <br/>• Helps with restless legs and leg cramps <br/>• Made with clean, all-natural ingredients</p></div>
+        
+
+        
+          <a class="c2c__cta" href="/products/sleepylotion">
+            SHOP THE LOTION
+          </a>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</section>

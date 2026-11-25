@@ -1,0 +1,889 @@
+<div id="shopify-section-template--21386858561728__c_testimonials_7hUhtG" class="shopify-section">
+
+<style data-shopify>
+  /* IMPORTANT: Always use these exact media query breakpoints */
+
+  #template--21386858561728__c_testimonials_7hUhtG.c-testimonials {
+    /* ===== Section controls ===== */
+    background-color: #ffffff;
+    color: #111111;
+    overflow: hidden; /* prevents accidental horizontal scroll from full-bleed swiper */
+
+    /* Spacing */
+    --c-tst-pad-top-desktop: 88px;
+    --c-tst-pad-bottom-desktop: 88px;
+    --c-tst-pad-top-mobile: 64px;
+    --c-tst-pad-bottom-mobile: 64px;
+
+    /* Layout widths */
+    --c-tst-heading-max: 1060px;
+
+    /* Swiper spacing */
+    --c-tst-track-pad-desktop: 80px;
+    --c-tst-track-pad-mobile: 22px;
+    --c-tst-gap-desktop: 32px;
+    --c-tst-gap-mobile: 18px;
+
+    /* Card styles */
+    --c-tst-card-bg: #f3f3f3;
+    --c-tst-card-radius: 18px;
+    --c-tst-card-pad-desktop: 32px;
+    --c-tst-card-pad-mobile: 24px;
+    --c-tst-card-minh-desktop: 200px;
+    --c-tst-card-minh-mobile: 200px;
+
+    /* Typography */
+    --c-tst-h-size-desktop: 40px;
+    --c-tst-h-size-mobile: 24px;
+    --c-tst-title-size-desktop: 20px;
+    --c-tst-title-size-mobile: 18px;
+    --c-tst-body-size-desktop: 16px;
+    --c-tst-body-size-mobile: 15px;
+
+    /* Stars (top block) */
+    --c-tst-top-star-color: #bc825b;
+
+    /* Pagination */
+    --c-tst-pagination-active: #151515;
+    --c-tst-pagination-inactive: #d9d9d9;
+  }
+
+    #template--21386858561728__c_testimonials_7hUhtG h1, #template--21386858561728__c_testimonials_7hUhtG h2, #template--21386858561728__c_testimonials_7hUhtG h3 {
+      font-family: var(--font-heading)!important;
+    }
+
+  @media screen and (min-width: 750px) {
+    #template--21386858561728__c_testimonials_7hUhtG.c-testimonials {
+      padding: var(--c-tst-pad-top-desktop) 0 var(--c-tst-pad-bottom-desktop);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #template--21386858561728__c_testimonials_7hUhtG.c-testimonials {
+      padding: var(--c-tst-pad-top-mobile) 0 var(--c-tst-pad-bottom-mobile);
+    }
+  }
+
+  /* ===== Inner container (for heading only) ===== */
+  #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__inner {
+    width: 100%;
+    max-width: var(--c-tst-heading-max);
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__inner {
+      padding: 0 40px;
+    }
+  }
+
+  /* ===== Top stars + heading ===== */
+  #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__top-stars {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+
+  #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__top-stars svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--c-tst-top-star-color);
+    display: block;
+  }
+
+  #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__heading {
+    margin: 0;
+
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+
+  @media screen and (min-width: 750px) {
+    #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__heading {
+      font-size: var(--c-tst-h-size-desktop);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__heading {
+      font-size: var(--c-tst-h-size-mobile);
+    }
+  }
+
+  /* ===== Full-bleed Swiper wrapper (end-to-end) ===== */
+  #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__bleed {
+    /* Full viewport width while keeping section centered */
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 28px;
+  }
+
+  @media screen and (min-width: 750px) {
+    #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__bleed {
+      margin-top: 44px;
+    }
+  }
+
+  /* Swiper base */
+  #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__swiper {
+    width: 100%;
+  }
+
+  #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__track {
+    /* Keep equal-height slides */
+    align-items: stretch;
+  }
+
+  #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__slide {
+    height: auto; /* allow stretch */
+    display: flex;
+    width: calc(100% - 40px); /* Mobile: nearly full width with peek */
+    flex-shrink: 0;
+  }
+
+  /* Tablet */
+  @media (width >= 768px) {
+    #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__slide {
+      width: 320px;
+    }
+  }
+
+  /* Laptop */
+  @media (width >= 978px) {
+    #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__slide {
+      width: 350px;
+    }
+  }
+
+  /* Desktop */
+  @media (width >= 1200px) {
+    #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__slide {
+      width: 380px;
+    }
+  }
+
+  /* ===== Track padding + spacing between slides ===== */
+  @media screen and (min-width: 750px) {
+    #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__swiper {
+      padding-left: var(--c-tst-track-pad-desktop);
+      padding-right: var(--c-tst-track-pad-desktop);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__swiper {
+      padding-left: var(--c-tst-track-pad-mobile);
+      padding-right: var(--c-tst-track-pad-mobile);
+    }
+  }
+
+  /* ===== Card ===== */
+  #template--21386858561728__c_testimonials_7hUhtG .c-tcard {
+    width: 100%;
+    background: var(--c-tst-card-bg);
+    border-radius: var(--c-tst-card-radius);
+    display: flex;
+    flex-direction: column;
+    min-height: var(--c-tst-card-minh-mobile);
+  }
+
+  @media screen and (min-width: 750px) {
+    #template--21386858561728__c_testimonials_7hUhtG .c-tcard {
+      min-height: var(--c-tst-card-minh-desktop);
+    }
+  }
+
+  #template--21386858561728__c_testimonials_7hUhtG .c-tcard__inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media screen and (min-width: 750px) {
+    #template--21386858561728__c_testimonials_7hUhtG .c-tcard__inner {
+      padding: var(--c-tst-card-pad-desktop);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #template--21386858561728__c_testimonials_7hUhtG .c-tcard__inner {
+      padding: var(--c-tst-card-pad-mobile);
+    }
+  }
+
+  /* Card stars (always black per your instruction) */
+  #template--21386858561728__c_testimonials_7hUhtG .c-tcard__rating {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
+  #template--21386858561728__c_testimonials_7hUhtG .c-tcard__rating svg {
+    width: 18px;
+    height: 18px;
+    fill: #000000;
+    display: block;
+  }
+
+  #template--21386858561728__c_testimonials_7hUhtG .c-tcard__title {
+    margin: 0 0 12px;
+
+    line-height: 1.25;
+    text-align: left;
+  }
+
+  @media screen and (min-width: 750px) {
+    #template--21386858561728__c_testimonials_7hUhtG .c-tcard__title {
+      font-size: var(--c-tst-title-size-desktop);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #template--21386858561728__c_testimonials_7hUhtG .c-tcard__title {
+      font-size: var(--c-tst-title-size-mobile);
+    }
+  }
+
+  #template--21386858561728__c_testimonials_7hUhtG .c-tcard__body {
+    margin: 0;
+    line-height: 1.55;
+    opacity: 0.95;
+  }
+
+  @media screen and (min-width: 750px) {
+    #template--21386858561728__c_testimonials_7hUhtG .c-tcard__body {
+      font-size: var(--c-tst-body-size-desktop);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #template--21386858561728__c_testimonials_7hUhtG .c-tcard__body {
+      font-size: var(--c-tst-body-size-mobile);
+    }
+  }
+
+  /* Footer pinned to bottom for equal-height look */
+  #template--21386858561728__c_testimonials_7hUhtG .c-tcard__footer {
+    margin-top: auto;
+    padding-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Avatar: you asked to HIDE COMPLETELY when missing */
+  #template--21386858561728__c_testimonials_7hUhtG .c-tcard__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    overflow: hidden;
+    flex: 0 0 auto;
+  }
+
+  #template--21386858561728__c_testimonials_7hUhtG .c-tcard__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #template--21386858561728__c_testimonials_7hUhtG .c-tcard__author {
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  /* ===== Pagination dots (desktop + mobile) ===== */
+  #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__pagination {
+    position: static;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 22px;
+  }
+
+  #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--c-tst-pagination-inactive);
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+
+  #template--21386858561728__c_testimonials_7hUhtG .c-testimonials__pagination .swiper-pagination-bullet-active {
+    background-color: var(--c-tst-pagination-active);
+    width: 24px;
+    border-radius: 4px;
+  }
+</style>
+
+<section id="template--21386858561728__c_testimonials_7hUhtG" class="c-testimonials">
+  <div class="c-testimonials__inner">
+    
+      <div class="c-testimonials__top-stars" aria-label="Rating stars">
+        
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+          </svg>
+        
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+          </svg>
+        
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+          </svg>
+        
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+          </svg>
+        
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+          </svg>
+        
+      </div>
+    
+
+    
+      <h2 class="c-testimonials__heading">Loved by Over 168,000 Mamas</h2>
+    
+  </div>
+
+  <div class="c-testimonials__bleed">
+    <div class="c-testimonials__swiper swiper" data-c-testimonials>
+      <div class="c-testimonials__track swiper-wrapper">
+        
+          
+
+          <div class="c-testimonials__slide swiper-slide" >
+            <article class="c-tcard">
+              <div class="c-tcard__inner">
+                <div class="c-tcard__rating" aria-label="Rating 5 out of 5">
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                </div>
+
+                
+                  <h3 class="c-tcard__title">I love the scent of the belly balm</h3>
+                
+
+                
+                  <p class="c-tcard__body">Amazing! I have used 1 full tub and this is a replacement to get me through the rest of pregnancy. 34 weeks with no stretch marks so far. Wonderful product. Highly recommend.</p>
+                
+
+                
+                  <div class="c-tcard__footer">
+                    
+
+                    
+                      <div class="c-tcard__author">Kate</div>
+                    
+                  </div>
+                
+              </div>
+            </article>
+          </div>
+        
+          
+
+          <div class="c-testimonials__slide swiper-slide" >
+            <article class="c-tcard">
+              <div class="c-tcard__inner">
+                <div class="c-tcard__rating" aria-label="Rating 5 out of 5">
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                </div>
+
+                
+                  <h3 class="c-tcard__title">A Bedtime Favorite for Both of Us :)</h3>
+                
+
+                
+                  <p class="c-tcard__body">Oh man! I just ordered for the first time and I looooove this product. I put it on my baby after her bath and she sleeps so good that it made me want to try it for myself! It helps me relax and sleep great!</p>
+                
+
+                
+                  <div class="c-tcard__footer">
+                    
+
+                    
+                      <div class="c-tcard__author">Sydney</div>
+                    
+                  </div>
+                
+              </div>
+            </article>
+          </div>
+        
+          
+
+          <div class="c-testimonials__slide swiper-slide" >
+            <article class="c-tcard">
+              <div class="c-tcard__inner">
+                <div class="c-tcard__rating" aria-label="Rating 5 out of 5">
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                </div>
+
+                
+                  <h3 class="c-tcard__title">I love this product. It is worth the hype. 10/10 recommend.</h3>
+                
+
+                
+                  <p class="c-tcard__body">After 3 nights of use my son is falling asleep fasting and staying asleep longer throughout the night. He is teething badly and used to wake up 2-3 times a night. Now once he goes down he is asleep for 8-10 solid hours. I feel better as well because i am actually getting good sleep and i feel refreshed.</p>
+                
+
+                
+                  <div class="c-tcard__footer">
+                    
+
+                    
+                      <div class="c-tcard__author">Sophia K.</div>
+                    
+                  </div>
+                
+              </div>
+            </article>
+          </div>
+        
+          
+
+          <div class="c-testimonials__slide swiper-slide" >
+            <article class="c-tcard">
+              <div class="c-tcard__inner">
+                <div class="c-tcard__rating" aria-label="Rating 5 out of 5">
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                </div>
+
+                
+                  <h3 class="c-tcard__title">Finally, Restful Nights Again</h3>
+                
+
+                
+                  <p class="c-tcard__body">Organic Sleepy Body Lotion is always my favorite rate for restless legs very helpful when going to bed in the legs bothering me.</p>
+                
+
+                
+                  <div class="c-tcard__footer">
+                    
+
+                    
+                      <div class="c-tcard__author">Cherly</div>
+                    
+                  </div>
+                
+              </div>
+            </article>
+          </div>
+        
+          
+
+          <div class="c-testimonials__slide swiper-slide" >
+            <article class="c-tcard">
+              <div class="c-tcard__inner">
+                <div class="c-tcard__rating" aria-label="Rating 5 out of 5">
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                </div>
+
+                
+                  <h3 class="c-tcard__title">2-Step Stretch Mark Prevention Bundle </h3>
+                
+
+                
+                  <p class="c-tcard__body">Smells nice, consistency is good. The overnight cream is gritty until you rub it in fully. But i can tell a difference since using it. Got it for christmas!</p>
+                
+
+                
+                  <div class="c-tcard__footer">
+                    
+
+                    
+                      <div class="c-tcard__author">Angela</div>
+                    
+                  </div>
+                
+              </div>
+            </article>
+          </div>
+        
+          
+
+          <div class="c-testimonials__slide swiper-slide" >
+            <article class="c-tcard">
+              <div class="c-tcard__inner">
+                <div class="c-tcard__rating" aria-label="Rating 5 out of 5">
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                </div>
+
+                
+                  <h3 class="c-tcard__title">Best serum ever!</h3>
+                
+
+                
+                  <p class="c-tcard__body">Used Palmer’s during my first pregnancy. Still got stretch marks by week 28. This time I used True Belly and nothing.</p>
+                
+
+                
+                  <div class="c-tcard__footer">
+                    
+
+                    
+                      <div class="c-tcard__author">Carla</div>
+                    
+                  </div>
+                
+              </div>
+            </article>
+          </div>
+        
+          
+
+          <div class="c-testimonials__slide swiper-slide" >
+            <article class="c-tcard">
+              <div class="c-tcard__inner">
+                <div class="c-tcard__rating" aria-label="Rating 5 out of 5">
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                </div>
+
+                
+                  <h3 class="c-tcard__title">An unforgettable experience!</h3>
+                
+
+                
+                  <p class="c-tcard__body">Absorbs fast, and I actually feel it working. I was skeptical, but now I recommend it to every pregnant friend.</p>
+                
+
+                
+                  <div class="c-tcard__footer">
+                    
+
+                    
+                      <div class="c-tcard__author">Brianna S.</div>
+                    
+                  </div>
+                
+              </div>
+            </article>
+          </div>
+        
+          
+
+          <div class="c-testimonials__slide swiper-slide" >
+            <article class="c-tcard">
+              <div class="c-tcard__inner">
+                <div class="c-tcard__rating" aria-label="Rating 5 out of 5">
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                </div>
+
+                
+                  <h3 class="c-tcard__title">Better Sleep During Postpartum</h3>
+                
+
+                
+                  <p class="c-tcard__body">I have been using this postpartum and I truly think it helps me to fall asleep faster and sleep better. With a new baby I have trouble sleeping well and bouts of insomnia. This product helps me to be more rested.</p>
+                
+
+                
+                  <div class="c-tcard__footer">
+                    
+
+                    
+                      <div class="c-tcard__author">Megan</div>
+                    
+                  </div>
+                
+              </div>
+            </article>
+          </div>
+        
+          
+
+          <div class="c-testimonials__slide swiper-slide" >
+            <article class="c-tcard">
+              <div class="c-tcard__inner">
+                <div class="c-tcard__rating" aria-label="Rating 5 out of 5">
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                    </svg>
+                  
+                </div>
+
+                
+                  <h3 class="c-tcard__title">Definitely repurchase this again!</h3>
+                
+
+                
+                  <p class="c-tcard__body">I like both products a lot, the belly serum feels like it may last longer than the bomb but i would definitely repurchase both!</p>
+                
+
+                
+                  <div class="c-tcard__footer">
+                    
+
+                    
+                      <div class="c-tcard__author">Breanna</div>
+                    
+                  </div>
+                
+              </div>
+            </article>
+          </div>
+        
+      </div>
+
+      
+        <div class="c-testimonials__pagination swiper-pagination"></div>
+      
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var SECTION_ID = 'template--21386858561728__c_testimonials_7hUhtG';
+
+    function initCTestimonials() {
+      var sectionEl = document.getElementById(SECTION_ID);
+      if (!sectionEl) return;
+
+      var el = sectionEl.querySelector('[data-c-testimonials]');
+      if (!el) return;
+
+      // Prevent double init
+      if (el.dataset.cTestimonialsInit === 'true') return;
+      el.dataset.cTestimonialsInit = 'true';
+
+      if (typeof window.Swiper === 'undefined') {
+        // If your theme lazy-loads Swiper, you can re-call init after it loads.
+        return;
+      }
+
+      var paginationEl = sectionEl.querySelector('.c-testimonials__pagination');
+
+      var config = {
+        loop: false,
+        speed: 500,
+        grabCursor: true,
+        watchOverflow: true,
+        slidesPerView: 'auto',
+        spaceBetween: 18,
+        pagination: {
+          el: paginationEl,
+          clickable: true,
+        },
+        breakpoints: {
+          768: {
+            spaceBetween: 24,
+          },
+          978: {
+            spaceBetween: 28,
+          },
+          1200: {
+            spaceBetween: 32,
+          },
+        },
+      };
+
+      new window.Swiper(el, config);
+    }
+
+    // Initial load - handles both fresh load and dynamic injection (Intelligems, etc.)
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCTestimonials);
+    } else {
+      initCTestimonials();
+    }
+
+    // Shopify theme editor support
+    document.addEventListener('shopify:section:load', function (event) {
+      if (event.detail.sectionId === SECTION_ID) {
+        setTimeout(initCTestimonials, 100);
+      }
+    });
+  })();
+</script>
+
+
+</div>
