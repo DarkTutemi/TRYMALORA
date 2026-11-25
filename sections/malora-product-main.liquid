@@ -21,10 +21,16 @@
     background: #FFFFFF !important;
   }
   .malora-pdp-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 48px;
-    align-items: start;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr) !important;
+    gap: 48px !important;
+    align-items: start !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .malora-pdp-grid > div {
+    min-width: 0 !important;
+    max-width: 100% !important;
   }
   @media (max-width: 900px) {
     .malora-pdp-grid {
