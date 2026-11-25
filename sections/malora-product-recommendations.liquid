@@ -1,0 +1,119 @@
+{% comment %} MALORA ORGANICS - 8SHEEP 1:1 CLONE {% endcomment %}
+<div id="shopify-section-template--21386857054400__product-recommendations" class="shopify-section section-product-recommendations">
+  <div id="product-recommendations-template--21386857054400__product-recommendations"
+       class="product-recommendations"
+       data-product-recommendations
+       data-url="/recommendations/products?section_id=template--21386857054400__product-recommendations&product_id=1825437253732&limit=12"
+       data-products-in-view="3">
+
+    
+  </div>
+
+  <script type="module" data-product-recommendations-init="template--21386857054400__product-recommendations">
+    /**
+     * Self-contained Product Recommendations loader + Swiper init.
+     *
+     * Replaces the legacy theme.js `theme.ProductRecommendations` handler so this
+     * section is fully isolated and does not depend on jQuery or the global
+     * Shopify Sections registry. Swiper is loaded globally via swiper-bundle.min.js.
+     */
+    (async () => {
+      const root = document.getElementById('product-recommendations-template--21386857054400__product-recommendations');
+      if (!root || root.dataset.prInitialized === 'true') return;
+      root.dataset.prInitialized = 'true';
+
+      const url = root.dataset.url;
+      const slidesInView = parseInt(root.dataset.productsInView, 10) || 3;
+
+      // Wait for Swiper global (script is loaded with `defer`)
+      const waitForSwiper = () => new Promise((resolve, reject) => {
+        if (typeof window.Swiper !== 'undefined') return resolve(window.Swiper);
+        let tries = 0;
+        const interval = setInterval(() => {
+          if (typeof window.Swiper !== 'undefined') {
+            clearInterval(interval);
+            resolve(window.Swiper);
+          } else if (++tries > 50) {
+            clearInterval(interval);
+            reject(new Error('Swiper global not available'));
+          }
+        }, 100);
+      });
+
+      const initSwiper = (Swiper, swiperEl) => {
+        new Swiper(swiperEl, {
+          loop: false,
+          freeMode: true,
+          grabCursor: true,
+          slidesPerView: 1.2,
+          spaceBetween: 16,
+          mousewheel: {
+            forceToAxis: true,
+          },
+          scrollbar: {
+            el: swiperEl.querySelector('.swiper-scrollbar'),
+            draggable: true,
+          },
+          navigation: {
+            nextEl: swiperEl.querySelector('.swiper-button-next'),
+            prevEl: swiperEl.querySelector('.swiper-button-prev'),
+          },
+          breakpoints: {
+            768: {
+              slidesPerView: Math.min(2, slidesInView),
+              spaceBetween: 16,
+            },
+            978: {
+              slidesPerView: Math.min(3, slidesInView),
+              spaceBetween: 20,
+            },
+            1200: {
+              slidesPerView: slidesInView,
+              spaceBetween: 20,
+            },
+          },
+        });
+      };
+
+      try {
+        const response = await fetch(url);
+        if (!response.ok) return;
+
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const fetched = doc.querySelector('[data-product-recommendations]');
+        if (!fetched) return;
+
+        // Replace contents (skip nested script tags — they would not execute via innerHTML anyway)
+        root.innerHTML = fetched.innerHTML;
+
+        const swiperEl = root.querySelector('.product-list.swiper-container');
+        if (!swiperEl) return;
+
+        const Swiper = await waitForSwiper();
+        initSwiper(Swiper, swiperEl);
+
+        // Re-run theme hooks so product cards become visible and interactive:
+        // - initAnimateOnScroll: removes the `opacity: 0` from `data-cc-animate` cards
+        // - cc:component:load event: re-initializes product-block (swatches, quick-buy, hover)
+        // - lazySizes: triggers lazy-loading of `.lazyload` images inside the slider
+        if (window.theme && typeof window.theme.initAnimateOnScroll === 'function') {
+          window.theme.initAnimateOnScroll();
+        }
+        if (window.jQuery) {
+          window.jQuery(document).trigger('cc:component:load', ['product-block', root]);
+        }
+        if (window.lazySizes && window.lazySizes.autoSizer) {
+          window.lazySizes.autoSizer.checkElems();
+        }
+      } catch (error) {
+        console.error('[product-recommendations] init failed', error);
+      }
+    })();
+  </script>
+
+
+
+</div>
+{% schema %}{ "name": "Malora Recommendations", "settings": [] }{% endschema %}

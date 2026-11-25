@@ -4,6 +4,22 @@
       "type": "malora-product-main",
       "settings": {}
     },
+    "bar_icons": {
+      "type": "malora-bar-icons",
+      "settings": {}
+    },
+    "magnesium_science": {
+      "type": "malora-magnesium-science",
+      "settings": {}
+    },
+    "clean_ingredients": {
+      "type": "malora-clean-ingredients",
+      "settings": {}
+    },
+    "badge_products": {
+      "type": "malora-badge-products",
+      "settings": {}
+    },
     "reviews_widget": {
       "type": "malora-reviews-widget",
       "settings": {}
@@ -20,17 +36,26 @@
       "type": "malora-faq",
       "settings": {}
     },
-    "featured_collection": {
-      "type": "malora-featured-collection",
+    "product_recommendations": {
+      "type": "malora-product-recommendations",
+      "settings": {}
+    },
+    "shogun_below": {
+      "type": "malora-shogun-below",
       "settings": {}
     }
   },
   "order": [
     "main",
+    "bar_icons",
+    "magnesium_science",
+    "clean_ingredients",
+    "badge_products",
     "reviews_widget",
     "testimonials",
     "reviews_swiper",
     "faq",
-    "featured_collection"
+    "product_recommendations",
+    "shogun_below"
   ]
 }
